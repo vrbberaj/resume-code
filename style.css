@@ -38,17 +38,18 @@
 @media print {
   @page {
     margin: 0 !important;
-    size: 900px 1765px;
+    size: 900px 1764px;
   }
-  .ui-nav {
+  .ui-nav, .screen-nav-bar {
     display: none !important;
   }
   html, body, #container, #container > div, #fig-code-root {
     height: auto !important;
     min-height: 0 !important;
+    background: transparent !important;
   }
   body {
-    background: #DDD9D0 !important;
+    background: transparent !important;
     zoom: 1 !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -57,8 +58,14 @@
   .min-h-screen {
     min-height: 0 !important;
     padding: 0 !important;
+    background: transparent !important;
   }
   .shadow-2xl {
+    box-shadow: none !important;
+  }
+  .max-w-\[900px\] {
+    margin: 0 auto !important;
+    width: 900px !important;
     box-shadow: none !important;
   }
   * {

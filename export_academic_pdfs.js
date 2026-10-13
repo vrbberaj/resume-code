@@ -20,13 +20,19 @@ const targets = [
 
     for (const t of targets) {
       const page = await browser.newPage();
+      await page.setViewport({ width: 1200, height: 2000 });
       await page.goto(t.url, { waitUntil: 'networkidle2' });
       await page.evaluateHandle('document.fonts.ready');
+
+      const cardHeight = await page.evaluate(() => {
+        const card = document.querySelector('.max-w-\\[900px\\]');
+        return card ? card.offsetHeight : 1506;
+      });
 
       await page.pdf({
         path: t.pdfPath,
         width: '900px',
-        height: t.height,
+        height: `${cardHeight}px`,
         printBackground: true,
         scale: 1,
         margin: {
@@ -36,7 +42,7 @@ const targets = [
           left: '0px'
         }
       });
-      console.log(`Generated: ${t.pdfPath}`);
+      console.log(`Generated: ${t.pdfPath} (height: ${cardHeight}px)`);
       await page.close();
     }
 
