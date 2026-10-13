@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reasons for Joining VIT Chennai | Balaajee VR | Professor of Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm 14mm 10mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #1A2433;
+      background: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      line-height: 1.42;
+      font-size: 8.8pt;
+    }
+    .header {
+      border-bottom: 2px solid #0D1B2E;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .name-block h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 17pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.02em;
+    }
+    .name-block .tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #C4892A;
+      font-weight: 600;
+    }
+    .contact-meta {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.5pt;
+      color: #556275;
+      line-height: 1.4;
+    }
+    .doc-title-bar {
+      background: #F4F1EA;
+      border-left: 3.5px solid #C4892A;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+      border-radius: 0 4px 4px 0;
+    }
+    .doc-title-bar h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 11pt;
+      color: #0D1B2E;
+      margin: 0 0 2px 0;
+    }
+    .doc-title-bar .subtitle {
+      font-size: 8pt;
+      color: #556275;
+      font-weight: 500;
+    }
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #0D1B2E;
+      border-bottom: 1px solid #E2DCD2;
+      padding-bottom: 3px;
+      margin: 10px 0 6px 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title span.num {
+      color: #C4892A;
+    }
+    p {
+      margin: 0 0 6px 0;
+      text-align: justify;
+    }
+    .reasons-grid {
+      display: flex;
+      flex-col;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .reason-card {
+      background: #FAFAF7;
+      border: 1px solid #E7E3D8;
+      border-left: 3px solid #C4892A;
+      border-radius: 4px;
+      padding: 8px 11px;
+    }
+    .reason-card h3 {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      margin: 0 0 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .reason-card h3 .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 6.8pt;
+      text-transform: uppercase;
+      color: #C4892A;
+      background: #F4EEDC;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .reason-card p {
+      font-size: 8pt;
+      line-height: 1.38;
+      color: #4A5568;
+      margin: 0;
+      text-align: left;
+    }
+    .deliverables-box {
+      background: #F8F6F0;
+      border: 1px solid #E0DAD0;
+      border-radius: 5px;
+      padding: 8px 12px;
+      margin: 8px 0;
+    }
+    .deliverables-box h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0D1B2E;
+      margin: 0 0 5px 0;
+    }
+    .deliverables-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .deliverables-list li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 3px;
+      font-size: 8pt;
+      line-height: 1.35;
+      color: #2D3748;
+    }
+    .deliverables-list li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #C4892A;
+      font-size: 5pt;
+    }
+    .signature-block {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed #CBD5E0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.8pt;
+      color: #718096;
+    }
+    .signature-block strong {
+      color: #0D1B2E;
+      font-size: 8.5pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="name-block">
+      <h1>BALAAJEE VR</h1>
+      <div class="tagline">Product Design &amp; Technology Executive • B.E. (Information Technology)</div>
+    </div>
+    <div class="contact-meta">
+      <div>+91 9994761293 • vrbberaj@gmail.com</div>
+      <div>Chennai, Tamil Nadu, India</div>
+    </div>
+  </div>
+
+  <!-- Document Title -->
+  <div class="doc-title-bar">
+    <h2>Statement of Purpose: Reasons for Joining VIT Chennai</h2>
+    <div class="subtitle">Candidate for Professor of Practice • School of Computer Science &amp; Engineering (SCOPE)</div>
+  </div>
+
+  <!-- Narrative Statement -->
+  <div class="section-title"><span class="num">01.</span> Professional Intent &amp; Academic Calling</div>
+  <p>
+    After more than <strong>18 years of directing global design, software architecture, and product innovation teams</strong> across Fortune 500 enterprises—including <strong>IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson, Samsung, and Infosys</strong>—I am deliberately choosing to channel my industry experience into academia. As an engineer who began my career as a lecturer in an Anna University affiliated engineering college (2004–2006) and holds a foundational <strong>B.E. in Information Technology</strong>, teaching is not an alternative career for me; it is a full-circle professional calling. Joining <strong>Vellore Institute of Technology (VIT Chennai)</strong> as Professor of Practice represents the ideal institutional platform to bridge enterprise product standards with higher education.
+  </p>
+
+  <!-- Core Pillars / Reasons -->
+  <div class="section-title"><span class="num">02.</span> Four Strategic Drivers for Choosing VIT Chennai</div>
+
+  <div class="reasons-grid">
+    <div class="reason-card">
+      <h3>1. Institutional Eminence &amp; Innovation Pedagogy <span class="tag">Academic Synergy</span></h3>
+      <p>
+        VIT's status as an <strong>Institution of Eminence (IoE)</strong> and its pioneering adoption of the <strong>Fully Flexible Credit System (FFCS)</strong> and project-based learning create an environment where industry-aligned curricula can be rapidly implemented. Unlike rigid traditional universities, VIT has demonstrated the organizational agility required for a Professor of Practice to introduce cutting-edge coursework in <strong>Human-Computer Interaction (HCI)</strong>, <strong>AI-UX interaction architectures</strong>, and <strong>Enterprise Design Systems</strong>.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <h3>2. High-Impact Scale &amp; Student Caliber at SCOPE <span class="tag">Pedagogical Reach</span></h3>
+      <p>
+        The <strong>School of Computer Science &amp; Engineering (SCOPE)</strong> at VIT Chennai attracts some of the sharpest analytical minds in India. However, the contemporary tech landscape requires software engineers who understand product ergonomics, user psychology, and production-grade UI design tokens alongside backend algorithms. Mentoring SCOPE students through studio-based critiques and industry incubators allows me to directly shape the next generation of <strong>hybrid "Design Engineers."</strong>
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <h3>3. Strategic Location in the Chennai Tech Corridor <span class="tag">Industry-Academia Nexus</span></h3>
+      <p>
+        VIT Chennai's proximity to the OMR/GST technology corridor places it at the epicenter of India’s enterprise SaaS, automotive telematics, and global capability centers (GCCs). Having directed design operations for Zebra and ZF Wabco in Chennai and IBM Software Labs, I am uniquely positioned to leverage my corporate network to establish <strong>industry-sponsored capstone labs</strong>, hackathons, and corporate R&amp;D MoUs right here in Chennai.
+      </p>
+    </div>
+
+    <div class="reason-card">
+      <h3>4. Personal Roots &amp; Long-Term Institutional Commitment <span class="tag">Local Presence</span></h3>
+      <p>
+        As a permanent Chennai resident, I offer complete, friction-free local commitment to VIT Chennai’s campus life. I seek a multi-year engagement where I can actively participate in curriculum review boards, faculty enablement workshops, student hackathons, and corporate placement bootcamps without logistical constraints.
+      </p>
+    </div>
+  </div>
+
+  <!-- Institutional Deliverables -->
+  <div class="deliverables-box">
+    <h4>Core Commitments to VIT Chennai</h4>
+    <ul class="deliverables-list">
+      <li><strong>Super-Dream Placement Acceleration:</strong> Grooming SCOPE undergraduates for premier product engineering roles through design-architecture interview prep and portfolio critiques.</li>
+      <li><strong>Corporate Placement &amp; MoU Pipelines:</strong> Connecting VIT with hiring managers and R&amp;D directors across IBM, Zebra, Ericsson, and partner ecosystems.</li>
+      <li><strong>Interdisciplinary Collaboration:</strong> Bridging computing theory at SCOPE with design thinking and institutional technology transfer.</li>
+    </ul>
+  </div>
+
+  <!-- Signoff -->
+  <div class="signature-block">
+    <div>
+      <strong>Balaajee VR</strong><br>
+      Product Design &amp; Technology Executive • Candidate for Professor of Practice (SCOPE)
+    </div>
+    <div>
+      Date: October 2026 • Chennai, Tamil Nadu, India
+    </div>
+  </div>
+
+</body>
+</html>
