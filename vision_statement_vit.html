@@ -10,7 +10,7 @@
   <style>
     @page {
       size: A4;
-      margin: 18mm 18mm 18mm 18mm;
+      margin: 10mm 14mm 10mm 14mm;
     }
     * {
       box-sizing: border-box;
@@ -23,67 +23,67 @@
       background: #FFFFFF;
       margin: 0;
       padding: 0;
-      line-height: 1.55;
-      font-size: 10.5pt;
+      line-height: 1.4;
+      font-size: 8.8pt;
     }
     .header {
       border-bottom: 2px solid #0D1B2E;
-      padding-bottom: 12px;
-      margin-bottom: 18px;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
     .name-block h1 {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 20pt;
+      font-size: 17pt;
       font-weight: 700;
       color: #0D1B2E;
-      margin: 0 0 4px 0;
+      margin: 0 0 2px 0;
       letter-spacing: -0.02em;
     }
     .name-block .tagline {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5pt;
+      font-size: 7.8pt;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       color: #C4892A;
       font-weight: 600;
     }
     .contact-meta {
       text-align: right;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 8pt;
+      font-size: 7.5pt;
       color: #556275;
-      line-height: 1.5;
+      line-height: 1.4;
     }
     .doc-title-bar {
       background: #F4F1EA;
-      border-left: 4px solid #C4892A;
-      padding: 10px 14px;
-      margin-bottom: 16px;
-      border-radius: 0 6px 6px 0;
+      border-left: 3.5px solid #C4892A;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+      border-radius: 0 4px 4px 0;
     }
     .doc-title-bar h2 {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 12.5pt;
+      font-size: 11pt;
       color: #0D1B2E;
       margin: 0 0 2px 0;
     }
     .doc-title-bar .subtitle {
-      font-size: 9pt;
+      font-size: 8pt;
       color: #556275;
       font-weight: 500;
     }
     .section-title {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9pt;
+      font-size: 8pt;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.15em;
       color: #0D1B2E;
       border-bottom: 1px solid #E2DCD2;
-      padding-bottom: 4px;
-      margin: 16px 0 10px 0;
+      padding-bottom: 3px;
+      margin: 10px 0 6px 0;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -93,37 +93,37 @@
       color: #C4892A;
     }
     p {
-      margin: 0 0 10px 0;
+      margin: 0 0 6px 0;
       text-align: justify;
     }
     .pillars-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 8px;
+      margin-bottom: 8px;
     }
     .pillar-card {
       background: #FAFAF7;
       border: 1px solid #E7E3D8;
-      border-radius: 6px;
-      padding: 10px 12px;
+      border-radius: 4px;
+      padding: 7px 10px;
     }
     .pillar-card h3 {
-      font-size: 9.5pt;
+      font-size: 8.5pt;
       font-weight: 700;
       color: #0D1B2E;
-      margin: 0 0 4px 0;
+      margin: 0 0 2px 0;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
     .pillar-card h3 .icon {
       color: #C4892A;
-      font-size: 10pt;
+      font-size: 9pt;
     }
     .pillar-card p {
-      font-size: 8.5pt;
-      line-height: 1.45;
+      font-size: 7.8pt;
+      line-height: 1.35;
       color: #4A5568;
       margin: 0;
       text-align: left;
@@ -131,41 +131,42 @@
     .metrics-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin: 14px 0;
+      gap: 8px;
+      margin: 8px 0;
       text-align: center;
     }
     .metric-box {
       border: 1px solid #E2DCD2;
-      border-radius: 6px;
-      padding: 8px 6px;
+      border-radius: 4px;
+      padding: 5px 4px;
       background: #FFFFFF;
     }
     .metric-box .val {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 14pt;
+      font-size: 12pt;
       font-weight: 700;
       color: #0D1B2E;
       line-height: 1;
     }
     .metric-box .label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 7pt;
+      font-size: 6.5pt;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: #718096;
-      margin-top: 4px;
+      margin-top: 3px;
     }
     .deliverables-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 12px 0;
+      margin: 0 0 8px 0;
     }
     .deliverables-list li {
       position: relative;
-      padding-left: 14px;
-      margin-bottom: 6px;
-      font-size: 9pt;
+      padding-left: 12px;
+      margin-bottom: 4px;
+      font-size: 8pt;
+      line-height: 1.35;
       color: #2D3748;
     }
     .deliverables-list li::before {
@@ -174,21 +175,21 @@
       left: 0;
       top: 0;
       color: #C4892A;
-      font-size: 6pt;
+      font-size: 5pt;
     }
     .signature-block {
-      margin-top: 18px;
-      padding-top: 12px;
+      margin-top: 10px;
+      padding-top: 8px;
       border-top: 1px dashed #CBD5E0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 8.5pt;
+      font-size: 7.8pt;
       color: #718096;
     }
     .signature-block strong {
       color: #0D1B2E;
-      font-size: 9.5pt;
+      font-size: 8.5pt;
     }
   </style>
 </head>
@@ -201,8 +202,7 @@
       <div class="tagline">Product Design &amp; Technology Executive • B.E. (Information Technology)</div>
     </div>
     <div class="contact-meta">
-      <div>+91 9994761293</div>
-      <div>vrbberaj@gmail.com</div>
+      <div>+91 9994761293 • vrbberaj@gmail.com</div>
       <div>Chennai, Tamil Nadu, India</div>
     </div>
   </div>
@@ -216,10 +216,10 @@
   <!-- Executive Summary -->
   <div class="section-title"><span class="num">01.</span> Executive Vision &amp; Strategic Purpose</div>
   <p>
-    The convergence of generative artificial intelligence, scalable distributed software, and cognitive human-computer interaction (HCI) has fundamentally transformed the engineering landscape. Industry no longer demands computer science graduates who write code in isolation; it requires <strong>multidisciplinary product engineers</strong> who understand cognitive ergonomics, scalable design systems, engineering feasibility, and customer-centric product execution.
+    The convergence of generative AI, distributed software engineering, and human-computer interaction (HCI) has fundamentally reshaped the tech industry. Modern enterprise demands computer science graduates who move beyond writing code in isolation to becoming <strong>multidisciplinary product engineers</strong> who master cognitive ergonomics, enterprise design systems, engineering feasibility, and customer-centric product execution.
   </p>
   <p>
-    Leveraging <strong>18+ years of global technology leadership</strong> (IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson, Samsung, and Infosys) combined with a foundational <strong>B.E. in Information Technology</strong> and prior university teaching experience, my vision as Professor of Practice at VIT Chennai is to transform <strong>SCOPE</strong> into a national benchmark for <em>Industry-Academia Synthesis</em>. I aim to cultivate software engineers who think like system architects, design like humanists, and ship enterprise-grade digital products on day one.
+    Leveraging <strong>18+ years of global technology leadership</strong> (IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson, Samsung, and Infosys) grounded in a foundational <strong>B.E. in Information Technology</strong> and prior engineering college teaching experience, my vision as Professor of Practice at VIT Chennai is to transform <strong>SCOPE</strong> into a national benchmark for <em>Industry-Academia Synthesis</em>. I aim to cultivate software engineers who think like architects, design like humanists, and ship production-ready products on day one.
   </p>
 
   <!-- Key Metrics / Pillars of Commitment -->
@@ -291,8 +291,7 @@
       Candidate for Professor of Practice • SCOPE, VIT Chennai
     </div>
     <div>
-      Date: October 2026<br>
-      Location: Chennai, India
+      Date: October 2026 • Chennai, India
     </div>
   </div>
 
