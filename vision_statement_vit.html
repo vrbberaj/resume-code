@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision Statement - Professor of Practice | Balaajee VR | VIT Chennai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 18mm 18mm 18mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #1A2433;
+      background: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      line-height: 1.55;
+      font-size: 10.5pt;
+    }
+    .header {
+      border-bottom: 2px solid #0D1B2E;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .name-block h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 20pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.02em;
+    }
+    .name-block .tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #C4892A;
+      font-weight: 600;
+    }
+    .contact-meta {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      color: #556275;
+      line-height: 1.5;
+    }
+    .doc-title-bar {
+      background: #F4F1EA;
+      border-left: 4px solid #C4892A;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      border-radius: 0 6px 6px 0;
+    }
+    .doc-title-bar h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 12.5pt;
+      color: #0D1B2E;
+      margin: 0 0 2px 0;
+    }
+    .doc-title-bar .subtitle {
+      font-size: 9pt;
+      color: #556275;
+      font-weight: 500;
+    }
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #0D1B2E;
+      border-bottom: 1px solid #E2DCD2;
+      padding-bottom: 4px;
+      margin: 16px 0 10px 0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title span.num {
+      color: #C4892A;
+    }
+    p {
+      margin: 0 0 10px 0;
+      text-align: justify;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .pillar-card {
+      background: #FAFAF7;
+      border: 1px solid #E7E3D8;
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+    .pillar-card h3 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      margin: 0 0 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pillar-card h3 .icon {
+      color: #C4892A;
+      font-size: 10pt;
+    }
+    .pillar-card p {
+      font-size: 8.5pt;
+      line-height: 1.45;
+      color: #4A5568;
+      margin: 0;
+      text-align: left;
+    }
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+      text-align: center;
+    }
+    .metric-box {
+      border: 1px solid #E2DCD2;
+      border-radius: 6px;
+      padding: 8px 6px;
+      background: #FFFFFF;
+    }
+    .metric-box .val {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 14pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      line-height: 1;
+    }
+    .metric-box .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #718096;
+      margin-top: 4px;
+    }
+    .deliverables-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px 0;
+    }
+    .deliverables-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 6px;
+      font-size: 9pt;
+      color: #2D3748;
+    }
+    .deliverables-list li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #C4892A;
+      font-size: 6pt;
+    }
+    .signature-block {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed #CBD5E0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5pt;
+      color: #718096;
+    }
+    .signature-block strong {
+      color: #0D1B2E;
+      font-size: 9.5pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="name-block">
+      <h1>BALAAJEE VR</h1>
+      <div class="tagline">Product Design &amp; Technology Executive • B.E. (Information Technology)</div>
+    </div>
+    <div class="contact-meta">
+      <div>+91 9994761293</div>
+      <div>vrbberaj@gmail.com</div>
+      <div>Chennai, Tamil Nadu, India</div>
+    </div>
+  </div>
+
+  <!-- Document Title -->
+  <div class="doc-title-bar">
+    <h2>Vision Statement as Professor of Practice</h2>
+    <div class="subtitle">School of Computer Science &amp; Engineering (SCOPE) • Vellore Institute of Technology (VIT Chennai)</div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="section-title"><span class="num">01.</span> Executive Vision &amp; Strategic Purpose</div>
+  <p>
+    The convergence of generative artificial intelligence, scalable distributed software, and cognitive human-computer interaction (HCI) has fundamentally transformed the engineering landscape. Industry no longer demands computer science graduates who write code in isolation; it requires <strong>multidisciplinary product engineers</strong> who understand cognitive ergonomics, scalable design systems, engineering feasibility, and customer-centric product execution.
+  </p>
+  <p>
+    Leveraging <strong>18+ years of global technology leadership</strong> (IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson, Samsung, and Infosys) combined with a foundational <strong>B.E. in Information Technology</strong> and prior university teaching experience, my vision as Professor of Practice at VIT Chennai is to transform <strong>SCOPE</strong> into a national benchmark for <em>Industry-Academia Synthesis</em>. I aim to cultivate software engineers who think like system architects, design like humanists, and ship enterprise-grade digital products on day one.
+  </p>
+
+  <!-- Key Metrics / Pillars of Commitment -->
+  <div class="metrics-row">
+    <div class="metric-box">
+      <div class="val">18+ Yrs</div>
+      <div class="label">Industry Leadership</div>
+    </div>
+    <div class="metric-box">
+      <div class="val">50+</div>
+      <div class="label">Engineers &amp; UX Mentored</div>
+    </div>
+    <div class="metric-box">
+      <div class="val">5 MNCs</div>
+      <div class="label">Enterprise Network</div>
+    </div>
+    <div class="metric-box">
+      <div class="val">100%</div>
+      <div class="label">Production-Ready Focus</div>
+    </div>
+  </div>
+
+  <!-- 4 Core Pillars -->
+  <div class="section-title"><span class="num">02.</span> Four Strategic Action Pillars for VIT SCOPE</div>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <h3><span class="icon">✦</span> 1. Modernizing HCI &amp; AI-UX Curricula</h3>
+      <p>
+        Introduce hands-on coursework in <strong>Human-Computer Interaction (HCI)</strong>, <strong>Enterprise Design Systems (Figma to React/Flutter Tokens)</strong>, and <strong>AI Interaction Design (IBM Watson, GenAI prompts, Copilot UX)</strong> to bridge computer science theory with high-velocity product delivery.
+      </p>
+    </div>
+
+    <div class="pillar-card">
+      <h3><span class="icon">✦</span> 2. Studio-Based Capstone Pedagogy</h3>
+      <p>
+        Transition final-year engineering projects from theoretical prototypes to <strong>studio-based capstone incubators</strong>. Implement real-world Agile sprint cycles, heuristic code/UX critiques, and cross-functional product roadmapping mirroring Fortune 500 engineering standards.
+      </p>
+    </div>
+
+    <div class="pillar-card">
+      <h3><span class="icon">✦</span> 3. Cultivating "Design Engineers"</h3>
+      <p>
+        Pioneer the hybrid <strong>Design Engineer</strong> track—equipping computer science undergraduates with deep proficiency in both full-stack software development and UI/UX design architecture, preparing them for premier dream/super-dream engineering and product roles.
+      </p>
+    </div>
+
+    <div class="pillar-card">
+      <h3><span class="icon">✦</span> 4. Corporate MoUs &amp; Placement Pipelines</h3>
+      <p>
+        Actively leverage my direct enterprise network across global technology leaders to facilitate <strong>industry-sponsored hackathons</strong>, direct internship-to-hire pipelines, corporate guest lecture series, and high-impact R&amp;D problem statements for VIT students.
+      </p>
+    </div>
+  </div>
+
+  <!-- Measurable Outcomes -->
+  <div class="section-title"><span class="num">03.</span> Tangible Deliverables for VIT Chennai (2-Year Roadmap)</div>
+  <ul class="deliverables-list">
+    <li><strong>Design Systems &amp; HCI Innovation Lab:</strong> Establish an open-source enterprise UI component repository built and maintained by SCOPE students for real-world enterprise adoption.</li>
+    <li><strong>Industry Capstone Mentorship:</strong> Mentor 15+ high-potential multidisciplinary capstones annually, with a focus on enterprise SaaS, automotive telematics, and healthcare IoT applications.</li>
+    <li><strong>Super-Dream Placement Readiness:</strong> Conduct intensive product-architecture interview bootcamps, code-to-UX design reviews, and portfolio masterclasses for prospective graduates.</li>
+    <li><strong>Executive Industry MoUs:</strong> Facilitate at least 2 institutional engagements and collaborative industry-sponsored initiatives within the first 18 months.</li>
+  </ul>
+
+  <!-- Signature / Commitment -->
+  <div class="signature-block">
+    <div>
+      <strong>Balaajee VR</strong><br>
+      Candidate for Professor of Practice • SCOPE, VIT Chennai
+    </div>
+    <div>
+      Date: October 2026<br>
+      Location: Chennai, India
+    </div>
+  </div>
+
+</body>
+</html>
