@@ -3,7 +3,8 @@ const puppeteer = require('puppeteer-core');
 const targets = [
   { url: 'http://localhost:8080/vsign', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_vsign.pdf', height: '1765px' },
   { url: 'http://localhost:8080/scope', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_scope.pdf', height: '1765px' },
-  { url: 'http://localhost:8080/academic', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_academic.pdf', height: '1765px' }
+  { url: 'http://localhost:8080/academic', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_academic.pdf', height: '1765px' },
+  { url: 'http://localhost:8080/general', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_pop_general.pdf', height: '1765px' }
 ];
 
 (async () => {
@@ -25,8 +26,8 @@ const targets = [
       await page.evaluateHandle('document.fonts.ready');
 
       const cardHeight = await page.evaluate(() => {
-        const card = document.querySelector('.max-w-\\[900px\\]');
-        return card ? card.offsetHeight : 1506;
+        const card = document.getElementsByClassName('max-w-[900px]')[0];
+        return card ? Math.ceil(card.getBoundingClientRect().height) : 1620;
       });
 
       await page.pdf({

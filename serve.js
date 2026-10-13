@@ -8,6 +8,7 @@ const server = http.createServer((req, res) => {
   if (decodedUrl === '/vsign') targetFile = 'academic_vsign.html';
   else if (decodedUrl === '/scope') targetFile = 'academic_scope.html';
   else if (decodedUrl === '/academic') targetFile = 'academic_resume.html';
+  else if (decodedUrl === '/general') targetFile = 'academic_general.html';
   
   let filePath = path.join(__dirname, targetFile);
   
