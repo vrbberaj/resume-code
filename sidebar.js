@@ -14,19 +14,30 @@
 
     const navItems = [
       {
-        section: "RESUME PROFILES",
+        section: "EXECUTIVE PORTFOLIO",
         items: [
           {
-            title: "Universal PoP Resume",
-            path: "/general",
-            badge: "Active",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`
+            title: "Leadership Deck (10 Slides)",
+            path: "/leadership-deck",
+            badge: "Featured",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`
           },
           {
             title: "Corporate UX Leader",
             path: "/",
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`
           },
+          {
+            title: "Universal PoP Resume",
+            path: "/general",
+            badge: "Active",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`
+          }
+        ]
+      },
+      {
+        section: "ACADEMIC PROFILES",
+        items: [
           {
             title: "VIT: SCOPE (CS)",
             path: "/scope",
@@ -40,10 +51,21 @@
         ]
       },
       {
+        section: "APPLICATION TRACKING",
+        items: [
+          {
+            title: "Live Tracker (26 Applied)",
+            path: "/tracker",
+            badge: "26 Active",
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>`
+          }
+        ]
+      },
+      {
         section: "INTERVIEW PREPARATION",
         items: [
           {
-            title: "1st Call: Dean & HOD Screening",
+            title: "1st Call: Screening Prep",
             path: "/prep-first-call",
             badge: "Essential",
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`
@@ -53,17 +75,6 @@
             path: "/prep-interview-stages",
             badge: "Stages 2-4",
             icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`
-          }
-        ]
-      },
-      {
-        section: "APPLICATION TRACKING",
-        items: [
-          {
-            title: "Live Tracker (21 Universities)",
-            path: "/tracker",
-            badge: "21 Active",
-            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>`
           }
         ]
       }
@@ -95,7 +106,7 @@
           <img src="/profile.jpg" alt="Balaajee VR" class="sb-avatar">
           <div class="sb-title-group">
             <h2>BALAAJEE VR</h2>
-            <span>Faculty &amp; UX Hub</span>
+            <span>Executive &amp; UX Hub</span>
           </div>
         </div>
         <button class="sb-close-btn" id="sb-collapse-trigger" title="Collapse sidebar">

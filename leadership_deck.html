@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balaajee V.R. | Executive Design Leadership Deck (18+ Years)</title>
+  <link rel="stylesheet" href="/sidebar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070e18;
+      --card-bg: rgba(14, 28, 48, 0.85);
+      --card-border: rgba(200, 168, 74, 0.22);
+      --card-border-subtle: rgba(255, 255, 255, 0.08);
+      --gold: #c8a84a;
+      --gold-light: #dfbc55;
+      --cyan: #38bdf8;
+      --emerald: #34d399;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #f1f5f9;
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(200, 168, 74, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8) 0%, transparent 100%);
+    }
+
+    @media (min-width: 1240px) {
+      body.has-sidebar,
+      body.has-sidebar-padding {
+        padding-left: 300px;
+      }
+    }
+
+    /* Deck Container */
+    .deck-viewport {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Deck Controls */
+    .deck-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 0.8rem 1.4rem;
+      background: rgba(15, 31, 53, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+    }
+
+    .deck-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .deck-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(200, 168, 74, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(200, 168, 74, 0.3);
+    }
+
+    .deck-title-inline {
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    .deck-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: var(--gold);
+      color: #070e18;
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #c8a84a, #b09139);
+      color: #070e18;
+      font-weight: 700;
+      border: none;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #dfbc55, #c8a84a);
+      color: #070e18;
+    }
+
+    /* Slide Frame */
+    .slide-stage {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.8rem 3rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      min-height: 600px;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--cyan), var(--emerald));
+    }
+
+    /* Slide Typography */
+    .slide-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-kicker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .slide-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .slide-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      max-width: 860px;
+    }
+
+    /* Content Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    @media screen and (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .slide {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Executive Cards */
+    .deck-card {
+      background: rgba(10, 20, 36, 0.7);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 14px;
+      padding: 1.4rem;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .deck-card:hover {
+      border-color: rgba(200, 168, 74, 0.4);
+      transform: translateY(-2px);
+      background: rgba(13, 26, 46, 0.85);
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(200, 168, 74, 0.12);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(200, 168, 74, 0.25);
+    }
+
+    .card-icon.cyan {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--cyan);
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .card-icon.emerald {
+      background: rgba(52, 211, 153, 0.12);
+      color: var(--emerald);
+      border-color: rgba(52, 211, 153, 0.25);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Metrics Callouts */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-box {
+      background: rgba(10, 20, 36, 0.8);
+      border: 1px solid rgba(200, 168, 74, 0.25);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .metric-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #cbd5e1;
+    }
+
+    /* Highlights / Pill Tags */
+    .pill-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    /* Case Study Layout */
+    .case-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 22, 40, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-company {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .company-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+
+    .case-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .case-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .impact-callout {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(10, 20, 36, 0.6));
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-radius: 12px;
+      padding: 1.2rem;
+      margin-top: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .impact-callout-icon {
+      font-size: 24px;
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    .impact-callout-text {
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    /* Process Stepper */
+    .stepper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .step-box {
+      background: rgba(10, 20, 36, 0.6);
+      border: 1px solid var(--card-border-subtle);
+      border-radius: 12px;
+      padding: 1.2rem;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Bottom Controller */
+    .deck-bottombar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 14, 24, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    @media (min-width: 1240px) {
+      .deck-bottombar {
+        left: 280px;
+      }
+    }
+
+    .progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      width: 100%;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--cyan), var(--emerald));
+      width: 10%;
+      transition: width 0.3s ease;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    .slide-counter span {
+      color: var(--gold);
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      background: var(--gold);
+      color: #070e18;
+      border-color: var(--gold);
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .thumbnails {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .thumb-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .thumb-dot.active {
+      width: 24px;
+      border-radius: 9999px;
+      background: var(--gold);
+    }
+
+    /* Print / Export Presentation Styles */
+    @media print {
+      @page {
+        size: 16in 9in;
+        margin: 0;
+      }
+      *, *::before, *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+      html, body {
+        width: 16in !important;
+        height: auto !important;
+        background: #070e18 !important;
+        color: #fff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .deck-viewport {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 16in !important;
+      }
+      .deck-topbar, .deck-bottombar, #app-left-sidebar, #sidebar-toggle-btn {
+        display: none !important;
+      }
+      .slide {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        width: 16in !important;
+        height: 9in !important;
+        max-height: 9in !important;
+        box-sizing: border-box !important;
+        opacity: 1 !important;
+        transform: none !important;
+        page-break-before: always !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        break-before: page !important;
+        break-after: page !important;
+        break-inside: avoid !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 3rem 4rem !important;
+        overflow: hidden !important;
+        position: relative !important;
+      }
+      .slide:first-of-type {
+        page-break-before: auto !important;
+        break-before: auto !important;
+      }
+      .grid-2 {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+      }
+      .grid-3 {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.4rem !important;
+      }
+      .grid-4 {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .metric-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .stepper {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .slide-title {
+        font-size: 30px !important;
+      }
+      .slide-subtitle {
+        font-size: 15px !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+      .card-text {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+    }
+  </style>
+</head>
+<body class="has-sidebar">
+
+  <div class="deck-viewport">
+
+    <!-- Top Bar -->
+    <header class="deck-topbar">
+      <div class="deck-brand">
+        <span class="deck-badge">Executive Deck</span>
+        <span class="deck-title-inline">Balaajee V.R. • 18+ Years Design Leadership</span>
+      </div>
+      <div class="deck-actions">
+        <a href="/" class="btn-action">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Corporate Resume
+        </a>
+        <button class="btn-action btn-gold" onclick="window.print()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Export Deck PDF
+        </button>
+      </div>
+    </header>
+
+    <!-- Slide Stage -->
+    <main class="slide-stage">
+
+      <!-- SLIDE 1: Title & Executive Summary -->
+      <section class="slide active" id="slide-1">
+        <div class="slide-kicker">Executive Presentation • 2026</div>
+        <h1 class="slide-title">Design Leadership at Scale</h1>
+        <p class="slide-subtitle">
+          Architecting Enterprise UX, Production Design Systems, and High-Velocity Engineering Collaboration across Global Fortune 500 Technology Organizations.
+        </p>
+
+        <div class="metric-grid">
+          <div class="metric-box">
+            <div class="metric-val">18+</div>
+            <div class="metric-lbl">Years Experience</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">10M+</div>
+            <div class="metric-lbl">Users Impacted</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">12+</div>
+            <div class="metric-lbl">Team Scale Led</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">40%</div>
+            <div class="metric-lbl">Velocity Gain</div>
+          </div>
+        </div>
+
+        <div class="grid-3" style="flex: 1;">
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 class="card-title">Enterprise Pedigree</h3>
+            <p class="card-text">
+              Senior design management spanning <strong>IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson, Samsung, and Infosys</strong> across B2C, B2B, and B2E multi-tier architectures.
+            </p>
+          </div>
+          <div class="deck-card">
+            <div class="card-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h3 class="card-title">Systems &amp; Token Architecture</h3>
+            <p class="card-text">
+              Pioneered cross-brand enterprise design systems with automated token pipelines bridging Figma to React, Angular, and native Android Kotlin repositories.
+            </p>
+          </div>
+          <div class="deck-card">
+            <div class="card-icon emerald">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="card-title">People &amp; Culture Catalyst</h3>
+            <p class="card-text">
+              Mentored 50+ designers and engineers. Established career leveling frameworks, design sprint rituals, and psychological safety that drive retention and high innovation velocity.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Leadership Pillars -->
+      <section class="slide" id="slide-2">
+        <div class="slide-kicker">Core Leadership Framework</div>
+        <h2 class="slide-title">Four Pillars of Executive Design</h2>
+        <p class="slide-subtitle">
+          Bridging executive business objectives, technical engineering constraints, and human-centered design to build compounding enterprise value.
+        </p>
+
+        <div class="grid-2" style="flex: 1;">
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 class="card-title">1. Business-Driven UX Strategy</h3>
+            <p class="card-text">
+              Design is an investment, not an expense. Every design initiative is tied to measurable commercial outcomes: accelerating ARR, lowering customer churn, eliminating support tickets, and shortening enterprise sales cycles.
+            </p>
+            <div style="margin-top: 1rem;">
+              <span class="pill-tag">ROI Alignment</span>
+              <span class="pill-tag">Executive Buy-in</span>
+              <span class="pill-tag">Churn Reduction</span>
+            </div>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            </div>
+            <h3 class="card-title">2. Systems-First Scalability</h3>
+            <p class="card-text">
+              Moving organizations away from repetitive pixel pushing to tokenized design systems. Establishing multi-brand UI governance, WCAG 2.1 AA accessibility compliance, and code-aligned component libraries.
+            </p>
+            <div style="margin-top: 1rem;">
+              <span class="pill-tag">Design Tokens</span>
+              <span class="pill-tag">WCAG 2.1 AA</span>
+              <span class="pill-tag">Single Source of Truth</span>
+            </div>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon emerald">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+            </div>
+            <h3 class="card-title">3. Engineering Synergy</h3>
+            <p class="card-text">
+              With an engineering background (B.E. Information Technology), I speak the language of software architects. I eliminate the "designer-developer divide" through shared design-to-code pipelines and proactive technical feasibility reviews.
+            </p>
+            <div style="margin-top: 1rem;">
+              <span class="pill-tag">Zero Drift Handoff</span>
+              <span class="pill-tag">Component Parity</span>
+              <span class="pill-tag">Technical Feasibility</span>
+            </div>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3 class="card-title">4. High-Empathy Talent Cultivation</h3>
+            <p class="card-text">
+              Empowering designers through psychological safety, constructive critiques, and explicit career progression pathways (from Associate to Principal). Fostering an inclusive, high-retention environment.
+            </p>
+            <div style="margin-top: 1rem;">
+              <span class="pill-tag">Career Frameworks</span>
+              <span class="pill-tag">Psychological Safety</span>
+              <span class="pill-tag">DesignOps Mentorship</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Operating Model -->
+      <section class="slide" id="slide-3">
+        <div class="slide-kicker">Operating Model &amp; Organizational Architecture</div>
+        <h2 class="slide-title">How I Structure &amp; Scale Design Teams</h2>
+        <p class="slide-subtitle">
+          The Hybrid Pod Model: Combining centralized design system governance with decentralized, embedded product squad execution.
+        </p>
+
+        <div class="grid-3">
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </div>
+            <h3 class="card-title">Central Core: DesignOps &amp; Systems</h3>
+            <p class="card-text">
+              A dedicated central hub that maintains global design tokens, foundational component libraries, accessibility compliance, and design-to-code automation.
+            </p>
+            <ul style="margin-top: 0.8rem; font-size: 12.5px; color: var(--text-muted); list-style: square; padding-left: 1.2rem; line-height: 1.6;">
+              <li>Tokens &amp; Component Governance</li>
+              <li>Design-to-Code Pipeline Tools</li>
+              <li>Accessibility Guidelines (WCAG)</li>
+            </ul>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="card-title">Embedded Product Squads</h3>
+            <p class="card-text">
+              Product designers embedded directly within cross-functional engineering pods, participating in daily standups, sprint planning, and discovery rituals.
+            </p>
+            <ul style="margin-top: 0.8rem; font-size: 12.5px; color: var(--text-muted); list-style: square; padding-left: 1.2rem; line-height: 1.6;">
+              <li>Product Management Partnership</li>
+              <li>Sprint Planning &amp; Story Pointing</li>
+              <li>User Research &amp; Usability Sprints</li>
+            </ul>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon emerald">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3 class="card-title">Rituals &amp; Delivery Cadence</h3>
+            <p class="card-text">
+              Establishing repeatable cadences that maintain product quality without creating bureaucratic bottlenecks.
+            </p>
+            <ul style="margin-top: 0.8rem; font-size: 12.5px; color: var(--text-muted); list-style: square; padding-left: 1.2rem; line-height: 1.6;">
+              <li>Bi-weekly Peer Design Critiques</li>
+              <li>Sprint Zero Discovery Workshops</li>
+              <li>Quarterly Design Maturity Reviews</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stepper">
+          <div class="step-box">
+            <div class="step-num">STAGE 01 • DISCOVER</div>
+            <p class="card-text">Stakeholder alignment, generative user research, persona definition, and KPI mapping.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-num">STAGE 02 • DEFINE</div>
+            <p class="card-text">Information architecture, user journey flows, low-fidelity wireframing, and feasibility check.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-num">STAGE 03 • DESIGN &amp; TEST</div>
+            <p class="card-text">Token-based high-fidelity UI, interactive prototyping, usability benchmarking, and critiques.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-num">STAGE 04 • DELIVER &amp; SCALE</div>
+            <p class="card-text">Automated token handoff, QA visual review, deployment tracking, and feedback loop closure.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: Case Study 1 - IBM Software Labs -->
+      <section class="slide" id="slide-4">
+        <div class="slide-kicker">Flagship Enterprise Case Study 01</div>
+        <h2 class="slide-title">IBM Software Labs: Enterprise AI-UX Transformation</h2>
+        <p class="slide-subtitle">
+          Re-architecting complex enterprise modeling (Rhapsody SE) and enterprise mobility management (MaaS360) by integrating IBM Watson AI workflows.
+        </p>
+
+        <div class="case-banner">
+          <div class="case-company">
+            <span class="company-logo-text">IBM</span>
+            <span class="case-role">UI/UX Design Senior Manager</span>
+          </div>
+          <div class="case-meta">Sep 2024 – Jan 2026 • Enterprise Systems Portfolio</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="deck-card">
+            <h3 class="card-title" style="color: var(--cyan);">The Business &amp; UX Challenge</h3>
+            <p class="card-text">
+              Global systems engineering teams managing mission-critical software/hardware architectures faced high cognitive overload in legacy modeling suites. Simultaneously, enterprise IT administrators struggled with complex manual endpoint compliance rules in MaaS360 across hundreds of thousands of corporate devices.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="card-title" style="color: var(--gold);">The Strategic Intervention</h3>
+            <p class="card-text">
+              Orchestrated an organizational re-org, moving 12 designers from product silos into a unified UX-as-a-Service model. Designed AI-powered conversational and contextual UI patterns leveraging IBM Watson to automate enterprise modeling validations and predictive endpoint threat mitigation.
+            </p>
+          </div>
+        </div>
+
+        <div class="impact-callout">
+          <div class="impact-callout-icon">⚡</div>
+          <div class="impact-callout-text">
+            <strong>Measurable Business &amp; User Impact:</strong><br>
+            • Achieved a <strong>35% reduction in model verification time</strong> for enterprise aerospace and automotive engineering clients.<br>
+            • Transitioned MaaS360 from passive alert dashboards to <strong>proactive, AI-driven policy recommendations</strong>, cutting administrator triage time by 45%.<br>
+            • Unified cross-product design execution across global teams in the US, Europe, and India.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Case Study 2 - Zebra Technologies -->
+      <section class="slide" id="slide-5">
+        <div class="slide-kicker">Flagship Enterprise Case Study 02</div>
+        <h2 class="slide-title">Zebra Technologies: Industrial B2B Ecosystem at Scale</h2>
+        <p class="slide-subtitle">
+          Unifying hardware-software UX ecosystems across rugged mobile computers, RFID scanners, and enterprise supply chain platforms.
+        </p>
+
+        <div class="case-banner">
+          <div class="case-company">
+            <span class="company-logo-text">ZEBRA TECHNOLOGIES</span>
+            <span class="case-role">UI/UX Product Design Manager</span>
+          </div>
+          <div class="case-meta">Jul 2021 – Aug 2024 • Global B2B Hardware &amp; Software</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="deck-card">
+            <h3 class="card-title" style="color: var(--cyan);">The Environmental &amp; Cognitive Challenge</h3>
+            <p class="card-text">
+              Warehouse operators, retail associates, and logistics drivers operate in extreme ambient conditions: bright direct sunlight, low-light freezer rooms, high ambient noise, and one-handed gloved touch. Existing applications suffered from visual inconsistency and high operational error rates.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="card-title" style="color: var(--gold);">The Systems Solution</h3>
+            <p class="card-text">
+              Led a multi-disciplinary UI/UX team as primary Hiring Manager. Standardized high-contrast, glanceable UI patterns, touch targets calibrated for heavy industrial gloves, and a unified design system deployed across Android rugged devices and enterprise cloud portals.
+            </p>
+          </div>
+        </div>
+
+        <div class="impact-callout">
+          <div class="impact-callout-icon">🏆</div>
+          <div class="impact-callout-text">
+            <strong>Key Business Outcomes:</strong><br>
+            • Accelerated engineering handoff by <strong>40%</strong> through shared Android Kotlin/Compose component tokens.<br>
+            • Reduced warehouse scanning errors and increased operator throughput by <strong>22% across tier-1 logistics hubs</strong>.<br>
+            • Established enterprise UI governance adopted across all subsequent Zebra software and mobile product suites.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Case Study 3 - ZF Wabco & Automotive IoT -->
+      <section class="slide" id="slide-6">
+        <div class="slide-kicker">Flagship Enterprise Case Study 03</div>
+        <h2 class="slide-title">ZF Wabco: Mission-Critical Commercial Fleet Telematics</h2>
+        <p class="slide-subtitle">
+          Designing safety-critical, zero-distraction driver interfaces and real-time cloud telemetry platforms for commercial fleet operators.
+        </p>
+
+        <div class="case-banner">
+          <div class="case-company">
+            <span class="company-logo-text">ZF WABCO</span>
+            <span class="case-role">UI/UX Senior Specialist</span>
+          </div>
+          <div class="case-meta">Oct 2020 – Jul 2021 • Commercial Vehicle Telematics</div>
+        </div>
+
+        <div class="grid-3">
+          <div class="deck-card">
+            <h3 class="card-title">Driver Safety (In-Cabin)</h3>
+            <p class="card-text">
+              Engineered glanceable UI architecture strictly compliant with NHTSA &amp; ISO 15005 driver distraction standards, prioritizing critical brake and stability alerts without cognitive fatigue.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="card-title">Fleet Dispatcher Web Portal</h3>
+            <p class="card-text">
+              Created dense, data-rich real-time telemetry maps and predictive maintenance dashboards enabling fleet operators to monitor thousands of vehicles simultaneously with zero lag.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="card-title">Design System Scalability</h3>
+            <p class="card-text">
+              Unified design tokens across in-vehicle Android head units and enterprise web consoles, establishing a single visual and interaction language for commercial automotive IoT.
+            </p>
+          </div>
+        </div>
+
+        <div class="impact-callout">
+          <div class="impact-callout-icon">🛡️</div>
+          <div class="impact-callout-text">
+            <strong>Impact on Safety &amp; Uptime:</strong><br>
+            • Delivered a human-centered telematics suite that reduced driver response latency to critical braking warnings by <strong>18%</strong>.<br>
+            • Enabled fleet managers to schedule predictive maintenance 48 hours earlier, preventing costly highway breakdowns.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Design Systems Architecture -->
+      <section class="slide" id="slide-7">
+        <div class="slide-kicker">Design Systems &amp; Token Architecture</div>
+        <h2 class="slide-title">Enterprise Token Architecture</h2>
+        <p class="slide-subtitle">
+          How I architect robust, multi-brand design systems that eliminate redundant coding and guarantee 100% fidelity from Figma to Production.
+        </p>
+
+        <div class="grid-3" style="margin-bottom: 1.5rem;">
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="card-title">1. Global Design Tokens</h3>
+            <p class="card-text">
+              Single source of truth for semantic color, typography scales, elevation, spacing tokens, and micro-interactions managed in Figma Token Studio.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3 class="card-title">2. Automated CI/CD Export</h3>
+            <p class="card-text">
+              Style-Dictionary build pipelines automatically compile JSON tokens into CSS variables, Sass maps, TypeScript constants, and Android XML/Compose values.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon emerald">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </div>
+            <h3 class="card-title">3. Storybook Component Parity</h3>
+            <p class="card-text">
+              Reusable, accessibility-tested components in React/Angular mirroring Figma variants 1:1, cutting QA visual regression review time in half.
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-box">
+            <div class="metric-val">40%</div>
+            <div class="metric-lbl">Handoff Acceleration</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">100%</div>
+            <div class="metric-lbl">WCAG 2.1 AA Compliance</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">0</div>
+            <div class="metric-lbl">Redundant Component Code</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">Multi</div>
+            <div class="metric-lbl">Brand Theming Enabled</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: AI & Emerging Tech Integration -->
+      <section class="slide" id="slide-8">
+        <div class="slide-kicker">Innovation &amp; Future-Proofing</div>
+        <h2 class="slide-title">AI-Augmented DesignOps &amp; Agentic UX</h2>
+        <p class="slide-subtitle">
+          Integrating modern generative AI into user research, prototyping, and product design operations while designing intuitive AI interaction models.
+        </p>
+
+        <div class="grid-2">
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <h3 class="card-title">AI for DesignOps (Team Acceleration)</h3>
+            <p class="card-text">
+              • <strong>Research Synthesis:</strong> Leveraging LLMs to synthesize thousands of customer support transcripts and usability interviews into actionable thematic insights.<br><br>
+              • <strong>Automated Heuristic Audits:</strong> Implementing automated visual and accessibility contrast scanners in CI pipelines.<br><br>
+              • <strong>Rapid Prototyping:</strong> Utilizing agentic scaffolding tools to turn Figma design tokens into live functional code prototypes in minutes.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m10 15 5-3-5-3v6Z"></path></svg>
+            </div>
+            <h3 class="card-title">UX for AI Products (User Trust &amp; Agency)</h3>
+            <p class="card-text">
+              • <strong>Explainability &amp; Confidence:</strong> Designing user-facing confidence scoring, transparent citation links, and progressive disclosure for AI recommendations.<br><br>
+              • <strong>Graceful Degradation:</strong> Ensuring non-blocking fallbacks when AI inferences take longer than expected, maintaining seamless user workflow continuity.<br><br>
+              • <strong>Human-in-the-Loop Controls:</strong> Providing clear undo/override affordances so enterprise operators always retain authoritative operational control.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <p style="font-size: 11px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-bottom: 0.6rem;">Technology &amp; Tooling Proficiency:</p>
+          <span class="pill-tag">Figma &amp; Token Studio</span>
+          <span class="pill-tag">IBM Watson Studio</span>
+          <span class="pill-tag">Microsoft Copilot</span>
+          <span class="pill-tag">Google Stitch &amp; NotebookLM</span>
+          <span class="pill-tag">UserTesting &amp; Hotjar</span>
+          <span class="pill-tag">Jira &amp; Confluence</span>
+          <span class="pill-tag">Storybook &amp; React</span>
+          <span class="pill-tag">Zeroheight</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: People Leadership & Culture -->
+      <section class="slide" id="slide-9">
+        <div class="slide-kicker">Leadership, Culture &amp; Mentorship</div>
+        <h2 class="slide-title">Cultivating High-Performance Design Teams</h2>
+        <p class="slide-subtitle">
+          How I hire, mentor, and elevate multi-disciplinary design organizations through structured career progression and psychological safety.
+        </p>
+
+        <div class="grid-3">
+          <div class="deck-card">
+            <div class="card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+            </div>
+            <h3 class="card-title">Strategic Hiring &amp; Scaling</h3>
+            <p class="card-text">
+              Scaled design squads from 3 to 12+ product designers, UX researchers, and design technologists. Conducted competency-based portfolio reviews and whiteboard exercises that assess craft, systems thinking, and communication.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon cyan">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            </div>
+            <h3 class="card-title">Career Leveling Framework</h3>
+            <p class="card-text">
+              Instituted transparent career matrices outlining expectations across Craft, Strategy, Execution, and Leadership from Associate Designer to Staff/Principal, eliminating ambiguity in promotion cycles.
+            </p>
+          </div>
+
+          <div class="deck-card">
+            <div class="card-icon emerald">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+            <h3 class="card-title">Award-Winning Innovation</h3>
+            <p class="card-text">
+              Fostering a culture of excellence recognized across global organizations:
+              <br><br>
+              • <strong>Samsung:</strong> 10-Year US Business Visa for global healthcare UX research.<br>
+              • <strong>Ericsson:</strong> Spot Award for UX innovation &amp; 1st Place in Global Hack-fest.<br>
+              • <strong>Design Contests:</strong> 1st Place in MockingBOT &amp; UP Labs challenges.
+            </p>
+          </div>
+        </div>
+
+        <div class="impact-callout">
+          <div class="impact-callout-icon">🌱</div>
+          <div class="impact-callout-text">
+            <strong>Retention &amp; Growth Track Record:</strong><br>
+            Over 18+ years, I have directly mentored <strong>50+ designers and engineers</strong> who have grown into Lead Designers, Product Managers, and Design Founders across the Indian and global technology ecosystem.
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: Executive Scorecard & Contact -->
+      <section class="slide" id="slide-10">
+        <div class="slide-kicker">Executive Summary &amp; Engagement</div>
+        <h2 class="slide-title">Executive Scorecard &amp; Next Steps</h2>
+        <p class="slide-subtitle">
+          Ready to drive enterprise UX transformation, scalable design systems, and world-class product design leadership for your organization.
+        </p>
+
+        <div class="metric-grid">
+          <div class="metric-box">
+            <div class="metric-val">18+</div>
+            <div class="metric-lbl">Years Experience</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">10M+</div>
+            <div class="metric-lbl">Users Impacted</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">40%</div>
+            <div class="metric-lbl">Dev Velocity Gain</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">100%</div>
+            <div class="metric-lbl">Design-to-Code Parity</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div class="deck-card">
+            <h3 class="card-title" style="color: var(--gold);">Target Leadership Roles</h3>
+            <ul style="font-size: 13.5px; color: #cbd5e1; list-style: none; line-height: 2;">
+              <li>✓ <strong>Director of Product Design / Head of UX</strong></li>
+              <li>✓ <strong>Senior Manager — UI/UX &amp; Design Systems</strong></li>
+              <li>✓ <strong>Principal UX Architect / DesignOps Leader</strong></li>
+              <li>✓ <strong>Vice President of Design (Enterprise / B2B)</strong></li>
+            </ul>
+          </div>
+
+          <div class="deck-card">
+            <h3 class="card-title" style="color: var(--cyan);">Direct Contact &amp; Portfolio Channels</h3>
+            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+              <p>👤 <strong>Candidate:</strong> Balaajee V.R.</p>
+              <p>📧 <strong>Email:</strong> <a href="mailto:vrbberaj@gmail.com" style="color: var(--cyan); text-decoration: none;">vrbberaj@gmail.com</a></p>
+              <p>📱 <strong>Phone:</strong> +91 9994761293</p>
+              <p>📍 <strong>Location:</strong> Chennai &amp; Bengaluru (Open to Relocation / Hybrid)</p>
+              <p>🔗 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" style="color: var(--cyan); text-decoration: none;">linkedin.com/in/balaajee-vr-21647967</a></p>
+              <p>🎨 <strong>Behance:</strong> <a href="https://behance.net/balaajeeVR" target="_blank" style="color: var(--cyan); text-decoration: none;">behance.net/balaajeeVR</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 12px; justify-content: center;">
+          <a href="/" class="btn-action">
+            View Corporate Resume
+          </a>
+          <button class="btn-action btn-gold" onclick="window.print()">
+            Download Presentation PDF
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Bottom Navigation Controller -->
+  <footer class="deck-bottombar">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="nav-left">
+      <div class="slide-counter">
+        SLIDE <span id="currentSlideNum">1</span> OF <span id="totalSlidesNum">10</span>
+      </div>
+      <div class="thumbnails" id="thumbContainer">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn-nav" id="prevBtn" title="Previous Slide (Left Arrow)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="btn-nav" id="nextBtn" title="Next Slide (Right Arrow)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="/sidebar.js"></script>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+
+    const currentSlideNum = document.getElementById('currentSlideNum');
+    const totalSlidesNum = document.getElementById('totalSlidesNum');
+    const progressFill = document.getElementById('progressFill');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const thumbContainer = document.getElementById('thumbContainer');
+
+    totalSlidesNum.textContent = totalSlides;
+
+    // Generate thumbnail dots
+    thumbContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('div');
+      dot.className = `thumb-dot ${idx === 0 ? 'active' : ''}`;
+      dot.title = `Go to Slide ${idx + 1}`;
+      dot.onclick = () => goToSlide(idx);
+      thumbContainer.appendChild(dot);
+    });
+
+    function updateSlide() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === currentSlide);
+      });
+
+      const dots = document.querySelectorAll('.thumb-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+
+      currentSlideNum.textContent = currentSlide + 1;
+      progressFill.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < totalSlides) {
+        currentSlide = index;
+        updateSlide();
+      }
+    }
+
+    prevBtn.onclick = () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    };
+
+    nextBtn.onclick = () => {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    };
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        if (currentSlide < totalSlides - 1) {
+          e.preventDefault();
+          currentSlide++;
+          updateSlide();
+        }
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (currentSlide > 0) {
+          e.preventDefault();
+          currentSlide--;
+          updateSlide();
+        }
+      }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>

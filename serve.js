@@ -12,6 +12,7 @@ const server = http.createServer((req, res) => {
   else if (decodedUrl === '/prep-first-call') targetFile = 'prep_first_call.html';
   else if (decodedUrl === '/prep-interview-stages') targetFile = 'prep_interview_stages.html';
   else if (decodedUrl === '/tracker') targetFile = 'tracker.html';
+  else if (decodedUrl === '/leadership-deck') targetFile = 'leadership_deck.html';
   
   let filePath = path.join(__dirname, targetFile);
   
