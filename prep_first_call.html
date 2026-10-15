@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1st Call: Dean & HOD Screening Preparation | Balaajee V.R.</title>
+  <link rel="stylesheet" href="/sidebar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #091322;
+      --card-bg: #0f1f35;
+      --card-border: rgba(200, 168, 74, 0.22);
+      --gold: #c8a84a;
+      --gold-light: #dfbc55;
+      --gold-glow: rgba(200, 168, 74, 0.15);
+      --text-dim: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: #f1f5f9;
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 2.5rem 1rem 4rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(200, 168, 74, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(30, 64, 175, 0.08) 0%, transparent 45%);
+    }
+    @media (min-width: 1200px) {
+      body {
+        padding-left: 310px;
+        padding-right: 2rem;
+      }
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .header-banner {
+      background: linear-gradient(135deg, rgba(15, 31, 53, 0.95), rgba(9, 19, 34, 0.98));
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #c8a84a, #dfbc55, #3b82f6);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(200, 168, 74, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(200, 168, 74, 0.3);
+      margin-bottom: 0.9rem;
+    }
+    .title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 780px;
+    }
+
+    /* Desk Sticky Note */
+    .desk-cheat {
+      background: rgba(200, 168, 74, 0.08);
+      border: 1px dashed rgba(200, 168, 74, 0.4);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .desk-cheat-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cheat-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cheat-pill {
+      background: #0d1b2e;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+    .cheat-pill span {
+      color: var(--gold);
+      margin-right: 4px;
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Question Cards */
+    .q-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .q-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .q-card:hover {
+      border-color: rgba(200, 168, 74, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+    .q-header {
+      padding: 1.2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .q-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #0d1b2e;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .q-title-wrap h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .q-meta {
+      font-size: 12px;
+      color: #38bdf8;
+      font-weight: 500;
+    }
+    .q-body {
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    .speech-box {
+      background: rgba(13, 27, 46, 0.85);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.2rem;
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      font-style: normal;
+    }
+    .speech-box em {
+      color: var(--gold-light);
+      font-style: normal;
+      font-weight: 600;
+    }
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .key-point-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .key-point-item strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Reverse Questions */
+    .reverse-box {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(15, 23, 42, 0.4));
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+    .reverse-box h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #60a5fa;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reverse-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .reverse-item {
+      background: rgba(15, 23, 42, 0.7);
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* Quick Lookup Table */
+    .lookup-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+    .lookup-table th {
+      background: rgba(13, 27, 46, 0.95);
+      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .lookup-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(15, 31, 53, 0.4);
+      color: #cbd5e1;
+    }
+    .lookup-table tr:hover td {
+      background: rgba(200, 168, 74, 0.06);
+    }
+    .uni-name {
+      color: #fff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header Banner -->
+    <header class="header-banner">
+      <div class="badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        STAGE 1 • 15-MINUTE TELEPHONIC / ZOOM SCREENING
+      </div>
+      <h1 class="title">1st Call: Dean &amp; HOD Screening Master Guide</h1>
+      <p class="subtitle">
+        This exploratory conversation is a <strong>Mutual Fit &amp; Reality Check</strong>. The Dean or Faculty Chair wants to confirm your motivation to transition from corporate tech, identify which studio courses you can lead, and verify joining feasibility.
+      </p>
+    </header>
+
+    <!-- Desk Sticky Note -->
+    <div class="desk-cheat">
+      <div class="desk-cheat-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        Desk Sticky Note (Keep Visible During Call)
+      </div>
+      <div class="cheat-pill-group">
+        <div class="cheat-pill"><span>1.</span> Anna University Foundation (Pedagogy &amp; Rigor)</div>
+        <div class="cheat-pill"><span>2.</span> IBM / Samsung / Zebra / Ericsson (18+ Yrs Scale)</div>
+        <div class="cheat-pill"><span>3.</span> Design Systems &amp; HCI (Core Curriculum Lead)</div>
+        <div class="cheat-pill"><span>4.</span> Day-One Industry Readiness (Placement &amp; Capstone)</div>
+      </div>
+    </div>
+
+    <!-- 5 Core Questions -->
+    <div class="section-title">The 5 Core Screening Questions &amp; Speaking Scripts</div>
+
+    <div class="q-list">
+
+      <!-- Question 1 -->
+      <div class="q-card">
+        <div class="q-header">
+          <div class="q-num">1</div>
+          <div class="q-title-wrap">
+            <h3>"After 18+ years leading tech &amp; design at IBM, Zebra, Ericsson, and Samsung, why do you want a full-time Professor of Practice role now?"</h3>
+            <span class="q-meta">Dean's Intent: Testing genuine passion for full-time teaching vs. looking for a casual retirement role.</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="speech-box">
+            "Over the last 18 years, I have built and scaled design systems, UX architectures, and digital products impacting millions of users across global enterprises like IBM, Zebra, Ericsson, and Samsung. Throughout this journey, <em>the most rewarding part of my career has always been mentorship</em>—training engineers and designers to think systemically and bridge design vision with code.<br><br>
+            Having taught engineering cohorts previously under Anna University, academia has always been close to my heart. At this stage of my career, I want to <em>institutionalize my industry learnings full-time</em>—directing studio courses, building industry-grade design labs, and preparing the next generation of graduates to be day-one industry ready."
+          </div>
+          <div class="key-points-grid">
+            <div class="key-point-item"><strong>Keywords to Land:</strong> Institutionalizing industry practice, studio direction, student mentorship.</div>
+            <div class="key-point-item"><strong>Tone to Convey:</strong> High energy, dedicated educator, committed to a full-time campus presence.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="q-card">
+        <div class="q-header">
+          <div class="q-num">2</div>
+          <div class="q-title-wrap">
+            <h3>"Looking at our B.Des / M.Des curriculum, which specific courses or studios can you immediately lead?"</h3>
+            <span class="q-meta">Dean's Intent: Checking if your industry skills map directly to university syllabus codes and studio tracks.</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="speech-box">
+            "I can immediately lead core studio and theory courses across three major tracks:<br>
+            1. <em>Interaction Design &amp; HCI:</em> Information architecture, cognitive workflow optimization, usability heuristics, and user research methodologies.<br>
+            2. <em>Scalable Design Systems:</em> Multi-brand design tokens, UI component libraries, and the design-to-engineering translation pipeline.<br>
+            3. <em>Live Industry Capstones &amp; Studio Jury:</em> Mentoring 3rd and 4th-year graduation thesis projects using production-grade sprint models, client critique, and portfolio defense."
+          </div>
+          <div class="key-points-grid">
+            <div class="key-point-item"><strong>Studio Pedagogy:</strong> Contrast textbook design with real-world enterprise delivery constraints.</div>
+            <div class="key-point-item"><strong>Cross-Discipline Fit:</strong> Highlight ability to bridge Design and Computer Science students.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="q-card">
+        <div class="q-header">
+          <div class="q-num">3</div>
+          <div class="q-title-wrap">
+            <h3>"How do you view teaching and research as a non-PhD Professor of Practice?"</h3>
+            <span class="q-meta">Dean's Intent: Verifying that you understand your distinct role alongside traditional PhD academic faculty.</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="speech-box">
+            "The UGC created the Professor of Practice framework specifically for industry leaders like me—bringing <em>18+ years of high-stakes, real-world execution that cannot be taught from a textbook</em>.<br><br>
+            While traditional PhD faculty focus on fundamental academic theory, my value is in <em>practice-led pedagogy</em>: teaching how enterprise design systems actually function at scale, how to navigate real-world trade-offs, and how to build production-ready digital products. Furthermore, having taught engineering subjects previously under Anna University, I am already comfortable with lesson planning, grading rubrics, and formal curriculum structures."
+          </div>
+          <div class="key-points-grid">
+            <div class="key-point-item"><strong>UGC Mandate:</strong> Point to UGC PoP guidelines validating 15+ years of distinguished practice.</div>
+            <div class="key-point-item"><strong>Pedagogical Ease:</strong> Mention your prior Anna University teaching comfort.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="q-card">
+        <div class="q-header">
+          <div class="q-num">4</div>
+          <div class="q-title-wrap">
+            <h3>"How will you leverage your corporate network to benefit our students and institution?"</h3>
+            <span class="q-meta">Dean's Intent: Every design school wants a PoP who improves student internships, placements, and industry jury panels.</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="speech-box">
+            "Having spent 18+ years leading teams across Bangalore, Chennai, and global product hubs, I bring a strong network across enterprise software, telecom, healthcare, and IoT.<br><br>
+            I plan to leverage this network in three concrete ways:<br>
+            • <em>Live Industry Briefs:</em> Sourcing real-world problem statements from active companies for 3rd-year studio sprints.<br>
+            • <em>Industry Jury Panels:</em> Inviting design directors and technical leads from top tech firms for mid-term and final project critiques.<br>
+            • <em>Internship &amp; Hiring Pipeline:</em> Creating direct recruitment pathways for our graduating design cohorts."
+          </div>
+          <div class="key-points-grid">
+            <div class="key-point-item"><strong>Tangible Value:</strong> Placement boosts, external industry jury, sponsored capstones.</div>
+            <div class="key-point-item"><strong>Ecosystem Impact:</strong> Raising the school's visibility with tier-1 tech employers.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="q-card">
+        <div class="q-header">
+          <div class="q-num">5</div>
+          <div class="q-title-wrap">
+            <h3>"What are your practical constraints regarding joining timeline and compensation?"</h3>
+            <span class="q-meta">Dean's Intent: Budget alignment and semester calendar readiness.</span>
+          </div>
+        </div>
+        <div class="q-body">
+          <div class="speech-box">
+            "I am committed to a dedicated, full-time institutional appointment. On timeline, <em>I am flexible to align with your upcoming semester schedule or join on standard 30-day notice</em>.<br><br>
+            On compensation, I understand the university’s consolidated Professor-grade norms under the UGC Professor of Practice framework and am happy to align with standard institutional benchmarks for senior practice faculty."
+          </div>
+          <div class="key-points-grid">
+            <div class="key-point-item"><strong>Flexibility:</strong> Ready for full-time residential campus schedule.</div>
+            <div class="key-point-item"><strong>Compensation Stance:</strong> Professional, aligned with UGC/HEI consolidated Professor scale.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Reverse Questions -->
+    <div class="reverse-box">
+      <h4>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        2 High-Power Questions YOU Must Ask the Dean
+      </h4>
+      <p style="font-size: 13px; color: #94a3b8; margin-bottom: 12px;">When the Dean asks <em>"Do you have any questions for us?"</em>, asking these shows strategic vision and flips the dynamic from being evaluated to peer alignment:</p>
+      <div class="reverse-list">
+        <div class="reverse-item">
+          <strong>Question A (Curriculum &amp; AI):</strong><br>
+          <em>"How is the School of Design currently approaching the integration of AI tools and tokenized Design Systems into your 3rd and 4th-year studio curriculum?"</em>
+        </div>
+        <div class="reverse-item">
+          <strong>Question B (Industry Capstones):</strong><br>
+          <em>"What are the department's primary goals for industry-sponsored capstone projects over the coming academic year, and how do you envision a Professor of Practice driving that?"</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Reference of Key Deans & Schools -->
+    <div class="section-title">Institutional Quick Reference (Key Deans &amp; Focus Areas)</div>
+    <table class="lookup-table">
+      <thead>
+        <tr>
+          <th>Institution</th>
+          <th>Location</th>
+          <th>Key Leadership / Contact</th>
+          <th>Flagship Focus Areas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="uni-name">RV University</td>
+          <td>Bengaluru</td>
+          <td>School of Design &amp; Innovation</td>
+          <td>UX / Digital Interactive Systems, Human-Centered Design</td>
+        </tr>
+        <tr>
+          <td class="uni-name">Srishti Manipal Institute</td>
+          <td>Bengaluru</td>
+          <td>Prof. Geetha Narayanan / Admin</td>
+          <td>Human-Centered Design, Digital Media, Studio Pedagogy</td>
+        </tr>
+        <tr>
+          <td class="uni-name">NID Bengaluru</td>
+          <td>Bengaluru</td>
+          <td>Dr. C. S. Susanth (Dean)</td>
+          <td>M.Des Interaction Design, Information Design, Game Design</td>
+        </tr>
+        <tr>
+          <td class="uni-name">Dayananda Sagar University</td>
+          <td>Bengaluru</td>
+          <td>Prof. Dinesh Kulkarni (Dean)</td>
+          <td>B.Des in User Experience Design, Digital Transmedia</td>
+        </tr>
+        <tr>
+          <td class="uni-name">PES University</td>
+          <td>Bengaluru</td>
+          <td>Prof. Chitra Viswanathan (Director)</td>
+          <td>B.Des Interaction Design, Tech-Design Synergy</td>
+        </tr>
+        <tr>
+          <td class="uni-name">Strate School of Design</td>
+          <td>Bengaluru</td>
+          <td>Thomas Dal (Dean &amp; Director)</td>
+          <td>Interaction Design, Immersive Design Systems</td>
+        </tr>
+        <tr>
+          <td class="uni-name">IIT Hyderabad (DoD)</td>
+          <td>Hyderabad</td>
+          <td>Dr. Shiva Ji (HOD Design)</td>
+          <td>HCI, Usability Engineering, Product Design, Design Research</td>
+        </tr>
+        <tr>
+          <td class="uni-name">IIITDM Kancheepuram</td>
+          <td>Chennai</td>
+          <td>Dean of Faculty Affairs / HOD</td>
+          <td>Interdisciplinary Design, Electronic &amp; Digital Systems</td>
+        </tr>
+        <tr>
+          <td class="uni-name">HITS (SPADE)</td>
+          <td>Chennai</td>
+          <td>Dean, School of Design</td>
+          <td>Dedicated B.Des in User Experience (UX) Design</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <script src="/sidebar.js"></script>
+</body>
+</html>

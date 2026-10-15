@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Application Pipeline (18 Universities) | Balaajee V.R.</title>
+  <link rel="stylesheet" href="/sidebar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #091322;
+      --card-bg: #0f1f35;
+      --card-border: rgba(200, 168, 74, 0.22);
+      --gold: #c8a84a;
+      --gold-light: #dfbc55;
+      --text-dim: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: #f1f5f9;
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 2.5rem 1rem 4rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(200, 168, 74, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(30, 64, 175, 0.08) 0%, transparent 45%);
+    }
+    @media (min-width: 1200px) {
+      body {
+        padding-left: 310px;
+        padding-right: 2rem;
+      }
+    }
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    .header-banner {
+      background: linear-gradient(135deg, rgba(15, 31, 53, 0.95), rgba(9, 19, 34, 0.98));
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .header-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #10b981, #c8a84a, #3b82f6);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      margin-bottom: 0.6rem;
+    }
+    .title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+    .stat-cards {
+      display: flex;
+      gap: 14px;
+    }
+    .stat-card {
+      background: rgba(13, 27, 46, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px 18px;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-lbl {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 2px;
+    }
+
+    /* Filters */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 1.4rem;
+    }
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-pill:hover,
+    .filter-pill.active {
+      background: var(--gold);
+      color: #0d1b2e;
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+    .search-input {
+      background: rgba(15, 31, 53, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      width: 240px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--gold);
+    }
+
+    /* Table */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .pipeline-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+    .pipeline-table th {
+      background: rgba(13, 27, 46, 0.95);
+      color: var(--gold);
+      font-family: 'JetBrains Mono', monospace;
+      padding: 12px 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .pipeline-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      vertical-align: middle;
+    }
+    .pipeline-table tr:hover td {
+      background: rgba(200, 168, 74, 0.04);
+    }
+    .uni-col strong {
+      display: block;
+      color: #fff;
+      font-size: 13.5px;
+      margin-bottom: 2px;
+    }
+    .uni-col span {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .region-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+    .reg-blr {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .reg-chn {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .reg-south {
+      background: rgba(200, 168, 74, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(200, 168, 74, 0.3);
+    }
+    .status-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .st-submitted {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .st-submitted::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+    .follow-up-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .contact-cell code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #94a3b8;
+      display: block;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header Banner -->
+    <header class="header-banner">
+      <div>
+        <div class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          ACTIVE RECRUITMENT PIPELINE
+        </div>
+        <h1 class="title">18 Applications Under Review</h1>
+      </div>
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-val">11</div>
+          <div class="stat-lbl">Bengaluru</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">5</div>
+          <div class="stat-lbl">Chennai</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">2</div>
+          <div class="stat-lbl">Premier South</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-pills">
+        <button class="filter-pill active" onclick="filterRegion('all', this)">All (18)</button>
+        <button class="filter-pill" onclick="filterRegion('Bengaluru', this)">Bengaluru (11)</button>
+        <button class="filter-pill" onclick="filterRegion('Chennai', this)">Chennai (5)</button>
+        <button class="filter-pill" onclick="filterRegion('South', this)">Premier South (2)</button>
+      </div>
+      <input type="text" id="pipelineSearch" class="search-input" placeholder="Search institute or role..." onkeyup="searchPipeline()">
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+      <table class="pipeline-table" id="trackerTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Institution &amp; School</th>
+            <th>Region</th>
+            <th>Recipients</th>
+            <th>Next Follow-up</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="trackerBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="/sidebar.js"></script>
+  <script>
+    const apps = [
+      { id: 1, name: "RV University", school: "School of Design & Innovation", region: "Bengaluru", regClass: "reg-blr", contact: "registrar@rvu.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 2, name: "Srishti Manipal Institute", school: "MAHE Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "jobs.maheblr@manipal.edu", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 3, name: "National Institute of Design (NID)", school: "Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "recruitment@nid.edu", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 4, name: "IISc Bengaluru", school: "Dept of Design & Mfg (DM)", region: "Bengaluru", regClass: "reg-blr", contact: "chair.dm@iisc.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 5, name: "PES University", school: "School of Design (RR Campus)", region: "Bengaluru", regClass: "reg-blr", contact: "careers@pes.edu", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 6, name: "Dayananda Sagar University (DSU)", school: "Design & Digital Transmedia", region: "Bengaluru", regClass: "reg-blr", contact: "dinesh-des@dsu.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 7, name: "Alliance University", school: "Alliance School of Design", region: "Bengaluru", regClass: "reg-blr", contact: "careers@alliance.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 8, name: "M. S. Ramaiah University (RUAS)", school: "Faculty of Art & Design (Peenya)", region: "Bengaluru", regClass: "reg-blr", contact: "resumes@msruas.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 9, name: "Jain University", school: "School of Design, Media & Creative Arts", region: "Bengaluru", regClass: "reg-blr", contact: "careers@jgi.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 10, name: "Strate School of Design", school: "Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "t.dal@strate.design", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 11, name: "CMRIT", school: "CSE / IT / Emerging Design", region: "Bengaluru", regClass: "reg-blr", contact: "careers@cmrit.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 12, name: "VIT Chennai", school: "School of Computer Science / Design", region: "Chennai", regClass: "reg-chn", contact: "careers.vit.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 13, name: "IIITDM Kancheepuram", school: "School of Interdisciplinary Design", region: "Chennai", regClass: "reg-chn", contact: "deanfaoffice@iiitdm.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 14, name: "DOT School of Design", school: "Design & Interactive Media", region: "Chennai", regClass: "reg-chn", contact: "career@dotsod.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 15, name: "Hindustan Institute (HITS)", school: "SPADE (B.Des UX Design)", region: "Chennai", regClass: "reg-chn", contact: "career@hindustanuniv.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 16, name: "Crescent Institute (BSAU)", school: "Crescent School of Architecture & Design", region: "Chennai", regClass: "reg-chn", contact: "dean.csa@crescent.education", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 17, name: "IIT Hyderabad", school: "Department of Design (DoD)", region: "South", regClass: "reg-south", contact: "shivaji@des.iith.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
+      { id: 18, name: "Woxsen University", school: "School of Arts & Design", region: "South", regClass: "reg-south", contact: "dean.sd@woxsen.edu.in", follow: "Oct 22, 2026", status: "Submitted" }
+    ];
+
+    let currentFilter = 'all';
+
+    function renderTable() {
+      const tbody = document.getElementById('trackerBody');
+      const searchVal = document.getElementById('pipelineSearch').value.toLowerCase();
+      
+      const filtered = apps.filter(item => {
+        const matchesRegion = currentFilter === 'all' || item.region.toLowerCase() === currentFilter.toLowerCase();
+        const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.school.toLowerCase().includes(searchVal) || item.contact.toLowerCase().includes(searchVal);
+        return matchesRegion && matchesSearch;
+      });
+
+      tbody.innerHTML = filtered.map(item => `
+        <tr>
+          <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #94a3b8;">#${item.id}</td>
+          <td class="uni-col">
+            <strong>${item.name}</strong>
+            <span>${item.school}</span>
+          </td>
+          <td><span class="region-tag ${item.regClass}">${item.region}</span></td>
+          <td class="contact-cell"><code>${item.contact}</code></td>
+          <td class="follow-up-date">${item.follow}</td>
+          <td><span class="status-badge st-submitted">${item.status}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function filterRegion(region, btn) {
+      currentFilter = region;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTable();
+    }
+
+    function searchPipeline() {
+      renderTable();
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>

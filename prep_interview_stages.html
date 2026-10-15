@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subsequent Stages: Studio & Panel Defense Preparation | Balaajee V.R.</title>
+  <link rel="stylesheet" href="/sidebar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #091322;
+      --card-bg: #0f1f35;
+      --card-border: rgba(200, 168, 74, 0.22);
+      --gold: #c8a84a;
+      --gold-light: #dfbc55;
+      --text-dim: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: #f1f5f9;
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 2.5rem 1rem 4rem 1rem;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(200, 168, 74, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(30, 64, 175, 0.08) 0%, transparent 45%);
+    }
+    @media (min-width: 1200px) {
+      body {
+        padding-left: 310px;
+        padding-right: 2rem;
+      }
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .header-banner {
+      background: linear-gradient(135deg, rgba(15, 31, 53, 0.95), rgba(9, 19, 34, 0.98));
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #c8a84a, #10b981);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      margin-bottom: 0.9rem;
+    }
+    .title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 780px;
+    }
+
+    /* Roadmap Timeline */
+    .stages-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .stage-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.2rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .stage-pill-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #0d1b2e;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .stage-pill-content h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .stage-pill-content p {
+      font-size: 11.5px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    /* Stage Container */
+    .stage-section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .stage-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .stage-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: #0d1b2e;
+    }
+    .stage-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Slide Deck Layout */
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin: 1.2rem 0;
+    }
+    .deck-card {
+      background: rgba(13, 27, 46, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+    }
+    .slide-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .deck-card h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .deck-card p {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* Pro-Tip Box */
+    .pro-tip {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      font-size: 12.5px;
+      color: #a7f3d0;
+      line-height: 1.6;
+    }
+    .pro-tip strong {
+      color: #34d399;
+    }
+
+    /* Defense Q&A */
+    .defense-qa {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .defense-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+    .defense-q {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 6px;
+    }
+    .defense-a {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header Banner -->
+    <header class="header-banner">
+      <div class="badge">
+        STAGES 2, 3 &amp; 4 • IN-PERSON / VIRTUAL SELECTION PROCESS
+      </div>
+      <h1 class="title">Subsequent Stages: Studio Demo &amp; Board Defense</h1>
+      <p class="subtitle">
+        Once the 1st screening call is confirmed, institutions invite you to present your teaching vision and leadership pedigree before the Faculty Selection Committee and Academic Board.
+      </p>
+    </header>
+
+    <!-- 3-Stage Roadmap -->
+    <div class="stages-nav">
+      <div class="stage-pill">
+        <div class="stage-pill-num">2</div>
+        <div class="stage-pill-content">
+          <h4>Studio Masterclass (15-20 Min)</h4>
+          <p>Mock lecture &amp; studio critique demonstrating your pedagogy to students &amp; faculty.</p>
+        </div>
+      </div>
+      <div class="stage-pill">
+        <div class="stage-pill-num">3</div>
+        <div class="stage-pill-content">
+          <h4>Portfolio &amp; Case Defense (20 Min)</h4>
+          <p>Walking through 18+ years of enterprise architecture (IBM, Zebra, Ericsson, Samsung).</p>
+        </div>
+      </div>
+      <div class="stage-pill">
+        <div class="stage-pill-num">4</div>
+        <div class="stage-pill-content">
+          <h4>Executive Board / VC Interview</h4>
+          <p>Governance, NEP 2020 integration, industry partnerships &amp; institutional vision.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 2 -->
+    <section class="stage-section">
+      <div class="stage-header">
+        <span class="stage-tag">Stage 2</span>
+        <h2>15-Minute Studio Masterclass / Teaching Demonstration</h2>
+      </div>
+      <p style="font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem;">
+        Universities want to see how you command a classroom. Rather than an abstract theoretical lecture, your winning formula is a <strong>Practice-Driven Studio Masterclass</strong>.
+      </p>
+
+      <div style="background: rgba(200, 168, 74, 0.08); border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; margin-bottom: 1.2rem;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase;">Recommended Lecture Title:</span>
+        <p style="font-size: 14px; font-weight: 700; color: #fff; margin-top: 2px;">"Bridging HCI, Enterprise Design Systems, and Scalable Code: From Concept to Production"</p>
+      </div>
+
+      <div class="deck-grid">
+        <div class="deck-card">
+          <div class="slide-num">Slide 1 • 2 Mins</div>
+          <h4>The Industry Reality Gap</h4>
+          <p>Why 80% of student design portfolios fail in enterprise engineering—the disconnect between Figma mocks and multi-device production constraints.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Slide 2 • 3 Mins</div>
+          <h4>The Design Token Architecture</h4>
+          <p>Explaining design tokens (color, typography, elevation, spacing) as the contract between designers and frontend developers across iOS, Android, and Web.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Slide 3 • 4 Mins</div>
+          <h4>Live Heuristic Studio Critique</h4>
+          <p>Demonstrating how to evaluate a complex enterprise workflow (e.g. healthcare or industrial barcode scanner) against Nielsen's 10 Heuristics.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Slide 4 • 3 Mins</div>
+          <h4>Design-to-Code Pipeline</h4>
+          <p>How modern UI frameworks consume design tokens using component libraries, CI/CD design audits, and automated accessibility checks.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Slide 5 • 2 Mins</div>
+          <h4>Student Capstone Brief</h4>
+          <p>Presenting a sample 4-week studio brief: students design a mission-critical dashboard, build token architecture, and test with live users.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Slide 6 • 1 Min</div>
+          <h4>Learning Outcomes &amp; Takeaways</h4>
+          <p>Bridging design thinking with engineering execution—producing graduates ready for day-one product roles.</p>
+        </div>
+      </div>
+
+      <div class="pro-tip">
+        <strong>Masterclass Pro-Tip:</strong> Spend 2 minutes during the lecture asking the panel (acting as your "students") an interactive question: <em>"If our client demands 3 enterprise themes, do we create 3 separate Figma files or 1 tokenized system?"</em> This immediately proves your dynamic classroom presence!
+      </div>
+    </section>
+
+    <!-- STAGE 3 -->
+    <section class="stage-section">
+      <div class="stage-header">
+        <span class="stage-tag" style="background: #3b82f6; color: #fff;">Stage 3</span>
+        <h2>Professional Portfolio &amp; Enterprise Case Defense</h2>
+      </div>
+      <p style="font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem;">
+        The selection committee will review your 18-year career across <strong>IBM, Zebra Technologies, Ericsson, Samsung, and Infosys</strong>. Focus on <em>systemic scale and leadership</em>, not just visual artifacts.
+      </p>
+
+      <div class="deck-grid">
+        <div class="deck-card">
+          <div class="slide-num">Pillar 1</div>
+          <h4>Zebra Technologies Scale</h4>
+          <p>Architecting rugged industrial interfaces and barcode-scanning UX for warehouse logistics operating in sub-zero and hazardous environments.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Pillar 2</div>
+          <h4>Samsung Healthcare UX</h4>
+          <p>Driving global usability research and medical interface design that earned a 10-Year US Business Visa recognition for high-impact innovation.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Pillar 3</div>
+          <h4>Ericsson Telecom Systems</h4>
+          <p>Leading mission-critical network monitoring dashboards, data visualization, and receiving the Spot Award for sustaining innovation culture.</p>
+        </div>
+        <div class="deck-card">
+          <div class="slide-num">Pillar 4</div>
+          <h4>IBM Enterprise Architecture</h4>
+          <p>Bridging multi-disciplinary engineering and UX teams across high-volume enterprise transformation accounts.</p>
+        </div>
+      </div>
+
+      <div class="pro-tip" style="background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.25); color: #93c5fd;">
+        <strong>Portfolio Presentation Rule:</strong> Always frame your projects using the <strong>CAR Framework</strong>: <em>Context</em> (Scale &amp; Users) $\rightarrow$ <em>Architecture &amp; Strategy</em> (Your Design System / HCI Decision) $\rightarrow$ <em>Results &amp; Translation</em> (How you teach this to students).
+      </div>
+    </section>
+
+    <!-- STAGE 4 -->
+    <section class="stage-section">
+      <div class="stage-header">
+        <span class="stage-tag" style="background: #10b981; color: #0d1b2e;">Stage 4</span>
+        <h2>Executive Board &amp; Vice-Chancellor Panel Defense</h2>
+      </div>
+      <p style="font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem;">
+        The final round with the Vice-Chancellor, Registrar, and External Experts centers on institutional vision, national education alignment, and department growth.
+      </p>
+
+      <div class="defense-qa">
+        <div class="defense-item">
+          <div class="defense-q">Q: "How will your teaching align with NEP 2020 (National Education Policy) multidisciplinary guidelines?"</div>
+          <div class="defense-a">
+            "NEP 2020 explicitly mandates breaking down silos between engineering and creative arts. With my B.E. in IT and 18+ years of design leadership, I am uniquely positioned to run cross-faculty electives—bringing Computer Science students into design studios and Design students into frontend architectures."
+          </div>
+        </div>
+        <div class="defense-item">
+          <div class="defense-q">Q: "How do you evaluate and grade student design work objectively without bias?"</div>
+          <div class="defense-a">
+            "I implement structured industry rubrics: 25% User Research Depth, 25% Heuristic &amp; Accessibility Compliance, 25% Technical Feasibility &amp; Design Tokens, and 25% Presentation &amp; Portfolio Defense. This removes subjective 'aesthetic bias' and grades students on industry competence."
+          </div>
+        </div>
+        <div class="defense-item">
+          <div class="defense-q">Q: "What is your 3-year vision for our Department of Design?"</div>
+          <div class="defense-a">
+            "Year 1: Establish an enterprise-standard design token studio and integrate live industry capstones.<br>
+            Year 2: Launch an Industry Advisory Jury and establish funded student internship pipelines with top tech employers.<br>
+            Year 3: Position the institution as a national benchmark for applied HCI and design-to-engineering innovation."
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="/sidebar.js"></script>
+</body>
+</html>

@@ -9,6 +9,9 @@ const server = http.createServer((req, res) => {
   else if (decodedUrl === '/scope') targetFile = 'academic_scope.html';
   else if (decodedUrl === '/academic') targetFile = 'academic_resume.html';
   else if (decodedUrl === '/general') targetFile = 'academic_general.html';
+  else if (decodedUrl === '/prep-first-call') targetFile = 'prep_first_call.html';
+  else if (decodedUrl === '/prep-interview-stages') targetFile = 'prep_interview_stages.html';
+  else if (decodedUrl === '/tracker') targetFile = 'tracker.html';
   
   let filePath = path.join(__dirname, targetFile);
   
@@ -18,6 +21,8 @@ const server = http.createServer((req, res) => {
   else if (ext === '.png') contentType = 'image/png';
   else if (ext === '.jpg' || ext === '.jpeg') contentType = 'image/jpeg';
   else if (ext === '.js') contentType = 'application/javascript';
+  else if (ext === '.pdf') contentType = 'application/pdf';
+  else if (ext === '.svg') contentType = 'image/svg+xml';
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
