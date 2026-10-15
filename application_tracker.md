@@ -20,8 +20,8 @@
 | 9 | **Jain University** | School of Design, Media & Creative Arts | `careers@jgi.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 | 10 | **Strate School of Design** | Bengaluru Campus | `t.dal@strate.design`<br>`admission@strate.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 | 11 | **CMRIT** | CSE / IT / Emerging Design | `careers@cmrit.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 12 | **IIIT Bangalore (IIIT-B)** | Software Systems & HCI | `faculty-search@iiitb.ac.in`<br>`dean-academics@iiitb.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 13 | **B.M.S. College of Engineering (BMSCE)** | ISE / Computing & Design Systems | `principal@bmsce.ac.in`<br>`hr@bmsce.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 12 | **IIIT Bangalore (IIIT-B)** | Software Systems & HCI | `faculty-search-committee@iiitb.ac.in`<br>`hod-cse@iiitb.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Delivered to Search Committee |
+| 13 | **B.M.S. College of Engineering (BMSCE)** | ISE / Computing & Design Systems | `principal@bmsce.ac.in`<br>`info@bmsce.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Delivered to Principal |
 
 ---
 
