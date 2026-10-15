@@ -5,7 +5,7 @@
 
 ---
 
-## 1. Bengaluru Institutions (10 Applications)
+## 1. Bengaluru Institutions (13 Applications)
 
 | # | Institution | Department / School | Target Recipient(s) | Date Applied | Channel | Next Follow-up | Current Status |
 |---|---|---|---|---|---|---|---|
@@ -20,21 +20,26 @@
 | 9 | **Jain University** | School of Design, Media & Creative Arts | `careers@jgi.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 | 10 | **Strate School of Design** | Bengaluru Campus | `t.dal@strate.design`<br>`admission@strate.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 | 11 | **CMRIT** | CSE / IT / Emerging Design | `careers@cmrit.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 12 | **IIIT Bangalore (IIIT-B)** | Software Systems & HCI | `faculty-search@iiitb.ac.in`<br>`dean-academics@iiitb.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 13 | **B.M.S. College of Engineering (BMSCE)** | ISE / Computing & Design Systems | `principal@bmsce.ac.in`<br>`hr@bmsce.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 
 ---
 
-## 2. Chennai Institutions (8 Applications)
+## 2. Chennai Institutions (11 Applications)
 
 | # | Institution | Department / School | Target Recipient(s) | Date Applied | Channel | Next Follow-up | Current Status |
 |---|---|---|---|---|---|---|---|
-| 12 | **VIT Chennai** | School of Computer Science / Design | `careers.vit.ac.in` | Prior / Oct 2026 | Official Portal | Oct 22, 2026 | Submitted |
-| 13 | **IIITDM Kancheepuram** | School of Interdisciplinary Design | `deanfaoffice@iiitdm.ac.in`<br>`dean-ac@iiitdm.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 14 | **DOT School of Design** | Design & Interactive Media | `career@dotsod.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 15 | **Hindustan Institute (HITS)** | SPADE (B.Des in UX Design) | `career@hindustanuniv.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 16 | **Crescent Institute (BSAU)** | Crescent School of Architecture & Design | `dean.csa@crescent.education` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 17 | **Shiv Nadar University Chennai** | School of Engineering (CSE / HCI) | `recruitments@snuchennai.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 18 | **Sai University (SaiU)** | School of Computing and Data Science | `faculty.careers@saiuniversity.edu.in`<br>`careers@saiuniversity.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 19 | **Sathyabama Institute** | School of Computing | `dean.computing@sathyabama.ac.in`<br>`registrar@sathyabama.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 14 | **VIT Chennai** | School of Computer Science / Design | `careers.vit.ac.in` | Prior / Oct 2026 | Official Portal | Oct 22, 2026 | Submitted |
+| 15 | **IIITDM Kancheepuram** | School of Interdisciplinary Design | `deanfaoffice@iiitdm.ac.in`<br>`dean-ac@iiitdm.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 16 | **DOT School of Design** | Design & Interactive Media | `career@dotsod.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 17 | **Hindustan Institute (HITS)** | SPADE (B.Des in UX Design) | `career@hindustanuniv.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 18 | **Crescent Institute (BSAU)** | Crescent School of Architecture & Design | `dean.csa@crescent.education` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 19 | **Shiv Nadar University Chennai** | School of Engineering (CSE / HCI) | `recruitments@snuchennai.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Form Access Restricted by SNUC IT |
+| 20 | **Sai University (SaiU)** | School of Computing and Data Science | `faculty.careers@saiuniversity.edu.in`<br>`careers@saiuniversity.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Confirmed by HR (WhatsApp: `9311544877`) |
+| 21 | **Sathyabama Institute** | School of Computing | `dean.computing@sathyabama.ac.in`<br>`registrar@sathyabama.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 22 | **SRM Institute of Science & Tech (SRMIST)** | School of Computing / Dept of Design | `recruitment@srmist.edu.in`<br>`careers@srmist.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 23 | **Chennai Institute of Technology (CIT)** | Emerging Tech & UI/UX CoE | `hr@citchennai.net`<br>`careers@citchennai.net` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 24 | **Rajalakshmi Engineering College (REC)** | CSE / IT & UX Systems | `hr@rajalakshmi.edu.in`<br>`principal@rajalakshmi.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 
 ---
 
@@ -42,8 +47,8 @@
 
 | # | Institution | Department / School | Target Recipient(s) | Date Applied | Channel | Next Follow-up | Current Status |
 |---|---|---|---|---|---|---|---|
-| 20 | **IIT Hyderabad** | Department of Design (DoD) | `shivaji@des.iith.ac.in`<br>`faculty.recruitment@iith.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 21 | **Woxsen University** | School of Arts & Design | `dean.sd@woxsen.edu.in`<br>`hr@woxsen.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 25 | **IIT Hyderabad** | Department of Design (DoD) | `shivaji@des.iith.ac.in`<br>`faculty.recruitment@iith.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 26 | **Woxsen University** | School of Arts & Design | `dean.sd@woxsen.edu.in`<br>`hr@woxsen.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 
 ---
 

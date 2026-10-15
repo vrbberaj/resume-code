@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Application Pipeline (18 Universities) | Balaajee V.R.</title>
+  <title>Live Application Pipeline (26 Universities) | Balaajee V.R.</title>
   <link rel="stylesheet" href="/sidebar.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -250,6 +250,18 @@
       border-radius: 50%;
       background: #10b981;
     }
+    .st-action {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .st-action::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f59e0b;
+    }
     .follow-up-date {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11.5px;
@@ -275,15 +287,15 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
           ACTIVE RECRUITMENT PIPELINE
         </div>
-        <h1 class="title">21 Applications Under Review</h1>
+        <h1 class="title">26 Applications Under Review</h1>
       </div>
       <div class="stat-cards">
         <div class="stat-card">
-          <div class="stat-val">11</div>
+          <div class="stat-val">13</div>
           <div class="stat-lbl">Bengaluru</div>
         </div>
         <div class="stat-card">
-          <div class="stat-val">8</div>
+          <div class="stat-val">11</div>
           <div class="stat-lbl">Chennai</div>
         </div>
         <div class="stat-card">
@@ -296,9 +308,9 @@
     <!-- Filter Bar -->
     <div class="filter-bar">
       <div class="filter-pills">
-        <button class="filter-pill active" onclick="filterRegion('all', this)">All (21)</button>
-        <button class="filter-pill" onclick="filterRegion('Bengaluru', this)">Bengaluru (11)</button>
-        <button class="filter-pill" onclick="filterRegion('Chennai', this)">Chennai (8)</button>
+        <button class="filter-pill active" onclick="filterRegion('all', this)">All (26)</button>
+        <button class="filter-pill" onclick="filterRegion('Bengaluru', this)">Bengaluru (13)</button>
+        <button class="filter-pill" onclick="filterRegion('Chennai', this)">Chennai (11)</button>
         <button class="filter-pill" onclick="filterRegion('South', this)">Premier South (2)</button>
       </div>
       <input type="text" id="pipelineSearch" class="search-input" placeholder="Search institute or role..." onkeyup="searchPipeline()">
@@ -328,27 +340,32 @@
   <script src="/sidebar.js"></script>
   <script>
     const apps = [
-      { id: 1, name: "RV University", school: "School of Design & Innovation", region: "Bengaluru", regClass: "reg-blr", contact: "registrar@rvu.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 2, name: "Srishti Manipal Institute", school: "MAHE Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "jobs.maheblr@manipal.edu", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 3, name: "National Institute of Design (NID)", school: "Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "recruitment@nid.edu", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 4, name: "IISc Bengaluru", school: "Dept of Design & Mfg (DM)", region: "Bengaluru", regClass: "reg-blr", contact: "chair.dm@iisc.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 5, name: "PES University", school: "School of Design (RR Campus)", region: "Bengaluru", regClass: "reg-blr", contact: "careers@pes.edu", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 6, name: "Dayananda Sagar University (DSU)", school: "Design & Digital Transmedia", region: "Bengaluru", regClass: "reg-blr", contact: "dinesh-des@dsu.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 7, name: "Alliance University", school: "Alliance School of Design", region: "Bengaluru", regClass: "reg-blr", contact: "careers@alliance.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 8, name: "M. S. Ramaiah University (RUAS)", school: "Faculty of Art & Design (Peenya)", region: "Bengaluru", regClass: "reg-blr", contact: "resumes@msruas.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 9, name: "Jain University", school: "School of Design, Media & Creative Arts", region: "Bengaluru", regClass: "reg-blr", contact: "careers@jgi.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 10, name: "Strate School of Design", school: "Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "t.dal@strate.design", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 11, name: "CMRIT", school: "CSE / IT / Emerging Design", region: "Bengaluru", regClass: "reg-blr", contact: "careers@cmrit.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 12, name: "VIT Chennai", school: "School of Computer Science / Design", region: "Chennai", regClass: "reg-chn", contact: "careers.vit.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 13, name: "IIITDM Kancheepuram", school: "School of Interdisciplinary Design", region: "Chennai", regClass: "reg-chn", contact: "deanfaoffice@iiitdm.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 14, name: "DOT School of Design", school: "Design & Interactive Media", region: "Chennai", regClass: "reg-chn", contact: "career@dotsod.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 15, name: "Hindustan Institute (HITS)", school: "SPADE (B.Des UX Design)", region: "Chennai", regClass: "reg-chn", contact: "career@hindustanuniv.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 16, name: "Crescent Institute (BSAU)", school: "Crescent School of Architecture & Design", region: "Chennai", regClass: "reg-chn", contact: "dean.csa@crescent.education", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 17, name: "Shiv Nadar University Chennai", school: "School of Engineering (CSE / HCI)", region: "Chennai", regClass: "reg-chn", contact: "recruitments@snuchennai.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 18, name: "Sai University (SaiU)", school: "School of Computing & Data Science", region: "Chennai", regClass: "reg-chn", contact: "faculty.careers@saiuniversity.edu.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 19, name: "Sathyabama Institute", school: "School of Computing", region: "Chennai", regClass: "reg-chn", contact: "dean.computing@sathyabama.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 20, name: "IIT Hyderabad", school: "Department of Design (DoD)", region: "South", regClass: "reg-south", contact: "shivaji@des.iith.ac.in", follow: "Oct 22, 2026", status: "Submitted" },
-      { id: 21, name: "Woxsen University", school: "School of Arts & Design", region: "South", regClass: "reg-south", contact: "dean.sd@woxsen.edu.in", follow: "Oct 22, 2026", status: "Submitted" }
+      { id: 1, name: "RV University", school: "School of Design & Innovation", region: "Bengaluru", regClass: "reg-blr", contact: "registrar@rvu.edu.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 2, name: "Srishti Manipal Institute", school: "MAHE Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "jobs.maheblr@manipal.edu", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 3, name: "National Institute of Design (NID)", school: "Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "recruitment@nid.edu", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 4, name: "IISc Bengaluru", school: "Dept of Design & Mfg (DM)", region: "Bengaluru", regClass: "reg-blr", contact: "chair.dm@iisc.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 5, name: "PES University", school: "School of Design (RR Campus)", region: "Bengaluru", regClass: "reg-blr", contact: "careers@pes.edu", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 6, name: "Dayananda Sagar University (DSU)", school: "Design & Digital Transmedia", region: "Bengaluru", regClass: "reg-blr", contact: "dinesh-des@dsu.edu.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 7, name: "Alliance University", school: "Alliance School of Design", region: "Bengaluru", regClass: "reg-blr", contact: "careers@alliance.edu.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 8, name: "M. S. Ramaiah University (RUAS)", school: "Faculty of Art & Design (Peenya)", region: "Bengaluru", regClass: "reg-blr", contact: "resumes@msruas.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 9, name: "Jain University", school: "School of Design, Media & Creative Arts", region: "Bengaluru", regClass: "reg-blr", contact: "careers@jgi.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 10, name: "Strate School of Design", school: "Bengaluru Campus", region: "Bengaluru", regClass: "reg-blr", contact: "t.dal@strate.design", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 11, name: "CMRIT", school: "CSE / IT / Emerging Design", region: "Bengaluru", regClass: "reg-blr", contact: "careers@cmrit.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 12, name: "IIIT Bangalore (IIIT-B)", school: "Software Systems & HCI", region: "Bengaluru", regClass: "reg-blr", contact: "faculty-search@iiitb.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 13, name: "B.M.S. College of Engineering (BMSCE)", school: "ISE / Computing & Design Systems", region: "Bengaluru", regClass: "reg-blr", contact: "principal@bmsce.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 14, name: "VIT Chennai", school: "School of Computer Science / Design", region: "Chennai", regClass: "reg-chn", contact: "careers.vit.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 15, name: "IIITDM Kancheepuram", school: "School of Interdisciplinary Design", region: "Chennai", regClass: "reg-chn", contact: "deanfaoffice@iiitdm.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 16, name: "DOT School of Design", school: "Design & Interactive Media", region: "Chennai", regClass: "reg-chn", contact: "career@dotsod.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 17, name: "Hindustan Institute (HITS)", school: "SPADE (B.Des UX Design)", region: "Chennai", regClass: "reg-chn", contact: "career@hindustanuniv.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 18, name: "Crescent Institute (BSAU)", school: "Crescent School of Architecture & Design", region: "Chennai", regClass: "reg-chn", contact: "dean.csa@crescent.education", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 19, name: "Shiv Nadar University Chennai", school: "School of Engineering (CSE / HCI)", region: "Chennai", regClass: "reg-chn", contact: "recruitments@snuchennai.edu.in", follow: "Oct 22, 2026", status: "Form Restricted", statusClass: "st-action" },
+      { id: 20, name: "Sai University (SaiU)", school: "School of Computing & Data Science", region: "Chennai", regClass: "reg-chn", contact: "faculty.careers@saiuniversity.edu.in", follow: "Oct 22, 2026", status: "HR WhatsApp Active", statusClass: "st-submitted" },
+      { id: 21, name: "Sathyabama Institute", school: "School of Computing", region: "Chennai", regClass: "reg-chn", contact: "dean.computing@sathyabama.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 22, name: "SRM Institute of Science & Tech", school: "School of Computing / Dept of Design", region: "Chennai", regClass: "reg-chn", contact: "recruitment@srmist.edu.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 23, name: "Chennai Institute of Technology", school: "Emerging Tech & UI/UX CoE", region: "Chennai", regClass: "reg-chn", contact: "hr@citchennai.net", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 24, name: "Rajalakshmi Engineering College", school: "CSE / IT & UX Systems", region: "Chennai", regClass: "reg-chn", contact: "hr@rajalakshmi.edu.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 25, name: "IIT Hyderabad", school: "Department of Design (DoD)", region: "South", regClass: "reg-south", contact: "shivaji@des.iith.ac.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" },
+      { id: 26, name: "Woxsen University", school: "School of Arts & Design", region: "South", regClass: "reg-south", contact: "dean.sd@woxsen.edu.in", follow: "Oct 22, 2026", status: "Submitted", statusClass: "st-submitted" }
     ];
 
     let currentFilter = 'all';
@@ -373,7 +390,7 @@
           <td><span class="region-tag ${item.regClass}">${item.region}</span></td>
           <td class="contact-cell"><code>${item.contact}</code></td>
           <td class="follow-up-date">${item.follow}</td>
-          <td><span class="status-badge st-submitted">${item.status}</span></td>
+          <td><span class="status-badge ${item.statusClass || 'st-submitted'}">${item.status}</span></td>
         </tr>
       `).join('');
     }
