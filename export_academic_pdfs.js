@@ -4,7 +4,7 @@ const targets = [
   { url: 'http://localhost:8080/vsign', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_vsign.pdf', height: '1765px' },
   { url: 'http://localhost:8080/scope', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_scope.pdf', height: '1765px' },
   { url: 'http://localhost:8080/academic', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_academic.pdf', height: '1765px' },
-  { url: 'http://localhost:8080/general', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/resume_pop_general.pdf', height: '1765px' }
+  { url: 'http://localhost:8080/general', pdfPath: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/Balaajee VR POP Resume 20261015.pdf', height: '1765px' }
 ];
 
 (async () => {
