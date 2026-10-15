@@ -833,6 +833,546 @@
     }
 
     /* ==========================================================================
+       EXECUTIVE INFOGRAPHIC DESIGN SYSTEM (FLYWHEEL, TOPOLOGY, PIPELINE)
+       ========================================================================== */
+    
+    /* 1. Compounding Flywheel (Slide 2) */
+    .flywheel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .flywheel-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 13px;
+      padding: 1.15rem 1.35rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .flywheel-card:hover {
+      border-color: rgba(200, 168, 74, 0.5);
+      box-shadow: 0 8px 24px rgba(13, 27, 46, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .flywheel-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .flywheel-step-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .flywheel-flow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* 2. Hub-and-Spoke Org Model (Slide 3) */
+    .org-topology-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.1fr 1.75fr;
+      gap: 0;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .org-hub-card {
+      background: rgba(13, 27, 46, 0.95);
+      color: #FFFFFF;
+      border: 1.5px solid var(--gold);
+      border-radius: 14px;
+      padding: 1.25rem 1.35rem;
+      box-shadow: 0 8px 24px rgba(13, 27, 46, 0.18);
+    }
+
+    .org-hub-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.4rem;
+    }
+
+    .org-hub-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .org-bus-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .org-squads-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .org-squad-item {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 11px;
+      padding: 0.75rem 1.1rem;
+      box-shadow: 0 2px 10px rgba(13, 27, 46, 0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-left: 3.5px solid var(--gold);
+    }
+
+    .squad-info h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 2px;
+    }
+
+    .squad-info p {
+      font-size: 11.5px;
+      color: var(--stone-500);
+      line-height: 1.35;
+    }
+
+    .squad-scale-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: var(--navy-dark);
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      flex-shrink: 0;
+    }
+
+    /* 3. Token Pipeline Infographic (Slide 7) */
+    .token-pipeline-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.3rem;
+      position: relative;
+    }
+
+    .pipeline-step-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 1.1rem 1rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .pipeline-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+    }
+
+    .pipeline-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .pipeline-card-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .pipeline-card-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--stone-500);
+      margin-bottom: 0.65rem;
+    }
+
+    .pipeline-flow-arrow {
+      margin-top: auto;
+      padding-top: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #B45309;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 4. Transformation Case Study Architecture (Slides 4, 5, 6) */
+    .case-flow-container {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 0.65rem;
+      align-items: stretch;
+      margin-bottom: 0.9rem;
+    }
+
+    .case-box-friction {
+      background: #FFFBF5;
+      border: 1px solid rgba(180, 83, 9, 0.22);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 10px rgba(180, 83, 9, 0.03);
+    }
+
+    .case-box-solution {
+      background: var(--white);
+      border: 1.5px solid rgba(200, 168, 74, 0.45);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+    }
+
+    .case-flow-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .case-flow-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .case-connector-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy-dark);
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(13, 27, 46, 0.15);
+      flex-shrink: 0;
+    }
+
+    .case-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .case-kpi-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      border-radius: 11px;
+      padding: 0.8rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(13, 27, 46, 0.03);
+      border-top: 3.5px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-kpi-num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .case-kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #B45309;
+      margin-bottom: 0.35rem;
+    }
+
+    .case-kpi-desc {
+      font-size: 11px;
+      color: var(--stone-600);
+      line-height: 1.4;
+    }
+
+    /* 5. Dual-Engine AI Architecture (Slide 8) */
+    .ai-dual-engine-grid {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 0.65rem;
+      align-items: stretch;
+      margin-bottom: 0.95rem;
+    }
+
+    .ai-engine-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ai-engine-card.engine-accent {
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 6px 18px rgba(200, 168, 74, 0.1);
+    }
+
+    .ai-feature-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .ai-feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .ai-feature-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(200, 168, 74, 0.15);
+      color: #B45309;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .ai-feature-text h5 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 2px;
+    }
+
+    .ai-feature-text p {
+      font-size: 11px;
+      color: var(--stone-600);
+      line-height: 1.35;
+    }
+
+    .ai-bridge-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .ai-bridge-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--stone-500);
+      background: rgba(13, 27, 46, 0.05);
+      border: 1px dashed rgba(13, 27, 46, 0.2);
+      padding: 6px 4px;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 1.25;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+
+    /* 6. Talent Development Ladder & Mentorship (Slide 9) */
+    .talent-layout-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .ladder-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .ladder-step {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      background: #F8FAFC;
+      border-left: 3.5px solid var(--stone-300);
+      transition: all 0.2s ease;
+    }
+
+    .ladder-step.active-exec {
+      background: rgba(13, 27, 46, 0.04);
+      border-left-color: var(--gold);
+    }
+
+    .ladder-step-info h5 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 1px;
+    }
+
+    .ladder-step-info p {
+      font-size: 10.5px;
+      color: var(--stone-600);
+      line-height: 1.3;
+    }
+
+    .ladder-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 4px;
+      background: #E2E8F0;
+      color: var(--stone-800);
+      white-space: nowrap;
+    }
+
+    .ladder-step.active-exec .ladder-badge {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+
+    .leadership-side-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .side-honor-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+    }
+
+    .leadership-kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(13, 27, 46, 0.03);
+    }
+
+    .leadership-kpi-item {
+      text-align: center;
+      border-right: 1px solid rgba(13, 27, 46, 0.08);
+      padding: 0 0.5rem;
+    }
+
+    .leadership-kpi-item:last-child {
+      border-right: none;
+    }
+
+    .leadership-kpi-num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .leadership-kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #B45309;
+    }
+
+    /* ==========================================================================
        BOTTOM KEYNOTE PRESENTATION CONTROLLER
        ========================================================================== */
     .deck-bottombar {
@@ -997,6 +1537,50 @@
         gap: 1.2rem !important;
       }
       .stepper-row {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .flywheel-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.2rem !important;
+      }
+      .org-topology-grid {
+        display: grid !important;
+        grid-template-columns: 1.15fr 40px 1.75fr !important;
+        gap: 0 !important;
+        align-items: center !important;
+      }
+      .token-pipeline-flow {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .case-flow-container {
+        display: grid !important;
+        grid-template-columns: 1fr 44px 1fr !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+      }
+      .case-kpi-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .ai-dual-engine-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 44px 1fr !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+      }
+      .talent-layout-grid {
+        display: grid !important;
+        grid-template-columns: 1.25fr 1fr !important;
+        gap: 1.4rem !important;
+        align-items: stretch !important;
+      }
+      .leadership-kpi-strip {
         display: grid !important;
         grid-template-columns: repeat(4, 1fr) !important;
         gap: 1rem !important;
@@ -1168,64 +1752,92 @@
           <div class="slide-divider"></div>
         </div>
 
-        <div class="grid-2" style="flex: 1;">
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <div class="flywheel-grid">
+          <!-- QUADRANT 01 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 01 • Business Strategy</span>
             </div>
-            <h3 class="card-heading">1. Business-Driven UX Strategy</h3>
+            <h3 class="card-heading">1. Commercial ROI &amp; Executive Alignment</h3>
             <p class="card-desc">
-              Design is an investment, not an expense. Every design initiative is tied to measurable commercial outcomes: accelerating ARR, lowering customer churn, eliminating support tickets, and shortening enterprise sales cycles.
+              Design is an investment, not an expense. Every initiative directly targets commercial KPIs: accelerating enterprise ARR, lowering customer churn, eliminating support tickets, and shortening enterprise B2B sales cycles.
             </p>
-            <div style="margin-top: auto; padding-top: 0.8rem;">
-              <span class="tag-pill tag-gold">ROI Alignment</span>
+            <div style="margin: 0.6rem 0;">
+              <span class="tag-pill tag-gold">ARR Expansion</span>
               <span class="tag-pill">Executive Buy-In</span>
               <span class="tag-pill">Churn Reduction</span>
             </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Dictates Systems Architecture</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <!-- QUADRANT 02 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 02 • Scale &amp; Governance</span>
             </div>
             <h3 class="card-heading">2. Systems-First Scalability</h3>
             <p class="card-desc">
-              Moving organizations away from repetitive pixel pushing to tokenized design systems. Establishing multi-brand UI governance, WCAG 2.1 AA accessibility compliance, and code-aligned component libraries.
+              Eliminating redundant component rebuilds through automated token pipelines. Enforcing multi-brand UI governance, WCAG 2.1 AA accessibility compliance, and code-aligned component libraries.
             </p>
-            <div style="margin-top: auto; padding-top: 0.8rem;">
+            <div style="margin: 0.6rem 0;">
               <span class="tag-pill tag-gold">Design Tokens</span>
               <span class="tag-pill">WCAG 2.1 AA</span>
               <span class="tag-pill">Single Source of Truth</span>
             </div>
-          </div>
-
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            </div>
-            <h3 class="card-heading">3. Engineering Synergy</h3>
-            <p class="card-desc">
-              With an engineering background (B.E. Information Technology), I speak the language of software architects. I eliminate the "designer-developer divide" through shared design-to-code pipelines and proactive technical feasibility reviews.
-            </p>
-            <div style="margin-top: auto; padding-top: 0.8rem;">
-              <span class="tag-pill tag-gold">Zero-Drift Handoff</span>
-              <span class="tag-pill">Component Parity</span>
-              <span class="tag-pill">Feasibility Reviews</span>
+            <div class="flywheel-flow-badge">
+              <span>➔ Unlocks Engineering Velocity</span>
             </div>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <!-- QUADRANT 04 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 04 • People &amp; Culture</span>
             </div>
             <h3 class="card-heading">4. High-Empathy Talent Cultivation</h3>
             <p class="card-desc">
               Empowering designers through psychological safety, constructive critiques, and explicit career progression pathways (from Associate to Principal). Fostering an inclusive, high-retention environment.
             </p>
-            <div style="margin-top: auto; padding-top: 0.8rem;">
+            <div style="margin: 0.6rem 0;">
               <span class="tag-pill tag-gold">Career Frameworks</span>
               <span class="tag-pill">Psychological Safety</span>
               <span class="tag-pill">DesignOps Mentorship</span>
+            </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Compounds Business Strategy</span>
+            </div>
+          </div>
+
+          <!-- QUADRANT 03 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 03 • Engineering Synergy</span>
+            </div>
+            <h3 class="card-heading">3. Engineering Synergy &amp; Code Parity</h3>
+            <p class="card-desc">
+              With an engineering background (B.E. Information Technology), I speak the language of software architects. I eliminate the "designer-developer divide" through shared design-to-code pipelines and proactive technical feasibility reviews.
+            </p>
+            <div style="margin: 0.6rem 0;">
+              <span class="tag-pill tag-gold">Zero-Drift Handoff</span>
+              <span class="tag-pill">Component Parity</span>
+              <span class="tag-pill">Feasibility Reviews</span>
+            </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Empowers Autonomous Talent</span>
             </div>
           </div>
         </div>
@@ -1249,50 +1861,54 @@
           <div class="slide-divider"></div>
         </div>
 
-        <div class="grid-3">
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="org-topology-grid">
+          <!-- LEFT: CENTRAL DESIGNOPS HUB -->
+          <div class="org-hub-card">
+            <div class="org-hub-badge">
+              <span class="kicker-dot" style="background: var(--gold);"></span> Central Core Hub
             </div>
-            <h3 class="card-heading">Central Core: DesignOps</h3>
-            <p class="card-desc">
-              A dedicated central hub that maintains global design tokens, foundational component libraries, accessibility compliance, and design-to-code automation.
+            <h3 class="org-hub-title">DesignOps &amp; Systems Governance</h3>
+            <p style="font-size: 11.5px; color: var(--stone-300); line-height: 1.5; margin-bottom: 0.75rem;">
+              Dedicated organizational core establishing scalable design standards, accessibility compliance, and design-to-code pipelines across all enterprise software suites.
             </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span>Tokens &amp; Component Governance</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Design-to-Code Pipeline Tools</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>WCAG Accessibility Standards</span></li>
+            <ul class="bullet-list" style="font-size: 11.5px; color: var(--stone-300);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Figma Token Studio &amp; Semantic Variables</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Automated Style-Dictionary CI/CD Engine</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>WCAG 2.1 AAA Accessibility &amp; Usability Lab</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Storybook Parity &amp; Zero Visual Drift</span></li>
             </ul>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="card-heading">Embedded Product Squads</h3>
-            <p class="card-desc">
-              Product designers embedded directly within cross-functional engineering pods, participating in daily standups, sprint planning, and discovery rituals.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span>Product Management Partnership</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Sprint Planning &amp; Story Pointing</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Continuous Usability Benchmarks</span></li>
-            </ul>
+          <!-- CONNECTOR ARROW -->
+          <div class="org-bus-connector">
+            <span>⟷</span>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <!-- RIGHT: 3 EMBEDDED PRODUCT SQUADS -->
+          <div class="org-squads-col">
+            <div class="org-squad-item">
+              <div class="squad-info">
+                <h4>Squad A: Enterprise AI &amp; Systems Modeling</h4>
+                <p>Embedded with Watson AI architects &amp; aerospace systems engineering leads at IBM.</p>
+              </div>
+              <div class="squad-scale-pill">4 Designers • 18 Eng</div>
             </div>
-            <h3 class="card-heading">Rituals &amp; Delivery Cadence</h3>
-            <p class="card-desc">
-              Establishing repeatable cadences that maintain product quality without creating bureaucratic bottlenecks across agile delivery sprints.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span>Bi-weekly Peer Design Critiques</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Sprint Zero Discovery Workshops</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Quarterly Design Maturity Reviews</span></li>
-            </ul>
+
+            <div class="org-squad-item">
+              <div class="squad-info">
+                <h4>Squad B: Industrial B2B &amp; Rugged Ecosystem</h4>
+                <p>Embedded with Android Kotlin &amp; hardware firmware engineering teams at Zebra.</p>
+              </div>
+              <div class="squad-scale-pill">5 Designers • 22 Eng</div>
+            </div>
+
+            <div class="org-squad-item">
+              <div class="squad-info">
+                <h4>Squad C: Commercial Telematics &amp; Safety IoT</h4>
+                <p>Embedded with cloud telemetry &amp; vehicle HMI engineers at ZF Wabco.</p>
+              </div>
+              <div class="squad-scale-pill">3 Designers • 14 Eng</div>
+            </div>
           </div>
         </div>
 
@@ -1342,31 +1958,68 @@
           <div class="company-dates">Sep 2024 – Jan 2026 • Enterprise Systems Portfolio</div>
         </div>
 
-        <div class="grid-2">
-          <div class="keynote-card">
-            <h3 class="card-heading" style="color: #b45309;">The Business &amp; UX Challenge</h3>
-            <p class="card-desc">
-              Global systems engineering teams managing mission-critical software/hardware architectures faced high cognitive overload in legacy modeling suites. Simultaneously, enterprise IT administrators struggled with complex manual endpoint compliance rules in MaaS360 across hundreds of thousands of corporate devices.
-            </p>
+        <div class="case-flow-container">
+          <!-- LEFT: OPERATIONAL FRICTION -->
+          <div class="case-box-friction">
+            <div class="case-flow-kicker" style="color: #B45309;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Operational Friction
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: #B45309; margin-bottom: 0.45rem;">
+              Cognitive Fatigue &amp; Policy Fragmentation
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Legacy Modeling Overload:</strong> Aerospace &amp; automotive systems engineers faced severe cognitive fatigue navigating dense legacy UML/SysML modeling suites in Rhapsody SE.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Fragmented Endpoint Triage:</strong> IT administrators faced constant alert fatigue manually auditing policy compliance across hundreds of thousands of corporate devices in MaaS360.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">High Support Escalations</span>
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Cognitive Overload</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <h3 class="card-heading" style="color: var(--navy-dark);">The Strategic Intervention</h3>
-            <p class="card-desc">
-              Orchestrated an organizational re-org, moving 12 designers from product silos into a unified UX-as-a-Service model. Designed AI-powered conversational and contextual UI patterns leveraging IBM Watson to automate enterprise modeling validations and predictive endpoint threat mitigation.
-            </p>
+          <!-- CONNECTOR ARROW -->
+          <div class="case-flow-connector">
+            <div class="case-connector-circle">➔</div>
+          </div>
+
+          <!-- RIGHT: STRATEGIC INTERVENTION -->
+          <div class="case-box-solution">
+            <div class="case-flow-kicker" style="color: var(--navy-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Strategic Systems Intervention
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.45rem;">
+              UX-as-a-Service Pods &amp; Contextual Watson AI
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>UXaaS Pod Organization:</strong> Re-architected 12 designers from isolated product silos into a unified UX-as-a-Service model, establishing shared design sprint cadences and component governance.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Watson AI Interaction Patterns:</strong> Designed conversational copilots and contextual AI recommendations that proactively suggest policy fixes and automate model validations.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill tag-gold">UX-as-a-Service</span>
+              <span class="tag-pill tag-gold">IBM Watson AI</span>
+              <span class="tag-pill">Predictive Workflows</span>
+            </div>
           </div>
         </div>
 
-        <div class="impact-panel">
-          <div class="impact-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <!-- BOTTOM: EXECUTIVE IMPACT KPI GRID -->
+        <div class="case-kpi-grid">
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">35%</div>
+            <div class="case-kpi-label">Model Verification Velocity</div>
+            <p class="case-kpi-desc">Reduction in model verification cycle time for global aerospace &amp; automotive engineering clients.</p>
           </div>
-          <div class="impact-content">
-            <strong>Measurable Business &amp; User Impact:</strong><br>
-            • Achieved a <strong>35% reduction in model verification time</strong> for enterprise aerospace and automotive engineering clients.<br>
-            • Transitioned MaaS360 from passive alert dashboards to <strong>proactive, AI-driven policy recommendations</strong>, cutting administrator triage time by <strong>45%</strong>.<br>
-            • Unified cross-product design execution across global teams in the US, Europe, and India.
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">45%</div>
+            <div class="case-kpi-label">Admin Triage Reduction</div>
+            <p class="case-kpi-desc">Cut IT administrator triage time by replacing reactive alert dashboards with proactive AI policy mitigations.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">12+</div>
+            <div class="case-kpi-label">Global Designers Unified</div>
+            <p class="case-kpi-desc">Standardized cross-product design execution and component reuse across squads in the US, Europe, and India.</p>
           </div>
         </div>
 
@@ -1397,31 +2050,68 @@
           <div class="company-dates">Jul 2021 – Aug 2024 • Global B2B Hardware &amp; Software</div>
         </div>
 
-        <div class="grid-2">
-          <div class="keynote-card">
-            <h3 class="card-heading" style="color: #b45309;">The Environmental &amp; Cognitive Challenge</h3>
-            <p class="card-desc">
-              Warehouse operators, retail associates, and logistics drivers operate in extreme ambient conditions: bright direct sunlight, low-light freezer rooms, high ambient noise, and one-handed gloved touch. Existing applications suffered from visual inconsistency and high operational error rates.
-            </p>
+        <div class="case-flow-container">
+          <!-- LEFT: OPERATIONAL FRICTION -->
+          <div class="case-box-friction">
+            <div class="case-flow-kicker" style="color: #B45309;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Operational Friction
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: #B45309; margin-bottom: 0.45rem;">
+              Extreme Ambient &amp; Harsh Physical Constraints
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Hostile Environmental Factors:</strong> Warehouse operators and drivers operate in direct sunlight glare, dark cold storage (-20°C), loud ambient noise, and heavy gloved one-hand touch.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Fragmented Device UX:</strong> Disconnected design execution across legacy rugged Android devices and web portals caused high cognitive fatigue and scanning error rates.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Gloved Touch Bottlenecks</span>
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">High Scan Errors</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <h3 class="card-heading" style="color: var(--navy-dark);">The Systems Solution</h3>
-            <p class="card-desc">
-              Led a multi-disciplinary UI/UX team as primary Hiring Manager. Standardized high-contrast, glanceable UI patterns, touch targets calibrated for heavy industrial gloves, and a unified design system deployed across Android rugged devices and enterprise cloud portals.
-            </p>
+          <!-- CONNECTOR ARROW -->
+          <div class="case-flow-connector">
+            <div class="case-connector-circle">➔</div>
+          </div>
+
+          <!-- RIGHT: STRATEGIC INTERVENTION -->
+          <div class="case-box-solution">
+            <div class="case-flow-kicker" style="color: var(--navy-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Strategic Systems Intervention
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.45rem;">
+              Glanceable Patterns &amp; Multi-Platform Governance
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Industrial-Grade Design System:</strong> Standardized high-contrast glanceable color tokens, touch targets calibrated for heavy gloves, and multi-modal audio/haptic feedback.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Shared Token Architecture:</strong> Deployed unified design tokens directly bridging Figma variants to Android Kotlin/Jetpack Compose and cloud web repositories.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill tag-gold">Android Compose</span>
+              <span class="tag-pill tag-gold">Glanceable HMI</span>
+              <span class="tag-pill">Haptic/Audio Feedback</span>
+            </div>
           </div>
         </div>
 
-        <div class="impact-panel">
-          <div class="impact-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2"/><path d="M18 9h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1 .45-1 1v3h12v-3c0-.55-.45-1-1-1h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+        <!-- BOTTOM: EXECUTIVE IMPACT KPI GRID -->
+        <div class="case-kpi-grid">
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">40%</div>
+            <div class="case-kpi-label">Handoff Acceleration</div>
+            <p class="case-kpi-desc">Accelerated sprint velocity and engineering handoff through shared Android Kotlin/Compose design tokens.</p>
           </div>
-          <div class="impact-content">
-            <strong>Key Business Outcomes:</strong><br>
-            • Accelerated engineering handoff by <strong>40%</strong> through shared Android Kotlin/Compose component tokens.<br>
-            • Reduced warehouse scanning errors and increased operator throughput by <strong>22% across tier-1 logistics hubs</strong>.<br>
-            • Established enterprise UI governance adopted across all subsequent Zebra software and mobile product suites.
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">22%</div>
+            <div class="case-kpi-label">Operator Throughput</div>
+            <p class="case-kpi-desc">Increased scanning throughput and slashed input error rates across Tier-1 retail &amp; logistics enterprise hubs.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">100%</div>
+            <div class="case-kpi-label">Enterprise Governance</div>
+            <p class="case-kpi-desc">Architected design system governance adopted across Zebra's hardware product lines and enterprise cloud software.</p>
           </div>
         </div>
 
@@ -1452,37 +2142,68 @@
           <div class="company-dates">Oct 2020 – Jul 2021 • Commercial Vehicle Telematics</div>
         </div>
 
-        <div class="grid-3">
-          <div class="keynote-card">
-            <h3 class="card-heading">Driver Safety (In-Cabin)</h3>
-            <p class="card-desc">
-              Engineered glanceable UI architecture strictly compliant with NHTSA &amp; ISO 15005 driver distraction standards, prioritizing critical brake and stability alerts without cognitive fatigue.
-            </p>
+        <div class="case-flow-container">
+          <!-- LEFT: OPERATIONAL FRICTION -->
+          <div class="case-box-friction">
+            <div class="case-flow-kicker" style="color: #B45309;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Operational Friction
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: #B45309; margin-bottom: 0.45rem;">
+              Driver Distraction Risks &amp; Highway Breakdown Latency
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Safety-Critical HMI Cognitive Load:</strong> In-cabin commercial truck interfaces risked severe driver distraction during high-speed freight transit if alerts were not strictly glanceable and ISO-compliant.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Unplanned Fleet Downtime:</strong> Fleet dispatchers lacked predictive insights into vehicle health, resulting in sudden roadside breakdowns costing millions in delays and towing.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Driver Distraction Hazard</span>
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Unplanned Fleet Downtime</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <h3 class="card-heading">Fleet Dispatcher Portal</h3>
-            <p class="card-desc">
-              Created dense, data-rich real-time telemetry maps and predictive maintenance dashboards enabling fleet operators to monitor thousands of vehicles simultaneously with zero lag.
-            </p>
+          <!-- CONNECTOR ARROW -->
+          <div class="case-flow-connector">
+            <div class="case-connector-circle">➔</div>
           </div>
 
-          <div class="keynote-card">
-            <h3 class="card-heading">Design System Scalability</h3>
-            <p class="card-desc">
-              Unified design tokens across in-vehicle Android head units and enterprise web consoles, establishing a single visual and interaction language for commercial automotive IoT.
-            </p>
+          <!-- RIGHT: STRATEGIC INTERVENTION -->
+          <div class="case-box-solution">
+            <div class="case-flow-kicker" style="color: var(--navy-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Strategic Systems Intervention
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.45rem;">
+              ISO 15005 Glanceable HMI &amp; Predictive Telematics Portal
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Zero-Distraction HMI Architecture:</strong> Engineered in-cabin driver displays strictly compliant with NHTSA &amp; ISO 15005 driver distraction standards, prioritizing critical brake &amp; ESC alerts.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>High-Density Telemetry Portal:</strong> Built real-time dispatch telemetry maps and predictive dashboards enabling fleet operators to monitor thousands of vehicles with zero latency.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill tag-gold">ISO 15005 Compliant</span>
+              <span class="tag-pill tag-gold">Real-Time IoT Maps</span>
+              <span class="tag-pill">Predictive Maintenance</span>
+            </div>
           </div>
         </div>
 
-        <div class="impact-panel">
-          <div class="impact-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <!-- BOTTOM: EXECUTIVE IMPACT KPI GRID -->
+        <div class="case-kpi-grid">
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">18%</div>
+            <div class="case-kpi-label">Braking Reaction Velocity</div>
+            <p class="case-kpi-desc">Reduced driver reaction latency to critical safety and brake warnings through glanceable HMI interaction design.</p>
           </div>
-          <div class="impact-content">
-            <strong>Impact on Safety &amp; Uptime:</strong><br>
-            • Delivered a human-centered telematics suite that reduced driver response latency to critical braking warnings by <strong>18%</strong>.<br>
-            • Enabled fleet managers to schedule predictive maintenance <strong>48 hours earlier</strong>, preventing costly highway breakdowns and saving millions in unplanned vehicle downtime.
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">48 hrs</div>
+            <div class="case-kpi-label">Predictive Fault Window</div>
+            <p class="case-kpi-desc">Enabled fleet managers to schedule predictive maintenance 48 hours earlier, preventing catastrophic highway failures.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">Zero</div>
+            <div class="case-kpi-label">HMI to Cloud Drift</div>
+            <p class="case-kpi-desc">Single unified design token pipeline established across in-vehicle Android automotive units and cloud dispatch web consoles.</p>
           </div>
         </div>
 
@@ -1505,50 +2226,85 @@
           <div class="slide-divider"></div>
         </div>
 
-        <div class="grid-3" style="margin-bottom: 1.5rem;">
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7l-6-6a1 1 0 0 0-1.4 0l-12 12a1 1 0 0 0 0 1.4l6 6a1 1 0 0 0 1.4 0l12-12a1 1 0 0 0 0-1.4zM7.5 13.5l1.5-1.5M10.5 16.5l1.5-1.5M13.5 19.5l1.5-1.5"/></svg>
+        <div class="token-pipeline-flow">
+          <!-- STAGE 01: DESIGN TOKENS -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 01</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7l-6-6a1 1 0 0 0-1.4 0l-12 12a1 1 0 0 0 0 1.4l6 6a1 1 0 0 0 1.4 0l12-12a1 1 0 0 0 0-1.4zM7.5 13.5l1.5-1.5M10.5 16.5l1.5-1.5M13.5 19.5l1.5-1.5"/></svg>
+              </div>
             </div>
-            <h3 class="card-heading">1. Global Design Tokens</h3>
-            <p class="card-desc">
-              Single source of truth for semantic color, typography scales, elevation, spacing tokens, and micro-interactions managed in Figma Token Studio.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span>Brand &amp; Alias Tokens</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Dark / Light / High-Contrast Modes</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Calibrated Spacing Grid (8pt)</span></li>
+            <h4 class="pipeline-card-title">Figma Token Studio</h4>
+            <div class="pipeline-card-sub">Design Token Authoring</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Semantic color &amp; typography scales</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Calibrated 8pt spacing &amp; elevation</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Multi-brand alias theme tokens</span></li>
             </ul>
+            <div class="pipeline-flow-arrow">
+              <span>➔ Git Webhook Push</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <!-- STAGE 02: AUTOMATED CI/CD -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 02</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
             </div>
-            <h3 class="card-heading">2. Automated CI/CD Export</h3>
-            <p class="card-desc">
-              Style-Dictionary build pipelines automatically compile JSON tokens into CSS variables, Sass maps, TypeScript constants, and Android XML/Compose values.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span>Git-triggered token build steps</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Automated visual regression tests</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Zero manual copy-pasting of hex codes</span></li>
+            <h4 class="pipeline-card-title">Style-Dictionary CI/CD</h4>
+            <div class="pipeline-card-sub">Automated Compilation</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>GitHub Actions automated trigger</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>JSON parsing &amp; contract checks</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Zero manual copy-pasting of hex</span></li>
             </ul>
+            <div class="pipeline-flow-arrow">
+              <span>➔ Multi-Platform Build</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <!-- STAGE 03: MULTI-PLATFORM ARTIFACTS -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 03</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
             </div>
-            <h3 class="card-heading">3. Storybook Parity</h3>
-            <p class="card-desc">
-              Reusable, accessibility-tested components in React/Angular mirroring Figma variants 1:1, cutting QA visual regression review time in half.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span>Automated axe-core a11y testing</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Component props mapped to Figma</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span>Zeroheight documentation sync</span></li>
+            <h4 class="pipeline-card-title">Multi-Platform Repos</h4>
+            <div class="pipeline-card-sub">Native Code Artifacts</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Web: CSS Variables &amp; SCSS Maps</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Frontend: React &amp; Angular TS packages</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Mobile: Android Kotlin / Compose</span></li>
             </ul>
+            <div class="pipeline-flow-arrow">
+              <span>➔ Continuous Verification</span>
+            </div>
+          </div>
+
+          <!-- STAGE 04: STORYBOOK & A11Y PARITY -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 04</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+            </div>
+            <h4 class="pipeline-card-title">Storybook &amp; WCAG AA</h4>
+            <div class="pipeline-card-sub">Zero Visual Drift</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Automated axe-core a11y scanner</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>1:1 component props mirror Figma</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Zeroheight live documentation sync</span></li>
+            </ul>
+            <div class="pipeline-flow-arrow" style="color: #16A34A;">
+              <span>✓ Production Ready</span>
+            </div>
           </div>
         </div>
 
@@ -1593,35 +2349,90 @@
           <div class="slide-divider"></div>
         </div>
 
-        <div class="grid-2">
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-5.04zM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-5.04z"/></svg>
+        <div class="ai-dual-engine-grid">
+          <!-- ENGINE 01: DESIGNOPS TEAM MULTIPLIER -->
+          <div class="ai-engine-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.55rem;">
+              <span class="pipeline-badge">Engine 01 • Internal Acceleration</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
             </div>
-            <h3 class="card-heading">AI for DesignOps (Team Acceleration)</h3>
-            <p class="card-desc" style="margin-bottom: 0.8rem;">
-              Scaling design team throughput and eliminating repetitive operational overhead through generative intelligence.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Research Synthesis:</strong> Leveraging LLMs to synthesize thousands of customer support transcripts and usability interviews into actionable thematic insights.</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Automated Heuristic Audits:</strong> Implementing automated visual and accessibility contrast scanners in CI pipelines.</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Rapid Prototyping:</strong> Utilizing agentic scaffolding tools to turn Figma design tokens into live functional code prototypes in minutes.</span></li>
-            </ul>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.15rem;">
+              AI for DesignOps (Team Multiplier)
+            </h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: var(--stone-500); margin-bottom: 0.75rem;">
+              Scaling sprint throughput &amp; eliminating repetitive operational friction
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon">01</div>
+              <div class="ai-feature-text">
+                <h5>LLM User Research Synthesis</h5>
+                <p>Synthesizing thousands of customer support transcripts and usability session recordings into prioritized thematic clusters and executive opportunity maps.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon">02</div>
+              <div class="ai-feature-text">
+                <h5>Automated Heuristic &amp; A11y Gates</h5>
+                <p>Running automated axe-core accessibility contrast scanners and Figma token conformance audits directly within GitHub Actions pull requests.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon">03</div>
+              <div class="ai-feature-text">
+                <h5>Agentic Prototype Scaffolding</h5>
+                <p>Utilizing agentic code generation to convert Figma component token specs into interactive React / Storybook test harnesses in minutes.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <!-- CONNECTOR / EVALUATION LOOP -->
+          <div class="ai-bridge-column">
+            <div class="ai-bridge-pill">Evaluation &amp; Feedback Loop</div>
+          </div>
+
+          <!-- ENGINE 02: PRODUCT AI-UX ARCHITECTURE -->
+          <div class="ai-engine-card engine-accent">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.55rem;">
+              <span class="pipeline-badge" style="background: rgba(200, 168, 74, 0.15); color: #B45309; border-color: rgba(200, 168, 74, 0.35);">Engine 02 • Enterprise UX</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
             </div>
-            <h3 class="card-heading">UX for AI Products (User Trust &amp; Agency)</h3>
-            <p class="card-desc" style="margin-bottom: 0.8rem;">
-              Designing human-centered interfaces for non-deterministic AI outputs and complex multi-agent workflows.
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Explainability &amp; Confidence:</strong> Designing user-facing confidence scoring, transparent citation links, and progressive disclosure for AI recommendations.</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Graceful Degradation:</strong> Ensuring non-blocking fallbacks when AI inferences take longer than expected, maintaining seamless workflow continuity.</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Human-in-the-Loop Controls:</strong> Providing clear undo/override affordances so enterprise operators always retain authoritative operational control.</span></li>
-            </ul>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.15rem;">
+              UX for AI Systems (Human Agency)
+            </h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: var(--stone-500); margin-bottom: 0.75rem;">
+              Designing human-in-the-loop interfaces for non-deterministic AI workflows
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon" style="background: rgba(13, 27, 46, 0.08); color: var(--navy-dark);">01</div>
+              <div class="ai-feature-text">
+                <h5>Explainability &amp; Confidence Scoring</h5>
+                <p>Designing user-facing confidence ratings, transparent inline citations, and progressive reasoning disclosure to build operator trust in enterprise AI.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon" style="background: rgba(13, 27, 46, 0.08); color: var(--navy-dark);">02</div>
+              <div class="ai-feature-text">
+                <h5>Graceful Degradation &amp; Streaming UI</h5>
+                <p>Ensuring non-blocking progressive skeleton loaders and instant fallbacks when inference models experience elevated network or processing latency.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon" style="background: rgba(13, 27, 46, 0.08); color: var(--navy-dark);">03</div>
+              <div class="ai-feature-text">
+                <h5>Authoritative Human-in-the-Loop Controls</h5>
+                <p>Providing explicit one-click undo affordances, manual parameter override sliders, and audit logging so enterprise operators maintain absolute decision authority.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1658,50 +2469,98 @@
           <div class="slide-divider"></div>
         </div>
 
-        <div class="grid-3">
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="talent-layout-grid">
+          <!-- LEFT: 4-TIER CAREER LADDER MATRIX -->
+          <div class="ladder-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span class="pipeline-badge">Organizational Framework</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--stone-500);">Transparent Progression</span>
             </div>
-            <h3 class="card-heading">Strategic Hiring &amp; Scaling</h3>
-            <p class="card-desc">
-              Scaled design squads from 3 to 12+ product designers, UX researchers, and design technologists. Conducted competency-based portfolio reviews and whiteboard exercises that assess craft, systems thinking, and business communication.
-            </p>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.15rem;">
+              Structured 4-Tier Career Progression Ladder
+            </h4>
+            <div style="font-size: 10.5px; color: var(--stone-500); margin-bottom: 0.4rem;">
+              Explicit evaluation across Craft, Strategy, Systems Thinking &amp; Organizational Leadership
+            </div>
+
+            <div class="ladder-step active-exec">
+              <div class="ladder-step-info">
+                <h5>Tier 04 • Principal / Staff Designer</h5>
+                <p>Enterprise Portfolio Strategy, Systems-to-Code Governance &amp; Executive Board Alignment.</p>
+              </div>
+              <span class="ladder-badge">Staff / Principal</span>
+            </div>
+
+            <div class="ladder-step">
+              <div class="ladder-step-info">
+                <h5>Tier 03 • Lead / Senior Product Designer</h5>
+                <p>Autonomous Squad Leadership, Complex Problem Framing &amp; Cross-Functional Mentorship.</p>
+              </div>
+              <span class="ladder-badge">Senior / Lead</span>
+            </div>
+
+            <div class="ladder-step">
+              <div class="ladder-step-info">
+                <h5>Tier 02 • Mid-Level Product Designer</h5>
+                <p>End-to-End Feature UX, Usability Validation &amp; Tokenized Design System Contributions.</p>
+              </div>
+              <span class="ladder-badge">Mid-Level</span>
+            </div>
+
+            <div class="ladder-step">
+              <div class="ladder-step-info">
+                <h5>Tier 01 • Associate Designer</h5>
+                <p>UI/UX Craft Fundamentals, Component Token Adherence &amp; Active Critique Participation.</p>
+              </div>
+              <span class="ladder-badge">Associate</span>
+            </div>
           </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <!-- RIGHT: CULTURE & GLOBAL RECOGNITION -->
+          <div class="leadership-side-col">
+            <div class="side-honor-card">
+              <div class="case-flow-kicker" style="color: var(--navy-dark); margin-bottom: 0.25rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Culture &amp; Psychological Safety
+              </div>
+              <p style="font-size: 11px; color: var(--stone-600); line-height: 1.35; margin-bottom: 0.4rem;">
+                Cultivating safe-to-fail experimentation, weekly cross-product design jams, constructive critiques, and proactive 1-on-1 coaching that eliminates burnout and drives team retention.
+              </p>
+              <span class="tag-pill tag-gold">Weekly Design Jams</span>
+              <span class="tag-pill">Psychological Safety</span>
             </div>
-            <h3 class="card-heading">Career Leveling Framework</h3>
-            <p class="card-desc">
-              Instituted transparent career matrices outlining expectations across Craft, Strategy, Execution, and Leadership from Associate Designer to Staff/Principal, eliminating ambiguity in promotion cycles.
-            </p>
-          </div>
 
-          <div class="keynote-card">
-            <div class="card-icon-box">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <div class="side-honor-card">
+              <div class="case-flow-kicker" style="color: #B45309; margin-bottom: 0.25rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Global Innovation Honors
+              </div>
+              <ul class="bullet-list" style="font-size: 10.5px; color: var(--stone-600);">
+                <li><span class="diamond-bullet">&#9670;</span><span><strong>Samsung:</strong> 10-Year US Business Visa for global healthcare UX research.</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span><strong>Ericsson:</strong> Spot Award for UX innovation &amp; 1st Place in Global Hack-fest.</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span><strong>Industry:</strong> 1st Place in MockingBOT &amp; UP Labs global design challenges.</span></li>
+              </ul>
             </div>
-            <h3 class="card-heading">Award-Winning Innovation</h3>
-            <p class="card-desc">
-              Fostering a culture of excellence recognized across global organizations:
-            </p>
-            <ul class="bullet-list">
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Samsung:</strong> 10-Year US Business Visa for global healthcare UX research.</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Ericsson:</strong> Spot Award for UX innovation &amp; 1st Place in Global Hack-fest.</span></li>
-              <li><span class="diamond-bullet">&#9670;</span><span><strong>Contests:</strong> 1st Place in MockingBOT &amp; UP Labs challenges.</span></li>
-            </ul>
           </div>
         </div>
 
-        <div class="impact-panel">
-          <div class="impact-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20v-8M12 12c0-4 4-8 8-8-1 4-4 7-8 8zm0 0c0-4-4-8-8-8 1 4 4 7 8 8z"/></svg>
+        <!-- BOTTOM: LEADERSHIP QUANTITATIVE SCORECARD -->
+        <div class="leadership-kpi-strip">
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">50+</div>
+            <div class="leadership-kpi-label">Designers &amp; Eng Mentored</div>
           </div>
-          <div class="impact-content">
-            <strong>Retention &amp; Growth Track Record:</strong><br>
-            Over 18+ years, I have directly mentored <strong>50+ designers and engineers</strong> who have grown into Lead Designers, Product Managers, and Design Founders across the Indian and global technology ecosystem.
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">3 ➔ 12+</div>
+            <div class="leadership-kpi-label">Squad Scaling Capacity</div>
+          </div>
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">0%</div>
+            <div class="leadership-kpi-label">Regretted Attrition</div>
+          </div>
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">18+ Yrs</div>
+            <div class="leadership-kpi-label">Enterprise Leadership Track</div>
           </div>
         </div>
 
