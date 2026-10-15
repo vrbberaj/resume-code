@@ -23,7 +23,7 @@
 
 ---
 
-## 2. Chennai Institutions (5 Applications)
+## 2. Chennai Institutions (8 Applications)
 
 | # | Institution | Department / School | Target Recipient(s) | Date Applied | Channel | Next Follow-up | Current Status |
 |---|---|---|---|---|---|---|---|
@@ -32,6 +32,9 @@
 | 14 | **DOT School of Design** | Design & Interactive Media | `career@dotsod.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 | 15 | **Hindustan Institute (HITS)** | SPADE (B.Des in UX Design) | `career@hindustanuniv.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 | 16 | **Crescent Institute (BSAU)** | Crescent School of Architecture & Design | `dean.csa@crescent.education` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 17 | **Shiv Nadar University Chennai** | School of Engineering (CSE / HCI) | `recruitments@snuchennai.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 18 | **Sai University (SaiU)** | School of Computing and Data Science | `faculty.careers@saiuniversity.edu.in`<br>`careers@saiuniversity.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 19 | **Sathyabama Institute** | School of Computing | `dean.computing@sathyabama.ac.in`<br>`registrar@sathyabama.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 
 ---
 
@@ -39,8 +42,8 @@
 
 | # | Institution | Department / School | Target Recipient(s) | Date Applied | Channel | Next Follow-up | Current Status |
 |---|---|---|---|---|---|---|---|
-| 17 | **IIT Hyderabad** | Department of Design (DoD) | `shivaji@des.iith.ac.in`<br>`faculty.recruitment@iith.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
-| 18 | **Woxsen University** | School of Arts & Design | `dean.sd@woxsen.edu.in`<br>`hr@woxsen.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 20 | **IIT Hyderabad** | Department of Design (DoD) | `shivaji@des.iith.ac.in`<br>`faculty.recruitment@iith.ac.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
+| 21 | **Woxsen University** | School of Arts & Design | `dean.sd@woxsen.edu.in`<br>`hr@woxsen.edu.in` | Oct 15, 2026 | Direct Email | Oct 22, 2026 | Submitted |
 
 ---
 
