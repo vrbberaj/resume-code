@@ -217,6 +217,72 @@
       position: relative;
     }
 
+    .slide-cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cover-header-left {
+      flex: 1;
+      max-width: 760px;
+    }
+
+    .presenter-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(19, 36, 60, 0.85);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 0.75rem 1.15rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+    }
+
+    .presenter-photo {
+      width: 54px;
+      height: 54px;
+      border-radius: 11px;
+      border: 1.8px solid var(--gold);
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(200, 168, 74, 0.2);
+    }
+
+    .presenter-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .presenter-name {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .presenter-role {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--stone-300);
+      margin-top: 2px;
+    }
+
+    .presenter-pedigree {
+      font-size: 9.5px;
+      color: var(--stone-400);
+      margin-top: 3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     .slide-kicker {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10.5px;
@@ -969,16 +1035,27 @@
 
       <!-- SLIDE 1: Cover / Executive Pedigree (Navy Signature) -->
       <section class="slide slide-theme-navy active" id="slide-1">
-        <div class="slide-header">
-          <div class="slide-kicker">
-            <span class="kicker-dot"></span> Executive Keynote Presentation • 2026
+        <div class="slide-cover-header">
+          <div class="cover-header-left">
+            <div class="slide-kicker">
+              <span class="kicker-dot"></span> Executive Leadership Portfolio • 2026
+            </div>
+            <h1 class="slide-title">Design Leadership at Scale</h1>
+            <p class="slide-subtitle">
+              Architecting Enterprise UX, Production Design Systems, and High-Velocity Engineering Collaboration across Global Fortune 500 Technology Organizations.
+            </p>
           </div>
-          <h1 class="slide-title">Design Leadership at Scale</h1>
-          <p class="slide-subtitle">
-            Architecting Enterprise UX, Production Design Systems, and High-Velocity Engineering Collaboration across Global Fortune 500 Technology Organizations.
-          </p>
-          <div class="slide-divider"></div>
+          <div class="presenter-card">
+            <img src="/profile.jpg" alt="Balaajee V.R." class="presenter-photo">
+            <div class="presenter-details">
+              <div class="presenter-byline">Presenter</div>
+              <div class="presenter-name">Balaajee V.R.</div>
+              <div class="presenter-role">UI/UX Design Senior Manager</div>
+              <div class="presenter-pedigree">Ex-IBM • Zebra • ZF Wabco • Ericsson</div>
+            </div>
+          </div>
         </div>
+        <div class="slide-divider" style="margin-top: 0.6rem; margin-bottom: 1.4rem;"></div>
 
         <div class="metric-strip">
           <div class="metric-item">
