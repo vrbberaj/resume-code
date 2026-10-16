@@ -60,3 +60,32 @@
    - For applications without a response after 7 business days, reply directly on the sent thread with a brief 2-sentence executive follow-up note.
 3. **LinkedIn Touchpoints**:
    - Send connection requests to key deans and department heads with a polite, non-intrusive reference to the submitted email.
+
+---
+
+## 5. Design Portfolio Upgrade & Optimization Tasks (Behance: https://www.behance.net/balaajeeVR)
+
+### High Priority — Quick Action Items
+
+- [ ] **1. Rename Generic Project Titles to Authoritative Domain Titles**
+  - [ ] Rename *"An Enterprise Project"* ➔ `Zebra Technologies: Multi-Site Enterprise IoT & Scanner Telematics`
+  - [ ] Rename *"Networks design project"* ➔ `High-Density Network Topology & Infrastructure Observability Platform`
+  - [ ] Rename *"Mobile Projects"* ➔ `B2B Industrial Handheld & Mobile Workforce Applications`
+  - [ ] Rename *"Web Projects"* ➔ `Enterprise Cloud & Multi-Tenant Administrative Consoles`
+  - [ ] Rename *"Gaming Projects"* ➔ `Interactive Systems & Gamified Simulation Architecture`
+
+- [ ] **2. Inject Strategic CAR Narrative (3-Paragraph Structure per Project)**
+  - [ ] **Challenge:** Define the core business friction, legacy limitations, and engineering constraints.
+  - [ ] **Action / Leadership:** Detail UX strategy, research methodologies, squad orchestration, and technical trade-offs.
+  - [ ] **Result / Impact:** Highlight measurable outcomes (e.g. task efficiency gains, error reduction, deployment speed).
+
+- [ ] **3. Publish Flagship Case Study for IBM Watson / AI-UX**
+  - [ ] Prepare an anonymized, IP-safe case study covering Enterprise Agentic AI UX, Watson Orchestrate, and Design Token Governance.
+  - [ ] Include diagrams illustrating human-in-the-loop workflows, prompt-to-action interactions, and DesignOps pipelines.
+
+- [ ] **4. Upgrade Profile Bio, Tagline & Strategic Cross-Linking**
+  - [ ] Update Behance tagline from *"UX Design Executive in Chennai, India"* to:
+    `Senior UX Design Manager | Ex-IBM, Zebra & ZF Wabco | Enterprise AI & Complex Systems`
+  - [ ] Add direct link to `Balaajee_VR_Leadership_Deck.pdf` (Google Drive) in the Behance bio and at the end of each major case study:
+    > *"For complete strategic case studies and team leadership governance, view my [Executive Leadership Deck]."*
+
