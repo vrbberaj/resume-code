@@ -7,7 +7,8 @@ const server = http.createServer((req, res) => {
   let targetFile = decodedUrl === '/' ? 'index.html' : decodedUrl;
 
   // Clean Route Mappings
-  if (decodedUrl === '/leadership' || decodedUrl === '/leadership-deck') targetFile = 'leadership.html';
+  if (decodedUrl === '/work' || decodedUrl === '/portfolio' || decodedUrl === '/selected-work') targetFile = 'work.html';
+  else if (decodedUrl === '/leadership' || decodedUrl === '/leadership-deck') targetFile = 'leadership.html';
   else if (decodedUrl === '/cv' || decodedUrl === '/resume') targetFile = 'cv.html';
   else if (decodedUrl === '/case-ericsson') targetFile = 'case-ericsson.html';
   else if (decodedUrl === '/case-ibm-watson') targetFile = 'case-ibm-watson.html';
