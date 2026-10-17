@@ -1620,6 +1620,181 @@
       border-color: var(--border-medium);
     }
 
+    /* Executive Video Walkthrough Banner */
+    .case-video-walkthrough {
+      background: #0B0E17;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      color: #FFFFFF;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 860px) {
+      .case-video-walkthrough {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+    }
+
+    .walkthrough-label {
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .walkthrough-heading {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
+
+    .walkthrough-desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #CBD5E1;
+      margin-bottom: 16px;
+    }
+
+    .walkthrough-chapters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .chapter-tag {
+      font-family: var(--font-code);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94A3B8;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chapter-tag:hover {
+      background: rgba(240, 6, 88, 0.2);
+      color: #FFFFFF;
+      border-color: rgba(240, 6, 88, 0.5);
+    }
+
+    .btn-watch-walkthrough {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      border-radius: 100px;
+      background: var(--primary-accent);
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-watch-walkthrough:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .walkthrough-player-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .walkthrough-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: brightness(0.8);
+    }
+
+    /* Floating Smart Picture-in-Picture Mini-Player on Scroll */
+    .floating-pip-player {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 320px;
+      background: #0B0E17;
+      border: 1px solid rgba(240, 6, 88, 0.4);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      z-index: 9999;
+      display: none;
+      animation: pipSlideIn 0.3s ease;
+    }
+
+    @keyframes pipSlideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .pip-header {
+      padding: 8px 12px;
+      background: #111522;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .pip-close-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 16px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .pip-close-btn:hover { color: #FFFFFF; }
+
+    .pip-body {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .pip-body video, .pip-body img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     /* Force the single case card to be permanently visible */
     .case-card {
       display: block !important;
@@ -1697,6 +1872,32 @@
       <a href="/#cases" class="btn-back">
         &larr; Back to All Case Studies
       </a>
+    </div>
+
+    <!-- Executive Case Walkthrough Video Stage -->
+    <div class="case-video-walkthrough" id="caseWalkthroughStage">
+      <div>
+        <div class="walkthrough-label">EXECUTIVE CASE DEBRIEF &bull; 90 SECONDS</div>
+        <h2 class="walkthrough-heading">Watch Balaajee Present: IBM Watson Agentic AI</h2>
+        <p class="walkthrough-desc">
+          Explaining our governance framework for enterprise agentic AI, confidence thresholds, and side-by-side diff checks across 14 global product squads.
+        </p>
+        <div class="walkthrough-chapters">
+          <button type="button" class="chapter-tag" onclick="seekCaseVideo(0)">⏱️ 0:00 The Context &amp; Pain</button>
+          <button type="button" class="chapter-tag" onclick="seekCaseVideo(30)">⏱️ 0:30 UX Re-Architecture</button>
+          <button type="button" class="chapter-tag" onclick="seekCaseVideo(65)">⏱️ 1:05 Business ROI &amp; Metrics</button>
+        </div>
+        <button class="btn-watch-walkthrough" onclick="toggleCaseVideoPlay()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Watch Video Walkthrough (90s)
+        </button>
+      </div>
+
+      <div class="walkthrough-player-box" onclick="toggleCaseVideoPlay()">
+        <video id="caseWalkthroughVideo" poster="profile.jpg" controls style="width: 100%; height: 100%; object-fit: cover;">
+          <source src="watson_walkthrough.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
 
     <!-- The Case Card Content -->
@@ -1953,6 +2154,23 @@
 
   </div>
 
+  <!-- Smart Sticky Picture-in-Picture Mini-Player on Scroll -->
+  <div class="floating-pip-player" id="floatingPipMiniPlayer">
+    <div class="pip-header">
+      <span>🎬 Speaking: IBM Watson Agentic AI</span>
+      <button onclick="closeFloatingPip()" class="pip-close-btn" title="Dismiss">&times;</button>
+    </div>
+    <div class="pip-body" onclick="scrollToVideoStage()" title="Click to scroll to main video debrief" style="cursor: pointer;">
+      <img src="profile.jpg" alt="Balaajee V.R." style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 10px;">
+        <span style="font-family: var(--font-heading); font-size: 11px; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; gap: 6px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          IBM Watson Agentic AI &bull; 90s Walkthrough
+        </span>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Sub-Tab Switcher inside Case Study
     function switchCaseTab(caseId, tabName, btn) {
@@ -1968,6 +2186,54 @@
         activePanel.classList.add('active');
       }
     }
+
+    function toggleCaseVideoPlay() {
+      const video = document.getElementById('caseWalkthroughVideo');
+      if (video) {
+        if (video.paused) {
+          video.play().catch(e => alert('Video placeholder ready! Drop your recorded video into this folder or link your Loom walkthrough.'));
+        } else {
+          video.pause();
+        }
+      }
+    }
+
+    function seekCaseVideo(seconds) {
+      const video = document.getElementById('caseWalkthroughVideo');
+      if (video) {
+        video.currentTime = seconds;
+        video.play().catch(e => {
+          alert('Chapter seek ready! Once you drop your recorded walkthrough video into this folder, clicking chapters will jump to exactly ' + seconds + 's.');
+        });
+      }
+    }
+
+    function scrollToVideoStage() {
+      const stage = document.getElementById('caseWalkthroughStage');
+      if (stage) stage.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closeFloatingPip() {
+      document.getElementById('floatingPipMiniPlayer').style.display = 'none';
+      pipDismissed = true;
+    }
+
+    let pipDismissed = false;
+
+    // Smart Sticky PiP on scroll past the video section
+    window.addEventListener('scroll', () => {
+      if (pipDismissed) return;
+      const stage = document.getElementById('caseWalkthroughStage');
+      const pip = document.getElementById('floatingPipMiniPlayer');
+      if (!stage || !pip) return;
+
+      const rect = stage.getBoundingClientRect();
+      if (rect.bottom < 50) {
+        pip.style.display = 'block';
+      } else {
+        pip.style.display = 'none';
+      }
+    });
 
     function simulateExport() {
       alert('Generating Verified Proposal: Applying brand tokens, validating margin health, and bundling Bill of Materials.');

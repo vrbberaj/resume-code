@@ -1,9 +1,9 @@
 // build_clean_architecture.js
 // Completely separates the portfolio into clean, dedicated, intuitive pages:
-// 1. index.html           -> Clean Welcome / Overview Portal with 3 direct pathways and 5 project cards
+// 1. index.html           -> Clean Welcome / Overview Portal with Cinematic Executive Video Player & 3 Pathways
 // 2. leadership.html       -> Single-page vertically scrollable Leadership Deck (NO horizontal pagination)
 // 3. cv.html               -> Full-page Executive CV with prominent Download PDF button
-// 4. case-ericsson.html    -> Dedicated in-depth case study for Ericsson SalesOps CPQ (Excel to Cloud)
+// 4. case-ericsson.html    -> Dedicated in-depth case study for Ericsson SalesOps CPQ with Video Walkthrough & Sticky PiP
 // 5. case-ibm-watson.html  -> Dedicated in-depth case study for IBM Watson Agentic AI & AIOps
 // 6. case-zebra.html       -> Dedicated in-depth case study for Zebra Scanner IoT & Rugged UX
 // 7. case-ibm-carbon.html  -> Dedicated in-depth case study for IBM Carbon Token Engine & DesignOps
@@ -13,7 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('Beginning compilation of clean, intuitive multi-page architecture...');
+console.log('Beginning compilation of clean, intuitive multi-page architecture with video stage...');
 
 // Common CSS & Font Links
 const commonHeadLinks = `
@@ -211,9 +211,9 @@ const globalCoreStyles = `
 `;
 
 // ============================================================================
-// 1. GENERATE index.html (WELCOME & OVERVIEW PORTAL)
+// 1. GENERATE index.html (WELCOME & OVERVIEW PORTAL WITH VIDEO STAGE)
 // ============================================================================
-console.log('Generating index.html (Welcome & Overview Portal)...');
+console.log('Generating index.html (Welcome & Overview Portal with Executive Video Stage)...');
 
 const indexHtml = `<!DOCTYPE html>
 <html lang="en">
@@ -230,20 +230,35 @@ const indexHtml = `<!DOCTYPE html>
     .welcome-hero {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 72px 0 60px;
+      padding: 60px 0 54px;
     }
 
     .hero-wrap {
-      max-width: 1140px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
+    }
+
+    .hero-two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero-two-col {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
     }
 
     .hero-badge-strip {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
     .status-badge {
@@ -270,13 +285,12 @@ const indexHtml = `<!DOCTYPE html>
 
     .hero-heading {
       font-family: var(--font-heading);
-      font-size: 46px;
+      font-size: 42px;
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.15;
       color: var(--text-main);
-      margin-bottom: 20px;
-      max-width: 860px;
+      margin-bottom: 18px;
     }
 
     .hero-heading span {
@@ -284,11 +298,10 @@ const indexHtml = `<!DOCTYPE html>
     }
 
     .hero-bio {
-      font-size: 18px;
-      line-height: 1.68;
+      font-size: 17px;
+      line-height: 1.65;
       color: var(--text-body);
-      max-width: 800px;
-      margin-bottom: 32px;
+      margin-bottom: 26px;
     }
 
     .hero-bio strong {
@@ -296,12 +309,187 @@ const indexHtml = `<!DOCTYPE html>
       font-weight: 600;
     }
 
+    .hero-cta-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn-hero-primary {
+      padding: 11px 22px;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      background: var(--text-main);
+      color: #FFFFFF;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-hero-primary:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .btn-hero-secondary {
+      padding: 11px 20px;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      color: var(--text-main);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      background: #FFFFFF;
+    }
+
+    /* Executive Video Stage Card */
+    .video-hero-card {
+      position: relative;
+      background: #0B0E17;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .video-hero-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 50px rgba(240, 6, 88, 0.2);
+      border-color: var(--primary-accent);
+    }
+
+    .video-poster-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9.8;
+      overflow: hidden;
+    }
+
+    .video-poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: brightness(0.85);
+      transition: transform 0.5s ease;
+    }
+
+    .video-hero-card:hover .video-poster-img {
+      transform: scale(1.03);
+    }
+
+    .video-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 14, 23, 0.2) 0%, rgba(11, 14, 23, 0.85) 100%);
+    }
+
+    .video-top-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 14, 23, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .video-duration-pill {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(240, 6, 88, 0.9);
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .video-play-btn-pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--primary-accent);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(240, 6, 88, 0.6);
+      transition: all 0.2s ease;
+      animation: playPulse 2s infinite;
+    }
+
+    @keyframes playPulse {
+      0% { box-shadow: 0 0 0 0 rgba(240, 6, 88, 0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(240, 6, 88, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(240, 6, 88, 0); }
+    }
+
+    .video-hero-card:hover .video-play-btn-pulse {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: #FFFFFF;
+      color: var(--primary-accent);
+    }
+
+    .video-bottom-caption {
+      position: absolute;
+      bottom: 16px;
+      left: 18px;
+      right: 18px;
+      color: #FFFFFF;
+    }
+
+    .video-bottom-caption h4 {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+
+    .video-bottom-caption p {
+      font-size: 12px;
+      color: #CBD5E1;
+      line-height: 1.4;
+    }
+
     /* 3 Primary Pathways */
+    .pathways-section {
+      padding: 36px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
     .pathways-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
-      margin-top: 36px;
     }
 
     @media (max-width: 860px) {
@@ -309,7 +497,7 @@ const indexHtml = `<!DOCTYPE html>
     }
 
     .pathway-card {
-      background: var(--bg-subtle);
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 24px;
@@ -325,27 +513,26 @@ const indexHtml = `<!DOCTYPE html>
       border-color: var(--primary-accent);
       transform: translateY(-3px);
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-      background: #FFFFFF;
     }
 
     .pathway-icon {
       font-size: 28px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .pathway-title {
       font-family: var(--font-heading);
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .pathway-desc {
       font-size: 13.5px;
       color: var(--text-muted);
       line-height: 1.55;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       flex: 1;
     }
 
@@ -361,12 +548,13 @@ const indexHtml = `<!DOCTYPE html>
     /* Stats Strip */
     .stats-section {
       background: #FFFFFF;
+      border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 32px 0;
+      padding: 30px 0;
     }
 
     .stats-grid {
-      max-width: 1140px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
       display: grid;
@@ -386,7 +574,7 @@ const indexHtml = `<!DOCTYPE html>
 
     .stat-number {
       font-family: var(--font-heading);
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 900;
       color: var(--text-main);
       line-height: 1;
@@ -399,7 +587,7 @@ const indexHtml = `<!DOCTYPE html>
 
     .stat-label {
       font-family: var(--font-code);
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -408,15 +596,15 @@ const indexHtml = `<!DOCTYPE html>
 
     /* Case Studies Showcase Section */
     .cases-section {
-      padding: 72px 0 96px;
-      max-width: 1140px;
+      padding: 64px 0 96px;
+      max-width: 1200px;
       margin: 0 auto;
       padding-left: 24px;
       padding-right: 24px;
     }
 
     .section-header {
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .section-label {
@@ -431,7 +619,7 @@ const indexHtml = `<!DOCTYPE html>
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 900;
       letter-spacing: -0.02em;
       color: var(--text-main);
@@ -439,7 +627,7 @@ const indexHtml = `<!DOCTYPE html>
     }
 
     .section-desc {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--text-muted);
       max-width: 680px;
     }
@@ -447,14 +635,14 @@ const indexHtml = `<!DOCTYPE html>
     .cases-grid {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 24px;
     }
 
     .case-card-preview {
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
       border-radius: 18px;
-      padding: 32px;
+      padding: 30px;
       display: grid;
       grid-template-columns: 1.4fr 0.9fr;
       gap: 36px;
@@ -467,8 +655,8 @@ const indexHtml = `<!DOCTYPE html>
     @media (max-width: 860px) {
       .case-card-preview {
         grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 24px;
+        gap: 22px;
+        padding: 22px;
       }
     }
 
@@ -481,7 +669,7 @@ const indexHtml = `<!DOCTYPE html>
     .case-preview-left {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .case-badge-meta {
@@ -510,7 +698,7 @@ const indexHtml = `<!DOCTYPE html>
 
     .case-preview-title {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 800;
       line-height: 1.25;
       letter-spacing: -0.02em;
@@ -530,7 +718,7 @@ const indexHtml = `<!DOCTYPE html>
       padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .preview-metric-block {
@@ -541,7 +729,7 @@ const indexHtml = `<!DOCTYPE html>
 
     .metric-label {
       font-family: var(--font-heading);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -550,7 +738,7 @@ const indexHtml = `<!DOCTYPE html>
 
     .metric-value {
       font-family: var(--font-heading);
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--primary-accent);
     }
@@ -560,7 +748,7 @@ const indexHtml = `<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 11px 20px;
+      padding: 10px 18px;
       border-radius: 100px;
       background: var(--primary-accent);
       color: #FFFFFF;
@@ -569,11 +757,99 @@ const indexHtml = `<!DOCTYPE html>
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s ease;
-      margin-top: 6px;
+      margin-top: 4px;
     }
 
     .btn-read-case:hover {
       background: var(--primary-hover);
+    }
+
+    /* Video Player Modal */
+    .video-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(8, 12, 20, 0.88);
+      backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .video-modal-box {
+      background: #0B0E17;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 820px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      animation: modalFadeIn 0.25s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      padding: 16px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #FFFFFF;
+    }
+
+    .modal-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-close-btn:hover { color: #FFFFFF; }
+
+    .modal-video-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal-transcript-area {
+      padding: 20px 24px;
+      background: #111522;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #E2E8F0;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    .transcript-header {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary-accent);
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -584,54 +860,96 @@ const indexHtml = `<!DOCTYPE html>
   <!-- Welcome Hero -->
   <section class="welcome-hero">
     <div class="hero-wrap">
-      <div class="hero-badge-strip">
-        <span class="status-badge"><span class="status-dot"></span> Available for European &amp; Global Roles</span>
-        <span style="font-size: 12px; color: var(--text-muted);">18+ Years Enterprise Experience &bull; Ex-IBM, Ericsson, Zebra, ZF Wabco</span>
+      <div class="hero-two-col">
+        
+        <!-- Left: Introduction & Bio -->
+        <div>
+          <div class="hero-badge-strip">
+            <span class="status-badge"><span class="status-dot"></span> Available for European &amp; Global Roles</span>
+            <span style="font-size: 12px; color: var(--text-muted);">18+ Years &bull; Ex-IBM, Ericsson, Zebra, ZF Wabco</span>
+          </div>
+
+          <h1 class="hero-heading">
+            Senior UI/UX Design Manager &amp; <span>Product Design Director</span>
+          </h1>
+
+          <p class="hero-bio">
+            Welcome to my portfolio. I specialize in <strong>turning complex enterprise chaos into high-margin SaaS</strong>, scaling multi-brand design systems, and partnering with Commercial Directors and Engineering Leads to bridge strategic business OKRs with high-velocity product delivery.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="/leadership" class="btn-hero-primary">
+              👔 Executive Leadership Deck &rarr;
+            </a>
+            <a href="/cv" class="btn-hero-secondary">
+              📄 View Full Executive CV
+            </a>
+            <a href="#cases" class="btn-hero-secondary">
+              🎨 5 Case Studies &darr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Cinematic Executive Video Stage Card -->
+        <div>
+          <div class="video-hero-card" onclick="openVideoModal()">
+            <div class="video-poster-wrapper">
+              <img src="profile.jpg" alt="Balaajee V.R." class="video-poster-img" onerror="this.src='photo_300x400.jpg'">
+              <div class="video-gradient-overlay"></div>
+              <div class="video-top-tag">
+                <span>🎬</span> EXECUTIVE INTRO
+              </div>
+              <div class="video-duration-pill">01:15</div>
+              <div class="video-play-btn-pulse">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </div>
+              <div class="video-bottom-caption">
+                <h4>Watch Balaajee V.R. &bull; 60s Executive Intro</h4>
+                <p>Leadership philosophy, enterprise SaaS &amp; team scaling</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <h1 class="hero-heading">
-        Senior UI/UX Design Manager &amp; <span>Product Design Director</span>
-      </h1>
+  <!-- 3 Direct Pathways -->
+  <section class="pathways-section">
+    <div class="pathways-grid">
+      <a href="/leadership" class="pathway-card">
+        <div>
+          <div class="pathway-icon">👔</div>
+          <h3 class="pathway-title">Executive Leadership Deck</h3>
+          <p class="pathway-desc">
+            A single-page vertically scrollable presentation outlining my leadership philosophy, team topology, enterprise design maturity, and 30-60-90 day onboarding vision.
+          </p>
+        </div>
+        <span class="pathway-link">Read Leadership Deck &rarr;</span>
+      </a>
 
-      <p class="hero-bio">
-        Welcome to my portfolio. I specialize in <strong>turning complex enterprise chaos into high-margin SaaS</strong>, scaling multi-brand design systems, and partnering with Commercial Directors and Engineering Leads to bridge strategic business OKRs with high-velocity product delivery.
-      </p>
+      <a href="/cv" class="pathway-card">
+        <div>
+          <div class="pathway-icon">📄</div>
+          <h3 class="pathway-title">Full Executive CV</h3>
+          <p class="pathway-desc">
+            Complete chronological professional history, competencies, metrics, and education. Includes 1-click official PDF download and clean print layout.
+          </p>
+        </div>
+        <span class="pathway-link">View Full Executive CV &rarr;</span>
+      </a>
 
-      <!-- 3 Direct Pathways -->
-      <div class="pathways-grid">
-        <a href="/leadership" class="pathway-card">
-          <div>
-            <div class="pathway-icon">👔</div>
-            <h3 class="pathway-title">Executive Leadership Deck</h3>
-            <p class="pathway-desc">
-              A single-page vertically scrollable presentation outlining my leadership philosophy, team topology, enterprise design maturity, and 30-60-90 day onboarding vision.
-            </p>
-          </div>
-          <span class="pathway-link">Read Leadership Deck &rarr;</span>
-        </a>
-
-        <a href="/cv" class="pathway-card">
-          <div>
-            <div class="pathway-icon">📄</div>
-            <h3 class="pathway-title">Full Executive CV</h3>
-            <p class="pathway-desc">
-              Complete chronological professional history, competencies, metrics, and education. Includes 1-click official PDF download and clean print layout.
-            </p>
-          </div>
-          <span class="pathway-link">View Full Executive CV &rarr;</span>
-        </a>
-
-        <a href="#cases" class="pathway-card">
-          <div>
-            <div class="pathway-icon">🎨</div>
-            <h3 class="pathway-title">5 UI/UX Case Studies</h3>
-            <p class="pathway-desc">
-              In-depth product design case studies with live interactive browser mockups, 14-tab legacy spreadsheet audits, personas, design tokens, and interview CAR defense.
-            </p>
-          </div>
-          <span class="pathway-link">Explore 5 Case Studies &darr;</span>
-        </a>
-      </div>
+      <a href="#cases" class="pathway-card">
+        <div>
+          <div class="pathway-icon">🎨</div>
+          <h3 class="pathway-title">5 UI/UX Case Studies</h3>
+          <p class="pathway-desc">
+            In-depth product design case studies with live interactive browser mockups, 14-tab legacy spreadsheet audits, personas, design tokens, and interview CAR defense.
+          </p>
+        </div>
+        <span class="pathway-link">Explore 5 Case Studies &darr;</span>
+      </a>
     </div>
   </section>
 
@@ -807,12 +1125,70 @@ const indexHtml = `<!DOCTYPE html>
     </div>
   </section>
 
+  <!-- Video Player Modal -->
+  <div class="video-modal-backdrop" id="videoModalBackdrop" onclick="closeVideoModal(event)">
+    <div class="video-modal-box">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>🎬</span>
+          <span>Balaajee V.R. &bull; Executive Portfolio Introduction</span>
+        </div>
+        <button class="modal-close-btn" onclick="closeVideoModal()">&times;</button>
+      </div>
+      <div class="modal-video-stage">
+        <!-- Interactive Video Player Container -->
+        <video id="executiveVideoPlayer" controls poster="profile.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+          <source src="intro.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="modal-transcript-area">
+        <div class="transcript-header">EXECUTIVE SPOKEN TRANSCRIPT &bull; 60 SECONDS</div>
+        <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(0)" style="font-family: var(--font-code); font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #94A3B8; border: 1px solid rgba(255,255,255,0.12); cursor: pointer;">⏱️ 0:00 Welcome &amp; Background</button>
+          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(22)" style="font-family: var(--font-code); font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #94A3B8; border: 1px solid rgba(255,255,255,0.12); cursor: pointer;">⏱️ 0:22 Leadership Philosophy</button>
+          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(42)" style="font-family: var(--font-code); font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #94A3B8; border: 1px solid rgba(255,255,255,0.12); cursor: pointer;">⏱️ 0:42 Enterprise Impact &amp; CPQ</button>
+        </div>
+        <p>
+          <em>"Hi, I'm Balaajee. Welcome to my portfolio. Over the past 18 years at companies like IBM, Ericsson, and Zebra Technologies, I've focused on one core challenge: transforming messy, high-friction enterprise systems into high-velocity digital products. On this site, you'll find my Executive Leadership Deck, which covers my approach to team topologies, design systems, and 30-60-90 day onboarding. Below that, explore five in-depth case studies—starting with how we turned Ericsson's 14-tab legacy Excel sheet into an automated cloud CPQ that saved 18 million dollars in margin leakage. Feel free to explore the interactive prototypes, review my full CV, and let's connect."</em>
+        </p>
+        <div style="margin-top: 10px; font-size: 11.5px; color: #94A3B8; font-family: var(--font-code);">
+          💡 <strong>Video Ready to Drop:</strong> Place your recorded <code>intro.mp4</code> in this folder or link your Loom / YouTube URL.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openVideoModal() {
+      document.getElementById('videoModalBackdrop').style.display = 'flex';
+      const video = document.getElementById('executiveVideoPlayer');
+      if (video) video.play().catch(e => console.log('Autoplay prevented or no file yet'));
+    }
+
+    function closeVideoModal(e) {
+      if (!e || e.target.id === 'videoModalBackdrop' || e.target.classList.contains('modal-close-btn')) {
+        document.getElementById('videoModalBackdrop').style.display = 'none';
+        const video = document.getElementById('executiveVideoPlayer');
+        if (video) video.pause();
+      }
+    }
+
+    function seekExecutiveIntro(seconds) {
+      const video = document.getElementById('executiveVideoPlayer');
+      if (video) {
+        video.currentTime = seconds;
+        video.play().catch(e => console.log('Seeking intro video'));
+      }
+    }
+  </script>
+
 </body>
 </html>
 `;
 
 fs.writeFileSync(path.join(__dirname, 'index.html'), indexHtml, 'utf8');
-console.log('index.html written successfully.');
+console.log('index.html with Video Stage written successfully.');
 
 // ============================================================================
 // 2. GENERATE leadership.html (VERTICALLY SCROLLABLE SINGLE-PAGE DECK)
@@ -1146,9 +1522,9 @@ fs.writeFileSync(path.join(__dirname, 'cv.html'), cvHtml, 'utf8');
 console.log('cv.html written successfully.');
 
 // ============================================================================
-// 4. GENERATE 5 DEDICATED CASE STUDY PAGES
+// 4. GENERATE 5 DEDICATED CASE STUDY PAGES (WITH EXECUTIVE VIDEO WALKTHROUGH & SMART PIP)
 // ============================================================================
-console.log('Extracting and compiling 5 dedicated case study pages...');
+console.log('Extracting and compiling 5 dedicated case study pages with video walkthrough...');
 
 const caseSourceRaw = fs.readFileSync(path.join(__dirname, 'rebuild_as_uiux_case_studies.js'), 'utf8');
 
@@ -1223,6 +1599,181 @@ function buildDedicatedCasePage(options) {
       border-color: var(--border-medium);
     }
 
+    /* Executive Video Walkthrough Banner */
+    .case-video-walkthrough {
+      background: #0B0E17;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      color: #FFFFFF;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 860px) {
+      .case-video-walkthrough {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+    }
+
+    .walkthrough-label {
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .walkthrough-heading {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
+
+    .walkthrough-desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #CBD5E1;
+      margin-bottom: 16px;
+    }
+
+    .walkthrough-chapters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .chapter-tag {
+      font-family: var(--font-code);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94A3B8;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chapter-tag:hover {
+      background: rgba(240, 6, 88, 0.2);
+      color: #FFFFFF;
+      border-color: rgba(240, 6, 88, 0.5);
+    }
+
+    .btn-watch-walkthrough {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      border-radius: 100px;
+      background: var(--primary-accent);
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-watch-walkthrough:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .walkthrough-player-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .walkthrough-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: brightness(0.8);
+    }
+
+    /* Floating Smart Picture-in-Picture Mini-Player on Scroll */
+    .floating-pip-player {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 320px;
+      background: #0B0E17;
+      border: 1px solid rgba(240, 6, 88, 0.4);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      z-index: 9999;
+      display: none;
+      animation: pipSlideIn 0.3s ease;
+    }
+
+    @keyframes pipSlideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .pip-header {
+      padding: 8px 12px;
+      background: #111522;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .pip-close-btn {
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      font-size: 16px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .pip-close-btn:hover { color: #FFFFFF; }
+
+    .pip-body {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .pip-body video, .pip-body img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     /* Force the single case card to be permanently visible */
     .case-card {
       display: block !important;
@@ -1276,6 +1827,32 @@ function buildDedicatedCasePage(options) {
       </a>
     </div>
 
+    <!-- Executive Case Walkthrough Video Stage -->
+    <div class="case-video-walkthrough" id="caseWalkthroughStage">
+      <div>
+        <div class="walkthrough-label">EXECUTIVE CASE DEBRIEF &bull; 90 SECONDS</div>
+        <h2 class="walkthrough-heading">Watch Balaajee Present: ${options.shortName}</h2>
+        <p class="walkthrough-desc">
+          ${options.videoSummary}
+        </p>
+        <div class="walkthrough-chapters">
+          <button type="button" class="chapter-tag" onclick="seekCaseVideo(0)">⏱️ 0:00 The Context &amp; Pain</button>
+          <button type="button" class="chapter-tag" onclick="seekCaseVideo(30)">⏱️ 0:30 UX Re-Architecture</button>
+          <button type="button" class="chapter-tag" onclick="seekCaseVideo(65)">⏱️ 1:05 Business ROI &amp; Metrics</button>
+        </div>
+        <button class="btn-watch-walkthrough" onclick="toggleCaseVideoPlay()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Watch Video Walkthrough (90s)
+        </button>
+      </div>
+
+      <div class="walkthrough-player-box" onclick="toggleCaseVideoPlay()">
+        <video id="caseWalkthroughVideo" poster="profile.jpg" controls style="width: 100%; height: 100%; object-fit: cover;">
+          <source src="${options.videoFile || 'intro.mp4'}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
     <!-- The Case Card Content -->
     ${options.cardHtml}
 
@@ -1286,6 +1863,23 @@ function buildDedicatedCasePage(options) {
       ${options.nextLink ? `<a href="${options.nextLink.url}" class="case-nav-link">Next: ${options.nextLink.label} &rarr;</a>` : `<div></div>`}
     </div>
 
+  </div>
+
+  <!-- Smart Sticky Picture-in-Picture Mini-Player on Scroll -->
+  <div class="floating-pip-player" id="floatingPipMiniPlayer">
+    <div class="pip-header">
+      <span>🎬 Speaking: ${options.shortName}</span>
+      <button onclick="closeFloatingPip()" class="pip-close-btn" title="Dismiss">&times;</button>
+    </div>
+    <div class="pip-body" onclick="scrollToVideoStage()" title="Click to scroll to main video debrief" style="cursor: pointer;">
+      <img src="profile.jpg" alt="Balaajee V.R." style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 10px;">
+        <span style="font-family: var(--font-heading); font-size: 11px; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; gap: 6px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          ${options.shortName} &bull; 90s Walkthrough
+        </span>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1303,6 +1897,54 @@ function buildDedicatedCasePage(options) {
         activePanel.classList.add('active');
       }
     }
+
+    function toggleCaseVideoPlay() {
+      const video = document.getElementById('caseWalkthroughVideo');
+      if (video) {
+        if (video.paused) {
+          video.play().catch(e => alert('Video placeholder ready! Drop your recorded video into this folder or link your Loom walkthrough.'));
+        } else {
+          video.pause();
+        }
+      }
+    }
+
+    function seekCaseVideo(seconds) {
+      const video = document.getElementById('caseWalkthroughVideo');
+      if (video) {
+        video.currentTime = seconds;
+        video.play().catch(e => {
+          alert('Chapter seek ready! Once you drop your recorded walkthrough video into this folder, clicking chapters will jump to exactly ' + seconds + 's.');
+        });
+      }
+    }
+
+    function scrollToVideoStage() {
+      const stage = document.getElementById('caseWalkthroughStage');
+      if (stage) stage.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function closeFloatingPip() {
+      document.getElementById('floatingPipMiniPlayer').style.display = 'none';
+      pipDismissed = true;
+    }
+
+    let pipDismissed = false;
+
+    // Smart Sticky PiP on scroll past the video section
+    window.addEventListener('scroll', () => {
+      if (pipDismissed) return;
+      const stage = document.getElementById('caseWalkthroughStage');
+      const pip = document.getElementById('floatingPipMiniPlayer');
+      if (!stage || !pip) return;
+
+      const rect = stage.getBoundingClientRect();
+      if (rect.bottom < 50) {
+        pip.style.display = 'block';
+      } else {
+        pip.style.display = 'none';
+      }
+    });
 
     function simulateExport() {
       alert('Generating Verified Proposal: Applying brand tokens, validating margin health, and bundling Bill of Materials.');
@@ -1336,6 +1978,8 @@ const ericssonPageHtml = buildDedicatedCasePage({
   title: 'Ericsson SalesOps CPQ: Excel-to-Cloud Transformation',
   shortName: 'Ericsson SalesOps CPQ',
   description: 'Transforming a 14-tab legacy Excel quoting sheet into an enterprise cloud CPQ engine, reducing turnaround from 6 days to 42 minutes.',
+  videoSummary: 'In this 90-second executive briefing, I break down the 14-tab legacy spreadsheet audit, our keyboard-first UX re-architecture, and how we prevented $18M in margin leakage.',
+  videoFile: 'ericsson_walkthrough.mp4',
   cardHtml: ericssonCard,
   prevLink: null,
   nextLink: { url: '/case-ibm-watson.html', label: 'IBM Watson Agentic AI' }
@@ -1349,6 +1993,8 @@ const watsonPageHtml = buildDedicatedCasePage({
   title: 'IBM Watson Orchestrate: Multi-Agent AI Task Automation',
   shortName: 'IBM Watson Agentic AI',
   description: 'Designing autonomous multi-agent task execution and Human-in-the-Loop governance for regulated Fortune 500 enterprises.',
+  videoSummary: 'Explaining our governance framework for enterprise agentic AI, confidence thresholds, and side-by-side diff checks across 14 global product squads.',
+  videoFile: 'watson_walkthrough.mp4',
   cardHtml: watsonCard,
   prevLink: { url: '/case-ericsson.html', label: 'Ericsson SalesOps CPQ' },
   nextLink: { url: '/case-zebra.html', label: 'Zebra Enterprise Device Cloud' }
@@ -1362,6 +2008,8 @@ const zebraPageHtml = buildDedicatedCasePage({
   title: 'Zebra Enterprise Device Cloud: Rugged Scanner IoT UX',
   shortName: 'Zebra Enterprise IoT',
   description: 'Scaling IoT diagnostics and zero-touch barcode provisioning for 1.2M+ active enterprise hardware devices across global distribution centers.',
+  videoSummary: 'A 90-second briefing on contextual research in sub-zero freezers and designing sub-second barcode workflows for 1.2M+ rugged devices.',
+  videoFile: 'zebra_walkthrough.mp4',
   cardHtml: zebraCard,
   prevLink: { url: '/case-ibm-watson.html', label: 'IBM Watson Agentic AI' },
   nextLink: { url: '/case-ibm-carbon.html', label: 'IBM Carbon Token Engine' }
@@ -1375,6 +2023,8 @@ const carbonPageHtml = buildDedicatedCasePage({
   title: 'IBM Carbon Token Engine: Cross-Squad DesignOps',
   shortName: 'IBM Carbon Tokens',
   description: 'Synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads.',
+  videoSummary: 'Walking through our Contribution Council flywheel and synchronizing Figma tokens with React production pipelines to eliminate 70% of UI drift.',
+  videoFile: 'carbon_walkthrough.mp4',
   cardHtml: carbonCard,
   prevLink: { url: '/case-zebra.html', label: 'Zebra Enterprise Device Cloud' },
   nextLink: { url: '/case-zf-wabco.html', label: 'ZF Wabco Cockpit HUD' }
@@ -1388,6 +2038,8 @@ const wabcoPageHtml = buildDedicatedCasePage({
   title: 'ZF Wabco Commercial Vehicle Cockpit & Real-Time Safety',
   shortName: 'ZF Wabco Telematics',
   description: 'Designing a distraction-free in-cab HUD cluster compliant with strict EU automotive standards (<1.2s glance time).',
+  videoSummary: 'Demonstrating how we designed distraction-free in-cab HUD clusters for 80,000+ European commercial trucks compliant with EU safety standards.',
+  videoFile: 'wabco_walkthrough.mp4',
   cardHtml: wabcoCard,
   prevLink: { url: '/case-ibm-carbon.html', label: 'IBM Carbon Token Engine' },
   nextLink: null
@@ -1395,69 +2047,4 @@ const wabcoPageHtml = buildDedicatedCasePage({
 fs.writeFileSync(path.join(__dirname, 'case-zf-wabco.html'), wabcoPageHtml, 'utf8');
 console.log('case-zf-wabco.html written successfully.');
 
-// ============================================================================
-// 5. UPDATE serve.js TO ROUTE ALL CLEAN URLS
-// ============================================================================
-console.log('Updating serve.js with clean routing for all dedicated pages...');
-
-const updatedServeJs = `const http = require('http');
-const fs = require('fs');
-const path = require('path');
-
-const server = http.createServer((req, res) => {
-  const decodedUrl = decodeURIComponent(req.url.split('?')[0]);
-  let targetFile = decodedUrl === '/' ? 'index.html' : decodedUrl;
-
-  // Clean Route Mappings
-  if (decodedUrl === '/leadership' || decodedUrl === '/leadership-deck') targetFile = 'leadership.html';
-  else if (decodedUrl === '/cv' || decodedUrl === '/resume') targetFile = 'cv.html';
-  else if (decodedUrl === '/case-ericsson') targetFile = 'case-ericsson.html';
-  else if (decodedUrl === '/case-ibm-watson') targetFile = 'case-ibm-watson.html';
-  else if (decodedUrl === '/case-zebra') targetFile = 'case-zebra.html';
-  else if (decodedUrl === '/case-ibm-carbon') targetFile = 'case-ibm-carbon.html';
-  else if (decodedUrl === '/case-zf-wabco') targetFile = 'case-zf-wabco.html';
-  else if (decodedUrl === '/vsign') targetFile = 'academic_vsign.html';
-  else if (decodedUrl === '/scope') targetFile = 'academic_scope.html';
-  else if (decodedUrl === '/academic') targetFile = 'academic_resume.html';
-  else if (decodedUrl === '/general') targetFile = 'academic_general.html';
-  else if (decodedUrl === '/prep-first-call') targetFile = 'prep_first_call.html';
-  else if (decodedUrl === '/prep-interview-stages') targetFile = 'prep_interview_stages.html';
-  else if (decodedUrl === '/tracker') targetFile = 'tracker.html';
-  
-  let filePath = path.join(__dirname, targetFile);
-  
-  const ext = path.extname(filePath).toLowerCase();
-  let contentType = 'text/html';
-  if (ext === '.css') contentType = 'text/css';
-  else if (ext === '.png') contentType = 'image/png';
-  else if (ext === '.jpg' || ext === '.jpeg') contentType = 'image/jpeg';
-  else if (ext === '.js') contentType = 'application/javascript';
-  else if (ext === '.pdf') contentType = 'application/pdf';
-  else if (ext === '.svg') contentType = 'image/svg+xml';
-
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      if (err.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('File not found: ' + targetFile);
-      } else {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end(\`Server error: \${err.code}\`);
-      }
-    } else {
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf-8');
-    }
-  });
-});
-
-const PORT = 8080;
-server.listen(PORT, () => {
-  console.log(\`Server running at http://localhost:\${PORT}/\`);
-});
-`;
-
-fs.writeFileSync(path.join(__dirname, 'serve.js'), updatedServeJs, 'utf8');
-console.log('serve.js updated.');
-
-console.log('COMPILATION COMPLETE! All dedicated pages created cleanly.');
+console.log('ALL PAGES REBUILT CLEANLY WITH VIDEO INTRO & STICKY PIP MINI-PLAYER!');

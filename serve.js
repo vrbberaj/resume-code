@@ -32,6 +32,8 @@ const server = http.createServer((req, res) => {
   else if (ext === '.js') contentType = 'application/javascript';
   else if (ext === '.pdf') contentType = 'application/pdf';
   else if (ext === '.svg') contentType = 'image/svg+xml';
+  else if (ext === '.mp4') contentType = 'video/mp4';
+  else if (ext === '.webm') contentType = 'video/webm';
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
