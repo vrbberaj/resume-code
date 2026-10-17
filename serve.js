@@ -3,16 +3,24 @@ const fs = require('fs');
 const path = require('path');
 
 const server = http.createServer((req, res) => {
-  const decodedUrl = decodeURIComponent(req.url);
+  const decodedUrl = decodeURIComponent(req.url.split('?')[0]);
   let targetFile = decodedUrl === '/' ? 'index.html' : decodedUrl;
-  if (decodedUrl === '/vsign') targetFile = 'academic_vsign.html';
+
+  // Clean Route Mappings
+  if (decodedUrl === '/leadership' || decodedUrl === '/leadership-deck') targetFile = 'leadership.html';
+  else if (decodedUrl === '/cv' || decodedUrl === '/resume') targetFile = 'cv.html';
+  else if (decodedUrl === '/case-ericsson') targetFile = 'case-ericsson.html';
+  else if (decodedUrl === '/case-ibm-watson') targetFile = 'case-ibm-watson.html';
+  else if (decodedUrl === '/case-zebra') targetFile = 'case-zebra.html';
+  else if (decodedUrl === '/case-ibm-carbon') targetFile = 'case-ibm-carbon.html';
+  else if (decodedUrl === '/case-zf-wabco') targetFile = 'case-zf-wabco.html';
+  else if (decodedUrl === '/vsign') targetFile = 'academic_vsign.html';
   else if (decodedUrl === '/scope') targetFile = 'academic_scope.html';
   else if (decodedUrl === '/academic') targetFile = 'academic_resume.html';
   else if (decodedUrl === '/general') targetFile = 'academic_general.html';
   else if (decodedUrl === '/prep-first-call') targetFile = 'prep_first_call.html';
   else if (decodedUrl === '/prep-interview-stages') targetFile = 'prep_interview_stages.html';
   else if (decodedUrl === '/tracker') targetFile = 'tracker.html';
-  else if (decodedUrl === '/leadership-deck') targetFile = 'leadership_deck.html';
   
   let filePath = path.join(__dirname, targetFile);
   
@@ -29,7 +37,7 @@ const server = http.createServer((req, res) => {
     if (err) {
       if (err.code === 'ENOENT') {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('File not found');
+        res.end('File not found: ' + targetFile);
       } else {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end(`Server error: ${err.code}`);
