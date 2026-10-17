@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IBM Carbon Token Engine: Cross-Squad DesignOps | Balaajee V.R.</title>
-  <meta name="description" content="Synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads.">
+  <title>IBM Carbon Token Engine: Cross-Squad DesignOps &amp; UI System Governance | Balaajee V.R.</title>
+  <meta name="description" content="Eliminating multi-million dollar design debt by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads via the Contribution Council flywheel.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1570,14 +1570,14 @@
     .case-page-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 32px 24px 80px;
+      padding: 28px 24px 80px;
     }
 
     .breadcrumb-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
       gap: 12px;
     }
@@ -1620,60 +1620,115 @@
       border-color: var(--border-medium);
     }
 
-    /* Executive Video Walkthrough Banner */
-    .case-video-walkthrough {
-      background: #0B0E17;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 24px 28px;
-      margin-bottom: 32px;
+    /* UNIFIED EXECUTIVE CASE STAGE (Zero Redundancy) */
+    .unified-case-stage {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 28px;
       display: grid;
       grid-template-columns: 1.25fr 0.95fr;
-      gap: 28px;
+      gap: 36px;
       align-items: center;
-      color: #FFFFFF;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
     }
 
-    @media (max-width: 860px) {
-      .case-video-walkthrough {
+    @media (max-width: 920px) {
+      .unified-case-stage {
         grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
+        padding: 24px;
+        gap: 24px;
       }
     }
 
-    .walkthrough-label {
+    .stage-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .stage-company-pill {
       font-family: var(--font-code);
       font-size: 11px;
       font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(240, 6, 88, 0.08);
       color: var(--primary-accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+      border: 1px solid rgba(240, 6, 88, 0.25);
     }
 
-    .walkthrough-heading {
+    .stage-role-pill {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .stage-award-pill {
+      font-size: 11px;
+      font-weight: 700;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    .stage-title {
       font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 26px;
+      font-weight: 900;
       line-height: 1.25;
-      margin-bottom: 8px;
-      color: #FFFFFF;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
     }
 
-    .walkthrough-desc {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: #CBD5E1;
+    .stage-lead {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--text-body);
       margin-bottom: 16px;
     }
 
-    .walkthrough-chapters {
+    .stage-metrics-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .stage-metric-chip {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stage-metric-chip .chip-lbl {
+      font-family: var(--font-code);
+      font-size: 9.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stage-metric-chip .chip-val {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stage-chapters {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 18px;
     }
 
     .chapter-tag {
@@ -1681,9 +1736,9 @@
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #94A3B8;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #FFFFFF;
+      color: var(--text-body);
+      border: 1px solid var(--border-medium);
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -1692,49 +1747,36 @@
     }
 
     .chapter-tag:hover {
-      background: rgba(240, 6, 88, 0.2);
-      color: #FFFFFF;
-      border-color: rgba(240, 6, 88, 0.5);
-    }
-
-    .btn-watch-walkthrough {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 20px;
-      border-radius: 100px;
       background: var(--primary-accent);
       color: #FFFFFF;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      border-color: var(--primary-accent);
     }
 
-    .btn-watch-walkthrough:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-
-    .walkthrough-player-box {
+    /* Video Player Box inside Stage */
+    .stage-video-box {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 12px;
+      background: #0B0E17;
+      border-radius: 14px;
       overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      cursor: pointer;
+      aspect-ratio: 16 / 9.5;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .walkthrough-poster {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-      filter: brightness(0.8);
+    .stage-video-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(11, 14, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 100px;
+      z-index: 5;
+      pointer-events: none;
     }
 
     /* Floating Smart Picture-in-Picture Mini-Player on Scroll */
@@ -1787,15 +1829,16 @@
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
+      cursor: pointer;
     }
 
-    .pip-body video, .pip-body img {
+    .pip-body img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 25%;
     }
 
-    /* Force the single case card to be permanently visible */
     .case-card {
       display: block !important;
       margin-bottom: 40px;
@@ -1846,10 +1889,13 @@
       </nav>
 
       <div class="header-actions">
+        
+        
         <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV (PDF)
         </a>
+        
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
           Get In Touch &rarr;
         </a>
@@ -1870,37 +1916,63 @@
         <span>IBM Carbon Tokens</span>
       </div>
       <a href="/#cases" class="btn-back">
-        &larr; Back to All Case Studies
+        &larr; All Case Studies
       </a>
     </div>
 
-    <!-- Executive Case Walkthrough Video Stage -->
-    <div class="case-video-walkthrough" id="caseWalkthroughStage">
+    <!-- UNIFIED EXECUTIVE CASE STAGE -->
+    <div class="unified-case-stage" id="caseWalkthroughStage">
       <div>
-        <div class="walkthrough-label">EXECUTIVE CASE DEBRIEF &bull; 90 SECONDS</div>
-        <h2 class="walkthrough-heading">Watch Balaajee Present: IBM Carbon Tokens</h2>
-        <p class="walkthrough-desc">
-          Walking through our Contribution Council flywheel and synchronizing Figma tokens with React production pipelines to eliminate 70% of UI drift.
-        </p>
-        <div class="walkthrough-chapters">
-          <button type="button" class="chapter-tag" onclick="seekCaseVideo(0)">⏱️ 0:00 The Context &amp; Pain</button>
-          <button type="button" class="chapter-tag" onclick="seekCaseVideo(30)">⏱️ 0:30 UX Re-Architecture</button>
-          <button type="button" class="chapter-tag" onclick="seekCaseVideo(65)">⏱️ 1:05 Business ROI &amp; Metrics</button>
+        <div class="stage-badges">
+          <span class="stage-company-pill">IBM Software Labs</span>
+          <span class="stage-role-pill">DesignOps &amp; Governance Lead &bull; 2024–2026</span>
+          <span class="stage-award-pill">🏆 DesignOps Leadership Award</span>
         </div>
-        <button class="btn-watch-walkthrough" onclick="toggleCaseVideoPlay()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          Watch Video Walkthrough (90s)
-        </button>
+        <h1 class="stage-title">IBM Carbon Token Engine: Cross-Squad DesignOps &amp; UI System Governance</h1>
+        <p class="stage-lead">Eliminating multi-million dollar design debt by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads via the Contribution Council flywheel.</p>
+        <div class="stage-metrics-row">
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Squad Footprint</span>
+              <span class="chip-val">14 Distributed Squads</span>
+            </div>
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">UI Drift Reduction</span>
+              <span class="chip-val">-70% Visual Bugs</span>
+            </div>
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Front-End Velocity</span>
+              <span class="chip-val">+28% Sprint Delivery</span>
+            </div>
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Tooling</span>
+              <span class="chip-val">Figma Tokens, CI/CD, Git</span>
+            </div>
+          
+        </div>
+        <div class="stage-chapters">
+          
+            <button type="button" class="chapter-tag" onclick="seekCaseVideo(0)">⏱️ 0:00 Multi-Squad Token Drift</button>
+          
+            <button type="button" class="chapter-tag" onclick="seekCaseVideo(30)">⏱️ 0:30 Contribution Council</button>
+          
+            <button type="button" class="chapter-tag" onclick="seekCaseVideo(65)">⏱️ 1:05 +28% Front-End Speed</button>
+          
+        </div>
       </div>
 
-      <div class="walkthrough-player-box" onclick="toggleCaseVideoPlay()">
+      <div class="stage-video-box">
+        <div class="stage-video-tag">🎬 90s Executive Debrief</div>
         <video id="caseWalkthroughVideo" poster="profile.jpg" controls style="width: 100%; height: 100%; object-fit: cover;">
           <source src="carbon_walkthrough.mp4" type="video/mp4">
         </video>
       </div>
     </div>
 
-    <!-- The Case Card Content -->
+    <!-- The Case Card Content (With Cleaned 4 Sub-Tabs) -->
     <article class="case-card" id="case-ibm-carbon" data-category="ibm-carbon">
           <div class="case-card-header">
             <div class="case-meta-badges">
@@ -1933,22 +2005,19 @@
           </div>
 
           <div class="case-subnav" role="tablist">
-            <button class="case-subtab-btn active" onclick="switchCaseTab('ibm-carbon', 'ui', this)">
-              <span>🖥️ Product UI Showcase</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ibm-carbon', 'research', this)">
-              <span>🔍 DesignOps Persona</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ibm-carbon', 'tokens', this)">
-              <span>📐 3-Tier Token Architecture</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ibm-carbon', 'metrics', this)">
-              <span>📊 Engineering Velocity ROI</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ibm-carbon', 'car', this)">
-              <span>🎯 Interview CAR Defense</span>
-            </button>
-          </div>
+      <button class="case-subtab-btn active" onclick="switchCaseTab('carbon', 'ui', this)">
+        <span>💻 Interactive Solution</span>
+      </button>
+      <button class="case-subtab-btn" onclick="switchCaseTab('carbon', 'research', this)">
+        <span>🔍 Research &amp; Architecture</span>
+      </button>
+      <button class="case-subtab-btn" onclick="switchCaseTab('carbon', 'tokens', this)">
+        <span>🎨 Design Tokens &amp; Governance</span>
+      </button>
+      <button class="case-subtab-btn" onclick="switchCaseTab('carbon', 'impact', this)">
+        <span>📈 Business ROI &amp; Defense</span>
+      </button>
+    </div>
 
           <div class="case-tab-panel active" id="panel-ibm-carbon-ui">
             <div class="ui-showcase-window">
@@ -2140,9 +2209,9 @@
 
     <!-- Bottom Project Navigation -->
     <div class="case-bottom-nav">
-      <a href="/case-zebra.html" class="case-nav-link">&larr; Previous: Zebra Enterprise Device Cloud</a>
+      <a href="/case-zebra.html" class="case-nav-link">&larr; Previous: Zebra Enterprise IoT</a>
       <a href="/#cases" class="btn-back">All Case Studies</a>
-      <a href="/case-zf-wabco.html" class="case-nav-link">Next: ZF Wabco Cockpit HUD &rarr;</a>
+      <a href="/case-zf-wabco.html" class="case-nav-link">Next: ZF Wabco HUD &rarr;</a>
     </div>
 
   </div>
@@ -2153,8 +2222,8 @@
       <span>🎬 Speaking: IBM Carbon Tokens</span>
       <button onclick="closeFloatingPip()" class="pip-close-btn" title="Dismiss">&times;</button>
     </div>
-    <div class="pip-body" onclick="scrollToVideoStage()" title="Click to scroll to main video debrief" style="cursor: pointer;">
-      <img src="profile.jpg" alt="Balaajee V.R." style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;">
+    <div class="pip-body" onclick="scrollToVideoStage()" title="Click to scroll to main video debrief">
+      <img src="profile.jpg" alt="Balaajee V.R.">
       <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 10px;">
         <span style="font-family: var(--font-heading); font-size: 11px; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; gap: 6px;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -2165,7 +2234,6 @@
   </div>
 
   <script>
-    // Sub-Tab Switcher inside Case Study
     function switchCaseTab(caseId, tabName, btn) {
       const card = document.getElementById('case-' + caseId);
       if (!card) return;
@@ -2177,17 +2245,6 @@
       const activePanel = card.querySelector('#panel-' + caseId + '-' + tabName);
       if (activePanel) {
         activePanel.classList.add('active');
-      }
-    }
-
-    function toggleCaseVideoPlay() {
-      const video = document.getElementById('caseWalkthroughVideo');
-      if (video) {
-        if (video.paused) {
-          video.play().catch(e => alert('Video placeholder ready! Drop your recorded video into this folder or link your Loom walkthrough.'));
-        } else {
-          video.pause();
-        }
       }
     }
 
@@ -2213,7 +2270,7 @@
 
     let pipDismissed = false;
 
-    // Smart Sticky PiP on scroll past the video section
+    // Smart Sticky PiP on scroll past the video stage
     window.addEventListener('scroll', () => {
       if (pipDismissed) return;
       const stage = document.getElementById('caseWalkthroughStage');

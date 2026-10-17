@@ -171,7 +171,7 @@
     .welcome-hero {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 60px 0 54px;
+      padding: 56px 0 50px;
     }
 
     .hero-wrap {
@@ -182,15 +182,15 @@
 
     .hero-two-col {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 44px;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 40px;
       align-items: center;
     }
 
     @media (max-width: 960px) {
       .hero-two-col {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
       }
     }
 
@@ -226,12 +226,12 @@
 
     .hero-heading {
       font-family: var(--font-heading);
-      font-size: 42px;
+      font-size: 40px;
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.15;
       color: var(--text-main);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .hero-heading span {
@@ -239,10 +239,10 @@
     }
 
     .hero-bio {
-      font-size: 17px;
-      line-height: 1.65;
+      font-size: 16.5px;
+      line-height: 1.6;
       color: var(--text-body);
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
 
     .hero-bio strong {
@@ -254,7 +254,6 @@
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 24px;
     }
 
     .btn-hero-primary {
@@ -297,7 +296,7 @@
       background: #0B0E17;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
       border: 1px solid rgba(255, 255, 255, 0.12);
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -305,7 +304,7 @@
 
     .video-hero-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 24px 50px rgba(240, 6, 88, 0.2);
+      box-shadow: 0 22px 48px rgba(240, 6, 88, 0.2);
       border-color: var(--primary-accent);
     }
 
@@ -371,8 +370,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       background: var(--primary-accent);
       color: #FFFFFF;
@@ -390,12 +389,6 @@
       100% { box-shadow: 0 0 0 0 rgba(240, 6, 88, 0); }
     }
 
-    .video-hero-card:hover .video-play-btn-pulse {
-      transform: translate(-50%, -50%) scale(1.1);
-      background: #FFFFFF;
-      color: var(--primary-accent);
-    }
-
     .video-bottom-caption {
       position: absolute;
       bottom: 16px;
@@ -406,92 +399,23 @@
 
     .video-bottom-caption h4 {
       font-family: var(--font-heading);
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #FFFFFF;
       margin-bottom: 2px;
     }
 
     .video-bottom-caption p {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #CBD5E1;
       line-height: 1.4;
-    }
-
-    /* 3 Primary Pathways */
-    .pathways-section {
-      padding: 36px 0;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-
-    .pathways-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    @media (max-width: 860px) {
-      .pathways-grid { grid-template-columns: 1fr; }
-    }
-
-    .pathway-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .pathway-card:hover {
-      border-color: var(--primary-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-    }
-
-    .pathway-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .pathway-title {
-      font-family: var(--font-heading);
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .pathway-desc {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 18px;
-      flex: 1;
-    }
-
-    .pathway-link {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--primary-accent);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     /* Stats Strip */
     .stats-section {
       background: #FFFFFF;
-      border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 30px 0;
+      padding: 24px 0;
     }
 
     .stats-grid {
@@ -510,12 +434,12 @@
     .stat-item {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .stat-number {
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 900;
       color: var(--text-main);
       line-height: 1;
@@ -535,9 +459,9 @@
       letter-spacing: 0.05em;
     }
 
-    /* Case Studies Showcase Section */
+    /* Selected Work: Editorial Project Index */
     .cases-section {
-      padding: 64px 0 96px;
+      padding: 56px 0 80px;
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 24px;
@@ -545,7 +469,7 @@
     }
 
     .section-header {
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     .section-label {
@@ -560,149 +484,152 @@
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 900;
       letter-spacing: -0.02em;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .section-desc {
-      font-size: 15.5px;
+      font-size: 15px;
       color: var(--text-muted);
-      max-width: 680px;
+      max-width: 700px;
     }
 
-    .cases-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .case-card-preview {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 18px;
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
-      gap: 36px;
-      align-items: center;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    @media (max-width: 860px) {
-      .case-card-preview {
-        grid-template-columns: 1fr;
-        gap: 22px;
-        padding: 22px;
-      }
-    }
-
-    .case-card-preview:hover {
-      border-color: var(--primary-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
-    }
-
-    .case-preview-left {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .case-badge-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .case-company-pill {
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-    }
-
-    .case-role-pill {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .case-preview-title {
-      font-family: var(--font-heading);
-      font-size: 23px;
-      font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-    }
-
-    .case-preview-summary {
-      font-size: 14.5px;
-      line-height: 1.6;
-      color: var(--text-body);
-    }
-
-    .case-preview-right {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 22px;
+    .editorial-case-list {
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    .preview-metric-block {
+    .editorial-case-row {
+      display: grid;
+      grid-template-columns: 210px 1.4fr 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 24px 28px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .editorial-case-row:hover {
+      border-color: var(--primary-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .row-brand-col {
       display: flex;
       flex-direction: column;
       gap: 3px;
     }
 
-    .metric-label {
+    .row-company {
       font-family: var(--font-heading);
-      font-size: 10px;
+      font-size: 15.5px;
       font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-main);
     }
 
-    .metric-value {
+    .row-domain {
+      font-family: var(--font-code);
+      font-size: 11px;
+      color: var(--primary-accent);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .row-main-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .row-title {
       font-family: var(--font-heading);
       font-size: 16px;
       font-weight: 800;
-      color: var(--primary-accent);
+      color: var(--text-main);
+      line-height: 1.3;
     }
 
-    .btn-read-case {
+    .row-summary {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .row-metric-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .row-metric-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      font-family: var(--font-heading);
+    }
+
+    .row-metric-pill .m-val {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .row-metric-pill .m-lbl {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+
+    .row-metric-sub {
+      font-family: var(--font-code);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .row-arrow-col {
+      text-align: right;
+    }
+
+    .btn-row-action {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 18px;
+      gap: 6px;
+      padding: 8px 18px;
       border-radius: 100px;
-      background: var(--primary-accent);
-      color: #FFFFFF;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
       font-family: var(--font-heading);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      text-decoration: none;
+      color: var(--text-main);
       transition: all 0.2s ease;
-      margin-top: 4px;
+      white-space: nowrap;
     }
 
-    .btn-read-case:hover {
-      background: var(--primary-hover);
+    .editorial-case-row:hover .btn-row-action {
+      background: var(--primary-accent);
+      color: #FFFFFF;
+      border-color: var(--primary-accent);
+    }
+
+    @media (max-width: 900px) {
+      .editorial-case-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+      .row-arrow-col {
+        text-align: left;
+      }
     }
 
     /* Video Player Modal */
@@ -710,43 +637,44 @@
       display: none;
       position: fixed;
       inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       z-index: 9999;
-      background: rgba(8, 12, 20, 0.88);
-      backdrop-filter: blur(12px);
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 24px;
     }
 
     .video-modal-box {
       background: #0B0E17;
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 20px;
+      max-width: 780px;
       width: 100%;
-      max-width: 820px;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-      animation: modalFadeIn 0.25s ease;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: modalFadeIn 0.25s ease-out;
     }
 
     @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.96); }
-      to { opacity: 1; transform: scale(1); }
+      from { transform: scale(0.96); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .modal-header {
-      padding: 16px 22px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #FFFFFF;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .modal-title {
       font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -764,23 +692,18 @@
     .modal-close-btn:hover { color: #FFFFFF; }
 
     .modal-video-stage {
-      position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
     }
 
     .modal-transcript-area {
-      padding: 20px 24px;
+      padding: 18px 22px;
       background: #111522;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       color: #E2E8F0;
-      font-size: 13.5px;
-      line-height: 1.65;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .transcript-header {
@@ -791,6 +714,27 @@
       text-transform: uppercase;
       color: var(--primary-accent);
       margin-bottom: 8px;
+    }
+
+    .chapter-tag {
+      font-family: var(--font-code);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94A3B8;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chapter-tag:hover {
+      background: rgba(240, 6, 88, 0.2);
+      color: #FFFFFF;
+      border-color: rgba(240, 6, 88, 0.5);
     }
   </style>
 </head>
@@ -812,10 +756,13 @@
       </nav>
 
       <div class="header-actions">
+        
+        
         <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV (PDF)
         </a>
+        
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
           Get In Touch &rarr;
         </a>
@@ -841,18 +788,18 @@
           </h1>
 
           <p class="hero-bio">
-            Welcome to my portfolio. I specialize in <strong>turning complex enterprise chaos into high-margin SaaS</strong>, scaling multi-brand design systems, and partnering with Commercial Directors and Engineering Leads to bridge strategic business OKRs with high-velocity product delivery.
+            I specialize in <strong>turning complex enterprise chaos into high-margin SaaS</strong>, scaling multi-brand design systems, and partnering with Commercial Directors and Engineering Leads to bridge strategic business OKRs with high-velocity product delivery.
           </p>
 
           <div class="hero-cta-group">
-            <a href="/leadership" class="btn-hero-primary">
+            <a href="#cases" class="btn-hero-primary">
+              🎨 Explore 5 Case Studies &darr;
+            </a>
+            <a href="/leadership" class="btn-hero-secondary">
               👔 Executive Leadership Deck &rarr;
             </a>
             <a href="/cv" class="btn-hero-secondary">
               📄 View Full Executive CV
-            </a>
-            <a href="#cases" class="btn-hero-secondary">
-              🎨 5 Case Studies &darr;
             </a>
           </div>
         </div>
@@ -882,44 +829,6 @@
     </div>
   </section>
 
-  <!-- 3 Direct Pathways -->
-  <section class="pathways-section">
-    <div class="pathways-grid">
-      <a href="/leadership" class="pathway-card">
-        <div>
-          <div class="pathway-icon">👔</div>
-          <h3 class="pathway-title">Executive Leadership Deck</h3>
-          <p class="pathway-desc">
-            A single-page vertically scrollable presentation outlining my leadership philosophy, team topology, enterprise design maturity, and 30-60-90 day onboarding vision.
-          </p>
-        </div>
-        <span class="pathway-link">Read Leadership Deck &rarr;</span>
-      </a>
-
-      <a href="/cv" class="pathway-card">
-        <div>
-          <div class="pathway-icon">📄</div>
-          <h3 class="pathway-title">Full Executive CV</h3>
-          <p class="pathway-desc">
-            Complete chronological professional history, competencies, metrics, and education. Includes 1-click official PDF download and clean print layout.
-          </p>
-        </div>
-        <span class="pathway-link">View Full Executive CV &rarr;</span>
-      </a>
-
-      <a href="#cases" class="pathway-card">
-        <div>
-          <div class="pathway-icon">🎨</div>
-          <h3 class="pathway-title">5 UI/UX Case Studies</h3>
-          <p class="pathway-desc">
-            In-depth product design case studies with live interactive browser mockups, 14-tab legacy spreadsheet audits, personas, design tokens, and interview CAR defense.
-          </p>
-        </div>
-        <span class="pathway-link">Explore 5 Case Studies &darr;</span>
-      </a>
-    </div>
-  </section>
-
   <!-- Career Stats Strip -->
   <section class="stats-section">
     <div class="stats-grid">
@@ -942,152 +851,127 @@
     </div>
   </section>
 
-  <!-- Selected In-Depth UI/UX Case Studies Showcase Grid -->
+  <!-- Selected Work: High-Impact Editorial Project Index -->
   <section class="cases-section" id="cases">
     <div class="section-header">
       <div class="section-label">SELECTED WORK &bull; DEDICATED IN-DEPTH CASE STUDIES</div>
       <h2 class="section-title">Enterprise Product Case Studies</h2>
       <p class="section-desc">
-        Each project below features a dedicated page with interactive browser mockups, information architecture flows, design tokens, and interview CAR defense frameworks.
+        Click any case below for the dedicated deep dive: 90-second video walkthrough, interactive live browser mockup, architecture flows, tokens, and interview CAR defense.
       </p>
     </div>
 
-    <div class="cases-grid">
+    <div class="editorial-case-list">
 
       <!-- Case 1: Ericsson -->
-      <div class="case-card-preview">
-        <div class="case-preview-left">
-          <div class="case-badge-meta">
-            <span class="case-company-pill" style="color: var(--primary-accent); border-color: var(--accent-border);">Ericsson Global</span>
-            <span class="case-role-pill">Lead UI/UX Designer &amp; Information Architect &bull; Jul 2019 – Sep 2020</span>
-          </div>
-          <h3 class="case-preview-title">Ericsson SalesOps CPQ: Transforming 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h3>
-          <p class="case-preview-summary">
-            Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise CPQ (Configure, Price, Quote) platform. By combining keyboard-first spreadsheet muscle memory with automated catalog validation and live gross margin guardrails, we compressed quote turnaround from 6 days to 42 minutes and protected $18M+ in annual margin leakage.
-          </p>
+      <a href="/case-ericsson.html" class="editorial-case-row">
+        <div class="row-brand-col">
+          <span class="row-company">Ericsson Global</span>
+          <span class="row-domain">Enterprise CPQ SaaS</span>
         </div>
-        <div class="case-preview-right">
-          <div class="preview-metric-block">
-            <span class="metric-label">Key Transformation</span>
-            <span class="metric-value">6 Days &rarr; 42 Mins Turnaround (-92%)</span>
-          </div>
-          <div class="preview-metric-block">
-            <span class="metric-label">Protected Revenue</span>
-            <span class="metric-value">$18M+ Margin Leakage Protected</span>
-          </div>
-          <a href="/case-ericsson.html" class="btn-read-case">
-            Read Dedicated Case Study &amp; Live App &rarr;
-          </a>
+        <div class="row-main-col">
+          <h3 class="row-title">SalesOps Cloud: 14-Tab Legacy Excel to Automated Deal Engine</h3>
+          <p class="row-summary">Modernized unversioned macro-laden spreadsheets into an automated quoting engine for 1,200+ telecom engineers.</p>
         </div>
-      </div>
+        <div class="row-metric-col">
+          <div class="row-metric-pill">
+            <span class="m-val">$18M</span>
+            <span class="m-lbl">Margin Protected</span>
+          </div>
+          <div class="row-metric-sub">6 Days &rarr; 42 Mins Turnaround</div>
+        </div>
+        <div class="row-arrow-col">
+          <span class="btn-row-action">Deep Dive &rarr;</span>
+        </div>
+      </a>
 
       <!-- Case 2: IBM Watson -->
-      <div class="case-card-preview">
-        <div class="case-preview-left">
-          <div class="case-badge-meta">
-            <span class="case-company-pill">IBM Software Labs</span>
-            <span class="case-role-pill">Senior Manager UI/UX Design &bull; Sep 2024 – Jan 2026</span>
-          </div>
-          <h3 class="case-preview-title">IBM Watson Orchestrate: Multi-Agent AI Task Automation &amp; Agentic UX</h3>
-          <p class="case-preview-summary">
-            Designing autonomous multi-agent task execution while preserving Human-in-the-Loop governance for regulated Fortune 500 enterprises. We transformed black-box generative AI into an explainable, auditable system with confidence thresholds and side-by-side diff checks.
-          </p>
+      <a href="/case-ibm-watson.html" class="editorial-case-row">
+        <div class="row-brand-col">
+          <span class="row-company">IBM Software Labs</span>
+          <span class="row-domain">Agentic AI &amp; Orchestration</span>
         </div>
-        <div class="case-preview-right">
-          <div class="preview-metric-block">
-            <span class="metric-label">Task Velocity</span>
-            <span class="metric-value">62% Faster Cross-System Execution</span>
-          </div>
-          <div class="preview-metric-block">
-            <span class="metric-label">Governance Impact</span>
-            <span class="metric-value">0 Compliance Violations Across 14 Squads</span>
-          </div>
-          <a href="/case-ibm-watson.html" class="btn-read-case">
-            Read Dedicated Case Study &amp; Live App &rarr;
-          </a>
+        <div class="row-main-col">
+          <h3 class="row-title">Watson Orchestrate: Multi-Agent AI Task Automation &amp; Agentic UX</h3>
+          <p class="row-summary">Architected autonomous agent execution while preserving Human-in-the-Loop governance across 14 global product squads.</p>
         </div>
-      </div>
+        <div class="row-metric-col">
+          <div class="row-metric-pill">
+            <span class="m-val">62%</span>
+            <span class="m-lbl">Faster Task Velocity</span>
+          </div>
+          <div class="row-metric-sub">0 Compliance Violations</div>
+        </div>
+        <div class="row-arrow-col">
+          <span class="btn-row-action">Deep Dive &rarr;</span>
+        </div>
+      </a>
 
       <!-- Case 3: Zebra Technologies -->
-      <div class="case-card-preview">
-        <div class="case-preview-left">
-          <div class="case-badge-meta">
-            <span class="case-company-pill">Zebra Technologies</span>
-            <span class="case-role-pill">UI/UX Product Design Manager &bull; Jul 2021 – Aug 2024</span>
-          </div>
-          <h3 class="case-preview-title">Zebra Enterprise Device Cloud: Multi-Site Fleet &amp; Scanner Telematics</h3>
-          <p class="case-preview-summary">
-            Scaling mission-critical IoT diagnostics and zero-touch barcode provisioning for 1.2M+ active enterprise hardware devices across global distribution centers. Conducted in-situ contextual research in sub-zero freezers to redesign rugged scanner interaction paradigms.
-          </p>
+      <a href="/case-zebra.html" class="editorial-case-row">
+        <div class="row-brand-col">
+          <span class="row-company">Zebra Technologies</span>
+          <span class="row-domain">Industrial IoT &amp; Hardware UX</span>
         </div>
-        <div class="case-preview-right">
-          <div class="preview-metric-block">
-            <span class="metric-label">Staging Acceleration</span>
-            <span class="metric-value">8 Secs vs 4.5 Days (-99% Staging Time)</span>
-          </div>
-          <div class="preview-metric-block">
-            <span class="metric-label">Hardware Footprint</span>
-            <span class="metric-value">1.2M+ Active Scanners &amp; Handhelds</span>
-          </div>
-          <a href="/case-zebra.html" class="btn-read-case">
-            Read Dedicated Case Study &amp; Live App &rarr;
-          </a>
+        <div class="row-main-col">
+          <h3 class="row-title">Enterprise Device Cloud: Multi-Site Fleet &amp; Scanner Telematics</h3>
+          <p class="row-summary">Zero-touch barcode provisioning and IoT diagnostics for 1.2M+ rugged hardware devices across global distribution centers.</p>
         </div>
-      </div>
+        <div class="row-metric-col">
+          <div class="row-metric-pill">
+            <span class="m-val">1.2M+</span>
+            <span class="m-lbl">Active Enterprise Devices</span>
+          </div>
+          <div class="row-metric-sub">8 Secs vs 4.5 Days Staging</div>
+        </div>
+        <div class="row-arrow-col">
+          <span class="btn-row-action">Deep Dive &rarr;</span>
+        </div>
+      </a>
 
       <!-- Case 4: IBM Carbon -->
-      <div class="case-card-preview">
-        <div class="case-preview-left">
-          <div class="case-badge-meta">
-            <span class="case-company-pill">IBM Software Labs</span>
-            <span class="case-role-pill">DesignOps &amp; Governance Lead &bull; 2024–2026</span>
-          </div>
-          <h3 class="case-preview-title">IBM Carbon Token Engine: Cross-Squad DesignOps &amp; UI System Governance</h3>
-          <p class="case-preview-summary">
-            Eliminating multi-million dollar design debt by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads. Established the Contribution Council flywheel to review, govern, and merge component tokens without engineering friction.
-          </p>
+      <a href="/case-ibm-carbon.html" class="editorial-case-row">
+        <div class="row-brand-col">
+          <span class="row-company">IBM Software Labs</span>
+          <span class="row-domain">DesignOps &amp; Governance</span>
         </div>
-        <div class="case-preview-right">
-          <div class="preview-metric-block">
-            <span class="metric-label">Front-End Velocity</span>
-            <span class="metric-value">+28% Sprint Delivery Acceleration</span>
-          </div>
-          <div class="preview-metric-block">
-            <span class="metric-label">Drift Reduction</span>
-            <span class="metric-value">-70% Visual Regression &amp; Drift Bugs</span>
-          </div>
-          <a href="/case-ibm-carbon.html" class="btn-read-case">
-            Read Dedicated Case Study &amp; Live App &rarr;
-          </a>
+        <div class="row-main-col">
+          <h3 class="row-title">Carbon Token Engine: Cross-Squad DesignOps &amp; UI System Governance</h3>
+          <p class="row-summary">Synchronized Figma tokens with React production pipelines across 14 squads via the Contribution Council flywheel.</p>
         </div>
-      </div>
+        <div class="row-metric-col">
+          <div class="row-metric-pill">
+            <span class="m-val">-70%</span>
+            <span class="m-lbl">UI Drift &amp; Regressions</span>
+          </div>
+          <div class="row-metric-sub">+28% Sprint Dev Acceleration</div>
+        </div>
+        <div class="row-arrow-col">
+          <span class="btn-row-action">Deep Dive &rarr;</span>
+        </div>
+      </a>
 
       <!-- Case 5: ZF Wabco -->
-      <div class="case-card-preview">
-        <div class="case-preview-left">
-          <div class="case-badge-meta">
-            <span class="case-company-pill">ZF Wabco</span>
-            <span class="case-role-pill">UI/UX Senior Specialist &bull; Oct 2020 – Jul 2021</span>
-          </div>
-          <h3 class="case-preview-title">ZF Wabco Commercial Vehicle Cockpit &amp; Real-Time Safety Telematics</h3>
-          <p class="case-preview-summary">
-            Designing a dual-interface ecosystem: a glanceable, distraction-free in-cab HUD cluster for commercial truck drivers compliant with strict EU automotive safety standards (&lt;1.2s glance time), paired with an automated fleet command center for dispatchers.
-          </p>
+      <a href="/case-zf-wabco.html" class="editorial-case-row">
+        <div class="row-brand-col">
+          <span class="row-company">ZF Wabco</span>
+          <span class="row-domain">Automotive Fleet &amp; HUD</span>
         </div>
-        <div class="case-preview-right">
-          <div class="preview-metric-block">
-            <span class="metric-label">EU Safety Standard</span>
-            <span class="metric-value">&lt; 1.2s Eyes-Off-Road Glance Time</span>
-          </div>
-          <div class="preview-metric-block">
-            <span class="metric-label">Active EU Deployment</span>
-            <span class="metric-value">80,000+ Commercial Trucks</span>
-          </div>
-          <a href="/case-zf-wabco.html" class="btn-read-case">
-            Read Dedicated Case Study &amp; Live App &rarr;
-          </a>
+        <div class="row-main-col">
+          <h3 class="row-title">Commercial Vehicle Cockpit &amp; Real-Time Safety Telematics</h3>
+          <p class="row-summary">Distraction-free in-cab HUD cluster compliant with strict EU automotive standards, paired with fleet command center.</p>
         </div>
-      </div>
+        <div class="row-metric-col">
+          <div class="row-metric-pill">
+            <span class="m-val">80k+</span>
+            <span class="m-lbl">Active EU Trucks</span>
+          </div>
+          <div class="row-metric-sub">&lt; 1.2s Eye-Off-Road Glance</div>
+        </div>
+        <div class="row-arrow-col">
+          <span class="btn-row-action">Deep Dive &rarr;</span>
+        </div>
+      </a>
 
     </div>
   </section>
@@ -1103,7 +987,6 @@
         <button class="modal-close-btn" onclick="closeVideoModal()">&times;</button>
       </div>
       <div class="modal-video-stage">
-        <!-- Interactive Video Player Container -->
         <video id="executiveVideoPlayer" controls poster="profile.jpg" style="width: 100%; height: 100%; object-fit: cover;">
           <source src="intro.mp4" type="video/mp4">
           Your browser does not support HTML5 video.
@@ -1112,9 +995,9 @@
       <div class="modal-transcript-area">
         <div class="transcript-header">EXECUTIVE SPOKEN TRANSCRIPT &bull; 60 SECONDS</div>
         <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(0)" style="font-family: var(--font-code); font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #94A3B8; border: 1px solid rgba(255,255,255,0.12); cursor: pointer;">⏱️ 0:00 Welcome &amp; Background</button>
-          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(22)" style="font-family: var(--font-code); font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #94A3B8; border: 1px solid rgba(255,255,255,0.12); cursor: pointer;">⏱️ 0:22 Leadership Philosophy</button>
-          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(42)" style="font-family: var(--font-code); font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #94A3B8; border: 1px solid rgba(255,255,255,0.12); cursor: pointer;">⏱️ 0:42 Enterprise Impact &amp; CPQ</button>
+          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(0)">⏱️ 0:00 Welcome &amp; Background</button>
+          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(22)">⏱️ 0:22 Leadership Philosophy</button>
+          <button type="button" class="chapter-tag" onclick="seekExecutiveIntro(42)">⏱️ 0:42 Enterprise Impact &amp; CPQ</button>
         </div>
         <p>
           <em>"Hi, I'm Balaajee. Welcome to my portfolio. Over the past 18 years at companies like IBM, Ericsson, and Zebra Technologies, I've focused on one core challenge: transforming messy, high-friction enterprise systems into high-velocity digital products. On this site, you'll find my Executive Leadership Deck, which covers my approach to team topologies, design systems, and 30-60-90 day onboarding. Below that, explore five in-depth case studies—starting with how we turned Ericsson's 14-tab legacy Excel sheet into an automated cloud CPQ that saved 18 million dollars in margin leakage. Feel free to explore the interactive prototypes, review my full CV, and let's connect."</em>

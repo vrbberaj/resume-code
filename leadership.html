@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Executive Design Leadership Deck (Scrollable Presentation)</title>
-  <meta name="description" content="Scrollable executive presentation on design leadership, team topology, enterprise design maturity, and 30-60-90 day onboarding vision.">
+  <title>Balaajee V.R. | Executive Leadership Deck</title>
+  <meta name="description" content="Executive Leadership Presentation: Scaling enterprise design teams, DesignOps token governance, cross-functional collaboration, and 30-60-90 day execution plan.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,10 +200,24 @@
       padding: 0;
     }
 
-    
+    body {
+      background-color: var(--canvas-bg);
+      color: var(--stone-800);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(200, 168, 74, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(13, 27, 46, 0.05) 0%, transparent 40%);
+      overflow-x: hidden;
+    }
 
     @media (min-width: 1240px) {
-      
+      body.has-sidebar,
+      body.has-sidebar-padding {
+        padding-left: 290px;
+      }
     }
 
     /* Keynote Stage Viewport */
@@ -1539,7 +1553,10 @@
     }
 
     @media (min-width: 1240px) {
-      
+      body.has-sidebar .deck-bottombar,
+      body.has-sidebar-padding .deck-bottombar {
+        left: calc(50% + 145px);
+      }
     }
 
     .nav-counter {
@@ -1619,7 +1636,15 @@
         box-shadow: none !important;
         text-shadow: none !important;
       }
-      html, 
+      html, body {
+        width: 16in !important;
+        height: auto !important;
+        background: var(--canvas-bg) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
       .deck-stage {
         max-width: none !important;
         padding: 0 !important;
@@ -1724,27 +1749,16 @@
     }
   
 
-    /* Vertical Scrollable Deck Overrides */
+    /* Override deck layout for pure vertical scroll */
     body {
-      background: #0B0E17 !important;
+      background-color: #070B14;
       color: #E2E8F0;
     }
 
     .leadership-wrap {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 32px 24px 80px;
-    }
-
-    .deck-top-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
-      background: rgba(18, 24, 38, 0.95);
-      border: 1px solid rgba(200, 168, 74, 0.3);
-      border-radius: 14px;
-      margin-bottom: 28px;
+      padding: 24px 24px 80px;
     }
 
     .keynote-container {
@@ -1755,41 +1769,39 @@
 
     .slide {
       display: flex !important;
-      flex-direction: column;
       opacity: 1 !important;
-      visibility: visible !important;
-      position: static !important;
+      transform: none !important;
       min-height: auto !important;
-      border-radius: 20px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-      margin-bottom: 20px;
+      padding: 3rem 3.4rem !important;
+      margin-bottom: 0 !important;
     }
 
-    /* Quick jump table of contents */
+    /* Single Clean Jump Bar directly under Global Header */
     .deck-jump-bar {
       position: sticky;
-      top: 65px;
-      z-index: 50;
-      background: rgba(11, 14, 23, 0.95);
+      top: 60px;
+      z-index: 950;
+      background: rgba(13, 27, 46, 0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 168, 74, 0.3);
       padding: 10px 0;
-      margin-bottom: 30px;
     }
 
     .jump-links {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
+      align-items: center;
       scrollbar-width: none;
     }
+    .jump-links::-webkit-scrollbar { display: none; }
 
     .jump-item {
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 100px;
       font-family: var(--font-code);
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       color: #94A3B8;
       background: rgba(255, 255, 255, 0.06);
@@ -1822,10 +1834,13 @@
       </nav>
 
       <div class="header-actions">
-        <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download CV (PDF)
+        
+        
+        <a href="Balaajee_VR_Leadership_Deck.pdf" download class="btn-download-pdf">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Deck (PDF)
         </a>
+        
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
           Get In Touch &rarr;
         </a>
@@ -1838,15 +1853,15 @@
   <div class="deck-jump-bar">
     <div style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
       <div class="jump-links">
-        <span style="font-family: var(--font-code); font-size: 11px; color: var(--gold); font-weight: 700; margin-right: 6px;">JUMP TO:</span>
+        <span style="font-family: var(--font-code); font-size: 11px; color: var(--gold); font-weight: 700; margin-right: 6px;">STRATEGIC SECTIONS:</span>
         <a href="#slide-1" class="jump-item">01. Overview</a>
         <a href="#slide-2" class="jump-item">02. 4 Pillars</a>
-        <a href="#slide-3" class="jump-item">03. Ericsson CPQ</a>
-        <a href="#slide-4" class="jump-item">04. Zebra IoT</a>
-        <a href="#slide-5" class="jump-item">05. ZF Wabco</a>
-        <a href="#slide-6" class="jump-item">06. IBM Carbon</a>
-        <a href="#slide-7" class="jump-item">07. IBM Watson</a>
-        <a href="#slide-8" class="jump-item">08. Design Maturity</a>
+        <a href="#slide-3" class="jump-item">03. Team Topology</a>
+        <a href="#slide-4" class="jump-item">04. IBM AI-UX</a>
+        <a href="#slide-5" class="jump-item">05. Zebra IoT</a>
+        <a href="#slide-6" class="jump-item">06. ZF Wabco HUD</a>
+        <a href="#slide-7" class="jump-item">07. Token Ops</a>
+        <a href="#slide-8" class="jump-item">08. Agentic DesignOps</a>
         <a href="#slide-9" class="jump-item">09. 30-60-90 Plan</a>
         <a href="#slide-10" class="jump-item">10. Target Roles</a>
       </div>
@@ -1854,28 +1869,7 @@
   </div>
 
   <div class="leadership-wrap">
-    
-    <!-- Top Strip -->
-    <div class="deck-top-strip">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <img src="profile.jpg" alt="Balaajee V.R." onerror="this.src='photo_300x400.jpg'" style="width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--gold);">
-        <div>
-          <h2 style="font-family: var(--font-heading); font-size: 15px; font-weight: 800; color: #FFFFFF;">Balaajee V.R. &bull; <span style="color: var(--gold);">Executive Leadership Deck</span></h2>
-          <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">Continuous Scrollable Presentation &bull; 10 Strategic Sections</span>
-        </div>
-      </div>
-      <div style="display: flex; gap: 10px; align-items: center;">
-        <a href="Balaajee_VR_Leadership_Deck.pdf" download class="btn-download-pdf" style="background: rgba(255,255,255,0.08); color: #FFFFFF; border-color: rgba(255,255,255,0.2);">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Deck (PDF)
-        </a>
-        <a href="/#cases" class="btn-contact" style="padding: 7px 16px; font-size: 12.5px;">
-          View UI/UX Case Studies &rarr;
-        </a>
-      </div>
-    </div>
-
-    <!-- The 10 Sections (Scrollable Vertically) -->
+    <!-- The 10 Strategic Sections (Scrollable Vertically) -->
     <main class="keynote-container">
       
 
@@ -2195,7 +2189,7 @@
           <span>SLIDE 03 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
           <span>HYBRID POD OPERATING MODEL</span>
           <div style="margin-top: 18px; text-align: right;">
-       <a href="/case-ericsson.html" class="btn-read-case" style="display: inline-flex; text-decoration: none;">
+       <a href="/case-ericsson.html" class="btn-read-case" style="display: inline-flex; text-decoration: none; padding: 8px 18px; border-radius: 100px; background: var(--gold); color: #0D1B2E; font-weight: 700; font-size: 12.5px;">
          Explore Dedicated Ericsson Case Study &amp; Live Data Grid &rarr;
        </a>
      </div>
@@ -2290,14 +2284,10 @@
         <div class="slide-keynote-footer">
           <span>SLIDE 04 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
           <span>IBM ENTERPRISE AI-UX CASE STUDY</span>
-          <div style="margin-top: 18px; text-align: right;">
-       <a href="/case-zebra.html" class="btn-read-case" style="display: inline-flex; text-decoration: none;">
-         Explore Dedicated Zebra Scanner Case Study &rarr;
-       </a>
-     </div>
-   </div>
- </section>
- <!-- SLIDE 5: Case Study 02 - Zebra Technologies (Editorial Cream Paper) -->
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Case Study 02 - Zebra Technologies (Editorial Cream Paper) -->
       <section class="slide slide-theme-cream" id="slide-5">
         <div class="slide-header">
           <div class="slide-kicker">
@@ -2386,14 +2376,10 @@
         <div class="slide-keynote-footer">
           <span>SLIDE 05 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
           <span>ZEBRA INDUSTRIAL ECOSYSTEM CASE STUDY</span>
-          <div style="margin-top: 18px; text-align: right;">
-       <a href="/case-zf-wabco.html" class="btn-read-case" style="display: inline-flex; text-decoration: none;">
-         Explore Dedicated ZF Wabco Cockpit HUD Case Study &rarr;
-       </a>
-     </div>
-   </div>
- </section>
- <!-- SLIDE 6: Case Study 03 - ZF Wabco (Editorial Cream Paper) -->
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Case Study 03 - ZF Wabco (Editorial Cream Paper) -->
       <section class="slide slide-theme-cream" id="slide-6">
         <div class="slide-header">
           <div class="slide-kicker">
@@ -2482,14 +2468,10 @@
         <div class="slide-keynote-footer">
           <span>SLIDE 06 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
           <span>ZF WABCO FLEET TELEMATICS CASE STUDY</span>
-          <div style="margin-top: 18px; text-align: right;">
-       <a href="/case-ibm-carbon.html" class="btn-read-case" style="display: inline-flex; text-decoration: none;">
-         Explore Dedicated IBM Carbon DesignOps Token Case Study &rarr;
-       </a>
-     </div>
-   </div>
- </section>
- <!-- SLIDE 7: Enterprise Token Architecture (Editorial Cream Paper) -->
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Enterprise Token Architecture (Editorial Cream Paper) -->
       <section class="slide slide-theme-cream" id="slide-7">
         <div class="slide-header">
           <div class="slide-kicker">
@@ -2609,14 +2591,10 @@
         <div class="slide-keynote-footer">
           <span>SLIDE 07 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
           <span>ENTERPRISE TOKEN ARCHITECTURE</span>
-          <div style="margin-top: 18px; text-align: right;">
-       <a href="/case-ibm-watson.html" class="btn-read-case" style="display: inline-flex; text-decoration: none;">
-         Explore Dedicated IBM Watson Agentic AI Case Study &rarr;
-       </a>
-     </div>
-   </div>
- </section>
- <!-- SLIDE 8: AI-Augmented DesignOps & Agentic UX (Editorial Cream Paper) -->
+        </div>
+      </section>
+
+      <!-- SLIDE 8: AI-Augmented DesignOps & Agentic UX (Editorial Cream Paper) -->
       <section class="slide slide-theme-cream" id="slide-8">
         <div class="slide-header">
           <div class="slide-kicker">
@@ -2956,7 +2934,6 @@
 
     
     </main>
-
   </div>
 
 </body>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ericsson SalesOps CPQ: Excel-to-Cloud Transformation | Balaajee V.R.</title>
-  <meta name="description" content="Transforming a 14-tab legacy Excel quoting sheet into an enterprise cloud CPQ engine, reducing turnaround from 6 days to 42 minutes.">
+  <title>Ericsson SalesOps Cloud: Transforming 14-Tab Legacy Excel Chaos into an Automated Deal Engine | Balaajee V.R.</title>
+  <meta name="description" content="Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise CPQ engine, reducing turnaround from 6 days to 42 minutes and protecting $18M in margin leakage.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1570,14 +1570,14 @@
     .case-page-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 32px 24px 80px;
+      padding: 28px 24px 80px;
     }
 
     .breadcrumb-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
       gap: 12px;
     }
@@ -1620,60 +1620,115 @@
       border-color: var(--border-medium);
     }
 
-    /* Executive Video Walkthrough Banner */
-    .case-video-walkthrough {
-      background: #0B0E17;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 24px 28px;
-      margin-bottom: 32px;
+    /* UNIFIED EXECUTIVE CASE STAGE (Zero Redundancy) */
+    .unified-case-stage {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 28px;
       display: grid;
       grid-template-columns: 1.25fr 0.95fr;
-      gap: 28px;
+      gap: 36px;
       align-items: center;
-      color: #FFFFFF;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
     }
 
-    @media (max-width: 860px) {
-      .case-video-walkthrough {
+    @media (max-width: 920px) {
+      .unified-case-stage {
         grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
+        padding: 24px;
+        gap: 24px;
       }
     }
 
-    .walkthrough-label {
+    .stage-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .stage-company-pill {
       font-family: var(--font-code);
       font-size: 11px;
       font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(240, 6, 88, 0.08);
       color: var(--primary-accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+      border: 1px solid rgba(240, 6, 88, 0.25);
     }
 
-    .walkthrough-heading {
+    .stage-role-pill {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .stage-award-pill {
+      font-size: 11px;
+      font-weight: 700;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    .stage-title {
       font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 26px;
+      font-weight: 900;
       line-height: 1.25;
-      margin-bottom: 8px;
-      color: #FFFFFF;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
     }
 
-    .walkthrough-desc {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: #CBD5E1;
+    .stage-lead {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--text-body);
       margin-bottom: 16px;
     }
 
-    .walkthrough-chapters {
+    .stage-metrics-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .stage-metric-chip {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stage-metric-chip .chip-lbl {
+      font-family: var(--font-code);
+      font-size: 9.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stage-metric-chip .chip-val {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stage-chapters {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 18px;
     }
 
     .chapter-tag {
@@ -1681,9 +1736,9 @@
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #94A3B8;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #FFFFFF;
+      color: var(--text-body);
+      border: 1px solid var(--border-medium);
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -1692,49 +1747,36 @@
     }
 
     .chapter-tag:hover {
-      background: rgba(240, 6, 88, 0.2);
-      color: #FFFFFF;
-      border-color: rgba(240, 6, 88, 0.5);
-    }
-
-    .btn-watch-walkthrough {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 20px;
-      border-radius: 100px;
       background: var(--primary-accent);
       color: #FFFFFF;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      border-color: var(--primary-accent);
     }
 
-    .btn-watch-walkthrough:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-
-    .walkthrough-player-box {
+    /* Video Player Box inside Stage */
+    .stage-video-box {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 12px;
+      background: #0B0E17;
+      border-radius: 14px;
       overflow: hidden;
-      background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      cursor: pointer;
+      aspect-ratio: 16 / 9.5;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .walkthrough-poster {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-      filter: brightness(0.8);
+    .stage-video-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(11, 14, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 100px;
+      z-index: 5;
+      pointer-events: none;
     }
 
     /* Floating Smart Picture-in-Picture Mini-Player on Scroll */
@@ -1787,15 +1829,16 @@
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
+      cursor: pointer;
     }
 
-    .pip-body video, .pip-body img {
+    .pip-body img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 25%;
     }
 
-    /* Force the single case card to be permanently visible */
     .case-card {
       display: block !important;
       margin-bottom: 40px;
@@ -1846,10 +1889,13 @@
       </nav>
 
       <div class="header-actions">
+        
+        
         <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV (PDF)
         </a>
+        
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
           Get In Touch &rarr;
         </a>
@@ -1870,89 +1916,79 @@
         <span>Ericsson SalesOps CPQ</span>
       </div>
       <a href="/#cases" class="btn-back">
-        &larr; Back to All Case Studies
+        &larr; All Case Studies
       </a>
     </div>
 
-    <!-- Executive Case Walkthrough Video Stage -->
-    <div class="case-video-walkthrough" id="caseWalkthroughStage">
+    <!-- UNIFIED EXECUTIVE CASE STAGE -->
+    <div class="unified-case-stage" id="caseWalkthroughStage">
       <div>
-        <div class="walkthrough-label">EXECUTIVE CASE DEBRIEF &bull; 90 SECONDS</div>
-        <h2 class="walkthrough-heading">Watch Balaajee Present: Ericsson SalesOps CPQ</h2>
-        <p class="walkthrough-desc">
-          In this 90-second executive briefing, I break down the 14-tab legacy spreadsheet audit, our keyboard-first UX re-architecture, and how we prevented $18M in margin leakage.
-        </p>
-        <div class="walkthrough-chapters">
-          <button type="button" class="chapter-tag" onclick="seekCaseVideo(0)">⏱️ 0:00 The Context &amp; Pain</button>
-          <button type="button" class="chapter-tag" onclick="seekCaseVideo(30)">⏱️ 0:30 UX Re-Architecture</button>
-          <button type="button" class="chapter-tag" onclick="seekCaseVideo(65)">⏱️ 1:05 Business ROI &amp; Metrics</button>
+        <div class="stage-badges">
+          <span class="stage-company-pill">Ericsson Global</span>
+          <span class="stage-role-pill">Lead UI/UX Designer &amp; Architect &bull; Jul 2019 – Sep 2020</span>
+          <span class="stage-award-pill">🏆 1st Place Hack-fest Award &bull; Spot Innovation Award</span>
         </div>
-        <button class="btn-watch-walkthrough" onclick="toggleCaseVideoPlay()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          Watch Video Walkthrough (90s)
-        </button>
+        <h1 class="stage-title">Ericsson SalesOps Cloud: Transforming 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h1>
+        <p class="stage-lead">Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise CPQ engine, reducing turnaround from 6 days to 42 minutes and protecting $18M in margin leakage.</p>
+        <div class="stage-metrics-row">
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Target Users</span>
+              <span class="chip-val">1,200+ Sales Engineers</span>
+            </div>
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Turnaround</span>
+              <span class="chip-val">6 Days &rarr; 42 Mins (-92%)</span>
+            </div>
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Protected Margin</span>
+              <span class="chip-val">$18M+ Annual</span>
+            </div>
+          
+            <div class="stage-metric-chip">
+              <span class="chip-lbl">Core Tools</span>
+              <span class="chip-val">Figma, React, Tokens</span>
+            </div>
+          
+        </div>
+        <div class="stage-chapters">
+          
+            <button type="button" class="chapter-tag" onclick="seekCaseVideo(0)">⏱️ 0:00 14-Tab Excel Audit</button>
+          
+            <button type="button" class="chapter-tag" onclick="seekCaseVideo(30)">⏱️ 0:30 Keyboard Data Grid</button>
+          
+            <button type="button" class="chapter-tag" onclick="seekCaseVideo(65)">⏱️ 1:05 $18M Margin Impact</button>
+          
+        </div>
       </div>
 
-      <div class="walkthrough-player-box" onclick="toggleCaseVideoPlay()">
+      <div class="stage-video-box">
+        <div class="stage-video-tag">🎬 90s Executive Debrief</div>
         <video id="caseWalkthroughVideo" poster="profile.jpg" controls style="width: 100%; height: 100%; object-fit: cover;">
           <source src="ericsson_walkthrough.mp4" type="video/mp4">
         </video>
       </div>
     </div>
 
-    <!-- The Case Card Content -->
+    <!-- The Case Card Content (With Cleaned 4 Sub-Tabs) -->
     <article class="case-card" id="case-ericsson" data-category="ericsson">
-          <div class="case-card-header">
-            <div class="case-meta-badges">
-              <span class="badge-company" style="background: rgba(196,137,42,0.1); color: var(--accent-gold); border: 1px solid rgba(196,137,42,0.3);">Ericsson Global</span>
-              <span class="badge-role">Lead UI/UX Designer &amp; Information Architect &bull; Jul 2019 – Sep 2020</span>
-              <span class="badge-award">🏆 1st Place Hack-fest Award &bull; Spot Innovation Award</span>
-            </div>
-            <h3 class="case-title">Ericsson SalesOps Cloud: Transforming 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h3>
-            <p class="case-summary">
-              Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise CPQ (Configure, Price, Quote) platform. By combining keyboard-first spreadsheet muscle memory with automated catalog validation and live gross margin guardrails, we compressed quote turnaround from 6 days to 42 minutes and protected $18M+ in annual margin leakage.
-            </p>
-            <div class="case-meta-grid">
-              <div class="meta-item">
-                <div class="meta-item-label">Target Users</div>
-                <div class="meta-item-val">1,200+ Global Telecom Sales Engineers</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-item-label">Core Tools</div>
-                <div class="meta-item-val">Figma, Miro, React, Design Tokens</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-item-label">Primary Metric</div>
-                <div class="meta-item-val">6 Days &rarr; 42 Mins Turnaround (-92%)</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-item-label">Business Impact</div>
-                <div class="meta-item-val">$18M+ Margin Leakage Protected</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Interactive Case Study Subnav -->
+          
           <div class="case-subnav" role="tablist">
-            <button class="case-subtab-btn active" onclick="switchCaseTab('ericsson', 'ui', this)">
-              <span>🖥️ Product UI Showcase</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'research', this)">
-              <span>🔍 UX Research &amp; Persona</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'flow', this)">
-              <span>📐 14-Tab IA &amp; Journey Flow</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'tokens', this)">
-              <span>🎨 Design System &amp; Tokens</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'metrics', this)">
-              <span>📊 Usability Testing &amp; ROI</span>
-            </button>
-            <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'car', this)">
-              <span>🎯 Interview CAR Defense</span>
-            </button>
-          </div>
+      <button class="case-subtab-btn active" onclick="switchCaseTab('ericsson', 'ui', this)">
+        <span>💻 Interactive Solution</span>
+      </button>
+      <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'research', this)">
+        <span>🔍 Research &amp; Architecture</span>
+      </button>
+      <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'tokens', this)">
+        <span>🎨 Design Tokens &amp; Governance</span>
+      </button>
+      <button class="case-subtab-btn" onclick="switchCaseTab('ericsson', 'impact', this)">
+        <span>📈 Business ROI &amp; Defense</span>
+      </button>
+    </div>
 
           <!-- Tab Panel 1: UI Showcase -->
           <div class="case-tab-panel active" id="panel-ericsson-ui">
@@ -2196,7 +2232,11 @@
           </div>
 
           <!-- Tab Panel 5: Usability Metrics -->
-          <div class="case-tab-panel" id="panel-ericsson-metrics">
+          
+      <div class="case-tab-panel" id="panel-ericsson-impact">
+        <div style="margin-bottom: 24px;">
+          <h4 style="font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">Quantitative Impact &amp; Usability Metrics</h4>
+          
             <div class="metrics-row">
               <div class="metric-hero-box">
                 <div class="metric-hero-val">6d &rarr; 42m</div>
@@ -2216,10 +2256,11 @@
                 “In 12 moderated usability sessions across Stockholm and Chennai, sales engineers saw their SUS (System Usability Scale) satisfaction jump from 34/100 (unacceptable) to 87/100 (world-class). By preserving spreadsheet muscle memory while enforcing automated margin guardrails, we achieved 94% platform adoption within 30 days.”
               </div>
             </div>
-          </div>
-
-          <!-- Tab Panel 6: Interview CAR Defense -->
-          <div class="case-tab-panel" id="panel-ericsson-car">
+          
+        </div>
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
+          <h4 style="font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">Executive CAR Defense &amp; Leadership Q&amp;A</h4>
+          
             <div class="interview-defense-container">
               <div class="car-card">
                 <div class="car-question">
@@ -2263,9 +2304,10 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="case-footer">
+          
+        </div>
+      </div>
+    <div class="case-footer">
             <div class="case-tags">
               <span class="case-tag">Enterprise CPQ</span>
               <span class="case-tag">Keyboard Ergonomics</span>
@@ -2293,8 +2335,8 @@
       <span>🎬 Speaking: Ericsson SalesOps CPQ</span>
       <button onclick="closeFloatingPip()" class="pip-close-btn" title="Dismiss">&times;</button>
     </div>
-    <div class="pip-body" onclick="scrollToVideoStage()" title="Click to scroll to main video debrief" style="cursor: pointer;">
-      <img src="profile.jpg" alt="Balaajee V.R." style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;">
+    <div class="pip-body" onclick="scrollToVideoStage()" title="Click to scroll to main video debrief">
+      <img src="profile.jpg" alt="Balaajee V.R.">
       <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 10px;">
         <span style="font-family: var(--font-heading); font-size: 11px; font-weight: 700; color: #FFFFFF; display: flex; align-items: center; gap: 6px;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -2305,7 +2347,6 @@
   </div>
 
   <script>
-    // Sub-Tab Switcher inside Case Study
     function switchCaseTab(caseId, tabName, btn) {
       const card = document.getElementById('case-' + caseId);
       if (!card) return;
@@ -2317,17 +2358,6 @@
       const activePanel = card.querySelector('#panel-' + caseId + '-' + tabName);
       if (activePanel) {
         activePanel.classList.add('active');
-      }
-    }
-
-    function toggleCaseVideoPlay() {
-      const video = document.getElementById('caseWalkthroughVideo');
-      if (video) {
-        if (video.paused) {
-          video.play().catch(e => alert('Video placeholder ready! Drop your recorded video into this folder or link your Loom walkthrough.'));
-        } else {
-          video.pause();
-        }
       }
     }
 
@@ -2353,7 +2383,7 @@
 
     let pipDismissed = false;
 
-    // Smart Sticky PiP on scroll past the video section
+    // Smart Sticky PiP on scroll past the video stage
     window.addEventListener('scroll', () => {
       if (pipDismissed) return;
       const stage = document.getElementById('caseWalkthroughStage');

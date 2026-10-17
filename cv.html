@@ -168,43 +168,26 @@
   }
 
 
-    .cv-top-action-bar {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 14px 0;
-      position: sticky;
-      top: 60px;
-      z-index: 90;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    body {
+      background-color: #DDD9D0;
     }
 
-    .cv-bar-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .cv-bar-title {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .cv-bar-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    #container {
+      max-width: 900px;
+      margin: 24px auto 60px;
+      background: transparent;
     }
 
     @media print {
-      .global-header, .cv-top-action-bar {
+      .global-header {
         display: none !important;
+      }
+      body {
+        background-color: #FFFFFF !important;
+      }
+      #container {
+        margin: 0 !important;
+        max-width: 100% !important;
       }
     }
   </style>
@@ -227,10 +210,18 @@
       </nav>
 
       <div class="header-actions">
+        
+        <button onclick="window.print()" class="btn-download-pdf" style="cursor: pointer;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print CV
+        </button>
+        
+        
         <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV (PDF)
         </a>
+        
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
           Get In Touch &rarr;
         </a>
@@ -238,26 +229,6 @@
     </div>
   </header>
   
-
-  <!-- Sticky Action Bar for CV -->
-  <div class="cv-top-action-bar">
-    <div class="cv-bar-container">
-      <div>
-        <div class="cv-bar-title">Balaajee V.R. &bull; Executive Curriculum Vitae</div>
-        <div style="font-size: 12px; color: var(--text-muted);">Senior UI/UX Design Manager &bull; 18+ Years Enterprise Experience</div>
-      </div>
-      <div class="cv-bar-actions">
-        <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-contact" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Official PDF (A4)
-        </a>
-        <button onclick="window.print()" class="btn-download-pdf" style="cursor: pointer; padding: 8px 16px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Print CV
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- Full Corporate CV Document -->
   <div id="container">
@@ -918,6 +889,5 @@
     </div>
     <script src="/sidebar.js"></script>
   
-
 </body>
 </html>
