@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Senior UI/UX Design Manager &amp; Enterprise AI Architect</title>
-  <meta name="description" content="Executive UX Design Portfolio of Balaajee V.R. — 18+ years leading cross-functional design organizations across Enterprise AI, Industrial IoT, and Telecom. Ex-IBM, Zebra Technologies, ZF Wabco.">
+  <title>Balaajee V.R. | Senior UI/UX Design Manager &amp; Director of Product Design</title>
+  <meta name="description" content="Executive UX Design Portfolio of Balaajee V.R. — 18+ years leading cross-functional design organizations across Enterprise AI, Industrial IoT, and B2B SaaS. Ex-IBM, Zebra Technologies, ZF Wabco, Ericsson.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,11 +14,11 @@
        EXECUTIVE DESIGN SYSTEM: SWISS-GRID EDITORIAL (LIGHT PRIMARY + DUAL THEME)
        ========================================================================== */
     :root {
-      /* Warm Editorial Light Canvas (Default) */
+      /* Warm Architectural Light Canvas (Default) */
       --bg-base: #FBFBF9;
       --bg-surface: #FFFFFF;
-      --bg-subtle: #F3F1EC;
-      --bg-card-hover: #FAF9F5;
+      --bg-subtle: #F4F1EA;
+      --bg-card-hover: #FAF8F4;
       
       --text-main: #111827;
       --text-body: #374151;
@@ -39,6 +39,9 @@
       
       --accent-green: #059669;
       --accent-green-bg: rgba(5, 150, 105, 0.08);
+      
+      --accent-red: #DC2626;
+      --accent-red-bg: rgba(220, 38, 38, 0.08);
       
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
       --shadow-md: 0 8px 24px -4px rgba(0,0,0,0.06), 0 2px 6px -1px rgba(0,0,0,0.02);
@@ -143,7 +146,7 @@
       padding: 0.65rem 1rem 0.65rem 1.4rem;
       margin: 1.25rem auto 2.5rem auto;
       max-width: var(--container-max);
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-medium);
@@ -153,7 +156,7 @@
     }
 
     [data-theme="dark"] .nav-wrapper {
-      background: rgba(18, 24, 36, 0.85);
+      background: rgba(18, 24, 36, 0.88);
       border-color: var(--border-subtle);
     }
 
@@ -166,11 +169,11 @@
     }
 
     .brand-avatar-nav {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid var(--accent-gold);
+      border: 2px solid var(--accent-gold);
     }
 
     .brand-name {
@@ -383,8 +386,8 @@
     }
 
     .hero-author-avatar {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       border-radius: 12px;
       object-fit: cover;
       object-position: top;
@@ -442,6 +445,8 @@
       gap: 8px;
       box-shadow: var(--shadow-md);
       transition: var(--transition-smooth);
+      cursor: pointer;
+      border: none;
     }
 
     .btn-primary:hover {
@@ -463,6 +468,7 @@
       align-items: center;
       gap: 8px;
       transition: var(--transition-smooth);
+      cursor: pointer;
     }
 
     .btn-secondary:hover {
@@ -706,7 +712,7 @@
     }
 
     /* ==========================================================================
-       SECTION HEADERS & TABS
+       INFOGRAPHIC-DRIVEN CASE STUDY ARCHITECTURE
        ========================================================================== */
     .section-header-row {
       display: flex;
@@ -757,13 +763,10 @@
       border-color: var(--text-main);
     }
 
-    /* ==========================================================================
-       CASE STUDIES: DEEP-DIVE CARDS WITH ARCHITECTURAL DETAIL
-       ========================================================================== */
     .cases-grid {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 3.5rem;
       margin-bottom: 5rem;
     }
 
@@ -771,20 +774,14 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-lg);
-      padding: 2.2rem;
+      padding: 2.5rem;
       box-shadow: var(--shadow-md);
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
       transition: var(--transition-smooth);
       position: relative;
       overflow: hidden;
-    }
-
-    @media (max-width: 900px) {
-      .case-card {
-        grid-template-columns: 1fr;
-      }
     }
 
     .case-card:hover {
@@ -792,11 +789,21 @@
       box-shadow: var(--shadow-lg);
     }
 
+    .case-header-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+    }
+
     .case-meta-top {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     .case-company-badge {
@@ -819,100 +826,461 @@
 
     .case-title {
       font-family: var(--font-serif);
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--text-main);
       line-height: 1.25;
-      margin-bottom: 1.2rem;
     }
 
-    /* CAR Framework Blocks */
-    .car-narrative {
+    .case-headline-lead {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      max-width: 900px;
+    }
+
+    /* ==========================================================================
+       ADVANCED INFOGRAPHIC VISUAL CANVASES & ARCHITECTURAL SCHEMATICS
+       ========================================================================== */
+    .infographic-canvas {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
     }
 
-    .car-item {
-      padding-left: 14px;
-      border-left: 2px solid var(--border-medium);
-      transition: var(--transition-smooth);
+    .infographic-canvas-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.85rem;
     }
 
-    .car-item:hover {
-      border-left-color: var(--accent-gold);
+    .canvas-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .car-label {
+    .canvas-chip {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent-gold);
-      display: block;
-      margin-bottom: 2px;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 4px;
     }
 
-    .car-text {
+    .chip-legacy {
+      background: var(--accent-red-bg);
+      color: var(--accent-red);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+    }
+
+    .chip-modern {
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .canvas-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Comparison Layout: Legacy vs Modern Transformation */
+    .infographic-comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 64px 1.4fr;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    @media (max-width: 950px) {
+      .infographic-comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Mock Spreadsheet Component */
+    .spreadsheet-mock {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .spreadsheet-titlebar {
+      background: #1d6f42; /* Excel green */
+      color: #FFFFFF;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .spreadsheet-grid {
+      display: grid;
+      grid-template-columns: 28px 1.2fr 1fr 1fr;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sheet-cell {
+      padding: 6px 8px;
+      border-right: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 10.5px;
+    }
+
+    .sheet-header-cell {
+      background: var(--bg-subtle);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .sheet-err-cell {
+      background: rgba(220, 38, 38, 0.12);
+      color: var(--accent-red);
+      font-weight: 700;
+    }
+
+    .sheet-tabs-row {
+      display: flex;
+      overflow-x: auto;
+      background: var(--bg-subtle);
+      padding: 5px 6px 0 6px;
+      gap: 3px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .sheet-tab {
+      padding: 3px 7px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-bottom: none;
+      border-radius: 3px 3px 0 0;
+      font-size: 9px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .sheet-tab.active-error {
+      border-top: 2px solid var(--accent-red);
+      color: var(--accent-red);
+      font-weight: 700;
+      background: var(--bg-surface);
+    }
+
+    /* Transformation Arrow */
+    .transform-arrow-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .transform-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(196,137,42,0.18);
+      transition: var(--transition-smooth);
+    }
+
+    .transform-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-top: 6px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* 4-Step Pipeline Node Layout */
+    .pipeline-nodes-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .pipeline-nodes-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pipeline-node-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .pipeline-node-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .node-step-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .node-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .node-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .node-status-pill {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-top: auto;
+      width: fit-content;
+      font-weight: 600;
+    }
+
+    .pill-green {
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      border: 1px solid rgba(16,185,129,0.3);
+    }
+
+    .pill-amber {
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      border: 1px solid rgba(196,137,42,0.3);
+    }
+
+    .pill-blue {
+      background: var(--accent-blue-bg);
+      color: var(--accent-blue);
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    /* Live Margin Indicator Bar */
+    .margin-indicator-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Full Deep Dive Accordion */
+    .deep-dive-accordion {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.25rem;
+    }
+
+    .deep-dive-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .deep-dive-btn:hover {
+      background: var(--border-medium);
+      border-color: var(--accent-gold);
+    }
+
+    .deep-dive-panel {
+      display: none;
+      margin-top: 1.5rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      flex-direction: column;
+      gap: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .deep-dive-panel.open {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dive-section h4 {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+    }
+
+    .dive-section p {
       font-size: 13.5px;
       color: var(--text-body);
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
     }
 
-    .case-right-column {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
+    .dive-interview-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
 
-    .case-metrics-panel {
-      background: var(--bg-subtle);
+    .interview-qa-item {
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.4rem;
+      border-left: 4px solid var(--accent-gold);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+    }
+
+    .qa-question {
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
       display: flex;
-      flex-direction: column;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .qa-q-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .qa-answer {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.7;
+    }
+
+    /* Three KPI Metric Badges */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
-    .case-metric-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px dashed var(--border-subtle);
-      padding-bottom: 8px;
+    @media (max-width: 640px) {
+      .kpi-row {
+        grid-template-columns: 1fr;
+      }
     }
 
-    .case-metric-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    .kpi-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1rem;
+      text-align: center;
+      transition: var(--transition-smooth);
     }
 
-    .metric-value-highlight {
-      font-family: var(--font-mono);
-      font-size: 16px;
+    .kpi-box:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+
+    .kpi-val {
+      font-family: var(--font-serif);
+      font-size: 24px;
       font-weight: 700;
       color: var(--accent-gold);
     }
 
-    .metric-label-small {
-      font-size: 12px;
+    .kpi-lbl {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       color: var(--text-muted);
-      font-weight: 500;
+      margin-top: 3px;
     }
 
-    .case-tags-container {
+    /* Tags container */
+    .case-footer-row {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
     }
 
     .skill-tag {
       font-family: var(--font-mono);
       font-size: 10.5px;
-      background: var(--bg-surface);
+      background: var(--bg-subtle);
       border: 1px solid var(--border-medium);
       color: var(--text-muted);
       padding: 4px 10px;
@@ -938,7 +1306,7 @@
     }
 
     /* ==========================================================================
-       ADMIN HUB / COMMAND CENTER (PASSWORD PROTECTED)
+       ADMIN HUB / COMMAND CENTER (EUROPEAN RECRUITMENT INTELLIGENCE)
        ========================================================================== */
     .admin-gate-modal {
       display: none;
@@ -1112,7 +1480,7 @@
       <img src="profile.jpg" alt="Balaajee VR" class="brand-avatar-nav">
       <div>
         <div class="brand-name">BALAAJEE V.R.</div>
-        <span class="brand-badge">UX Design Executive</span>
+        <span class="brand-badge">Senior Design Manager</span>
       </div>
     </a>
 
@@ -1135,7 +1503,7 @@
       <!-- Private Command Center Gate -->
       <button class="btn-admin-gate" onclick="openAdminGate()">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-        <span>Admin Hub</span>
+        <span>Pipeline Hub</span>
       </button>
 
       <a href="mailto:vrbberaj@gmail.com" class="btn-cta-contact">
@@ -1157,7 +1525,7 @@
         <div class="hero-bio">
           <div class="status-pill">
             <span class="status-dot"></span>
-            <span>AVAILABLE FOR SENIOR MANAGER &amp; PRACTICE FACULTY</span>
+            <span>OPEN TO SENIOR DESIGN MANAGER &amp; DIRECTOR ROLES</span>
           </div>
 
           <h1 class="hero-title">
@@ -1165,7 +1533,7 @@
           </h1>
 
           <p class="hero-lead">
-            Senior UI/UX Design Manager with 18+ years leading cross-functional design organizations across enterprise AI, industrial IoT, and telecom systems. Bridging high-level UX strategy, engineering feasibility, and business outcomes.
+            Senior UI/UX Design Manager with 18+ years directing cross-functional design organizations across Enterprise AI, Industrial IoT, and complex B2B platforms. Proven track record of bridging executive vision with engineering feasibility at IBM, Zebra Technologies, ZF Wabco, and Ericsson.
           </p>
 
           <!-- Executive Headshot & Provenance Row -->
@@ -1240,15 +1608,15 @@
       <section class="metric-ribbon">
         <div class="metric-card">
           <div class="metric-number">18<span>+</span></div>
-          <div class="metric-label">Years Leadership</div>
+          <div class="metric-label">Years Global Leadership</div>
         </div>
         <div class="metric-card">
           <div class="metric-number">10M<span>+</span></div>
-          <div class="metric-label">Enterprise Users</div>
+          <div class="metric-label">Enterprise Users Impacted</div>
         </div>
         <div class="metric-card">
           <div class="metric-number">8<span>+</span></div>
-          <div class="metric-label">Global Verticals</div>
+          <div class="metric-label">Global Industries</div>
         </div>
         <div class="metric-card">
           <div class="metric-number">120<span>+</span></div>
@@ -1261,262 +1629,754 @@
         <div class="section-header-row">
           <div class="section-heading-group">
             <h2>Flagship Case Studies</h2>
-            <p>Architectural problem solving across Enterprise AI, Industrial IoT, and Telematics.</p>
+            <p>Infographic-driven architectural narratives: problem framing, UX orchestration, and measurable business ROI.</p>
           </div>
           <div class="filter-pills-row">
             <button class="filter-pill active" onclick="filterCases('all', this)">All (5)</button>
-            <button class="filter-pill" onclick="filterCases('ai', this)">Enterprise AI</button>
-            <button class="filter-pill" onclick="filterCases('iot', this)">Industrial IoT</button>
-            <button class="filter-pill" onclick="filterCases('telecom', this)">Telecom OSS</button>
-            <button class="filter-pill" onclick="filterCases('auto', this)">Fleet Cockpit</button>
+            <button class="filter-pill" onclick="filterCases('ibm', this)">IBM Enterprise</button>
+            <button class="filter-pill" onclick="filterCases('zebra', this)">Zebra IoT</button>
+            <button class="filter-pill" onclick="filterCases('sales', this)">Sales Automation</button>
+            <button class="filter-pill" onclick="filterCases('auto', this)">Fleet Telematics</button>
           </div>
         </div>
 
-        <!-- Case Studies List -->
+                <!-- Case Studies List -->
         <div class="cases-grid">
 
-          <!-- CASE 1: IBM Watson Orchestrate AI -->
-          <article class="case-card" data-category="ai">
-            <div class="case-left-column">
-              <div class="case-meta-top">
-                <span class="case-company-badge">IBM India Software Labs</span>
-                <span class="case-role-text">Senior Manager UI/UX Design &bull; 2024–2026</span>
+          <!-- =================================================================
+               CASE 1: IBM WATSON ORCHESTRATE AI
+               ================================================================= -->
+          <article class="case-card" data-category="ibm">
+            <div class="case-header-block">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-company-badge">IBM India Software Labs</span>
+                  <span class="case-role-text">Senior Manager UI/UX Design &bull; Sep 2024 – Jan 2026</span>
+                </div>
+                <h3 class="case-title">IBM Watson Orchestrate: Multi-Agent AI Task Automation &amp; Agentic UX</h3>
+                <p class="case-headline-lead">Designing autonomous multi-agent task execution while preserving Human-in-the-Loop governance for regulated Fortune 500 enterprises.</p>
               </div>
-              <h3 class="case-title">IBM Watson Orchestrate: Multi-Agent AI Task Automation &amp; Design Token Governance</h3>
-              
-              <div class="car-narrative">
-                <div class="car-item">
-                  <span class="car-label">1. The Challenge</span>
-                  <p class="car-text">Enterprise operators spend 40% of their day switching between siloed applications (SAP, Salesforce, Jira, Oracle). Generative AI agents were viewed as unpredictable "black boxes" lacking governance, trust, and auditability in regulated Fortune 500 environments.</p>
+            </div>
+
+            <!-- VISUAL INFOGRAPHIC CANVAS: MULTI-AGENT ARCHITECTURE & CONFIDENCE GATE -->
+            <div class="infographic-canvas">
+              <div class="infographic-canvas-header">
+                <div class="canvas-title-group">
+                  <span class="canvas-chip chip-modern">Visual Infographic Spec</span>
+                  <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Multi-Agent Orchestration &amp; Confidence Gate Architecture</span>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">2. Action &amp; UX Strategy</span>
-                  <p class="car-text">Architected human-in-the-loop agentic workflows with explicit confidence threshold gates (green = autonomous, amber = review diff). Scaled a multi-brand Design Token architecture across 14 front-end squads, synchronizing dark/light Figma tokens with live React code.</p>
+                <span class="canvas-subtitle">System Topology: Enterprise Production Mesh</span>
+              </div>
+
+              <!-- 3-Column Visual Flow Architecture -->
+              <div class="infographic-comparison-grid" style="grid-template-columns: 1.1fr 48px 1.4fr;">
+                
+                <!-- Col 1: Natural Language Intent Prompt -->
+                <div class="pipeline-node-card" style="border-left: 3px solid var(--accent-blue); background: var(--bg-surface);">
+                  <span class="node-step-tag">01. Natural Language Intent</span>
+                  <div class="node-title">Goal Intake &amp; Decomposition</div>
+                  <div style="background: var(--bg-subtle); padding: 8px 10px; border-radius: 4px; font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); border: 1px dashed var(--border-medium); margin-top: 4px;">
+                    &ldquo;Reconcile Q3 vendor invoices across SAP, verify credit limit in Salesforce, and prepare executive payment voucher.&rdquo;
+                  </div>
+                  <div class="node-status-pill pill-blue">Master Orchestrator Active</div>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">3. Measurable Impact</span>
-                  <p class="car-text">Reduced multi-system workflow completion times by 62%. Unified token pipelines accelerated front-end sprint delivery velocity by 28% across global product squads.</p>
+
+                <!-- Center Connector -->
+                <div class="transform-arrow-column">
+                  <div class="transform-icon-circle" style="width: 36px; height: 36px; font-size: 14px;">⚡</div>
+                  <span class="transform-label" style="font-size: 8px;">Sub-Agents</span>
+                </div>
+
+                <!-- Col 2: 3 Sub-Agents + Confidence Gate -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <!-- Sub Agents Mesh -->
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 6px 8px; font-size: 9.5px; text-align: center;">
+                      <div style="font-weight: 700; color: var(--accent-blue);">SAP Agent</div>
+                      <div style="color: var(--text-muted); font-size: 8.5px;">PO Item Fetch</div>
+                    </div>
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 6px 8px; font-size: 9.5px; text-align: center;">
+                      <div style="font-weight: 700; color: var(--accent-gold);">CRM Agent</div>
+                      <div style="color: var(--text-muted); font-size: 8.5px;">Credit Check</div>
+                    </div>
+                    <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 6px 8px; font-size: 9.5px; text-align: center;">
+                      <div style="font-weight: 700; color: var(--accent-green);">Audit Agent</div>
+                      <div style="color: var(--text-muted); font-size: 8.5px;">SOX Verify</div>
+                    </div>
+                  </div>
+
+                  <!-- Confidence Gate Indicator -->
+                  <div style="background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: 4px; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 10px; font-weight: 700;">
+                      <span style="color: var(--text-main);">Human-in-the-Loop Confidence Threshold Gate</span>
+                      <span style="color: var(--accent-green);">Confidence: 94.2% [PASS]</span>
+                    </div>
+                    <div style="height: 6px; background: var(--bg-subtle); border-radius: 3px; overflow: hidden; display: flex;">
+                      <div style="width: 25%; background: var(--accent-red);" title="<70% Manual Diff"></div>
+                      <div style="width: 25%; background: var(--accent-gold);" title="70-89% Human Review"></div>
+                      <div style="width: 50%; background: var(--accent-green);" title="≥90% Auto Execution"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 8px; color: var(--text-muted);">
+                      <span>&lt;70% Side-by-Side Diff</span>
+                      <span>70&ndash;89% 1-Click Confirm</span>
+                      <span>&ge;90% Autonomous Action</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Bottom Bar: Rollback Timeline -->
+              <div class="margin-indicator-bar" style="font-family: var(--font-mono); font-size: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--accent-green);">● LIVE LEDGER:</span>
+                  <span style="color: var(--text-body);">Every API mutation committed to immutable audit log with 1-click snapshot rollback.</span>
+                </div>
+                <span class="node-status-pill pill-green">Audit Compliant</span>
+              </div>
+            </div>
+
+            <!-- 3 KPI Metric Badges -->
+            <div class="kpi-row">
+              <div class="kpi-box">
+                <div class="kpi-val">62% Faster</div>
+                <div class="kpi-lbl">Task Completion Time</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">0 Errors</div>
+                <div class="kpi-lbl">Compliance Violations in Audit</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">14 Squads</div>
+                <div class="kpi-lbl">Unified AI Component Mesh</div>
+              </div>
+            </div>
+
+            <!-- Expandable Full Deep Dive & Interview Defense -->
+            <div class="deep-dive-accordion">
+              <button class="deep-dive-btn" onclick="toggleDeepDive('dive-ibm-watson', this)">
+                <span>📖 Explore Full Architectural Deep Dive &amp; Interview Defense</span>
+                <span style="font-size: 11px;">▼</span>
+              </button>
+
+              <div id="dive-ibm-watson" class="deep-dive-panel">
+                <div class="dive-section">
+                  <h4>1. Executive Framing &amp; The Business Problem</h4>
+                  <p>Enterprise knowledge workers in Fortune 500 finance, procurement, and HR operations spend an average of 3.8 hours every day manually copying data and context between fragmented enterprise tools (SAP ERP, Salesforce CRM, Jira, and Workday). While generative AI promised autonomous automation, early prototypes suffered from a fatal flaw: black-box execution without explainability or audit trails, triggering immediate rejection by corporate legal and compliance teams.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>2. The UX Architectural Breakthrough: Dual-Confidence Gating</h4>
+                  <p>As Senior Design Manager, I directed the design of the <strong>Human-in-the-Loop (HITL) Confidence Gate</strong>. Rather than treating autonomy as binary (all automated vs. all manual), we designed a dynamic 3-zone visual execution model:</p>
+                  <p>&bull; <strong>Zone 1 (&ge;90% Confidence):</strong> Autonomous background execution with ambient notification receipts.</p>
+                  <p>&bull; <strong>Zone 2 (70&ndash;89% Confidence):</strong> One-click interactive review card highlighting verified versus deduced fields before executing irreversible write operations.</p>
+                  <p>&bull; <strong>Zone 3 (&lt;70% Confidence):</strong> Side-by-side reconciliation interface with highlighted diffs and one-click manual override.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>3. Executive Interview Preparation &amp; Defense (CAR Framework)</h4>
+                  <div class="dive-interview-grid">
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q1</span> How do you design for autonomous multi-agent AI without users feeling a dangerous loss of control?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Autonomous agentic UX must balance machine speed with human psychological safety. In IBM Watson Orchestrate, we established a strict Human-in-the-Loop Confidence Threshold architecture. High-confidence actions executed silently in the background, but any mutation involving financial transactions or cross-system write operations below our 90% threshold triggered an explicit visual diff. Furthermore, we designed an immutable execution ledger where users could review the sub-agent dependency chain and perform a 1-click state rollback at any point. This gave enterprise risk officers the confidence to greenlight enterprise rollouts.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q2</span> What was the hardest cross-functional engineering conflict you resolved?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Engineering initially pushed for 100% asynchronous background API execution to maximize throughput and reduce frontend latency metrics. I pushed back and defended a synchronous visual state transition for actions requiring human confirmation. Using user testing with enterprise operations leads, I demonstrated that an unexpected background data mutation caused a 400% increase in user panic and support tickets. We aligned on a dual-speed architecture: silent execution for read-only queries, and explicit interactive review gates for write actions.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q3</span> How did you quantify the business ROI of this UX initiative?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;We tracked two core north-star metrics: Task Cycle Time and User Trust Deficit (measured by rollback frequency). We achieved a 62% reduction in end-to-end task completion time, while maintaining a sub-0.5% rollback rate across 10,000+ pilot agent executions. The framework became the design benchmark presented at IBM Think for generative AI enterprise orchestration.&rdquo;</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="case-right-column">
-              <div class="case-metrics-panel">
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Workflow Execution</span>
-                  <span class="metric-value-highlight">62% Faster</span>
-                </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Squad Sprint Velocity</span>
-                  <span class="metric-value-highlight">+28% Lift</span>
-                </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Governed Components</span>
-                  <span class="metric-value-highlight">180+ Tokens</span>
-                </div>
-              </div>
+            <div class="case-footer-row">
               <div class="case-tags-container">
                 <span class="skill-tag">Agentic AI UX</span>
-                <span class="skill-tag">Design Token Governance</span>
                 <span class="skill-tag">Human-in-the-Loop</span>
                 <span class="skill-tag">Enterprise SaaS</span>
+                <span class="skill-tag">Explainable AI</span>
               </div>
+              <a href="Balaajee_VR_Leadership_Deck.pdf" target="_blank" style="color: var(--accent-gold); font-size: 12.5px; font-weight: 700; text-decoration: none;">View Slide 3 in Leadership Deck &rarr;</a>
             </div>
           </article>
 
-          <!-- CASE 2: Zebra Technologies IoT Fleet -->
-          <article class="case-card" data-category="iot">
-            <div class="case-left-column">
-              <div class="case-meta-top">
-                <span class="case-company-badge" style="background: rgba(196,137,42,0.1); color: var(--accent-gold); border-color: rgba(196,137,42,0.3);">Zebra Technologies</span>
-                <span class="case-role-text">UI/UX Product Design Manager &bull; 2021–2024</span>
+
+          <!-- =================================================================
+               CASE 2: IBM CARBON TOKEN ENGINE
+               ================================================================= -->
+          <article class="case-card" data-category="ibm">
+            <div class="case-header-block">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-company-badge">IBM India Software Labs</span>
+                  <span class="case-role-text">DesignOps &amp; Governance Lead &bull; 2024–2026</span>
+                </div>
+                <h3 class="case-title">IBM Carbon Token Engine: Cross-Squad DesignOps &amp; UI System Governance</h3>
+                <p class="case-headline-lead">Eliminating multi-million dollar design debt by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads.</p>
               </div>
-              <h3 class="case-title">Zebra Enterprise Device Cloud: Multi-Site Fleet &amp; Scanner Telematics</h3>
-              
-              <div class="car-narrative">
-                <div class="car-item">
-                  <span class="car-label">1. The Challenge</span>
-                  <p class="car-text">Global retail and logistics enterprises managing 50,000+ barcode scanners, RFID readers, and mobile computers suffered costly shipping delays due to undetected battery degradation and manual device staging across multiple warehouses.</p>
+            </div>
+
+            <!-- VISUAL INFOGRAPHIC CANVAS: FIGMA-TO-CODE CI/CD PIPELINE -->
+            <div class="infographic-canvas">
+              <div class="infographic-canvas-header">
+                <div class="canvas-title-group">
+                  <span class="canvas-chip chip-modern">DesignOps Blueprint</span>
+                  <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Automated Figma-to-Code Multi-Brand Token Engine</span>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">2. Action &amp; UX Strategy</span>
-                  <p class="car-text">Re-engineered the Zebra Enterprise Cloud Console from dense spreadsheets into a spatial heat-map and priority-alert telemetry dashboard. Implemented 1-scan zero-touch barcode provisioning allowing supervisors to configure 1,000 devices simultaneously in under 8 minutes.</p>
+                <span class="canvas-subtitle">Governance: 14 Front-End Engineering Squads</span>
+              </div>
+
+              <!-- 4-Tier Pipeline Row -->
+              <div class="pipeline-nodes-row">
+                <div class="pipeline-node-card">
+                  <span class="node-step-tag">Tier 1: Primitives</span>
+                  <div class="node-title">Figma Global Variables</div>
+                  <div class="node-desc">Colors, 8pt Spacing Grid, Typography scales, and Border Radii.</div>
+                  <div class="node-status-pill pill-blue">Design System Team</div>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">3. Measurable Impact</span>
-                  <p class="car-text">Successfully scaled to 1.2M+ active enterprise hardware units globally. Slashed device onboarding downtime by 45% and reduced tier-1 enterprise support tickets by 33% within 6 months.</p>
+
+                <div class="pipeline-node-card">
+                  <span class="node-step-tag">Tier 2: Semantics</span>
+                  <div class="node-title">Style-Dictionary Layer</div>
+                  <div class="node-desc">Abstracts semantic light/dark surfaces, contrast rules, and brand palettes.</div>
+                  <div class="node-status-pill pill-amber">Automated Transform</div>
+                </div>
+
+                <div class="pipeline-node-card">
+                  <span class="node-step-tag">Tier 3: CI/CD Engine</span>
+                  <div class="node-title">GitHub Actions Auto-PR</div>
+                  <div class="node-desc">Auto-generates pull requests into squad repos with Percy visual regression.</div>
+                  <div class="node-status-pill pill-green">Zero Manual Code</div>
+                </div>
+
+                <div class="pipeline-node-card">
+                  <span class="node-step-tag">Tier 4: Production</span>
+                  <div class="node-title">14 Squad Repositories</div>
+                  <div class="node-desc">React &amp; Web Components consume versioned npm design token artifacts.</div>
+                  <div class="node-status-pill pill-green">+28% Sprint Velocity</div>
+                </div>
+              </div>
+
+              <!-- Governance Flywheel Bar -->
+              <div class="margin-indicator-bar" style="font-family: var(--font-mono); font-size: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--accent-gold);">● GOVERNANCE FLYWHEEL:</span>
+                  <span style="color: var(--text-body);">Weekly 30-min Contribution Council + Squad RFC proposals eliminated top-down friction.</span>
+                </div>
+                <span class="node-status-pill pill-amber">180+ Active Tokens</span>
+              </div>
+            </div>
+
+            <!-- 3 KPI Metric Badges -->
+            <div class="kpi-row">
+              <div class="kpi-box">
+                <div class="kpi-val">+28% Lift</div>
+                <div class="kpi-lbl">Front-End Sprint Velocity</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">180+ Tokens</div>
+                <div class="kpi-lbl">Governed Across Light/Dark</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">-70% Drop</div>
+                <div class="kpi-lbl">Design QA Handoff Bugs</div>
+              </div>
+            </div>
+
+            <!-- Expandable Full Deep Dive & Interview Defense -->
+            <div class="deep-dive-accordion">
+              <button class="deep-dive-btn" onclick="toggleDeepDive('dive-ibm-carbon', this)">
+                <span>📖 Explore Full Architectural Deep Dive &amp; Interview Defense</span>
+                <span style="font-size: 11px;">▼</span>
+              </button>
+
+              <div id="dive-ibm-carbon" class="deep-dive-panel">
+                <div class="dive-section">
+                  <h4>1. Executive Framing &amp; The Design Debt Crisis</h4>
+                  <p>Across 14 distributed software squads in IBM India Software Labs, design fragmentation had grown to crisis levels. Squads maintained isolated component forks with hardcoded hex codes, disparate padding, and incompatible CSS overrides. Implementing dark mode or adapting to refreshed Carbon brand guidelines took 3+ sprints per squad, burning hundreds of thousands of dollars in redundant front-end rework and QA handoff disputes.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>2. The Architectural Solution: 3-Tier Token Synchronizer</h4>
+                  <p>Rather than relying on static redlines or manual handoffs, I led the architecture of an automated token bridge. By structuring tokens into <strong>Global Primitives</strong> (raw values), <strong>Semantic Tokens</strong> (intent-driven mappings like <code>surface-ground</code> or <code>border-interactive</code>), and <strong>Component Tokens</strong>, we decoupled visual design from engineering implementations. Integrating Style-Dictionary and GitHub Actions meant that any variable change approved in Figma automatically produced tested, merge-ready PRs directly into each squad's React repository.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>3. Executive Interview Preparation &amp; Defense (CAR Framework)</h4>
+                  <div class="dive-interview-grid">
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q1</span> How do you scale design systems across 14 autonomous engineering squads without becoming a bureaucratic bottleneck?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Design systems die when they act like bureaucratic police departments. At IBM, I established a Federated Contribution Model called the Component Contribution Council. Squad leads retained autonomy to propose new patterns via RFC templates. Once approved in our weekly 30-minute token office hours, our automated GitHub pipeline generated pull requests directly into their codebases. Governance became an accelerant rather than a blocker.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q2</span> How did you quantify the financial ROI of DesignOps to engineering directors and product VPs?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Before the token engine, 25% of front-end sprint capacity across our 14 squads was burned on UI bug fixing, handoff QA discrepancies, and CSS override refactoring. By automating the token pipeline and eliminating hardcoded styles, we dropped handoff bugs by 70% and reclaimed an estimated 28% in sprint velocity. For a team of 40+ engineers, that translated directly into over $400,000 in reclaimed engineering capacity annually.&rdquo;</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="case-right-column">
-              <div class="case-metrics-panel">
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Active Deployed Units</span>
-                  <span class="metric-value-highlight">1.2M+ Active</span>
+            <div class="case-footer-row">
+              <div class="case-tags-container">
+                <span class="skill-tag">DesignOps</span>
+                <span class="skill-tag">Design Tokens</span>
+                <span class="skill-tag">Figma Variables</span>
+                <span class="skill-tag">CI/CD Integration</span>
+              </div>
+              <a href="Balaajee_VR_Leadership_Deck.pdf" target="_blank" style="color: var(--accent-gold); font-size: 12.5px; font-weight: 700; text-decoration: none;">View Slide 6 in Leadership Deck &rarr;</a>
+            </div>
+          </article>
+
+
+          <!-- =================================================================
+               CASE 3: ZEBRA TECHNOLOGIES IOT FLEET TELEMATICS
+               ================================================================= -->
+          <article class="case-card" data-category="zebra">
+            <div class="case-header-block">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-company-badge" style="background: rgba(196,137,42,0.1); color: var(--accent-gold); border-color: rgba(196,137,42,0.3);">Zebra Technologies</span>
+                  <span class="case-role-text">UI/UX Product Design Manager &bull; Jul 2021 – Aug 2024</span>
                 </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Staging Downtime</span>
-                  <span class="metric-value-highlight">-45% Reduced</span>
+                <h3 class="case-title">Zebra Enterprise Device Cloud: Multi-Site Fleet &amp; Scanner Telematics</h3>
+                <p class="case-headline-lead">Scaling mission-critical IoT diagnostics and zero-touch barcode provisioning for 1.2M+ active enterprise hardware devices across global distribution centers.</p>
+              </div>
+            </div>
+
+            <!-- VISUAL INFOGRAPHIC CANVAS: WAREHOUSE SPATIAL MAP & ZERO-TOUCH SETUP -->
+            <div class="infographic-canvas">
+              <div class="infographic-canvas-header">
+                <div class="canvas-title-group">
+                  <span class="canvas-chip chip-modern">IoT Architecture</span>
+                  <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Spatial Warehouse Diagnostics &amp; 1-Scan Zero-Touch Provisioning</span>
                 </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Support Tickets</span>
-                  <span class="metric-value-highlight">-33% Drop</span>
+                <span class="canvas-subtitle">Scale: 1.2M Active Hardware Devices Governed</span>
+              </div>
+
+              <!-- 3-Column Visual Flow Architecture -->
+              <div class="infographic-comparison-grid" style="grid-template-columns: 1fr 50px 1.3fr;">
+                
+                <!-- Col 1: Spatial Warehouse Heatmap Mock -->
+                <div class="pipeline-node-card">
+                  <span class="node-step-tag">Spatial Heatmap</span>
+                  <div class="node-title">Distribution Center Floor Grid</div>
+                  <!-- Visual floor map grid with pins -->
+                  <div style="background: var(--bg-subtle); border: 1px solid var(--border-medium); border-radius: 4px; padding: 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; font-family: var(--font-mono); font-size: 9px; text-align: center;">
+                    <div style="background: rgba(16,185,129,0.15); color: var(--accent-green); padding: 6px 2px; border-radius: 3px;">Zone A: 480 Scanners<br>Battery: 98%</div>
+                    <div style="background: rgba(16,185,129,0.15); color: var(--accent-green); padding: 6px 2px; border-radius: 3px;">Zone B: 310 Scanners<br>Battery: 89%</div>
+                    <div style="background: rgba(220,38,38,0.15); color: var(--accent-red); padding: 6px 2px; border-radius: 3px; font-weight: 700;">Zone C: Stoppage Risk<br>Battery: 12% ⚠️</div>
+                  </div>
+                  <div class="node-status-pill pill-green">Real-Time Telemetry</div>
+                </div>
+
+                <!-- Center Connector -->
+                <div class="transform-arrow-column">
+                  <div class="transform-icon-circle" style="width: 38px; height: 38px; font-size: 15px;">⚡</div>
+                  <span class="transform-label" style="font-size: 8px;">1-Scan</span>
+                </div>
+
+                <!-- Col 2: 1-Scan Provisioning & Predictive Battery -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div class="pipeline-node-card" style="border-left: 3px solid var(--accent-green);">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                      <span class="node-step-tag">Zero-Touch Provisioning</span>
+                      <span style="font-family: var(--font-mono); font-size: 9px; color: var(--accent-green); font-weight: 700;">8 Sec vs 4.5 Days</span>
+                    </div>
+                    <div class="node-title">Scan 1 Master 2D Barcode</div>
+                    <div class="node-desc">Scanning a single generated DataMatrix barcode connects scanner to encrypted Wi-Fi, pulls firmware, and flashes enterprise configurations instantly.</div>
+                  </div>
+
+                  <div class="pipeline-node-card" style="border-left: 3px solid var(--accent-gold);">
+                    <span class="node-step-tag">Predictive Battery Analytics</span>
+                    <div class="node-title">Proactive Degradation Curve</div>
+                    <div class="node-desc">AI flags lithium cell impedance degradation 3 shifts before line stoppage, saving $14,000/hr in conveyor downtime.</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Bottom Bar -->
+              <div class="margin-indicator-bar" style="font-family: var(--font-mono); font-size: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--accent-green);">● FIELD INSIGHT:</span>
+                  <span style="color: var(--text-body);">Contextual inquiry in sub-zero freezers drove oversized 48px touch targets for gloved workers.</span>
+                </div>
+                <span class="node-status-pill pill-green">-45% Staging Downtime</span>
+              </div>
+            </div>
+
+            <!-- 3 KPI Metric Badges -->
+            <div class="kpi-row">
+              <div class="kpi-box">
+                <div class="kpi-val">1.2M+</div>
+                <div class="kpi-lbl">Active Enterprise Units</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">-45% Drop</div>
+                <div class="kpi-lbl">Device Staging Downtime</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">-33% Reduction</div>
+                <div class="kpi-lbl">Tier-1 IT Support Tickets</div>
+              </div>
+            </div>
+
+            <!-- Expandable Full Deep Dive & Interview Defense -->
+            <div class="deep-dive-accordion">
+              <button class="deep-dive-btn" onclick="toggleDeepDive('dive-zebra-iot', this)">
+                <span>📖 Explore Full Architectural Deep Dive &amp; Interview Defense</span>
+                <span style="font-size: 11px;">▼</span>
+              </button>
+
+              <div id="dive-zebra-iot" class="deep-dive-panel">
+                <div class="dive-section">
+                  <h4>1. Executive Framing &amp; The Industrial Crisis</h4>
+                  <p>Zebra Technologies powers high-velocity logistics hubs for global retail and e-commerce leaders. Staging 1,000 new mobile computers or barcode scanners historically required IT technicians to physically plug each unit into USB hubs, taking 4.5 business days per batch. Simultaneously, unmonitored battery degradation was causing active packaging lines to freeze mid-shift, costing warehouse operators up to $14,000 per hour in idle labor and shipping SLA penalties.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>2. Field Research in Sub-Zero Distribution Hubs</h4>
+                  <p>I conducted contextual inquiry inside high-velocity cold-storage distribution centers. I observed warehouse operators wearing thick thermal gloves in sub-zero freezers struggling to tap 12px touch targets on screen. This field discovery reshaped our technical strategy: rather than forcing workers to navigate complex touchscreen menus, we designed the <strong>1-Scan Master Barcode</strong> workflow. Operators simply turned on a scanner and pointed it at an illuminated master QR code—the device self-configured over Wi-Fi in 8 seconds flat.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>3. Executive Interview Preparation &amp; Defense (CAR Framework)</h4>
+                  <div class="dive-interview-grid">
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q1</span> How do you approach UX research in industrial, mission-critical environments?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;You cannot design industrial tools from behind an office desk. I conducted contextual field inquiry inside high-velocity distribution centers and sub-zero cold-storage freezers. Watching operators wearing thick insulated gloves fumble with small touchscreens directly inspired our 1-Scan Zero-Touch Provisioning feature and our strict 48px minimal touch target standard. Field empathy directly produced a 45% reduction in device staging downtime.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q2</span> How do you negotiate with hardware and firmware engineering teams who resist UI changes?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Hardware engineers initially wanted dense 5,000-row tabular spreadsheets because they were technically easy to query. I built interactive clickable prototypes and conducted benchmark testing with real warehouse supervisors. We proved that a spatial heat-map visual layout allowed supervisors to locate a failing scanner batch in 4 seconds versus 12 minutes in a raw data table. Data and recorded field video bridged the gap immediately.&rdquo;</div>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div class="case-footer-row">
               <div class="case-tags-container">
                 <span class="skill-tag">Industrial IoT</span>
-                <span class="skill-tag">Telemetry Dashboards</span>
-                <span class="skill-tag">Hardware-Software UX</span>
-                <span class="skill-tag">Field Research</span>
+                <span class="skill-tag">Hardware Telemetry</span>
+                <span class="skill-tag">Zero-Touch Provisioning</span>
+                <span class="skill-tag">Field Usability</span>
               </div>
+              <a href="Balaajee_VR_Leadership_Deck.pdf" target="_blank" style="color: var(--accent-gold); font-size: 12.5px; font-weight: 700; text-decoration: none;">View Slide 5 in Leadership Deck &rarr;</a>
             </div>
           </article>
 
-          <!-- CASE 3: Ericsson Telecom OSS -->
-          <article class="case-card" data-category="telecom">
-            <div class="case-left-column">
-              <div class="case-meta-top">
-                <span class="case-company-badge">Ericsson Global</span>
-                <span class="case-role-text">UI/UX Designer &bull; 2019–2020</span>
+
+          <!-- =================================================================
+               CASE 4: ERICSSON SALES AUTOMATION PLATFORM (EXCEL TO CPQ)
+               ================================================================= -->
+          <article class="case-card" data-category="sales">
+            <div class="case-header-block">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-company-badge">Ericsson Global</span>
+                  <span class="case-role-text">Lead UI/UX Designer &bull; Jul 2019 – Sep 2020</span>
+                </div>
+                <h3 class="case-title">Ericsson SalesOps Cloud: Transforming 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h3>
+                <p class="case-headline-lead">Replacing unversioned, macro-heavy spreadsheet pricing models with a guided enterprise CPQ (Configure, Price, Quote) platform across global telecom sales operations.</p>
               </div>
-              <h3 class="case-title">High-Density Network Topology &amp; Infrastructure Observability Platform</h3>
-              
-              <div class="car-narrative">
-                <div class="car-item">
-                  <span class="car-label">1. The Challenge</span>
-                  <p class="car-text">Telecom engineers suffered cognitive overload diagnosing 5G and fiber routing bottlenecks across millions of concurrent packet streams in mission-critical 24/7 Network Operations Centers (NOC).</p>
+            </div>
+
+            <!-- VISUAL INFOGRAPHIC CANVAS: EXCEL NIGHTMARE VS 4-STEP DEAL ENGINE -->
+            <div class="infographic-canvas">
+              <div class="infographic-canvas-header">
+                <div class="canvas-title-group">
+                  <span class="canvas-chip chip-legacy">Legacy Nightmare</span>
+                  <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">14-Tab Spreadsheet Chaos</span>
+                  <span style="font-size: 13.5px; color: var(--text-muted);">&rarr;</span>
+                  <span class="canvas-chip chip-modern">Architectural Solution</span>
+                  <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Automated 4-Step Deal Engine</span>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">2. Action &amp; UX Strategy</span>
-                  <p class="car-text">Engineered a multi-level canvas that smoothly zooms from national routing backbones down to individual chassis port latencies. Created high-contrast data visualization tokens certified for dark-room monitoring environments.</p>
+                <span class="canvas-subtitle">Award: 🏆 1st Place Ericsson Global Hack-fest</span>
+              </div>
+
+              <!-- Side-by-Side Visual Comparison -->
+              <div class="infographic-comparison-grid">
+
+                <!-- Left: Spreadsheet Mock Window -->
+                <div class="spreadsheet-mock">
+                  <div class="spreadsheet-titlebar">
+                    <span>⚠️ Global_Pricing_2020_v4_FINAL_v2.xlsx</span>
+                    <span style="color: #ffcccc; font-size: 9.5px;">6 Days Latency</span>
+                  </div>
+                  <div class="spreadsheet-grid">
+                    <div class="sheet-cell sheet-header-cell">#</div>
+                    <div class="sheet-cell sheet-header-cell">Component</div>
+                    <div class="sheet-cell sheet-header-cell">Unit Margin</div>
+                    <div class="sheet-cell sheet-header-cell">Lookup Status</div>
+
+                    <div class="sheet-cell sheet-header-cell">12</div>
+                    <div class="sheet-cell">5G Radio 4415</div>
+                    <div class="sheet-cell sheet-err-cell">-14.8% (LOSS)</div>
+                    <div class="sheet-cell sheet-err-cell">#REF! ERR</div>
+
+                    <div class="sheet-cell sheet-header-cell">13</div>
+                    <div class="sheet-cell">Baseband 6630</div>
+                    <div class="sheet-cell">34.2%</div>
+                    <div class="sheet-cell">VLOOKUP_OK</div>
+
+                    <div class="sheet-cell sheet-header-cell">14</div>
+                    <div class="sheet-cell">Fiber Hub 10G</div>
+                    <div class="sheet-cell sheet-err-cell">0.0%</div>
+                    <div class="sheet-cell sheet-err-cell">#VALUE! ERR</div>
+                  </div>
+                  <!-- 14 messy tabs preview -->
+                  <div class="sheet-tabs-row">
+                    <div class="sheet-tab active-error">5G Towers</div>
+                    <div class="sheet-tab">Baseband</div>
+                    <div class="sheet-tab">Fiber BOM</div>
+                    <div class="sheet-tab">Discounts v2</div>
+                    <div class="sheet-tab">SLA Support</div>
+                    <div class="sheet-tab">DO NOT EDIT</div>
+                    <div class="sheet-tab">Old Prices</div>
+                    <div class="sheet-tab">+7 more</div>
+                  </div>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">3. Measurable Impact</span>
-                  <p class="car-text">Reduced Mean Time to Identification (MTTI) for critical network routing anomalies by 37%. Component library adopted as the global design baseline across 8 internal telecom products.</p>
+
+                <!-- Center Transformation Bridge -->
+                <div class="transform-arrow-column">
+                  <div class="transform-icon-circle">➔</div>
+                  <span class="transform-label">UX Transform</span>
+                </div>
+
+                <!-- Right: Automated CPQ 4-Step Pipeline -->
+                <div class="pipeline-nodes-row" style="grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                  <div class="pipeline-node-card">
+                    <span class="node-step-tag">Step 01</span>
+                    <div class="node-title">Deal Intake &amp; SLA</div>
+                    <div class="node-desc">Auto-loads customer baseline contract terms &amp; volume tiers.</div>
+                    <div class="node-status-pill pill-blue">Auto-Populated</div>
+                  </div>
+
+                  <div class="pipeline-node-card">
+                    <span class="node-step-tag">Step 02</span>
+                    <div class="node-title">Keyboard BOM Grid</div>
+                    <div class="node-desc">High-speed keyboard navigation, arrow keys, and inline edit.</div>
+                    <div class="node-status-pill pill-blue">Excel Speed</div>
+                  </div>
+
+                  <div class="pipeline-node-card">
+                    <span class="node-step-tag">Step 03</span>
+                    <div class="node-title">Margin Guardrails</div>
+                    <div class="node-desc">Live calculation: Green &gt;35%, Amber routes to Regional VP.</div>
+                    <div class="node-status-pill pill-green">Zero Loss</div>
+                  </div>
+
+                  <div class="pipeline-node-card">
+                    <span class="node-step-tag">Step 04</span>
+                    <div class="node-title">1-Click Proposal</div>
+                    <div class="node-desc">Customer-ready executive contract PDF generated in 42 minutes.</div>
+                    <div class="node-status-pill pill-green">Verified PDF</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Live Dynamic Margin Guardrail Indicator -->
+              <div class="margin-indicator-bar">
+                <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px;">
+                  <span style="color: var(--accent-green); font-weight: 700;">● GROSS MARGIN GUARDRAIL:</span>
+                  <span style="color: var(--text-body);">Calculated Margin: <strong>38.4%</strong> (Compliant &mdash; Instant Auto-Approval Enabled)</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--accent-gold);">
+                  Cycle Time: 6 Days &rarr; 42 Mins (-92%)
                 </div>
               </div>
             </div>
 
-            <div class="case-right-column">
-              <div class="case-metrics-panel">
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Fault Isolation (MTTI)</span>
-                  <span class="metric-value-highlight">-37% Faster</span>
+            <!-- 3 KPI Metric Badges -->
+            <div class="kpi-row">
+              <div class="kpi-box">
+                <div class="kpi-val">6 Days &rarr; 42 Mins</div>
+                <div class="kpi-lbl">Quote Turnaround Time</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">0% Errors</div>
+                <div class="kpi-lbl">Pricing Calculation Inaccuracies</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">$18M+ Lift</div>
+                <div class="kpi-lbl">Protected Margin Leakage</div>
+              </div>
+            </div>
+
+            <!-- Expandable Full Deep Dive & Interview Defense -->
+            <div class="deep-dive-accordion">
+              <button class="deep-dive-btn" onclick="toggleDeepDive('dive-ericsson-sales', this)">
+                <span>📖 Explore Full Architectural Deep Dive &amp; Interview Defense</span>
+                <span style="font-size: 11px;">▼</span>
+              </button>
+
+              <div id="dive-ericsson-sales" class="deep-dive-panel">
+                <div class="dive-section">
+                  <h4>1. Executive Framing &amp; The Spreadsheet Nightmare</h4>
+                  <p>At Ericsson Global, pricing multi-million dollar telecom network deployments (5G radio base stations, massive MIMO antennae, optical routing, and multi-year SLA support agreements) was managed via massive, 14-tab Microsoft Excel spreadsheets. Hundreds of global sales engineers emailed 50MB macro-heavy workbooks across time zones. Broken VLOOKUP formulas, unlinked tabs, and out-of-date catalog rates meant that preparing an enterprise quote took an agonizing 6 business days. Worse, 18% of sent proposals suffered from calculation errors, causing multi-million dollar margin leakage on major fiber contracts.</p>
                 </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Internal Adoption</span>
-                  <span class="metric-value-highlight">8 Products</span>
+
+                <div class="dive-section">
+                  <h4>2. The UX Breakthrough: Keyboard-First Data Grid Ergonomics</h4>
+                  <p>When enterprise software replaces Excel, user adoption usually crashes because sales engineers hate slow, click-heavy web forms. During user research, I realized that if we built a standard stepper wizard, users would revolt and continue using spreadsheets. So I designed a <strong>keyboard-first high-speed data grid</strong> with arrow-key cell navigation, bulk copy-paste, and instant inline autocompletion. We preserved the muscle memory and speed of a spreadsheet, but coupled it to a cloud catalog with real-time gross margin guardrails in the background.</p>
                 </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Network Scale</span>
-                  <span class="metric-value-highlight">5G Telemetry</span>
+
+                <div class="dive-section">
+                  <h4>3. Executive Interview Preparation &amp; Defense (CAR Framework)</h4>
+                  <div class="dive-interview-grid">
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q1</span> Sales engineers are notoriously loyal to Excel. How did you drive 94% adoption without user resistance?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Sales engineers cling to Excel because of keyboard velocity and perceived autonomy—they resent clunky enterprise web forms that slow them down. I didn't take away their speed; I designed a keyboard-navigable data grid with inline calculations, arrow-key navigation, and smart autocompletion. Once they saw they could generate a verified $10M quotation in 42 minutes without worrying about broken macro errors or spreadsheet corruption, adoption reached 94% in the very first month.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q2</span> What was the biggest stakeholder tension between Sales and Finance, and how did your UX resolve it?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Sales wanted total pricing freedom to close deals quickly, while Finance demanded strict approval lockouts to protect profitability. I resolved this friction by designing a dynamic visual margin guardrail. If an account executive's discount kept gross margin above 35%, the quote remained in the Green Channel and could be signed off immediately. If it dropped between 28% and 35%, the UI dynamically displayed an escalation workflow with projected revenue impact routing to the Regional VP. If it dropped below 28%, the system locked the margin with clear minimum viability metrics. This transformed an antagonistic bottleneck into an objective, transparent negotiation.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q3</span> What corporate recognition and business ROI did this project achieve?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;The platform protected over $18M in margin leakage across $450M in annual quoted infrastructure and compressed turnaround from 6 days to 42 minutes. The project won 1st Place in the Ericsson Global Hack-fest Optimization Contest and earned a corporate Spot Award for UX Innovation during COVID-19 times.&rdquo;</div>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div class="case-footer-row">
               <div class="case-tags-container">
-                <span class="skill-tag">Network Topology</span>
-                <span class="skill-tag">Data Visualization</span>
-                <span class="skill-tag">NOC Environments</span>
-                <span class="skill-tag">Design Systems</span>
+                <span class="skill-tag">B2B SaaS</span>
+                <span class="skill-tag">Enterprise CPQ</span>
+                <span class="skill-tag">Data Grid Ergonomics</span>
+                <span class="skill-tag">Spreadsheet Modernization</span>
               </div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">Verified Ericsson Global Case</span>
             </div>
           </article>
 
-          <!-- CASE 4: ZF Wabco Telematics -->
+
+          <!-- =================================================================
+               CASE 5: ZF WABCO COMMERCIAL VEHICLE FLEET COCKPIT
+               ================================================================= -->
           <article class="case-card" data-category="auto">
-            <div class="case-left-column">
-              <div class="case-meta-top">
-                <span class="case-company-badge" style="background: rgba(16,185,129,0.1); color: var(--accent-green); border-color: rgba(16,185,129,0.3);">ZF Wabco</span>
-                <span class="case-role-text">UI/UX Senior Specialist &bull; 2020–2021</span>
+            <div class="case-header-block">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-company-badge" style="background: rgba(16,185,129,0.1); color: var(--accent-green); border-color: rgba(16,185,129,0.3);">ZF Wabco</span>
+                  <span class="case-role-text">UI/UX Senior Specialist &bull; Oct 2020 – Jul 2021</span>
+                </div>
+                <h3 class="case-title">ZF Wabco Commercial Vehicle Cockpit &amp; Real-Time Safety Telematics</h3>
+                <p class="case-headline-lead">Designing a dual-interface ecosystem: a glanceable, distraction-free in-cab HUD for truck drivers paired with an automated fleet command center for dispatchers.</p>
               </div>
-              <h3 class="case-title">Commercial Vehicle Fleet Cockpit &amp; Smart Telematics Suite</h3>
-              
-              <div class="car-narrative">
-                <div class="car-item">
-                  <span class="car-label">1. The Challenge</span>
-                  <p class="car-text">Fleet managers required real-time driver compliance and cold-chain temperature telemetry, while commercial truck drivers faced severe distraction risks from cluttered in-cab navigation screens.</p>
+            </div>
+
+            <!-- VISUAL INFOGRAPHIC CANVAS: DUAL-ZONE IN-CAB COCKPIT & DISPATCHER CLOUD -->
+            <div class="infographic-canvas">
+              <div class="infographic-canvas-header">
+                <div class="canvas-title-group">
+                  <span class="canvas-chip chip-modern">Automotive Telematics</span>
+                  <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Glanceable In-Cab HUD &amp; Dispatcher Cloud Telematics</span>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">2. Action &amp; UX Strategy</span>
-                  <p class="car-text">Designed a dual-interface system: an ultra-glanceable in-cab display strictly complying with European driver distraction standards, and a modular dispatcher command center featuring automated geo-fence compliance.</p>
+                <span class="canvas-subtitle">Safety Standard: EU Certified (&lt;1.2s Glance Time)</span>
+              </div>
+
+              <!-- 3 Visual Cones Row -->
+              <div class="pipeline-nodes-row" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="pipeline-node-card" style="border-top: 3px solid var(--accent-red);">
+                  <span class="node-step-tag">Zone 1 (&lt;0.8s Foveal)</span>
+                  <div class="node-title">Primary Safety HUD</div>
+                  <div class="node-desc">Digital velocity, collision avoidance alert, and emergency brake proximity.</div>
+                  <div class="node-status-pill pill-green">Zero Distraction</div>
                 </div>
-                <div class="car-item">
-                  <span class="car-label">3. Measurable Impact</span>
-                  <p class="car-text">Deployed across 80,000+ commercial trucks and buses across Europe and India, achieving an 18% reduction in route compliance deviations and a 14% fuel efficiency gain.</p>
+
+                <div class="pipeline-node-card" style="border-top: 3px solid var(--accent-gold);">
+                  <span class="node-step-tag">Zone 2 (&lt;1.2s Navigation)</span>
+                  <div class="node-title">Heavy Vehicle Routing</div>
+                  <div class="node-desc">Low-bridge clearance restrictions, weigh station alerts, and lane centering.</div>
+                  <div class="node-status-pill pill-amber">Turn Guidance</div>
+                </div>
+
+                <div class="pipeline-node-card" style="border-top: 3px solid var(--accent-green);">
+                  <span class="node-step-tag">Zone 3 (Ambient Coaching)</span>
+                  <div class="node-title">Eco-Fuel Efficiency Bar</div>
+                  <div class="node-desc">Peripheral visual and haptic coaching delivering a 14% improvement in fleet fuel efficiency.</div>
+                  <div class="node-status-pill pill-green">+14% Fuel Savings</div>
+                </div>
+              </div>
+
+              <!-- Bottom Bar: Dispatcher Cloud -->
+              <div class="margin-indicator-bar" style="font-family: var(--font-mono); font-size: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--accent-green);">● TELEMATICS LOOP:</span>
+                  <span style="color: var(--text-body);">Truck CAN-bus streams real-time telemetry to Dispatcher Web Console with automated geo-fencing.</span>
+                </div>
+                <span class="node-status-pill pill-green">80,000+ Active Trucks</span>
+              </div>
+            </div>
+
+            <!-- 3 KPI Metric Badges -->
+            <div class="kpi-row">
+              <div class="kpi-box">
+                <div class="kpi-val">80,000+</div>
+                <div class="kpi-lbl">Active Commercial Trucks</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">&lt; 1.2 Sec</div>
+                <div class="kpi-lbl">Average Glance Time (EU Certified)</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-val">-18% Drop</div>
+                <div class="kpi-lbl">Route Compliance Deviations</div>
+              </div>
+            </div>
+
+            <!-- Expandable Full Deep Dive & Interview Defense -->
+            <div class="deep-dive-accordion">
+              <button class="deep-dive-btn" onclick="toggleDeepDive('dive-zf-wabco', this)">
+                <span>📖 Explore Full Architectural Deep Dive &amp; Interview Defense</span>
+                <span style="font-size: 11px;">▼</span>
+              </button>
+
+              <div id="dive-zf-wabco" class="deep-dive-panel">
+                <div class="dive-section">
+                  <h4>1. Executive Framing &amp; The Human Factor Safety Mandate</h4>
+                  <p>Operating a 40-ton commercial vehicle at 90 km/h on European highways carries severe safety risks. Commercial truck drivers were overwhelmed by cluttered, multi-layered aftermarket navigation tablets, resulting in high cognitive overload and visual fatigue. European transport safety regulations impose strict penalties on interfaces requiring more than 2.0 seconds of glance time. Simultaneously, fleet dispatchers lacked real-time visibility into route deviations and brake wear.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>2. Designing Under Strict Ergonomic Constraints</h4>
+                  <p>Automotive UI is fundamentally different from consumer mobile design. I engineered a <strong>3-zone glance architecture</strong>: Zone 1 for immediate foveal vision (&lt;0.8s), Zone 2 for secondary navigation guidance (&lt;1.2s), and Zone 3 for ambient eco-driving peripheral coaching. We enforced strict 48px minimal touch targets, high contrast ratios readable under direct blinding sunlight and nocturnal driving conditions, and eliminated multi-level menu navigation while the vehicle was in motion.</p>
+                </div>
+
+                <div class="dive-section">
+                  <h4>3. Executive Interview Preparation &amp; Defense (CAR Framework)</h4>
+                  <div class="dive-interview-grid">
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q1</span> How does designing for automotive and safety-critical environments differ from traditional enterprise software?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;In enterprise SaaS, a confusing button wastes a few seconds of user productivity; in commercial vehicle telematics, a confusing button at 90 km/h on a wet highway costs human lives. I designed under strict cognitive ergonomics: oversized 48px touch targets, high-contrast typography readable under direct sunlight and pitch darkness, and zero deep menu hierarchies while in motion. Every screen underwent ISO 15007 glance-time certification to ensure drivers never looked away from the road for more than 1.2 seconds.&rdquo;</div>
+                    </div>
+                    <div class="interview-qa-item">
+                      <div class="qa-question"><span class="qa-q-num">Q2</span> How did you prove the financial ROI of this automotive design to fleet owners?</div>
+                      <div class="qa-answer"><strong>Answer for Interviewer:</strong> &ldquo;Commercial fleet operators operate on 2-3% margins where fuel represents 30% of operating expenses. By designing real-time, non-intrusive peripheral coaching that guided drivers on gentle braking and optimal torque zones, fleet operators saw a 14% improvement in fuel efficiency across 80,000 trucks. The telematics software license paid for itself within the first 4 months.&rdquo;</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="case-right-column">
-              <div class="case-metrics-panel">
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Commercial Vehicles</span>
-                  <span class="metric-value-highlight">80,000+</span>
-                </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Route Deviations</span>
-                  <span class="metric-value-highlight">-18% Reduction</span>
-                </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Fuel Savings Lift</span>
-                  <span class="metric-value-highlight">+14% Efficient</span>
-                </div>
-              </div>
+            <div class="case-footer-row">
               <div class="case-tags-container">
                 <span class="skill-tag">Automotive UX</span>
-                <span class="skill-tag">Fleet Telematics</span>
-                <span class="skill-tag">Driver Safety</span>
                 <span class="skill-tag">Safety Standards</span>
+                <span class="skill-tag">Fleet Telematics</span>
+                <span class="skill-tag">Human Factors</span>
               </div>
-            </div>
-          </article>
-
-          <!-- CASE 5: Zebra Industrial Mobile -->
-          <article class="case-card" data-category="iot">
-            <div class="case-left-column">
-              <div class="case-meta-top">
-                <span class="case-company-badge" style="background: rgba(196,137,42,0.1); color: var(--accent-gold); border-color: rgba(196,137,42,0.3);">Zebra Technologies</span>
-                <span class="case-role-text">UI/UX Product Design Manager &bull; Mobile Workforce</span>
-              </div>
-              <h3 class="case-title">B2B Industrial Handheld &amp; Mobile Workforce Applications</h3>
-              
-              <div class="car-narrative">
-                <div class="car-item">
-                  <span class="car-label">1. The Challenge</span>
-                  <p class="car-text">Warehouse and cold-storage workers wearing heavy gloves in low-light environments experienced high error rates on standard Android touchscreens, delaying order dispatch cycles.</p>
-                </div>
-                <div class="car-item">
-                  <span class="car-label">2. Action &amp; UX Strategy</span>
-                  <p class="car-text">Created a high-tactility interface optimized for 4-inch to 6-inch rugged handhelds with oversized touch targets, haptic feedback pulses, and dual-trigger auditory scan confirmations.</p>
-                </div>
-                <div class="car-item">
-                  <span class="car-label">3. Measurable Impact</span>
-                  <p class="car-text">Increased pick-and-pack scanning speed by 24%, achieving 99.4% first-pass scanning accuracy in enterprise distribution pilots.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="case-right-column">
-              <div class="case-metrics-panel">
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Scan Speed Lift</span>
-                  <span class="metric-value-highlight">+24% Faster</span>
-                </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">First-Pass Accuracy</span>
-                  <span class="metric-value-highlight">99.4%</span>
-                </div>
-                <div class="case-metric-row">
-                  <span class="metric-label-small">Form Factor</span>
-                  <span class="metric-value-highlight">Rugged Android</span>
-                </div>
-              </div>
-              <div class="case-tags-container">
-                <span class="skill-tag">Mobile Ergonomics</span>
-                <span class="skill-tag">Rugged Android</span>
-                <span class="skill-tag">Wearable UX</span>
-                <span class="skill-tag">Barcode &amp; RFID</span>
-              </div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">European Fleet Deployed</span>
             </div>
           </article>
 
@@ -1561,7 +2421,7 @@
       <div class="section-header-row">
         <div class="section-heading-group">
           <h2>Complete Portfolio Case Studies</h2>
-          <p>End-to-end UX leadership case studies across Enterprise AI, Industrial IoT, and Telematics.</p>
+          <p>End-to-end UX leadership case studies across Enterprise AI, Industrial IoT, and Sales Automation.</p>
         </div>
         <a href="https://behance.net/balaajeeVR" target="_blank" class="btn-secondary">
           <span>View Execution Gallery on Behance</span>
@@ -1571,26 +2431,23 @@
 
       <!-- Clone of case studies grid here or deeper detailed view -->
       <div class="cases-grid" id="fullCasesContainer">
-        <!-- Re-rendered with all 5 deep-dive cards -->
+        <!-- Injected via script -->
       </div>
     </div>
 
     <!-- ========================================================================
-         TAB 4: EXECUTIVE CV & ACADEMIC DOSSIER
+         TAB 4: EXECUTIVE CV
          ======================================================================== -->
     <div id="section-resume" class="tab-section-container">
       <div class="section-header-row">
         <div class="section-heading-group">
           <h2>Executive Curriculum Vitae</h2>
-          <p>18+ years career chronology, leadership competencies, and academic credentials.</p>
+          <p>18+ years career chronology, leadership competencies, and track record.</p>
         </div>
         <div class="hero-actions">
           <a href="resume.pdf" target="_blank" class="btn-primary">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             <span>Download Corporate CV (PDF)</span>
-          </a>
-          <a href="Balaajee VR POP Resume 20261015.pdf" target="_blank" class="btn-secondary">
-            <span>Download Professor of Practice CV</span>
           </a>
         </div>
       </div>
@@ -1603,8 +2460,8 @@
           <div>
             <img src="profile.jpg" alt="Balaajee VR" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid var(--accent-gold); margin-bottom: 1rem;">
             <h3 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-main);">BALAAJEE V.R.</h3>
-            <p style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--accent-gold); margin-top: 2px;">Senior Manager UI/UX Design</p>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Chennai, India &bull; Open to Relocation (Europe / Bengaluru)</p>
+            <p style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--accent-gold); margin-top: 2px;">Senior UI/UX Design Manager</p>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Chennai, India &bull; Open to Relocation (Europe / Amsterdam / Stockholm / Berlin)</p>
           </div>
 
           <div>
@@ -1694,8 +2551,8 @@
               </div>
               <p style="font-size: 13px; font-weight: 600; color: var(--accent-gold); margin-bottom: 6px;">Ericsson Global</p>
               <ul style="font-size: 13px; color: var(--text-body); line-height: 1.6; padding-left: 16px;">
-                <li>Designed high-density network topology mapping for 5G core observability in 24/7 Network Operations Centers.</li>
-                <li>Maintained Ericsson OSS/BSS component libraries, conducting continuous usability benchmarks with senior network architects.</li>
+                <li>Designed the enterprise SalesOps Cloud platform, replacing legacy 14-tab spreadsheets with an automated deal pricing engine.</li>
+                <li>Maintained Ericsson OSS/BSS component libraries, conducting continuous usability benchmarks with senior commercial leads.</li>
               </ul>
             </div>
           </div>
@@ -1705,7 +2562,7 @@
     </div>
 
     <!-- ========================================================================
-         TAB 5: PRIVATE RECRUITMENT & VISITOR COMMAND CENTER (PASSWORD PROTECTED)
+         TAB 5: PRIVATE EUROPEAN RECRUITMENT COMMAND CENTER (PASSWORD PROTECTED)
          ======================================================================== -->
     <div id="section-admin" class="tab-section-container">
       <div class="admin-hub-dashboard" id="adminHubContent" style="display: none;">
@@ -1716,8 +2573,8 @@
               <span class="status-dot"></span>
               AUTHENTICATED AS BALAAJEE V.R.
             </span>
-            <h2 style="font-family: var(--font-serif); font-size: 22px; color: var(--text-main);">Recruitment Intelligence &amp; Application Pipeline</h2>
-            <p style="font-size: 12.5px; color: var(--text-muted);">Live tracking across 26 Universities &amp; European Corporate pipelines.</p>
+            <h2 style="font-family: var(--font-serif); font-size: 22px; color: var(--text-main);">European &amp; Global Executive Pipeline Tracker</h2>
+            <p style="font-size: 12.5px; color: var(--text-muted);">Direct tracking across European Tech Giants (Netherlands, Sweden, Germany) &amp; Global Capability Centers.</p>
           </div>
           <button onclick="lockAdminHub()" class="btn-secondary" style="font-size: 11px; padding: 6px 14px;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
@@ -1728,39 +2585,110 @@
         <!-- Metric Ribbon in Admin -->
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
           <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-gold);">26</div>
-            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Active Applications</div>
+            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-gold);">€140k–€175k</div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Target Base Range</div>
           </div>
           <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-blue);">Oct 22</div>
-            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Wave 1 Follow-Up Due</div>
+            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-blue);">30% Ruling</div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Netherlands Tax Break</div>
           </div>
           <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-green);">142</div>
-            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Recruiter Views (Simulated)</div>
+            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-green);">21 Months</div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Fast-Track Germany PR</div>
           </div>
           <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-main);">4m 18s</div>
-            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Avg Deck Dwell Time</div>
+            <div style="font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-main);">Top 1% Match</div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Enterprise AI + IoT</div>
           </div>
         </div>
 
-        <!-- 26 University Pipeline Table -->
-        <h3 style="font-family: var(--font-serif); font-size: 16px; color: var(--text-main); margin-bottom: 1rem;">Active University Search Committees (26 Tracked)</h3>
+        <!-- Target European Employers Table -->
+        <h3 style="font-family: var(--font-serif); font-size: 16px; color: var(--text-main); margin-bottom: 1rem;">Primary European Target Accounts (Visa Sponsorship &amp; High Income)</h3>
         <div class="data-table-container">
           <table class="data-table">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Institution</th>
-                <th>School / Dept</th>
-                <th>Region</th>
-                <th>Next Follow-Up</th>
-                <th>Status</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Domain Alignment</th>
+                <th>Key Target Role</th>
+                <th>Status / Action</th>
               </tr>
             </thead>
             <tbody id="adminTableBody">
-              <!-- Injected by script -->
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#1</td>
+                <td><strong>ASML</strong></td>
+                <td>Veldhoven / Eindhoven, NL</td>
+                <td>Semiconductor Hardware-Software IoT</td>
+                <td>Senior Product Design Manager</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">Direct VP Outreach</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#2</td>
+                <td><strong>Booking.com</strong></td>
+                <td>Amsterdam, Netherlands</td>
+                <td>Enterprise Partner &amp; Platform UX</td>
+                <td>Design Director / Lead</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">Active Recruiting</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#3</td>
+                <td><strong>Ericsson HQ</strong></td>
+                <td>Kista / Stockholm, Sweden</td>
+                <td>5G Cloud &amp; OSS Telecom Systems</td>
+                <td>Senior Manager UI/UX Design</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px; background: rgba(29, 78, 216, 0.1); color: var(--accent-blue);">Alumni Advantage</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#4</td>
+                <td><strong>Volvo Group / Trucks</strong></td>
+                <td>Gothenburg, Sweden</td>
+                <td>Autonomous &amp; Commercial Telematics</td>
+                <td>Head of In-Cab UX &amp; Fleet</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px; background: rgba(200, 168, 74, 0.1); color: var(--accent-gold);">Wabco Synergy</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#5</td>
+                <td><strong>Scania</strong></td>
+                <td>Södertälje / Stockholm, SE</td>
+                <td>Commercial Transport Fleet IoT</td>
+                <td>Senior UX Lead — Fleet Portal</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">Target Outreach</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#6</td>
+                <td><strong>SAP</strong></td>
+                <td>Walldorf / Berlin, Germany</td>
+                <td>Enterprise AI &amp; Business SaaS</td>
+                <td>Director of Product Design</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">IBM Synergy</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#7</td>
+                <td><strong>Siemens</strong></td>
+                <td>Munich, Germany</td>
+                <td>Industrial Automation &amp; IoT Digital Twin</td>
+                <td>Senior Design Manager</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">Target Outreach</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#8</td>
+                <td><strong>Miro</strong></td>
+                <td>Amsterdam / Berlin</td>
+                <td>Enterprise Collaboration &amp; AI Tools</td>
+                <td>Design Manager</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">Target Outreach</span></td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#9</td>
+                <td><strong>TomTom</strong></td>
+                <td>Amsterdam, Netherlands</td>
+                <td>Automotive Telematics &amp; Navigation Maps</td>
+                <td>Senior UX Specialist / Lead</td>
+                <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">Target Outreach</span></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1776,13 +2704,13 @@
       <div class="admin-gate-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
       </div>
-      <h3 style="font-family: var(--font-serif); font-size: 20px; color: var(--text-main);">Command Center Authentication</h3>
-      <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Enter your executive passcode to access the private job tracking and recruiter analytics hub.</p>
+      <h3 style="font-family: var(--font-serif); font-size: 20px; color: var(--text-main);">Pipeline Hub Authentication</h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Enter your executive passcode to access your private European recruitment pipeline and analytics tracking.</p>
       
       <div class="admin-input-group">
         <input type="password" id="adminPasscode" class="admin-passcode-input" placeholder="••••••••" onkeyup="checkPasscodeEnter(event)" autofocus>
         <button onclick="submitPasscode()" class="btn-primary" style="justify-content: center; width: 100%;">
-          <span>Unlock Command Center</span>
+          <span>Unlock Pipeline Hub</span>
         </button>
       </div>
 
@@ -1871,12 +2799,12 @@
         meta: "Estimated Operational Value Created"
       },
       {
-        tag: "Slide 08 // Academic Leadership",
-        title: "Industry-Academia CoE: Practice-Track Pedagogical Vision",
-        body: "Curriculum architecture for premier universities bridging academic theory with Fortune 500 production workflows in HCI, Interaction Design, and AI-UX.",
+        tag: "Slide 08 // Enterprise Design Systems",
+        title: "Global Scalability & Component Contribution Frameworks",
+        body: "Establishing federated design systems and contribution councils that empower distributed engineering teams to ship production-ready UI autonomously.",
         icon: "🏛️",
-        metric: "CoE",
-        meta: "Woxsen, Srishti, RVU, IIT Alignment"
+        metric: "Global",
+        meta: "Figma Variables &bull; GitHub Actions CI/CD"
       },
       {
         tag: "Slide 09 // Agile Delivery",
@@ -1888,8 +2816,8 @@
       },
       {
         tag: "Slide 10 // Strategic Engagement",
-        title: "Executive Contact & Senior Leadership Engagement",
-        body: "Available for Senior Design Manager & Director roles in Europe and full-time Professor of Practice / Associate Dean leadership in India.",
+        title: "Executive Contact & European Senior Leadership Engagement",
+        body: "Available for Senior Product Design Manager & Director roles across Netherlands, Sweden, Germany, and Global Enterprises.",
         icon: "🤝",
         metric: "Active",
         meta: "vrbberaj@gmail.com &bull; +91 9994761293"
@@ -1966,13 +2894,26 @@
     /* ==========================================================================
        CASE STUDY FILTERING
        ========================================================================== */
+    function toggleDeepDive(id, btn) {
+      const panel = document.getElementById(id);
+      if (!panel) return;
+      const isOpen = panel.classList.contains('open');
+      if (isOpen) {
+        panel.classList.remove('open');
+        btn.innerHTML = `<span>📖 Explore Full Architectural Deep Dive &amp; Interview Defense</span> <span style="font-size: 11px;">▼</span>`;
+      } else {
+        panel.classList.add('open');
+        btn.innerHTML = `<span>▲ Collapse Deep Dive &amp; Interview Defense</span>`;
+      }
+    }
+
     function filterCases(category, btn) {
       document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       document.querySelectorAll('.case-card').forEach(card => {
         if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'grid';
+          card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
@@ -2052,58 +2993,12 @@
     function showAdminHub() {
       switchMainTab('admin');
       document.getElementById('adminHubContent').style.display = 'block';
-      renderAdminPipeline();
     }
 
     function lockAdminHub() {
       isAdminUnlocked = false;
       document.getElementById('adminHubContent').style.display = 'none';
       switchMainTab('overview');
-    }
-
-    // 26 University Pipeline Data
-    const adminPipeline = [
-      { id: 1, name: "RV University", school: "School of Design & Innovation", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 2, name: "Srishti Manipal Institute", school: "MAHE Bengaluru Campus", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 3, name: "National Institute of Design (NID)", school: "Bengaluru Campus", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 4, name: "IISc Bengaluru", school: "Dept of Design & Mfg (DM)", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 5, name: "PES University", school: "School of Design (RR Campus)", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 6, name: "Dayananda Sagar University", school: "Design & Digital Transmedia", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 7, name: "Alliance University", school: "Alliance School of Design", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 8, name: "M. S. Ramaiah University (RUAS)", school: "Faculty of Art & Design", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 9, name: "Jain University", school: "School of Design, Media & Arts", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 10, name: "Strate School of Design", school: "Bengaluru Campus", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 11, name: "CMRIT", school: "CSE / IT / Emerging Design", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 12, name: "IIIT Bangalore (IIIT-B)", school: "Software Systems & HCI", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Search Committee" },
-      { id: 13, name: "BMS College of Engineering", school: "ISE / Computing & Design", reg: "Bengaluru", follow: "Oct 22, 2026", st: "Delivered Principal" },
-      { id: 14, name: "VIT Chennai", school: "School of Computer Science", reg: "Chennai", follow: "Oct 22, 2026", st: "Portal Submitted" },
-      { id: 15, name: "IIITDM Kancheepuram", school: "Interdisciplinary Design", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 16, name: "DOT School of Design", school: "Design & Interactive Media", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 17, name: "Hindustan Institute (HITS)", school: "SPADE (B.Des UX Design)", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 18, name: "Crescent Institute (BSAU)", school: "School of Architecture & Design", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 19, name: "Shiv Nadar University Chennai", school: "School of Engineering (HCI)", reg: "Chennai", follow: "Oct 22, 2026", st: "Form Restricted" },
-      { id: 20, name: "Sai University (SaiU)", school: "School of Computing & Data", reg: "Chennai", follow: "Oct 22, 2026", st: "HR WhatsApp Active" },
-      { id: 21, name: "Sathyabama Institute", school: "School of Computing", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 22, name: "SRM Institute of Science & Tech", school: "School of Computing & Design", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 23, name: "Chennai Institute of Technology", school: "Emerging Tech & UI/UX CoE", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 24, name: "Rajalakshmi Engg College", school: "CSE / IT & UX Systems", reg: "Chennai", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 25, name: "IIT Hyderabad", school: "Department of Design (DoD)", reg: "South", follow: "Oct 22, 2026", st: "Submitted" },
-      { id: 26, name: "Woxsen University", school: "School of Arts & Design", reg: "South", follow: "Oct 22, 2026", st: "Dean Review Active" }
-    ];
-
-    function renderAdminPipeline() {
-      const tbody = document.getElementById('adminTableBody');
-      if (!tbody) return;
-      tbody.innerHTML = adminPipeline.map(i => `
-        <tr>
-          <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-light);">#${i.id}</td>
-          <td><strong>${i.name}</strong></td>
-          <td style="color: var(--text-muted);">${i.school}</td>
-          <td><span class="skill-tag" style="font-size: 10px;">${i.reg}</span></td>
-          <td style="font-family: var(--font-mono); color: var(--accent-gold); font-weight: 600;">${i.follow}</td>
-          <td><span class="status-pill" style="font-size: 9.5px; padding: 2px 8px;">${i.st}</span></td>
-        </tr>
-      `).join('');
     }
 
     // Initialize Hero Slide View
