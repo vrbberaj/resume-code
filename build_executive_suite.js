@@ -222,6 +222,48 @@ const globalCoreStyles = `
     box-shadow: 0 4px 12px rgba(240, 6, 88, 0.3);
   }
 
+  @media (max-width: 860px) {
+    .header-container {
+      padding: 0 16px;
+      gap: 12px;
+    }
+    .brand-role { display: none; }
+    .header-actions { display: none; }
+    .nav-links {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 100%;
+      padding: 3px 4px;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-item {
+      padding: 6px 12px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .header-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      padding: 0 14px;
+    }
+    .brand-link {
+      justify-content: space-between;
+    }
+    .nav-links {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: auto;
+      border-radius: 12px;
+    }
+  }
+
   /* Global Minimalist Footer */
   .global-footer {
     background: #FFFFFF;

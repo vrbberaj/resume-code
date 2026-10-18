@@ -38,7 +38,7 @@
     --border-medium: #CBD5E1;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; }
   body {
     background-color: var(--bg-base);
     color: var(--text-body);
@@ -178,6 +178,63 @@
       background: transparent;
     }
 
+    @media (max-width: 860px) {
+      .header-container {
+        padding: 0 16px;
+        gap: 12px;
+      }
+      .brand-role { display: none; }
+      .header-actions { display: none; }
+      .nav-links {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        max-width: 100%;
+        padding: 3px 4px;
+      }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-item {
+        padding: 6px 12px;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cv-grid-layout {
+        grid-template-columns: 1fr !important;
+      }
+      #container {
+        margin: 12px auto 40px !important;
+        padding: 0 10px !important;
+      }
+      .tailwind .min-h-screen {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 12px !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .header-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 0 14px;
+      }
+      .brand-link {
+        justify-content: space-between;
+      }
+      .nav-links {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        overflow-x: auto;
+        border-radius: 12px;
+      }
+    }
+
     @media print {
       .global-header {
         display: none !important;
@@ -237,12 +294,12 @@
         <div id="fig-code-root" style="height: 100%;">
           <div class="min-h-screen bg-[#DDD9D0] py-10 px-4" data-fg-d3bl8="0.8:24.1701:/src/app/App.tsx:117:5:4246:11188:e:div:e:1" data-fgid-d3bl8=":r0:" style="font-family: Inter, sans-serif;">
             <div class="max-w-[900px] mx-auto shadow-2xl" data-fg-d3bl9="0.8:24.1701:/src/app/App.tsx:121:7:4370:11053:e:div:e" data-fgid-d3bl9=":r1:">
-              <div class="grid" data-fg-d3bl10="0.8:24.1701:/src/app/App.tsx:122:9:4429:10981:e:div:xtetxte" data-fgid-d3bl10=":r2:" style="grid-template-columns: 240px 1fr;">
+              <div class="grid cv-grid-layout" data-fg-d3bl10="0.8:24.1701:/src/app/App.tsx:122:9:4429:10981:e:div:xtetxte" data-fgid-d3bl10=":r2:" style="grid-template-columns: 240px 1fr;">
                 <aside class="bg-[#0D1B2E] text-white px-6 pt-9 pb-10 flex flex-col gap-7" data-fg-d3bl12="0.8:24.1701:/src/app/App.tsx:125:11:4577:5374:e:aside:xtetetxtetxtetxtetxtetxte" data-fgid-d3bl12=":r3:">
                   <div class="flex flex-col items-center text-center">
                     <!-- Premium square photo frame with rounded-xl corners inside sidebar padding -->
-                    <div class="w-full aspect-square rounded-xl overflow-hidden ring-2 ring-amber-400/20 mb-4 shrink-0 shadow-lg">
-                      <img src="profile.jpg" alt="Balaajee VR" class="w-full h-full object-cover" style="object-position: center 30%; transform: scale(1.10); transform-origin: 50% 25%;">
+                    <div class="w-full max-w-[188px] aspect-square rounded-xl overflow-hidden ring-2 ring-amber-400/20 mb-4 shrink-0 shadow-lg" style="isolation: isolate; margin-left: auto; margin-right: auto;">
+                      <img src="profile.jpg" alt="Balaajee VR" class="w-full h-full object-cover" style="object-position: center 30%; transform: scale(1.05); transform-origin: 50% 25%;">
                     </div>
                     <!-- Name consolidated onto exactly 1 line -->
                     <h1 class="text-[20px] font-bold leading-tight text-white whitespace-nowrap mb-1" style="font-family: 'Libre Baskerville', Georgia, serif;">
