@@ -669,7 +669,7 @@ const indexHtml = `<!DOCTYPE html>
         <div class="hero-left">
           <div class="availability-pill">
             <span class="pulse-dot"></span>
-            Open to Senior Design Leadership &amp; Director Roles • Seeking Relocation (EU / UK)
+            Open to Senior Design Leadership &amp; Director Roles • Open to Relocation (India &amp; Global)
           </div>
 
           <h1 class="hero-name">BALAAJEE V.R.</h1>
