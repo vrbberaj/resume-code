@@ -1806,16 +1806,70 @@
     .keynote-container {
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 40px;
     }
 
     .slide {
       display: flex !important;
+      flex-direction: column !important;
       opacity: 1 !important;
       transform: none !important;
       min-height: auto !important;
-      padding: 3rem 3.4rem !important;
+      padding: 3rem 3.4rem 2.5rem !important;
       margin-bottom: 0 !important;
+      scroll-margin-top: 135px !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+
+    @media (max-width: 960px) {
+      .leadership-wrap {
+        padding: 16px 16px 60px !important;
+      }
+      .keynote-container {
+        gap: 28px !important;
+      }
+      .slide {
+        padding: 2.2rem 1.8rem 1.8rem !important;
+        scroll-margin-top: 145px !important;
+      }
+      .slide-cover-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.2rem !important;
+      }
+      .flywheel-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .org-topology-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .stepper-row {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr !important;
+      }
+      .grid-4 {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .slide {
+        padding: 1.5rem 1rem !important;
+        scroll-margin-top: 165px !important;
+      }
+      .stepper-row, .grid-4 {
+        grid-template-columns: 1fr !important;
+      }
+      .metric-strip {
+        flex-wrap: wrap !important;
+        gap: 14px !important;
+      }
+      .metric-sep {
+        display: none !important;
+      }
     }
 
     /* Single Clean Jump Bar directly under Global Header */
@@ -1855,6 +1909,12 @@
     .jump-item:hover {
       color: #FFFFFF;
       background: var(--primary-accent);
+    }
+
+    .jump-item.active {
+      color: #FFFFFF;
+      background: var(--primary-accent);
+      border-color: transparent;
     }
   </style>
 </head>
@@ -2978,5 +3038,32 @@
     </main>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.slide');
+      const jumpLinks = document.querySelectorAll('.jump-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            jumpLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+                link.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: '-15% 0px -65% 0px',
+        threshold: 0
+      });
+
+      slides.forEach(slide => observer.observe(slide));
+    });
+  </script>
 </body>
 </html>
