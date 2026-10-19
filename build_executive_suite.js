@@ -322,15 +322,18 @@ const globalCoreStyles = `
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px 18px;
+    gap: 12px 20px;
   }
 
   .footer-links a {
     font-size: 13px;
     color: var(--text-muted);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .footer-links a:hover {
@@ -468,43 +471,44 @@ const indexHtml = `<!DOCTYPE html>
       color: var(--text-muted);
     }
 
-    .pathways-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 480px;
-    }
-
-    .btn-pathway-primary {
+    .hero-cta-group {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 14px 22px;
-      border-radius: 12px;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 100px;
       background: var(--text-main);
       color: #FFFFFF;
       text-decoration: none;
       font-family: var(--font-heading);
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
     }
 
-    .btn-pathway-primary:hover {
-      background: #000000;
+    .btn-hero-primary:hover {
+      background: var(--primary-accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+      box-shadow: 0 8px 24px rgba(240, 6, 88, 0.25);
     }
 
-    .btn-pathway-secondary {
-      display: flex;
+    .btn-hero-secondary {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 13px 20px;
-      border-radius: 12px;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 100px;
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
+      border: 1.5px solid var(--border-medium);
       color: var(--text-main);
       text-decoration: none;
       font-family: var(--font-heading);
@@ -513,9 +517,9 @@ const indexHtml = `<!DOCTYPE html>
       transition: all 0.2s ease;
     }
 
-    .btn-pathway-secondary:hover {
-      background: var(--bg-subtle);
+    .btn-hero-secondary:hover {
       border-color: var(--text-main);
+      background: var(--bg-subtle);
       transform: translateY(-1px);
     }
 
@@ -712,14 +716,18 @@ const indexHtml = `<!DOCTYPE html>
         font-size: 14.5px;
         margin-bottom: 20px;
       }
-      .pathways-group {
+      .hero-cta-group {
         width: 100%;
-        max-width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
       }
-      .btn-pathway-primary,
-      .btn-pathway-secondary {
-        padding: 12px 16px;
-        font-size: 13.5px;
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        justify-content: center;
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
       }
       .impact-strip-section {
         padding: 24px 0;
@@ -769,19 +777,14 @@ const indexHtml = `<!DOCTYPE html>
             <span class="pedigree-pill">🔷 Ex-Infosys</span>
           </div>
 
-          <!-- Direct Pathways to Dedicated Portals (No in-page clutter) -->
-          <div class="pathways-group">
-            <a href="/work" class="btn-pathway-primary">
-              <span>🎨 Explore Selected Work (5 Enterprise Deep Dives)</span>
+          <!-- Executive Action Pair (Zero Redundancy with Nav Bar) -->
+          <div class="hero-cta-group">
+            <a href="/work" class="btn-hero-primary">
+              <span>🎨 Explore Selected Work (5 Deep Dives)</span>
               <span>&rarr;</span>
             </a>
-            <a href="/leadership" class="btn-pathway-secondary">
-              <span>👔 View Executive Leadership &amp; Vision Deck</span>
-              <span>&rarr;</span>
-            </a>
-            <a href="/cv" class="btn-pathway-secondary">
-              <span>📄 Read Full Executive Curriculum Vitae (CV)</span>
-              <span>&rarr;</span>
+            <a href="/leadership" class="btn-hero-secondary">
+              <span>👔 Leadership Deck</span>
             </a>
           </div>
         </div>
@@ -852,15 +855,22 @@ const indexHtml = `<!DOCTYPE html>
   <footer class="global-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager &amp; Director</h5>
-        <p>Bengaluru, India &bull; Open to Worldwide Relocation &amp; Global Remote Leadership</p>
+        <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager</h5>
+        <p>Chennai / Bengaluru, India &bull; Open to Relocation (India &amp; Global) &bull; Available in 30 Days</p>
       </div>
       <div class="footer-links">
-        <a href="/work">Selected Work</a>
-        <a href="/leadership">Leadership Deck</a>
-        <a href="/cv">Executive CV</a>
-        <a href="mailto:vrbberaj@gmail.com">vrbberaj@gmail.com</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:vrbberaj@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          vrbberaj@gmail.com
+        </a>
+        <a href="tel:+919994761293">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 9994761293
+        </a>
+        <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
       </div>
     </div>
   </footer>
@@ -1515,14 +1525,22 @@ const workHtml = `<!DOCTYPE html>
   <footer class="global-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager &amp; Director</h5>
-        <p>Selected Work Portfolio &bull; 5 Flagship Enterprise Transformations</p>
+        <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager</h5>
+        <p>Selected Work Portfolio &bull; 5 Flagship Enterprise Transformations &bull; Open to Relocation</p>
       </div>
       <div class="footer-links">
-        <a href="/">Welcome</a>
-        <a href="/leadership">Leadership Deck</a>
-        <a href="/cv">Executive CV</a>
-        <a href="mailto:vrbberaj@gmail.com">Get in Touch</a>
+        <a href="mailto:vrbberaj@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          vrbberaj@gmail.com
+        </a>
+        <a href="tel:+919994761293">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 9994761293
+        </a>
+        <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
       </div>
     </div>
   </footer>
@@ -2713,15 +2731,22 @@ function buildScrollableCasePage(data) {
   <footer class="global-footer">
     <div class="footer-container">
       <div class="footer-left">
-        <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager &amp; Director</h5>
-        <p>${data.shortName} Deep Dive &bull; 18+ Years Enterprise Design Leadership</p>
+        <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager</h5>
+        <p>${data.shortName} Deep Dive &bull; 18+ Years Enterprise Design Leadership &bull; Open to Relocation</p>
       </div>
       <div class="footer-links">
-        <a href="/">Welcome</a>
-        <a href="/work">Selected Work</a>
-        <a href="/leadership">Leadership Deck</a>
-        <a href="/cv">Executive CV</a>
-        <a href="mailto:vrbberaj@gmail.com">Get in Touch</a>
+        <a href="mailto:vrbberaj@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          vrbberaj@gmail.com
+        </a>
+        <a href="tel:+919994761293">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +91 9994761293
+        </a>
+        <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
       </div>
     </div>
   </footer>
