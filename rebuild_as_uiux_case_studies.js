@@ -1472,7 +1472,7 @@ const html = `<!DOCTYPE html>
           <div class="hero-content">
             <div class="status-badge">
               <span class="status-dot"></span>
-              <span>Open to Senior UI/UX Design Manager &amp; Director Roles (EU &amp; Global)</span>
+              <span>Open to Senior Design Leadership (India &amp; Global)</span>
             </div>
             
             <h2 class="hero-title">
@@ -3106,7 +3106,7 @@ const html = `<!DOCTYPE html>
       <div id="pipelineUnlockedContent" style="display: none;">
         <div style="background: var(--accent-green-bg); border: 1px solid var(--accent-green-border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 18px;">
           <div style="font-weight: 700; color: var(--accent-green); font-size: 14px;">Access Verified: European Tech Hiring Portal</div>
-          <div style="font-size: 12px; color: var(--text-body); margin-top: 4px;">Candidate open to Senior UI/UX Design Manager &amp; Director roles across Netherlands, Sweden, Germany &amp; Global.</div>
+          <div style="font-size: 12px; color: var(--text-body); margin-top: 4px;">Candidate open to Senior Design Leadership roles (India &amp; Global).</div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
           <a href="mailto:vrbberaj@gmail.com?subject=Senior%20Design%20Manager%20Role%20Discussion" class="btn-secondary" style="justify-content: center;">
