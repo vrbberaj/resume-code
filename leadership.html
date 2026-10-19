@@ -38,12 +38,21 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
   body {
     background-color: var(--bg-base);
     color: var(--text-body);
     font-family: var(--font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
   }
 
   /* Global Header */
@@ -55,7 +64,10 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 12px 0;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .header-container {
@@ -166,12 +178,17 @@
     box-shadow: 0 4px 12px rgba(240, 6, 88, 0.3);
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 1200px) {
+    .brand-role { display: none; }
+    .btn-download-pdf { display: none; }
+    .nav-item { padding: 6px 13px; font-size: 12.5px; }
+  }
+
+  @media (max-width: 1040px) {
     .header-container {
       padding: 0 16px;
-      gap: 12px;
+      gap: 10px;
     }
-    .brand-role { display: none; }
     .header-actions { display: none; }
     .nav-links {
       overflow-x: auto;
@@ -189,21 +206,28 @@
     }
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
+    .global-header {
+      padding: 8px 0;
+    }
     .header-container {
       flex-direction: column;
       align-items: stretch;
       gap: 8px;
-      padding: 0 14px;
+      padding: 0 12px;
+      max-width: 100%;
+      overflow: hidden;
     }
     .brand-link {
       justify-content: space-between;
     }
     .nav-links {
       width: 100%;
+      max-width: 100%;
       display: flex;
       justify-content: flex-start;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border-radius: 12px;
     }
   }
@@ -1801,6 +1825,9 @@
       max-width: 1540px;
       margin: 0 auto;
       padding: 24px 24px 80px;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
 
     .deck-workspace {
@@ -1808,6 +1835,7 @@
       gap: 32px;
       align-items: flex-start;
       width: 100%;
+      max-width: 100%;
     }
 
     /* Left PPT Filmstrip Panel */
@@ -2063,14 +2091,35 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(200, 168, 74, 0.3);
       padding: 10px 0;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .jump-bar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .jump-bar-inner {
+        padding: 0 12px;
+      }
     }
 
     .jump-links {
       display: flex;
       gap: 6px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       align-items: center;
       scrollbar-width: none;
+      width: 100%;
+      max-width: 100%;
     }
     .jump-links::-webkit-scrollbar { display: none; }
 
@@ -2134,7 +2183,7 @@
 
   <!-- Sticky Quick Jump Sub-Navigation -->
   <div class="deck-jump-bar">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
+    <div class="jump-bar-inner">
       <div class="jump-links">
         <span style="font-family: var(--font-code); font-size: 11px; color: var(--gold); font-weight: 700; margin-right: 6px;">STRATEGIC SECTIONS:</span>
         <a href="#slide-1" class="jump-item">01. Overview</a>

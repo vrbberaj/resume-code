@@ -39,12 +39,21 @@
   }
 
   * { box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
   body {
     background-color: var(--bg-base);
     color: var(--text-body);
     font-family: var(--font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
   }
 
   /* Global Header */
@@ -56,7 +65,10 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 12px 0;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .header-container {
@@ -178,12 +190,17 @@
       background: transparent;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 1200px) {
+      .brand-role { display: none; }
+      .btn-download-pdf { display: none; }
+      .nav-item { padding: 6px 13px; font-size: 12.5px; }
+    }
+
+    @media (max-width: 1040px) {
       .header-container {
         padding: 0 16px;
-        gap: 12px;
+        gap: 10px;
       }
-      .brand-role { display: none; }
       .header-actions { display: none; }
       .nav-links {
         overflow-x: auto;
@@ -201,37 +218,65 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .cv-grid-layout {
-        grid-template-columns: 1fr !important;
+    @media (max-width: 600px) {
+      .global-header {
+        padding: 8px 0;
       }
-      #container {
-        margin: 12px auto 40px !important;
-        padding: 0 10px !important;
-      }
-      .tailwind .min-h-screen {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        padding-top: 12px !important;
-      }
-    }
-
-    @media (max-width: 560px) {
       .header-container {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        padding: 0 14px;
+        padding: 0 12px;
+        max-width: 100%;
+        overflow: hidden;
       }
       .brand-link {
         justify-content: space-between;
       }
       .nav-links {
         width: 100%;
+        max-width: 100%;
         display: flex;
         justify-content: flex-start;
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         border-radius: 12px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .cv-grid-layout {
+        grid-template-columns: 1fr !important;
+      }
+      #container {
+        margin: 0 auto 30px !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden;
+      }
+      .tailwind .min-h-screen {
+        padding: 12px 0 !important;
+      }
+      .cv-grid-layout aside {
+        padding: 24px 16px !important;
+      }
+      .cv-grid-layout main {
+        padding: 24px 16px !important;
+      }
+      .cv-header-stat-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+      }
+      .cv-stats-group {
+        width: 100% !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+      }
+      .cv-stats-group > div {
+        gap: 8px !important;
       }
     }
 
@@ -648,7 +693,7 @@
 
                 </aside>
                 <main class="bg-[#F8F5EE] px-9 py-9 flex flex-col gap-7" data-fg-d3bl93="0.8:24.1701:/src/app/App.tsx:244:11:10032:5363:e:main:xtetxtetxtetxte" data-fgid-d3bl93=":r3f:">
-                  <div class="flex justify-between items-end pb-6" data-fg-d3bl95="0.8:24.1701:/src/app/App.tsx:247:13:10158:1946:e:div:ete" data-fgid-d3bl95=":r3g:">
+                  <div class="flex justify-between items-end pb-6 cv-header-stat-row" data-fg-d3bl95="0.8:24.1701:/src/app/App.tsx:247:13:10158:1946:e:div:ete" data-fgid-d3bl95=":r3g:">
                     <div data-fg-d3bl96="0.8:24.1701:/src/app/App.tsx:248:15:10255:757:e:div:etete" data-fgid-d3bl96=":r3h:">
                       <p class="text-[9px] tracking-[0.22em] uppercase text-[#0D1B2E]/45 mb-0.5" data-fg-d3bl97="0.8:24.1701:/src/app/App.tsx:249:17:10277:220:e:p:t" data-fgid-d3bl97=":r3i:" style="font-family: &quot;JetBrains Mono&quot;, monospace;">
                         UX Design Executive
@@ -666,7 +711,7 @@
                         Building world-class design organizations
                       </p>
                     </div>
-                    <div class="flex items-center gap-5 shrink-0" data-fg-d3bl108="0.8:24.1701:/src/app/App.tsx:267:15:11028:1057:e:div:x" data-fgid-d3bl108=":r3n:">
+                    <div class="flex items-center gap-5 shrink-0 cv-stats-group" data-fg-d3bl108="0.8:24.1701:/src/app/App.tsx:267:15:11028:1057:e:div:x" data-fgid-d3bl108=":r3n:">
                       <div class="flex items-center gap-5" data-fg-d3bl110="0.8:24.1701:/src/app/App.tsx:273:19:11321:723:e:div:xte" data-fgid-d3bl110=":r3o:">
                         <div class="text-center" data-fg-d3bl113="0.8:24.1701:/src/app/App.tsx:275:21:11468:551:e:div:ete" data-fgid-d3bl113=":r3p:">
                           <p class="text-xl font-bold text-[#0D1B2E] leading-none" data-fg-d3bl114="0.8:24.1701:/src/app/App.tsx:276:23:11520:219:e:p:x" data-fgid-d3bl114=":r3q:" style="font-family: 'Libre Baskerville', Georgia, serif;">12+</p>
