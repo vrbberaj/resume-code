@@ -1278,7 +1278,7 @@ const workHtml = `<!DOCTYPE html>
               </div>
               <h2 class="card-title">Ericsson SalesOps Cloud: Transforming 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h2>
               <p class="card-lead">
-                Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise cloud data grid, reducing deal turnaround from 6 days to 42 minutes and protecting $18M in margin leakage.
+                Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise cloud data grid, reducing deal turnaround from 6 days to 42 minutes and achieving 100% catalog rule compliance across 12,000+ parts.
               </p>
             </div>
 
@@ -1289,8 +1289,8 @@ const workHtml = `<!DOCTYPE html>
                   <div class="c-metric-lbl">Turnaround (-92%)</div>
                 </div>
                 <div class="c-metric-item">
-                  <div class="c-metric-val">$18M+</div>
-                  <div class="c-metric-lbl">Protected Margin</div>
+                  <div class="c-metric-val">100%</div>
+                  <div class="c-metric-lbl">Rule Compliance</div>
                 </div>
                 <div class="c-metric-item">
                   <div class="c-metric-val">0%</div>
@@ -1322,7 +1322,7 @@ const workHtml = `<!DOCTYPE html>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● KEYBOARD-FIRST BOM DATA GRID</span>
                 <p class="mini-callout-text">
-                  Arrow-key navigation, tabular copy-paste, and instant margin guardrails validate $450M in annual telecom contracts in real-time.
+                  Arrow-key navigation, tabular copy-paste, and automated validation guardrails ensure real-time catalog compliance across multi-market telecom deployments.
                 </p>
               </div>
             </div>
@@ -1464,7 +1464,7 @@ const workHtml = `<!DOCTYPE html>
               </div>
               <h2 class="card-title">IBM Carbon Token Engine: Cross-Squad DesignOps &amp; UI System Governance</h2>
               <p class="card-lead">
-                Eliminating multi-million dollar design debt by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads via the Contribution Council flywheel.
+                Eliminating systemic design debt and engineering rework by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads via the Contribution Council flywheel.
               </p>
             </div>
 
@@ -2920,24 +2920,24 @@ const ericssonData = {
   company: 'Ericsson Global',
   roleDates: 'Lead UI/UX Designer &amp; Architect &bull; Jul 2019 – Sep 2020',
   award: '🏆 1st Place Global Hack-fest Award &bull; Spot Innovation Citation',
-  leadSummary: 'Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise cloud CPQ engine, reducing turnaround from 6 days to 42 minutes and protecting $18M in margin leakage across $450M in annual deals.',
+  leadSummary: 'Modernizing an unversioned, macro-laden spreadsheet quoting nightmare into an enterprise cloud CPQ engine, reducing turnaround from 6 days to 42 minutes and achieving 100% catalog pricing accuracy across 12,000+ hardware components.',
   videoFile: 'ericsson_walkthrough.mp4',
   metrics: [
     { label: 'Target Users', val: '1,200+ Sales Engineers' },
     { label: 'Turnaround', val: '6 Days &rarr; 42 Mins (-92%)' },
-    { label: 'Protected Margin', val: '$18M+ Annual' },
+    { label: 'Pricing Accuracy', val: '100% Verified' },
     { label: 'Adoption Rate', val: '94% in 30 Days' }
   ],
   chapters: [
     { sec: 0, text: '0:00 14-Tab Excel Audit' },
     { sec: 30, text: '0:30 Keyboard Data Grid' },
-    { sec: 65, text: '1:05 $18M Margin Impact' }
+    { sec: 65, text: '1:05 Pricing Guardrails & Governance' }
   ],
   challengeProse: `
-    <p>At Ericsson Global, over 1,200 technical sales engineers across 45 countries were quoting complex 5G network infrastructure contracts worth upwards of $450 million annually. However, the entire commercial machinery relied on a <strong>monolithic, unversioned 50MB Microsoft Excel workbook</strong> containing 14 dense tabs, fragile Visual Basic macros, and manual regional rate cards.</p>
-    <p>Whenever a sales engineer modified a discount cell, broken <code>#REF!</code> formulas frequently cascaded across interdependent hardware calculations. Worse still, unauthorized discounting slipped through unnoticed, costing Ericsson an estimated <strong>$18M+ annually in margin erosion</strong>. Quotes crawled through a 6-day email bottleneck waiting for Commercial Directors to manually verify Excel cell formulas.</p>
+    <p>At Ericsson Global, over 1,200 technical sales engineers across 45 countries were configuring complex 5G network infrastructure deployments spanning thousands of line items. However, the entire quoting machinery relied on a <strong>monolithic, unversioned 50MB Microsoft Excel workbook</strong> containing 14 dense tabs, fragile Visual Basic macros, and manual regional rate cards.</p>
+    <p>Whenever a sales engineer modified a discount cell, broken <code>#REF!</code> formulas frequently cascaded across interdependent hardware calculations. Worse still, unauthorized configuration overrides slipped through unnoticed, causing severe pricing discrepancies, delivery friction, and unapproved discount discrepancies across global markets. Quotes crawled through a 6-day email bottleneck waiting for Commercial Directors to manually verify Excel cell formulas.</p>
   `,
-  challengeMandate: 'Architect an enterprise CPQ cloud application that eliminated spreadsheet calculation errors and enforced automated gross margin guardrails, while strictly matching the keyboard data-entry velocity that senior electrical engineers demanded.',
+  challengeMandate: 'Architect an enterprise CPQ cloud application that eliminated spreadsheet calculation errors and enforced automated pricing validation guardrails, while strictly matching the keyboard data-entry velocity that senior electrical engineers demanded.',
   researchProse: `
     <p>To understand why prior corporate software rollouts failed with less than 15% adoption, I traveled to Stockholm, Sweden to conduct <strong>contextual inquiry sessions</strong> shadowing telecom sales engineers on live customer bids. I discovered that engineers didn’t love Excel for its visual interface—they loved it for <strong>keyboard muscle memory</strong> (arrow keys, copy-paste across cells, instantaneous autocomplete). Corporate web wizards with dropdowns and multi-step dialogs felt painfully slow and restrictive.</p>
   `,
@@ -3165,7 +3165,7 @@ const ericssonData = {
     </div>
   `,
   validationProse: `
-    <p>In 12 moderated usability sessions across Stockholm and Chennai, sales engineers saw their <strong>SUS (System Usability Scale) satisfaction jump from 34/100 (unacceptable) to 87/100 (world-class)</strong>. By preserving spreadsheet muscle memory while enforcing automated margin guardrails, we achieved 94% platform adoption within 30 days.</p>
+    <p>In 12 moderated usability sessions across Stockholm and Chennai, sales engineers saw their <strong>SUS (System Usability Scale) satisfaction jump from 34/100 (unacceptable) to 87/100 (world-class)</strong>. By preserving spreadsheet muscle memory while enforcing automated catalog validation rules, we achieved 94% platform adoption within 30 days.</p>
   `,
   validationMetrics: [
     { val: '34 &rarr; 87', label: 'SUS Usability Score (+155%)' },
@@ -3173,7 +3173,7 @@ const ericssonData = {
     { val: '94%', label: 'Active 30-Day Adoption' }
   ],
   carProse: `
-    <p>Direct leadership defenses addressing critical business tensions between sales velocity and financial compliance.</p>
+    <p>Direct leadership defenses addressing critical operational tensions between sales velocity and commercial governance.</p>
   `,
   carQuestions: [
     {
@@ -3183,10 +3183,10 @@ const ericssonData = {
       result: 'Adoption exceeded 94% within the first month. Quote turnaround dropped from 6 days to 42 minutes, and the project won 1st Place in the Ericsson Global Hack-fest Optimization Contest.'
     },
     {
-      question: 'What was the biggest tension between Sales and Finance, and how did your UX architecture resolve it?',
-      context: 'Sales demanded total pricing flexibility to close competitive telecom deals quickly, while Corporate Finance wanted strict lockouts to stop inadvertent discounting and margin erosion.',
-      action: 'I designed dynamic gross margin guardrails. If a discount kept margin ≥35%, the quote remained in the Green Channel for instant export. If it dipped into 28–34%, the UI triggered an inline escalation simulation showing projected revenue impact. If below 28%, the system locked the discount and prompted required Commercial Director approval.',
-      result: 'Eliminated subjective email arguments between Sales and Finance, protected over $18M in margin leakage across $450M in annual deals, and eliminated 100% of broken #REF! calculation errors.'
+      question: 'What was the biggest tension between Sales and Commercial Governance, and how did your UX architecture resolve it?',
+      context: 'Sales demanded total quoting flexibility to respond quickly to complex tenders, while Commercial Governance and Pricing teams needed strict guardrails to prevent unapproved discount tiers and invalid hardware configurations.',
+      action: 'I designed dynamic, three-tiered validation guardrails into the data grid. Standard configurations remained in a high-speed Green Channel for instant export. Out-of-bounds configurations triggered clear, non-blocking inline feedback with automated escalation workflows, eliminating subjective email disputes.',
+      result: 'Compressed deal approval turnaround by 92%, enforced 100% catalog rule compliance across 14 global market units, and completely eliminated broken formula errors.'
     }
   ],
   nextLink: { url: '/case-ibm-watson', label: 'IBM Watson Agentic AI' }
@@ -3222,7 +3222,7 @@ const watsonData = {
   ],
   challengeProse: `
     <p>Fortune 500 enterprises wanted the speed of autonomous generative AI agents to execute complex operations spanning SAP ERP, Salesforce CRM, and Jira. However, enterprise compliance and risk officers flatly rejected autonomous AI models because they operated as <strong>black-box engines</strong> that hallucinated data, corrupted financial master ledgers, and generated zero legal audit trails.</p>
-    <p>Without transparent human oversight, corporate legal teams prohibited internal deployment, stalling multi-million dollar software contracts and leaving operations teams bogged down in manual copy-paste reconciliation.</p>
+    <p>Without transparent human oversight, corporate risk teams prohibited enterprise deployment, stalling automated operations initiatives and leaving teams bogged down in manual copy-paste reconciliation.</p>
   `,
   challengeMandate: 'Architect an Agentic UX mesh where multi-agent autonomous execution is bounded by an explainable Human-in-the-Loop confidence gate, giving compliance officers cryptographic assurance and side-by-side verification before any mutation commits to production ledgers.',
   researchProse: `
@@ -3458,7 +3458,7 @@ const zebraData = {
   ],
   challengeProse: `
     <p>Zebra Technologies powers the physical logistics of e-commerce giants. When a fulfillment center receives a shipment of 1,000 new rugged handheld scanners, IT technicians historically spent <strong>4.5 business days individually tethering each device over USB</strong> to flash Wi-Fi certificates, OS updates, and inventory APKs.</p>
-    <p>Furthermore, once deployed onto the warehouse floor, unpredicted battery degradation mid-shift caused conveyor belt packaging lines to halt, costing logistics operators over <strong>$14,000 per hour in idle warehouse downtime</strong>.</p>
+    <p>Furthermore, once deployed onto the warehouse floor, unpredicted battery degradation mid-shift caused conveyor belt packaging lines to halt, stalling packing throughput and creating critical shift bottlenecks during peak fulfillment surges.</p>
   `,
   challengeMandate: 'Architect a cloud telematics console paired with an instant zero-touch hardware provisioning protocol, enabling 1,000 scanners to be staged in seconds without cables or manual touch interaction.',
   researchProse: `
@@ -3474,7 +3474,7 @@ const zebraData = {
         </div>
       </div>
       <div class="persona-quote">
-        “Staging 1,000 new barcode scanners by tethering each unit over USB used to tie up my entire team for a week. And when a battery dies mid-shift on a packaging conveyor, it costs us $14,000 an hour.”
+        “Staging 1,000 new barcode scanners by tethering each unit over USB used to tie up my entire team for a week. And when a battery dies mid-shift on a packaging conveyor, it halts the whole sorting line and ruins our shift quota.”
       </div>
       <div class="empathy-grid">
         <div class="empathy-box">
@@ -3670,7 +3670,7 @@ const carbonData = {
   company: 'IBM Software Labs',
   roleDates: 'DesignOps &amp; Governance Lead &bull; 2024–2026',
   award: '🏆 DesignOps Enterprise Leadership Citation',
-  leadSummary: 'Eliminating multi-million dollar design debt by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads via the Contribution Council flywheel.',
+  leadSummary: 'Eliminating systemic design debt and engineering rework by synchronizing single-source-of-truth Figma tokens with React production pipelines across 14 distributed squads via the Contribution Council flywheel.',
   videoFile: 'carbon_walkthrough.mp4',
   metrics: [
     { label: 'Governed Squads', val: '14 Distributed Squads' },
