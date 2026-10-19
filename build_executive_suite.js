@@ -650,60 +650,53 @@ const indexHtml = `<!DOCTYPE html>
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Key Career Impact Numbers Strip */
-    .impact-strip-section {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 32px 0;
-    }
-
-    .impact-grid {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* Executive Career Key Metrics Strip */
+    .hero-stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
+      gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 22px;
+      max-width: 620px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
 
-    @media (max-width: 768px) {
-      .impact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .impact-stat-item {
+    .h-stat {
       display: flex;
       flex-direction: column;
-      gap: 4px;
     }
 
-    .impact-num {
+    .h-stat-num {
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: 22px;
       font-weight: 900;
       color: var(--text-main);
-      line-height: 1;
+      line-height: 1.1;
       letter-spacing: -0.02em;
     }
 
-    .impact-num span {
+    .h-stat-num span {
       color: var(--primary-accent);
     }
 
-    .impact-label {
+    .h-stat-lbl {
       font-family: var(--font-code);
-      font-size: 11.5px;
+      font-size: 10px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      margin-top: 3px;
     }
 
-    .impact-desc {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      line-height: 1.4;
+    .h-stat-sub {
+      font-size: 11px;
+      color: #868e96;
+      margin-top: 1px;
+      line-height: 1.3;
     }
 
     @media (max-width: 640px) {
@@ -741,13 +734,14 @@ const indexHtml = `<!DOCTYPE html>
         padding: 12px 20px;
         font-size: 14px;
       }
-      .impact-strip-section {
-        padding: 24px 0;
+      .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px 12px;
+        margin-bottom: 20px;
       }
-      .impact-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 16px;
+      .h-stat-num {
+        font-size: 19px;
       }
       .video-caption-bar {
         flex-direction: column;
@@ -776,6 +770,30 @@ const indexHtml = `<!DOCTYPE html>
 
           <h1 class="hero-name">BALAAJEE V.R.</h1>
           <h2 class="hero-subtitle">Senior UI/UX Design Manager</h2>
+
+          <!-- Executive Career Key Metrics Strip (Elevated directly below Name & Title) -->
+          <div class="hero-stats-row">
+            <div class="h-stat">
+              <div class="h-stat-num">18<span>+</span></div>
+              <div class="h-stat-lbl">Years Exp.</div>
+              <div class="h-stat-sub">Enterprise UX Lead</div>
+            </div>
+            <div class="h-stat">
+              <div class="h-stat-num">$45<span>M+</span></div>
+              <div class="h-stat-lbl">Protected</div>
+              <div class="h-stat-sub">Operational Value</div>
+            </div>
+            <div class="h-stat">
+              <div class="h-stat-num">50<span>+</span></div>
+              <div class="h-stat-lbl">Mentored</div>
+              <div class="h-stat-sub">Designers &amp; Eng.</div>
+            </div>
+            <div class="h-stat">
+              <div class="h-stat-num">6</div>
+              <div class="h-stat-lbl">Design Systems</div>
+              <div class="h-stat-sub">Token Architectures</div>
+            </div>
+          </div>
 
           <p class="hero-bio-lead">
             <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical B2B software architectures compliant with European &amp; global standards (WCAG 2.2 AA, EAA, GDPR). Proven track record collaborating directly with enterprise headquarters across <strong>Ericsson, IBM Watson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
@@ -837,31 +855,7 @@ const indexHtml = `<!DOCTYPE html>
     </div>
   </main>
 
-  <!-- Impact Numbers Strip -->
-  <section class="impact-strip-section">
-    <div class="impact-grid">
-      <div class="impact-stat-item">
-        <div class="impact-num">18<span>+</span></div>
-        <div class="impact-label">Years Leadership</div>
-        <div class="impact-desc">Directing enterprise product design &amp; UX squads.</div>
-      </div>
-      <div class="impact-stat-item">
-        <div class="impact-num">$45<span>M+</span></div>
-        <div class="impact-label">Margin Protected</div>
-        <div class="impact-desc">Annual operational savings &amp; revenue guardrails.</div>
-      </div>
-      <div class="impact-stat-item">
-        <div class="impact-num">1,200<span>+</span></div>
-        <div class="impact-label">Engineers Governed</div>
-        <div class="impact-desc">Scaled across 14 distributed product squads.</div>
-      </div>
-      <div class="impact-stat-item">
-        <div class="impact-num">6</div>
-        <div class="impact-label">Design Systems</div>
-        <div class="impact-desc">Multi-brand token architectures shipped to production.</div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Global Footer -->
   <footer class="global-footer">
