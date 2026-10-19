@@ -1,3 +1,17 @@
 node_modules/
 .DS_Store
 *.log
+
+# Temporary audit and test screenshots
+/*.png
+!figma_design.png
+!local_render.png
+!local_render_new.png
+!print_render.png
+!print_render_page_1.png
+!ref_resume.png
+!screen1.png
+!screen2.png
+!vsign_preview.png
+!website_cases_preview.png
+!website_light_preview.png
