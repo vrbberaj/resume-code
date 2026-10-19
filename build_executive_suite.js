@@ -23,16 +23,16 @@ function getGlobalNav(activePage) {
   return `
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link">
-        <span class="brand-name">BALAAJEE V.R.</span>
-        <span class="brand-role">/ Senior UI/UX Design Manager</span>
+      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="nav-item ${activePage === 'home' ? 'active' : ''}">Welcome</a>
         <a href="/leadership" class="nav-item ${activePage === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ${activePage === 'work' ? 'active' : ''}">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ${activePage === 'cv' ? 'active' : ''}">📄 Executive CV</a>
+        <a href="/cv" class="nav-item ${activePage === 'cv' ? 'active' : ''}">📄 Curriculum Vitae</a>
       </nav>
 
       <div class="header-actions">
@@ -135,25 +135,42 @@ const globalCoreStyles = `
 
   .brand-link {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     color: var(--text-main);
     white-space: nowrap;
   }
 
-  .brand-name {
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-heading);
-    font-size: 17px;
     font-weight: 900;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 6px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .brand-role {
-    font-size: 12px;
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: scale(1.04);
+  }
+
+  .brand-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: 500;
   }
 
   .nav-links {
@@ -364,7 +381,7 @@ const indexHtml = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balaajee V.R. | Senior UI/UX Design Manager</title>
-  <meta name="description" content="Executive Welcome Portal of Balaajee V.R. — 18+ years leading enterprise product design, AI orchestration, and design systems across IBM, Ericsson, Zebra, and ZF Wabco.">
+  <meta name="description" content="Welcome Portal of Balaajee V.R. — Senior UI/UX Design Manager. 18+ years leading enterprise UI/UX design, AI orchestration, and design systems across IBM, Ericsson, Zebra, ZF Wabco, and Infosys.">
   ${commonHeadLinks}
   <style>
     ${globalCoreStyles}
@@ -796,7 +813,7 @@ const indexHtml = `<!DOCTYPE html>
           </div>
 
           <p class="hero-bio-lead">
-            <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical B2B software architectures compliant with European &amp; global standards (WCAG 2.2 AA, EAA, GDPR). Proven track record collaborating directly with enterprise headquarters across <strong>Ericsson, IBM Watson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
+            Senior UI/UX Design Manager with <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical software architectures across global product teams. Proven track record leading multi-disciplinary squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM Watson, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
           </p>
 
           <div class="pedigree-tags">
@@ -825,7 +842,7 @@ const indexHtml = `<!DOCTYPE html>
             <div class="video-player-frame">
               <span class="video-stage-badge">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                Executive Welcome Stage
+                Senior UX Design Manager Briefing
               </span>
               <span class="video-time-tag">60s Briefing</span>
               
@@ -838,7 +855,7 @@ const indexHtml = `<!DOCTYPE html>
             <div class="video-caption-bar">
               <div>
                 <h4>Balaajee V.R. — Personal Introduction</h4>
-                <p>Strategic Design Leadership &bull; 1080p HD</p>
+                <p>Senior UX Design Management &bull; 1080p HD</p>
               </div>
               <button class="btn-transcript-toggle" onclick="toggleTranscript()">
                 📝 Transcript
@@ -846,7 +863,7 @@ const indexHtml = `<!DOCTYPE html>
             </div>
 
             <div class="transcript-drawer" id="transcriptDrawer">
-              <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. Over the past 18 years, I’ve led product design across enterprise leaders including IBM, Ericsson, Zebra Technologies, and ZF Wabco. My focus is taking high-complexity, mission-critical systems—whether that is telecom CPQ, autonomous enterprise AI, rugged industrial IoT, or commercial automotive HUDs—and transforming them into intuitive, high-velocity experiences that scale seamlessly across enterprise teams. Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams, or browse my <strong>Executive CV</strong>. I look forward to our conversation.”</p>
+              <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. Over the past 18 years, I’ve led product design organizations across global technology leaders including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems—whether telecom CPQ, agentic enterprise AI, rugged industrial IoT, or commercial automotive cockpits—and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams. Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams and systems, or view my <strong>Curriculum Vitae</strong>. I look forward to connecting with you.”</p>
             </div>
           </div>
         </div>
@@ -1112,6 +1129,28 @@ const workHtml = `<!DOCTYPE html>
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
+    .browser-screenshot-wrap {
+      position: relative;
+      width: 100%;
+      background: #0B0E17;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      display: block;
+    }
+
+    .browser-screenshot-img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .transformation-card:hover .browser-screenshot-img {
+      transform: scale(1.03);
+    }
+
     .browser-mini-bar {
       background: #111520;
       padding: 8px 12px;
@@ -1277,6 +1316,9 @@ const workHtml = `<!DOCTYPE html>
                 </div>
                 <div class="browser-mini-title">ericsson://salesops/bom-grid</div>
               </div>
+              <div class="browser-screenshot-wrap">
+                <img src="screenshots/transformation-ericsson.png" alt="Ericsson SalesOps BOM Data Grid" class="browser-screenshot-img">
+              </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● KEYBOARD-FIRST BOM DATA GRID</span>
                 <p class="mini-callout-text">
@@ -1335,6 +1377,9 @@ const workHtml = `<!DOCTYPE html>
                   <span class="mini-dot dot-g"></span>
                 </div>
                 <div class="browser-mini-title">watson://orchestrate/agentic-mesh</div>
+              </div>
+              <div class="browser-screenshot-wrap">
+                <img src="screenshots/transformation-ibm-watson.png" alt="IBM Watson Orchestrate Multi-Agent Mesh" class="browser-screenshot-img">
               </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● 3-TIER CONFIDENCE GATE MATRIX</span>
@@ -1395,6 +1440,9 @@ const workHtml = `<!DOCTYPE html>
                 </div>
                 <div class="browser-mini-title">zebra://cloud/spatial-telematics</div>
               </div>
+              <div class="browser-screenshot-wrap">
+                <img src="screenshots/transformation-zebra.png" alt="Zebra Enterprise Device Cloud Telematics" class="browser-screenshot-img">
+              </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● 1-SCAN 2D PROVISIONING ENGINE</span>
                 <p class="mini-callout-text">
@@ -1454,6 +1502,9 @@ const workHtml = `<!DOCTYPE html>
                 </div>
                 <div class="browser-mini-title">carbon://designops/token-engine</div>
               </div>
+              <div class="browser-screenshot-wrap">
+                <img src="screenshots/transformation-ibm-carbon.png" alt="IBM Carbon Token Engine CI/CD" class="browser-screenshot-img">
+              </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● FIGMA-TO-REACT CI/CD SYNC</span>
                 <p class="mini-callout-text">
@@ -1512,6 +1563,9 @@ const workHtml = `<!DOCTYPE html>
                   <span class="mini-dot dot-g"></span>
                 </div>
                 <div class="browser-mini-title">wabco://cockpit/can-bus-hud</div>
+              </div>
+              <div class="browser-screenshot-wrap">
+                <img src="screenshots/transformation-zf-wabco.png" alt="ZF Wabco 3-Zone Automotive Cockpit HUD" class="browser-screenshot-img">
               </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● 3-ZONE ERGONOMIC COCKPIT</span>
@@ -2575,7 +2629,7 @@ function buildScrollableCasePage(data) {
         <div class="video-stage-header">
           <span class="video-stage-header-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            90-Second Executive Walkthrough &bull; ${data.shortName}
+            90-Second Product Walkthrough &bull; ${data.shortName}
           </span>
           <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">1080p HD &bull; With Sticky PiP</span>
         </div>
@@ -2685,8 +2739,8 @@ function buildScrollableCasePage(data) {
 
       <!-- Section 07: Business ROI & CAR Defense -->
       <section class="section-block" id="sec-car">
-        <div class="section-header-tag">07 &bull; Hard Business ROI &amp; Executive CAR Defense</div>
-        <h2 class="section-title-h2">Executive Interview Defense Q&amp;A (Situation, Action, Result)</h2>
+        <div class="section-header-tag">07 &bull; Hard Business ROI &amp; Leadership CAR Defense</div>
+        <h2 class="section-title-h2">Leadership Interview Defense Q&amp;A (Situation, Action, Result)</h2>
         <div class="section-prose">
           ${data.carProse}
         </div>
@@ -4070,6 +4124,18 @@ function updateNavInHtml(filePath, activeKey) {
   if (!fs.existsSync(filePath)) return;
   let content = fs.readFileSync(filePath, 'utf8');
   
+  // Replace brand link
+  const brandPattern = /<a href="\/" class="brand-link"[\s\S]*?<\/a>/;
+  const newBrand = `
+      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
+      </a>
+  `.trim();
+  if (content.match(brandPattern)) {
+    content = content.replace(brandPattern, newBrand);
+  }
+
   // Replace nav links block
   const navPattern = /<nav class="nav-links"[\s\S]*?<\/nav>/;
   const newNav = `
@@ -4077,7 +4143,7 @@ function updateNavInHtml(filePath, activeKey) {
         <a href="/" class="nav-item ${activeKey === 'home' ? 'active' : ''}">Welcome</a>
         <a href="/leadership" class="nav-item ${activeKey === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ${activeKey === 'work' ? 'active' : ''}">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">📄 Executive CV</a>
+        <a href="/cv" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">📄 Curriculum Vitae</a>
       </nav>
   `.trim();
 

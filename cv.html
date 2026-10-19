@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Full Executive Curriculum Vitae (CV)</title>
-  <meta name="description" content="Executive Curriculum Vitae for Balaajee V.R., Senior UI/UX Design Manager. Ex-IBM, Zebra Technologies, Ericsson, ZF Wabco.">
+  <title>Balaajee V.R. | Curriculum Vitae (Senior UI/UX Design Manager)</title>
+  <meta name="description" content="Curriculum Vitae for Balaajee V.R., Senior UI/UX Design Manager. Ex-IBM, Zebra Technologies, Ericsson, ZF Wabco, Infosys.">
   <link rel="stylesheet" href="style.css">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,28 +82,42 @@
 
   .brand-link {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     color: var(--text-main);
+    white-space: nowrap;
   }
 
-  .brand-name {
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-heading);
-    font-size: 17px;
     font-weight: 900;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 6px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .brand-role {
-    font-size: 12px;
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: scale(1.04);
+  }
+
+  .brand-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  @media (max-width: 768px) {
-    .brand-role { display: none; }
   }
 
   .nav-links {
@@ -280,7 +294,90 @@
       }
     }
 
+    /* On-Page Dedicated CV Actions Bar */
+    .cv-page-actions {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 12px !important;
+      padding: 12px 20px !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+      gap: 12px;
+    }
+
+    .btn-cv-page-download {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      padding: 9px 18px !important;
+      border-radius: 100px !important;
+      background: #0F172A !important;
+      color: #FFFFFF !important;
+      font-family: var(--font-heading) !important;
+      font-size: 13px !important;
+      font-weight: 800 !important;
+      text-decoration: none !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15) !important;
+    }
+
+    .btn-cv-page-download:hover {
+      background: var(--primary-accent) !important;
+      color: #FFFFFF !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(240, 6, 88, 0.25) !important;
+    }
+
+    .btn-cv-page-print {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      padding: 9px 16px !important;
+      border-radius: 100px !important;
+      background: #F1F5F9 !important;
+      border: 1.5px solid #CBD5E1 !important;
+      color: #0F172A !important;
+      font-family: var(--font-heading) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .btn-cv-page-print:hover {
+      background: #E2E8F0 !important;
+      border-color: #94A3B8 !important;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 680px) {
+      .cv-page-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 14px 16px !important;
+        margin-bottom: 14px !important;
+      }
+      .cv-actions-btns {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        width: 100% !important;
+      }
+      .btn-cv-page-download, .btn-cv-page-print {
+        justify-content: center !important;
+        width: 100% !important;
+      }
+    }
+
     @media print {
+      .cv-page-actions {
+        display: none !important;
+      }
       .global-header {
         display: none !important;
       }
@@ -299,16 +396,16 @@
   
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link">
-        <span class="brand-name">BALAAJEE V.R.</span>
-        <span class="brand-role">/ Senior UI/UX Design Manager</span>
+      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="nav-item ">Welcome</a>
         <a href="/leadership" class="nav-item ">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item active">📄 Executive CV</a>
+        <a href="/cv" class="nav-item active">📄 Curriculum Vitae</a>
       </nav>
 
       <div class="header-actions">
@@ -338,6 +435,26 @@
       <div class="tailwind">
         <div id="fig-code-root" style="height: 100%;">
           <div class="min-h-screen bg-[#DDD9D0] py-10 px-4" data-fg-d3bl8="0.8:24.1701:/src/app/App.tsx:117:5:4246:11188:e:div:e:1" data-fgid-d3bl8=":r0:" style="font-family: Inter, sans-serif;">
+            
+            <!-- On-Page Dedicated CV Actions Bar (Responsive across all screens) -->
+            <div class="cv-page-actions">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
+                <span style="font-family: var(--font-heading); font-size: 14px; font-weight: 800; color: #0D1B2E;">Curriculum Vitae</span>
+                <span style="font-family: var(--font-code); font-size: 11px; color: #64748B;">• Senior UI/UX Design Manager</span>
+              </div>
+              <div class="cv-actions-btns" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-cv-page-download">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download CV (PDF)
+                </a>
+                <button onclick="window.print()" class="btn-cv-page-print">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                  Print CV
+                </button>
+              </div>
+            </div>
+
             <div class="max-w-[900px] mx-auto shadow-2xl" data-fg-d3bl9="0.8:24.1701:/src/app/App.tsx:121:7:4370:11053:e:div:e" data-fgid-d3bl9=":r1:">
               <div class="grid cv-grid-layout" data-fg-d3bl10="0.8:24.1701:/src/app/App.tsx:122:9:4429:10981:e:div:xtetxte" data-fgid-d3bl10=":r2:" style="grid-template-columns: 240px 1fr;">
                 <aside class="bg-[#0D1B2E] text-white px-6 pt-9 pb-10 flex flex-col gap-7" data-fg-d3bl12="0.8:24.1701:/src/app/App.tsx:125:11:4577:5374:e:aside:xtetetxtetxtetxtetxtetxte" data-fgid-d3bl12=":r3:">
@@ -368,7 +485,7 @@
                       </svg>
                       <span class="text-[10.5px] text-white/65 leading-snug break-all">vrbberaj@gmail.com</span>
                     </div>
-                    <!-- Location & Executive Mobility -->
+                    <!-- Location & Global Mobility -->
                     <div class="flex items-start gap-2.5">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-3 h-3 text-amber-400 shrink-0 mt-[2px]">
                         <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
@@ -435,7 +552,7 @@
                     </div>
                   </div>
 
-                  <!-- Executive Mobility, Availability & Languages -->
+                  <!-- Global Mobility, Availability & Languages -->
                   <div class="flex flex-col gap-4">
                     <div class="mb-3">
                       <p class="text-[10.5px] tracking-[0.22em] font-semibold uppercase text-amber-400/70 mb-1.5" style="font-family: 'JetBrains Mono', monospace;">
@@ -696,7 +813,7 @@
                   <div class="flex justify-between items-end pb-6 cv-header-stat-row" data-fg-d3bl95="0.8:24.1701:/src/app/App.tsx:247:13:10158:1946:e:div:ete" data-fgid-d3bl95=":r3g:">
                     <div data-fg-d3bl96="0.8:24.1701:/src/app/App.tsx:248:15:10255:757:e:div:etete" data-fgid-d3bl96=":r3h:">
                       <p class="text-[9px] tracking-[0.22em] uppercase text-[#0D1B2E]/45 mb-0.5" data-fg-d3bl97="0.8:24.1701:/src/app/App.tsx:249:17:10277:220:e:p:t" data-fgid-d3bl97=":r3i:" style="font-family: &quot;JetBrains Mono&quot;, monospace;">
-                        UX Design Executive
+                        Senior UI/UX Design Manager
                       </p>
                       <p class="text-[28px] font-bold text-[#0D1B2E] leading-none" data-fg-d3bl99="0.8:24.1701:/src/app/App.tsx:255:17:10514:332:e:p:teste" data-fgid-d3bl99=":r3j:" style="font-family: &quot;Libre Baskerville&quot;, Georgia, serif;">
                         18
@@ -743,7 +860,7 @@
                       </div>
                     </div>
                     <p class="text-[12px] text-stone-600 leading-[1.8]" data-fg-d3bl122="0.8:24.1701:/src/app/App.tsx:297:15:12234:502:e:p:t" data-fgid-d3bl122=":r4b:">
-                      Capitalizing on 18+ years of design leadership across global enterprises (including Swedish &amp; German headquarters at Ericsson and ZF Wabco) across Telecom, Automotive, AI, and Cloud Infrastructure. Proven track record of bridging bold design vision with engineering feasibility to protect delivery timelines. Strategic executive skilled in multi-national stakeholder negotiation, design system governance compliant with European &amp; global standards (WCAG 2.2 AA, European Accessibility Act - EAA, GDPR Privacy-by-Design), and aligning user-centered design with multi-million dollar business outcomes.
+                      Capitalizing on 18+ years of design leadership across global enterprises across the US, Europe, and APAC (including Ericsson, ZF Wabco, IBM, Zebra, and Infosys) across Telecom, Automotive, AI, and Cloud Infrastructure. Proven track record of bridging bold design vision with engineering feasibility to protect delivery timelines and scale cross-functional teams. Strategic design leader skilled in multi-national stakeholder negotiation, design system governance compliant with global standards (WCAG 2.2 AA, European Accessibility Act - EAA, GDPR Privacy-by-Design), and aligning user-centered design with high-impact product transformation.
                     </p>
                   </section>
                   <section data-fg-d3bl125="0.8:24.1701:/src/app/App.tsx:303:13:12809:1477:e:section:ete" data-fgid-d3bl125=":r4c:">

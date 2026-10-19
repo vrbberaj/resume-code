@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Executive Leadership Deck</title>
-  <meta name="description" content="Executive Leadership Presentation: Scaling enterprise design teams, DesignOps token governance, cross-functional collaboration, and 30-60-90 day execution plan.">
+  <title>Balaajee V.R. | Design Leadership Deck</title>
+  <meta name="description" content="Design Leadership Presentation: Scaling enterprise design teams, DesignOps token governance, cross-functional collaboration, and 30-60-90 day execution plan.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,28 +81,42 @@
 
   .brand-link {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     color: var(--text-main);
+    white-space: nowrap;
   }
 
-  .brand-name {
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-heading);
-    font-size: 17px;
     font-weight: 900;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 6px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .brand-role {
-    font-size: 12px;
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: scale(1.04);
+  }
+
+  .brand-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  @media (max-width: 768px) {
-    .brand-role { display: none; }
   }
 
   .nav-links {
@@ -2153,16 +2167,16 @@
   
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link">
-        <span class="brand-name">BALAAJEE V.R.</span>
-        <span class="brand-role">/ Senior UI/UX Design Manager</span>
+      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="nav-item ">Welcome</a>
         <a href="/leadership" class="nav-item active">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ">📄 Executive CV</a>
+        <a href="/cv" class="nav-item ">📄 Curriculum Vitae</a>
       </nav>
 
       <div class="header-actions">
@@ -2351,7 +2365,7 @@
         <div class="slide-cover-header">
           <div class="cover-header-left">
             <div class="slide-kicker">
-              <span class="kicker-dot"></span> Executive Leadership Portfolio • 2026
+              <span class="kicker-dot"></span> Design Leadership Portfolio • 2026
             </div>
             <h1 class="slide-title">Design Leadership at Scale</h1>
             <p class="slide-subtitle">
@@ -2461,7 +2475,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 01 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 01 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>ENTERPRISE DESIGN KEYNOTE</span>
         </div>
       </section>
@@ -2472,9 +2486,9 @@
           <div class="slide-kicker">
             <span class="kicker-dot"></span> Core Leadership Framework
           </div>
-          <h2 class="slide-title">Four Pillars of Executive Design</h2>
+          <h2 class="slide-title">Four Pillars of Design Leadership</h2>
           <p class="slide-subtitle">
-            Bridging executive business objectives, technical engineering constraints, and human-centered design to build compounding enterprise value.
+            Bridging business objectives, technical engineering constraints, and human-centered design to build compounding enterprise value.
           </p>
           <div class="slide-divider"></div>
         </div>
@@ -2488,7 +2502,7 @@
               </div>
               <span class="flywheel-step-badge">Pillar 01 • Business Strategy</span>
             </div>
-            <h3 class="card-heading">1. Commercial ROI &amp; Executive Alignment</h3>
+            <h3 class="card-heading">1. Commercial ROI &amp; Strategic Alignment</h3>
             <p class="card-desc">
               Design is an investment, not an expense. Every initiative directly targets commercial KPIs: accelerating enterprise ARR, lowering customer churn, eliminating support tickets, and shortening enterprise B2B sales cycles.
             </p>
@@ -2570,7 +2584,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 02 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 02 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>CORE LEADERSHIP FRAMEWORK</span>
         </div>
       </section>
@@ -2659,7 +2673,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 03 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 03 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>HYBRID POD OPERATING MODEL</span>
           <div style="margin-top: 18px; text-align: right;">
        <a href="/case-ericsson.html" class="btn-read-case" style="display: inline-flex; text-decoration: none; padding: 8px 18px; border-radius: 100px; background: var(--gold); color: #0D1B2E; font-weight: 700; font-size: 12.5px;">
@@ -2755,7 +2769,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 04 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 04 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>IBM ENTERPRISE AI-UX CASE STUDY</span>
         </div>
       </section>
@@ -2847,7 +2861,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 05 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 05 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>ZEBRA INDUSTRIAL ECOSYSTEM CASE STUDY</span>
         </div>
       </section>
@@ -2939,7 +2953,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 06 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 06 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>ZF WABCO FLEET TELEMATICS CASE STUDY</span>
         </div>
       </section>
@@ -3062,7 +3076,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 07 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 07 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>ENTERPRISE TOKEN ARCHITECTURE</span>
         </div>
       </section>
@@ -3182,7 +3196,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 08 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 08 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>AI-AUGMENTED DESIGNOPS &amp; AGENTIC UX</span>
         </div>
       </section>
@@ -3296,7 +3310,7 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 09 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
+          <span>SLIDE 09 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
           <span>PEOPLE LEADERSHIP &amp; CULTURE</span>
         </div>
       </section>
@@ -3400,8 +3414,8 @@
         </div>
 
         <div class="slide-keynote-footer">
-          <span>SLIDE 10 / 10 • BALAAJEE V.R. | EXECUTIVE LEADERSHIP</span>
-          <span>EXECUTIVE SCORECARD &amp; NEXT STEPS</span>
+          <span>SLIDE 10 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>LEADERSHIP SCORECARD &amp; NEXT STEPS</span>
         </div>
       </section>
 
@@ -3415,52 +3429,101 @@
       const slides = document.querySelectorAll('.slide');
       const jumpLinks = document.querySelectorAll('.jump-item');
       const pptThumbs = document.querySelectorAll('.ppt-thumb');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            
-            // Sync Top Jump Bar links
-            jumpLinks.forEach(link => {
-              if (link.getAttribute('href') === `#${id}`) {
-                link.classList.add('active');
-                link.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
-              } else {
-                link.classList.remove('active');
-              }
-            });
+      const sidebar = document.getElementById('pptSorter') || document.querySelector('.ppt-sorter-sidebar');
+      const jumpLinksContainer = document.querySelector('.jump-links') || document.querySelector('.jump-bar-inner');
+      let isNavClicking = false;
+      let navTimer = null;
 
-            // Sync Left PPT Sorter Thumbnails
-            pptThumbs.forEach(thumb => {
-              if (thumb.getAttribute('href') === `#${id}`) {
-                thumb.classList.add('active');
-                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-              } else {
-                thumb.classList.remove('active');
-              }
-            });
+      function scrollToSlide(targetSlide, targetId) {
+        if (!targetSlide) return;
+        isNavClicking = true;
+        clearTimeout(navTimer);
+
+        // Header offset
+        const isDesktop = window.innerWidth > 1080;
+        const headerOffset = isDesktop ? 80 : 130;
+        const targetTop = targetSlide.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth'
+        });
+
+        // Sync active states immediately
+        syncActiveStates(targetId);
+
+        navTimer = setTimeout(() => {
+          isNavClicking = false;
+        }, 900);
+
+        if (window.history && window.history.pushState) {
+          window.history.pushState(null, null, targetId);
+        }
+      }
+
+      function syncActiveStates(targetId) {
+        // Sync Top Jump Bar links
+        jumpLinks.forEach(link => {
+          if (link.getAttribute('href') === targetId) {
+            link.classList.add('active');
+            if (jumpLinksContainer) {
+              const linkLeft = link.offsetLeft - jumpLinksContainer.offsetLeft;
+              jumpLinksContainer.scrollTo({ left: Math.max(0, linkLeft - 24), behavior: 'smooth' });
+            }
+          } else {
+            link.classList.remove('active');
           }
         });
-      }, {
-        rootMargin: '-10% 0px -70% 0px',
-        threshold: 0
-      });
 
-      slides.forEach(slide => observer.observe(slide));
+        // Sync Left PPT Sorter Thumbnails
+        pptThumbs.forEach(thumb => {
+          if (thumb.getAttribute('href') === targetId) {
+            thumb.classList.add('active');
+            if (sidebar) {
+              const thumbTop = thumb.offsetTop - sidebar.offsetTop;
+              sidebar.scrollTo({ top: Math.max(0, thumbTop - 36), behavior: 'smooth' });
+            }
+          } else {
+            thumb.classList.remove('active');
+          }
+        });
+      }
 
       // Handle smooth click navigation for PPT thumbs
       pptThumbs.forEach(thumb => {
         thumb.addEventListener('click', (e) => {
+          e.preventDefault();
           const targetId = thumb.getAttribute('href');
           const targetSlide = document.querySelector(targetId);
-          if (targetSlide) {
-            e.preventDefault();
-            targetSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            history.pushState(null, null, targetId);
-          }
+          scrollToSlide(targetSlide, targetId);
         });
       });
+
+      // Handle smooth click navigation for Top Jump Bar
+      jumpLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetSlide = document.querySelector(targetId);
+          scrollToSlide(targetSlide, targetId);
+        });
+      });
+
+      // IntersectionObserver for natural mouse/touch scrolling
+      const observer = new IntersectionObserver((entries) => {
+        if (isNavClicking) return;
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            syncActiveStates(`#${id}`);
+          }
+        });
+      }, {
+        rootMargin: '-15% 0px -65% 0px',
+        threshold: 0
+      });
+
+      slides.forEach(slide => observer.observe(slide));
     });
   </script>
 </body>

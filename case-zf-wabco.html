@@ -83,25 +83,42 @@
 
   .brand-link {
     display: flex;
-    align-items: baseline;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     color: var(--text-main);
     white-space: nowrap;
   }
 
-  .brand-name {
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-heading);
-    font-size: 17px;
     font-weight: 900;
-    letter-spacing: -0.02em;
-    color: var(--text-main);
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 6px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .brand-role {
-    font-size: 12px;
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: scale(1.04);
+  }
+
+  .brand-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: 500;
   }
 
   .nav-links {
@@ -1272,16 +1289,16 @@
   
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link">
-        <span class="brand-name">BALAAJEE V.R.</span>
-        <span class="brand-role">/ Senior UI/UX Design Manager</span>
+      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="nav-item ">Welcome</a>
         <a href="/leadership" class="nav-item ">👔 Leadership Deck</a>
         <a href="/work" class="nav-item active">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ">📄 Executive CV</a>
+        <a href="/cv" class="nav-item ">📄 Curriculum Vitae</a>
       </nav>
 
       <div class="header-actions">
@@ -1341,7 +1358,7 @@
         <div class="video-stage-header">
           <span class="video-stage-header-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            90-Second Executive Walkthrough &bull; ZF Wabco Telematics
+            90-Second Product Walkthrough &bull; ZF Wabco Telematics
           </span>
           <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">1080p HD &bull; With Sticky PiP</span>
         </div>
@@ -1623,8 +1640,8 @@
 
       <!-- Section 07: Business ROI & CAR Defense -->
       <section class="section-block" id="sec-car">
-        <div class="section-header-tag">07 &bull; Hard Business ROI &amp; Executive CAR Defense</div>
-        <h2 class="section-title-h2">Executive Interview Defense Q&amp;A (Situation, Action, Result)</h2>
+        <div class="section-header-tag">07 &bull; Hard Business ROI &amp; Leadership CAR Defense</div>
+        <h2 class="section-title-h2">Leadership Interview Defense Q&amp;A (Situation, Action, Result)</h2>
         <div class="section-prose">
           
     <p>Defense examining automotive ergonomics, human factors engineering, and mission-critical safety compliance.</p>
