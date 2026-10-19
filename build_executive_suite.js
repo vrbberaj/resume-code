@@ -325,7 +325,7 @@ const indexHtml = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Senior UI/UX Design Manager &amp; Product Design Director</title>
+  <title>Balaajee V.R. | Senior UI/UX Design Manager</title>
   <meta name="description" content="Executive Welcome Portal of Balaajee V.R. — 18+ years leading enterprise product design, AI orchestration, and design systems across IBM, Ericsson, Zebra, and ZF Wabco.">
   ${commonHeadLinks}
   <style>
@@ -673,7 +673,7 @@ const indexHtml = `<!DOCTYPE html>
           </div>
 
           <h1 class="hero-name">BALAAJEE V.R.</h1>
-          <h2 class="hero-subtitle">Senior UI/UX Design Manager &amp; Product Design Director</h2>
+          <h2 class="hero-subtitle">Senior UI/UX Design Manager</h2>
 
           <p class="hero-bio-lead">
             <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical B2B software architectures compliant with European &amp; global standards (WCAG 2.2 AA, EAA, GDPR). Proven track record collaborating directly with Swedish and German enterprise headquarters across <strong>Ericsson, IBM Watson, Zebra Technologies,</strong> and <strong>ZF Wabco</strong>.
