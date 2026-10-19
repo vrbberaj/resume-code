@@ -676,7 +676,7 @@ const indexHtml = `<!DOCTYPE html>
           <h2 class="hero-subtitle">Senior UI/UX Design Manager</h2>
 
           <p class="hero-bio-lead">
-            <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical B2B software architectures compliant with European &amp; global standards (WCAG 2.2 AA, EAA, GDPR). Proven track record collaborating directly with Swedish and German enterprise headquarters across <strong>Ericsson, IBM Watson, Zebra Technologies,</strong> and <strong>ZF Wabco</strong>.
+            <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical B2B software architectures compliant with European &amp; global standards (WCAG 2.2 AA, EAA, GDPR). Proven track record collaborating directly with enterprise headquarters across <strong>Ericsson, IBM Watson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
           </p>
 
           <div class="pedigree-tags">
@@ -684,6 +684,7 @@ const indexHtml = `<!DOCTYPE html>
             <span class="pedigree-pill">🌐 Ex-Ericsson Global</span>
             <span class="pedigree-pill">📦 Ex-Zebra Technologies</span>
             <span class="pedigree-pill">🚛 Ex-ZF Wabco</span>
+            <span class="pedigree-pill">🔷 Ex-Infosys</span>
           </div>
 
           <!-- Direct Pathways to Dedicated Portals (No in-page clutter) -->
