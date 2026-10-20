@@ -32,21 +32,10 @@ function getGlobalNav(activePage) {
         <a href="/" class="nav-item ${activePage === 'home' ? 'active' : ''}">Welcome</a>
         <a href="/leadership" class="nav-item ${activePage === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ${activePage === 'work' ? 'active' : ''}">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ${activePage === 'cv' ? 'active' : ''}">📄 Curriculum Vitae</a>
+        <a href="/cv" class="nav-item ${activePage === 'cv' ? 'active' : ''}">📄 My Resume</a>
       </nav>
 
       <div class="header-actions">
-        ${activePage === 'leadership' ? `
-        <a href="Balaajee_VR_Leadership_Deck.pdf" download class="btn-download-pdf">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Deck (PDF)
-        </a>
-        ` : `
-        <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download CV (PDF)
-        </a>
-        `}
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
           Get In Touch &rarr;
         </a>
@@ -384,7 +373,7 @@ const indexHtml = `<!DOCTYPE html>
     .welcome-hero-stage {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 64px 0 60px;
+      padding: 44px 0 40px;
     }
 
     .hero-container {
@@ -396,14 +385,14 @@ const indexHtml = `<!DOCTYPE html>
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
+      gap: 40px;
+      align-items: start;
     }
 
     @media (max-width: 980px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 36px;
       }
     }
 
@@ -420,7 +409,7 @@ const indexHtml = `<!DOCTYPE html>
       font-weight: 700;
       letter-spacing: 0.03em;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .pulse-dot {
@@ -439,59 +428,29 @@ const indexHtml = `<!DOCTYPE html>
 
     .hero-name {
       font-family: var(--font-heading);
-      font-size: 46px;
+      font-size: 44px;
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.1;
       color: var(--text-main);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .hero-subtitle {
       font-family: var(--font-heading);
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--primary-accent);
       line-height: 1.35;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero-bio-lead {
-      font-size: 16.5px;
+      font-size: 16px;
       line-height: 1.65;
       color: var(--text-body);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       max-width: 620px;
-    }
-
-    .pedigree-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .pedigree-pill {
-      font-family: var(--font-code);
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 6px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .co-logo-img {
-      height: 15px;
-      width: auto;
-      max-width: 28px;
-      object-fit: contain;
-      display: inline-block;
-      flex-shrink: 0;
     }
 
     .hero-cta-group {
@@ -499,14 +458,14 @@ const indexHtml = `<!DOCTYPE html>
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .btn-hero-primary {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
+      gap: 10px;
+      padding: 13px 28px;
       border-radius: 100px;
       background: var(--text-main);
       color: #FFFFFF;
@@ -524,26 +483,98 @@ const indexHtml = `<!DOCTYPE html>
       box-shadow: 0 8px 24px rgba(240, 6, 88, 0.25);
     }
 
-    .btn-hero-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 100px;
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-medium);
-      color: var(--text-main);
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      transition: all 0.2s ease;
+    /* Dedicated Executive Pedigree & Global Brand Trust Section */
+    .pedigree-trust-section {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .btn-hero-secondary:hover {
-      border-color: var(--text-main);
-      background: var(--bg-subtle);
-      transform: translateY(-1px);
+    .pedigree-trust-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .pedigree-trust-title {
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .pedigree-brands-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .brand-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+
+    .brand-item:hover {
+      background: #FFFFFF;
+      border-color: var(--border-medium);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .brand-logo-img {
+      height: 28px;
+      max-width: 80px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
+      filter: grayscale(100%) opacity(0.7);
+      transition: all 0.25s ease;
+    }
+
+    .brand-item:hover .brand-logo-img {
+      filter: grayscale(0%) opacity(1);
+    }
+
+    .brand-item-name {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .brand-item-role {
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 880px) {
+      .pedigree-brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .pedigree-brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
     }
 
     /* Video Player Centerpiece Card */
@@ -569,37 +600,21 @@ const indexHtml = `<!DOCTYPE html>
       display: block;
     }
 
-    .video-stage-badge {
+    .video-time-tag {
       position: absolute;
       top: 14px;
-      left: 14px;
+      right: 14px;
       background: rgba(11, 14, 23, 0.85);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
       font-family: var(--font-code);
       font-size: 11px;
       font-weight: 700;
       padding: 4px 10px;
-      border-radius: 100px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 10;
-    }
-
-    .video-time-tag {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: var(--primary-accent);
-      color: #FFFFFF;
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
       border-radius: 6px;
       z-index: 10;
+      letter-spacing: 0.04em;
     }
 
     .video-caption-bar {
@@ -614,9 +629,10 @@ const indexHtml = `<!DOCTYPE html>
 
     .video-caption-bar h4 {
       font-family: var(--font-heading);
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #FFFFFF;
+      margin-bottom: 2px;
     }
 
     .video-caption-bar p {
@@ -797,7 +813,7 @@ const indexHtml = `<!DOCTYPE html>
             <div class="h-stat">
               <div class="h-stat-num">50<span>+</span></div>
               <div class="h-stat-lbl">Mentored</div>
-              <div class="h-stat-sub">Product Designers</div>
+              <div class="h-stat-sub">UI/UX &amp; Product Designers</div>
             </div>
             <div class="h-stat">
               <div class="h-stat-num">6</div>
@@ -807,25 +823,14 @@ const indexHtml = `<!DOCTYPE html>
           </div>
 
           <p class="hero-bio-lead">
-            Senior UI/UX Design Manager with <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical software architectures across global product teams. Proven track record leading multi-disciplinary squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM Watson, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
+            Senior UI/UX Design Manager with <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical software architectures across global product teams. Proven track record leading multi-disciplinary squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
           </p>
 
-          <div class="pedigree-tags">
-            <span class="pedigree-pill"><img src="logos/ibm.svg" class="co-logo-img" alt="IBM"> Ex-IBM Software Labs</span>
-            <span class="pedigree-pill"><img src="logos/ericsson.svg" class="co-logo-img" alt="Ericsson"> Ex-Ericsson Global</span>
-            <span class="pedigree-pill"><img src="logos/zebra.svg" class="co-logo-img" alt="Zebra Technologies"> Ex-Zebra Technologies</span>
-            <span class="pedigree-pill"><img src="logos/zf.svg" class="co-logo-img" alt="ZF Wabco"> Ex-ZF Wabco</span>
-            <span class="pedigree-pill"><img src="logos/infosys.svg" class="co-logo-img" alt="Infosys"> Ex-Infosys</span>
-          </div>
-
-          <!-- Executive Action Pair (Zero Redundancy with Nav Bar) -->
+          <!-- Executive Primary Action (Zero Redundancy with Nav Bar) -->
           <div class="hero-cta-group">
             <a href="/work" class="btn-hero-primary">
               <span>🎨 Explore Selected Work (5 Deep Dives)</span>
               <span>&rarr;</span>
-            </a>
-            <a href="/leadership" class="btn-hero-secondary">
-              <span>👔 Leadership Deck</span>
             </a>
           </div>
         </div>
@@ -834,11 +839,7 @@ const indexHtml = `<!DOCTYPE html>
         <div class="hero-right">
           <div class="video-showcase-box">
             <div class="video-player-frame">
-              <span class="video-stage-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                Senior UX Design Manager Briefing
-              </span>
-              <span class="video-time-tag">60s Briefing</span>
+              <span class="video-time-tag">60s Video Briefing</span>
               
               <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
                 <source src="intro.mp4" type="video/mp4">
@@ -848,8 +849,8 @@ const indexHtml = `<!DOCTYPE html>
 
             <div class="video-caption-bar">
               <div>
-                <h4>Balaajee V.R. — Personal Introduction</h4>
-                <p>Senior UX Design Management &bull; 1080p HD</p>
+                <h4>Executive Video Introduction</h4>
+                <p>Balaajee V.R. &bull; 1080p HD</p>
               </div>
               <button class="btn-transcript-toggle" onclick="toggleTranscript()">
                 📝 Transcript
@@ -857,11 +858,45 @@ const indexHtml = `<!DOCTYPE html>
             </div>
 
             <div class="transcript-drawer" id="transcriptDrawer">
-              <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. Over the past 18 years, I’ve led product design organizations across global technology leaders including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems—whether telecom CPQ, agentic enterprise AI, rugged industrial IoT, or commercial automotive cockpits—and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams. Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams and systems, or view my <strong>Curriculum Vitae</strong>. I look forward to connecting with you.”</p>
+              <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. Over the past 18 years, I’ve led product design organizations across global technology leaders including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems—whether telecom CPQ, agentic enterprise AI, rugged industrial IoT, or commercial automotive cockpits—and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams. Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams and systems, or view <strong>My Resume</strong>. I look forward to connecting with you.”</p>
             </div>
           </div>
         </div>
 
+      </div>
+
+      <!-- Dedicated Executive Pedigree & Global Brand Trust Section -->
+      <div class="pedigree-trust-section">
+        <div class="pedigree-trust-header">
+          <span class="pedigree-trust-title">PROVEN DESIGN LEADERSHIP TRACK RECORD</span>
+        </div>
+        <div class="pedigree-brands-grid">
+          <div class="brand-item">
+            <img src="logos/ibm.svg" alt="IBM" class="brand-logo-img">
+            <span class="brand-item-name">IBM</span>
+            <span class="brand-item-role">Software Labs</span>
+          </div>
+          <div class="brand-item">
+            <img src="logos/ericsson.svg" alt="Ericsson" class="brand-logo-img">
+            <span class="brand-item-name">Ericsson</span>
+            <span class="brand-item-role">Global OSS/BSS</span>
+          </div>
+          <div class="brand-item">
+            <img src="logos/zebra.svg" alt="Zebra Technologies" class="brand-logo-img">
+            <span class="brand-item-name">Zebra Technologies</span>
+            <span class="brand-item-role">Enterprise Mobile</span>
+          </div>
+          <div class="brand-item">
+            <img src="logos/zf.svg" alt="ZF Wabco" class="brand-logo-img">
+            <span class="brand-item-name">ZF Wabco</span>
+            <span class="brand-item-role">Commercial Auto</span>
+          </div>
+          <div class="brand-item">
+            <img src="logos/infosys.svg" alt="Infosys" class="brand-logo-img">
+            <span class="brand-item-name">Infosys</span>
+            <span class="brand-item-role">Digital Experience</span>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -4137,15 +4172,34 @@ function updateNavInHtml(filePath, activeKey) {
         <a href="/" class="nav-item ${activeKey === 'home' ? 'active' : ''}">Welcome</a>
         <a href="/leadership" class="nav-item ${activeKey === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ${activeKey === 'work' ? 'active' : ''}">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">📄 Curriculum Vitae</a>
+        <a href="/cv" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">📄 My Resume</a>
       </nav>
   `.trim();
 
   if (content.match(navPattern)) {
     content = content.replace(navPattern, newNav);
-    fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`Updated navigation in ${path.basename(filePath)}`);
   }
+
+  // Replace header-actions to remove download button from top bar
+  const actionsPattern = /<div class="header-actions">[\s\S]*?<\/div>/;
+  const newActions = `
+      <div class="header-actions">
+        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
+          Get In Touch &rarr;
+        </a>
+      </div>
+  `.trim();
+  if (content.match(actionsPattern)) {
+    content = content.replace(actionsPattern, newActions);
+  }
+
+  // Update on-page titles if CV
+  if (filePath.endsWith('cv.html')) {
+    content = content.replace(/Curriculum Vitae/g, 'My Resume');
+  }
+
+  fs.writeFileSync(filePath, content, 'utf8');
+  console.log(`Updated navigation and header in ${path.basename(filePath)}`);
 }
 
 updateNavInHtml(path.join(__dirname, 'leadership.html'), 'leadership');
