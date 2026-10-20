@@ -11,6 +11,7 @@ const viewports = [
 
 const testPages = [
   { name: 'Selected Work Portal', url: 'http://localhost:8080/work' },
+  { name: 'Visual Archive', url: 'http://localhost:8080/archive' },
   { name: 'Ericsson Case Study', url: 'http://localhost:8080/case-ericsson' },
   { name: 'Watson AI Case Study', url: 'http://localhost:8080/case-ibm-watson' },
   { name: 'Zebra IoT Case Study', url: 'http://localhost:8080/case-zebra' },
@@ -66,9 +67,9 @@ const testPages = [
           return {
             specializationBanner: !!document.querySelector('.specialization-pillars-banner'),
             specializationPillars: document.querySelectorAll('.spec-pillar-card').length,
-            behanceBanner: !!document.querySelector('.behance-integration-banner'),
-            behanceVisualStrip: !!document.querySelector('.behance-visual-strip'),
-            behanceStripItems: document.querySelectorAll('.behance-strip-item').length,
+            sidebar: !!document.querySelector('.work-left-sidebar'),
+            sidebarItems: document.querySelectorAll('.work-nav-item').length,
+            archiveBanner: !!document.querySelector('.native-archive-banner'),
             cards: document.querySelectorAll('.transformation-card').length,
             methodologyStrips: document.querySelectorAll('.domain-methodology-strip').length,
             screenshots: document.querySelectorAll('.browser-screenshot-img').length,
@@ -76,11 +77,11 @@ const testPages = [
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.specializationBanner || elements.specializationPillars !== 5 || !elements.behanceBanner || !elements.behanceVisualStrip || elements.behanceStripItems !== 5 || elements.cards !== 5 || elements.methodologyStrips !== 5 || elements.screenshots !== 5) {
+        if (!elements.specializationBanner || elements.specializationPillars !== 5 || !elements.sidebar || elements.sidebarItems !== 6 || !elements.archiveBanner || elements.cards !== 5 || elements.methodologyStrips !== 5 || elements.screenshots !== 5) {
           console.error('  ❌ Missing expected elements on work.html');
           allPassed = false;
         } else {
-          console.log('  ✓ All elements present on work.html (5 specialization pillars, Behance visual strip with 5 items, 5 cards, 5 domain methodology strips, 5 screenshots)');
+          console.log('  ✓ All elements present on work.html (5 specialization pillars, left sidebar with 6 navigation items, 5 cards, 5 domain methodology strips, 5 screenshots)');
         }
 
         // Capture full page screenshot of work.html
@@ -90,6 +91,23 @@ const testPages = [
           clip: { x: 0, y: 0, width: 1440, height: 1800 }
         });
         console.log('  📸 Saved verified_work_portal.png');
+      } else if (p.url.includes('/archive')) {
+        const elements = await page.evaluate(() => {
+          return {
+            archiveSidebar: !!document.querySelector('.archive-sidebar'),
+            archiveNavButtons: document.querySelectorAll('.archive-nav-btn').length,
+            archivePanes: document.querySelectorAll('.archive-pane').length,
+            archiveCards: document.querySelectorAll('.archive-card').length,
+            lightboxModal: !!document.querySelector('.lightbox-modal')
+          };
+        });
+        console.log(`  Elements check for ${p.name}:`, elements);
+        if (!elements.archiveSidebar || elements.archiveNavButtons !== 7 || elements.archivePanes !== 7 || elements.archiveCards < 20 || !elements.lightboxModal) {
+          console.error('  ❌ Missing expected elements on archive.html');
+          allPassed = false;
+        } else {
+          console.log(`  ✓ All elements present on archive.html (Left sidebar with 7 galleries, 7 panes, ${elements.archiveCards} visual deliverable cards, zoomable lightbox modal)`);
+        }
       } else {
         const elements = await page.evaluate(() => {
           return {

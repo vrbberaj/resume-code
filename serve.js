@@ -8,6 +8,7 @@ const server = http.createServer((req, res) => {
 
   // Clean Route Mappings
   if (decodedUrl === '/work' || decodedUrl === '/portfolio' || decodedUrl === '/selected-work') targetFile = 'work.html';
+  else if (decodedUrl === '/archive' || decodedUrl === '/visual-archive' || decodedUrl === '/visuals' || decodedUrl === '/gallery') targetFile = 'archive.html';
   else if (decodedUrl === '/leadership' || decodedUrl === '/leadership-deck') targetFile = 'leadership.html';
   else if (decodedUrl === '/cv' || decodedUrl === '/resume') targetFile = 'cv.html';
   else if (decodedUrl === '/case-ericsson') targetFile = 'case-ericsson.html';

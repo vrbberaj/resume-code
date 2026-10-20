@@ -32,6 +32,7 @@ function getGlobalNav(activePage) {
         <a href="/" class="nav-item ${activePage === 'home' ? 'active' : ''}">Welcome</a>
         <a href="/leadership" class="nav-item ${activePage === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ${activePage === 'work' ? 'active' : ''}">🎨 Selected Work</a>
+        <a href="/archive" class="nav-item ${activePage === 'archive' ? 'active' : ''}">🖼️ Visual Archive</a>
         <a href="/cv" class="nav-item ${activePage === 'cv' ? 'active' : ''}">📄 My Resume</a>
       </nav>
 
@@ -2395,8 +2396,11 @@ const workHtml = `<!DOCTYPE html>
 </body>
 </html>`;
 
-fs.writeFileSync(path.join(__dirname, 'work.html'), workHtml, 'utf8');
-console.log('work.html compiled successfully (Dedicated Selected Work Portal).');
+// Part B compiled with Left-Panel Navigation & IBM as Case #1
+const { execSync } = require('child_process');
+execSync('python3 compile_work_portal_with_sidebar.py', { cwd: __dirname, stdio: 'inherit' });
+execSync('python3 compile_complete_suite_v2.py', { cwd: __dirname, stdio: 'inherit' });
+console.log('work.html and archive.html compiled with Left-Panel navigation.');
 
 // ============================================================================
 // PART C: 5 FULL-SIZE, MULTI-SECTION SCROLLABLE DEEP DIVES
@@ -5867,8 +5871,8 @@ const watsonData = {
   nextLink: { url: '/case-zebra', label: 'Zebra Enterprise IoT' }
 };
 
-fs.writeFileSync(path.join(__dirname, 'case-ibm-watson.html'), buildScrollableCasePage(watsonData), 'utf8');
-console.log('case-ibm-watson.html written cleanly.');
+execSync('node compile_ibm_watson_story.js', { cwd: __dirname, stdio: 'inherit' });
+console.log('case-ibm-watson.html compiled cleanly with authentic Senior Manager storytelling narrative.');
 
 // ----------------------------------------------------------------------------
 // CASE 3: ZEBRA ENTERPRISE DEVICE CLOUD (FULL-SIZE SCROLLABLE)
@@ -7015,6 +7019,7 @@ function updateNavInHtml(filePath, activeKey) {
         <a href="/" class="nav-item ${activeKey === 'home' ? 'active' : ''}">Welcome</a>
         <a href="/leadership" class="nav-item ${activeKey === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
         <a href="/work" class="nav-item ${activeKey === 'work' ? 'active' : ''}">🎨 Selected Work</a>
+        <a href="/archive" class="nav-item ${activeKey === 'archive' ? 'active' : ''}">🖼️ Visual Archive</a>
         <a href="/cv" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">📄 My Resume</a>
       </nav>
   `.trim();

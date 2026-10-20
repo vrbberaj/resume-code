@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Selected Work &amp; Enterprise UI/UX Specializations</title>
-  <meta name="description" content="5 Flagship Enterprise UI/UX Specializations led by Balaajee V.R.: High-Density Financial Grids (Ericsson), Agentic AI &amp; HITL Governance (IBM Watson), Industrial IoT &amp; Physical/Digital Ergonomics (Zebra), DesignOps Token Architecture (IBM Carbon), and Automotive HMI Safety (ZF Wabco).">
+  <title>Selected Work: 5 UI/UX Specializations in Complex Enterprise Systems | Balaajee V.R.</title>
+  <meta name="description" content="Dedicated directory of 5 flagship enterprise product transformations illustrating deep craft across Agentic AI governance, high-density financial data grids, industrial IoT, token architecture, and automotive cockpits.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -318,15 +318,371 @@
     }
   }
 
+    
+  /* Interactive Working Prototype Container & Styling */
+  .interactive-prototype-window {
+    background: #0B0E17;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 28px 0 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .proto-win-header {
+    background: #111624;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .proto-win-url {
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: #94A3B8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+  }
+
+  .proto-win-badge {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #10B981;
+    white-space: nowrap;
+  }
+
+  .proto-win-body {
+    padding: 24px;
+    background: #0D111C;
+    color: #FFFFFF;
+  }
+
+  .proto-deal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .proto-grid-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94A3B8;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+  }
+
+  .proto-grid-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .grid-num-input {
+    width: 56px;
+    padding: 4px 8px;
+    background: #1E293B;
+    border: 1px solid #3B82F6;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .grid-num-input:focus {
+    outline: 2px solid #60A5FA;
+  }
+
+  .margin-pill.margin-escalate {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border-color: #EF4444;
+  }
+
+  .proto-action-btn {
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.3);
+  }
+
+  .proto-action-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.4);
+  }
+
+  .proto-reject-btn {
+    background: transparent;
+    color: #F87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .proto-reject-btn:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: #F87171;
+  }
+
+  .proto-toast {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10B981;
+    color: #34D399;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Watson Agent Node Cards */
+  .agent-node-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .agent-node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .agent-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-active {
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
+  }
+
+  .dot-pending {
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
+  }
+
+  .agent-name {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .agent-status-badge {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .badge-success { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+  .badge-pending { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+
+  .agent-detail-text {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .conf-tier-btns, .zone-filter-group, .carbon-theme-btns, .lighting-mode-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .btn-tier, .zone-btn, .c-theme-btn, .w-light-btn {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #CBD5E1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-tier.active, .zone-btn.active, .c-theme-btn.active, .w-light-btn.active {
+    background: #3B82F6;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+  }
+
+  /* Zebra Fleet Card */
+  .zebra-scanner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .zebra-scanner-card.scanner-warn {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.05);
+  }
+
+  .scanner-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .scanner-model {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .scanner-badge-ok {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #34D399;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-badge-alert {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #F87171;
+    background: rgba(220, 38, 38, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-loc {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+  }
+
+  .scanner-metrics-row {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    color: #CBD5E1;
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Wabco HUD Card */
+  .hud-zone-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hud-zone-tag {
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
+  }
+
+  /* Behance Project Crosslink Ribbon */
+  .behance-project-crosslink {
+    background: linear-gradient(135deg, rgba(0, 87, 255, 0.1) 0%, rgba(240, 6, 88, 0.08) 100%);
+    border: 1px solid rgba(0, 87, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .behance-project-crosslink span {
+    font-size: 12.5px;
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .behance-project-crosslink a {
+    color: #0057FF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .behance-project-crosslink a:hover {
+    text-decoration: underline;
+  }
+
 
     .work-hero-header {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 56px 0 40px;
+      padding: 48px 0 36px;
     }
 
     .work-container {
-      max-width: 1240px;
+      max-width: 1380px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -343,28 +699,28 @@
 
     .work-title {
       font-family: var(--font-heading);
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 900;
       letter-spacing: -0.02em;
       color: var(--text-main);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       line-height: 1.2;
     }
 
     .work-desc {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--text-muted);
       max-width: 860px;
       line-height: 1.6;
     }
 
-    /* Behance Portfolio Integration Banner */
-    .behance-integration-banner {
+    /* Native Visual Archive Banner (Replacing external Behance referral) */
+    .native-archive-banner {
       background: linear-gradient(135deg, #0D1627 0%, #172554 100%);
       border: 1px solid rgba(59, 130, 246, 0.3);
       border-radius: 16px;
       padding: 22px 28px;
-      margin-top: 28px;
+      margin-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -373,13 +729,13 @@
       box-shadow: 0 8px 24px rgba(13, 22, 39, 0.2);
     }
 
-    .behance-left-info {
+    .archive-banner-left {
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
-    .behance-icon-badge {
+    .archive-banner-badge {
       width: 44px;
       height: 44px;
       border-radius: 10px;
@@ -392,10 +748,9 @@
       font-size: 20px;
       font-family: var(--font-heading);
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0, 87, 255, 0.4);
     }
 
-    .behance-text-block strong {
+    .archive-banner-text strong {
       display: block;
       font-family: var(--font-heading);
       font-size: 15px;
@@ -404,7 +759,7 @@
       margin-bottom: 3px;
     }
 
-    .behance-text-block p {
+    .archive-banner-text p {
       font-size: 12.5px;
       color: #93C5FD;
       margin: 0;
@@ -412,7 +767,7 @@
       max-width: 680px;
     }
 
-    .behance-link-btn {
+    .archive-link-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -428,11 +783,179 @@
       white-space: nowrap;
     }
 
-    .behance-link-btn:hover {
+    .archive-link-btn:hover {
       background: #60A5FA;
       color: #FFFFFF;
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(96, 165, 250, 0.35);
+    }
+
+    /* 2-Column App Layout with Left Panel Navigation */
+    .work-app-layout {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    /* Left Sidebar */
+    .work-left-sidebar {
+      width: 290px;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      border-radius: 16px;
+      position: sticky;
+      top: 76px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    .work-sidebar-header {
+      padding: 16px 18px;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .work-sidebar-tag {
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--primary-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .work-sidebar-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    .work-sidebar-nav {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: calc(100vh - 220px);
+      overflow-y: auto;
+    }
+
+    .work-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-body);
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .work-nav-item:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+    }
+
+    .work-nav-item.active {
+      background: #EFF6FF;
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #1E40AF;
+    }
+
+    .work-nav-icon {
+      font-size: 16px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .work-nav-badge {
+      font-family: var(--font-code);
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 3px 6px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      min-width: 48px;
+      text-align: center;
+    }
+
+    .work-nav-badge.ibm { background: #EEF2FF; color: #4338CA; border: 1px solid #C7D2FE; }
+    .work-nav-badge.ericsson { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
+    .work-nav-badge.zebra { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+    .work-nav-badge.carbon { background: #F8FAFC; color: #0F172A; border: 1px solid #CBD5E1; }
+    .work-nav-badge.wabco { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+
+    .work-nav-text {
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .work-nav-title {
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .work-nav-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .work-sidebar-footer {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-subtle);
+    }
+
+    .work-archive-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 8px 12px;
+      background: #0D1627;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 11.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .work-archive-link-btn:hover {
+      background: #1E293B;
+    }
+
+    /* Main Content Area */
+    .work-main-pane {
+      flex-grow: 1;
+      min-width: 0;
+      max-width: 100%;
     }
 
     /* 5 UI/UX Specialization Pillars Banner */
@@ -443,6 +966,8 @@
       padding: 32px 36px;
       margin-bottom: 36px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .spec-header {
@@ -481,405 +1006,295 @@
 
     .spec-badge {
       font-family: var(--font-code);
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       padding: 6px 14px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
       border-radius: 100px;
-      color: var(--text-main);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      color: var(--text-body);
       white-space: nowrap;
     }
 
     .specialization-pillars-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    @media (max-width: 1100px) {
-      .specialization-pillars-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .work-hero-header { padding: 36px 0 24px; }
-      .work-title { font-size: 26px; }
-      .work-container { padding: 0 16px; }
-      .spec-badge { white-space: normal; display: inline-block; font-size: 10px; }
-      .spec-header { gap: 12px; }
-      .behance-left-info { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .behance-integration-banner { padding: 18px 16px; }
-      .specialization-pillars-grid { grid-template-columns: 1fr; }
-      .specialization-pillars-banner { padding: 20px 16px; }
-      .card-content-side { padding: 22px 16px; }
-      .card-preview-side { padding: 16px; }
-      .card-title { font-size: 19px; }
-      .card-metrics-grid { grid-template-columns: 1fr; gap: 8px; }
-      .c-metric-item { padding: 10px 12px; }
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .spec-pillar-card {
-      background: var(--bg-subtle);
+      background: var(--bg-base);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 18px 16px;
+      padding: 20px 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: all 0.2s ease;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .spec-pillar-card:hover {
-      border-color: var(--primary-accent);
-      background: #FFFFFF;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border-color: var(--border-medium);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
     }
 
     .s-pillar-icon {
-      font-size: 20px;
-      margin-bottom: 8px;
-      line-height: 1;
-    }
-
-    .s-pillar-name {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 6px;
-      line-height: 1.3;
+      font-size: 24px;
+      margin-bottom: 12px;
     }
 
     .s-pillar-domain {
       font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--primary-accent);
-      margin-bottom: 8px;
+      font-size: 10.5px;
+      font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary-accent);
+      margin-bottom: 4px;
+    }
+
+    .s-pillar-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.35;
     }
 
     .s-pillar-desc {
-      font-size: 11.5px;
-      color: var(--text-body);
-      line-height: 1.45;
-      margin-bottom: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
     }
 
     .s-pillar-prototype {
       font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0057FF;
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
-      border-radius: 6px;
       padding: 4px 8px;
-      display: block;
-      margin-top: auto;
+      border-radius: 6px;
+      display: inline-block;
     }
 
-    /* Transformation Showcase Directory */
-    .showcase-directory {
-      padding: 40px 0 80px;
-    }
-
-    .cards-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-    }
-
+    /* Transformation Cards */
     .transformation-card {
       background: #FFFFFF;
       border: 1px solid var(--border-medium);
-      border-radius: 20px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      border-radius: 24px;
+      padding: 36px 40px;
+      margin-bottom: 44px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.25s ease;
+      max-width: 100%;
+      box-sizing: border-box;
+      scroll-margin-top: 90px;
     }
 
     .transformation-card:hover {
-      border-color: var(--primary-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
     }
 
-    @media (max-width: 960px) {
-      .transformation-card {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card-content-side {
-      padding: 36px 40px;
+    .card-header-bar {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
-    .card-meta-row {
+    .card-badges-left {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
     }
 
-    .card-company-badge {
+    .pill-co {
       font-family: var(--font-heading);
       font-size: 12px;
       font-weight: 800;
       padding: 4px 12px;
       border-radius: 100px;
       background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
       color: var(--text-main);
+      border: 1px solid var(--border-medium);
+      text-transform: uppercase;
     }
 
-    .card-specialization-pill {
+    .pill-spec {
       font-family: var(--font-code);
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
       padding: 4px 12px;
       border-radius: 100px;
       background: rgba(240, 6, 88, 0.08);
-      border: 1px solid rgba(240, 6, 88, 0.25);
       color: var(--primary-accent);
+      border: 1px solid rgba(240, 6, 88, 0.2);
     }
 
-    .card-role-text {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .card-footprint-row {
-      display: flex;
+    .btn-deep-dive-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
+      gap: 6px;
+      padding: 6px 14px;
+      background: #0057FF;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
 
-    .footprint-pill {
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 6px;
-      background: rgba(15, 23, 42, 0.05);
-      color: var(--text-body);
-      border: 1px solid var(--border-subtle);
+    .btn-deep-dive-pill:hover {
+      background: #0045CC;
+      transform: translateY(-1px);
+    }
+
+    .card-hero-text {
+      margin-bottom: 22px;
     }
 
     .card-title {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 900;
       color: var(--text-main);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      margin-bottom: 8px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
     }
 
     .card-lead {
-      font-size: 14px;
-      color: var(--text-muted);
+      font-size: 14.5px;
+      color: var(--text-body);
       line-height: 1.6;
-      margin-bottom: 20px;
+      max-width: 900px;
     }
 
-    /* Distinct Domain Methodology Process Strip */
+    /* Domain Methodology Process Strip */
     .domain-methodology-strip {
-      background: var(--bg-subtle);
+      background: #F8FAFC;
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 24px;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
     }
 
-    .methodology-title {
+    .d-strip-title {
       font-family: var(--font-code);
       font-size: 11px;
       font-weight: 800;
+      color: var(--primary-accent);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-main);
-      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .methodology-steps-list {
+    .d-strip-steps {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
     }
 
-    @media (max-width: 768px) {
-      .methodology-steps-list {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .m-step-mini {
+    .d-step-item {
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 11px;
-      line-height: 1.35;
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--text-body);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
     }
 
-    .m-step-mini strong {
-      display: block;
-      color: var(--primary-accent);
+    .d-step-num {
       font-family: var(--font-code);
       font-size: 10px;
-      margin-bottom: 2px;
-    }
-
-    .m-step-mini span {
-      color: var(--text-body);
-      font-weight: 600;
-    }
-
-    .card-metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .c-metric-item {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 12px 14px;
-    }
-
-    .c-metric-val {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-
-    .c-metric-lbl {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: var(--font-code);
-    }
-
-    .card-cta-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn-read-deep-dive {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 100px;
-      background: var(--primary-accent);
-      color: #FFFFFF;
-      font-family: var(--font-heading);
-      font-size: 13px;
       font-weight: 800;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(240, 6, 88, 0.25);
+      color: var(--primary-accent);
+      background: rgba(240, 6, 88, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
     }
 
-    .btn-read-deep-dive:hover {
-      background: #D0054B;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(240, 6, 88, 0.35);
+    /* Card Split Grid: Prototype + Screenshot */
+    .card-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
     }
 
-    .btn-behance-ref {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 11px 18px;
-      border-radius: 100px;
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      color: #0F172A;
-      font-family: var(--font-code);
-      font-size: 11.5px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-behance-ref:hover {
-      border-color: #0057FF;
-      color: #0057FF;
-      background: rgba(0, 87, 255, 0.04);
-    }
-
-    /* Right Preview Side */
-    .card-preview-side {
-      background: #0B0E17;
-      border-left: 1px solid var(--border-medium);
-      padding: 28px;
+    .col-section-tag {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
-    @media (max-width: 960px) {
-      .card-preview-side {
-        border-left: none;
-        border-top: 1px solid var(--border-medium);
-      }
+    .interactive-column {
+      min-width: 0;
     }
 
-    .preview-browser-mini {
-      background: #111624;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .screenshot-column {
+      min-width: 0;
+    }
+
+    /* Browser Preview Frame */
+    .browser-preview-frame {
+      background: #090D16;
+      border: 1px solid #1E293B;
       border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
-    .browser-mini-bar {
-      padding: 8px 12px;
-      background: #0B0E17;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .browser-preview-header {
+      background: #0F172A;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      border-bottom: 1px solid #1E293B;
     }
 
-    .browser-mini-dots {
+    .browser-dots {
       display: flex;
-      gap: 4px;
+      gap: 6px;
     }
 
-    .mini-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-    }
+    .dot-r { width: 9px; height: 9px; border-radius: 50%; background: #EF4444; }
+    .dot-y { width: 9px; height: 9px; border-radius: 50%; background: #F59E0B; }
+    .dot-g { width: 9px; height: 9px; border-radius: 50%; background: #10B981; }
 
-    .dot-r { background: #EF4444; }
-    .dot-y { background: #F59E0B; }
-    .dot-g { background: #10B981; }
-
-    .browser-mini-title {
+    .browser-url-text {
       font-family: var(--font-code);
-      font-size: 10px;
+      font-size: 10.5px;
       color: #94A3B8;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -912,10 +1327,12 @@
       background: #111624;
     }
 
-    .mini-tag-badge {
+    .preview-callout-title {
       font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       color: #10B981;
       display: block;
       margin-bottom: 8px;
@@ -942,130 +1359,136 @@
       flex-shrink: 0;
     }
 
-    /* 5-Project Visual Thumbnail Strip */
-    .behance-visual-strip {
+    /* Metrics Row */
+    .card-metrics-row {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
     }
 
-    .behance-strip-item {
-      background: rgba(2, 6, 23, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      overflow: hidden;
+    .t-stat-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .t-stat-val {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .t-stat-label {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Card Footer CTA */
+    .card-footer-cta {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-cta-text strong {
+      display: block;
+      font-size: 13.5px;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .footer-cta-text span {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .btn-primary-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: var(--primary-accent);
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 100px;
       text-decoration: none;
       transition: all 0.2s ease;
-      max-width: 100%;
-      min-width: 0;
-      box-sizing: border-box;
+      white-space: nowrap;
     }
 
-    .behance-strip-item:hover {
-      border-color: #60A5FA;
+    .btn-primary-card:hover {
+      background: var(--primary-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 20px rgba(240, 6, 88, 0.35);
     }
 
-    .behance-strip-thumb-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      height: 84px;
-      background: #090D16;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-
-    .behance-strip-thumb {
-      width: 100%;
-      max-width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    .behance-strip-item:hover .behance-strip-thumb {
-      transform: scale(1.05);
-    }
-
-    .behance-strip-pill {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(96, 165, 250, 0.35);
-      color: #93C5FD;
-      font-family: var(--font-code);
-      font-size: 8px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-    }
-
-    .behance-strip-info {
-      padding: 8px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      box-sizing: border-box;
-      min-width: 0;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    .behance-strip-co {
-      font-family: var(--font-code);
-      font-size: 9px;
-      font-weight: 800;
-      color: #60A5FA;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .behance-strip-label {
-      font-family: var(--font-heading);
-      font-size: 11px;
-      font-weight: 700;
-      color: #F1F5F9;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    @media (max-width: 900px) {
-      .behance-visual-strip {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Mobile / Tablet Responsive */
+    @media (max-width: 1024px) {
+      .work-app-layout {
+        flex-direction: column;
+        padding: 20px 16px;
+        gap: 20px;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .work-left-sidebar {
+        width: 100%;
+        max-width: 100%;
+        position: sticky;
+        top: 60px;
+        z-index: 100;
+        overflow: hidden;
+      }
+      .work-sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+        max-height: none;
+        padding: 8px;
+        gap: 8px;
+      }
+      .work-nav-item {
+        width: 210px;
+        flex-shrink: 0;
+      }
+      .work-sidebar-footer {
+        display: none;
+      }
+      .card-split-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-metrics-row {
+        grid-template-columns: 1fr 1fr;
+      }
+      .transformation-card {
+        padding: 24px 20px;
       }
     }
 
     @media (max-width: 600px) {
-      .behance-visual-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .card-metrics-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-  
+  <!-- Global Header -->
   <header class="global-header">
     <div class="header-container">
       <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
@@ -1074,10 +1497,11 @@
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="/" class="nav-item ">Welcome</a>
-        <a href="/leadership" class="nav-item ">👔 Leadership Deck</a>
+        <a href="/" class="nav-item">Welcome</a>
+        <a href="/leadership" class="nav-item">👔 Leadership Deck</a>
         <a href="/work" class="nav-item active">🎨 Selected Work</a>
-        <a href="/cv" class="nav-item ">📄 My Resume</a>
+        <a href="/archive" class="nav-item">🖼️ Visual Archive</a>
+        <a href="/cv" class="nav-item">📄 My Resume</a>
       </nav>
 
       <div class="header-actions">
@@ -1087,7 +1511,6 @@
       </div>
     </div>
   </header>
-  
 
   <!-- Hero Header -->
   <header class="work-hero-header">
@@ -1095,92 +1518,99 @@
       <div class="work-pretitle">Flagship Enterprise Product Transformations</div>
       <h1 class="work-title">Selected Work: 5 UI/UX Specializations in Complex Enterprise Systems</h1>
       <p class="work-desc">
-        Senior UI/UX Design Manager case studies illustrating deep craft across high-density financial data grids, autonomous agentic AI governance, physical/digital industrial IoT telematics, DesignOps token systems, and automotive safety cockpits.
+        Senior UI/UX Design Manager case studies illustrating deep craft across autonomous agentic AI governance, high-density financial data grids, physical/digital industrial IoT telematics, DesignOps token systems, and automotive safety cockpits.
       </p>
 
-      <!-- Behance Portfolio Integration Banner with Direct Visual Evidence -->
-      <aside class="behance-integration-banner" aria-label="Behance Visual Portfolio Evidence">
-        <div class="behance-left-info">
-          <div class="behance-icon-badge">Bē</div>
-          <div class="behance-text-block">
-            <strong>Authentic Behance Visual Archive &bull; behance.net/balaajeeVR</strong>
+      <!-- Native Visual Archive Banner (No external links) -->
+      <aside class="native-archive-banner" aria-label="Visual Archive Navigation">
+        <div class="archive-banner-left">
+          <div class="archive-banner-badge">🖼️</div>
+          <div class="archive-banner-text">
+            <strong>Authentic Production Deliverables Archive &bull; Zero External Redirects</strong>
             <p>
-              Direct production screens, telematic dashboards, and information architecture maps extracted directly from my public Behance portfolio. While Behance displays the visual execution, each case study below provides the end-to-end Senior Design Manager defense: user shadowing, architecture blueprints, DesignOps governance, and enterprise ROI.
+              Explore all 7 production design galleries—including information architecture maps, mobile telematic clusters, and enterprise token studios—preserved natively in the Visual Archive.
             </p>
           </div>
         </div>
-        <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="behance-link-btn">
-          <span>🎨 Open Full Behance Profile</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <a href="/archive" class="archive-link-btn">
+          <span>🖼️ Browse Visual Archive (7 Galleries)</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-
-        <!-- 5-Project Visual Thumbnail Strip -->
-        <div class="behance-visual-strip">
-          <a href="#case-1" class="behance-strip-item">
-            <div class="behance-strip-thumb-wrap">
-              <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Ericsson Desktop Grid" class="behance-strip-thumb">
-              <span class="behance-strip-pill">Bē SCREEN</span>
-            </div>
-            <div class="behance-strip-info">
-              <span class="behance-strip-co">Ericsson</span>
-              <span class="behance-strip-label">Network Config Grids</span>
-            </div>
-          </a>
-
-          <a href="#case-2" class="behance-strip-item">
-            <div class="behance-strip-thumb-wrap">
-              <img src="screenshots/behance/sales_estimation_clean.png" alt="Watson Sales Estimation" class="behance-strip-thumb">
-              <span class="behance-strip-pill">Bē SCREEN</span>
-            </div>
-            <div class="behance-strip-info">
-              <span class="behance-strip-co">IBM Watson</span>
-              <span class="behance-strip-label">Multi-Scenario Modeler</span>
-            </div>
-          </a>
-
-          <a href="#case-3" class="behance-strip-item">
-            <div class="behance-strip-thumb-wrap">
-              <img src="screenshots/behance/zebra_iot_dashboard.png" alt="Zebra IoT Dashboard" class="behance-strip-thumb">
-              <span class="behance-strip-pill">Bē SCREEN</span>
-            </div>
-            <div class="behance-strip-info">
-              <span class="behance-strip-co">Zebra Tech</span>
-              <span class="behance-strip-label">IoT Device Health</span>
-            </div>
-          </a>
-
-          <a href="#case-4" class="behance-strip-item">
-            <div class="behance-strip-thumb-wrap">
-              <img src="screenshots/behance/carbon_admin_clean.png" alt="IBM Carbon Admin" class="behance-strip-thumb">
-              <span class="behance-strip-pill">Bē SCREEN</span>
-            </div>
-            <div class="behance-strip-info">
-              <span class="behance-strip-co">IBM Carbon</span>
-              <span class="behance-strip-label">Ready2Go Admin App</span>
-            </div>
-          </a>
-
-          <a href="#case-5" class="behance-strip-item">
-            <div class="behance-strip-thumb-wrap">
-              <img src="screenshots/behance/zf_mobile_clean.png" alt="ZF Wabco Telematics" class="behance-strip-thumb">
-              <span class="behance-strip-pill">Bē SCREEN</span>
-            </div>
-            <div class="behance-strip-info">
-              <span class="behance-strip-co">ZF Wabco</span>
-              <span class="behance-strip-label">Mobile Telematics</span>
-            </div>
-          </a>
-        </div>
       </aside>
     </div>
   </header>
 
-  <!-- Main Directory Stack -->
-  <main class="showcase-directory">
-    <div class="work-container">
+  <!-- 2-Column App Layout with Left Panel Navigation -->
+  <div class="work-app-layout">
+    <!-- Left Sidebar -->
+    <aside class="work-left-sidebar" id="workSidebar" aria-label="Transformation Projects Navigation">
+      <div class="work-sidebar-header">
+        <span class="work-sidebar-tag">FLAGSHIP TRANSFORMATIONS</span>
+        <h3 class="work-sidebar-title">Selected Work</h3>
+      </div>
+      <nav class="work-sidebar-nav" id="workSidebarNav">
+        
+      <a href="#specialization-pillars" class="work-nav-item active" onclick="activateWorkNav(this)">
+        <div class="work-nav-icon">🏛️</div>
+        <div class="work-nav-text">
+          <div class="work-nav-title">Specialization Overview</div>
+          <div class="work-nav-sub">5 Enterprise Pillars</div>
+        </div>
+      </a>
 
+      <a href="#case-1" class="work-nav-item" onclick="activateWorkNav(this)">
+        <span class="work-nav-badge ibm">IBM</span>
+        <div class="work-nav-text">
+          <div class="work-nav-title">Agentic AI & HITL Governance</div>
+          <div class="work-nav-sub">IBM India Software Labs</div>
+        </div>
+      </a>
+    
+      <a href="#case-2" class="work-nav-item" onclick="activateWorkNav(this)">
+        <span class="work-nav-badge ericsson">ERICSSON</span>
+        <div class="work-nav-text">
+          <div class="work-nav-title">High-Density Data Grids & Financial Architecture</div>
+          <div class="work-nav-sub">Ericsson Global</div>
+        </div>
+      </a>
+    
+      <a href="#case-3" class="work-nav-item" onclick="activateWorkNav(this)">
+        <span class="work-nav-badge zebra">ZEBRA</span>
+        <div class="work-nav-text">
+          <div class="work-nav-title">Industrial IoT & Physical Ergonomics</div>
+          <div class="work-nav-sub">Zebra Technologies</div>
+        </div>
+      </a>
+    
+      <a href="#case-4" class="work-nav-item" onclick="activateWorkNav(this)">
+        <span class="work-nav-badge carbon">CARBON</span>
+        <div class="work-nav-text">
+          <div class="work-nav-title">Design Systems & TokenOps Architecture</div>
+          <div class="work-nav-sub">IBM Carbon</div>
+        </div>
+      </a>
+    
+      <a href="#case-5" class="work-nav-item" onclick="activateWorkNav(this)">
+        <span class="work-nav-badge wabco">WABCO</span>
+        <div class="work-nav-text">
+          <div class="work-nav-title">Automotive Cockpit & Safety UX</div>
+          <div class="work-nav-sub">ZF Wabco</div>
+        </div>
+      </a>
+    
+      </nav>
+      <div class="work-sidebar-footer">
+        <a href="/archive" class="work-archive-link-btn">
+          <span>🖼️ Open Visual Archive</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="work-main-pane">
       <!-- 5 UI/UX Specialization Pillars Banner -->
-      <section class="specialization-pillars-banner" aria-label="5 UI/UX Specializations">
+      <section class="specialization-pillars-banner" id="specialization-pillars" aria-label="5 Enterprise Specialization Pillars">
         <div class="spec-header">
           <div>
             <div class="spec-pretitle">Enterprise Core Competencies &bull; Senior UI/UX Design Manager</div>
@@ -1195,22 +1625,22 @@
         <div class="specialization-pillars-grid">
           <div class="spec-pillar-card">
             <div>
-              <div class="s-pillar-icon">📊</div>
-              <div class="s-pillar-domain">Ericsson Global</div>
-              <h3 class="s-pillar-name">Complex Financial Data Architecture</h3>
-              <p class="s-pillar-desc">Sub-16ms single-pane BOM data grid replacing 14 unversioned Excel tabs; real-time gross margin guardrails.</p>
-            </div>
-            <span class="s-pillar-prototype">🕹️ Prototype: Keyboard BOM Grid</span>
-          </div>
-
-          <div class="spec-pillar-card">
-            <div>
               <div class="s-pillar-icon">🧠</div>
               <div class="s-pillar-domain">IBM Software Labs</div>
               <h3 class="s-pillar-name">Agentic AI &amp; HITL Governance</h3>
               <p class="s-pillar-desc">Multi-agent state machines, 3-tier confidence routing, side-by-side database diffing, and SOX audit trails.</p>
             </div>
             <span class="s-pillar-prototype">🕹️ Prototype: Agent Mesh &amp; Diff</span>
+          </div>
+
+          <div class="spec-pillar-card">
+            <div>
+              <div class="s-pillar-icon">📊</div>
+              <div class="s-pillar-domain">Ericsson Global</div>
+              <h3 class="s-pillar-name">Complex Financial Data Architecture</h3>
+              <p class="s-pillar-desc">Sub-16ms single-pane BOM data grid replacing 14 unversioned Excel tabs; real-time gross margin guardrails.</p>
+            </div>
+            <span class="s-pillar-prototype">🕹️ Prototype: Keyboard BOM Grid</span>
           </div>
 
           <div class="spec-pillar-card">
@@ -1238,542 +1668,1098 @@
               <div class="s-pillar-icon">🚚</div>
               <div class="s-pillar-domain">ZF Wabco</div>
               <h3 class="s-pillar-name">Automotive Cockpit &amp; Safety UX</h3>
-              <p class="s-pillar-desc">UNECE legal gaze budgeting (<1.2s glance ceiling), 3-zone spatial HUD, high-contrast anti-glare, CAN-bus sync.</p>
+              <p class="s-pillar-desc">UNECE legal gaze budgeting (&lt;1.2s glance ceiling), 3-zone spatial HUD, high-contrast anti-glare, CAN-bus sync.</p>
             </div>
             <span class="s-pillar-prototype">🕹️ Prototype: 3-Zone Cockpit HUD</span>
           </div>
         </div>
       </section>
 
-      <div class="cards-stack">
-
-        <!-- 1. Ericsson -->
-        <article class="transformation-card" id="case-1">
-          <div class="card-content-side">
-            <div>
-              <div class="card-meta-row">
-                <span class="card-company-badge">Ericsson Global</span>
-                <span class="card-specialization-pill">Specialization: High-Density Data Grids &amp; Financial Architecture</span>
-                <span class="card-role-text">Lead UI/UX Architect &bull; Jul 2019 – Sep 2020</span>
-              </div>
-              <div class="card-footprint-row">
-                <span class="footprint-pill">👥 Squad: 6 UX + 4 Devs</span>
-                <span class="footprint-pill">⚡ 14 Sprints</span>
-                <span class="footprint-pill">🛡️ DesignOps Tokenized</span>
-                <span class="footprint-pill">🎨 Behance: Networks &amp; Infrastructure</span>
-              </div>
-              <h2 class="card-title">Ericsson SalesOps Cloud: Modernizing 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h2>
-              <p class="card-lead">
-                Replaced an unversioned 50MB spreadsheet quoting ordeal across 45 countries with a keyboard-navigable single-pane data grid, cutting deal turnaround from 6 days to 42 minutes with zero formula defects across 12,000 catalog parts.
-              </p>
-
-              <!-- Domain-Specific Methodology Strip -->
-              <div class="domain-methodology-strip">
-                <div class="methodology-title">
-                  <span>📐 Domain Process: High-Density Financial Data Grid Pipeline</span>
-                </div>
-                <div class="methodology-steps-list">
-                  <div class="m-step-mini"><strong>01. Formula Audit</strong><span>14 tabs &amp; 42 #REF! error register</span></div>
-                  <div class="m-step-mini"><strong>02. Shadowing</strong><span>Keyboard speed in Stockholm</span></div>
-                  <div class="m-step-mini"><strong>03. Single-Pane IA</strong><span>Zero-modal 12,000-part grid</span></div>
-                  <div class="m-step-mini"><strong>04. Reactive Tokens</strong><span>Sub-16ms live formula calculation</span></div>
-                  <div class="m-step-mini"><strong>05. Governance</strong><span>Auto Green-Channel (&ge;35% margin)</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="card-metrics-grid">
-                <div class="c-metric-item">
-                  <div class="c-metric-val">6d &rarr; 42m</div>
-                  <div class="c-metric-lbl">Turnaround (-92%)</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">100%</div>
-                  <div class="c-metric-lbl">Rule Compliance</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">0%</div>
-                  <div class="c-metric-lbl">Formula Errors</div>
-                </div>
-              </div>
-
-              <div class="card-cta-row">
-                <a href="/case-ericsson" class="btn-read-deep-dive">
-                  Read Case Study &amp; Defense &rarr;
-                </a>
-                <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="btn-behance-ref">
-                  🎨 Behance Gallery
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-preview-side">
-            <div class="preview-browser-mini">
-              <div class="browser-mini-bar">
-                <div class="browser-mini-dots">
-                  <span class="mini-dot dot-r"></span>
-                  <span class="mini-dot dot-y"></span>
-                  <span class="mini-dot dot-g"></span>
-                </div>
-                <div class="browser-mini-title">ericsson://salesops/bom-grid</div>
-              </div>
-              <div class="browser-screenshot-wrap">
-                <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Authentic Behance: Ericsson Network Configuration &amp; Profile Grid" class="browser-screenshot-img">
-              </div>
-              <div class="browser-mini-body">
-                <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: FINANCIAL BOM DATA GRID</span>
-                <div class="preview-callout-badges">
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Keyboard Data Grid:</strong> Arrow navigation matching Excel muscle memory.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Live Margin Guardrail:</strong> Sub-16ms recalculation of 38.4% gross margin.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>1-Click Contract PDF:</strong> Auto-populates verified SAP catalog parts.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 2. IBM Watson -->
-        <article class="transformation-card" id="case-2">
-          <div class="card-content-side">
-            <div>
-              <div class="card-meta-row">
-                <span class="card-company-badge">IBM Software Labs</span>
-                <span class="card-specialization-pill">Specialization: Agentic AI, HITL Governance &amp; Cognitive UX</span>
-                <span class="card-role-text">Senior Manager UI/UX Design &bull; Sep 2024 – Jan 2026</span>
-              </div>
-              <div class="card-footprint-row">
-                <span class="footprint-pill">👥 Squad: 8 UX + 12 AI Engineers</span>
-                <span class="footprint-pill">🤖 Watson Orchestrate</span>
-                <span class="footprint-pill">⚖️ SOX Compliant</span>
-                <span class="footprint-pill">🎨 Behance: Enterprise AI UX</span>
-              </div>
-              <h2 class="card-title">IBM Watson Orchestrate: Multi-Agent AI Task Automation with Human-in-the-Loop Governance</h2>
-              <p class="card-lead">
-                Orchestrating autonomous agents across SAP, Salesforce, and Jira with transparent confidence routing, side-by-side database diff reviews, and immutable SOX audit trails, cutting manual review time by 78% without legal hallucination risks.
-              </p>
-
-              <!-- Domain-Specific Methodology Strip -->
-              <div class="domain-methodology-strip">
-                <div class="methodology-title">
-                  <span>📐 Domain Process: Agentic AI &amp; Cognitive Governance Pipeline</span>
-                </div>
-                <div class="methodology-steps-list">
-                  <div class="m-step-mini"><strong>01. Mental Model</strong><span>Cognitive trust &amp; audit inquiries</span></div>
-                  <div class="m-step-mini"><strong>02. Confidence Gating</strong><span>3-tier mathematical thresholds</span></div>
-                  <div class="m-step-mini"><strong>03. Agent Mesh</strong><span>Visual topology state machine</span></div>
-                  <div class="m-step-mini"><strong>04. Mutation Diff</strong><span>Side-by-side database audit drawer</span></div>
-                  <div class="m-step-mini"><strong>05. SOX Flywheel</strong><span>Cryptographic immutable ledger logs</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="card-metrics-grid">
-                <div class="c-metric-item">
-                  <div class="c-metric-val">-78%</div>
-                  <div class="c-metric-lbl">Review Overhead</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">94.2%</div>
-                  <div class="c-metric-lbl">Task Autonomy</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">0</div>
-                  <div class="c-metric-lbl">SOX Violations</div>
-                </div>
-              </div>
-
-              <div class="card-cta-row">
-                <a href="/case-ibm-watson" class="btn-read-deep-dive">
-                  Read Case Study &amp; Defense &rarr;
-                </a>
-                <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="btn-behance-ref">
-                  🎨 Behance Gallery
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-preview-side">
-            <div class="preview-browser-mini">
-              <div class="browser-mini-bar">
-                <div class="browser-mini-dots">
-                  <span class="mini-dot dot-r"></span>
-                  <span class="mini-dot dot-y"></span>
-                  <span class="mini-dot dot-g"></span>
-                </div>
-                <div class="browser-mini-title">watson://orchestrate/agentic-mesh</div>
-              </div>
-              <div class="browser-screenshot-wrap">
-                <img src="screenshots/transformation-ibm-watson.png" alt="IBM Watson Orchestrate Multi-Agent Mesh" class="browser-screenshot-img">
-              </div>
-              <div class="browser-mini-body">
-                <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: AGENT MESH &amp; DIFF REVIEW</span>
-                <div class="preview-callout-badges">
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Visual Agent Graph:</strong> Live status nodes across SAP, CRM &amp; Jira.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>3-Tier Confidence Meter:</strong> Dynamic routing (Auto vs Review vs Gated).</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Side-by-Side Diff:</strong> Live ledger mutation preview with 1-click commit.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 3. Zebra -->
-        <article class="transformation-card" id="case-3">
-          <div class="card-content-side">
-            <div>
-              <div class="card-meta-row">
-                <span class="card-company-badge">Zebra Technologies</span>
-                <span class="card-specialization-pill">Specialization: Industrial IoT &amp; Physical/Digital Ergonomics</span>
-                <span class="card-role-text">Senior UX Design Manager &bull; Jul 2021 – Aug 2024</span>
-              </div>
-              <div class="card-footprint-row">
-                <span class="footprint-pill">👥 Squad: 10 UX + 18 Devs</span>
-                <span class="footprint-pill">📱 TC5X / MC9300 Handhelds</span>
-                <span class="footprint-pill">❄️ Sub-Zero Ergonomics</span>
-                <span class="footprint-pill">🎨 Behance: Enterprise IoT &amp; Mobile</span>
-              </div>
-              <h2 class="card-title">Zebra Technologies: Multi-Site Enterprise IoT &amp; Rugged Scanner Telematics</h2>
-              <p class="card-lead">
-                Solving cold-storage environmental friction in -25°C warehouse facilities with 72px glove touch targets, spatial floor-plan telematics, and zero-touch 2D barcode provisioning, reducing staging time from 45 minutes to 1 second.
-              </p>
-
-              <!-- Domain-Specific Methodology Strip -->
-              <div class="domain-methodology-strip">
-                <div class="methodology-title">
-                  <span>📐 Domain Process: Physical/Digital Industrial Ergonomics Pipeline</span>
-                </div>
-                <div class="methodology-steps-list">
-                  <div class="m-step-mini"><strong>01. Freezer Shadowing</strong><span>-25°C thermal friction &amp; fogging</span></div>
-                  <div class="m-step-mini"><strong>02. Glove Biomechanics</strong><span>72px touch targets for heavy gloves</span></div>
-                  <div class="m-step-mini"><strong>03. Spatial Floor IA</strong><span>2.5D warehouse topology mapping</span></div>
-                  <div class="m-step-mini"><strong>04. 1-Scan Staging</strong><span>Encrypted 2D QR camera protocol</span></div>
-                  <div class="m-step-mini"><strong>05. Predictive IoT</strong><span>Machine learning battery degradation</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="card-metrics-grid">
-                <div class="c-metric-item">
-                  <div class="c-metric-val">45m &rarr; 1s</div>
-                  <div class="c-metric-lbl">Staging Time (-99%)</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">-35%</div>
-                  <div class="c-metric-lbl">Battery Death Rate</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">99.8%</div>
-                  <div class="c-metric-lbl">Glove Tap Accuracy</div>
-                </div>
-              </div>
-
-              <div class="card-cta-row">
-                <a href="/case-zebra" class="btn-read-deep-dive">
-                  Read Case Study &amp; Defense &rarr;
-                </a>
-                <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="btn-behance-ref">
-                  🎨 Behance Gallery
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-preview-side">
-            <div class="preview-browser-mini">
-              <div class="browser-mini-bar">
-                <div class="browser-mini-dots">
-                  <span class="mini-dot dot-r"></span>
-                  <span class="mini-dot dot-y"></span>
-                  <span class="mini-dot dot-g"></span>
-                </div>
-                <div class="browser-mini-title">zebra://devicecloud/chicago-dc/spatial-map</div>
-              </div>
-              <div class="browser-screenshot-wrap">
-                <img src="screenshots/transformation-zebra.png" alt="Zebra Technologies DeviceCloud Console" class="browser-screenshot-img">
-              </div>
-              <div class="browser-mini-body">
-                <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: SPATIAL IOT CONSOLE</span>
-                <div class="preview-callout-badges">
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Zone Telematics:</strong> Interactive floor plan filtering 1,280 scanners.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Sub-Zero Alert Mode:</strong> -25°C freezer predictive battery degradation alert.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>2D Optical Staging:</strong> Interactive 1-scan QR onboarding simulation.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 4. Carbon -->
-        <article class="transformation-card">
-          <div class="card-content-side">
-            <div>
-              <div class="card-meta-row">
-                <span class="card-company-badge">IBM Software Labs</span>
-                <span class="card-specialization-pill">Specialization: DesignOps, Token Architecture &amp; System Governance</span>
-                <span class="card-role-text">Design Systems Lead &bull; Sep 2024 – Jan 2026</span>
-              </div>
-              <div class="card-footprint-row">
-                <span class="footprint-pill">👥 14 Federated Squads</span>
-                <span class="footprint-pill">🎨 Carbon Design System</span>
-                <span class="footprint-pill">⚙️ Style Dictionary CI/CD</span>
-                <span class="footprint-pill">🎨 Behance: Design Systems</span>
-              </div>
-              <h2 class="card-title">IBM Carbon Design System: Multi-Brand Token Architecture &amp; 14-Squad Governance</h2>
-              <p class="card-lead">
-                Eliminated 320+ hardcoded CSS drift values and 4-week handoff delays by engineering an enterprise 3-tier token taxonomy and automated Figma-to-GitHub Style Dictionary pipeline across 14 independent squads.
-              </p>
-
-              <!-- Domain-Specific Methodology Strip -->
-              <div class="domain-methodology-strip">
-                <div class="methodology-title">
-                  <span>📐 Domain Process: DesignOps &amp; Token Architecture Pipeline</span>
-                </div>
-                <div class="methodology-steps-list">
-                  <div class="m-step-mini"><strong>01. CSS Drift Audit</strong><span>14-squad regression &amp; 320 hex leaks</span></div>
-                  <div class="m-step-mini"><strong>02. Token Taxonomy</strong><span>3-tier global &rarr; semantic &rarr; component</span></div>
-                  <div class="m-step-mini"><strong>03. CI/CD Pipeline</strong><span>Figma API &rarr; Style Dictionary compiler</span></div>
-                  <div class="m-step-mini"><strong>04. Theme Engine</strong><span>0-latency multi-brand runtime switching</span></div>
-                  <div class="m-step-mini"><strong>05. RFC Council</strong><span>Federated component governance SLA</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="card-metrics-grid">
-                <div class="c-metric-item">
-                  <div class="c-metric-val">4w &rarr; 1d</div>
-                  <div class="c-metric-lbl">Token Handoff (-95%)</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">100%</div>
-                  <div class="c-metric-lbl">Design-to-Code Parity</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">14 Squads</div>
-                  <div class="c-metric-lbl">Unified Codebases</div>
-                </div>
-              </div>
-
-              <div class="card-cta-row">
-                <a href="/case-ibm-carbon" class="btn-read-deep-dive">
-                  Read Case Study &amp; Defense &rarr;
-                </a>
-                <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="btn-behance-ref">
-                  🎨 Behance Gallery
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-preview-side">
-            <div class="preview-browser-mini">
-              <div class="browser-mini-bar">
-                <div class="browser-mini-dots">
-                  <span class="mini-dot dot-r"></span>
-                  <span class="mini-dot dot-y"></span>
-                  <span class="mini-dot dot-g"></span>
-                </div>
-                <div class="browser-mini-title">carbon://designops/tokens/governance</div>
-              </div>
-              <div class="browser-screenshot-wrap">
-                <img src="screenshots/transformation-ibm-carbon.png" alt="IBM Carbon Design System Token Studio" class="browser-screenshot-img">
-              </div>
-              <div class="browser-mini-body">
-                <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: LIVE TOKEN PLAYGROUND</span>
-                <div class="preview-callout-badges">
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Live Theme Switcher:</strong> Carbon White, G10, G90, G100 dynamic injection.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Token Inspector:</strong> Inspect $interactive-01, $field-01 in real time.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Automated PR Simulator:</strong> 1-click Style Dictionary GitHub dispatch.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 5. ZF Wabco -->
-        <article class="transformation-card" id="case-5">
-          <div class="card-content-side">
-            <div>
-              <div class="card-meta-row">
-                <span class="card-company-badge">ZF Wabco</span>
-                <span class="card-specialization-pill">Specialization: Automotive HMI Ergonomics &amp; Safety UX</span>
-                <span class="card-role-text">UI/UX Senior Specialist &bull; Oct 2020 – Jul 2021</span>
-              </div>
-              <div class="card-footprint-row">
-                <span class="footprint-pill">👥 Squad: 5 UX + 8 Systems Eng</span>
-                <span class="footprint-pill">🚚 80,000+ European Trucks</span>
-                <span class="footprint-pill">🛡️ UNECE 158/159 Compliant</span>
-                <span class="footprint-pill">🎨 Behance: Automotive Cockpit</span>
-              </div>
-              <h2 class="card-title">ZF Wabco: Commercial Vehicle Digital Cockpit &amp; Fleet Telematics</h2>
-              <p class="card-lead">
-                Eliminated cab clutter and distraction across 80,000 European heavy trucks with an integrated 3-zone cluster HUD, glare-resistant anti-glare palettes, and strict 0.94s glance compliance (<1.2s EU legal limit).
-              </p>
-
-              <!-- Domain-Specific Methodology Strip -->
-              <div class="domain-methodology-strip">
-                <div class="methodology-title">
-                  <span>📐 Domain Process: Automotive HMI &amp; Safety Ergonomics Pipeline</span>
-                </div>
-                <div class="methodology-steps-list">
-                  <div class="m-step-mini"><strong>01. Autobahn Shadow</strong><span>Night freight glare &amp; audio clutter</span></div>
-                  <div class="m-step-mini"><strong>02. Gaze Budgeting</strong><span><1.2s legal glance ceiling test</span></div>
-                  <div class="m-step-mini"><strong>03. 3-Zone Spatial IA</strong><span>Forward radar, turn card, eco-coach</span></div>
-                  <div class="m-step-mini"><strong>04. Anti-Glare Tokens</strong><span>Daylight high-contrast &amp; night dark mode</span></div>
-                  <div class="m-step-mini"><strong>05. CAN-Bus Sync</strong><span>Hardware sensor bus cloud telemetry</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="card-metrics-grid">
-                <div class="c-metric-item">
-                  <div class="c-metric-val">0.94s</div>
-                  <div class="c-metric-lbl">Driver Glance (&lt;1.2s Max)</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">-18%</div>
-                  <div class="c-metric-lbl">Route &amp; Safety Errors</div>
-                </div>
-                <div class="c-metric-item">
-                  <div class="c-metric-val">80,000+</div>
-                  <div class="c-metric-lbl">Deployed Trucks</div>
-                </div>
-              </div>
-
-              <div class="card-cta-row">
-                <a href="/case-zf-wabco" class="btn-read-deep-dive">
-                  Read Case Study &amp; Defense &rarr;
-                </a>
-                <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="btn-behance-ref">
-                  🎨 Behance Gallery
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-preview-side">
-            <div class="preview-browser-mini">
-              <div class="browser-mini-bar">
-                <div class="browser-mini-dots">
-                  <span class="mini-dot dot-r"></span>
-                  <span class="mini-dot dot-y"></span>
-                  <span class="mini-dot dot-g"></span>
-                </div>
-                <div class="browser-mini-title">zf-wabco://cockpit-cluster/active-haul</div>
-              </div>
-              <div class="browser-screenshot-wrap">
-                <img src="screenshots/transformation-zf-wabco.png" alt="ZF Wabco Cockpit HUD Cluster" class="browser-screenshot-img">
-              </div>
-              <div class="browser-mini-body">
-                <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: 3-ZONE COCKPIT HUD</span>
-                <div class="preview-callout-badges">
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Day/Night Switcher:</strong> High-contrast sunlight vs anti-glare night.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Speed &amp; Radar Controls:</strong> Interactive cruise speed &amp; headway gauge.</span>
-                  </div>
-                  <div class="preview-callout-badge">
-                    <span class="callout-badge-icon">✓</span>
-                    <span><strong>Hazard Simulator:</strong> Blind spot radar alert with 0.68s glance timer.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
+      <!-- 5 Transformation Cards Ordered: 1. IBM, 2. Ericsson, 3. Zebra, 4. Carbon, 5. Wabco -->
+      
+    <!-- Case #1: IBM India Software Labs -->
+    <article class="transformation-card" id="case-1">
+      <div class="card-header-bar">
+        <div class="card-badges-left">
+          <span class="pill-co">IBM India Software Labs</span>
+          <span class="pill-spec">Specialization: Agentic AI & HITL Governance</span>
+        </div>
+        <a href="case-ibm-watson.html" class="btn-deep-dive-pill">
+          <span>Read Full Case Study</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
       </div>
-    </div>
-  </main>
 
-  <!-- Global Footer -->
-  <footer class="global-footer">
-    <div class="footer-container">
-      <div class="footer-brand-side">
-        <span class="footer-monogram">BVR</span>
-        <span class="footer-brand-title">Balaajee V.R. &bull; Senior UI/UX Design Manager Portfolio</span>
-        <p class="footer-bio-summary">
-          18+ years leading design systems, agentic AI governance, complex data grids, and mission-critical enterprise platforms across IBM, Zebra, Ericsson, and ZF Wabco.
-        </p>
-        <div style="margin-top: 12px;">
-          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" style="color: #60A5FA; text-decoration: none; font-size: 13px; font-weight: 700; font-family: var(--font-code);">
-            🎨 View Visual Execution Gallery on Behance (behance.net/balaajeeVR) &rarr;
-          </a>
+      <div class="card-hero-text">
+        <h2 class="card-title">IBM Watson: Multi-Agent AI Task Automation & Agentic Governance in Rhapsody SE & MaaS360</h2>
+        <p class="card-lead">Architecting autonomous multi-agent task execution and mathematical confidence gating across enterprise systems modeling (Rhapsody SE) and unified endpoint security (MaaS360), eliminating black-box hallucination risks in mission-critical environments.</p>
+      </div>
+
+      <!-- Domain Methodology Process Strip -->
+      <div class="domain-methodology-strip">
+        <div class="d-strip-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Senior UI/UX Design Manager Execution Framework
+        </div>
+        <div class="d-strip-steps">
+          <div class="d-step-item"><span class="d-step-num">01</span><div><strong>Cognitive Audit:</strong> 18 risk vectors</div></div><div class="d-step-item"><span class="d-step-num">02</span><div><strong>Confidence Gating:</strong> >=95% auto-route</div></div><div class="d-step-item"><span class="d-step-num">03</span><div><strong>Multi-Agent Mesh:</strong> State machines</div></div><div class="d-step-item"><span class="d-step-num">04</span><div><strong>Side-by-Side Diff:</strong> Delta token review</div></div><div class="d-step-item"><span class="d-step-num">05</span><div><strong>SOX Compliance:</strong> Immutable audit</div></div>
         </div>
       </div>
-      <div class="footer-links-grid">
-        <div class="footer-col">
-          <span class="footer-col-title">Navigation</span>
-          <a href="/" class="footer-link">Home</a>
-          <a href="/work" class="footer-link active">Selected Work</a>
-          <a href="/leadership" class="footer-link">Leadership Deck</a>
-          <a href="/cv" class="footer-link">My Resume</a>
+
+      <!-- Card Split Grid: Interactive Prototype + Annotated Screenshot Preview -->
+      <div class="card-split-grid">
+        <div class="interactive-column">
+          <div class="col-section-tag">
+            <span>🕹️ LIVE INTERACTIVE WORKING PROTOTYPE</span>
+            <span style="color: #64748B;">Interactive Demo</span>
+          </div>
+          
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://watson-orchestrate.ibm.com/workspace/agentic-mesh</div>
+        <span class="proto-win-badge">● MULTI-AGENT STATE MACHINE ACTIVE</span>
+      </div>
+      <div class="proto-win-body">
+        <div style="background: rgba(37, 99, 235, 0.1); border-left: 4px solid #3B82F6; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
+          <div style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #60A5FA; text-transform: uppercase;">Natural Language Enterprise Intent</div>
+          <div style="font-size: 14px; font-weight: 600; color: #FFFFFF; margin-top: 4px;">
+            “Reconcile Q3 vendor invoices across SAP, verify credit limits in Salesforce CRM, and prepare executive payment voucher.”
+          </div>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-title">UI/UX Specializations</span>
-          <a href="/case-ericsson" class="footer-link">Financial Data Grids</a>
-          <a href="/case-ibm-watson" class="footer-link">Agentic AI &amp; HITL</a>
-          <a href="/case-zebra" class="footer-link">Industrial IoT Ergonomics</a>
-          <a href="/case-ibm-carbon" class="footer-link">DesignOps &amp; Tokens</a>
-          <a href="/case-zf-wabco" class="footer-link">Automotive Safety HMI</a>
+
+        <!-- Agent Node Graph -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px;">
+          <div class="agent-node-card">
+            <div class="agent-node-header">
+              <span class="agent-pulse-dot dot-active"></span>
+              <span class="agent-name">1. SAP ERP Agent</span>
+            </div>
+            <div class="agent-status-badge badge-success">100% PO Match</div>
+            <p class="agent-detail-text">14 PO line items matched against receipts; 0 unit variance detected.</p>
+          </div>
+
+          <div class="agent-node-card">
+            <div class="agent-node-header">
+              <span class="agent-pulse-dot dot-active"></span>
+              <span class="agent-name">2. Salesforce CRM Agent</span>
+            </div>
+            <div class="agent-status-badge badge-success">Approved</div>
+            <p class="agent-detail-text">Credit threshold of $250,000 verified; customer account in good standing.</p>
+          </div>
+
+          <div class="agent-node-card">
+            <div class="agent-node-header">
+              <span class="agent-pulse-dot dot-pending"></span>
+              <span class="agent-name">3. Ledger Write-Back</span>
+            </div>
+            <div class="agent-status-badge badge-pending">Gated for Review</div>
+            <p class="agent-detail-text">Awaiting human signature before immutable commit to General Ledger.</p>
+          </div>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-title">Verified Proof</span>
-          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="footer-link">Behance Portfolio</a>
-          <a href="https://linkedin.com/in/balaajee-vr" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn Profile</a>
-          <a href="mailto:vrbberaj@gmail.com" class="footer-link">Direct Email</a>
+
+        <!-- Confidence Score Gating Control -->
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8; text-transform: uppercase;">Confidence Gating Threshold:</span>
+              <strong id="watson-conf-label" style="font-family: var(--font-heading); font-size: 15px; color: #60A5FA; margin-left: 8px;">94.2% AI Confidence [Tier 2: Supervised Draft]</strong>
+            </div>
+            <div class="conf-tier-btns">
+              <button onclick="setWatsonConfidence('high')" id="wconf-high" class="btn-tier">High (96.4%)</button>
+              <button onclick="setWatsonConfidence('med')" id="wconf-med" class="btn-tier active">Supervised (94.2%)</button>
+              <button onclick="setWatsonConfidence('low')" id="wconf-low" class="btn-tier">Low (74.0%)</button>
+            </div>
+          </div>
+          <p id="watson-conf-desc" style="font-size: 12px; color: #CBD5E1; margin: 0; line-height: 1.45;">
+            Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.
+          </p>
+        </div>
+
+        <!-- Side-by-Side Diff Drawer -->
+        <div id="watson-diff-drawer" style="background: #090D14; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #38BDF8;">PROPOSED DATABASE MUTATION DIFF: SAP S/4HANA vs LLM DRAFT</span>
+            <span style="font-family: var(--font-code); font-size: 10px; color: #94A3B8;">SOX Audit Token: #TX-98402-SHA256</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="proto-grid-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Current Database State</th>
+                  <th>Proposed Multi-Agent Mutation</th>
+                  <th>Audit Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cell-code">INVOICE_STATUS</td>
+                  <td style="color: #F87171;">PENDING_APPROVAL</td>
+                  <td style="color: #34D399; font-weight: 700;">+ APPROVED_FOR_PAYMENT</td>
+                  <td><span class="margin-pill margin-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-code">VOUCHER_AMOUNT</td>
+                  <td>$0.00</td>
+                  <td style="color: #34D399; font-weight: 700;">+ $142,500.00 [PO-9402]</td>
+                  <td><span class="margin-pill margin-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-code">GL_ACCOUNT</td>
+                  <td>2100-AP (Unposted)</td>
+                  <td style="color: #34D399; font-weight: 700;">+ 2100-AP [Balanced &bull; Variance 0.00]</td>
+                  <td><span class="margin-pill margin-pass">VERIFIED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Decision Controls -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <span style="font-size: 12px; color: #94A3B8;">🔒 Cryptographic audit trail generated automatically upon human authorization.</span>
+          <div style="display: flex; gap: 10px;">
+            <button onclick="rejectWatsonLedger()" class="proto-reject-btn">❌ Reject / Force Human Override</button>
+            <button onclick="commitWatsonLedger()" class="proto-action-btn">✅ Authorize &amp; Commit to SAP Ledger</button>
+          </div>
+        </div>
+
+        <div id="watson-toast" class="proto-toast" style="display: none;">
+          🚀 Transaction #TX-88219 committed to SAP S/4HANA &amp; SOX Cryptographic Audit Trail Logged!
         </div>
       </div>
     </div>
-    <div class="footer-bottom-bar">
-      <span>&copy; 2026 Balaajee V.R. &bull; Enterprise UI/UX Design Manager Portfolio Suite &bull; Zero Overflow Across All Viewports</span>
-    </div>
-  </footer>
+  
+        </div>
 
+        <div class="screenshot-column">
+          <div class="col-section-tag">
+            <span>📸 SHIPPED PRODUCTION INTERFACE</span>
+            <span style="color: #64748B;">Visual Evidence</span>
+          </div>
+          <div class="browser-preview-frame">
+            <div class="browser-preview-header">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url-text">https://watson.ibm.com/governance/agentic-mesh</div>
+            </div>
+            <div class="browser-screenshot-wrap">
+              <img src="screenshots/transformation-ibm-watson.png" alt="IBM Watson Agentic AI Production Interface" class="browser-screenshot-img" loading="lazy">
+            </div>
+            <div class="browser-mini-body">
+              <span class="preview-callout-title">UI/UX Architectural Highlights:</span>
+              <div class="preview-callout-badges">
+                <div class="preview-callout-badge"><span class="callout-badge-icon">⚡</span><span><strong>Multi-Agent State Machine:</strong> Visual canvas displays live agent coordination with sub-agent dependency tracking.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">🛡️</span><span><strong>3-Tier Confidence Router:</strong> Actions >=95% execute instantly; 80-94% trigger mandatory side-by-side diff approvals.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">📜</span><span><strong>Cryptographic Audit Drawer:</strong> Full reasoning traces and SOX-compliant ledger diffs before production commit.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="card-metrics-row">
+        <div class="t-stat-card"><div class="t-stat-val">74% Faster</div><div class="t-stat-label">Model Drafting (14h -> 3.6h)</div></div><div class="t-stat-card"><div class="t-stat-val">82% Faster</div><div class="t-stat-label">Endpoint Triage (4h -> 43m)</div></div><div class="t-stat-card"><div class="t-stat-val">0 Violations</div><div class="t-stat-label">SOX / Compliance Risk Across 140k Tasks</div></div><div class="t-stat-card"><div class="t-stat-val">12 Designers</div><div class="t-stat-label">UX-as-a-Service Team Re-Org</div></div>
+      </div>
+
+      <!-- Card Footer CTA -->
+      <div class="card-footer-cta">
+        <div class="footer-cta-text">
+          <strong>Interested in the complete design management defense?</strong>
+          <span>Explore user shadowing recordings, SysML state machine diagrams, and executive CAR defense.</span>
+        </div>
+        <a href="case-ibm-watson.html" class="btn-primary-card">
+          <span>Explore 7-Chapter Narrative Defense</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </article>
+    
+    <!-- Case #2: Ericsson Global -->
+    <article class="transformation-card" id="case-2">
+      <div class="card-header-bar">
+        <div class="card-badges-left">
+          <span class="pill-co">Ericsson Global</span>
+          <span class="pill-spec">Specialization: High-Density Data Grids & Financial Architecture</span>
+        </div>
+        <a href="case-ericsson.html" class="btn-deep-dive-pill">
+          <span>Read Full Case Study</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card-hero-text">
+        <h2 class="card-title">Ericsson SalesOps Cloud: Modernizing 14-Tab Legacy Excel Chaos into an Automated Deal Engine</h2>
+        <p class="card-lead">Replaced an unversioned 50MB spreadsheet quoting ordeal across 45 countries with a keyboard-navigable single-pane data grid, cutting deal turnaround from 6 days to 42 minutes with zero formula defects across 12,000 catalog parts.</p>
+      </div>
+
+      <!-- Domain Methodology Process Strip -->
+      <div class="domain-methodology-strip">
+        <div class="d-strip-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          High-Density Financial Data Grid Pipeline
+        </div>
+        <div class="d-strip-steps">
+          <div class="d-step-item"><span class="d-step-num">01</span><div><strong>Formula Audit:</strong> 14 tabs & 42 #REF!</div></div><div class="d-step-item"><span class="d-step-num">02</span><div><strong>Shadowing:</strong> Keyboard speed Stockholm</div></div><div class="d-step-item"><span class="d-step-num">03</span><div><strong>Single-Pane IA:</strong> Zero-modal 12k grid</div></div><div class="d-step-item"><span class="d-step-num">04</span><div><strong>Reactive Tokens:</strong> Sub-16ms live formula</div></div><div class="d-step-item"><span class="d-step-num">05</span><div><strong>Governance:</strong> Auto green channel >=35%</div></div>
+        </div>
+      </div>
+
+      <!-- Card Split Grid: Interactive Prototype + Annotated Screenshot Preview -->
+      <div class="card-split-grid">
+        <div class="interactive-column">
+          <div class="col-section-tag">
+            <span>🕹️ LIVE INTERACTIVE WORKING PROTOTYPE</span>
+            <span style="color: #64748B;">Interactive Demo</span>
+          </div>
+          
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://salesops.ericsson.net/deals/deal-4820/bom-configurator</div>
+        <span class="proto-win-badge">● LIVE SAP PRICING ENGINE</span>
+      </div>
+      <div class="proto-win-body">
+        <div class="proto-deal-bar">
+          <div>
+            <h4 style="font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: #FFFFFF; margin: 0 0 4px;">Vodafone UK — 5G Massive MIMO Expansion (Q3 Deal #4820)</h4>
+            <p style="font-size: 12px; color: #94A3B8; margin: 0;">Tier 1 Strategic &bull; Lead Architect: M. Lindqvist &bull; 12,000 Verified SAP Parts</p>
+          </div>
+          <div style="text-align: right;">
+            <div id="ericsson-total-val" style="font-family: var(--font-heading); font-size: 24px; font-weight: 900; color: #F59E0B;">$8,420,000</div>
+            <div id="ericsson-margin-badge" class="margin-pill margin-pass">38.4% GROSS MARGIN [PASS &bull; GREEN CHANNEL]</div>
+          </div>
+        </div>
+
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <span style="font-family: var(--font-code); font-size: 11px; color: #38BDF8;">⌨️ Keyboard Shortcuts: Arrow Keys to Navigate &bull; Tab to Edit &bull; Enter to Commit Row</span>
+          <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">Auto-Approval Threshold: &ge;35.0% Gross Margin</span>
+        </div>
+
+        <div style="overflow-x: auto; margin-bottom: 16px;">
+          <table class="proto-grid-table">
+            <thead>
+              <tr>
+                <th>Part #</th>
+                <th>Description</th>
+                <th>Unit Cost</th>
+                <th>List Price</th>
+                <th>Qty</th>
+                <th>Discount %</th>
+                <th>Net Price</th>
+                <th>Line Margin</th>
+              </tr>
+            </thead>
+            <tbody id="ericsson-bom-rows">
+              <tr data-part="AIR 6488" data-cost="11200" data-list="18500" data-qty="120">
+                <td class="cell-code">AIR 6488</td>
+                <td>5G Massive MIMO Radio (3.5GHz 64T64R)</td>
+                <td class="cell-num">$11,200</td>
+                <td class="cell-num">$18,500</td>
+                <td class="cell-num">120</td>
+                <td><input type="number" min="0" max="50" value="12" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for AIR 6488"> %</td>
+                <td class="cell-num row-net-val">$1,953,600</td>
+                <td><span class="margin-pill margin-pass row-margin-val">39.2%</span></td>
+              </tr>
+              <tr data-part="Baseband 6648" data-cost="8200" data-list="14200" data-qty="85">
+                <td class="cell-code">Baseband 6648</td>
+                <td>High-Capacity RAN Compute Unit</td>
+                <td class="cell-num">$8,200</td>
+                <td class="cell-num">$14,200</td>
+                <td class="cell-num">85</td>
+                <td><input type="number" min="0" max="50" value="8" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for Baseband 6648"> %</td>
+                <td class="cell-num row-net-val">$1,110,440</td>
+                <td><span class="margin-pill margin-pass row-margin-val">41.5%</span></td>
+              </tr>
+              <tr data-part="Router 6672" data-cost="5600" data-list="8900" data-qty="140">
+                <td class="cell-code">Router 6672</td>
+                <td>100GE Cell Site Aggregation Gateway</td>
+                <td class="cell-num">$5,600</td>
+                <td class="cell-num">$8,900</td>
+                <td class="cell-num">140</td>
+                <td><input type="number" min="0" max="50" value="15" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for Router 6672"> %</td>
+                <td class="cell-num row-net-val">$1,059,100</td>
+                <td><span class="margin-pill margin-pass row-margin-val">36.1%</span></td>
+              </tr>
+              <tr data-part="Streetmacro 6701" data-cost="7100" data-list="11400" data-qty="60">
+                <td class="cell-code">Streetmacro 6701</td>
+                <td>mmWave Integrated Urban Small Cell</td>
+                <td class="cell-num">$7,100</td>
+                <td class="cell-num">$11,400</td>
+                <td class="cell-num">60</td>
+                <td><input type="number" min="0" max="50" value="10" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for Streetmacro 6701"> %</td>
+                <td class="cell-num row-net-val">$615,600</td>
+                <td><span class="margin-pill margin-pass row-margin-val">37.8%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="font-size: 12px; color: #94A3B8;">
+            💡 <em>Try increasing discounts to &gt;20% to observe live escalation guardrail trigger.</em>
+          </div>
+          <button onclick="triggerEricssonQuotePdf()" class="proto-action-btn">
+            📄 1-Click Generate Signed Contract PDF
+          </button>
+        </div>
+
+        <div id="ericsson-toast" class="proto-toast" style="display: none;">
+          ✅ Contract Proposal #4820 Generated! Verified against 100% SAP Catalog Rules &amp; Signed by Commercial Bot.
+        </div>
+      </div>
+    </div>
+  
+        </div>
+
+        <div class="screenshot-column">
+          <div class="col-section-tag">
+            <span>📸 SHIPPED PRODUCTION INTERFACE</span>
+            <span style="color: #64748B;">Visual Evidence</span>
+          </div>
+          <div class="browser-preview-frame">
+            <div class="browser-preview-header">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url-text">https://salesops.ericsson.net/deals/deal-4820/bom-configurator</div>
+            </div>
+            <div class="browser-screenshot-wrap">
+              <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Ericsson Network Configuration & Profile Grid" class="browser-screenshot-img" loading="lazy">
+            </div>
+            <div class="browser-mini-body">
+              <span class="preview-callout-title">UI/UX Architectural Highlights:</span>
+              <div class="preview-callout-badges">
+                <div class="preview-callout-badge"><span class="callout-badge-icon">⚡</span><span><strong>Keyboard Data Grid:</strong> Arrow navigation and instant inline editing matching Excel muscle memory.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">🛡️</span><span><strong>Live Margin Guardrail:</strong> Sub-16ms recalculation of 38.4% gross margin on every discount change.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">📄</span><span><strong>1-Click Contract PDF:</strong> Auto-populates verified SAP catalog parts with zero manual re-keying.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="card-metrics-row">
+        <div class="t-stat-card"><div class="t-stat-val">6d &rarr; 42m</div><div class="t-stat-label">Turnaround (-92%)</div></div><div class="t-stat-card"><div class="t-stat-val">100%</div><div class="t-stat-label">Verified Pricing Accuracy</div></div><div class="t-stat-card"><div class="t-stat-val">0%</div><div class="t-stat-label">Formula Error Rate</div></div><div class="t-stat-card"><div class="t-stat-val">1,200+</div><div class="t-stat-label">Global Sales Engineers</div></div>
+      </div>
+
+      <!-- Card Footer CTA -->
+      <div class="card-footer-cta">
+        <div class="footer-cta-text">
+          <strong>Interested in the complete design management defense?</strong>
+          <span>Explore user shadowing recordings, SysML state machine diagrams, and executive CAR defense.</span>
+        </div>
+        <a href="case-ericsson.html" class="btn-primary-card">
+          <span>Explore 7-Chapter Narrative Defense</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </article>
+    
+    <!-- Case #3: Zebra Technologies -->
+    <article class="transformation-card" id="case-3">
+      <div class="card-header-bar">
+        <div class="card-badges-left">
+          <span class="pill-co">Zebra Technologies</span>
+          <span class="pill-spec">Specialization: Industrial IoT & Physical Ergonomics</span>
+        </div>
+        <a href="case-zebra.html" class="btn-deep-dive-pill">
+          <span>Read Full Case Study</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card-hero-text">
+        <h2 class="card-title">Zebra DeviceCloud: Enterprise IoT Management for Rugged Warehouse Fleets & Batteries</h2>
+        <p class="card-lead">Architected multi-site fleet visibility console for 2,000 rugged mobile computers and 2,100 batteries, cutting lost asset loss by 94% through sub-zero glove touch targets, spatial floor plans, and predictive battery swap alerts.</p>
+      </div>
+
+      <!-- Domain Methodology Process Strip -->
+      <div class="domain-methodology-strip">
+        <div class="d-strip-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Industrial IoT Physical Ergonomics Framework
+        </div>
+        <div class="d-strip-steps">
+          <div class="d-step-item"><span class="d-step-num">01</span><div><strong>-25°C Shadowing:</strong> Chicago cold-chain</div></div><div class="d-step-item"><span class="d-step-num">02</span><div><strong>Card Sorting IA:</strong> 4 stakeholder buckets</div></div><div class="d-step-item"><span class="d-step-num">03</span><div><strong>Glove Ergonomics:</strong> 72px hit targets</div></div><div class="d-step-item"><span class="d-step-num">04</span><div><strong>Spatial Floorplan:</strong> Visual access point map</div></div><div class="d-step-item"><span class="d-step-num">05</span><div><strong>Predictive Battery:</strong> Swap before failure</div></div>
+        </div>
+      </div>
+
+      <!-- Card Split Grid: Interactive Prototype + Annotated Screenshot Preview -->
+      <div class="card-split-grid">
+        <div class="interactive-column">
+          <div class="col-section-tag">
+            <span>🕹️ LIVE INTERACTIVE WORKING PROTOTYPE</span>
+            <span style="color: #64748B;">Interactive Demo</span>
+          </div>
+          
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://devicecloud.zebra.com/hub/chicago-dc-04/spatial-map</div>
+        <span class="proto-win-badge">● 1,280 SCANNERS ONLINE</span>
+      </div>
+      <div class="proto-win-body">
+        <!-- Zone Selector Toolbar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+          <div class="zone-filter-group">
+            <button onclick="filterZebraZone('all')" id="zbtn-all" class="zone-btn active">All Zones (1,280 Units)</button>
+            <button onclick="filterZebraZone('a')" id="zbtn-a" class="zone-btn">Zone A: Staging Dock (480)</button>
+            <button onclick="filterZebraZone('b')" id="zbtn-b" class="zone-btn">Zone B: Conveyors (620)</button>
+            <button onclick="filterZebraZone('c')" id="zbtn-c" class="zone-btn">Zone C: Sub-Zero Freezer (-25°C) (180 ⚠️)</button>
+          </div>
+          <div id="zebra-glove-mode-indicator" style="font-family: var(--font-code); font-size: 11px; padding: 6px 12px; border-radius: 6px; background: rgba(16, 185, 129, 0.1); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.2);">
+            🧤 Standard Touch Targets: 44px
+          </div>
+        </div>
+
+        <!-- Dynamic Alert Banner for Zone C -->
+        <div id="zebra-cold-alert" style="display: none; background: rgba(220, 38, 38, 0.15); border: 1px solid rgba(220, 38, 38, 0.4); border-radius: 10px; padding: 14px 18px; margin-bottom: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <strong style="color: #F87171; font-family: var(--font-heading); font-size: 14px;">❄️ SUB-ZERO FACILITY ALERT (-25°C): Accelerated Battery Discharge</strong>
+              <p style="font-size: 12px; color: #FECACA; margin: 3px 0 0;">ML Telematics predicts 14 batteries will drop below operating threshold in 1.8 hours. Heavy-Glove 72px mode engaged.</p>
+            </div>
+            <span style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #F87171; background: rgba(220, 38, 38, 0.2); padding: 4px 10px; border-radius: 4px;">SWAP RECOMMENDED</span>
+          </div>
+        </div>
+
+        <!-- Scanner Fleet Cards Grid -->
+        <div id="zebra-fleet-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px;">
+          <div class="zebra-scanner-card">
+            <div class="scanner-card-top">
+              <span class="scanner-model">TC58 Handheld #4092</span>
+              <span class="scanner-badge-ok">Optimal</span>
+            </div>
+            <div class="scanner-loc">Zone A &bull; Staging Dock 12</div>
+            <div class="scanner-metrics-row">
+              <span>Battery: <strong>96%</strong></span>
+              <span>Temp: <strong>18°C</strong></span>
+              <span>WiFi: <strong>-52 dBm</strong></span>
+            </div>
+          </div>
+
+          <div class="zebra-scanner-card">
+            <div class="scanner-card-top">
+              <span class="scanner-model">TC58 Handheld #4118</span>
+              <span class="scanner-badge-ok">Optimal</span>
+            </div>
+            <div class="scanner-loc">Zone B &bull; High-Speed Conveyor 04</div>
+            <div class="scanner-metrics-row">
+              <span>Battery: <strong>88%</strong></span>
+              <span>Temp: <strong>19°C</strong></span>
+              <span>WiFi: <strong>-48 dBm</strong></span>
+            </div>
+          </div>
+
+          <div class="zebra-scanner-card scanner-warn">
+            <div class="scanner-card-top">
+              <span class="scanner-model">MC9300 Gun #1084</span>
+              <span class="scanner-badge-alert">Swap Alert</span>
+            </div>
+            <div class="scanner-loc">Zone C &bull; Sub-Zero Freezer Bay 02</div>
+            <div class="scanner-metrics-row">
+              <span>Battery: <strong style="color: #F87171;">24% ⚠️</strong></span>
+              <span>Temp: <strong style="color: #60A5FA;">-25°C</strong></span>
+              <span>Heated Glass: <strong>ON</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1-Scan QR Provisioning Interactive Simulator -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <strong style="display: block; font-family: var(--font-heading); font-size: 14px; color: #FFFFFF;">Zero-Touch 1-Second 2D Barcode Provisioning Simulator</strong>
+            <p style="font-size: 12px; color: #94A3B8; margin: 3px 0 0;">Bypasses 45-minute manual USB tethering. Replaces entire staging desk with 1 optical scan.</p>
+          </div>
+          <button onclick="triggerZebraScan()" class="proto-action-btn">
+            📲 Simulate 1-Second 2D Barcode Scan
+          </button>
+        </div>
+
+        <div id="zebra-toast" class="proto-toast" style="display: none;">
+          ⚡ Scanner TC58 #4092 Staged in 0.82 seconds! Zero-touch enterprise profile applied.
+        </div>
+      </div>
+    </div>
+  
+        </div>
+
+        <div class="screenshot-column">
+          <div class="col-section-tag">
+            <span>📸 SHIPPED PRODUCTION INTERFACE</span>
+            <span style="color: #64748B;">Visual Evidence</span>
+          </div>
+          <div class="browser-preview-frame">
+            <div class="browser-preview-header">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url-text">https://devicecloud.zebra.com/enterprise/site-chicago-04</div>
+            </div>
+            <div class="browser-screenshot-wrap">
+              <img src="screenshots/behance/zebra_iot_dashboard.png" alt="Zebra Technologies Device & Battery Health Insights Console" class="browser-screenshot-img" loading="lazy">
+            </div>
+            <div class="browser-mini-body">
+              <span class="preview-callout-title">UI/UX Architectural Highlights:</span>
+              <div class="preview-callout-badges">
+                <div class="preview-callout-badge"><span class="callout-badge-icon">⚡</span><span><strong>Multi-Site Battery Telemetry:</strong> Live charge cycle tracking, thermal warnings, and predictive battery replacement.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">🧤</span><span><strong>Cold-Storage Optimized:</strong> 72px glove hit targets tested in -25°C commercial industrial freezers.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">📦</span><span><strong>1-Scan QR Fleet Provisioning:</strong> Configures Wi-Fi, MDM profile, and warehouse zone in under 15 seconds.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="card-metrics-row">
+        <div class="t-stat-card"><div class="t-stat-val">94% Drop</div><div class="t-stat-label">Lost Asset Loss (-$1.2M)</div></div><div class="t-stat-card"><div class="t-stat-val">2,000+</div><div class="t-stat-label">Scanners Tracked</div></div><div class="t-stat-card"><div class="t-stat-val">72px</div><div class="t-stat-label">Freezer Glove Touch Target</div></div><div class="t-stat-card"><div class="t-stat-val"><15s</div><div class="t-stat-label">1-Scan QR Staging</div></div>
+      </div>
+
+      <!-- Card Footer CTA -->
+      <div class="card-footer-cta">
+        <div class="footer-cta-text">
+          <strong>Interested in the complete design management defense?</strong>
+          <span>Explore user shadowing recordings, SysML state machine diagrams, and executive CAR defense.</span>
+        </div>
+        <a href="case-zebra.html" class="btn-primary-card">
+          <span>Explore 7-Chapter Narrative Defense</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </article>
+    
+    <!-- Case #4: IBM Carbon -->
+    <article class="transformation-card" id="case-4">
+      <div class="card-header-bar">
+        <div class="card-badges-left">
+          <span class="pill-co">IBM Carbon</span>
+          <span class="pill-spec">Specialization: Design Systems & TokenOps Architecture</span>
+        </div>
+        <a href="case-ibm-carbon.html" class="btn-deep-dive-pill">
+          <span>Read Full Case Study</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card-hero-text">
+        <h2 class="card-title">IBM Carbon Design System: Multi-Brand Token Studio Scaling Across 14 Global Squads</h2>
+        <p class="card-lead">Spearheaded design system governance and token compiler pipeline synchronizing 14 squads across White, Gray 10, Gray 90, and Gray 100 Dark themes with zero visual drift and 100% WCAG 2.1 AA accessibility compliance.</p>
+      </div>
+
+      <!-- Domain Methodology Process Strip -->
+      <div class="domain-methodology-strip">
+        <div class="d-strip-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Design System Token Pipeline
+        </div>
+        <div class="d-strip-steps">
+          <div class="d-step-item"><span class="d-step-num">01</span><div><strong>Component Audit:</strong> Eliminated 62 rogue buttons</div></div><div class="d-step-item"><span class="d-step-num">02</span><div><strong>Multi-Tier Tokens:</strong> Global -> Semantic -> Component</div></div><div class="d-step-item"><span class="d-step-num">03</span><div><strong>Figma Variables:</strong> 1-click 4-theme switching</div></div><div class="d-step-item"><span class="d-step-num">04</span><div><strong>CI/CD Compiler:</strong> Style Dictionary -> npm</div></div><div class="d-step-item"><span class="d-step-num">05</span><div><strong>Automated QA:</strong> Playwright + axe-core</div></div>
+        </div>
+      </div>
+
+      <!-- Card Split Grid: Interactive Prototype + Annotated Screenshot Preview -->
+      <div class="card-split-grid">
+        <div class="interactive-column">
+          <div class="col-section-tag">
+            <span>🕹️ LIVE INTERACTIVE WORKING PROTOTYPE</span>
+            <span style="color: #64748B;">Interactive Demo</span>
+          </div>
+          
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://designops.ibm.com/carbon-tokens/governance</div>
+        <span class="proto-win-badge">● 14 SQUADS SYNCED</span>
+      </div>
+      <div class="proto-win-body">
+        <!-- Theme Switcher Toolbar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8; text-transform: uppercase;">Active Carbon Theme Mode:</span>
+            <div class="carbon-theme-btns" style="margin-top: 6px;">
+              <button onclick="setCarbonTheme('white')" id="cbtn-white" class="c-theme-btn active">Carbon White (Light)</button>
+              <button onclick="setCarbonTheme('g10')" id="cbtn-g10" class="c-theme-btn">Carbon G10 (Subtle)</button>
+              <button onclick="setCarbonTheme('g90')" id="cbtn-g90" class="c-theme-btn">Carbon G90 (Slate)</button>
+              <button onclick="setCarbonTheme('g100')" id="cbtn-g100" class="c-theme-btn">Carbon G100 (Dark)</button>
+            </div>
+          </div>
+          <span style="font-family: var(--font-code); font-size: 11px; color: #38BDF8;">0-Layout-Shift Runtime CSS Variable Injection</span>
+        </div>
+
+        <!-- Live Component Stage (reacts to selected theme) -->
+        <div id="carbon-live-stage" style="background: #FFFFFF; color: #161616; border: 1px solid #E0E0E0; border-radius: 12px; padding: 24px; margin-bottom: 20px; transition: all 0.25s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h5 id="carbon-stage-title" style="font-family: var(--font-heading); font-size: 16px; font-weight: 800; margin: 0; color: inherit;">Multi-Brand Tokenized Component Preview</h5>
+            <span id="carbon-stage-badge" style="font-family: var(--font-code); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; background: rgba(15, 98, 254, 0.1); color: #0F62FE;">v4.2.0 Tokenized</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: center;">
+            <div>
+              <label id="carbon-label" style="display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 6px; color: inherit;">Search Enterprise Catalog</label>
+              <input id="carbon-input" type="text" value="Cloud Object Storage" style="width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 13px; border-radius: 4px; border: 1px solid #8D8D8D; background: #F4F4F4; color: inherit; font-family: var(--font-body);" aria-label="Search Enterprise Catalog component test input">
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 6px; color: inherit;">Primary Action</label>
+              <button id="carbon-btn-primary" style="padding: 10px 18px; background: #0F62FE; color: #FFFFFF; border: none; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px;">
+                <span>Deploy Cluster &rarr;</span>
+              </button>
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 6px; color: inherit;">Tokenized Status Tag</label>
+              <span id="carbon-status-tag" style="display: inline-block; padding: 6px 12px; border-radius: 4px; background: #0F62FE; color: #FFFFFF; font-size: 12px; font-weight: 600;">$support-02 &bull; Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Token Variable Inspector -->
+        <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px 18px; margin-bottom: 18px;">
+          <div style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #38BDF8; margin-bottom: 8px;">LIVE FIGMA VARIABLE TOKEN CONTRACT:</div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-family: var(--font-code); font-size: 11.5px;">
+            <div style="color: #94A3B8;">$interactive-01: <strong id="t-int" style="color: #60A5FA;">#0F62FE</strong></div>
+            <div style="color: #94A3B8;">$background: <strong id="t-bg" style="color: #FFFFFF;">#FFFFFF</strong></div>
+            <div style="color: #94A3B8;">$field-01: <strong id="t-field" style="color: #CBD5E1;">#F4F4F4</strong></div>
+            <div style="color: #94A3B8;">$text-01: <strong id="t-text" style="color: #FFFFFF;">#161616</strong></div>
+          </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <span style="font-size: 12px; color: #94A3B8;">📦 Compiles directly via GitHub Actions to React, Web Components, and iOS/Android.</span>
+          <button onclick="triggerCarbonPr()" class="proto-action-btn">
+            🚀 Compile &amp; Push Style Dictionary PR to GitHub
+          </button>
+        </div>
+
+        <div id="carbon-toast" class="proto-toast" style="display: none;">
+          ✅ PR #318 Opened: 180 tokens compiled across 14 squad repositories with 0 visual regression!
+        </div>
+      </div>
+    </div>
+  
+        </div>
+
+        <div class="screenshot-column">
+          <div class="col-section-tag">
+            <span>📸 SHIPPED PRODUCTION INTERFACE</span>
+            <span style="color: #64748B;">Visual Evidence</span>
+          </div>
+          <div class="browser-preview-frame">
+            <div class="browser-preview-header">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url-text">https://carbon.ibm.com/token-studio/themes</div>
+            </div>
+            <div class="browser-screenshot-wrap">
+              <img src="screenshots/behance/carbon_admin_clean.png" alt="IBM Carbon Ready2Go Administration Web Platform" class="browser-screenshot-img" loading="lazy">
+            </div>
+            <div class="browser-mini-body">
+              <span class="preview-callout-title">UI/UX Architectural Highlights:</span>
+              <div class="preview-callout-badges">
+                <div class="preview-callout-badge"><span class="callout-badge-icon">🎨</span><span><strong>Live Token Theme Switcher:</strong> Instant switching between White, Gray 10, Gray 90, and Gray 100 Dark.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">⚙️</span><span><strong>Automated Style Dictionary:</strong> Transforms Figma variables into JSON, CSS variables, and TS contracts.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">🛡️</span><span><strong>Zero-Defect Accessibility Gate:</strong> Automated CI contrast validation guaranteeing WCAG AA standards.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="card-metrics-row">
+        <div class="t-stat-card"><div class="t-stat-val">14 Squads</div><div class="t-stat-label">Unified on 1 Token Pipeline</div></div><div class="t-stat-card"><div class="t-stat-val">4 Themes</div><div class="t-stat-label">White, Gray 10, 90, 100 Dark</div></div><div class="t-stat-card"><div class="t-stat-val">0 Visual Drift</div><div class="t-stat-label">Across Production Repos</div></div><div class="t-stat-card"><div class="t-stat-val">100%</div><div class="t-stat-label">WCAG 2.1 AA Contrast Compliance</div></div>
+      </div>
+
+      <!-- Card Footer CTA -->
+      <div class="card-footer-cta">
+        <div class="footer-cta-text">
+          <strong>Interested in the complete design management defense?</strong>
+          <span>Explore user shadowing recordings, SysML state machine diagrams, and executive CAR defense.</span>
+        </div>
+        <a href="case-ibm-carbon.html" class="btn-primary-card">
+          <span>Explore 7-Chapter Narrative Defense</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </article>
+    
+    <!-- Case #5: ZF Wabco -->
+    <article class="transformation-card" id="case-5">
+      <div class="card-header-bar">
+        <div class="card-badges-left">
+          <span class="pill-co">ZF Wabco</span>
+          <span class="pill-spec">Specialization: Automotive Cockpit & Safety UX</span>
+        </div>
+        <a href="case-zf-wabco.html" class="btn-deep-dive-pill">
+          <span>Read Full Case Study</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card-hero-text">
+        <h2 class="card-title">ZF Wabco Cockpit HUD: Gaze-Budgeted Digital Cluster for Commercial Heavy Truck Safety</h2>
+        <p class="card-lead">Engineered 3-zone commercial truck digital instrument cluster adhering to strict <1.2s gaze budget ceilings under extreme ambient glare, connecting CAN-bus telematics with zero driver cognitive distraction.</p>
+      </div>
+
+      <!-- Domain Methodology Process Strip -->
+      <div class="domain-methodology-strip">
+        <div class="d-strip-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Automotive Gaze-Budgeting Safety Protocol
+        </div>
+        <div class="d-strip-steps">
+          <div class="d-step-item"><span class="d-step-num">01</span><div><strong>Driver Shadowing:</strong> Night & high-glare routes</div></div><div class="d-step-item"><span class="d-step-num">02</span><div><strong>3-Zone Cluster IA:</strong> Critical HUD vs telemetry</div></div><div class="d-step-item"><span class="d-step-num">03</span><div><strong>Gaze Ceilings:</strong> <1.2s glance budgeting</div></div><div class="d-step-item"><span class="d-step-num">04</span><div><strong>High-Contrast UI:</strong> Pure black OLED typography</div></div><div class="d-step-item"><span class="d-step-num">05</span><div><strong>CAN-Bus Telematics:</strong> Live radar headway distance</div></div>
+        </div>
+      </div>
+
+      <!-- Card Split Grid: Interactive Prototype + Annotated Screenshot Preview -->
+      <div class="card-split-grid">
+        <div class="interactive-column">
+          <div class="col-section-tag">
+            <span>🕹️ LIVE INTERACTIVE WORKING PROTOTYPE</span>
+            <span style="color: #64748B;">Interactive Demo</span>
+          </div>
+          
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header" style="background: #090D14;">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url" style="color: #94A3B8; background: #111624;">zf-wabco://cockpit-cluster/active-haul/route-849</div>
+        <span class="proto-win-badge">● CAN-BUS CONNECTED &bull; UNECE 158/159 COMPLIANT</span>
+      </div>
+      <div id="wabco-hud-body" class="proto-win-body" style="background: #06090F; color: #FFFFFF; transition: all 0.3s ease;">
+        <!-- Controls Toolbar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div class="lighting-mode-btns">
+            <button onclick="setWabcoLighting('night')" id="wbtn-night" class="w-light-btn active">🌙 Night Freight Mode (Anti-Glare)</button>
+            <button onclick="setWabcoLighting('day')" id="wbtn-day" class="w-light-btn">☀️ Daylight Sunlight Mode (High-Contrast)</button>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">Cruise Speed:</span>
+            <input type="range" min="70" max="95" value="88" oninput="updateWabcoSpeed(this.value)" style="cursor: pointer;" aria-label="Simulated truck cruise speed control slider">
+            <span id="wabco-slider-val" style="font-family: var(--font-code); font-size: 12px; font-weight: 700; color: #10B981;">88 km/h</span>
+          </div>
+        </div>
+
+        <!-- 3-Zone Cockpit Cluster -->
+        <div style="display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 16px; margin-bottom: 20px;">
+          <!-- Zone 1 -->
+          <div id="wabco-zone-1" class="hud-zone-card">
+            <div class="hud-zone-tag">ZONE 1 (&lt;0.8S GLANCE BUDGET)</div>
+            <div id="wabco-speed-num" style="font-size: 42px; font-weight: 900; font-family: var(--font-code); color: #10B981; margin: 4px 0;">88 <span style="font-size: 16px;">KM/H</span></div>
+            <div id="wabco-radar-info" style="font-size: 11px; color: #94A3B8;">Safe Radar Distance: <strong>85m</strong> &bull; Limit: 90</div>
+            <div id="wabco-hazard-alert" style="display: none; margin-top: 8px; background: rgba(245, 158, 11, 0.2); border: 1px solid #F59E0B; border-radius: 6px; padding: 4px 8px; font-family: var(--font-code); font-size: 10px; color: #F59E0B; font-weight: 700;">
+              ⚠️ BLIND SPOT: Vehicle at Right Flank (14m)
+            </div>
+          </div>
+
+          <!-- Zone 2 -->
+          <div class="hud-zone-card">
+            <div class="hud-zone-tag" style="color: #F59E0B;">ZONE 2 (&lt;1.2S NAVIGATION)</div>
+            <div style="font-size: 16px; font-weight: 800; color: #F59E0B; margin: 8px 0 4px;">A7 Hamburg &bull; Exit 24 in 2.4 km</div>
+            <div style="font-size: 11px; color: #94A3B8;">Max Bridge Clearance: <strong>4.2m [CLEAR]</strong></div>
+            <div style="font-size: 11px; color: #94A3B8; margin-top: 4px;">Lane 2 Recommended &bull; Heavy Freight</div>
+          </div>
+
+          <!-- Zone 3 -->
+          <div class="hud-zone-card">
+            <div class="hud-zone-tag" style="color: #38BDF8;">ZONE 3 (PERIPHERAL ECO-PULSE)</div>
+            <div style="font-size: 18px; font-weight: 800; color: #38BDF8; margin: 8px 0 4px;">Optimal Torque</div>
+            <div style="font-size: 11px; color: #94A3B8;">+14% Fleet Fuel Efficiency</div>
+            <div style="font-size: 11px; color: #10B981; margin-top: 4px;">RPM: 1,250 &bull; Eco-Band Green</div>
+          </div>
+        </div>
+
+        <!-- Simulator Controls -->
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <strong style="font-family: var(--font-heading); font-size: 13px; color: #FFFFFF;">UNECE 158/159 Gaze-Time Compliance Simulator</strong>
+            <p style="font-size: 11.5px; color: #94A3B8; margin: 2px 0 0;">Verifies driver cognitive perception speed under high-speed Autobahn freight conditions.</p>
+          </div>
+          <button onclick="triggerWabcoHazard()" class="proto-action-btn">
+            🚨 Simulate Blind Spot Obstacle Warning
+          </button>
+        </div>
+
+        <div id="wabco-toast" class="proto-toast" style="display: none;">
+          ⚡ Blind Spot Hazard Triggered! Eye-glance perception clocked at 0.68s [PASS &lt; 0.8s UNECE 158/159 Limit].
+        </div>
+      </div>
+    </div>
+  
+        </div>
+
+        <div class="screenshot-column">
+          <div class="col-section-tag">
+            <span>📸 SHIPPED PRODUCTION INTERFACE</span>
+            <span style="color: #64748B;">Visual Evidence</span>
+          </div>
+          <div class="browser-preview-frame">
+            <div class="browser-preview-header">
+              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+              <div class="browser-url-text">https://telematics.zf-wabco.com/cockpit/cluster-hud</div>
+            </div>
+            <div class="browser-screenshot-wrap">
+              <img src="screenshots/behance/zf_mobile_clean.png" alt="ZF Wabco Cockpit HUD Cluster & Mobile Telematics" class="browser-screenshot-img" loading="lazy">
+            </div>
+            <div class="browser-mini-body">
+              <span class="preview-callout-title">UI/UX Architectural Highlights:</span>
+              <div class="preview-callout-badges">
+                <div class="preview-callout-badge"><span class="callout-badge-icon">⚡</span><span><strong>3-Zone Visual Partitioning:</strong> Zone 1 Speed HUD, Zone 2 Radar Telemetry, Zone 3 Active Event Log.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">🛡️</span><span><strong><1.2s Gaze Budget Compliance:</strong> Strict visual hierarchy preventing dangerous driver distraction.</span></div><div class="preview-callout-badge"><span class="callout-badge-icon">🚗</span><span><strong>CAN-Bus Telematics Sync:</strong> Live tire pressure, radar headway, and obstacle proximity warnings.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="card-metrics-row">
+        <div class="t-stat-card"><div class="t-stat-val"><1.2s</div><div class="t-stat-label">Driver Glance Ceiling (Pass)</div></div><div class="t-stat-card"><div class="t-stat-val">3 Zones</div><div class="t-stat-label">HUD Speed, Radar, Alarms</div></div><div class="t-stat-card"><div class="t-stat-val">100%</div><div class="t-stat-label">UNECE Safety Compliance</div></div><div class="t-stat-card"><div class="t-stat-val">0 Friction</div><div class="t-stat-label">Night & High-Glare Ergonomics</div></div>
+      </div>
+
+      <!-- Card Footer CTA -->
+      <div class="card-footer-cta">
+        <div class="footer-cta-text">
+          <strong>Interested in the complete design management defense?</strong>
+          <span>Explore user shadowing recordings, SysML state machine diagrams, and executive CAR defense.</span>
+        </div>
+        <a href="case-zf-wabco.html" class="btn-primary-card">
+          <span>Explore 7-Chapter Narrative Defense</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </article>
+    
+    </main>
+  </div>
+
+  <script>
+    
+  <!-- Shared Interactive Working Prototype Logic -->
+  <script>
+    // 1. Ericsson BOM Recalculation
+    function recalcEricssonDeal() {
+      const rows = document.querySelectorAll('#ericsson-bom-rows tr');
+      let totalRev = 0, totalCost = 0;
+      rows.forEach(r => {
+        const cost = parseFloat(r.getAttribute('data-cost')) || 0;
+        const list = parseFloat(r.getAttribute('data-list')) || 0;
+        const qty = parseFloat(r.getAttribute('data-qty')) || 0;
+        const input = r.querySelector('.grid-num-input');
+        const disc = parseFloat(input ? input.value : 0) || 0;
+        const netUnit = list * (1 - disc / 100);
+        const lineRev = netUnit * qty;
+        const lineCost = cost * qty;
+        totalRev += lineRev;
+        totalCost += lineCost;
+        const netEl = r.querySelector('.row-net-val');
+        const marginEl = r.querySelector('.row-margin-val');
+        if (netEl) netEl.textContent = '$' + Math.round(lineRev).toLocaleString();
+        const lineMargin = lineRev > 0 ? ((lineRev - lineCost) / lineRev) * 100 : 0;
+        if (marginEl) {
+          marginEl.textContent = lineMargin.toFixed(1) + '%';
+          marginEl.className = 'margin-pill ' + (lineMargin >= 35 ? 'margin-pass' : 'margin-escalate') + ' row-margin-val';
+        }
+      });
+      const totalEl = document.getElementById('ericsson-total-val');
+      const badgeEl = document.getElementById('ericsson-margin-badge');
+      if (totalEl) totalEl.textContent = '$' + Math.round(totalRev).toLocaleString();
+      const overallMargin = totalRev > 0 ? ((totalRev - totalCost) / totalRev) * 100 : 0;
+      if (badgeEl) {
+        if (overallMargin >= 35) {
+          badgeEl.className = 'margin-pill margin-pass';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [PASS • GREEN CHANNEL]';
+        } else {
+          badgeEl.className = 'margin-pill margin-escalate';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [⚠️ ESCALATION REQUIRED • VP REVIEW]';
+        }
+      }
+    }
+    function triggerEricssonQuotePdf() {
+      const t = document.getElementById('ericsson-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 2. Watson Confidence & Diff
+    function setWatsonConfidence(tier) {
+      const label = document.getElementById('watson-conf-label');
+      const desc = document.getElementById('watson-conf-desc');
+      document.querySelectorAll('.conf-tier-btns .btn-tier').forEach(b => b.classList.remove('active'));
+      if (tier === 'high') {
+        const btn = document.getElementById('wconf-high');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '96.4% AI Confidence [Tier 1: Full Autonomy]'; label.style.color = '#34D399'; }
+        if (desc) desc.textContent = 'Tier 1 Routing: Score exceeds 95% threshold. Safe for automated execution with post-commit notification.';
+      } else if (tier === 'med') {
+        const btn = document.getElementById('wconf-med');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '94.2% AI Confidence [Tier 2: Supervised Draft]'; label.style.color = '#60A5FA'; }
+        if (desc) desc.textContent = 'Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.';
+      } else {
+        const btn = document.getElementById('wconf-low');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '74.0% AI Confidence [Tier 3: Low Confidence]'; label.style.color = '#F87171'; }
+        if (desc) desc.textContent = 'Tier 3 Routing: Complex discrepancy detected. Hard escalation triggered to Corporate Financial Controller.';
+      }
+    }
+    function commitWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(16, 185, 129, 0.15)';
+        t.style.borderColor = '#10B981';
+        t.style.color = '#34D399';
+        t.textContent = '🚀 Transaction #TX-88219 committed to SAP S/4HANA & SOX Cryptographic Audit Trail Logged!';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+    function rejectWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(239, 68, 68, 0.15)';
+        t.style.borderColor = '#EF4444';
+        t.style.color = '#F87171';
+        t.textContent = '⚠️ Transaction rejected. Diverted to manual controller review queue.';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+
+    // 3. Zebra Zone Filter & Scan
+    function filterZebraZone(zone) {
+      document.querySelectorAll('.zone-filter-group .zone-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('zbtn-' + zone);
+      if (activeBtn) activeBtn.classList.add('active');
+      const alertEl = document.getElementById('zebra-cold-alert');
+      const gloveInd = document.getElementById('zebra-glove-mode-indicator');
+      if (zone === 'c') {
+        if (alertEl) alertEl.style.display = 'block';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Heavy Thermal Glove Mode: 72px Targets [ACTIVE]';
+          gloveInd.style.background = 'rgba(240, 6, 88, 0.15)';
+          gloveInd.style.color = '#F43F5E';
+          gloveInd.style.borderColor = '#F43F5E';
+        }
+      } else {
+        if (alertEl) alertEl.style.display = 'none';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Standard Touch Targets: 44px';
+          gloveInd.style.background = 'rgba(16, 185, 129, 0.1)';
+          gloveInd.style.color = '#34D399';
+          gloveInd.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+        }
+      }
+    }
+    function triggerZebraScan() {
+      const t = document.getElementById('zebra-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 4. Carbon Theme Switcher
+    function setCarbonTheme(theme) {
+      document.querySelectorAll('.carbon-theme-btns .c-theme-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('cbtn-' + theme);
+      if (activeBtn) activeBtn.classList.add('active');
+      const stage = document.getElementById('carbon-live-stage');
+      const btn = document.getElementById('carbon-btn-primary');
+      const input = document.getElementById('carbon-input');
+      const tint = document.getElementById('t-int');
+      const tbg = document.getElementById('t-bg');
+      const tfield = document.getElementById('t-field');
+      const ttext = document.getElementById('t-text');
+
+      if (!stage) return;
+      if (theme === 'white') {
+        stage.style.background = '#FFFFFF'; stage.style.color = '#161616'; stage.style.borderColor = '#E0E0E0';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#F4F4F4'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#FFFFFF';
+        if (tfield) tfield.textContent = '#F4F4F4';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g10') {
+        stage.style.background = '#F4F4F4'; stage.style.color = '#161616'; stage.style.borderColor = '#D1D5DB';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#FFFFFF'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#F4F4F4';
+        if (tfield) tfield.textContent = '#FFFFFF';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g90') {
+        stage.style.background = '#262626'; stage.style.color = '#F4F4F4'; stage.style.borderColor = '#525252';
+        if (btn) btn.style.background = '#78A9FF';
+        if (input) { input.style.background = '#393939'; input.style.borderColor = '#6F6F6F'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#78A9FF';
+        if (tbg) tbg.textContent = '#262626';
+        if (tfield) tfield.textContent = '#393939';
+        if (ttext) ttext.textContent = '#F4F4F4';
+      } else if (theme === 'g100') {
+        stage.style.background = '#161616'; stage.style.color = '#FFFFFF'; stage.style.borderColor = '#393939';
+        if (btn) btn.style.background = '#4589DF';
+        if (input) { input.style.background = '#262626'; input.style.borderColor = '#525252'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#4589DF';
+        if (tbg) tbg.textContent = '#161616';
+        if (tfield) tfield.textContent = '#262626';
+        if (ttext) ttext.textContent = '#FFFFFF';
+      }
+    }
+    function triggerCarbonPr() {
+      const t = document.getElementById('carbon-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 5. Wabco HUD Simulator
+    function setWabcoLighting(mode) {
+      document.querySelectorAll('.lighting-mode-btns .w-light-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('wbtn-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+      const body = document.getElementById('wabco-hud-body');
+      if (!body) return;
+      if (mode === 'day') {
+        body.style.background = '#F8FAFC';
+        body.style.color = '#0F172A';
+      } else {
+        body.style.background = '#06090F';
+        body.style.color = '#FFFFFF';
+      }
+    }
+    function updateWabcoSpeed(val) {
+      const speedEl = document.getElementById('wabco-speed-num');
+      const sliderVal = document.getElementById('wabco-slider-val');
+      const radarInfo = document.getElementById('wabco-radar-info');
+      if (speedEl) speedEl.innerHTML = val + ' <span style="font-size: 16px;">KM/H</span>';
+      if (sliderVal) sliderVal.textContent = val + ' km/h';
+      const distance = Math.round(val * 0.96);
+      if (radarInfo) radarInfo.innerHTML = 'Safe Radar Distance: <strong>' + distance + 'm</strong> &bull; Headway: 2.4s';
+    }
+    function triggerWabcoHazard() {
+      const alertEl = document.getElementById('wabco-hazard-alert');
+      const t = document.getElementById('wabco-toast');
+      if (alertEl) { alertEl.style.display = 'block'; setTimeout(() => { alertEl.style.display = 'none'; }, 5000); }
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 5000); }
+    }
+  </script>
+
+
+    // Left sidebar active state sync
+    function activateWorkNav(clickedItem) {
+      const items = document.querySelectorAll('.work-nav-item');
+      items.forEach(item => item.classList.remove('active'));
+      clickedItem.classList.add('active');
+    }
+
+    // Auto-highlight active sidebar item on scroll
+    window.addEventListener('scroll', () => {
+      const cards = document.querySelectorAll('.transformation-card, #specialization-pillars');
+      const navItems = document.querySelectorAll('.work-nav-item');
+      let currentId = '';
+
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top <= 160 && rect.bottom >= 160) {
+          currentId = card.id;
+        }
+      });
+
+      if (currentId) {
+        navItems.forEach(item => {
+          if (item.getAttribute('href') === '#' + currentId) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+    }, { passive: true });
+  </script>
 </body>
 </html>
