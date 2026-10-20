@@ -67,6 +67,8 @@ const testPages = [
             specializationBanner: !!document.querySelector('.specialization-pillars-banner'),
             specializationPillars: document.querySelectorAll('.spec-pillar-card').length,
             behanceBanner: !!document.querySelector('.behance-integration-banner'),
+            behanceVisualStrip: !!document.querySelector('.behance-visual-strip'),
+            behanceStripItems: document.querySelectorAll('.behance-strip-item').length,
             cards: document.querySelectorAll('.transformation-card').length,
             methodologyStrips: document.querySelectorAll('.domain-methodology-strip').length,
             screenshots: document.querySelectorAll('.browser-screenshot-img').length,
@@ -74,11 +76,11 @@ const testPages = [
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.specializationBanner || elements.specializationPillars !== 5 || !elements.behanceBanner || elements.cards !== 5 || elements.methodologyStrips !== 5 || elements.screenshots !== 5) {
+        if (!elements.specializationBanner || elements.specializationPillars !== 5 || !elements.behanceBanner || !elements.behanceVisualStrip || elements.behanceStripItems !== 5 || elements.cards !== 5 || elements.methodologyStrips !== 5 || elements.screenshots !== 5) {
           console.error('  ❌ Missing expected elements on work.html');
           allPassed = false;
         } else {
-          console.log('  ✓ All elements present on work.html (5 specialization pillars, Behance banner, 5 cards, 5 domain methodology strips, 5 screenshots)');
+          console.log('  ✓ All elements present on work.html (5 specialization pillars, Behance visual strip with 5 items, 5 cards, 5 domain methodology strips, 5 screenshots)');
         }
 
         // Capture full page screenshot of work.html
@@ -95,7 +97,8 @@ const testPages = [
             pipelineSteps: document.querySelectorAll('.p-step-card').length,
             archInfographic: !!document.querySelector('.architecture-infographic-stage'),
             annotatedScreenshot: !!document.querySelector('.annotated-screenshot-stage'),
-            behanceCrosslink: !!document.querySelector('.behance-project-crosslink'),
+            behanceArtifactsShowcase: !!document.querySelector('.behance-artifacts-showcase'),
+            behanceArtifactCards: document.querySelectorAll('.behance-artifact-card').length,
             interactivePrototype: !!document.querySelector('.interactive-prototype-window'),
             screenshotImg: document.querySelector('.annotated-full-img')?.getAttribute('src'),
             calloutChips: document.querySelectorAll('.callout-chip-item').length,
@@ -103,11 +106,11 @@ const testPages = [
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.pipeline || elements.pipelineSteps !== 5 || !elements.archInfographic || !elements.annotatedScreenshot || !elements.behanceCrosslink || !elements.interactivePrototype || !elements.screenshotImg || elements.calloutChips !== 3 || !elements.designopsPipeline) {
+        if (!elements.pipeline || elements.pipelineSteps !== 5 || !elements.archInfographic || !elements.annotatedScreenshot || !elements.behanceArtifactsShowcase || elements.behanceArtifactCards < 2 || !elements.interactivePrototype || !elements.screenshotImg || elements.calloutChips !== 3 || !elements.designopsPipeline) {
           console.error(`  ❌ Missing expected elements on ${p.name}`);
           allPassed = false;
         } else {
-          console.log(`  ✓ All elements verified on ${p.name} (5 manager steps, arch infographic, Behance cross-link, interactive prototype, screenshot: ${elements.screenshotImg}, 3 callout chips, designops flywheel)`);
+          console.log(`  ✓ All elements verified on ${p.name} (5 manager steps, arch infographic, Behance artifacts showcase (${elements.behanceArtifactCards} cards), interactive prototype, screenshot: ${elements.screenshotImg}, 3 callout chips, designops flywheel)`);
         }
 
         if (p.url.includes('case-ericsson')) {

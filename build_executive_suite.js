@@ -73,6 +73,7 @@ const globalCoreStyles = `
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; height: auto; }
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -1579,6 +1580,126 @@ const workHtml = `<!DOCTYPE html>
       font-weight: 800;
       flex-shrink: 0;
     }
+
+    /* 5-Project Visual Thumbnail Strip */
+    .behance-visual-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .behance-strip-item {
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .behance-strip-item:hover {
+      border-color: #60A5FA;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .behance-strip-thumb-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      height: 84px;
+      background: #090D16;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .behance-strip-thumb {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .behance-strip-item:hover .behance-strip-thumb {
+      transform: scale(1.05);
+    }
+
+    .behance-strip-pill {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      color: #93C5FD;
+      font-family: var(--font-code);
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .behance-strip-info {
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .behance-strip-co {
+      font-family: var(--font-code);
+      font-size: 9px;
+      font-weight: 800;
+      color: #60A5FA;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .behance-strip-label {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      color: #F1F5F9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 900px) {
+      .behance-visual-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .behance-visual-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
@@ -1594,21 +1715,79 @@ const workHtml = `<!DOCTYPE html>
         Senior UI/UX Design Manager case studies illustrating deep craft across high-density financial data grids, autonomous agentic AI governance, physical/digital industrial IoT telematics, DesignOps token systems, and automotive safety cockpits.
       </p>
 
-      <!-- Behance Portfolio Integration Banner -->
-      <aside class="behance-integration-banner" aria-label="Behance Visual Portfolio Link">
+      <!-- Behance Portfolio Integration Banner with Direct Visual Evidence -->
+      <aside class="behance-integration-banner" aria-label="Behance Visual Portfolio Evidence">
         <div class="behance-left-info">
           <div class="behance-icon-badge">Bē</div>
           <div class="behance-text-block">
-            <strong>Behance Visual Craft Gallery &bull; behance.net/balaajeeVR</strong>
+            <strong>Authentic Behance Visual Archive &bull; behance.net/balaajeeVR</strong>
             <p>
-              All 5 flagship case studies below are anchored in my public Behance gallery. While Behance showcases the raw visual execution and product screens, this executive portal provides the complete Senior Design Manager defense: problem scoping, contextual research, architecture infographics, DesignOps token governance, and boardroom ROI metrics.
+              Direct production screens, telematic dashboards, and information architecture maps extracted directly from my public Behance portfolio. While Behance displays the visual execution, each case study below provides the end-to-end Senior Design Manager defense: user shadowing, architecture blueprints, DesignOps governance, and enterprise ROI.
             </p>
           </div>
         </div>
         <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="behance-link-btn">
-          <span>🎨 Open Behance Portfolio</span>
+          <span>🎨 Open Full Behance Profile</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
+
+        <!-- 5-Project Visual Thumbnail Strip -->
+        <div class="behance-visual-strip">
+          <a href="#case-1" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Ericsson Desktop Grid" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">Ericsson</span>
+              <span class="behance-strip-label">Network Config Grids</span>
+            </div>
+          </a>
+
+          <a href="#case-2" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/sales_estimation_clean.png" alt="Watson Sales Estimation" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">IBM Watson</span>
+              <span class="behance-strip-label">Multi-Scenario Modeler</span>
+            </div>
+          </a>
+
+          <a href="#case-3" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/zebra_iot_dashboard.png" alt="Zebra IoT Dashboard" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">Zebra Tech</span>
+              <span class="behance-strip-label">IoT Device Health</span>
+            </div>
+          </a>
+
+          <a href="#case-4" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/carbon_admin_clean.png" alt="IBM Carbon Admin" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">IBM Carbon</span>
+              <span class="behance-strip-label">Ready2Go Admin App</span>
+            </div>
+          </a>
+
+          <a href="#case-5" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/zf_mobile_clean.png" alt="ZF Wabco Telematics" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">ZF Wabco</span>
+              <span class="behance-strip-label">Mobile Telematics</span>
+            </div>
+          </a>
+        </div>
       </aside>
     </div>
   </header>
@@ -1686,7 +1865,7 @@ const workHtml = `<!DOCTYPE html>
       <div class="cards-stack">
 
         <!-- 1. Ericsson -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-1">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -1758,7 +1937,7 @@ const workHtml = `<!DOCTYPE html>
                 <div class="browser-mini-title">ericsson://salesops/bom-grid</div>
               </div>
               <div class="browser-screenshot-wrap">
-                <img src="screenshots/transformation-ericsson.png" alt="Ericsson SalesOps BOM Data Grid" class="browser-screenshot-img">
+                <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Authentic Behance: Ericsson Network Configuration &amp; Profile Grid" class="browser-screenshot-img">
               </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: FINANCIAL BOM DATA GRID</span>
@@ -1782,7 +1961,7 @@ const workHtml = `<!DOCTYPE html>
         </article>
 
         <!-- 2. IBM Watson -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-2">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -1878,7 +2057,7 @@ const workHtml = `<!DOCTYPE html>
         </article>
 
         <!-- 3. Zebra -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-3">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -2070,7 +2249,7 @@ const workHtml = `<!DOCTYPE html>
         </article>
 
         <!-- 5. ZF Wabco -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-5">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -4027,10 +4206,212 @@ const scrollableCaseStyles = `
     text-decoration: underline;
   }
 
+
+  /* Authentic Behance Evidence Showcase in Section 04 */
+  .behance-artifacts-showcase {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin: 32px 0;
+    box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .behance-showcase-header {
+    margin-bottom: 24px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .behance-showcase-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .behance-verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .behance-showcase-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .behance-showcase-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin: 0;
+    max-width: 820px;
+  }
+  .behance-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .behance-artifact-card {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .behance-artifact-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(96, 165, 250, 0.4);
+  }
+  .behance-card-img-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 220px;
+    background: #090d16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-sizing: border-box;
+  }
+  .behance-card-img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+    transition: transform 0.3s ease;
+    box-sizing: border-box !important;
+  }
+  .behance-artifact-card:hover .behance-card-img {
+    transform: scale(1.03);
+  }
+  .behance-img-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+    color: #93c5fd;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  .behance-card-info {
+    padding: 16px 18px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .behance-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+  }
+  .behance-card-desc {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #94a3b8;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .sticky-case-toc {
+    max-width: 100vw;
+    overflow: hidden;
+  }
+  .toc-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  @media (max-width: 768px) {
+    .behance-artifacts-showcase {
+      padding: 20px 16px;
+    }
+    .behance-gallery-grid {
+      grid-template-columns: 1fr;
+    }
+    .behance-card-img-wrap {
+      height: 190px;
+    }
+  }
+
+
 `;
 
 
 // Helper function to build a full-depth, multi-section scrollable case study page
+
+// Helper function to render authentic Behance visual artifacts
+function getBehanceShowcaseHtml(data) {
+  if (!data.behanceArtifacts || data.behanceArtifacts.length === 0) return '';
+  const artifactCards = data.behanceArtifacts.map(a => `
+    <div class="behance-artifact-card">
+      <div class="behance-card-img-wrap">
+        <img src="${a.img}" alt="${a.title}" class="behance-card-img" loading="lazy">
+        <span class="behance-img-tag">${a.tag}</span>
+      </div>
+      <div class="behance-card-info">
+        <h4 class="behance-card-title">${a.title}</h4>
+        <p class="behance-card-desc">${a.desc}</p>
+      </div>
+    </div>
+  `).join('');
+
+  return `
+    <!-- Authentic Behance Production Artifacts Showcase -->
+    <div class="behance-artifacts-showcase" aria-label="Authentic Behance Portfolio Evidence">
+      <div class="behance-showcase-header">
+        <div class="behance-showcase-title-row">
+          <span class="behance-verified-badge">🎨 AUTHENTIC BĒHANCE EVIDENCE</span>
+          <h3 class="behance-showcase-title">Visual Deliverables from My Public Behance Portfolio</h3>
+        </div>
+        <p class="behance-showcase-desc">
+          Direct, unaltered production screens, information architecture maps, and responsive interfaces extracted from my public Behance portfolio archive (<strong>behance.net/balaajeeVR</strong>).
+        </p>
+      </div>
+      <div class="behance-gallery-grid">
+        ${artifactCards}
+      </div>
+    </div>
+  `;
+}
+
+
 function buildScrollableCasePage(data) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -4186,11 +4567,7 @@ function buildScrollableCasePage(data) {
 
         <!-- High-Resolution Annotated Product Screenshot Showcase -->
         
-        <!-- Behance Visual Craft Cross-Link Banner -->
-        <div class="behance-project-crosslink" aria-label="Behance Visual Portfolio Link">
-          <span>🎨 <strong>Behance Craft Gallery:</strong> High-resolution visual artifacts and Figma screens for this project are published on Behance:</span>
-          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer">behance.net/balaajeeVR &rarr;</a>
-        </div>
+${getBehanceShowcaseHtml(data)}
 
         <div class="annotated-screenshot-stage">
           <div class="annotated-header">
@@ -4675,6 +5052,26 @@ function buildScrollableCasePage(data) {
 console.log('3a. Compiling case-ericsson.html (Full Scrollable)...');
 
 const ericssonData = {
+  behanceArtifacts: [
+    {
+        "img": "screenshots/behance/ericsson_desktop_grid.png",
+        "tag": "DESKTOP HIGH-DENSITY GRID",
+        "title": "Network Device Configuration & Backup Profile Grids",
+        "desc": "Complex tabular enterprise architecture managing live network device parameters, backup automation schedules, and multi-tenant profiles."
+    },
+    {
+        "img": "screenshots/behance/ericsson_mobile_screens.png",
+        "tag": "5-SCREEN MOBILE SUITE",
+        "title": "Mobile Network Configuration & Critical Alarm Telematics",
+        "desc": "On-the-go NOC companion application displaying real-time alarm counters, Cisco/Juniper router summaries, compliance policy checklists, and IP route changes."
+    },
+    {
+        "img": "screenshots/behance/ericsson_problem_framework.png",
+        "tag": "SYSTEMIC TAXONOMY",
+        "title": "Early Problem Scoping & Network Failure Taxonomy",
+        "desc": "Original discovery synthesis grouping 6 systemic enterprise failure vectors: performance degradation, network growth, security, and hardware compatibility."
+    }
+],
   caseId: 'ericsson',
 
   screenshotImg: 'screenshots/transformation-ericsson.png',
@@ -5071,6 +5468,20 @@ console.log('case-ericsson.html written cleanly.');
 console.log('3b. Compiling case-ibm-watson.html (Full Scrollable)...');
 
 const watsonData = {
+  behanceArtifacts: [
+    {
+        "img": "screenshots/behance/sales_estimation_clean.png",
+        "tag": "DECISION SUPPORT ENGINE",
+        "title": "Business Case Portal: Scenario A vs Scenario B Modeler",
+        "desc": "Enterprise multi-scenario decision modeling engine comparing 300 MSEK vs 260 MSEK investment pathways with automated Core Domain and RAN Domain variance tracking."
+    },
+    {
+        "img": "screenshots/transformation-ibm-watson.png",
+        "tag": "AGENTIC ORCHESTRATION",
+        "title": "Watson Orchestrate Multi-Agent Autonomous Mesh",
+        "desc": "3-tier confidence routing interface with transparent side-by-side database diff drawer and cryptographic SOX audit logging."
+    }
+],
   caseId: 'watson',
 
   screenshotImg: 'screenshots/transformation-ibm-watson.png',
@@ -5465,6 +5876,26 @@ console.log('case-ibm-watson.html written cleanly.');
 console.log('3c. Compiling case-zebra.html (Full Scrollable)...');
 
 const zebraData = {
+  behanceArtifacts: [
+    {
+        "img": "screenshots/behance/zebra_iot_dashboard.png",
+        "tag": "FLEET TELEMATICS CONSOLE",
+        "title": "Multi-Site Device & Battery Health Insights Console",
+        "desc": "Executive and operations portal monitoring 2,000 devices and 2,100 batteries with automated OS update queues, physical hardware test failures, and thermal warnings."
+    },
+    {
+        "img": "screenshots/behance/zebra_card_sorting.png",
+        "tag": "IA CARD SORTING",
+        "title": "Stakeholder Information Architecture Card Sorting Matrix",
+        "desc": "Synthesizing customer workshops and cross-functional feedback into clean functional buckets: Battery telemetry, Application health, Performance history, and Environmental limits."
+    },
+    {
+        "img": "screenshots/behance/zebra_user_flow.png",
+        "tag": "NAVIGATION ARCHITECTURE",
+        "title": "Device Health Monitoring User Flow & Branching Logic",
+        "desc": "Complete end-to-end user navigation model covering SSO sign-in, site-level device health routing, automated ticket triage, and predictive battery swap workflows."
+    }
+],
   caseId: 'zebra',
 
   screenshotImg: 'screenshots/transformation-zebra.png',
@@ -5832,6 +6263,20 @@ console.log('case-zebra.html written cleanly.');
 console.log('3d. Compiling case-ibm-carbon.html (Full Scrollable)...');
 
 const carbonData = {
+  behanceArtifacts: [
+    {
+        "img": "screenshots/behance/carbon_admin_clean.png",
+        "tag": "DESIGN SYSTEM PRODUCTION",
+        "title": "Ready2Go Multi-Tenant Administration Web Platform",
+        "desc": "Enterprise administration portal demonstrating strict adherence to Carbon design tokens: high-density tabular alert matrices, form components, and responsive tablet navigation."
+    },
+    {
+        "img": "screenshots/transformation-ibm-carbon.png",
+        "tag": "TOKEN GOVERNANCE PIPELINE",
+        "title": "Style Dictionary Multi-Brand Token Engine",
+        "desc": "Design token studio synchronizing 14 squads across White, Gray 10, Gray 90, and Gray 100 Dark modes with zero visual drift."
+    }
+],
   caseId: 'carbon',
 
   screenshotImg: 'screenshots/transformation-ibm-carbon.png',
@@ -6179,6 +6624,20 @@ console.log('case-ibm-carbon.html written cleanly.');
 console.log('3e. Compiling case-zf-wabco.html (Full Scrollable)...');
 
 const wabcoData = {
+  behanceArtifacts: [
+    {
+        "img": "screenshots/behance/zf_mobile_clean.png",
+        "tag": "MOBILE ERGONOMICS",
+        "title": "High-Contrast Mobile Telematics & Media Architecture",
+        "desc": "Mobile telematic interface optimized for high ambient glare, quick thumb reachability, and high-contrast night readability with zero driver cognitive friction."
+    },
+    {
+        "img": "screenshots/transformation-zf-wabco.png",
+        "tag": "3-ZONE HUD COCKPIT",
+        "title": "CAN-Bus 3-Zone Automotive Cockpit Cluster",
+        "desc": "Digital cluster partitioned into immediate speed HUD, radar headway distance telemetry, and blind-spot obstacle alerts with strict <1.2s gaze budgeting."
+    }
+],
   caseId: 'wabco',
 
   screenshotImg: 'screenshots/transformation-zf-wabco.png',
@@ -6517,6 +6976,14 @@ fs.writeFileSync(path.join(__dirname, 'case-zf-wabco.html'), buildScrollableCase
 console.log('case-zf-wabco.html written cleanly.');
 
 // ============================================================================
+
+
+
+
+
+
+
+
 
 
 

@@ -1222,3 +1222,93 @@ shared_proto_js = """
     }
   </script>
 """
+
+
+
+# ==============================================================================
+# AUTHENTIC BEHANCE ARTIFACTS METADATA (LIVE IN-PAGE VISUAL EVIDENCE)
+# ==============================================================================
+behance_artifacts = {
+    "ericsson": [
+        {
+            "img": "screenshots/behance/ericsson_desktop_grid.png",
+            "tag": "DESKTOP HIGH-DENSITY GRID",
+            "title": "Network Device Configuration & Backup Profile Grids",
+            "desc": "Complex tabular enterprise architecture managing live network device parameters, backup automation schedules, and multi-tenant profiles."
+        },
+        {
+            "img": "screenshots/behance/ericsson_mobile_screens.png",
+            "tag": "5-SCREEN MOBILE SUITE",
+            "title": "Mobile Network Configuration & Critical Alarm Telematics",
+            "desc": "On-the-go NOC companion application displaying real-time alarm counters, Cisco/Juniper router summaries, compliance policy checklists, and IP route changes."
+        },
+        {
+            "img": "screenshots/behance/ericsson_problem_framework.png",
+            "tag": "SYSTEMIC TAXONOMY",
+            "title": "Early Problem Scoping & Network Failure Taxonomy",
+            "desc": "Original discovery synthesis grouping 6 systemic enterprise failure vectors: performance degradation, network growth, security, and hardware compatibility."
+        }
+    ],
+    "watson": [
+        {
+            "img": "screenshots/behance/sales_estimation_clean.png",
+            "tag": "DECISION SUPPORT ENGINE",
+            "title": "Business Case Portal: Scenario A vs Scenario B Modeler",
+            "desc": "Enterprise multi-scenario decision modeling engine comparing 300 MSEK vs 260 MSEK investment pathways with automated Core Domain and RAN Domain variance tracking."
+        },
+        {
+            "img": "screenshots/transformation-ibm-watson.png",
+            "tag": "AGENTIC ORCHESTRATION",
+            "title": "Watson Orchestrate Multi-Agent Autonomous Mesh",
+            "desc": "3-tier confidence routing interface with transparent side-by-side database diff drawer and cryptographic SOX audit logging."
+        }
+    ],
+    "zebra": [
+        {
+            "img": "screenshots/behance/zebra_iot_dashboard.png",
+            "tag": "FLEET TELEMATICS CONSOLE",
+            "title": "Multi-Site Device & Battery Health Insights Console",
+            "desc": "Executive and operations portal monitoring 2,000 devices and 2,100 batteries with automated OS update queues, physical hardware test failures, and thermal warnings."
+        },
+        {
+            "img": "screenshots/behance/zebra_card_sorting.png",
+            "tag": "IA CARD SORTING",
+            "title": "Stakeholder Information Architecture Card Sorting Matrix",
+            "desc": "Synthesizing customer workshops and cross-functional feedback into clean functional buckets: Battery telemetry, Application health, Performance history, and Environmental limits."
+        },
+        {
+            "img": "screenshots/behance/zebra_user_flow.png",
+            "tag": "NAVIGATION ARCHITECTURE",
+            "title": "Device Health Monitoring User Flow & Branching Logic",
+            "desc": "Complete end-to-end user navigation model covering SSO sign-in, site-level device health routing, automated ticket triage, and predictive battery swap workflows."
+        }
+    ],
+    "carbon": [
+        {
+            "img": "screenshots/behance/carbon_admin_clean.png",
+            "tag": "DESIGN SYSTEM PRODUCTION",
+            "title": "Ready2Go Multi-Tenant Administration Web Platform",
+            "desc": "Enterprise administration portal demonstrating strict adherence to Carbon design tokens: high-density tabular alert matrices, form components, and responsive tablet navigation."
+        },
+        {
+            "img": "screenshots/transformation-ibm-carbon.png",
+            "tag": "TOKEN GOVERNANCE PIPELINE",
+            "title": "Style Dictionary Multi-Brand Token Engine",
+            "desc": "Design token studio synchronizing 14 squads across White, Gray 10, Gray 90, and Gray 100 Dark modes with zero visual drift."
+        }
+    ],
+    "wabco": [
+        {
+            "img": "screenshots/behance/zf_mobile_clean.png",
+            "tag": "MOBILE ERGONOMICS",
+            "title": "High-Contrast Mobile Telematics & Media Architecture",
+            "desc": "Mobile telematic interface optimized for high ambient glare, quick thumb reachability, and high-contrast night readability with zero driver cognitive friction."
+        },
+        {
+            "img": "screenshots/transformation-zf-wabco.png",
+            "tag": "3-ZONE HUD COCKPIT",
+            "title": "CAN-Bus 3-Zone Automotive Cockpit Cluster",
+            "desc": "Digital cluster partitioned into immediate speed HUD, radar headway distance telemetry, and blind-spot obstacle alerts with strict <1.2s gaze budgeting."
+        }
+    ]
+}

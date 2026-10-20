@@ -662,6 +662,126 @@ const workHtml = `<!DOCTYPE html>
       font-weight: 800;
       flex-shrink: 0;
     }
+
+    /* 5-Project Visual Thumbnail Strip */
+    .behance-visual-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .behance-strip-item {
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .behance-strip-item:hover {
+      border-color: #60A5FA;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .behance-strip-thumb-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      height: 84px;
+      background: #090D16;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .behance-strip-thumb {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .behance-strip-item:hover .behance-strip-thumb {
+      transform: scale(1.05);
+    }
+
+    .behance-strip-pill {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      color: #93C5FD;
+      font-family: var(--font-code);
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .behance-strip-info {
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .behance-strip-co {
+      font-family: var(--font-code);
+      font-size: 9px;
+      font-weight: 800;
+      color: #60A5FA;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .behance-strip-label {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      color: #F1F5F9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 900px) {
+      .behance-visual-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .behance-visual-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
@@ -677,21 +797,79 @@ const workHtml = `<!DOCTYPE html>
         Senior UI/UX Design Manager case studies illustrating deep craft across high-density financial data grids, autonomous agentic AI governance, physical/digital industrial IoT telematics, DesignOps token systems, and automotive safety cockpits.
       </p>
 
-      <!-- Behance Portfolio Integration Banner -->
-      <aside class="behance-integration-banner" aria-label="Behance Visual Portfolio Link">
+      <!-- Behance Portfolio Integration Banner with Direct Visual Evidence -->
+      <aside class="behance-integration-banner" aria-label="Behance Visual Portfolio Evidence">
         <div class="behance-left-info">
           <div class="behance-icon-badge">Bē</div>
           <div class="behance-text-block">
-            <strong>Behance Visual Craft Gallery &bull; behance.net/balaajeeVR</strong>
+            <strong>Authentic Behance Visual Archive &bull; behance.net/balaajeeVR</strong>
             <p>
-              All 5 flagship case studies below are anchored in my public Behance gallery. While Behance showcases the raw visual execution and product screens, this executive portal provides the complete Senior Design Manager defense: problem scoping, contextual research, architecture infographics, DesignOps token governance, and boardroom ROI metrics.
+              Direct production screens, telematic dashboards, and information architecture maps extracted directly from my public Behance portfolio. While Behance displays the visual execution, each case study below provides the end-to-end Senior Design Manager defense: user shadowing, architecture blueprints, DesignOps governance, and enterprise ROI.
             </p>
           </div>
         </div>
         <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer" class="behance-link-btn">
-          <span>🎨 Open Behance Portfolio</span>
+          <span>🎨 Open Full Behance Profile</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
+
+        <!-- 5-Project Visual Thumbnail Strip -->
+        <div class="behance-visual-strip">
+          <a href="#case-1" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Ericsson Desktop Grid" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">Ericsson</span>
+              <span class="behance-strip-label">Network Config Grids</span>
+            </div>
+          </a>
+
+          <a href="#case-2" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/sales_estimation_clean.png" alt="Watson Sales Estimation" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">IBM Watson</span>
+              <span class="behance-strip-label">Multi-Scenario Modeler</span>
+            </div>
+          </a>
+
+          <a href="#case-3" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/zebra_iot_dashboard.png" alt="Zebra IoT Dashboard" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">Zebra Tech</span>
+              <span class="behance-strip-label">IoT Device Health</span>
+            </div>
+          </a>
+
+          <a href="#case-4" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/carbon_admin_clean.png" alt="IBM Carbon Admin" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">IBM Carbon</span>
+              <span class="behance-strip-label">Ready2Go Admin App</span>
+            </div>
+          </a>
+
+          <a href="#case-5" class="behance-strip-item">
+            <div class="behance-strip-thumb-wrap">
+              <img src="screenshots/behance/zf_mobile_clean.png" alt="ZF Wabco Telematics" class="behance-strip-thumb">
+              <span class="behance-strip-pill">Bē SCREEN</span>
+            </div>
+            <div class="behance-strip-info">
+              <span class="behance-strip-co">ZF Wabco</span>
+              <span class="behance-strip-label">Mobile Telematics</span>
+            </div>
+          </a>
+        </div>
       </aside>
     </div>
   </header>
@@ -769,7 +947,7 @@ const workHtml = `<!DOCTYPE html>
       <div class="cards-stack">
 
         <!-- 1. Ericsson -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-1">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -841,7 +1019,7 @@ const workHtml = `<!DOCTYPE html>
                 <div class="browser-mini-title">ericsson://salesops/bom-grid</div>
               </div>
               <div class="browser-screenshot-wrap">
-                <img src="screenshots/transformation-ericsson.png" alt="Ericsson SalesOps BOM Data Grid" class="browser-screenshot-img">
+                <img src="screenshots/behance/ericsson_desktop_grid.png" alt="Authentic Behance: Ericsson Network Configuration &amp; Profile Grid" class="browser-screenshot-img">
               </div>
               <div class="browser-mini-body">
                 <span class="mini-tag-badge">● INTERACTIVE PROTOTYPE: FINANCIAL BOM DATA GRID</span>
@@ -865,7 +1043,7 @@ const workHtml = `<!DOCTYPE html>
         </article>
 
         <!-- 2. IBM Watson -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-2">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -961,7 +1139,7 @@ const workHtml = `<!DOCTYPE html>
         </article>
 
         <!-- 3. Zebra -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-3">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
@@ -1153,7 +1331,7 @@ const workHtml = `<!DOCTYPE html>
         </article>
 
         <!-- 5. ZF Wabco -->
-        <article class="transformation-card">
+        <article class="transformation-card" id="case-5">
           <div class="card-content-side">
             <div>
               <div class="card-meta-row">
