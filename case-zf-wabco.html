@@ -1764,6 +1764,362 @@
     display: inline-block;
   }
 
+  /* Interactive Working Prototype Container & Styling */
+  .interactive-prototype-window {
+    background: #0B0E17;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 28px 0 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .proto-win-header {
+    background: #111624;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .proto-win-url {
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: #94A3B8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+  }
+
+  .proto-win-badge {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #10B981;
+    white-space: nowrap;
+  }
+
+  .proto-win-body {
+    padding: 24px;
+    background: #0D111C;
+    color: #FFFFFF;
+  }
+
+  .proto-deal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .proto-grid-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94A3B8;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+  }
+
+  .proto-grid-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .grid-num-input {
+    width: 56px;
+    padding: 4px 8px;
+    background: #1E293B;
+    border: 1px solid #3B82F6;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .grid-num-input:focus {
+    outline: 2px solid #60A5FA;
+  }
+
+  .margin-pill.margin-escalate {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border-color: #EF4444;
+  }
+
+  .proto-action-btn {
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.3);
+  }
+
+  .proto-action-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.4);
+  }
+
+  .proto-reject-btn {
+    background: transparent;
+    color: #F87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .proto-reject-btn:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: #F87171;
+  }
+
+  .proto-toast {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10B981;
+    color: #34D399;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Watson Agent Node Cards */
+  .agent-node-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .agent-node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .agent-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-active {
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
+  }
+
+  .dot-pending {
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
+  }
+
+  .agent-name {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .agent-status-badge {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .badge-success { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+  .badge-pending { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+
+  .agent-detail-text {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .conf-tier-btns, .zone-filter-group, .carbon-theme-btns, .lighting-mode-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .btn-tier, .zone-btn, .c-theme-btn, .w-light-btn {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #CBD5E1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-tier.active, .zone-btn.active, .c-theme-btn.active, .w-light-btn.active {
+    background: #3B82F6;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+  }
+
+  /* Zebra Fleet Card */
+  .zebra-scanner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .zebra-scanner-card.scanner-warn {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.05);
+  }
+
+  .scanner-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .scanner-model {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .scanner-badge-ok {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #34D399;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-badge-alert {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #F87171;
+    background: rgba(220, 38, 38, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-loc {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+  }
+
+  .scanner-metrics-row {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    color: #CBD5E1;
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Wabco HUD Card */
+  .hud-zone-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hud-zone-tag {
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
+  }
+
+  /* Behance Project Crosslink Ribbon */
+  .behance-project-crosslink {
+    background: linear-gradient(135deg, rgba(0, 87, 255, 0.1) 0%, rgba(240, 6, 88, 0.08) 100%);
+    border: 1px solid rgba(0, 87, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .behance-project-crosslink span {
+    font-size: 12.5px;
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .behance-project-crosslink a {
+    color: #0057FF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .behance-project-crosslink a:hover {
+    text-decoration: underline;
+  }
+
+
   </style>
 </head>
 <body>
@@ -1843,13 +2199,13 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">01</span>
-                  <span class="p-step-phase">Discovery & Audit</span>
+                  <span class="p-step-phase">Autobahn Night Shadowing</span>
                 </div>
-                <h4 class="p-step-title">Driver Cognitive Overload Audit</h4>
-                <p class="p-step-desc">Audited European commercial truck cab displays; identified severe cognitive overload from fragmented GPS units, radar alarms, and dispatcher radios.</p>
+                <h4 class="p-step-title">In-Cab Contextual Research on German Highways</h4>
+                <p class="p-step-desc">Shadowed commercial truck drivers on night freight routes across Germany; observed severe cognitive overload from aftermarket gadgets and unprioritized chimes.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Cockpit Ergonomics & Safety Audit</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Driver Cognitive Load Map</span>
                 <span class="p-step-metric"><strong>Impact:</strong> Identified 2.8s eyes-off-road risk</span>
               </div>
             </div>
@@ -1858,14 +2214,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">02</span>
-                  <span class="p-step-phase">In-Situ Research</span>
+                  <span class="p-step-phase">Gaze Budgeting (<1.2s Legal Ceiling)</span>
                 </div>
-                <h4 class="p-step-title">Autobahn Night Route Shadowing</h4>
-                <p class="p-step-desc">Traveled with long-haul drivers on German Autobahn night routes; measured eye glance times and identified nighttime headlight glare as critical risk.</p>
+                <h4 class="p-step-title">Infrared Gaze-Tracking & Glance Budgeting</h4>
+                <p class="p-step-desc">Conducted eye-tracking studies under simulated rain and fog; established strict 0.8-second glance ceiling to meet UNECE 158/159 EU safety standards.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> In-Cab Glance Time & Lighting Map</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Established strict <1.2s glance target</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Glance Time Ergonomic Protocol</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Safety compliance: 100% UNECE</span>
               </div>
             </div>
           
@@ -1873,14 +2229,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">03</span>
-                  <span class="p-step-phase">Systems & IA</span>
+                  <span class="p-step-phase">3-Zone Spatial Cluster Partitioning</span>
                 </div>
-                <h4 class="p-step-title">3-Zone Ergonomic Cockpit IA</h4>
-                <p class="p-step-desc">Re-architected in-cab cluster into 3 distinct ergonomic zones: Zone 1 (Radar/Speed), Zone 2 (Turn Navigation), Zone 3 (Peripheral Eco-Coaching).</p>
+                <h4 class="p-step-title">3-Zone Spatial Ergonomic Instrument Architecture</h4>
+                <p class="p-step-desc">Partitioned cluster display: Zone 1 (Immediate Forward Safety & Radar), Zone 2 (Turn Navigation), and Zone 3 (Peripheral Eco-Coaching).</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> 3-Zone Cockpit Layout Specification</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Eliminated all sub-menus while driving</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> 3-Zone Ergonomic HUD Blueprint</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Glance duration: 2.8s -> 0.94s (-66%)</span>
               </div>
             </div>
           
@@ -1888,14 +2244,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">04</span>
-                  <span class="p-step-phase">DesignOps & Tokens</span>
+                  <span class="p-step-phase">Anti-Glare Lighting Engine</span>
                 </div>
-                <h4 class="p-step-title">Automotive-Grade HMI Design System</h4>
-                <p class="p-step-desc">Engineered high-contrast, glare-resistant HMI tokens strictly compliant with EU distraction guidelines and day/night ambient light sensors.</p>
+                <h4 class="p-step-title">High-Contrast Glare-Shield Adaptive Palette</h4>
+                <p class="p-step-desc">Engineered dual daylight sunlight and anti-glare night lighting modes with suppressed blue light to prevent night blindness on unlit freight routes.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Automotive CAN-Bus UI Token Kit</span>
-                <span class="p-step-metric"><strong>Impact:</strong> 100% compliance with EU transport laws</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Glare-Shield Luminescence Tokens</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Night eye fatigue reduced by 40%</span>
               </div>
             </div>
           
@@ -1903,14 +2259,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">05</span>
-                  <span class="p-step-phase">Validation & Scale</span>
+                  <span class="p-step-phase">CAN-Bus Telematics Sync</span>
                 </div>
-                <h4 class="p-step-title">80,000+ Truck Deployment & Safety ROI</h4>
-                <p class="p-step-desc">Deployed to European freight fleets; achieved average glance time of 0.94s, reduced route navigation errors by 18%, and cut fuel burn by 6.2%.</p>
+                <h4 class="p-step-title">CANopen Vehicle Bus Integration & Fleet Rollout</h4>
+                <p class="p-step-desc">Connected hardware CAN-bus engine sensors with cloud dispatch console for real-time fuel coaching; deployed across 80,000 European trucks.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Fleet Safety & Ergonomic Validation Report</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Glance 0.94s (<1.2s max), 80k trucks</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> CAN-Bus Telematics Spec (SUS 86)</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Critical route errors cut by 18%</span>
               </div>
             </div>
           
@@ -2134,6 +2490,13 @@
         </div>
 
         <!-- High-Resolution Annotated Product Screenshot Showcase -->
+        
+        <!-- Behance Visual Craft Cross-Link Banner -->
+        <div class="behance-project-crosslink" aria-label="Behance Visual Portfolio Link">
+          <span>🎨 <strong>Behance Craft Gallery:</strong> High-resolution visual artifacts and Figma screens for this project are published on Behance:</span>
+          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer">behance.net/balaajeeVR &rarr;</a>
+        </div>
+
         <div class="annotated-screenshot-stage">
           <div class="annotated-header">
             <div class="window-dots">
@@ -2180,42 +2543,69 @@
         </div>
 
         
-    <div class="ui-showcase-window">
-      <div class="window-header" style="background: #0D1117;">
-        <div class="window-dots">
-          <span class="window-dot dot-red"></span>
-          <span class="window-dot dot-yellow"></span>
-          <span class="window-dot dot-green"></span>
-        </div>
-        <div class="window-address" style="background: #161B22; color: #8B949E;">zf-wabco://cockpit-cluster/active-haul/route-849</div>
-        <span class="window-badge">● CAN-BUS CONNECTED</span>
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header" style="background: #090D14;">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url" style="color: #94A3B8; background: #111624;">zf-wabco://cockpit-cluster/active-haul/route-849</div>
+        <span class="proto-win-badge">● CAN-BUS CONNECTED &bull; UNECE 158/159 COMPLIANT</span>
       </div>
-      <div class="app-canvas" style="background: #090D14; color: #FFFFFF;">
-        <div style="display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; margin-bottom: 18px;">
-          <div style="background: #111827; padding: 18px; border-radius: 10px; text-align: center; border: 1px solid #1F2937;">
-            <div style="font-family: var(--font-code); font-size: 10.5px; color: #9CA3AF;">ZONE 1 (&lt;0.8S GLANCE)</div>
-            <div style="font-size: 38px; font-weight: 800; color: #10B981; font-family: var(--font-code); margin: 6px 0;">88 <span style="font-size: 16px;">KM/H</span></div>
-            <div style="font-size: 11px; color: #9CA3AF;">Safe Distance: 85m &bull; Limit: 90</div>
+      <div id="wabco-hud-body" class="proto-win-body" style="background: #06090F; color: #FFFFFF; transition: all 0.3s ease;">
+        <!-- Controls Toolbar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div class="lighting-mode-btns">
+            <button onclick="setWabcoLighting('night')" id="wbtn-night" class="w-light-btn active">🌙 Night Freight Mode (Anti-Glare)</button>
+            <button onclick="setWabcoLighting('day')" id="wbtn-day" class="w-light-btn">☀️ Daylight Sunlight Mode (High-Contrast)</button>
           </div>
 
-          <div style="background: #111827; padding: 18px; border-radius: 10px; text-align: center; border: 1px solid #1F2937;">
-            <div style="font-family: var(--font-code); font-size: 10.5px; color: #F59E0B;">ZONE 2 (&lt;1.2S NAVIGATION)</div>
-            <div style="font-size: 18px; font-weight: 800; color: #F59E0B; margin: 10px 0;">A7 Hamburg — Exit 24 in 2.4 km</div>
-            <div style="font-size: 11px; color: #9CA3AF;">Max Bridge Clearance: 4.2m [CLEAR]</div>
-          </div>
-
-          <div style="background: #111827; padding: 18px; border-radius: 10px; text-align: center; border: 1px solid #1F2937;">
-            <div style="font-family: var(--font-code); font-size: 10.5px; color: #10B981;">ZONE 3 (ECO-COACHING)</div>
-            <div style="font-size: 18px; font-weight: 800; color: #10B981; margin: 10px 0;">Optimal Torque</div>
-            <div style="font-size: 11px; color: #9CA3AF;">+14% Fleet Fuel Efficiency</div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">Cruise Speed:</span>
+            <input type="range" min="70" max="95" value="88" oninput="updateWabcoSpeed(this.value)" style="cursor: pointer;" aria-label="Simulated truck cruise speed control slider">
+            <span id="wabco-slider-val" style="font-family: var(--font-code); font-size: 12px; font-weight: 700; color: #10B981;">88 km/h</span>
           </div>
         </div>
 
-        <div class="ergonomics-banner" style="background: #1F2937; border-color: #374151;">
-          <div class="ergonomics-text" style="color: #E5E7EB;">
-            📡 <strong>Dispatcher Command Center:</strong> Real-time CAN-bus telemetry streaming over 4G/5G &bull; Geo-fence compliance &bull; Driver rest cycle tracking.
+        <!-- 3-Zone Cockpit Cluster -->
+        <div style="display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 16px; margin-bottom: 20px;">
+          <!-- Zone 1 -->
+          <div id="wabco-zone-1" class="hud-zone-card">
+            <div class="hud-zone-tag">ZONE 1 (&lt;0.8S GLANCE BUDGET)</div>
+            <div id="wabco-speed-num" style="font-size: 42px; font-weight: 900; font-family: var(--font-code); color: #10B981; margin: 4px 0;">88 <span style="font-size: 16px;">KM/H</span></div>
+            <div id="wabco-radar-info" style="font-size: 11px; color: #94A3B8;">Safe Radar Distance: <strong>85m</strong> &bull; Limit: 90</div>
+            <div id="wabco-hazard-alert" style="display: none; margin-top: 8px; background: rgba(245, 158, 11, 0.2); border: 1px solid #F59E0B; border-radius: 6px; padding: 4px 8px; font-family: var(--font-code); font-size: 10px; color: #F59E0B; font-weight: 700;">
+              ⚠️ BLIND SPOT: Vehicle at Right Flank (14m)
+            </div>
           </div>
-          <span class="margin-pill margin-pass">80,000+ TRUCKS DEPLOYED</span>
+
+          <!-- Zone 2 -->
+          <div class="hud-zone-card">
+            <div class="hud-zone-tag" style="color: #F59E0B;">ZONE 2 (&lt;1.2S NAVIGATION)</div>
+            <div style="font-size: 16px; font-weight: 800; color: #F59E0B; margin: 8px 0 4px;">A7 Hamburg &bull; Exit 24 in 2.4 km</div>
+            <div style="font-size: 11px; color: #94A3B8;">Max Bridge Clearance: <strong>4.2m [CLEAR]</strong></div>
+            <div style="font-size: 11px; color: #94A3B8; margin-top: 4px;">Lane 2 Recommended &bull; Heavy Freight</div>
+          </div>
+
+          <!-- Zone 3 -->
+          <div class="hud-zone-card">
+            <div class="hud-zone-tag" style="color: #38BDF8;">ZONE 3 (PERIPHERAL ECO-PULSE)</div>
+            <div style="font-size: 18px; font-weight: 800; color: #38BDF8; margin: 8px 0 4px;">Optimal Torque</div>
+            <div style="font-size: 11px; color: #94A3B8;">+14% Fleet Fuel Efficiency</div>
+            <div style="font-size: 11px; color: #10B981; margin-top: 4px;">RPM: 1,250 &bull; Eco-Band Green</div>
+          </div>
+        </div>
+
+        <!-- Simulator Controls -->
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <strong style="font-family: var(--font-heading); font-size: 13px; color: #FFFFFF;">UNECE 158/159 Gaze-Time Compliance Simulator</strong>
+            <p style="font-size: 11.5px; color: #94A3B8; margin: 2px 0 0;">Verifies driver cognitive perception speed under high-speed Autobahn freight conditions.</p>
+          </div>
+          <button onclick="triggerWabcoHazard()" class="proto-action-btn">
+            🚨 Simulate Blind Spot Obstacle Warning
+          </button>
+        </div>
+
+        <div id="wabco-toast" class="proto-toast" style="display: none;">
+          ⚡ Blind Spot Hazard Triggered! Eye-glance perception clocked at 0.68s [PASS &lt; 0.8s UNECE 158/159 Limit].
         </div>
       </div>
     </div>
@@ -2496,6 +2886,212 @@
 
     function simulateAction(msg) {
       alert(msg);
+    }
+  </script>
+
+
+  <!-- Shared Interactive Working Prototype Logic -->
+  <script>
+    // 1. Ericsson BOM Recalculation
+    function recalcEricssonDeal() {
+      const rows = document.querySelectorAll('#ericsson-bom-rows tr');
+      let totalRev = 0, totalCost = 0;
+      rows.forEach(r => {
+        const cost = parseFloat(r.getAttribute('data-cost')) || 0;
+        const list = parseFloat(r.getAttribute('data-list')) || 0;
+        const qty = parseFloat(r.getAttribute('data-qty')) || 0;
+        const input = r.querySelector('.grid-num-input');
+        const disc = parseFloat(input ? input.value : 0) || 0;
+        const netUnit = list * (1 - disc / 100);
+        const lineRev = netUnit * qty;
+        const lineCost = cost * qty;
+        totalRev += lineRev;
+        totalCost += lineCost;
+        const netEl = r.querySelector('.row-net-val');
+        const marginEl = r.querySelector('.row-margin-val');
+        if (netEl) netEl.textContent = '$' + Math.round(lineRev).toLocaleString();
+        const lineMargin = lineRev > 0 ? ((lineRev - lineCost) / lineRev) * 100 : 0;
+        if (marginEl) {
+          marginEl.textContent = lineMargin.toFixed(1) + '%';
+          marginEl.className = 'margin-pill ' + (lineMargin >= 35 ? 'margin-pass' : 'margin-escalate') + ' row-margin-val';
+        }
+      });
+      const totalEl = document.getElementById('ericsson-total-val');
+      const badgeEl = document.getElementById('ericsson-margin-badge');
+      if (totalEl) totalEl.textContent = '$' + Math.round(totalRev).toLocaleString();
+      const overallMargin = totalRev > 0 ? ((totalRev - totalCost) / totalRev) * 100 : 0;
+      if (badgeEl) {
+        if (overallMargin >= 35) {
+          badgeEl.className = 'margin-pill margin-pass';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [PASS • GREEN CHANNEL]';
+        } else {
+          badgeEl.className = 'margin-pill margin-escalate';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [⚠️ ESCALATION REQUIRED • VP REVIEW]';
+        }
+      }
+    }
+    function triggerEricssonQuotePdf() {
+      const t = document.getElementById('ericsson-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 2. Watson Confidence & Diff
+    function setWatsonConfidence(tier) {
+      const label = document.getElementById('watson-conf-label');
+      const desc = document.getElementById('watson-conf-desc');
+      document.querySelectorAll('.conf-tier-btns .btn-tier').forEach(b => b.classList.remove('active'));
+      if (tier === 'high') {
+        const btn = document.getElementById('wconf-high');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '96.4% AI Confidence [Tier 1: Full Autonomy]'; label.style.color = '#34D399'; }
+        if (desc) desc.textContent = 'Tier 1 Routing: Score exceeds 95% threshold. Safe for automated execution with post-commit notification.';
+      } else if (tier === 'med') {
+        const btn = document.getElementById('wconf-med');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '94.2% AI Confidence [Tier 2: Supervised Draft]'; label.style.color = '#60A5FA'; }
+        if (desc) desc.textContent = 'Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.';
+      } else {
+        const btn = document.getElementById('wconf-low');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '74.0% AI Confidence [Tier 3: Low Confidence]'; label.style.color = '#F87171'; }
+        if (desc) desc.textContent = 'Tier 3 Routing: Complex discrepancy detected. Hard escalation triggered to Corporate Financial Controller.';
+      }
+    }
+    function commitWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(16, 185, 129, 0.15)';
+        t.style.borderColor = '#10B981';
+        t.style.color = '#34D399';
+        t.textContent = '🚀 Transaction #TX-88219 committed to SAP S/4HANA & SOX Cryptographic Audit Trail Logged!';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+    function rejectWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(239, 68, 68, 0.15)';
+        t.style.borderColor = '#EF4444';
+        t.style.color = '#F87171';
+        t.textContent = '⚠️ Transaction rejected. Diverted to manual controller review queue.';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+
+    // 3. Zebra Zone Filter & Scan
+    function filterZebraZone(zone) {
+      document.querySelectorAll('.zone-filter-group .zone-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('zbtn-' + zone);
+      if (activeBtn) activeBtn.classList.add('active');
+      const alertEl = document.getElementById('zebra-cold-alert');
+      const gloveInd = document.getElementById('zebra-glove-mode-indicator');
+      if (zone === 'c') {
+        if (alertEl) alertEl.style.display = 'block';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Heavy Thermal Glove Mode: 72px Targets [ACTIVE]';
+          gloveInd.style.background = 'rgba(240, 6, 88, 0.15)';
+          gloveInd.style.color = '#F43F5E';
+          gloveInd.style.borderColor = '#F43F5E';
+        }
+      } else {
+        if (alertEl) alertEl.style.display = 'none';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Standard Touch Targets: 44px';
+          gloveInd.style.background = 'rgba(16, 185, 129, 0.1)';
+          gloveInd.style.color = '#34D399';
+          gloveInd.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+        }
+      }
+    }
+    function triggerZebraScan() {
+      const t = document.getElementById('zebra-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 4. Carbon Theme Switcher
+    function setCarbonTheme(theme) {
+      document.querySelectorAll('.carbon-theme-btns .c-theme-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('cbtn-' + theme);
+      if (activeBtn) activeBtn.classList.add('active');
+      const stage = document.getElementById('carbon-live-stage');
+      const btn = document.getElementById('carbon-btn-primary');
+      const input = document.getElementById('carbon-input');
+      const tint = document.getElementById('t-int');
+      const tbg = document.getElementById('t-bg');
+      const tfield = document.getElementById('t-field');
+      const ttext = document.getElementById('t-text');
+
+      if (!stage) return;
+      if (theme === 'white') {
+        stage.style.background = '#FFFFFF'; stage.style.color = '#161616'; stage.style.borderColor = '#E0E0E0';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#F4F4F4'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#FFFFFF';
+        if (tfield) tfield.textContent = '#F4F4F4';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g10') {
+        stage.style.background = '#F4F4F4'; stage.style.color = '#161616'; stage.style.borderColor = '#D1D5DB';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#FFFFFF'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#F4F4F4';
+        if (tfield) tfield.textContent = '#FFFFFF';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g90') {
+        stage.style.background = '#262626'; stage.style.color = '#F4F4F4'; stage.style.borderColor = '#525252';
+        if (btn) btn.style.background = '#78A9FF';
+        if (input) { input.style.background = '#393939'; input.style.borderColor = '#6F6F6F'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#78A9FF';
+        if (tbg) tbg.textContent = '#262626';
+        if (tfield) tfield.textContent = '#393939';
+        if (ttext) ttext.textContent = '#F4F4F4';
+      } else if (theme === 'g100') {
+        stage.style.background = '#161616'; stage.style.color = '#FFFFFF'; stage.style.borderColor = '#393939';
+        if (btn) btn.style.background = '#4589DF';
+        if (input) { input.style.background = '#262626'; input.style.borderColor = '#525252'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#4589DF';
+        if (tbg) tbg.textContent = '#161616';
+        if (tfield) tfield.textContent = '#262626';
+        if (ttext) ttext.textContent = '#FFFFFF';
+      }
+    }
+    function triggerCarbonPr() {
+      const t = document.getElementById('carbon-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 5. Wabco HUD Simulator
+    function setWabcoLighting(mode) {
+      document.querySelectorAll('.lighting-mode-btns .w-light-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('wbtn-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+      const body = document.getElementById('wabco-hud-body');
+      if (!body) return;
+      if (mode === 'day') {
+        body.style.background = '#F8FAFC';
+        body.style.color = '#0F172A';
+      } else {
+        body.style.background = '#06090F';
+        body.style.color = '#FFFFFF';
+      }
+    }
+    function updateWabcoSpeed(val) {
+      const speedEl = document.getElementById('wabco-speed-num');
+      const sliderVal = document.getElementById('wabco-slider-val');
+      const radarInfo = document.getElementById('wabco-radar-info');
+      if (speedEl) speedEl.innerHTML = val + ' <span style="font-size: 16px;">KM/H</span>';
+      if (sliderVal) sliderVal.textContent = val + ' km/h';
+      const distance = Math.round(val * 0.96);
+      if (radarInfo) radarInfo.innerHTML = 'Safe Radar Distance: <strong>' + distance + 'm</strong> &bull; Headway: 2.4s';
+    }
+    function triggerWabcoHazard() {
+      const alertEl = document.getElementById('wabco-hazard-alert');
+      const t = document.getElementById('wabco-toast');
+      if (alertEl) { alertEl.style.display = 'block'; setTimeout(() => { alertEl.style.display = 'none'; }, 5000); }
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 5000); }
     }
   </script>
 

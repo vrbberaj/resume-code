@@ -1764,6 +1764,362 @@
     display: inline-block;
   }
 
+  /* Interactive Working Prototype Container & Styling */
+  .interactive-prototype-window {
+    background: #0B0E17;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 28px 0 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .proto-win-header {
+    background: #111624;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .proto-win-url {
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: #94A3B8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+  }
+
+  .proto-win-badge {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #10B981;
+    white-space: nowrap;
+  }
+
+  .proto-win-body {
+    padding: 24px;
+    background: #0D111C;
+    color: #FFFFFF;
+  }
+
+  .proto-deal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .proto-grid-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94A3B8;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+  }
+
+  .proto-grid-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .grid-num-input {
+    width: 56px;
+    padding: 4px 8px;
+    background: #1E293B;
+    border: 1px solid #3B82F6;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .grid-num-input:focus {
+    outline: 2px solid #60A5FA;
+  }
+
+  .margin-pill.margin-escalate {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border-color: #EF4444;
+  }
+
+  .proto-action-btn {
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.3);
+  }
+
+  .proto-action-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.4);
+  }
+
+  .proto-reject-btn {
+    background: transparent;
+    color: #F87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .proto-reject-btn:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: #F87171;
+  }
+
+  .proto-toast {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10B981;
+    color: #34D399;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Watson Agent Node Cards */
+  .agent-node-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .agent-node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .agent-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-active {
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
+  }
+
+  .dot-pending {
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
+  }
+
+  .agent-name {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .agent-status-badge {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .badge-success { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+  .badge-pending { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+
+  .agent-detail-text {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .conf-tier-btns, .zone-filter-group, .carbon-theme-btns, .lighting-mode-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .btn-tier, .zone-btn, .c-theme-btn, .w-light-btn {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #CBD5E1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-tier.active, .zone-btn.active, .c-theme-btn.active, .w-light-btn.active {
+    background: #3B82F6;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+  }
+
+  /* Zebra Fleet Card */
+  .zebra-scanner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .zebra-scanner-card.scanner-warn {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.05);
+  }
+
+  .scanner-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .scanner-model {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .scanner-badge-ok {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #34D399;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-badge-alert {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #F87171;
+    background: rgba(220, 38, 38, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-loc {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+  }
+
+  .scanner-metrics-row {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    color: #CBD5E1;
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Wabco HUD Card */
+  .hud-zone-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hud-zone-tag {
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
+  }
+
+  /* Behance Project Crosslink Ribbon */
+  .behance-project-crosslink {
+    background: linear-gradient(135deg, rgba(0, 87, 255, 0.1) 0%, rgba(240, 6, 88, 0.08) 100%);
+    border: 1px solid rgba(0, 87, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .behance-project-crosslink span {
+    font-size: 12.5px;
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .behance-project-crosslink a {
+    color: #0057FF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .behance-project-crosslink a:hover {
+    text-decoration: underline;
+  }
+
+
   </style>
 </head>
 <body>
@@ -1843,14 +2199,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">01</span>
-                  <span class="p-step-phase">Discovery & Audit</span>
+                  <span class="p-step-phase">Mental Model & Trust Audit</span>
                 </div>
-                <h4 class="p-step-title">SOX Compliance & Risk Audit</h4>
-                <p class="p-step-desc">Audited black-box LLM risks across Fortune 500 enterprise finance; identified legal liability fears stalling AI adoption in ERP/CRM.</p>
+                <h4 class="p-step-title">Cognitive Mental Model & SOX Risk Audit</h4>
+                <p class="p-step-desc">Audited cognitive fatigue and liability anxiety when enterprise finance analysts review automated LLM database mutations across SAP and Salesforce.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> SOX Governance Risk Assessment</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Pinpointed 0-audit trail vulnerability</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Cognitive Trust Audit & Risk Register</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Identified 18 hallucination risks</span>
               </div>
             </div>
           
@@ -1858,14 +2214,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">02</span>
-                  <span class="p-step-phase">In-Situ Research</span>
+                  <span class="p-step-phase">3-Tier Confidence Routing</span>
                 </div>
-                <h4 class="p-step-title">Executive Inquiries in New York</h4>
-                <p class="p-step-desc">Shadowed Enterprise Operations Directors and compliance officers; learned that adoption requires deterministic diff review, not conversational chat.</p>
+                <h4 class="p-step-title">Mathematical Confidence Gating Framework</h4>
+                <p class="p-step-desc">Designed 3-tier routing: Full Autonomy (>=95%), Supervised Review (80-94%), and Hard Human Override (<80%) to guarantee audit safety.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Human-in-the-Loop Empathy Framework</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Defined confidence threshold criteria</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Confidence Gating Architecture</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Zero unauthorized writes</span>
               </div>
             </div>
           
@@ -1873,14 +2229,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">03</span>
-                  <span class="p-step-phase">Systems & IA</span>
+                  <span class="p-step-phase">Agent Mesh State Machine</span>
                 </div>
-                <h4 class="p-step-title">Agentic Mesh & Confidence Gating</h4>
-                <p class="p-step-desc">Designed visual multi-agent orchestration canvas with 3-tier confidence gating (Green: auto-commit; Yellow: diff check; Red: manual override).</p>
+                <h4 class="p-step-title">Multi-Agent Mesh Topology & Visual State Machine</h4>
+                <p class="p-step-desc">Engineered visual orchestration canvas showing live agent task hand-offs (SAP ERP -> CRM -> Jira) with real-time dependency status.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Agentic State Machine & Wireframe Architecture</span>
-                <span class="p-step-metric"><strong>Impact:</strong> 94.2% autonomous confidence</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Agentic Mesh Topology Map</span>
+                <span class="p-step-metric"><strong>Impact:</strong> 78% review overhead reduction</span>
               </div>
             </div>
           
@@ -1888,14 +2244,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">04</span>
-                  <span class="p-step-phase">DesignOps & Tokens</span>
+                  <span class="p-step-phase">Side-by-Side Mutation Diff</span>
                 </div>
-                <h4 class="p-step-title">Carbon AI Agentic Tokens</h4>
-                <p class="p-step-desc">Led DesignOps token governance across 14 distributed squads, creating standardized agent state badges, confidence meters, and diff visualizers.</p>
+                <h4 class="p-step-title">Audit-Proof Ledger Mutation Diffing Drawer</h4>
+                <p class="p-step-desc">Created side-by-side database diff review highlighting pending adjustments with green addition and red deletion delta tokens before ERP write-back.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Carbon AI Agentic Token Package</span>
-                <span class="p-step-metric"><strong>Impact:</strong> 14 squads synced with zero drift</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Side-by-Side Diff Component Spec</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Review time: 45m -> 8m (-82%)</span>
               </div>
             </div>
           
@@ -1903,14 +2259,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">05</span>
-                  <span class="p-step-phase">Validation & Scale</span>
+                  <span class="p-step-phase">SOX Compliance Flywheel</span>
                 </div>
-                <h4 class="p-step-title">Enterprise Pilot & SOX Certification</h4>
-                <p class="p-step-desc">Tested with enterprise operations teams; delivered 62% task velocity improvement, 0 SOX compliance violations, and full audit traceability.</p>
+                <h4 class="p-step-title">Cryptographic Audit Trail & Governance Flywheel</h4>
+                <p class="p-step-desc">Implemented immutable ledger logging with prompt parameter hashing and human approval timestamps; scaled across 6 global enterprise business units.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Regulatory Audit & Pilot Scorecard</span>
-                <span class="p-step-metric"><strong>Impact:</strong> +62% velocity, 0 violations</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> SOX Audit Protocol & SUS 89 Report</span>
+                <span class="p-step-metric"><strong>Impact:</strong> 0 SOX violations across 120k tasks</span>
               </div>
             </div>
           
@@ -2135,6 +2491,13 @@
         </div>
 
         <!-- High-Resolution Annotated Product Screenshot Showcase -->
+        
+        <!-- Behance Visual Craft Cross-Link Banner -->
+        <div class="behance-project-crosslink" aria-label="Behance Visual Portfolio Link">
+          <span>🎨 <strong>Behance Craft Gallery:</strong> High-resolution visual artifacts and Figma screens for this project are published on Behance:</span>
+          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer">behance.net/balaajeeVR &rarr;</a>
+        </div>
+
         <div class="annotated-screenshot-stage">
           <div class="annotated-header">
             <div class="window-dots">
@@ -2181,61 +2544,119 @@
         </div>
 
         
-    <div class="ui-showcase-window">
-      <div class="window-header">
-        <div class="window-dots">
-          <span class="window-dot dot-red"></span>
-          <span class="window-dot dot-yellow"></span>
-          <span class="window-dot dot-green"></span>
-        </div>
-        <div class="window-address">https://watson-orchestrate.ibm.com/workspace/agentic-mesh</div>
-        <span class="window-badge">● ORCHESTRATION ACTIVE</span>
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://watson-orchestrate.ibm.com/workspace/agentic-mesh</div>
+        <span class="proto-win-badge">● MULTI-AGENT STATE MACHINE ACTIVE</span>
       </div>
-      <div class="app-canvas">
-        <div style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; margin-bottom: 18px; border-left: 4px solid #1D4ED8;">
-          <div style="font-family: var(--font-code); font-size: 10.5px; color: #1D4ED8; font-weight: 700; text-transform: uppercase;">Natural Language Enterprise Intent</div>
-          <div style="font-size: 14.5px; font-weight: 600; color: var(--text-main); margin-top: 4px;">“Reconcile Q3 vendor invoices across SAP, verify credit limits in Salesforce, and prepare executive payment voucher.”</div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px;">
-          <div style="background: var(--bg-subtle); padding: 14px; border-radius: 8px; border-top: 3px solid #1D4ED8;">
-            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-code); font-weight: 700; color: var(--text-main);">
-              <span>SAP ERP AGENT</span>
-              <span style="color: #059669;">100% MATCH</span>
-            </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Matched 14 PO line items against invoice receipts. 0 variance.</p>
-          </div>
-
-          <div style="background: var(--bg-subtle); padding: 14px; border-radius: 8px; border-top: 3px solid var(--gold);">
-            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-code); font-weight: 700; color: var(--text-main);">
-              <span>CRM AGENT</span>
-              <span style="color: var(--gold);">APPROVED</span>
-            </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Verified account credit limit: $250,000 threshold cleared.</p>
-          </div>
-
-          <div style="background: var(--bg-subtle); padding: 14px; border-radius: 8px; border-top: 3px solid #059669;">
-            <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-code); font-weight: 700; color: var(--text-main);">
-              <span>AUDIT SENTINEL</span>
-              <span style="color: #059669;">SOX PASS</span>
-            </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Cryptographic hash generated. Audit trail locked into immutable ledger.</p>
+      <div class="proto-win-body">
+        <div style="background: rgba(37, 99, 235, 0.1); border-left: 4px solid #3B82F6; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
+          <div style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #60A5FA; text-transform: uppercase;">Natural Language Enterprise Intent</div>
+          <div style="font-size: 14px; font-weight: 600; color: #FFFFFF; margin-top: 4px;">
+            “Reconcile Q3 vendor invoices across SAP, verify credit limits in Salesforce CRM, and prepare executive payment voucher.”
           </div>
         </div>
 
-        <div style="background: var(--bg-subtle); padding: 16px; border-radius: 10px; border: 1px solid var(--border-subtle);">
+        <!-- Agent Node Graph -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px;">
+          <div class="agent-node-card">
+            <div class="agent-node-header">
+              <span class="agent-pulse-dot dot-active"></span>
+              <span class="agent-name">1. SAP ERP Agent</span>
+            </div>
+            <div class="agent-status-badge badge-success">100% PO Match</div>
+            <p class="agent-detail-text">14 PO line items matched against receipts; 0 unit variance detected.</p>
+          </div>
+
+          <div class="agent-node-card">
+            <div class="agent-node-header">
+              <span class="agent-pulse-dot dot-active"></span>
+              <span class="agent-name">2. Salesforce CRM Agent</span>
+            </div>
+            <div class="agent-status-badge badge-success">Approved</div>
+            <p class="agent-detail-text">Credit threshold of $250,000 verified; customer account in good standing.</p>
+          </div>
+
+          <div class="agent-node-card">
+            <div class="agent-node-header">
+              <span class="agent-pulse-dot dot-pending"></span>
+              <span class="agent-name">3. Ledger Write-Back</span>
+            </div>
+            <div class="agent-status-badge badge-pending">Gated for Review</div>
+            <p class="agent-detail-text">Awaiting human signature before immutable commit to General Ledger.</p>
+          </div>
+        </div>
+
+        <!-- Confidence Score Gating Control -->
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8; text-transform: uppercase;">Confidence Gating Threshold:</span>
+              <strong id="watson-conf-label" style="font-family: var(--font-heading); font-size: 15px; color: #60A5FA; margin-left: 8px;">94.2% AI Confidence [Tier 2: Supervised Draft]</strong>
+            </div>
+            <div class="conf-tier-btns">
+              <button onclick="setWatsonConfidence('high')" id="wconf-high" class="btn-tier">High (96.4%)</button>
+              <button onclick="setWatsonConfidence('med')" id="wconf-med" class="btn-tier active">Supervised (94.2%)</button>
+              <button onclick="setWatsonConfidence('low')" id="wconf-low" class="btn-tier">Low (74.0%)</button>
+            </div>
+          </div>
+          <p id="watson-conf-desc" style="font-size: 12px; color: #CBD5E1; margin: 0; line-height: 1.45;">
+            Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.
+          </p>
+        </div>
+
+        <!-- Side-by-Side Diff Drawer -->
+        <div id="watson-diff-drawer" style="background: #090D14; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Human-in-the-Loop Confidence Gate: Overall Score 94.2%</span>
-            <span class="margin-pill margin-pass">Autonomous Execution Allowed (&ge;90%)</span>
+            <span style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #38BDF8;">PROPOSED DATABASE MUTATION DIFF: SAP S/4HANA vs LLM DRAFT</span>
+            <span style="font-family: var(--font-code); font-size: 10px; color: #94A3B8;">SOX Audit Token: #TX-98402-SHA256</span>
           </div>
-          <div style="height: 8px; background: #E2E8F0; border-radius: 4px; overflow: hidden; position: relative;">
-            <div style="width: 94.2%; height: 100%; background: linear-gradient(90deg, #DC2626 0%, #D97706 70%, #059669 90%);"></div>
+          <div style="overflow-x: auto;">
+            <table class="proto-grid-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Current Database State</th>
+                  <th>Proposed Multi-Agent Mutation</th>
+                  <th>Audit Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cell-code">INVOICE_STATUS</td>
+                  <td style="color: #F87171;">PENDING_APPROVAL</td>
+                  <td style="color: #34D399; font-weight: 700;">+ APPROVED_FOR_PAYMENT</td>
+                  <td><span class="margin-pill margin-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-code">VOUCHER_AMOUNT</td>
+                  <td>$0.00</td>
+                  <td style="color: #34D399; font-weight: 700;">+ $142,500.00 [PO-9402]</td>
+                  <td><span class="margin-pill margin-pass">VERIFIED</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-code">GL_ACCOUNT</td>
+                  <td>2100-AP (Unposted)</td>
+                  <td style="color: #34D399; font-weight: 700;">+ 2100-AP [Balanced &bull; Variance 0.00]</td>
+                  <td><span class="margin-pill margin-pass">VERIFIED</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div style="display: flex; justify-content: space-between; font-family: var(--font-code); font-size: 10.5px; color: var(--text-muted); margin-top: 6px;">
-            <span>&lt;70% Manual Entry Fallback</span>
-            <span>70–89% 1-Click Diff Verification</span>
-            <span>&ge;90% Autonomous Execution</span>
+        </div>
+
+        <!-- Decision Controls -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <span style="font-size: 12px; color: #94A3B8;">🔒 Cryptographic audit trail generated automatically upon human authorization.</span>
+          <div style="display: flex; gap: 10px;">
+            <button onclick="rejectWatsonLedger()" class="proto-reject-btn">❌ Reject / Force Human Override</button>
+            <button onclick="commitWatsonLedger()" class="proto-action-btn">✅ Authorize &amp; Commit to SAP Ledger</button>
           </div>
+        </div>
+
+        <div id="watson-toast" class="proto-toast" style="display: none;">
+          🚀 Transaction #TX-88219 committed to SAP S/4HANA &amp; SOX Cryptographic Audit Trail Logged!
         </div>
       </div>
     </div>
@@ -2516,6 +2937,212 @@
 
     function simulateAction(msg) {
       alert(msg);
+    }
+  </script>
+
+
+  <!-- Shared Interactive Working Prototype Logic -->
+  <script>
+    // 1. Ericsson BOM Recalculation
+    function recalcEricssonDeal() {
+      const rows = document.querySelectorAll('#ericsson-bom-rows tr');
+      let totalRev = 0, totalCost = 0;
+      rows.forEach(r => {
+        const cost = parseFloat(r.getAttribute('data-cost')) || 0;
+        const list = parseFloat(r.getAttribute('data-list')) || 0;
+        const qty = parseFloat(r.getAttribute('data-qty')) || 0;
+        const input = r.querySelector('.grid-num-input');
+        const disc = parseFloat(input ? input.value : 0) || 0;
+        const netUnit = list * (1 - disc / 100);
+        const lineRev = netUnit * qty;
+        const lineCost = cost * qty;
+        totalRev += lineRev;
+        totalCost += lineCost;
+        const netEl = r.querySelector('.row-net-val');
+        const marginEl = r.querySelector('.row-margin-val');
+        if (netEl) netEl.textContent = '$' + Math.round(lineRev).toLocaleString();
+        const lineMargin = lineRev > 0 ? ((lineRev - lineCost) / lineRev) * 100 : 0;
+        if (marginEl) {
+          marginEl.textContent = lineMargin.toFixed(1) + '%';
+          marginEl.className = 'margin-pill ' + (lineMargin >= 35 ? 'margin-pass' : 'margin-escalate') + ' row-margin-val';
+        }
+      });
+      const totalEl = document.getElementById('ericsson-total-val');
+      const badgeEl = document.getElementById('ericsson-margin-badge');
+      if (totalEl) totalEl.textContent = '$' + Math.round(totalRev).toLocaleString();
+      const overallMargin = totalRev > 0 ? ((totalRev - totalCost) / totalRev) * 100 : 0;
+      if (badgeEl) {
+        if (overallMargin >= 35) {
+          badgeEl.className = 'margin-pill margin-pass';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [PASS • GREEN CHANNEL]';
+        } else {
+          badgeEl.className = 'margin-pill margin-escalate';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [⚠️ ESCALATION REQUIRED • VP REVIEW]';
+        }
+      }
+    }
+    function triggerEricssonQuotePdf() {
+      const t = document.getElementById('ericsson-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 2. Watson Confidence & Diff
+    function setWatsonConfidence(tier) {
+      const label = document.getElementById('watson-conf-label');
+      const desc = document.getElementById('watson-conf-desc');
+      document.querySelectorAll('.conf-tier-btns .btn-tier').forEach(b => b.classList.remove('active'));
+      if (tier === 'high') {
+        const btn = document.getElementById('wconf-high');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '96.4% AI Confidence [Tier 1: Full Autonomy]'; label.style.color = '#34D399'; }
+        if (desc) desc.textContent = 'Tier 1 Routing: Score exceeds 95% threshold. Safe for automated execution with post-commit notification.';
+      } else if (tier === 'med') {
+        const btn = document.getElementById('wconf-med');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '94.2% AI Confidence [Tier 2: Supervised Draft]'; label.style.color = '#60A5FA'; }
+        if (desc) desc.textContent = 'Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.';
+      } else {
+        const btn = document.getElementById('wconf-low');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '74.0% AI Confidence [Tier 3: Low Confidence]'; label.style.color = '#F87171'; }
+        if (desc) desc.textContent = 'Tier 3 Routing: Complex discrepancy detected. Hard escalation triggered to Corporate Financial Controller.';
+      }
+    }
+    function commitWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(16, 185, 129, 0.15)';
+        t.style.borderColor = '#10B981';
+        t.style.color = '#34D399';
+        t.textContent = '🚀 Transaction #TX-88219 committed to SAP S/4HANA & SOX Cryptographic Audit Trail Logged!';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+    function rejectWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(239, 68, 68, 0.15)';
+        t.style.borderColor = '#EF4444';
+        t.style.color = '#F87171';
+        t.textContent = '⚠️ Transaction rejected. Diverted to manual controller review queue.';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+
+    // 3. Zebra Zone Filter & Scan
+    function filterZebraZone(zone) {
+      document.querySelectorAll('.zone-filter-group .zone-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('zbtn-' + zone);
+      if (activeBtn) activeBtn.classList.add('active');
+      const alertEl = document.getElementById('zebra-cold-alert');
+      const gloveInd = document.getElementById('zebra-glove-mode-indicator');
+      if (zone === 'c') {
+        if (alertEl) alertEl.style.display = 'block';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Heavy Thermal Glove Mode: 72px Targets [ACTIVE]';
+          gloveInd.style.background = 'rgba(240, 6, 88, 0.15)';
+          gloveInd.style.color = '#F43F5E';
+          gloveInd.style.borderColor = '#F43F5E';
+        }
+      } else {
+        if (alertEl) alertEl.style.display = 'none';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Standard Touch Targets: 44px';
+          gloveInd.style.background = 'rgba(16, 185, 129, 0.1)';
+          gloveInd.style.color = '#34D399';
+          gloveInd.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+        }
+      }
+    }
+    function triggerZebraScan() {
+      const t = document.getElementById('zebra-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 4. Carbon Theme Switcher
+    function setCarbonTheme(theme) {
+      document.querySelectorAll('.carbon-theme-btns .c-theme-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('cbtn-' + theme);
+      if (activeBtn) activeBtn.classList.add('active');
+      const stage = document.getElementById('carbon-live-stage');
+      const btn = document.getElementById('carbon-btn-primary');
+      const input = document.getElementById('carbon-input');
+      const tint = document.getElementById('t-int');
+      const tbg = document.getElementById('t-bg');
+      const tfield = document.getElementById('t-field');
+      const ttext = document.getElementById('t-text');
+
+      if (!stage) return;
+      if (theme === 'white') {
+        stage.style.background = '#FFFFFF'; stage.style.color = '#161616'; stage.style.borderColor = '#E0E0E0';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#F4F4F4'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#FFFFFF';
+        if (tfield) tfield.textContent = '#F4F4F4';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g10') {
+        stage.style.background = '#F4F4F4'; stage.style.color = '#161616'; stage.style.borderColor = '#D1D5DB';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#FFFFFF'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#F4F4F4';
+        if (tfield) tfield.textContent = '#FFFFFF';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g90') {
+        stage.style.background = '#262626'; stage.style.color = '#F4F4F4'; stage.style.borderColor = '#525252';
+        if (btn) btn.style.background = '#78A9FF';
+        if (input) { input.style.background = '#393939'; input.style.borderColor = '#6F6F6F'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#78A9FF';
+        if (tbg) tbg.textContent = '#262626';
+        if (tfield) tfield.textContent = '#393939';
+        if (ttext) ttext.textContent = '#F4F4F4';
+      } else if (theme === 'g100') {
+        stage.style.background = '#161616'; stage.style.color = '#FFFFFF'; stage.style.borderColor = '#393939';
+        if (btn) btn.style.background = '#4589DF';
+        if (input) { input.style.background = '#262626'; input.style.borderColor = '#525252'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#4589DF';
+        if (tbg) tbg.textContent = '#161616';
+        if (tfield) tfield.textContent = '#262626';
+        if (ttext) ttext.textContent = '#FFFFFF';
+      }
+    }
+    function triggerCarbonPr() {
+      const t = document.getElementById('carbon-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 5. Wabco HUD Simulator
+    function setWabcoLighting(mode) {
+      document.querySelectorAll('.lighting-mode-btns .w-light-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('wbtn-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+      const body = document.getElementById('wabco-hud-body');
+      if (!body) return;
+      if (mode === 'day') {
+        body.style.background = '#F8FAFC';
+        body.style.color = '#0F172A';
+      } else {
+        body.style.background = '#06090F';
+        body.style.color = '#FFFFFF';
+      }
+    }
+    function updateWabcoSpeed(val) {
+      const speedEl = document.getElementById('wabco-speed-num');
+      const sliderVal = document.getElementById('wabco-slider-val');
+      const radarInfo = document.getElementById('wabco-radar-info');
+      if (speedEl) speedEl.innerHTML = val + ' <span style="font-size: 16px;">KM/H</span>';
+      if (sliderVal) sliderVal.textContent = val + ' km/h';
+      const distance = Math.round(val * 0.96);
+      if (radarInfo) radarInfo.innerHTML = 'Safe Radar Distance: <strong>' + distance + 'm</strong> &bull; Headway: 2.4s';
+    }
+    function triggerWabcoHazard() {
+      const alertEl = document.getElementById('wabco-hazard-alert');
+      const t = document.getElementById('wabco-toast');
+      if (alertEl) { alertEl.style.display = 'block'; setTimeout(() => { alertEl.style.display = 'none'; }, 5000); }
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 5000); }
     }
   </script>
 

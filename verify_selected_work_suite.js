@@ -64,20 +64,21 @@ const testPages = [
       if (p.url.includes('/work')) {
         const elements = await page.evaluate(() => {
           return {
-            frameworkBanner: !!document.querySelector('.manager-framework-banner'),
-            frameworkSteps: document.querySelectorAll('.framework-step-card').length,
+            specializationBanner: !!document.querySelector('.specialization-pillars-banner'),
+            specializationPillars: document.querySelectorAll('.spec-pillar-card').length,
+            behanceBanner: !!document.querySelector('.behance-integration-banner'),
             cards: document.querySelectorAll('.transformation-card').length,
-            journeyStrips: document.querySelectorAll('.card-journey-strip').length,
+            methodologyStrips: document.querySelectorAll('.domain-methodology-strip').length,
             screenshots: document.querySelectorAll('.browser-screenshot-img').length,
             calloutBadges: document.querySelectorAll('.preview-callout-badges').length
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.frameworkBanner || elements.frameworkSteps !== 5 || elements.cards !== 5 || elements.journeyStrips !== 5 || elements.screenshots !== 5) {
+        if (!elements.specializationBanner || elements.specializationPillars !== 5 || !elements.behanceBanner || elements.cards !== 5 || elements.methodologyStrips !== 5 || elements.screenshots !== 5) {
           console.error('  ❌ Missing expected elements on work.html');
           allPassed = false;
         } else {
-          console.log('  ✓ All elements present on work.html (5 framework steps, 5 cards, 5 journey strips, 5 screenshots)');
+          console.log('  ✓ All elements present on work.html (5 specialization pillars, Behance banner, 5 cards, 5 domain methodology strips, 5 screenshots)');
         }
 
         // Capture full page screenshot of work.html
@@ -94,17 +95,19 @@ const testPages = [
             pipelineSteps: document.querySelectorAll('.p-step-card').length,
             archInfographic: !!document.querySelector('.architecture-infographic-stage'),
             annotatedScreenshot: !!document.querySelector('.annotated-screenshot-stage'),
+            behanceCrosslink: !!document.querySelector('.behance-project-crosslink'),
+            interactivePrototype: !!document.querySelector('.interactive-prototype-window'),
             screenshotImg: document.querySelector('.annotated-full-img')?.getAttribute('src'),
             calloutChips: document.querySelectorAll('.callout-chip-item').length,
             designopsPipeline: !!document.querySelector('.designops-pipeline-stage')
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.pipeline || elements.pipelineSteps !== 5 || !elements.archInfographic || !elements.annotatedScreenshot || !elements.screenshotImg || elements.calloutChips !== 3 || !elements.designopsPipeline) {
+        if (!elements.pipeline || elements.pipelineSteps !== 5 || !elements.archInfographic || !elements.annotatedScreenshot || !elements.behanceCrosslink || !elements.interactivePrototype || !elements.screenshotImg || elements.calloutChips !== 3 || !elements.designopsPipeline) {
           console.error(`  ❌ Missing expected elements on ${p.name}`);
           allPassed = false;
         } else {
-          console.log(`  ✓ All elements verified on ${p.name} (5 manager steps, arch infographic, screenshot: ${elements.screenshotImg}, 3 callout chips, designops flywheel)`);
+          console.log(`  ✓ All elements verified on ${p.name} (5 manager steps, arch infographic, Behance cross-link, interactive prototype, screenshot: ${elements.screenshotImg}, 3 callout chips, designops flywheel)`);
         }
 
         if (p.url.includes('case-ericsson')) {

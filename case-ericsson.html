@@ -1764,6 +1764,362 @@
     display: inline-block;
   }
 
+  /* Interactive Working Prototype Container & Styling */
+  .interactive-prototype-window {
+    background: #0B0E17;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 28px 0 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .proto-win-header {
+    background: #111624;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .proto-win-url {
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: #94A3B8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+  }
+
+  .proto-win-badge {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #10B981;
+    white-space: nowrap;
+  }
+
+  .proto-win-body {
+    padding: 24px;
+    background: #0D111C;
+    color: #FFFFFF;
+  }
+
+  .proto-deal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .proto-grid-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94A3B8;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+  }
+
+  .proto-grid-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .grid-num-input {
+    width: 56px;
+    padding: 4px 8px;
+    background: #1E293B;
+    border: 1px solid #3B82F6;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .grid-num-input:focus {
+    outline: 2px solid #60A5FA;
+  }
+
+  .margin-pill.margin-escalate {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border-color: #EF4444;
+  }
+
+  .proto-action-btn {
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.3);
+  }
+
+  .proto-action-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.4);
+  }
+
+  .proto-reject-btn {
+    background: transparent;
+    color: #F87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .proto-reject-btn:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: #F87171;
+  }
+
+  .proto-toast {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10B981;
+    color: #34D399;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Watson Agent Node Cards */
+  .agent-node-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .agent-node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .agent-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-active {
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
+  }
+
+  .dot-pending {
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
+  }
+
+  .agent-name {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .agent-status-badge {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .badge-success { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+  .badge-pending { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+
+  .agent-detail-text {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .conf-tier-btns, .zone-filter-group, .carbon-theme-btns, .lighting-mode-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .btn-tier, .zone-btn, .c-theme-btn, .w-light-btn {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #CBD5E1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-tier.active, .zone-btn.active, .c-theme-btn.active, .w-light-btn.active {
+    background: #3B82F6;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+  }
+
+  /* Zebra Fleet Card */
+  .zebra-scanner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .zebra-scanner-card.scanner-warn {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.05);
+  }
+
+  .scanner-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .scanner-model {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .scanner-badge-ok {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #34D399;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-badge-alert {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #F87171;
+    background: rgba(220, 38, 38, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-loc {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+  }
+
+  .scanner-metrics-row {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    color: #CBD5E1;
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Wabco HUD Card */
+  .hud-zone-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hud-zone-tag {
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
+  }
+
+  /* Behance Project Crosslink Ribbon */
+  .behance-project-crosslink {
+    background: linear-gradient(135deg, rgba(0, 87, 255, 0.1) 0%, rgba(240, 6, 88, 0.08) 100%);
+    border: 1px solid rgba(0, 87, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .behance-project-crosslink span {
+    font-size: 12.5px;
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .behance-project-crosslink a {
+    color: #0057FF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .behance-project-crosslink a:hover {
+    text-decoration: underline;
+  }
+
+
   </style>
 </head>
 <body>
@@ -1843,13 +2199,13 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">01</span>
-                  <span class="p-step-phase">Discovery & Audit</span>
+                  <span class="p-step-phase">Formula & Macro Audit</span>
                 </div>
-                <h4 class="p-step-title">14-Tab Excel Macro Audit</h4>
+                <h4 class="p-step-title">14-Tab Excel Macro & Dependency Audit</h4>
                 <p class="p-step-desc">Audited 50MB unversioned workbook across 45 countries; mapped 42 cascading #REF! failure modes and 12,000 catalog parts.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Risk Register & Metric Baseline</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Risk Register & Formula Map</span>
                 <span class="p-step-metric"><strong>Impact:</strong> Quantified 6-day deal delay</span>
               </div>
             </div>
@@ -1858,13 +2214,13 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">02</span>
-                  <span class="p-step-phase">In-Situ Research</span>
+                  <span class="p-step-phase">Biomechanical Shadowing</span>
                 </div>
-                <h4 class="p-step-title">Contextual Shadowing in Stockholm</h4>
-                <p class="p-step-desc">Shadowed 12 senior sales engineers on live operator bids; identified keyboard shortcuts and clipboard velocity as non-negotiable adoption criteria.</p>
+                <h4 class="p-step-title">In-Situ Keyboard Velocity Shadowing in Stockholm</h4>
+                <p class="p-step-desc">Shadowed 12 senior bid engineers on live operator bids; identified keyboard shortcuts and clipboard velocity as non-negotiable adoption criteria.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Ergonomic Persona & Mental Model Map</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Ergonomic Biomechanics Map</span>
                 <span class="p-step-metric"><strong>Impact:</strong> 100% engineer buy-in on grid UX</span>
               </div>
             </div>
@@ -1873,13 +2229,13 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">03</span>
-                  <span class="p-step-phase">Systems & IA</span>
+                  <span class="p-step-phase">High-Density Grid Scaffolding</span>
                 </div>
-                <h4 class="p-step-title">Keyboard Data Grid Architecture</h4>
-                <p class="p-step-desc">Re-architected 18-step quoting ordeal into single-pane high-density grid with instant formula calculation and automated green-channel approvals.</p>
+                <h4 class="p-step-title">Single-Pane Data Grid IA & Frozen Headers</h4>
+                <p class="p-step-desc">Re-architected 18-step quoting ordeal into single-pane high-density grid with instant formula calculation and zero modal disruptions.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Single-Pane IA & Flow Blueprint</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Single-Pane Grid IA Blueprint</span>
                 <span class="p-step-metric"><strong>Impact:</strong> Steps reduced from 18 to 5</span>
               </div>
             </div>
@@ -1888,10 +2244,10 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">04</span>
-                  <span class="p-step-phase">DesignOps & Tokens</span>
+                  <span class="p-step-phase">Sub-16ms Reactive Tokens</span>
                 </div>
-                <h4 class="p-step-title">Financial Token System & Parity</h4>
-                <p class="p-step-desc">Authored DesignOps token library with strict tabular typography, real-time margin status colors, and zero-defect numeric inputs.</p>
+                <h4 class="p-step-title">Reactive Financial Token System & Guardrails</h4>
+                <p class="p-step-desc">Authored DesignOps token library with strict tabular typography, real-time margin status colors, and sub-16ms live formula recalculations.</p>
               </div>
               <div class="p-step-meta">
                 <span class="p-step-deliverable"><strong>Deliverable:</strong> Ericsson CPQ Token Library</span>
@@ -1903,13 +2259,13 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">05</span>
-                  <span class="p-step-phase">Validation & Scale</span>
+                  <span class="p-step-phase">Green-Channel Governance</span>
                 </div>
-                <h4 class="p-step-title">Global Benchmark & Enterprise Rollout</h4>
+                <h4 class="p-step-title">Global Benchmark & Green-Channel Auto-Signoff</h4>
                 <p class="p-step-desc">Conducted usability benchmarking in Stockholm and Chennai; drove voluntary adoption to 94% in 30 days and reduced deal cycle from 6 days to 42 minutes.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Usability Benchmark Report (SUS 87)</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Usability Benchmark (SUS 87)</span>
                 <span class="p-step-metric"><strong>Impact:</strong> Turnaround: 6d &rarr; 42m (-92%)</span>
               </div>
             </div>
@@ -2151,6 +2507,13 @@
         </div>
 
         <!-- High-Resolution Annotated Product Screenshot Showcase -->
+        
+        <!-- Behance Visual Craft Cross-Link Banner -->
+        <div class="behance-project-crosslink" aria-label="Behance Visual Portfolio Link">
+          <span>🎨 <strong>Behance Craft Gallery:</strong> High-resolution visual artifacts and Figma screens for this project are published on Behance:</span>
+          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer">behance.net/balaajeeVR &rarr;</a>
+        </div>
+
         <div class="annotated-screenshot-stage">
           <div class="annotated-header">
             <div class="window-dots">
@@ -2197,90 +2560,99 @@
         </div>
 
         
-    <div class="ui-showcase-window">
-      <div class="window-header">
-        <div class="window-dots">
-          <span class="window-dot dot-red"></span>
-          <span class="window-dot dot-yellow"></span>
-          <span class="window-dot dot-green"></span>
-        </div>
-        <div class="window-address">https://salesops.ericsson.net/deals/deal-4820/bom-configurator</div>
-        <span class="window-badge">● AUTO-VALIDATED</span>
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://salesops.ericsson.net/deals/deal-4820/bom-configurator</div>
+        <span class="proto-win-badge">● LIVE SAP PRICING ENGINE</span>
       </div>
-      <div class="app-canvas">
-        <div class="app-deal-header">
-          <div class="app-deal-info">
-            <h4>Vodafone UK — 5G Core &amp; Radio Expansion (Q3 Deal #4820)</h4>
-            <p>Customer Tier: Tier 1 Strategic &bull; Currency: USD ($) &bull; Lead Engineer: M. Lindqvist</p>
+      <div class="proto-win-body">
+        <div class="proto-deal-bar">
+          <div>
+            <h4 style="font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: #FFFFFF; margin: 0 0 4px;">Vodafone UK — 5G Massive MIMO Expansion (Q3 Deal #4820)</h4>
+            <p style="font-size: 12px; color: #94A3B8; margin: 0;">Tier 1 Strategic &bull; Lead Architect: M. Lindqvist &bull; 12,000 Verified SAP Parts</p>
           </div>
-          <div class="app-deal-totals">
-            <div style="font-family: var(--font-heading); font-size: 22px; font-weight: 900; color: var(--gold);">$8,420,000</div>
-            <span class="margin-pill margin-pass">GROSS MARGIN: 38.4% [PASS]</span>
+          <div style="text-align: right;">
+            <div id="ericsson-total-val" style="font-family: var(--font-heading); font-size: 24px; font-weight: 900; color: #F59E0B;">$8,420,000</div>
+            <div id="ericsson-margin-badge" class="margin-pill margin-pass">38.4% GROSS MARGIN [PASS &bull; GREEN CHANNEL]</div>
           </div>
         </div>
 
-        <table class="app-data-table">
-          <thead>
-            <tr>
-              <th>Line Item</th>
-              <th>Hardware Component</th>
-              <th>Unit Cost</th>
-              <th>Qty</th>
-              <th>List Total</th>
-              <th>Discount</th>
-              <th>Net Contract Price</th>
-              <th>Margin Health</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cell-code">AIR 6488</td>
-              <td>5G Massive MIMO Radio (3.5GHz 64T64R)</td>
-              <td class="cell-num">$18,500</td>
-              <td class="cell-num">120</td>
-              <td class="cell-num">$2,220,000</td>
-              <td class="cell-num">12%</td>
-              <td class="cell-num">$1,953,600</td>
-              <td><span class="margin-pill margin-pass">39.2% [PASS]</span></td>
-            </tr>
-            <tr>
-              <td class="cell-code">BB 6630</td>
-              <td>Baseband High-Capacity Digital Node</td>
-              <td class="cell-num">$9,200</td>
-              <td class="cell-num">40</td>
-              <td class="cell-num">$368,000</td>
-              <td class="cell-num">10%</td>
-              <td class="cell-num">$331,200</td>
-              <td><span class="margin-pill margin-pass">41.5% [PASS]</span></td>
-            </tr>
-            <tr>
-              <td class="cell-code">SFP+ 10G</td>
-              <td>Optical Interconnect Transceivers (10km)</td>
-              <td class="cell-num">$320</td>
-              <td class="cell-num">480</td>
-              <td class="cell-num">$153,600</td>
-              <td class="cell-num">15%</td>
-              <td class="cell-num">$130,560</td>
-              <td><span class="margin-pill margin-pass">36.8% [PASS]</span></td>
-            </tr>
-            <tr>
-              <td class="cell-code">SLA-T1</td>
-              <td>24/7 Mission-Critical 3-Year Support SLA</td>
-              <td class="cell-num">$450,000</td>
-              <td class="cell-num">1</td>
-              <td class="cell-num">$450,000</td>
-              <td class="cell-num">5%</td>
-              <td class="cell-num">$427,500</td>
-              <td><span class="margin-pill margin-pass">58.0% [PASS]</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <span style="font-family: var(--font-code); font-size: 11px; color: #38BDF8;">⌨️ Keyboard Shortcuts: Arrow Keys to Navigate &bull; Tab to Edit &bull; Enter to Commit Row</span>
+          <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8;">Auto-Approval Threshold: &ge;35.0% Gross Margin</span>
+        </div>
 
-        <div class="ergonomics-banner">
-          <div class="ergonomics-text">
-            💡 <strong>UX Ergonomics Callout:</strong> Arrow-key cell jumping, multi-cell copy-paste, and instant inline typeahead autocomplete allow engineers to build 100+ line item quotes at the speed of Excel, without broken formulas.
+        <div style="overflow-x: auto; margin-bottom: 16px;">
+          <table class="proto-grid-table">
+            <thead>
+              <tr>
+                <th>Part #</th>
+                <th>Description</th>
+                <th>Unit Cost</th>
+                <th>List Price</th>
+                <th>Qty</th>
+                <th>Discount %</th>
+                <th>Net Price</th>
+                <th>Line Margin</th>
+              </tr>
+            </thead>
+            <tbody id="ericsson-bom-rows">
+              <tr data-part="AIR 6488" data-cost="11200" data-list="18500" data-qty="120">
+                <td class="cell-code">AIR 6488</td>
+                <td>5G Massive MIMO Radio (3.5GHz 64T64R)</td>
+                <td class="cell-num">$11,200</td>
+                <td class="cell-num">$18,500</td>
+                <td class="cell-num">120</td>
+                <td><input type="number" min="0" max="50" value="12" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for AIR 6488"> %</td>
+                <td class="cell-num row-net-val">$1,953,600</td>
+                <td><span class="margin-pill margin-pass row-margin-val">39.2%</span></td>
+              </tr>
+              <tr data-part="Baseband 6648" data-cost="8200" data-list="14200" data-qty="85">
+                <td class="cell-code">Baseband 6648</td>
+                <td>High-Capacity RAN Compute Unit</td>
+                <td class="cell-num">$8,200</td>
+                <td class="cell-num">$14,200</td>
+                <td class="cell-num">85</td>
+                <td><input type="number" min="0" max="50" value="8" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for Baseband 6648"> %</td>
+                <td class="cell-num row-net-val">$1,110,440</td>
+                <td><span class="margin-pill margin-pass row-margin-val">41.5%</span></td>
+              </tr>
+              <tr data-part="Router 6672" data-cost="5600" data-list="8900" data-qty="140">
+                <td class="cell-code">Router 6672</td>
+                <td>100GE Cell Site Aggregation Gateway</td>
+                <td class="cell-num">$5,600</td>
+                <td class="cell-num">$8,900</td>
+                <td class="cell-num">140</td>
+                <td><input type="number" min="0" max="50" value="15" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for Router 6672"> %</td>
+                <td class="cell-num row-net-val">$1,059,100</td>
+                <td><span class="margin-pill margin-pass row-margin-val">36.1%</span></td>
+              </tr>
+              <tr data-part="Streetmacro 6701" data-cost="7100" data-list="11400" data-qty="60">
+                <td class="cell-code">Streetmacro 6701</td>
+                <td>mmWave Integrated Urban Small Cell</td>
+                <td class="cell-num">$7,100</td>
+                <td class="cell-num">$11,400</td>
+                <td class="cell-num">60</td>
+                <td><input type="number" min="0" max="50" value="10" class="grid-num-input" oninput="recalcEricssonDeal()" aria-label="Discount percentage for Streetmacro 6701"> %</td>
+                <td class="cell-num row-net-val">$615,600</td>
+                <td><span class="margin-pill margin-pass row-margin-val">37.8%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="font-size: 12px; color: #94A3B8;">
+            💡 <em>Try increasing discounts to &gt;20% to observe live escalation guardrail trigger.</em>
           </div>
-          <button class="btn-action-sm" onclick="simulateAction('Proposal generated successfully! All pricing rules verified against global SAP pricing table.')">Generate 1-Click Proposal (PDF)</button>
+          <button onclick="triggerEricssonQuotePdf()" class="proto-action-btn">
+            📄 1-Click Generate Signed Contract PDF
+          </button>
+        </div>
+
+        <div id="ericsson-toast" class="proto-toast" style="display: none;">
+          ✅ Contract Proposal #4820 Generated! Verified against 100% SAP Catalog Rules &amp; Signed by Commercial Bot.
         </div>
       </div>
     </div>
@@ -2582,6 +2954,212 @@
 
     function simulateAction(msg) {
       alert(msg);
+    }
+  </script>
+
+
+  <!-- Shared Interactive Working Prototype Logic -->
+  <script>
+    // 1. Ericsson BOM Recalculation
+    function recalcEricssonDeal() {
+      const rows = document.querySelectorAll('#ericsson-bom-rows tr');
+      let totalRev = 0, totalCost = 0;
+      rows.forEach(r => {
+        const cost = parseFloat(r.getAttribute('data-cost')) || 0;
+        const list = parseFloat(r.getAttribute('data-list')) || 0;
+        const qty = parseFloat(r.getAttribute('data-qty')) || 0;
+        const input = r.querySelector('.grid-num-input');
+        const disc = parseFloat(input ? input.value : 0) || 0;
+        const netUnit = list * (1 - disc / 100);
+        const lineRev = netUnit * qty;
+        const lineCost = cost * qty;
+        totalRev += lineRev;
+        totalCost += lineCost;
+        const netEl = r.querySelector('.row-net-val');
+        const marginEl = r.querySelector('.row-margin-val');
+        if (netEl) netEl.textContent = '$' + Math.round(lineRev).toLocaleString();
+        const lineMargin = lineRev > 0 ? ((lineRev - lineCost) / lineRev) * 100 : 0;
+        if (marginEl) {
+          marginEl.textContent = lineMargin.toFixed(1) + '%';
+          marginEl.className = 'margin-pill ' + (lineMargin >= 35 ? 'margin-pass' : 'margin-escalate') + ' row-margin-val';
+        }
+      });
+      const totalEl = document.getElementById('ericsson-total-val');
+      const badgeEl = document.getElementById('ericsson-margin-badge');
+      if (totalEl) totalEl.textContent = '$' + Math.round(totalRev).toLocaleString();
+      const overallMargin = totalRev > 0 ? ((totalRev - totalCost) / totalRev) * 100 : 0;
+      if (badgeEl) {
+        if (overallMargin >= 35) {
+          badgeEl.className = 'margin-pill margin-pass';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [PASS • GREEN CHANNEL]';
+        } else {
+          badgeEl.className = 'margin-pill margin-escalate';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [⚠️ ESCALATION REQUIRED • VP REVIEW]';
+        }
+      }
+    }
+    function triggerEricssonQuotePdf() {
+      const t = document.getElementById('ericsson-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 2. Watson Confidence & Diff
+    function setWatsonConfidence(tier) {
+      const label = document.getElementById('watson-conf-label');
+      const desc = document.getElementById('watson-conf-desc');
+      document.querySelectorAll('.conf-tier-btns .btn-tier').forEach(b => b.classList.remove('active'));
+      if (tier === 'high') {
+        const btn = document.getElementById('wconf-high');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '96.4% AI Confidence [Tier 1: Full Autonomy]'; label.style.color = '#34D399'; }
+        if (desc) desc.textContent = 'Tier 1 Routing: Score exceeds 95% threshold. Safe for automated execution with post-commit notification.';
+      } else if (tier === 'med') {
+        const btn = document.getElementById('wconf-med');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '94.2% AI Confidence [Tier 2: Supervised Draft]'; label.style.color = '#60A5FA'; }
+        if (desc) desc.textContent = 'Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.';
+      } else {
+        const btn = document.getElementById('wconf-low');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '74.0% AI Confidence [Tier 3: Low Confidence]'; label.style.color = '#F87171'; }
+        if (desc) desc.textContent = 'Tier 3 Routing: Complex discrepancy detected. Hard escalation triggered to Corporate Financial Controller.';
+      }
+    }
+    function commitWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(16, 185, 129, 0.15)';
+        t.style.borderColor = '#10B981';
+        t.style.color = '#34D399';
+        t.textContent = '🚀 Transaction #TX-88219 committed to SAP S/4HANA & SOX Cryptographic Audit Trail Logged!';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+    function rejectWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(239, 68, 68, 0.15)';
+        t.style.borderColor = '#EF4444';
+        t.style.color = '#F87171';
+        t.textContent = '⚠️ Transaction rejected. Diverted to manual controller review queue.';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+
+    // 3. Zebra Zone Filter & Scan
+    function filterZebraZone(zone) {
+      document.querySelectorAll('.zone-filter-group .zone-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('zbtn-' + zone);
+      if (activeBtn) activeBtn.classList.add('active');
+      const alertEl = document.getElementById('zebra-cold-alert');
+      const gloveInd = document.getElementById('zebra-glove-mode-indicator');
+      if (zone === 'c') {
+        if (alertEl) alertEl.style.display = 'block';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Heavy Thermal Glove Mode: 72px Targets [ACTIVE]';
+          gloveInd.style.background = 'rgba(240, 6, 88, 0.15)';
+          gloveInd.style.color = '#F43F5E';
+          gloveInd.style.borderColor = '#F43F5E';
+        }
+      } else {
+        if (alertEl) alertEl.style.display = 'none';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Standard Touch Targets: 44px';
+          gloveInd.style.background = 'rgba(16, 185, 129, 0.1)';
+          gloveInd.style.color = '#34D399';
+          gloveInd.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+        }
+      }
+    }
+    function triggerZebraScan() {
+      const t = document.getElementById('zebra-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 4. Carbon Theme Switcher
+    function setCarbonTheme(theme) {
+      document.querySelectorAll('.carbon-theme-btns .c-theme-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('cbtn-' + theme);
+      if (activeBtn) activeBtn.classList.add('active');
+      const stage = document.getElementById('carbon-live-stage');
+      const btn = document.getElementById('carbon-btn-primary');
+      const input = document.getElementById('carbon-input');
+      const tint = document.getElementById('t-int');
+      const tbg = document.getElementById('t-bg');
+      const tfield = document.getElementById('t-field');
+      const ttext = document.getElementById('t-text');
+
+      if (!stage) return;
+      if (theme === 'white') {
+        stage.style.background = '#FFFFFF'; stage.style.color = '#161616'; stage.style.borderColor = '#E0E0E0';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#F4F4F4'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#FFFFFF';
+        if (tfield) tfield.textContent = '#F4F4F4';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g10') {
+        stage.style.background = '#F4F4F4'; stage.style.color = '#161616'; stage.style.borderColor = '#D1D5DB';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#FFFFFF'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#F4F4F4';
+        if (tfield) tfield.textContent = '#FFFFFF';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g90') {
+        stage.style.background = '#262626'; stage.style.color = '#F4F4F4'; stage.style.borderColor = '#525252';
+        if (btn) btn.style.background = '#78A9FF';
+        if (input) { input.style.background = '#393939'; input.style.borderColor = '#6F6F6F'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#78A9FF';
+        if (tbg) tbg.textContent = '#262626';
+        if (tfield) tfield.textContent = '#393939';
+        if (ttext) ttext.textContent = '#F4F4F4';
+      } else if (theme === 'g100') {
+        stage.style.background = '#161616'; stage.style.color = '#FFFFFF'; stage.style.borderColor = '#393939';
+        if (btn) btn.style.background = '#4589DF';
+        if (input) { input.style.background = '#262626'; input.style.borderColor = '#525252'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#4589DF';
+        if (tbg) tbg.textContent = '#161616';
+        if (tfield) tfield.textContent = '#262626';
+        if (ttext) ttext.textContent = '#FFFFFF';
+      }
+    }
+    function triggerCarbonPr() {
+      const t = document.getElementById('carbon-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 5. Wabco HUD Simulator
+    function setWabcoLighting(mode) {
+      document.querySelectorAll('.lighting-mode-btns .w-light-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('wbtn-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+      const body = document.getElementById('wabco-hud-body');
+      if (!body) return;
+      if (mode === 'day') {
+        body.style.background = '#F8FAFC';
+        body.style.color = '#0F172A';
+      } else {
+        body.style.background = '#06090F';
+        body.style.color = '#FFFFFF';
+      }
+    }
+    function updateWabcoSpeed(val) {
+      const speedEl = document.getElementById('wabco-speed-num');
+      const sliderVal = document.getElementById('wabco-slider-val');
+      const radarInfo = document.getElementById('wabco-radar-info');
+      if (speedEl) speedEl.innerHTML = val + ' <span style="font-size: 16px;">KM/H</span>';
+      if (sliderVal) sliderVal.textContent = val + ' km/h';
+      const distance = Math.round(val * 0.96);
+      if (radarInfo) radarInfo.innerHTML = 'Safe Radar Distance: <strong>' + distance + 'm</strong> &bull; Headway: 2.4s';
+    }
+    function triggerWabcoHazard() {
+      const alertEl = document.getElementById('wabco-hazard-alert');
+      const t = document.getElementById('wabco-toast');
+      if (alertEl) { alertEl.style.display = 'block'; setTimeout(() => { alertEl.style.display = 'none'; }, 5000); }
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 5000); }
     }
   </script>
 

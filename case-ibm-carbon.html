@@ -1764,6 +1764,362 @@
     display: inline-block;
   }
 
+  /* Interactive Working Prototype Container & Styling */
+  .interactive-prototype-window {
+    background: #0B0E17;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 28px 0 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .proto-win-header {
+    background: #111624;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .proto-win-url {
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: #94A3B8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+  }
+
+  .proto-win-badge {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #10B981;
+    white-space: nowrap;
+  }
+
+  .proto-win-body {
+    padding: 24px;
+    background: #0D111C;
+    color: #FFFFFF;
+  }
+
+  .proto-deal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .proto-grid-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #94A3B8;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .proto-grid-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+  }
+
+  .proto-grid-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .grid-num-input {
+    width: 56px;
+    padding: 4px 8px;
+    background: #1E293B;
+    border: 1px solid #3B82F6;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .grid-num-input:focus {
+    outline: 2px solid #60A5FA;
+  }
+
+  .margin-pill.margin-escalate {
+    background: rgba(239, 68, 68, 0.2);
+    color: #F87171;
+    border-color: #EF4444;
+  }
+
+  .proto-action-btn {
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.3);
+  }
+
+  .proto-action-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.4);
+  }
+
+  .proto-reject-btn {
+    background: transparent;
+    color: #F87171;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .proto-reject-btn:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: #F87171;
+  }
+
+  .proto-toast {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10B981;
+    color: #34D399;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Watson Agent Node Cards */
+  .agent-node-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .agent-node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .agent-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .dot-active {
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
+  }
+
+  .dot-pending {
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
+  }
+
+  .agent-name {
+    font-family: var(--font-heading);
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .agent-status-badge {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .badge-success { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+  .badge-pending { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+
+  .agent-detail-text {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .conf-tier-btns, .zone-filter-group, .carbon-theme-btns, .lighting-mode-btns {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .btn-tier, .zone-btn, .c-theme-btn, .w-light-btn {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #CBD5E1;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-tier.active, .zone-btn.active, .c-theme-btn.active, .w-light-btn.active {
+    background: #3B82F6;
+    color: #FFFFFF;
+    border-color: #60A5FA;
+  }
+
+  /* Zebra Fleet Card */
+  .zebra-scanner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .zebra-scanner-card.scanner-warn {
+    border-color: rgba(220, 38, 38, 0.4);
+    background: rgba(220, 38, 38, 0.05);
+  }
+
+  .scanner-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .scanner-model {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .scanner-badge-ok {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #34D399;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-badge-alert {
+    font-family: var(--font-code);
+    font-size: 9.5px;
+    color: #F87171;
+    background: rgba(220, 38, 38, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .scanner-loc {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 8px;
+  }
+
+  .scanner-metrics-row {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    color: #CBD5E1;
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Wabco HUD Card */
+  .hud-zone-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .hud-zone-tag {
+    font-family: var(--font-code);
+    font-size: 10px;
+    font-weight: 700;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
+  }
+
+  /* Behance Project Crosslink Ribbon */
+  .behance-project-crosslink {
+    background: linear-gradient(135deg, rgba(0, 87, 255, 0.1) 0%, rgba(240, 6, 88, 0.08) 100%);
+    border: 1px solid rgba(0, 87, 255, 0.25);
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .behance-project-crosslink span {
+    font-size: 12.5px;
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+  .behance-project-crosslink a {
+    color: #0057FF;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .behance-project-crosslink a:hover {
+    text-decoration: underline;
+  }
+
+
   </style>
 </head>
 <body>
@@ -1843,14 +2199,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">01</span>
-                  <span class="p-step-phase">Discovery & Audit</span>
+                  <span class="p-step-phase">14-Squad Visual Drift Audit</span>
                 </div>
-                <h4 class="p-step-title">Multi-Squad Design Debt Audit</h4>
-                <p class="p-step-desc">Audited 14 software squad codebases; discovered 70% of front-end QA tickets were visual regression bugs caused by hardcoded hexes and CSS overrides.</p>
+                <h4 class="p-step-title">Cross-Squad CSS Drift & Visual Regression Audit</h4>
+                <p class="p-step-desc">Audited 14 disparate IBM software squads; identified 320+ hardcoded hex values, conflicting button radii, and 4-week hand-off friction.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Design Debt & QA Ticket Audit Report</span>
-                <span class="p-step-metric"><strong>Impact:</strong> 70% visual regression defect rate</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Token Drift Register (320 Leaks)</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Cataloged 4-week handoff lag</span>
               </div>
             </div>
           
@@ -1858,14 +2214,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">02</span>
-                  <span class="p-step-phase">In-Situ Research</span>
+                  <span class="p-step-phase">3-Tier Semantic Taxonomy</span>
                 </div>
-                <h4 class="p-step-title">Developer & Designer Friction Inquiries</h4>
-                <p class="p-step-desc">Shadowed squad leads across Bangalore, Austin, and San Jose; identified broken handoffs between Figma variable updates and React codebases.</p>
+                <h4 class="p-step-title">Enterprise Multi-Tier Token Architecture</h4>
+                <p class="p-step-desc">Engineered strict 3-tier hierarchy: Global Primitives (blue-60) -> Semantic Tokens (interactive-01) -> Component Tokens (button-primary-bg).</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Cross-Functional Workflow Journey Map</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Identified 25% sprint time wasted on CSS</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> 3-Tier Token Taxonomy Specification</span>
+                <span class="p-step-metric"><strong>Impact:</strong> 180+ unified semantic tokens</span>
               </div>
             </div>
           
@@ -1873,14 +2229,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">03</span>
-                  <span class="p-step-phase">Systems & IA</span>
+                  <span class="p-step-phase">Figma-to-GitHub CI/CD Engine</span>
                 </div>
-                <h4 class="p-step-title">Token Architecture & Governance Flywheel</h4>
-                <p class="p-step-desc">Architected 3-tier token hierarchy (global, semantic, component) and established democratic Contribution Council RFC process.</p>
+                <h4 class="p-step-title">Automated Style Dictionary Compiler Pipeline</h4>
+                <p class="p-step-desc">Built CI/CD pipeline using Figma REST API, Style Dictionary, and GitHub Actions to compile platform-agnostic token packages in seconds.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Carbon Token Taxonomy & RFC Guidelines</span>
-                <span class="p-step-metric"><strong>Impact:</strong> 180+ tokenized variables defined</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Automated Style Dictionary Pipeline</span>
+                <span class="p-step-metric"><strong>Impact:</strong> Token handoff: 4w -> 1d (-95%)</span>
               </div>
             </div>
           
@@ -1888,14 +2244,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">04</span>
-                  <span class="p-step-phase">DesignOps & Tokens</span>
+                  <span class="p-step-phase">Multi-Theme Runtime Engine</span>
                 </div>
-                <h4 class="p-step-title">Automated GitHub CI/CD Token Engine</h4>
-                <p class="p-step-desc">Built Style Dictionary compilation pipeline triggered by Figma webhook, generating automated pull requests to React and Web Component repos.</p>
+                <h4 class="p-step-title">0-Layout-Shift Runtime CSS Variable Injection</h4>
+                <p class="p-step-desc">Architected runtime theme engine allowing live switching across Carbon White, G10, G90, and G100 dark themes with zero layout shift.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> Figma-to-React GitHub Actions Pipeline</span>
-                <span class="p-step-metric"><strong>Impact:</strong> Zero-conflict automated token PRs</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Runtime Theme Engine Architecture</span>
+                <span class="p-step-metric"><strong>Impact:</strong> 100% design-to-code parity</span>
               </div>
             </div>
           
@@ -1903,14 +2259,14 @@
               <div>
                 <div class="p-step-top">
                   <span class="p-step-num">05</span>
-                  <span class="p-step-phase">Validation & Scale</span>
+                  <span class="p-step-phase">Federated RFC Systems Council</span>
                 </div>
-                <h4 class="p-step-title">14-Squad Parity & Velocity Lift</h4>
-                <p class="p-step-desc">Synchronized 14 product squads; reduced visual QA bugs by 70%, boosted front-end sprint velocity by +28%, and achieved 100% WCAG 2.1 AA compliance.</p>
+                <h4 class="p-step-title">Federated Contribution SLA & Multi-Squad Flywheel</h4>
+                <p class="p-step-desc">Instituted weekly Design Review Council, component contribution RFC SLAs, and automated PR diff checks across all 14 squad repositories.</p>
               </div>
               <div class="p-step-meta">
-                <span class="p-step-deliverable"><strong>Deliverable:</strong> DesignOps Velocity & Quality Scorecard</span>
-                <span class="p-step-metric"><strong>Impact:</strong> -70% QA bugs, +28% sprint lift</span>
+                <span class="p-step-deliverable"><strong>Deliverable:</strong> Systems Contribution SLA (SUS 91)</span>
+                <span class="p-step-metric"><strong>Impact:</strong> 14 squads synced with 0 regression</span>
               </div>
             </div>
           
@@ -2134,6 +2490,13 @@
         </div>
 
         <!-- High-Resolution Annotated Product Screenshot Showcase -->
+        
+        <!-- Behance Visual Craft Cross-Link Banner -->
+        <div class="behance-project-crosslink" aria-label="Behance Visual Portfolio Link">
+          <span>🎨 <strong>Behance Craft Gallery:</strong> High-resolution visual artifacts and Figma screens for this project are published on Behance:</span>
+          <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener noreferrer">behance.net/balaajeeVR &rarr;</a>
+        </div>
+
         <div class="annotated-screenshot-stage">
           <div class="annotated-header">
             <div class="window-dots">
@@ -2180,67 +2543,73 @@
         </div>
 
         
-    <div class="ui-showcase-window">
-      <div class="window-header">
-        <div class="window-dots">
-          <span class="window-dot dot-red"></span>
-          <span class="window-dot dot-yellow"></span>
-          <span class="window-dot dot-green"></span>
-        </div>
-        <div class="window-address">https://designops.ibm.com/carbon-tokens/governance</div>
-        <span class="window-badge">● 14 SQUADS SYNCED</span>
+    <div class="interactive-prototype-window">
+      <div class="proto-win-header">
+        <div class="window-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="proto-win-url">https://designops.ibm.com/carbon-tokens/governance</div>
+        <span class="proto-win-badge">● 14 SQUADS SYNCED</span>
       </div>
-      <div class="app-canvas">
-        <div class="app-deal-header">
-          <div class="app-deal-info">
-            <h4>Carbon Design System — Multi-Brand Token Synchronizer</h4>
-            <p>Branch: release/v4.2.0 &bull; Synced Repos: 14 Squads &bull; Auto-PRs: Active</p>
+      <div class="proto-win-body">
+        <!-- Theme Switcher Toolbar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span style="font-family: var(--font-code); font-size: 11px; color: #94A3B8; text-transform: uppercase;">Active Carbon Theme Mode:</span>
+            <div class="carbon-theme-btns" style="margin-top: 6px;">
+              <button onclick="setCarbonTheme('white')" id="cbtn-white" class="c-theme-btn active">Carbon White (Light)</button>
+              <button onclick="setCarbonTheme('g10')" id="cbtn-g10" class="c-theme-btn">Carbon G10 (Subtle)</button>
+              <button onclick="setCarbonTheme('g90')" id="cbtn-g90" class="c-theme-btn">Carbon G90 (Slate)</button>
+              <button onclick="setCarbonTheme('g100')" id="cbtn-g100" class="c-theme-btn">Carbon G100 (Dark)</button>
+            </div>
           </div>
-          <div class="app-deal-totals">
-            <span class="margin-pill margin-pass">180+ TOKENS GOVERNED</span>
+          <span style="font-family: var(--font-code); font-size: 11px; color: #38BDF8;">0-Layout-Shift Runtime CSS Variable Injection</span>
+        </div>
+
+        <!-- Live Component Stage (reacts to selected theme) -->
+        <div id="carbon-live-stage" style="background: #FFFFFF; color: #161616; border: 1px solid #E0E0E0; border-radius: 12px; padding: 24px; margin-bottom: 20px; transition: all 0.25s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h5 id="carbon-stage-title" style="font-family: var(--font-heading); font-size: 16px; font-weight: 800; margin: 0; color: inherit;">Multi-Brand Tokenized Component Preview</h5>
+            <span id="carbon-stage-badge" style="font-family: var(--font-code); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; background: rgba(15, 98, 254, 0.1); color: #0F62FE;">v4.2.0 Tokenized</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: center;">
+            <div>
+              <label id="carbon-label" style="display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 6px; color: inherit;">Search Enterprise Catalog</label>
+              <input id="carbon-input" type="text" value="Cloud Object Storage" style="width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 13px; border-radius: 4px; border: 1px solid #8D8D8D; background: #F4F4F4; color: inherit; font-family: var(--font-body);" aria-label="Search Enterprise Catalog component test input">
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 6px; color: inherit;">Primary Action</label>
+              <button id="carbon-btn-primary" style="padding: 10px 18px; background: #0F62FE; color: #FFFFFF; border: none; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px;">
+                <span>Deploy Cluster &rarr;</span>
+              </button>
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 6px; color: inherit;">Tokenized Status Tag</label>
+              <span id="carbon-status-tag" style="display: inline-block; padding: 6px 12px; border-radius: 4px; background: #0F62FE; color: #FFFFFF; font-size: 12px; font-weight: 600;">$support-02 &bull; Active</span>
+            </div>
           </div>
         </div>
 
-        <table class="app-data-table">
-          <thead>
-            <tr>
-              <th>Figma Variable</th>
-              <th>Semantic Token Name</th>
-              <th>Light Value</th>
-              <th>Dark Value</th>
-              <th>CI/CD Sync Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cell-code">color.blue.60</td>
-              <td>interactive-primary</td>
-              <td class="cell-num">#0F62FE</td>
-              <td class="cell-num">#4589DF</td>
-              <td><span class="margin-pill margin-pass">✅ Auto-PR Merged</span></td>
-            </tr>
-            <tr>
-              <td class="cell-code">spacing.05</td>
-              <td>layout-gutter</td>
-              <td class="cell-num">24px</td>
-              <td class="cell-num">24px</td>
-              <td><span class="margin-pill margin-pass">✅ Auto-PR Merged</span></td>
-            </tr>
-            <tr>
-              <td class="cell-code">color.gray.10</td>
-              <td>surface-background</td>
-              <td class="cell-num">#F4F4F4</td>
-              <td class="cell-num">#161616</td>
-              <td><span class="margin-pill margin-pass">✅ Auto-PR Merged</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="ergonomics-banner">
-          <div class="ergonomics-text">
-            🔄 <strong>Contribution Council Flywheel:</strong> Squad leads propose component tokens via RFC templates &bull; Weekly 30-min council reviews &bull; Style-Dictionary auto-generates PRs directly into squad repositories.
+        <!-- Token Variable Inspector -->
+        <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 14px 18px; margin-bottom: 18px;">
+          <div style="font-family: var(--font-code); font-size: 11px; font-weight: 700; color: #38BDF8; margin-bottom: 8px;">LIVE FIGMA VARIABLE TOKEN CONTRACT:</div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-family: var(--font-code); font-size: 11.5px;">
+            <div style="color: #94A3B8;">$interactive-01: <strong id="t-int" style="color: #60A5FA;">#0F62FE</strong></div>
+            <div style="color: #94A3B8;">$background: <strong id="t-bg" style="color: #FFFFFF;">#FFFFFF</strong></div>
+            <div style="color: #94A3B8;">$field-01: <strong id="t-field" style="color: #CBD5E1;">#F4F4F4</strong></div>
+            <div style="color: #94A3B8;">$text-01: <strong id="t-text" style="color: #FFFFFF;">#161616</strong></div>
           </div>
-          <span class="margin-pill margin-pass">+28% Sprint Velocity</span>
+        </div>
+
+        <!-- Action Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <span style="font-size: 12px; color: #94A3B8;">📦 Compiles directly via GitHub Actions to React, Web Components, and iOS/Android.</span>
+          <button onclick="triggerCarbonPr()" class="proto-action-btn">
+            🚀 Compile &amp; Push Style Dictionary PR to GitHub
+          </button>
+        </div>
+
+        <div id="carbon-toast" class="proto-toast" style="display: none;">
+          ✅ PR #318 Opened: 180 tokens compiled across 14 squad repositories with 0 visual regression!
         </div>
       </div>
     </div>
@@ -2521,6 +2890,212 @@
 
     function simulateAction(msg) {
       alert(msg);
+    }
+  </script>
+
+
+  <!-- Shared Interactive Working Prototype Logic -->
+  <script>
+    // 1. Ericsson BOM Recalculation
+    function recalcEricssonDeal() {
+      const rows = document.querySelectorAll('#ericsson-bom-rows tr');
+      let totalRev = 0, totalCost = 0;
+      rows.forEach(r => {
+        const cost = parseFloat(r.getAttribute('data-cost')) || 0;
+        const list = parseFloat(r.getAttribute('data-list')) || 0;
+        const qty = parseFloat(r.getAttribute('data-qty')) || 0;
+        const input = r.querySelector('.grid-num-input');
+        const disc = parseFloat(input ? input.value : 0) || 0;
+        const netUnit = list * (1 - disc / 100);
+        const lineRev = netUnit * qty;
+        const lineCost = cost * qty;
+        totalRev += lineRev;
+        totalCost += lineCost;
+        const netEl = r.querySelector('.row-net-val');
+        const marginEl = r.querySelector('.row-margin-val');
+        if (netEl) netEl.textContent = '$' + Math.round(lineRev).toLocaleString();
+        const lineMargin = lineRev > 0 ? ((lineRev - lineCost) / lineRev) * 100 : 0;
+        if (marginEl) {
+          marginEl.textContent = lineMargin.toFixed(1) + '%';
+          marginEl.className = 'margin-pill ' + (lineMargin >= 35 ? 'margin-pass' : 'margin-escalate') + ' row-margin-val';
+        }
+      });
+      const totalEl = document.getElementById('ericsson-total-val');
+      const badgeEl = document.getElementById('ericsson-margin-badge');
+      if (totalEl) totalEl.textContent = '$' + Math.round(totalRev).toLocaleString();
+      const overallMargin = totalRev > 0 ? ((totalRev - totalCost) / totalRev) * 100 : 0;
+      if (badgeEl) {
+        if (overallMargin >= 35) {
+          badgeEl.className = 'margin-pill margin-pass';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [PASS • GREEN CHANNEL]';
+        } else {
+          badgeEl.className = 'margin-pill margin-escalate';
+          badgeEl.textContent = overallMargin.toFixed(1) + '% GROSS MARGIN [⚠️ ESCALATION REQUIRED • VP REVIEW]';
+        }
+      }
+    }
+    function triggerEricssonQuotePdf() {
+      const t = document.getElementById('ericsson-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 2. Watson Confidence & Diff
+    function setWatsonConfidence(tier) {
+      const label = document.getElementById('watson-conf-label');
+      const desc = document.getElementById('watson-conf-desc');
+      document.querySelectorAll('.conf-tier-btns .btn-tier').forEach(b => b.classList.remove('active'));
+      if (tier === 'high') {
+        const btn = document.getElementById('wconf-high');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '96.4% AI Confidence [Tier 1: Full Autonomy]'; label.style.color = '#34D399'; }
+        if (desc) desc.textContent = 'Tier 1 Routing: Score exceeds 95% threshold. Safe for automated execution with post-commit notification.';
+      } else if (tier === 'med') {
+        const btn = document.getElementById('wconf-med');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '94.2% AI Confidence [Tier 2: Supervised Draft]'; label.style.color = '#60A5FA'; }
+        if (desc) desc.textContent = 'Tier 2 Routing: Side-by-side database diff verification required before irreversible write-back to SAP S/4HANA.';
+      } else {
+        const btn = document.getElementById('wconf-low');
+        if (btn) btn.classList.add('active');
+        if (label) { label.textContent = '74.0% AI Confidence [Tier 3: Low Confidence]'; label.style.color = '#F87171'; }
+        if (desc) desc.textContent = 'Tier 3 Routing: Complex discrepancy detected. Hard escalation triggered to Corporate Financial Controller.';
+      }
+    }
+    function commitWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(16, 185, 129, 0.15)';
+        t.style.borderColor = '#10B981';
+        t.style.color = '#34D399';
+        t.textContent = '🚀 Transaction #TX-88219 committed to SAP S/4HANA & SOX Cryptographic Audit Trail Logged!';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+    function rejectWatsonLedger() {
+      const t = document.getElementById('watson-toast');
+      if (t) {
+        t.style.display = 'block';
+        t.style.background = 'rgba(239, 68, 68, 0.15)';
+        t.style.borderColor = '#EF4444';
+        t.style.color = '#F87171';
+        t.textContent = '⚠️ Transaction rejected. Diverted to manual controller review queue.';
+        setTimeout(() => { t.style.display = 'none'; }, 4500);
+      }
+    }
+
+    // 3. Zebra Zone Filter & Scan
+    function filterZebraZone(zone) {
+      document.querySelectorAll('.zone-filter-group .zone-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('zbtn-' + zone);
+      if (activeBtn) activeBtn.classList.add('active');
+      const alertEl = document.getElementById('zebra-cold-alert');
+      const gloveInd = document.getElementById('zebra-glove-mode-indicator');
+      if (zone === 'c') {
+        if (alertEl) alertEl.style.display = 'block';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Heavy Thermal Glove Mode: 72px Targets [ACTIVE]';
+          gloveInd.style.background = 'rgba(240, 6, 88, 0.15)';
+          gloveInd.style.color = '#F43F5E';
+          gloveInd.style.borderColor = '#F43F5E';
+        }
+      } else {
+        if (alertEl) alertEl.style.display = 'none';
+        if (gloveInd) {
+          gloveInd.textContent = '🧤 Standard Touch Targets: 44px';
+          gloveInd.style.background = 'rgba(16, 185, 129, 0.1)';
+          gloveInd.style.color = '#34D399';
+          gloveInd.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+        }
+      }
+    }
+    function triggerZebraScan() {
+      const t = document.getElementById('zebra-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 4. Carbon Theme Switcher
+    function setCarbonTheme(theme) {
+      document.querySelectorAll('.carbon-theme-btns .c-theme-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('cbtn-' + theme);
+      if (activeBtn) activeBtn.classList.add('active');
+      const stage = document.getElementById('carbon-live-stage');
+      const btn = document.getElementById('carbon-btn-primary');
+      const input = document.getElementById('carbon-input');
+      const tint = document.getElementById('t-int');
+      const tbg = document.getElementById('t-bg');
+      const tfield = document.getElementById('t-field');
+      const ttext = document.getElementById('t-text');
+
+      if (!stage) return;
+      if (theme === 'white') {
+        stage.style.background = '#FFFFFF'; stage.style.color = '#161616'; stage.style.borderColor = '#E0E0E0';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#F4F4F4'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#FFFFFF';
+        if (tfield) tfield.textContent = '#F4F4F4';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g10') {
+        stage.style.background = '#F4F4F4'; stage.style.color = '#161616'; stage.style.borderColor = '#D1D5DB';
+        if (btn) btn.style.background = '#0F62FE';
+        if (input) { input.style.background = '#FFFFFF'; input.style.borderColor = '#8D8D8D'; input.style.color = '#161616'; }
+        if (tint) tint.textContent = '#0F62FE';
+        if (tbg) tbg.textContent = '#F4F4F4';
+        if (tfield) tfield.textContent = '#FFFFFF';
+        if (ttext) ttext.textContent = '#161616';
+      } else if (theme === 'g90') {
+        stage.style.background = '#262626'; stage.style.color = '#F4F4F4'; stage.style.borderColor = '#525252';
+        if (btn) btn.style.background = '#78A9FF';
+        if (input) { input.style.background = '#393939'; input.style.borderColor = '#6F6F6F'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#78A9FF';
+        if (tbg) tbg.textContent = '#262626';
+        if (tfield) tfield.textContent = '#393939';
+        if (ttext) ttext.textContent = '#F4F4F4';
+      } else if (theme === 'g100') {
+        stage.style.background = '#161616'; stage.style.color = '#FFFFFF'; stage.style.borderColor = '#393939';
+        if (btn) btn.style.background = '#4589DF';
+        if (input) { input.style.background = '#262626'; input.style.borderColor = '#525252'; input.style.color = '#FFFFFF'; }
+        if (tint) tint.textContent = '#4589DF';
+        if (tbg) tbg.textContent = '#161616';
+        if (tfield) tfield.textContent = '#262626';
+        if (ttext) ttext.textContent = '#FFFFFF';
+      }
+    }
+    function triggerCarbonPr() {
+      const t = document.getElementById('carbon-toast');
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 4500); }
+    }
+
+    // 5. Wabco HUD Simulator
+    function setWabcoLighting(mode) {
+      document.querySelectorAll('.lighting-mode-btns .w-light-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('wbtn-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+      const body = document.getElementById('wabco-hud-body');
+      if (!body) return;
+      if (mode === 'day') {
+        body.style.background = '#F8FAFC';
+        body.style.color = '#0F172A';
+      } else {
+        body.style.background = '#06090F';
+        body.style.color = '#FFFFFF';
+      }
+    }
+    function updateWabcoSpeed(val) {
+      const speedEl = document.getElementById('wabco-speed-num');
+      const sliderVal = document.getElementById('wabco-slider-val');
+      const radarInfo = document.getElementById('wabco-radar-info');
+      if (speedEl) speedEl.innerHTML = val + ' <span style="font-size: 16px;">KM/H</span>';
+      if (sliderVal) sliderVal.textContent = val + ' km/h';
+      const distance = Math.round(val * 0.96);
+      if (radarInfo) radarInfo.innerHTML = 'Safe Radar Distance: <strong>' + distance + 'm</strong> &bull; Headway: 2.4s';
+    }
+    function triggerWabcoHazard() {
+      const alertEl = document.getElementById('wabco-hazard-alert');
+      const t = document.getElementById('wabco-toast');
+      if (alertEl) { alertEl.style.display = 'block'; setTimeout(() => { alertEl.style.display = 'none'; }, 5000); }
+      if (t) { t.style.display = 'block'; setTimeout(() => { t.style.display = 'none'; }, 5000); }
     }
   </script>
 
