@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. — Executive Video Speaking Coach & Prompter</title>
+  <title>Balaajee V.R. — Executive Speaking Coach & Rehearsal Prompter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
       --accent-glow: rgba(56, 189, 248, 0.25);
       --success: #10b981;
       --warning: #f59e0b;
+      --purple: #a855f7;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,6 +40,8 @@
       padding-bottom: 20px;
       border-bottom: 1px solid var(--surface-border);
       margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .brand-title {
@@ -60,6 +63,42 @@
       border-radius: 999px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+    }
+
+    /* Mode Switcher Tabs */
+    .mode-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--surface-border);
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    .mode-tab {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-tab:hover {
+      color: #fff;
+    }
+
+    .mode-tab.active {
+      background: var(--accent);
+      color: #0b0f17;
+      box-shadow: 0 2px 10px var(--accent-glow);
     }
 
     .main-grid {
@@ -265,7 +304,7 @@
       border-radius: 10px;
       background: rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       line-height: 1.75;
       font-weight: 500;
       color: #cbd5e1;
@@ -275,12 +314,14 @@
 
     .prompter-box p {
       margin-bottom: 24px;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0.65;
     }
 
     .prompter-box p.active-sentence {
       color: #ffffff;
       font-weight: 700;
+      opacity: 1;
       text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
       transform: scale(1.015);
     }
@@ -297,6 +338,7 @@
       letter-spacing: 0.04em;
     }
 
+    .cue-framework { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
     .cue-smile { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
     .cue-gesture { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
     .cue-pause { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
@@ -340,8 +382,19 @@
       <span>Balaajee V.R.</span>
       <span class="brand-badge">Executive Speaking Coach & Prompter</span>
     </div>
+
+    <!-- Mode Switcher -->
+    <div class="mode-switcher">
+      <button id="tabBeat" class="mode-tab active" onclick="switchMode('beat')">
+        🎯 BEAT Interview Intro (75s)
+      </button>
+      <button id="tabWelcome" class="mode-tab" onclick="switchMode('welcome')">
+        🎬 Portfolio Welcome Video (52s)
+      </button>
+    </div>
+
     <div style="font-size: 0.85rem; color: var(--text-muted);">
-      Target Duration: <strong style="color: #fff;">50–55s</strong> &bull; Pace: <strong style="color: #38bdf8;">125 WPM</strong>
+      Target Duration: <strong id="headerDuration" style="color: #fff;">70–75s</strong> &bull; Pace: <strong style="color: #38bdf8;">125 WPM</strong>
     </div>
   </header>
 
@@ -357,11 +410,11 @@
       </div>
 
       <div class="video-viewport">
-        <!-- Frame 1: Warm Intro (0:00 - 0:12) -->
+        <!-- Frame 1: Warm Intro (0:00 - 0:18) -->
         <img id="frame1" class="stage-img active" src="crisp-shirt-no-blazer.jpg" alt="Intro Posture - Warm Smile & Eye Contact">
-        <!-- Frame 2: Gesture & Domain (0:13 - 0:40) -->
+        <!-- Frame 2: Gesture & Domain (0:19 - 0:52) -->
         <img id="frame2" class="stage-img" src="speaking-gesture.jpg" alt="Active Speaking - Open Conversational Gesture">
-        <!-- Frame 3: Warm Call to Action (0:41 - 0:55) -->
+        <!-- Frame 3: Warm Call to Action (0:53 - 0:75) -->
         <img id="frame3" class="stage-img" src="speaking-closing.jpg" alt="Closing Posture - Direct Friendly Connection">
 
         <!-- Live Camera Feed (Mirrored) -->
@@ -370,7 +423,7 @@
         <!-- Dynamic Cue Pill -->
         <div id="liveCue" class="live-cue-pill">
           <span class="pulse-dot"></span>
-          <span id="cueText">Act 1: Warm Welcome (Direct Eye Contact & Gentle Smile)</span>
+          <span id="cueText">[B] Background & Scope (Grounded, Steady Cadence)</span>
         </div>
       </div>
 
@@ -380,7 +433,7 @@
         </div>
         <div class="time-readout">
           <span id="timeElapsed">00:00</span>
-          <span id="targetDuration">00:52</span>
+          <span id="targetDuration">01:15</span>
         </div>
 
         <div class="btn-row">
@@ -394,86 +447,155 @@
     <!-- Teleprompter & Coaching Cues -->
     <div class="prompter-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-        <span class="stage-title">Executive Teleprompter</span>
+        <span id="prompterTitle" class="stage-title">BEAT Framework Prompter</span>
         <span id="wpmBadge" style="font-size: 0.75rem; color: #38bdf8; background: rgba(56,189,248,0.1); padding: 4px 8px; border-radius: 4px;">Pace: 125 WPM</span>
       </div>
 
       <div class="prompter-box" id="prompterBox">
-        <!-- Section 1 -->
-        <p id="line1" class="active-sentence">
-          <span class="coach-pill cue-smile">Warm Smile</span>
-          “Hello and welcome.”
-          <span class="coach-pill cue-pause">1s Breath</span>
-        </p>
-
-        <!-- Section 2 -->
-        <p id="line2">
-          “Over the past 18 years, I’ve led product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Ericsson</strong>, <strong>Zebra Technologies</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
-        </p>
-
-        <!-- Section 3 -->
-        <p id="line3">
-          <span class="coach-pill cue-gesture">Open Palm Gesture</span>
-          “As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems—”
-        </p>
-
-        <!-- Section 4 -->
-        <p id="line4">
-          “—whether <strong>telecom CPQ</strong>, <strong>agentic enterprise AI</strong>, <strong>rugged industrial IoT</strong>, or <strong>commercial automotive cockpits</strong>—”
-        </p>
-
-        <!-- Section 5 -->
-        <p id="line5">
-          <span class="coach-pill cue-gesture">Energetic Cadence</span>
-          “—and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams.”
-          <span class="coach-pill cue-pause">1s Pause</span>
-        </p>
-
-        <!-- Section 6 -->
-        <p id="line6">
-          <span class="coach-pill cue-smile">Lean Forward</span>
-          “Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams and design systems, or view my <strong>Curriculum Vitae</strong>.”
-        </p>
-
-        <!-- Section 7 -->
-        <p id="line7">
-          <span class="coach-pill cue-smile">Warm Closing Eye Contact</span>
-          “I look forward to connecting with you.”
-        </p>
+        <!-- Content will be rendered dynamically based on selected mode -->
       </div>
 
       <!-- Live Coaching Rules -->
-      <div class="coaching-tips">
-        <div class="tip-box">
-          <div class="tip-title">👀 Eye Level</div>
-          <div>Look straight at the camera lens, not at your screen preview. Keep chin parallel to desk.</div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-title">✋ Natural Gestures</div>
-          <div>Keep hands relaxed at chest level. Gesture outward when mentioning domains, then rest naturally.</div>
-        </div>
-        <div class="tip-box">
-          <div class="tip-title">🌬️ Pause Power</div>
-          <div>Never rush. Pausing for 1 full second after your name and company list conveys authority and calm.</div>
-        </div>
+      <div class="coaching-tips" id="coachingTips">
+        <!-- Rendered dynamically -->
       </div>
     </div>
 
   </div>
 
   <script>
-    // Timing milestones in seconds for 52-second script
-    const cueTimeline = [
-      { start: 0, end: 6, lineId: 'line1', frame: 'frame1', cue: 'Act 1: Warm Welcome (Direct Eye Contact & Gentle Smile)' },
-      { start: 6, end: 16, lineId: 'line2', frame: 'frame1', cue: 'Act 1: Career Track Record (Steady, Grounded Cadence)' },
-      { start: 16, end: 24, lineId: 'line3', frame: 'frame2', cue: 'Act 2: Core Managerial Focus (Open Hand Gesture)' },
-      { start: 24, end: 34, lineId: 'line4', frame: 'frame2', cue: 'Act 2: Enterprise Complexity (Articulate Each Domain)' },
-      { start: 34, end: 42, lineId: 'line5', frame: 'frame2', cue: 'Act 2: Impact & Engineering Scale (Strong Conviction)' },
-      { start: 42, end: 49, lineId: 'line6', frame: 'frame3', cue: 'Act 3: Portfolio Call-to-Action (Slight Forward Lean)' },
-      { start: 49, end: 54, lineId: 'line7', frame: 'frame3', cue: 'Act 3: Closing Invite (Warm Smile, Hold for 2s)' }
-    ];
+    // Mode Data: BEAT Framework vs Portfolio Welcome
+    const modes = {
+      beat: {
+        title: "BEAT Framework Prompter (Tell Me About Yourself)",
+        duration: 75,
+        durationFormatted: "01:15",
+        headerDuration: "70–75s",
+        fullText: "I’m a Senior UI/UX Design Manager with over 18 years of experience building and scaling product design organizations across global technology leaders, including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. My core focus has always been mission-critical, high-complexity systems, spanning telecom CPQ, enterprise agentic AI, rugged industrial IoT, and commercial automotive cockpits. My design leadership philosophy centers on bridging deep technical logic with seamless usability, ensuring design is a direct driver of engineering velocity and product adoption. Throughout my career, I’ve established zero-defect design systems that accelerated cross-functional release cycles, led multi-disciplinary teams across global time zones, and mentored over 50 product designers into high-performing contributors. What excited me about this role with your organization is your focus on scaling complex enterprise systems. I’m looking to bring my background in design operations, systems thinking, and leadership to help your team achieve that next level of scale.",
+        timeline: [
+          { start: 0, end: 18, lineId: 'beat_b', frame: 'frame1', cue: '[B] Background & Executive Scope (18+ Yrs, Global Giants)' },
+          { start: 18, end: 36, lineId: 'beat_e1', frame: 'frame2', cue: '[E] Expertise & Domains (Telecom CPQ, AI, Industrial IoT)' },
+          { start: 36, end: 52, lineId: 'beat_e2', frame: 'frame2', cue: '[E] Leadership Philosophy (Engineering Velocity & Systems)' },
+          { start: 52, end: 64, lineId: 'beat_a', frame: 'frame2', cue: '[A] Accomplishments (Zero-Defect Systems, Mentored 50+)' },
+          { start: 64, end: 75, lineId: 'beat_t', frame: 'frame3', cue: '[T] Strategic Tie-in (Forward Lean, Company Alignment)' }
+        ],
+        html: `
+          <p id="beat_b" class="active-sentence">
+            <span class="coach-pill cue-framework">B — Background</span>
+            <span class="coach-pill cue-smile">Warm Smile</span>
+            “I’m a Senior UI/UX Design Manager with over 18 years of experience building and scaling product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Ericsson</strong>, <strong>Zebra Technologies</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
+            <span class="coach-pill cue-pause">1s Breath</span>
+          </p>
 
-    const totalDuration = 52;
+          <p id="beat_e1">
+            <span class="coach-pill cue-framework">E — Expertise</span>
+            <span class="coach-pill cue-gesture">Open Palm Gesture</span>
+            “My core focus has always been mission-critical, high-complexity systems—spanning <strong>telecom CPQ</strong>, <strong>enterprise agentic AI</strong>, <strong>rugged industrial IoT</strong>, and <strong>commercial automotive cockpits</strong>.”
+          </p>
+
+          <p id="beat_e2">
+            <span class="coach-pill cue-framework">E — Philosophy</span>
+            “My design leadership philosophy centers on bridging deep technical logic with seamless usability, ensuring design isn’t just aesthetic, but a direct driver of engineering velocity and product adoption.”
+            <span class="coach-pill cue-pause">1s Pause</span>
+          </p>
+
+          <p id="beat_a">
+            <span class="coach-pill cue-framework">A — Accomplishments</span>
+            <span class="coach-pill cue-gesture">Conviction & Scale</span>
+            “Throughout my career, I’ve established zero-defect design systems that accelerated cross-functional release cycles, led multi-disciplinary teams across global time zones, and <strong>mentored over 50 product designers</strong> into high-performing contributors.”
+            <span class="coach-pill cue-pause">1s Breath</span>
+          </p>
+
+          <p id="beat_t">
+            <span class="coach-pill cue-framework">T — Tie-In</span>
+            <span class="coach-pill cue-smile">Slight Forward Lean</span>
+            “What excited me about this role with your organization is your focus on scaling complex enterprise systems. I’m looking to bring my background in design operations, systems thinking, and team leadership to help your team achieve that next level of scale.”
+          </p>
+        `,
+        tips: `
+          <div class="tip-box">
+            <div class="tip-title">🎯 [B & E] Immediate Stature</div>
+            <div>Mentioning IBM, Ericsson, and Zebra in the first 15 seconds establishes enterprise authority without reciting college.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">⚡ [A] Concrete Scale</div>
+            <div>Highlighting zero-defect systems and 50+ designers mentored answers the management question before they even ask.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">🤝 [T] Tailor on the Fly</div>
+            <div>In actual interviews, customize the last line with the specific product or initiative the company is hiring for.</div>
+          </div>
+        `
+      },
+      welcome: {
+        title: "Portfolio Welcome Video Prompter",
+        duration: 52,
+        durationFormatted: "00:52",
+        headerDuration: "50–55s",
+        fullText: "Hello and welcome. Over the past 18 years, I’ve led product design organizations across global technology leaders, including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems, whether telecom CPQ, agentic enterprise AI, rugged industrial IoT, or commercial automotive cockpits, and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams. Please explore my Selected Work for complete end-to-end deep dives, review my Leadership Deck to see how I scale teams and systems, or view my Curriculum Vitae. I look forward to connecting with you.",
+        timeline: [
+          { start: 0, end: 6, lineId: 'line1', frame: 'frame1', cue: 'Act 1: Warm Welcome (Direct Eye Contact & Gentle Smile)' },
+          { start: 6, end: 16, lineId: 'line2', frame: 'frame1', cue: 'Act 1: Career Track Record (Steady, Grounded Cadence)' },
+          { start: 16, end: 24, lineId: 'line3', frame: 'frame2', cue: 'Act 2: Core Managerial Focus (Open Hand Gesture)' },
+          { start: 24, end: 34, lineId: 'line4', frame: 'frame2', cue: 'Act 2: Enterprise Complexity (Articulate Each Domain)' },
+          { start: 34, end: 42, lineId: 'line5', frame: 'frame2', cue: 'Act 2: Impact & Engineering Scale (Strong Conviction)' },
+          { start: 42, end: 49, lineId: 'line6', frame: 'frame3', cue: 'Act 3: Portfolio Call-to-Action (Slight Forward Lean)' },
+          { start: 49, end: 54, lineId: 'line7', frame: 'frame3', cue: 'Act 3: Closing Invite (Warm Smile, Hold for 2s)' }
+        ],
+        html: `
+          <p id="line1" class="active-sentence">
+            <span class="coach-pill cue-smile">Warm Smile</span>
+            “Hello and welcome.”
+            <span class="coach-pill cue-pause">1s Breath</span>
+          </p>
+
+          <p id="line2">
+            “Over the past 18 years, I’ve led product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Ericsson</strong>, <strong>Zebra Technologies</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
+          </p>
+
+          <p id="line3">
+            <span class="coach-pill cue-gesture">Open Palm Gesture</span>
+            “As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems—”
+          </p>
+
+          <p id="line4">
+            “—whether <strong>telecom CPQ</strong>, <strong>agentic enterprise AI</strong>, <strong>rugged industrial IoT</strong>, or <strong>commercial automotive cockpits</strong>—”
+          </p>
+
+          <p id="line5">
+            <span class="coach-pill cue-gesture">Energetic Cadence</span>
+            “—and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams.”
+            <span class="coach-pill cue-pause">1s Pause</span>
+          </p>
+
+          <p id="line6">
+            <span class="coach-pill cue-smile">Lean Forward</span>
+            “Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams and design systems, or view my <strong>Curriculum Vitae</strong>.”
+          </p>
+
+          <p id="line7">
+            <span class="coach-pill cue-smile">Warm Closing Eye Contact</span>
+            “I look forward to connecting with you.”
+          </p>
+        `,
+        tips: `
+          <div class="tip-box">
+            <div class="tip-title">👀 Eye Level</div>
+            <div>Look straight at the camera lens, not at your screen preview. Keep chin parallel to desk.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">✋ Natural Gestures</div>
+            <div>Keep hands relaxed at chest level. Gesture outward when mentioning domains, then rest naturally.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">🌬️ Pause Power</div>
+            <div>Never rush. Pausing for 1 full second after your name and company list conveys authority and calm.</div>
+          </div>
+        `
+      }
+    };
+
+    let currentModeKey = 'beat';
     let isRunning = false;
     let startTime = null;
     let animFrame = null;
@@ -481,7 +603,7 @@
     let synth = window.speechSynthesis;
     let activeStream = null;
 
-    // Elements
+    // DOM Elements
     const playBtn = document.getElementById('playBtn');
     const resetBtn = document.getElementById('resetBtn');
     const voiceGuideBtn = document.getElementById('voiceGuideBtn');
@@ -489,14 +611,36 @@
     const userCamera = document.getElementById('userCamera');
     const progressFill = document.getElementById('progressFill');
     const timeElapsed = document.getElementById('timeElapsed');
+    const targetDurationEl = document.getElementById('targetDuration');
+    const headerDurationEl = document.getElementById('headerDuration');
     const cueText = document.getElementById('cueText');
     const prompterBox = document.getElementById('prompterBox');
+    const prompterTitle = document.getElementById('prompterTitle');
+    const coachingTips = document.getElementById('coachingTips');
 
     const frames = {
       frame1: document.getElementById('frame1'),
       frame2: document.getElementById('frame2'),
       frame3: document.getElementById('frame3')
     };
+
+    function switchMode(modeKey) {
+      if (isRunning) resetRehearsal();
+      currentModeKey = modeKey;
+
+      // Update Tab Styles
+      document.getElementById('tabBeat').classList.toggle('active', modeKey === 'beat');
+      document.getElementById('tabWelcome').classList.toggle('active', modeKey === 'welcome');
+
+      const config = modes[modeKey];
+      prompterTitle.textContent = config.title;
+      targetDurationEl.textContent = config.durationFormatted;
+      headerDurationEl.textContent = config.headerDuration;
+      prompterBox.innerHTML = config.html;
+      coachingTips.innerHTML = config.tips;
+
+      resetRehearsal();
+    }
 
     function formatTime(sec) {
       const m = Math.floor(sec / 60).toString().padStart(2, '0');
@@ -519,31 +663,31 @@
       const activeEl = document.getElementById(lineId);
       if (activeEl) {
         activeEl.classList.add('active-sentence');
-        // Smooth scroll prompter to keep active line centered
-        const offsetTop = activeEl.offsetTop - prompterBox.offsetTop - 60;
+        const offsetTop = activeEl.offsetTop - prompterBox.offsetTop - 50;
         prompterBox.scrollTop = offsetTop;
       }
     }
 
     function updateTick() {
       if (!isRunning) return;
+      const config = modes[currentModeKey];
       const now = performance.now();
       const elapsed = (now - startTime) / 1000;
 
-      if (elapsed >= totalDuration) {
+      if (elapsed >= config.duration) {
         progressFill.style.width = '100%';
-        timeElapsed.textContent = formatTime(totalDuration);
-        cueText.textContent = "Finished! Hold warm smile for 2 seconds before stopping.";
+        timeElapsed.textContent = config.durationFormatted;
+        cueText.textContent = "Finished! Hold confident executive smile for 2 seconds.";
         isRunning = false;
         playBtn.textContent = '▶ Replay';
         return;
       }
 
-      progressFill.style.width = `${(elapsed / totalDuration) * 100}%`;
+      progressFill.style.width = `${(elapsed / config.duration) * 100}%`;
       timeElapsed.textContent = formatTime(elapsed);
 
-      // Find current stage
-      const currentCue = cueTimeline.find(c => elapsed >= c.start && elapsed < c.end) || cueTimeline[cueTimeline.length - 1];
+      // Find current cue
+      const currentCue = config.timeline.find(c => elapsed >= c.start && elapsed < c.end) || config.timeline[config.timeline.length - 1];
       if (currentCue) {
         cueText.textContent = currentCue.cue;
         setFrame(currentCue.frame);
@@ -557,18 +701,30 @@
       if (!('speechSynthesis' in window) || !voiceGuideEnabled) return;
       synth.cancel();
 
-      const textToSpeak = "Hello and welcome. Over the past 18 years, I’ve led product design organizations across global technology leaders, including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems, whether telecom CPQ, agentic enterprise AI, rugged industrial IoT, or commercial automotive cockpits, and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams. Please explore my Selected Work for complete end-to-end deep dives, review my Leadership Deck to see how I scale teams and systems, or view my Curriculum Vitae. I look forward to connecting with you.";
-
+      const textToSpeak = modes[currentModeKey].fullText;
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.rate = 0.95; // perfect 125 WPM executive cadence
-      utterance.pitch = 0.95; // steady, grounded baritone tone
+      utterance.rate = 0.95; // 125 WPM executive pace
+      utterance.pitch = 0.95;
 
-      // Pick an English voice if available
       const voices = synth.getVoices();
       const selectedVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Alex')));
       if (selectedVoice) utterance.voice = selectedVoice;
 
       synth.speak(utterance);
+    }
+
+    function resetRehearsal() {
+      isRunning = false;
+      cancelAnimationFrame(animFrame);
+      if (synth) synth.cancel();
+      progressFill.style.width = '0%';
+      timeElapsed.textContent = '00:00';
+      setFrame('frame1');
+      const config = modes[currentModeKey];
+      setActiveLine(config.timeline[0].lineId);
+      cueText.textContent = config.timeline[0].cue;
+      playBtn.textContent = '▶ Start Rehearsal';
+      prompterBox.scrollTop = 0;
     }
 
     playBtn.addEventListener('click', () => {
@@ -586,18 +742,7 @@
       }
     });
 
-    resetBtn.addEventListener('click', () => {
-      isRunning = false;
-      cancelAnimationFrame(animFrame);
-      if (synth) synth.cancel();
-      progressFill.style.width = '0%';
-      timeElapsed.textContent = '00:00';
-      setFrame('frame1');
-      setActiveLine('line1');
-      cueText.textContent = cueTimeline[0].cue;
-      playBtn.textContent = '▶ Start Rehearsal';
-      prompterBox.scrollTop = 0;
-    });
+    resetBtn.addEventListener('click', resetRehearsal);
 
     voiceGuideBtn.addEventListener('click', () => {
       voiceGuideEnabled = !voiceGuideEnabled;
@@ -630,6 +775,9 @@
         }
       }
     });
+
+    // Initialize in BEAT mode on load
+    switchMode('beat');
   </script>
 </body>
 </html>
