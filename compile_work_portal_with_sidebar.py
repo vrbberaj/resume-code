@@ -3,7 +3,7 @@ import json
 import os
 import re
 
-print("Compiling work.html with Left Panel Navigation and IBM as Case #1...")
+print("Compiling work.html with Sticky Floating Left Panel and Modern Dashboard Single-Pane View...")
 
 # Import shared prototypes & styles from specialization_data
 from specialization_data import (
@@ -100,29 +100,29 @@ projects_data = [
         "company": "Zebra Technologies",
         "coPill": "ZEBRA",
         "specPill": "Industrial IoT & Physical Ergonomics",
-        "title": "Zebra DeviceCloud: Enterprise IoT Management for Rugged Warehouse Fleets & Batteries",
-        "lead": "Architected multi-site fleet visibility console for 2,000 rugged mobile computers and 2,100 batteries, cutting lost asset loss by 94% through sub-zero glove touch targets, spatial floor plans, and predictive battery swap alerts.",
-        "managerTag": "Industrial IoT Physical Ergonomics Framework",
+        "title": "Zebra Technologies: Multi-Modal Edge Device Provisioning & Warehouse Floor Telemetry",
+        "lead": "Engineered high-contrast, physical-ergonomic workflows for rugged Android touch computers operating in sub-zero freezer warehouses (-25°C), reducing scanner pairing dropouts by 84% through audible and haptic spatial cues.",
+        "managerTag": "Physical Context Ergonomics & IoT Telemetry",
         "methodology": [
-            {"num": "01", "name": "-25°C Shadowing", "detail": "Chicago cold-chain"},
-            {"num": "02", "name": "Card Sorting IA", "detail": "4 stakeholder buckets"},
-            {"num": "03", "name": "Glove Ergonomics", "detail": "72px hit targets"},
-            {"num": "04", "name": "Spatial Floorplan", "detail": "Visual access point map"},
-            {"num": "05", "name": "Predictive Battery", "detail": "Swap before failure"}
+            {"num": "01", "name": "Freezer Shadow", "detail": "-25C Chicago glove test"},
+            {"num": "02", "name": "Glove Targets", "detail": "72px touch hit areas"},
+            {"num": "03", "name": "Audio-Haptic", "detail": "105dB warehouse chime"},
+            {"num": "04", "name": "1-Scan QR Staging", "detail": "Zero-touch setup"},
+            {"num": "05", "name": "Spatial Floor IA", "detail": "Floor map asset locator"}
         ],
         "metrics": [
-            {"val": "94% Drop", "label": "Lost Asset Loss (-$1.2M)"},
-            {"val": "2,000+", "label": "Scanners Tracked"},
-            {"val": "72px", "label": "Freezer Glove Touch Target"},
-            {"val": "<15s", "label": "1-Scan QR Staging"}
+            {"val": "84% Drop", "label": "Scanner Provisioning Failures"},
+            {"val": "3.2x Faster", "label": "Floor Staging Throughput"},
+            {"val": "72px Min", "label": "Thermal Glove Hit Target"},
+            {"val": "38,000+", "label": "Active Handhelds Managed"}
         ],
-        "screenshot": "screenshots/behance/zebra_iot_dashboard.png",
-        "screenshotAlt": "Zebra Technologies Device & Battery Health Insights Console",
-        "previewUrl": "https://devicecloud.zebra.com/enterprise/site-chicago-04",
+        "screenshot": "screenshots/behance/zebra_rfid_clean.png",
+        "screenshotAlt": "Zebra Enterprise Device Staging & Telemetry",
+        "previewUrl": "https://iot-cloud.zebra.com/devices/staging-cockpit",
         "callouts": [
-            {"icon": "⚡", "text": "<strong>Multi-Site Battery Telemetry:</strong> Live charge cycle tracking, thermal warnings, and predictive battery replacement."},
-            {"icon": "🧤", "text": "<strong>Cold-Storage Optimized:</strong> 72px glove hit targets tested in -25°C commercial industrial freezers."},
-            {"icon": "📦", "text": "<strong>1-Scan QR Fleet Provisioning:</strong> Configures Wi-Fi, MDM profile, and warehouse zone in under 15 seconds."}
+            {"icon": "⚡", "text": "<strong>1-Scan QR Staging:</strong> Generates encrypted multi-device barcode payload for instant zero-touch staging."},
+            {"icon": "🛡️", "text": "<strong>Sub-Zero Dark Mode:</strong> High-visibility amber palette optimized for high-glare and frozen optics."},
+            {"icon": "📦", "text": "<strong>Spatial Warehouse Locator:</strong> Interactive SVG floor grid locating beacons with +/-0.5m accuracy."}
         ],
         "protoHtml": zebra_proto_html.replace('`', ''),
         "caseHref": "case-zebra.html"
@@ -132,30 +132,30 @@ projects_data = [
         "badgeKey": "carbon",
         "company": "IBM Carbon",
         "coPill": "CARBON",
-        "specPill": "Design Systems & TokenOps Architecture",
-        "title": "IBM Carbon Design System: Multi-Brand Token Studio Scaling Across 14 Global Squads",
-        "lead": "Spearheaded design system governance and token compiler pipeline synchronizing 14 squads across White, Gray 10, Gray 90, and Gray 100 Dark themes with zero visual drift and 100% WCAG 2.1 AA accessibility compliance.",
-        "managerTag": "Design System Token Pipeline",
+        "specPill": "Enterprise Token Architecture & Systems Governance",
+        "title": "IBM Carbon Design System: Multi-Tier Token Governance Across 60+ Cloud Applications",
+        "lead": "Architected a multi-brand token pipeline (Global &rarr; Semantic &rarr; Component) synchronizing design tokens from Figma Variables to React, Angular, and iOS codebases via GitHub Actions CI/CD with zero design debt.",
+        "managerTag": "Multi-Brand DesignOps & Token Governance",
         "methodology": [
-            {"num": "01", "name": "Component Audit", "detail": "Eliminated 62 rogue buttons"},
-            {"num": "02", "name": "Multi-Tier Tokens", "detail": "Global -> Semantic -> Component"},
-            {"num": "03", "name": "Figma Variables", "detail": "1-click 4-theme switching"},
-            {"num": "04", "name": "CI/CD Compiler", "detail": "Style Dictionary -> npm"},
-            {"num": "05", "name": "Automated QA", "detail": "Playwright + axe-core"}
+            {"num": "01", "name": "Token Taxonomy", "detail": "Global, Semantic, Comp"},
+            {"num": "02", "name": "Figma Variables", "detail": "Theme modes 100% mapped"},
+            {"num": "03", "name": "Style Dictionary", "detail": "CSS, JSON, TS theme output"},
+            {"num": "04", "name": "Automated CI/CD", "detail": "Zero-defect PR generator"},
+            {"num": "05", "name": "Runtime Engine", "detail": "Sub-10ms theme switching"}
         ],
         "metrics": [
-            {"val": "14 Squads", "label": "Unified on 1 Token Pipeline"},
-            {"val": "4 Themes", "label": "White, Gray 10, 90, 100 Dark"},
-            {"val": "0 Visual Drift", "label": "Across Production Repos"},
-            {"val": "100%", "label": "WCAG 2.1 AA Contrast Compliance"}
+            {"val": "100%", "label": "Token Parity (Figma to Code)"},
+            {"val": "18 Min", "label": "Token-to-Production CI/CD"},
+            {"val": "60+", "label": "Enterprise Apps Powered"},
+            {"val": "0 Code PRs", "label": "For Semantic Color Changes"}
         ],
-        "screenshot": "screenshots/behance/carbon_admin_clean.png",
-        "screenshotAlt": "IBM Carbon Ready2Go Administration Web Platform",
-        "previewUrl": "https://carbon.ibm.com/token-studio/themes",
+        "screenshot": "screenshots/behance/carbon_tokens_clean.png",
+        "screenshotAlt": "IBM Carbon Design System Token Studio & Spec",
+        "previewUrl": "https://carbon.carbondesignsystem.com/tokens/interactive-studio",
         "callouts": [
-            {"icon": "🎨", "text": "<strong>Live Token Theme Switcher:</strong> Instant switching between White, Gray 10, Gray 90, and Gray 100 Dark."},
-            {"icon": "⚙️", "text": "<strong>Automated Style Dictionary:</strong> Transforms Figma variables into JSON, CSS variables, and TS contracts."},
-            {"icon": "🛡️", "text": "<strong>Zero-Defect Accessibility Gate:</strong> Automated CI contrast validation guaranteeing WCAG AA standards."}
+            {"icon": "⚡", "text": "<strong>Multi-Tier Token Engine:</strong> Real-time inspector showing Global &rarr; Semantic &rarr; Component token resolution."},
+            {"icon": "🛡️", "text": "<strong>Automated PR Generator:</strong> 1-click token build pushing formatted JSON to production repositories."},
+            {"icon": "🎨", "text": "<strong>Runtime Theme Switcher:</strong> Instant hot-swapping between White, Gray 10, Gray 90, and Gray 100 themes."}
         ],
         "protoHtml": carbon_proto_html.replace('`', ''),
         "caseHref": "case-ibm-carbon.html"
@@ -165,16 +165,16 @@ projects_data = [
         "badgeKey": "wabco",
         "company": "ZF Wabco",
         "coPill": "WABCO",
-        "specPill": "Automotive Cockpit & Safety UX",
-        "title": "ZF Wabco Cockpit HUD: Gaze-Budgeted Digital Cluster for Commercial Heavy Truck Safety",
-        "lead": "Engineered 3-zone commercial truck digital instrument cluster adhering to strict <1.2s gaze budget ceilings under extreme ambient glare, connecting CAN-bus telematics with zero driver cognitive distraction.",
-        "managerTag": "Automotive Gaze-Budgeting Safety Protocol",
+        "specPill": "Automotive Cockpit & Safety-Critical UX",
+        "title": "ZF Wabco: Mission-Critical Commercial Vehicle Cockpit & Fleet Telematics HUD",
+        "lead": "Architected a commercial vehicle telematics cluster and mobile driver companion adhering to strict ISO 15005 / UNECE glance budgets (<1.2s gaze ceiling), integrating live radar collision warnings, brake pad wear sensors, and route telemetry.",
+        "managerTag": "Mission-Critical Automotive Ergonomics",
         "methodology": [
-            {"num": "01", "name": "Driver Shadowing", "detail": "Night & high-glare routes"},
-            {"num": "02", "name": "3-Zone Cluster IA", "detail": "Critical HUD vs telemetry"},
-            {"num": "03", "name": "Gaze Ceilings", "detail": "<1.2s glance budgeting"},
-            {"num": "04", "name": "High-Contrast UI", "detail": "Pure black OLED typography"},
-            {"num": "05", "name": "CAN-Bus Telematics", "detail": "Live radar headway distance"}
+            {"num": "01", "name": "Glance Budget", "detail": "<1.2s legal ceiling pass"},
+            {"num": "02", "name": "Zone Architecture", "detail": "HUD, Radar, Telematics"},
+            {"num": "03", "name": "Night Ergonomics", "detail": "Ultra-low glare anti-fatigue"},
+            {"num": "04", "name": "CAN-Bus Sync", "detail": "Sub-20ms sensor rendering"},
+            {"num": "05", "name": "UNECE Audit", "detail": "100% regulatory sign-off"}
         ],
         "metrics": [
             {"val": "<1.2s", "label": "Driver Glance Ceiling (Pass)"},
@@ -195,9 +195,9 @@ projects_data = [
     }
 ]
 
-# Build the Left Sidebar Items HTML
+# Build the Left Sidebar Items HTML (With data-target for dashboard switching)
 sidebar_items_html = """
-      <a href="#specialization-pillars" class="work-nav-item active" onclick="activateWorkNav(this)">
+      <a href="#specialization-pillars" class="work-nav-item active" data-target="specialization-pillars" onclick="switchWorkView('specialization-pillars', this); return false;">
         <div class="work-nav-icon">🏛️</div>
         <div class="work-nav-text">
           <div class="work-nav-title">Specialization Overview</div>
@@ -208,7 +208,7 @@ sidebar_items_html = """
 
 for p in projects_data:
     sidebar_items_html += f"""
-      <a href="#{p['id']}" class="work-nav-item" onclick="activateWorkNav(this)">
+      <a href="#{p['id']}" class="work-nav-item" data-target="{p['id']}" onclick="switchWorkView('{p['id']}', this); return false;">
         <span class="work-nav-badge {p['badgeKey']}">{p['coPill']}</span>
         <div class="work-nav-text">
           <div class="work-nav-title">{p['specPill']}</div>
@@ -217,7 +217,7 @@ for p in projects_data:
       </a>
     """
 
-# Build the Cards HTML
+# Build the Cards HTML (Each card is a work-view-pane with prev/next dashboard controls)
 cards_html = ""
 for idx, p in enumerate(projects_data):
     methodology_steps_html = "".join([
@@ -235,9 +235,14 @@ for idx, p in enumerate(projects_data):
         for c in p["callouts"]
     ])
 
+    prev_target = "specialization-pillars" if idx == 0 else projects_data[idx-1]["id"]
+    prev_label = "Specialization Overview" if idx == 0 else f"{projects_data[idx-1]['coPill']}: {projects_data[idx-1]['specPill']}"
+    next_target = "specialization-pillars" if idx == len(projects_data) - 1 else projects_data[idx+1]["id"]
+    next_label = "Specialization Overview" if idx == len(projects_data) - 1 else f"{projects_data[idx+1]['coPill']}: {projects_data[idx+1]['specPill']}"
+
     cards_html += f"""
-    <!-- Case #{idx+1}: {p['company']} -->
-    <article class="transformation-card" id="{p['id']}">
+    <!-- Case #{idx+1}: {p['company']} (Dashboard View Pane) -->
+    <article class="transformation-card work-view-pane" id="{p['id']}">
       <div class="card-header-bar">
         <div class="card-badges-left">
           <span class="pill-co">{p['company']}</span>
@@ -258,44 +263,35 @@ for idx, p in enumerate(projects_data):
       <div class="domain-methodology-strip">
         <div class="d-strip-title">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          {p['managerTag']}
+          <span>DOMAIN METHODOLOGY: {p['managerTag']}</span>
         </div>
-        <div class="d-strip-steps">
+        <div class="d-steps-grid">
           {methodology_steps_html}
         </div>
       </div>
 
-      <!-- Card Split Grid: Interactive Prototype + Annotated Screenshot Preview -->
-      <div class="card-split-grid">
-        <div class="interactive-column">
-          <div class="col-section-tag">
-            <span>🕹️ LIVE INTERACTIVE WORKING PROTOTYPE</span>
-            <span style="color: #64748B;">Interactive Demo</span>
+      <!-- Shipped Production Evidence Screenshot -->
+      <div class="browser-screenshot-canvas">
+        <div class="browser-mockup-header">
+          <div class="browser-dots">
+            <span class="b-dot red"></span>
+            <span class="b-dot yellow"></span>
+            <span class="b-dot green"></span>
           </div>
-          {p['protoHtml']}
+          <div class="browser-url-pill">{p['previewUrl']}</div>
+          <span class="browser-status-tag">PRODUCTION DELIVERABLE</span>
         </div>
+        <div class="browser-screenshot-wrapper">
+          <img src="{p['screenshot']}" alt="{p['screenshotAlt']}" class="browser-screenshot-img" loading="lazy">
+        </div>
+      </div>
 
-        <div class="screenshot-column">
-          <div class="col-section-tag">
-            <span>📸 SHIPPED PRODUCTION INTERFACE</span>
-            <span style="color: #64748B;">Visual Evidence</span>
-          </div>
-          <div class="browser-preview-frame">
-            <div class="browser-preview-header">
-              <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-              <div class="browser-url-text">{p['previewUrl']}</div>
-            </div>
-            <div class="browser-screenshot-wrap">
-              <img src="{p['screenshot']}" alt="{p['screenshotAlt']}" class="browser-screenshot-img" loading="lazy">
-            </div>
-            <div class="browser-mini-body">
-              <span class="preview-callout-title">UI/UX Architectural Highlights:</span>
-              <div class="preview-callout-badges">
-                {callouts_html}
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Interactive Working Prototype Simulation -->
+      {p['protoHtml']}
+
+      <!-- Key Deliverable Features -->
+      <div class="preview-callout-badges">
+        {callouts_html}
       </div>
 
       <!-- Metrics Row -->
@@ -310,9 +306,22 @@ for idx, p in enumerate(projects_data):
           <span>Explore user shadowing recordings, SysML state machine diagrams, and executive CAR defense.</span>
         </div>
         <a href="{p['caseHref']}" class="btn-primary-card">
-          <span>Explore 7-Chapter Narrative Defense</span>
+          <span>Explore 8-Chapter Narrative Defense</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
+      </div>
+
+      <!-- In-Page Dashboard Switcher Footer -->
+      <div class="dash-pane-switcher-bar">
+        <button class="btn-dash-nav-prev" onclick="switchWorkView('{prev_target}')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>&larr; {prev_label}</span>
+        </button>
+        <div class="dash-pane-progress">Transformation {idx+1} of {len(projects_data)}</div>
+        <button class="btn-dash-nav-next" onclick="switchWorkView('{next_target}')">
+          <span>{next_label} &rarr;</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </article>
     """
@@ -324,7 +333,7 @@ work_html = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selected Work: 5 UI/UX Specializations in Complex Enterprise Systems | Balaajee V.R.</title>
-  <meta name="description" content="Dedicated directory of 5 flagship enterprise product transformations illustrating deep craft across Agentic AI governance, high-density financial data grids, industrial IoT, token architecture, and automotive cockpits.">
+  <meta name="description" content="Dedicated single-pane dashboard of 5 flagship enterprise product transformations illustrating deep craft across Agentic AI governance, high-density financial data grids, industrial IoT, token architecture, and automotive cockpits.">
   {commonHeadLinks}
   <style>
     {globalCoreStyles}
@@ -333,7 +342,7 @@ work_html = f"""<!DOCTYPE html>
     .work-hero-header {{
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 48px 0 36px;
+      padding: 40px 0 32px;
     }}
 
     .work-container {{
@@ -354,16 +363,16 @@ work_html = f"""<!DOCTYPE html>
 
     .work-title {{
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 900;
       letter-spacing: -0.02em;
       color: var(--text-main);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.2;
     }}
 
     .work-desc {{
-      font-size: 15.5px;
+      font-size: 15px;
       color: var(--text-muted);
       max-width: 860px;
       line-height: 1.6;
@@ -374,8 +383,8 @@ work_html = f"""<!DOCTYPE html>
       background: linear-gradient(135deg, #0D1627 0%, #172554 100%);
       border: 1px solid rgba(59, 130, 246, 0.3);
       border-radius: 16px;
-      padding: 22px 28px;
-      margin-top: 24px;
+      padding: 20px 24px;
+      margin-top: 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -445,7 +454,7 @@ work_html = f"""<!DOCTYPE html>
       box-shadow: 0 6px 16px rgba(96, 165, 250, 0.35);
     }}
 
-    /* 2-Column App Layout with Left Panel Navigation */
+    /* 2-Column App Layout with Sticky Floating Left Panel */
     .work-app-layout {{
       max-width: 1380px;
       margin: 0 auto;
@@ -456,23 +465,29 @@ work_html = f"""<!DOCTYPE html>
       position: relative;
     }}
 
-    /* Left Sidebar */
+    /* Sticky & Floating Left Sidebar */
     .work-left-sidebar {{
-      width: 290px;
+      width: 320px;
       flex-shrink: 0;
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-      border-radius: 16px;
+      border: 1px solid rgba(203, 213, 225, 0.95);
+      border-radius: 18px;
       position: sticky;
-      top: 76px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      top: 92px;
+      box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px -2px rgba(15, 23, 42, 0.04);
       overflow: hidden;
       box-sizing: border-box;
       max-width: 100%;
+      z-index: 25;
+      transition: all 0.25s ease;
+    }}
+
+    .work-left-sidebar:hover {{
+      box-shadow: 0 20px 48px -6px rgba(15, 23, 42, 0.12), 0 6px 18px -2px rgba(15, 23, 42, 0.05);
     }}
 
     .work-sidebar-header {{
-      padding: 16px 18px;
+      padding: 18px 20px;
       background: var(--bg-subtle);
       border-bottom: 1px solid var(--border-subtle);
     }}
@@ -485,7 +500,7 @@ work_html = f"""<!DOCTYPE html>
       text-transform: uppercase;
       letter-spacing: 0.08em;
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }}
 
     .work-sidebar-title {{
@@ -501,7 +516,7 @@ work_html = f"""<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-height: calc(100vh - 220px);
+      max-height: calc(100vh - 230px);
       overflow-y: auto;
     }}
 
@@ -509,25 +524,40 @@ work_html = f"""<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px 12px;
+      padding: 11px 13px;
       background: transparent;
       border: 1px solid transparent;
       border-radius: 10px;
       text-decoration: none;
       color: var(--text-body);
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       box-sizing: border-box;
+      cursor: pointer;
+      position: relative;
     }}
 
     .work-nav-item:hover {{
       background: var(--bg-subtle);
       color: var(--text-main);
+      transform: translateX(2px);
     }}
 
     .work-nav-item.active {{
       background: #EFF6FF;
-      border-color: rgba(59, 130, 246, 0.4);
-      color: #1E40AF;
+      border-color: #3B82F6;
+      color: #1D4ED8;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.14);
+    }}
+
+    .work-nav-item.active::after {{
+      content: '';
+      position: absolute;
+      right: 12px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2563EB;
+      box-shadow: 0 0 8px #2563EB;
     }}
 
     .work-nav-icon {{
@@ -613,13 +643,132 @@ work_html = f"""<!DOCTYPE html>
       max-width: 100%;
     }}
 
+    /* Modern Dashboard View Pane Switcher */
+    .work-view-pane {{
+      display: none;
+      animation: fadeInDashboardView 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+
+    .work-view-pane.active {{
+      display: block;
+    }}
+
+    @keyframes fadeInDashboardView {{
+      from {{
+        opacity: 0;
+        transform: translateY(8px);
+      }}
+      to {{
+        opacity: 1;
+        transform: translateY(0);
+      }}
+    }}
+
+    /* Dashboard Context Status Bar */
+    .work-dashboard-statusbar {{
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }}
+
+    .dash-status-left {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }}
+
+    .dash-live-dot {{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      flex-shrink: 0;
+    }}
+
+    .dash-status-title {{
+      font-size: 13.5px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+    }}
+
+    .dash-mode-pill {{
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0F62FE;
+      background: rgba(15, 98, 254, 0.08);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(15, 98, 254, 0.2);
+    }}
+
+    /* Bottom Pane Switcher Bar */
+    .dash-pane-switcher-bar {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      margin-top: 28px;
+      border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 12px;
+    }}
+
+    .btn-dash-nav-prev, .btn-dash-nav-next {{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-medium);
+      background: #FFFFFF;
+      color: var(--text-main);
+    }}
+
+    .btn-dash-nav-prev:hover, .btn-dash-nav-next:hover {{
+      background: #F1F5F9;
+      border-color: #94A3B8;
+      transform: translateY(-1px);
+    }}
+
+    .btn-dash-nav-next {{
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }}
+
+    .btn-dash-nav-next:hover {{
+      background: #1E293B;
+      color: #FFFFFF;
+    }}
+
+    .dash-pane-progress {{
+      font-family: var(--font-code);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }}
+
     /* 5 UI/UX Specialization Pillars Banner */
     .specialization-pillars-banner {{
       background: #FFFFFF;
       border: 1px solid var(--border-medium);
       border-radius: 20px;
       padding: 32px 36px;
-      margin-bottom: 36px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
       max-width: 100%;
       box-sizing: border-box;
@@ -690,11 +839,12 @@ work_html = f"""<!DOCTYPE html>
       transition: all 0.2s ease;
       min-width: 0;
       box-sizing: border-box;
+      cursor: pointer;
     }}
 
     .spec-pillar-card:hover {{
       transform: translateY(-2px);
-      border-color: var(--border-medium);
+      border-color: #3B82F6;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
     }}
 
@@ -747,25 +897,18 @@ work_html = f"""<!DOCTYPE html>
       border: 1px solid var(--border-medium);
       border-radius: 24px;
       padding: 36px 40px;
-      margin-bottom: 44px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      transition: box-shadow 0.25s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       max-width: 100%;
       box-sizing: border-box;
-      scroll-margin-top: 90px;
-    }}
-
-    .transformation-card:hover {{
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
     }}
 
     .card-header-bar {{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
+      gap: 12px;
     }}
 
     .card-badges-left {{
@@ -776,72 +919,76 @@ work_html = f"""<!DOCTYPE html>
     }}
 
     .pill-co {{
-      font-family: var(--font-heading);
-      font-size: 12px;
+      font-family: var(--font-code);
+      font-size: 11px;
       font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 100px;
-      background: var(--bg-subtle);
-      color: var(--text-main);
-      border: 1px solid var(--border-medium);
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      color: var(--text-main);
     }}
 
     .pill-spec {{
       font-family: var(--font-code);
       font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 100px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 6px;
       background: rgba(240, 6, 88, 0.08);
+      border: 1px solid rgba(240, 6, 88, 0.25);
       color: var(--primary-accent);
-      border: 1px solid rgba(240, 6, 88, 0.2);
     }}
 
     .btn-deep-dive-pill {{
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
-      background: #0057FF;
-      color: #FFFFFF;
       font-family: var(--font-heading);
       font-size: 12px;
-      font-weight: 800;
-      border-radius: 100px;
+      font-weight: 700;
+      color: var(--text-main);
       text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
       transition: all 0.2s ease;
     }}
 
     .btn-deep-dive-pill:hover {{
-      background: #0045CC;
-      transform: translateY(-1px);
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-color: var(--text-main);
     }}
 
     .card-hero-text {{
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }}
 
     .card-title {{
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--text-main);
       margin-bottom: 8px;
       line-height: 1.25;
-      letter-spacing: -0.01em;
     }}
 
     .card-lead {{
       font-size: 14.5px;
-      color: var(--text-body);
+      color: var(--text-muted);
       line-height: 1.6;
-      max-width: 900px;
+      max-width: 960px;
     }}
 
-    /* Domain Methodology Process Strip */
+    /* Domain Methodology Strip */
     .domain-methodology-strip {{
-      background: #F8FAFC;
+      background: var(--bg-subtle);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
       padding: 16px 20px;
@@ -849,35 +996,35 @@ work_html = f"""<!DOCTYPE html>
     }}
 
     .d-strip-title {{
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--primary-accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
     }}
 
-    .d-strip-steps {{
+    .d-strip-title svg {{
+      color: var(--primary-accent);
+    }}
+
+    .d-steps-grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 12px;
     }}
 
     .d-step-item {{
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-size: 12px;
-      line-height: 1.45;
-      color: var(--text-body);
       display: flex;
-      gap: 8px;
       align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-body);
+      line-height: 1.4;
     }}
 
     .d-step-num {{
@@ -885,57 +1032,30 @@ work_html = f"""<!DOCTYPE html>
       font-size: 10px;
       font-weight: 800;
       color: var(--primary-accent);
-      background: rgba(240, 6, 88, 0.08);
-      padding: 2px 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      padding: 2px 5px;
       border-radius: 4px;
       flex-shrink: 0;
     }}
 
-    /* Card Split Grid: Prototype + Screenshot */
-    .card-split-grid {{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 28px;
-    }}
-
-    .col-section-tag {{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: var(--text-main);
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }}
-
-    .interactive-column {{
-      min-width: 0;
-    }}
-
-    .screenshot-column {{
-      min-width: 0;
-    }}
-
-    /* Browser Preview Frame */
-    .browser-preview-frame {{
-      background: #090D16;
-      border: 1px solid #1E293B;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-    }}
-
-    .browser-preview-header {{
+    /* Browser Mockup Canvas */
+    .browser-screenshot-canvas {{
       background: #0F172A;
-      padding: 10px 14px;
+      border: 1px solid #1E293B;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }}
+
+    .browser-mockup-header {{
       display: flex;
       align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #1E293B;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: #1E293B;
+      border-bottom: 1px solid #334155;
     }}
 
     .browser-dots {{
@@ -943,112 +1063,114 @@ work_html = f"""<!DOCTYPE html>
       gap: 6px;
     }}
 
-    .dot-r {{ width: 9px; height: 9px; border-radius: 50%; background: #EF4444; }}
-    .dot-y {{ width: 9px; height: 9px; border-radius: 50%; background: #F59E0B; }}
-    .dot-g {{ width: 9px; height: 9px; border-radius: 50%; background: #10B981; }}
+    .b-dot {{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }}
 
-    .browser-url-text {{
+    .b-dot.red {{ background: #EF4444; }}
+    .b-dot.yellow {{ background: #F59E0B; }}
+    .b-dot.green {{ background: #10B981; }}
+
+    .browser-url-pill {{
       font-family: var(--font-code);
-      font-size: 10.5px;
+      font-size: 11px;
       color: #94A3B8;
+      background: #0F172A;
+      padding: 3px 14px;
+      border-radius: 100px;
+      border: 1px solid #334155;
+      max-width: 480px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }}
 
-    .browser-screenshot-wrap {{
+    .browser-status-tag {{
+      font-family: var(--font-code);
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #10B981;
+      background: rgba(16, 185, 129, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }}
+
+    .browser-screenshot-wrapper {{
       width: 100%;
-      height: 220px;
-      overflow: hidden;
-      background: #000;
-      position: relative;
+      background: #000000;
+      display: flex;
+      justify-content: center;
     }}
 
     .browser-screenshot-img {{
       width: 100%;
-      height: 100%;
+      height: auto;
+      display: block;
+      max-height: 520px;
       object-fit: cover;
-      object-position: top center;
-      display: block;
-      transition: transform 0.3s ease;
+      object-position: top;
     }}
 
-    .transformation-card:hover .browser-screenshot-img {{
-      transform: scale(1.03);
-    }}
-
-    .browser-mini-body {{
-      padding: 14px 16px;
-      background: #111624;
-    }}
-
-    .preview-callout-title {{
-      font-family: var(--font-code);
-      font-size: 10.5px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #10B981;
-      display: block;
-      margin-bottom: 8px;
-    }}
-
+    /* Preview Callouts */
     .preview-callout-badges {{
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
     }}
 
     .preview-callout-badge {{
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px 14px;
       display: flex;
       align-items: flex-start;
-      gap: 8px;
-      font-size: 11.5px;
-      color: #CBD5E1;
-      line-height: 1.4;
+      gap: 10px;
+      font-size: 12.5px;
+      color: var(--text-body);
+      line-height: 1.45;
     }}
 
     .callout-badge-icon {{
-      color: #38BDF8;
-      font-weight: 800;
+      font-size: 16px;
       flex-shrink: 0;
     }}
 
     /* Metrics Row */
     .card-metrics-row {{
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
       margin-bottom: 24px;
     }}
 
     .t-stat-card {{
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 14px 16px;
-      text-align: center;
+      text-align: left;
     }}
 
     .t-stat-val {{
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: 26px;
       font-weight: 900;
       color: var(--text-main);
+      line-height: 1.1;
       margin-bottom: 4px;
-      line-height: 1.2;
     }}
 
     .t-stat-label {{
-      font-size: 11.5px;
+      font-size: 12px;
       color: var(--text-muted);
       line-height: 1.35;
     }}
 
     /* Card Footer CTA */
     .card-footer-cta {{
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1058,7 +1180,8 @@ work_html = f"""<!DOCTYPE html>
 
     .footer-cta-text strong {{
       display: block;
-      font-size: 13.5px;
+      font-family: var(--font-heading);
+      font-size: 14.5px;
       color: var(--text-main);
       margin-bottom: 2px;
     }}
@@ -1072,78 +1195,96 @@ work_html = f"""<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 11px 22px;
-      background: var(--primary-accent);
+      padding: 12px 24px;
+      background: var(--text-main);
       color: #FFFFFF;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 800;
       border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 800;
       text-decoration: none;
       transition: all 0.2s ease;
       white-space: nowrap;
     }}
 
     .btn-primary-card:hover {{
-      background: var(--primary-hover);
+      background: var(--primary-accent);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(240, 6, 88, 0.35);
+      box-shadow: 0 6px 16px rgba(240, 6, 88, 0.3);
     }}
 
-    /* Mobile / Tablet Responsive */
-    @media (max-width: 1024px) {{
+    @media (max-width: 900px) {{
       .work-app-layout {{
-        flex-direction: column;
-        padding: 20px 16px;
-        gap: 20px;
-        max-width: 100%;
-        overflow: hidden;
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 16px 16px 60px !important;
       }}
-      .work-left-sidebar {{
-        width: 100%;
-        max-width: 100%;
-        position: sticky;
-        top: 60px;
-        z-index: 100;
-        overflow: hidden;
-      }}
-      .work-sidebar-nav {{
-        flex-direction: row;
-        overflow-x: auto;
-        max-width: 100%;
-        -webkit-overflow-scrolling: touch;
-        max-height: none;
-        padding: 8px;
-        gap: 8px;
-      }}
-      .work-nav-item {{
-        width: 210px;
-        flex-shrink: 0;
-      }}
-      .work-sidebar-footer {{
-        display: none;
-      }}
-      .card-split-grid {{
-        grid-template-columns: 1fr;
-      }}
-      .card-metrics-row {{
-        grid-template-columns: 1fr 1fr;
-      }}
-      .transformation-card {{
-        padding: 24px 20px;
-      }}
-    }}
 
-    @media (max-width: 600px) {{
-      .card-metrics-row {{
-        grid-template-columns: 1fr;
+      .work-left-sidebar {{
+        width: 100% !important;
+        position: sticky !important;
+        top: 68px !important;
+        z-index: 40 !important;
+        border-radius: 14px !important;
+        background: rgba(255, 255, 255, 0.96) !important;
+        backdrop-filter: blur(12px) !important;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
+      }}
+
+      .work-sidebar-header {{
+        padding: 10px 14px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }}
+
+      .work-sidebar-tag {{
+        margin-bottom: 0 !important;
+      }}
+
+      .work-sidebar-nav {{
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        padding: 8px 10px !important;
+        gap: 8px !important;
+        max-height: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        white-space: nowrap !important;
+      }}
+
+      .work-nav-item {{
+        flex-shrink: 0 !important;
+        padding: 8px 12px !important;
+        width: auto !important;
+      }}
+
+      .work-nav-item.active::after {{
+        display: none !important;
+      }}
+
+      .work-sidebar-footer {{
+        display: none !important;
+      }}
+
+      .dash-pane-switcher-bar {{
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }}
+
+      .btn-dash-nav-prev, .btn-dash-nav-next {{
+        width: 100% !important;
+        justify-content: center !important;
+      }}
+
+      .transformation-card {{
+        padding: 24px 20px !important;
       }}
     }}
   </style>
 </head>
 <body>
 
-  <!-- Global Header -->
+  <!-- Navigation Bar (0 external links) -->
   <header class="global-header">
     <div class="header-container">
       <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
@@ -1167,159 +1308,222 @@ work_html = f"""<!DOCTYPE html>
     </div>
   </header>
 
-  <!-- Hero Header -->
+  <!-- Hero Title Header -->
   <header class="work-hero-header">
     <div class="work-container">
-      <div class="work-pretitle">Flagship Enterprise Product Transformations</div>
-      <h1 class="work-title">Selected Work: 5 UI/UX Specializations in Complex Enterprise Systems</h1>
+      <div class="work-pretitle">Enterprise Product Architecture &bull; Selected Work</div>
+      <h1 class="work-title">Complex Systems Modernization: 5 Flagship Enterprise Case Studies</h1>
       <p class="work-desc">
-        Senior UI/UX Design Manager case studies illustrating deep craft across autonomous agentic AI governance, high-density financial data grids, physical/digital industrial IoT telematics, DesignOps token systems, and automotive safety cockpits.
+        Senior UI/UX Design Manager leadership spanning Agentic AI governance, high-density financial data architecture, mission-critical industrial IoT, multi-brand design system tokens, and automotive cockpit safety ergonomics.
       </p>
 
-      <!-- Native Visual Archive Banner (No external links) -->
-      <aside class="native-archive-banner" aria-label="Visual Archive Navigation">
+      <!-- Native Visual Archive Banner -->
+      <div class="native-archive-banner">
         <div class="archive-banner-left">
           <div class="archive-banner-badge">🖼️</div>
           <div class="archive-banner-text">
-            <strong>Authentic Production Deliverables Archive &bull; Zero External Redirects</strong>
-            <p>
-              Explore all 7 production design galleries—including information architecture maps, mobile telematic clusters, and enterprise token studios—preserved natively in the Visual Archive.
-            </p>
+            <strong>Looking for raw visual deliverables, UI design sheets &amp; awards?</strong>
+            <p>Explore my dedicated Visual Archive featuring 7 authentic design galleries, 22 project deliverables, and high-definition zoom sheets across B2B, mobile, web, and gaming.</p>
           </div>
         </div>
         <a href="/archive" class="archive-link-btn">
-          <span>🖼️ Browse Visual Archive (7 Galleries)</span>
+          <span>Open Visual Archive (7 Galleries)</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
-      </aside>
+      </div>
     </div>
   </header>
 
-  <!-- 2-Column App Layout with Left Panel Navigation -->
+  <!-- 2-Column App Layout with Sticky Floating Left Sidebar -->
   <div class="work-app-layout">
-    <!-- Left Sidebar -->
-    <aside class="work-left-sidebar" id="workSidebar" aria-label="Transformation Projects Navigation">
+    <!-- Sticky Floating Left Sidebar Navigation -->
+    <aside class="work-left-sidebar" aria-label="Selected Work Navigation">
       <div class="work-sidebar-header">
-        <span class="work-sidebar-tag">FLAGSHIP TRANSFORMATIONS</span>
-        <h3 class="work-sidebar-title">Selected Work</h3>
+        <span class="work-sidebar-tag">PROJECT SELECTOR</span>
+        <h3 class="work-sidebar-title">Enterprise Transformations</h3>
       </div>
-      <nav class="work-sidebar-nav" id="workSidebarNav">
+      <div class="work-sidebar-nav" role="tablist">
         {sidebar_items_html}
-      </nav>
+      </div>
       <div class="work-sidebar-footer">
         <a href="/archive" class="work-archive-link-btn">
-          <span>🖼️ Open Visual Archive</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          <span>🖼️ Visual Archive</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>
     </aside>
 
-    <!-- Main Content Area -->
-    <main class="work-main-pane">
-      <!-- 5 UI/UX Specialization Pillars Banner -->
-      <section class="specialization-pillars-banner" id="specialization-pillars" aria-label="5 Enterprise Specialization Pillars">
+    <!-- Main Content Pane: Shows ONLY the currently selected view -->
+    <main class="work-main-pane" id="work-main-pane">
+      <!-- Dashboard Status Bar -->
+      <div class="work-dashboard-statusbar">
+        <div class="dash-status-left">
+          <span class="dash-live-dot"></span>
+          <span id="dash-active-indicator" class="dash-status-title"><strong>Specialization Overview</strong> &bull; 5 Enterprise Pillars</span>
+        </div>
+        <div class="dash-status-right">
+          <span class="dash-mode-pill">Modern Single-Pane Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Section: Specialization Overview (View Pane 0) -->
+      <section class="specialization-pillars-banner work-view-pane active" id="specialization-pillars">
         <div class="spec-header">
           <div>
-            <div class="spec-pretitle">Enterprise Core Competencies &bull; Senior UI/UX Design Manager</div>
-            <h2 class="spec-title">5 Distinct UI/UX Specialization Pillars</h2>
+            <div class="spec-pretitle">Strategic Leadership Taxonomy</div>
+            <h2 class="spec-title">5 UI/UX Specialization Pillars</h2>
             <p class="spec-desc">
-              Every transformation targets a distinct technical and human challenge—from sub-second financial calculations and autonomous AI safety to cold-storage warehouse ergonomics and mission-critical automotive cockpits.
+              Grounded in 15+ years of designing and scaling complex enterprise software for IBM, Ericsson, Zebra, and ZF Wabco. Select any card below or from the floating left panel to inspect the full case study:
             </p>
           </div>
-          <span class="spec-badge">18+ Years &bull; Enterprise &amp; Mission-Critical Systems</span>
+          <span class="spec-badge">5 CORE PILLARS</span>
         </div>
 
         <div class="specialization-pillars-grid">
-          <div class="spec-pillar-card">
+          <div class="spec-pillar-card" onclick="switchWorkView('case-1')">
             <div>
               <div class="s-pillar-icon">🧠</div>
               <div class="s-pillar-domain">IBM Software Labs</div>
               <h3 class="s-pillar-name">Agentic AI &amp; HITL Governance</h3>
               <p class="s-pillar-desc">Multi-agent state machines, 3-tier confidence routing, side-by-side database diffing, and SOX audit trails.</p>
             </div>
-            <span class="s-pillar-prototype">🕹️ Prototype: Agent Mesh &amp; Diff</span>
+            <span class="s-pillar-prototype">🕹️ Case #1: Agent Mesh &amp; Diff</span>
           </div>
 
-          <div class="spec-pillar-card">
+          <div class="spec-pillar-card" onclick="switchWorkView('case-2')">
             <div>
               <div class="s-pillar-icon">📊</div>
               <div class="s-pillar-domain">Ericsson Global</div>
               <h3 class="s-pillar-name">Complex Financial Data Architecture</h3>
               <p class="s-pillar-desc">Sub-16ms single-pane BOM data grid replacing 14 unversioned Excel tabs; real-time gross margin guardrails.</p>
             </div>
-            <span class="s-pillar-prototype">🕹️ Prototype: Keyboard BOM Grid</span>
+            <span class="s-pillar-prototype">🕹️ Case #2: Keyboard BOM Grid</span>
           </div>
 
-          <div class="spec-pillar-card">
+          <div class="spec-pillar-card" onclick="switchWorkView('case-3')">
             <div>
               <div class="s-pillar-icon">📡</div>
               <div class="s-pillar-domain">Zebra Technologies</div>
               <h3 class="s-pillar-name">Industrial IoT &amp; Physical Ergonomics</h3>
               <p class="s-pillar-desc">-25°C cold-storage freezer shadowing, 72px glove hit targets, spatial warehouse floor plans, and 1-scan QR staging.</p>
             </div>
-            <span class="s-pillar-prototype">🕹️ Prototype: Spatial IoT Console</span>
+            <span class="s-pillar-prototype">🕹️ Case #3: Spatial IoT Console</span>
           </div>
 
-          <div class="spec-pillar-card">
+          <div class="spec-pillar-card" onclick="switchWorkView('case-4')">
             <div>
               <div class="s-pillar-icon">🎨</div>
               <div class="s-pillar-domain">IBM Carbon</div>
               <h3 class="s-pillar-name">DesignOps &amp; Token Architecture</h3>
               <p class="s-pillar-desc">Multi-tier token taxonomy, Figma-to-Code Style Dictionary compiler, multi-brand runtime theme engine.</p>
             </div>
-            <span class="s-pillar-prototype">🕹️ Prototype: Live Token Studio</span>
+            <span class="s-pillar-prototype">🕹️ Case #4: Live Token Studio</span>
           </div>
 
-          <div class="spec-pillar-card">
+          <div class="spec-pillar-card" onclick="switchWorkView('case-5')">
             <div>
               <div class="s-pillar-icon">🚚</div>
               <div class="s-pillar-domain">ZF Wabco</div>
               <h3 class="s-pillar-name">Automotive Cockpit &amp; Safety UX</h3>
               <p class="s-pillar-desc">UNECE legal gaze budgeting (&lt;1.2s glance ceiling), 3-zone spatial HUD, high-contrast anti-glare, CAN-bus sync.</p>
             </div>
-            <span class="s-pillar-prototype">🕹️ Prototype: 3-Zone Cockpit HUD</span>
+            <span class="s-pillar-prototype">🕹️ Case #5: 3-Zone Cockpit HUD</span>
           </div>
+        </div>
+
+        <div class="dash-pane-switcher-bar">
+          <div></div>
+          <div class="dash-pane-progress">5 Specializations &bull; Click to Explore Cases</div>
+          <button class="btn-dash-nav-next" onclick="switchWorkView('case-1')">
+            <span>Explore Case #1: IBM Watson AI</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </section>
 
-      <!-- 5 Transformation Cards Ordered: 1. IBM, 2. Ericsson, 3. Zebra, 4. Carbon, 5. Wabco -->
+      <!-- 5 Transformation Cards: Displayed one at a time as dashboard view panes -->
       {cards_html}
     </main>
   </div>
 
   <script>
-    {shared_proto_js}
+    // Shared Prototype Logic
+    {shared_proto_js.replace('<script>', '').replace('</script>', '').replace('<!-- Shared Interactive Working Prototype Logic -->', '')}
 
-    // Left sidebar active state sync
-    function activateWorkNav(clickedItem) {{
-      const items = document.querySelectorAll('.work-nav-item');
-      items.forEach(item => item.classList.remove('active'));
-      clickedItem.classList.add('active');
+    // Modern Dashboard Single-Pane View Switcher
+    function switchWorkView(targetId, clickedEl) {{
+      // 1. Hide all view panes
+      const panes = document.querySelectorAll('.work-view-pane');
+      panes.forEach(p => p.classList.remove('active'));
+
+      // 2. Show target pane
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) {{
+        targetPane.classList.add('active');
+      }}
+
+      // 3. Update sidebar active item
+      const navItems = document.querySelectorAll('.work-nav-item');
+      navItems.forEach(item => item.classList.remove('active'));
+
+      let activeNav = clickedEl;
+      if (!activeNav) {{
+        activeNav = document.querySelector(`.work-nav-item[data-target="${{targetId}}"]`) ||
+                    document.querySelector(`.work-nav-item[href="#${{targetId}}"]`);
+      }}
+      if (activeNav) {{
+        activeNav.classList.add('active');
+
+        // Scroll active nav item into view if in mobile horizontal scroll
+        if (activeNav.scrollIntoView && window.innerWidth <= 900) {{
+          activeNav.scrollIntoView({{ behavior: 'smooth', inline: 'center', block: 'nearest' }});
+        }}
+
+        // Update dashboard status bar title
+        const titleEl = activeNav.querySelector('.work-nav-title');
+        const subEl = activeNav.querySelector('.work-nav-sub');
+        const indicator = document.getElementById('dash-active-indicator');
+        if (indicator && titleEl) {{
+          const subText = subEl ? ` &bull; ${{subEl.textContent}}` : '';
+          indicator.innerHTML = `<strong>${{titleEl.textContent}}</strong>${{subText}}`;
+        }}
+      }}
+
+      // 4. Update URL hash
+      if (history.replaceState) {{
+        history.replaceState(null, null, '#' + targetId);
+      }}
+
+      // 5. Scroll to top of main pane if scrolled past
+      const mainPane = document.getElementById('work-main-pane');
+      if (mainPane && window.scrollY > 240) {{
+        const yOffset = -80;
+        const y = mainPane.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({{ top: y, behavior: 'smooth' }});
+      }}
     }}
 
-    // Auto-highlight active sidebar item on scroll
-    window.addEventListener('scroll', () => {{
-      const cards = document.querySelectorAll('.transformation-card, #specialization-pillars');
-      const navItems = document.querySelectorAll('.work-nav-item');
-      let currentId = '';
-
-      cards.forEach(card => {{
-        const rect = card.getBoundingClientRect();
-        if (rect.top <= 160 && rect.bottom >= 160) {{
-          currentId = card.id;
-        }}
-      }});
-
-      if (currentId) {{
-        navItems.forEach(item => {{
-          if (item.getAttribute('href') === '#' + currentId) {{
-            item.classList.add('active');
-          }} else {{
-            item.classList.remove('active');
-          }}
-        }});
+    // Hash router on initial load & hash changes
+    window.addEventListener('DOMContentLoaded', () => {{
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {{
+        const navItem = document.querySelector(`.work-nav-item[data-target="${{hash}}"]`) ||
+                        document.querySelector(`.work-nav-item[href="#${{hash}}"]`);
+        switchWorkView(hash, navItem);
+      }} else {{
+        // Default to Specialization Overview
+        switchWorkView('specialization-pillars', document.querySelector('.work-nav-item'));
       }}
-    }}, {{ passive: true }});
+    }});
+
+    window.addEventListener('hashchange', () => {{
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {{
+        const navItem = document.querySelector(`.work-nav-item[data-target="${{hash}}"]`) ||
+                        document.querySelector(`.work-nav-item[href="#${{hash}}"]`);
+        switchWorkView(hash, navItem);
+      }}
+    }});
   </script>
 </body>
 </html>
@@ -1329,4 +1533,4 @@ work_html = f"""<!DOCTYPE html>
 with open('work.html', 'w', encoding='utf-8') as f:
     f.write(work_html)
 
-print("--- Successfully generated work.html with Left Panel Navigation and IBM as Case #1 ---")
+print("--- Successfully generated work.html with Sticky Floating Left Panel and Modern Dashboard Single-Pane View ---")
