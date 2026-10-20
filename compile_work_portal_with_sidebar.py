@@ -473,13 +473,16 @@ work_html = f"""<!DOCTYPE html>
       border: 1px solid rgba(203, 213, 225, 0.95);
       border-radius: 18px;
       position: sticky;
-      top: 92px;
+      top: 84px;
       box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px -2px rgba(15, 23, 42, 0.04);
       overflow: hidden;
       box-sizing: border-box;
       max-width: 100%;
       z-index: 25;
       transition: all 0.25s ease;
+      max-height: calc(100vh - 100px);
+      display: flex;
+      flex-direction: column;
     }}
 
     .work-left-sidebar:hover {{
@@ -490,6 +493,7 @@ work_html = f"""<!DOCTYPE html>
       padding: 18px 20px;
       background: var(--bg-subtle);
       border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
     }}
 
     .work-sidebar-tag {{
@@ -516,7 +520,8 @@ work_html = f"""<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-height: calc(100vh - 230px);
+      flex: 1;
+      min-height: 0;
       overflow-y: auto;
     }}
 
@@ -613,6 +618,7 @@ work_html = f"""<!DOCTYPE html>
       padding: 12px 14px;
       border-top: 1px solid var(--border-subtle);
       background: var(--bg-subtle);
+      flex-shrink: 0;
     }}
 
     .work-archive-link-btn {{
@@ -1223,12 +1229,14 @@ work_html = f"""<!DOCTYPE html>
       .work-left-sidebar {{
         width: 100% !important;
         position: sticky !important;
-        top: 68px !important;
+        top: 88px !important;
         z-index: 40 !important;
         border-radius: 14px !important;
         background: rgba(255, 255, 255, 0.96) !important;
         backdrop-filter: blur(12px) !important;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08) !important;
+        max-height: none !important;
+        display: block !important;
       }}
 
       .work-sidebar-header {{

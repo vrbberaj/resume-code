@@ -77,7 +77,7 @@ const globalCoreStyles = `
   img { max-width: 100%; height: auto; }
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100vw;
     width: 100%;
   }
@@ -87,7 +87,7 @@ const globalCoreStyles = `
     font-family: var(--font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100vw;
     width: 100%;
   }
