@@ -797,7 +797,7 @@ const indexHtml = `<!DOCTYPE html>
             <div class="h-stat">
               <div class="h-stat-num">50<span>+</span></div>
               <div class="h-stat-lbl">Mentored</div>
-              <div class="h-stat-sub">Designers &amp; Eng.</div>
+              <div class="h-stat-sub">Product Designers</div>
             </div>
             <div class="h-stat">
               <div class="h-stat-num">6</div>
