@@ -618,8 +618,8 @@ def build_leadership():
         <div class="g-overline">Leadership</div>
         <h1>How I lead design teams</h1>
         <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 12 designers.</p>
-        <div style="margin: 16px 0 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="/leadership-deck" class="ld-btn ld-btn-s" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:8px 16px;">
+        <div style="margin: 18px 0 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="/leadership-deck" style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;padding:9px 18px;border-radius:100px;background:#0F172A;color:#FFFFFF;text-decoration:none;font-weight:700;transition:all 0.2s ease;">
             📊 View 10-Slide Keynote Deck &rarr;
           </a>
         </div>
