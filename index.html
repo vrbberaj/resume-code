@@ -741,10 +741,10 @@
 
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="nav-item active">Welcome</a>
-        <a href="/leadership" class="nav-item ">👔 Leadership Deck</a>
-        <a href="/work" class="nav-item ">🎨 Selected Work</a>
-        <a href="/archive" class="nav-item ">🖼️ Visual Archive</a>
-        <a href="/cv" class="nav-item ">📄 My Resume</a>
+        <a href="/leadership" class="nav-item ">Leadership</a>
+        <a href="/work" class="nav-item ">Selected Work</a>
+        <a href="/archive" class="nav-item ">Visual Archive</a>
+        <a href="/cv" class="nav-item ">Resume</a>
       </nav>
 
       <div class="header-actions">
@@ -802,7 +802,7 @@
           <!-- Executive Primary Action (Zero Redundancy with Nav Bar) -->
           <div class="hero-cta-group">
             <a href="/work" class="btn-hero-primary">
-              <span>🎨 Explore Selected Work (5 Deep Dives)</span>
+              <span>Explore selected work (5 case studies)</span>
               <span>&rarr;</span>
             </a>
           </div>
@@ -873,6 +873,142 @@
       </div>
     </div>
   </main>
+<!-- BVR:HOME-EXTRA:START -->
+  <style>
+  .sec-label {
+    font-family: var(--font-body); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-accent);
+    margin-bottom: 10px;
+  }
+  .sec-title {
+    font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
+    font-size: clamp(26px, 3vw, 34px); line-height: 1.15; letter-spacing: -0.02em;
+  }
+  .sec-intro { font-size: 17px; line-height: 1.65; color: var(--text-body); max-width: 680px; margin-top: 12px; }
+
+  /* Testimonial card */
+  .tq {
+    position: relative; background: #FFFFFF; border: 1px solid var(--border-subtle);
+    border-radius: 18px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 20px;
+    height: 100%;
+  }
+  .tq-mark { font-family: Georgia, serif; font-size: 56px; line-height: 0.6; color: var(--primary-accent); height: 22px; }
+  .tq blockquote { font-size: 17px; line-height: 1.6; color: var(--text-main); flex: 1; }
+  .tq figcaption { display: flex; align-items: center; gap: 12px; }
+  .tq-avatar {
+    flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--text-main); color: #FFFFFF; font-weight: 800; font-size: 14px; font-family: var(--font-heading);
+  }
+  .tq-who strong { display: block; font-size: 14px; color: var(--text-main); }
+  .tq-who span { display: block; font-size: 13px; color: var(--text-muted); }
+  .tq-badge {
+    position: absolute; top: 18px; right: 18px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 100px; padding: 3px 10px;
+  }
+  .tq-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .tq-note { font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+  .tq-grid-5 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .tq-grid-5 > .tq { grid-column: span 2; }
+  .tq-grid-5 > .tq:nth-child(n+4) { grid-column: span 3; }
+  @media (max-width: 980px) { .tq-grid, .tq-grid-5 { grid-template-columns: 1fr; } .tq-grid-5 > .tq { grid-column: auto !important; } }
+
+  /* Artifact tags */
+  .tag {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; border-radius: 100px; padding: 3px 10px; white-space: nowrap;
+  }
+  .tag-real { color: #065F46; background: #D1FAE5; }
+  .tag-recreation { color: #92400E; background: #FEF3C7; }
+  .tag-diagram { color: #3730A3; background: #E0E7FF; }
+  .tag-photo { color: #1E40AF; background: #DBEAFE; }
+
+  /* Diagrams */
+  .dg { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 28px; }
+  .dg-conf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .dg-conf div { border-radius: 12px; padding: 18px; }
+  .dg-conf strong { display: block; font-family: var(--font-heading); font-size: 22px; font-weight: 800; }
+  .dg-conf b { display: block; font-size: 14px; margin: 6px 0 4px; color: var(--text-main); }
+  .dg-conf span { font-size: 13px; color: var(--text-body); line-height: 1.5; display: block; }
+  .dg-hi { background: #ECFDF5; } .dg-hi strong { color: #047857; }
+  .dg-mid { background: #FFFBEB; } .dg-mid strong { color: #B45309; }
+  .dg-lo { background: #FEF2F2; } .dg-lo strong { color: #B91C1C; }
+  .dg-tiers { display: flex; align-items: stretch; gap: 10px; }
+  .dg-tier { flex: 1; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px; background: var(--bg-subtle); }
+  .dg-tier small { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .dg-tier code { display: block; font-family: var(--font-code); font-size: 13px; color: var(--text-main); margin: 8px 0 6px; word-break: break-word; }
+  .dg-tier span { font-size: 13px; color: var(--text-body); }
+  .dg-arrow { display: flex; align-items: center; color: var(--text-light); font-size: 20px; }
+  .dg-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #0F62FE; vertical-align: -1px; margin-right: 6px; }
+  .dg-cluster {
+    background: #0B1220; border-radius: 14px; padding: 22px; color: #E2E8F0;
+    display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 14px; align-items: stretch;
+  }
+  .dg-zone { border: 1px dashed rgba(148, 163, 184, 0.4); border-radius: 10px; padding: 14px; text-align: center; }
+  .dg-zone small { display: block; font-family: var(--font-code); font-size: 11px; color: #94A3B8; margin-bottom: 8px; }
+  .dg-zone strong { display: block; font-family: var(--font-heading); font-size: 26px; color: #FFFFFF; }
+  .dg-zone span { font-size: 12px; color: #CBD5E1; }
+  .dg-z1 { border-color: #34D399; } .dg-z1 strong { font-size: 40px; color: #34D399; }
+  .dg-z2 strong { color: #FBBF24; font-size: 20px; }
+  .dg-z3 strong { color: #6EE7B7; font-size: 16px; opacity: 0.8; }
+  @media (max-width: 760px) {
+    .dg-conf, .dg-cluster { grid-template-columns: 1fr; }
+    .dg-tiers { flex-direction: column; }
+    .dg-arrow { justify-content: center; transform: rotate(90deg); }
+  }
+
+  .hx { background: #FAFAF9; padding: 88px 0 24px; border-top: 1px solid var(--border-subtle); }
+  .hx .g-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  .hx-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+  .hx-link { font-size: 14px; font-weight: 700; color: var(--primary-accent); text-decoration: none; white-space: nowrap; }
+  .hx-phil { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-bottom: 96px; }
+  .hx-phil div { border-top: 2px solid var(--text-main); padding-top: 16px; }
+  .hx-phil h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
+  .hx-phil p { font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
+  @media (max-width: 900px) { .hx-phil { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .hx-phil { grid-template-columns: 1fr; } .hx .g-wrap { padding: 0 16px; } }
+</style>
+  <section class="hx" aria-label="How I lead">
+    <div class="g-wrap">
+      <div class="hx-row">
+        <div><div class="sec-label">How I lead</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
+        <a href="/leadership" class="hx-link" id="hx-leadership-link">Leadership, hiring &amp; delegation &rarr;</a>
+      </div>
+      <div class="hx-phil"><div><h3>Clarity before pixels</h3><p>Every project starts with a one-page brief: problem, user, success metric, constraints. If we can’t write it down, we’re not ready to design.</p></div><div><h3>Delegate outcomes, not tasks</h3><p>I give designers a problem and a definition of done, not a list of screens. I stay close through critique, not control.</p></div><div><h3>Engineering is a design partner</h3><p>Designers pair with engineers from sprint zero. Shared tokens, shared demos, shared credit.</p></div><div><h3>Evidence over opinion</h3><p>Research, usability scores and analytics settle debates, not seniority. That includes mine.</p></div></div>
+      <div class="hx-row">
+        <div><div class="sec-label">References</div><h2 class="sec-title">What colleagues say</h2></div>
+        <a href="/leadership#references" class="hx-link" id="hx-references-link">All references &rarr;</a>
+      </div>
+      <div class="tq-grid">
+        <figure class="tq"><span class="tq-badge">Draft · awaiting approval</span>
+          <div class="tq-mark">&ldquo;</div>
+          <blockquote>Balaajee took over a design team split across three products and, within a quarter, gave us one team with one way of working. What I valued most was how he handled the AI debate: he turned a stand-off between our research scientists and compliance into clear rules every squad could ship against.</blockquote>
+          <figcaption>
+            <span class="tq-avatar">IS</span>
+            <span class="tq-who"><strong>Director of Product Management</strong><span>IBM Software Labs</span><span>Worked with Balaajee as his product partner · 2024 – 2026</span></span>
+          </figcaption>
+        </figure>
+        <figure class="tq"><span class="tq-badge">Draft · awaiting approval</span>
+          <div class="tq-mark">&ldquo;</div>
+          <blockquote>He handed me the model diff drawer from first sketch to release and trusted me to run it. He was always there in critique, never in my way. His coaching is the reason I moved into a lead role.</blockquote>
+          <figcaption>
+            <span class="tq-avatar">IS</span>
+            <span class="tq-who"><strong>Senior Product Designer</strong><span>IBM Software Labs</span><span>Reported to Balaajee · 2024 – 2026</span></span>
+          </figcaption>
+        </figure>
+        <figure class="tq"><span class="tq-badge">Draft · awaiting approval</span>
+          <div class="tq-mark">&ldquo;</div>
+          <blockquote>Balaajee brought customers into the room. His card-sorting and feedback sessions with enterprise accounts reshaped our VisibilityIQ roadmap, and the design team he hired became one engineering genuinely trusted.</blockquote>
+          <figcaption>
+            <span class="tq-avatar">ZT</span>
+            <span class="tq-who"><strong>Senior Director, Product Management</strong><span>Zebra Technologies</span><span>Balaajee&#x27;s product counterpart · 2021 – 2024</span></span>
+          </figcaption>
+        </figure></div>
+      <p class="tq-note">Draft recommendations, pending approval from each referee. References are available on request.</p>
+    </div>
+  </section>
+<!-- BVR:HOME-EXTRA:END -->
 
 
 

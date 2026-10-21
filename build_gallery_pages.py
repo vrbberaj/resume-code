@@ -43,10 +43,10 @@ def header(active):
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="{cls('home')}">Welcome</a>
-        <a href="/leadership" class="{cls('leadership')}">👔 Leadership Deck</a>
-        <a href="/work" class="{cls('work')}">🎨 Selected Work</a>
-        <a href="/archive" class="{cls('archive')}">🖼️ Visual Archive</a>
-        <a href="/cv" class="{cls('cv')}">📄 My Resume</a>
+        <a href="/leadership" class="{cls('leadership')}">Leadership</a>
+        <a href="/work" class="{cls('work')}">Selected Work</a>
+        <a href="/archive" class="{cls('archive')}">Visual Archive</a>
+        <a href="/cv" class="{cls('cv')}">Resume</a>
       </nav>
       <div class="header-actions">
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">Get In Touch &rarr;</a>
@@ -141,53 +141,24 @@ def img_size(path):
 # ===========================================================================
 # 1. CASE STUDIES GALLERY  (work.html)
 # ===========================================================================
-CASES = [
-    {
-        "company": "IBM Software Labs",
-        "domain": "Agentic AI",
-        "title": "Agentic AI governance for Rhapsody SE and MaaS360",
-        "lead": "Human-in-the-loop confidence gating that lets AI agents act inside mission-critical systems without black-box risk.",
-        "metrics": [("74%", "faster model drafting"), ("0", "compliance violations")],
-        "cover": "screenshots/ibm_rhapsody_ai_modeling.png",
-        "href": "case-ibm-watson.html",
-    },
-    {
-        "company": "Ericsson",
-        "domain": "Enterprise CPQ",
-        "title": "From a 14-tab Excel ordeal to a one-screen deal engine",
-        "lead": "A keyboard-first quoting grid for 1,200+ sales engineers across 45 countries.",
-        "metrics": [("6d → 42m", "deal turnaround"), ("0%", "formula errors")],
-        "cover": "assets/covers/ericsson_dashboard.png",
-        "href": "case-ericsson.html",
-    },
-    {
-        "company": "Zebra Technologies",
-        "domain": "Industrial IoT",
-        "title": "Device health insights for rugged enterprise fleets",
-        "lead": "VisibilityIQ dashboards and floor workflows for 38,000+ handhelds in warehouses and freezers.",
-        "metrics": [("84%", "fewer pairing failures"), ("3.2×", "staging throughput")],
-        "cover": "screenshots/behance/zebra_iot_dashboard.png",
-        "href": "case-zebra.html",
-    },
-    {
-        "company": "IBM Carbon",
-        "domain": "Design Systems",
-        "title": "Token governance across 60+ cloud applications",
-        "lead": "A Global → Semantic → Component token pipeline from Figma to React, Angular and iOS.",
-        "metrics": [("100%", "Figma-to-code parity"), ("18 min", "token to production")],
-        "cover": "screenshots/transformation-ibm-carbon.png",
-        "href": "case-ibm-carbon.html",
-    },
-    {
-        "company": "ZF Wabco",
-        "domain": "Automotive",
-        "title": "Safety-critical cockpit and fleet telematics HUD",
-        "lead": "A commercial-vehicle cluster designed to a sub-1.2-second glance budget.",
-        "metrics": [("<1.2s", "driver glance time"), ("100%", "UNECE compliance")],
-        "cover": "screenshots/transformation-zf-wabco.png",
-        "href": "case-zf-wabco.html",
-    },
-]
+# Short card leads; titles, covers and metrics come from portfolio_content.py
+CARD_LEADS = {
+    "case-ibm-watson.html": "Human-in-the-loop confidence gating that lets AI agents act inside mission-critical systems without black-box risk.",
+    "case-ericsson.html": "A keyboard-first sales tool for 1,200+ sales engineers across 45 countries.",
+    "case-zebra.html": "VisibilityIQ dashboards and floor workflows for 38,000+ handhelds in warehouses and freezers.",
+    "case-ibm-carbon.html": "A global → semantic → component token pipeline from Figma to React, Angular and Web Components.",
+    "case-zf-wabco.html": "A commercial-vehicle cluster designed to a strict glance-time budget.",
+}
+
+
+def _cases_from_content():
+    from portfolio_content import CASE_STUDIES
+    return [{
+        "company": c["company"], "domain": c["domain"], "title": c["title"],
+        "lead": CARD_LEADS.get(c["file"], c["lead"]), "metrics": c["metrics"][:2],
+        "cover": c["cover"], "href": c["file"],
+    } for c in CASE_STUDIES]
+
 
 WORK_CSS = """
   .case-grid {
@@ -257,7 +228,7 @@ WORK_CSS = """
 
 def build_work():
     cards = []
-    for i, c in enumerate(CASES):
+    for i, c in enumerate(_cases_from_content()):
         metrics = "".join(
             f'<div class="case-metric"><strong>{html.escape(v)}</strong><span>{html.escape(l)}</span></div>'
             for v, l in c["metrics"]
@@ -539,4 +510,9 @@ if __name__ == "__main__":
     print("Building gallery pages...")
     build_work()
     build_archive()
+    import build_portfolio_pages as bp
+    bp.build_cases()
+    bp.build_leadership()
+    bp.inject_home()
+    bp.clean_nav(["index.html", "cv.html", "leadership_deck.html"])
     print("Done.")

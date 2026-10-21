@@ -17,6 +17,8 @@ const testPages = [
   { name: 'Zebra IoT Case Study', url: 'http://localhost:8080/case-zebra' },
   { name: 'Carbon Design System Case Study', url: 'http://localhost:8080/case-ibm-carbon' },
   { name: 'ZF Wabco Cockpit Case Study', url: 'http://localhost:8080/case-zf-wabco' },
+  { name: 'Leadership', url: 'http://localhost:8080/leadership' },
+  { name: 'Home', url: 'http://localhost:8080/' },
   ...['sales-automation-tool', 'networks-design-project', 'an-enterprise-project', 'web-projects',
       'my-achievements', 'gaming-projects', 'mobile-projects'].map(s => ({
     name: `Archive project: ${s}`, url: `http://localhost:8080/archive-${s}.html`
@@ -121,27 +123,62 @@ const testPages = [
         } else {
           console.log(`  ✓ ${elements.images} images loaded in project view`);
         }
+      } else if (p.url.endsWith('/leadership')) {
+        const el = await page.evaluate(() => ({
+          sections: ['philosophy', 'evolution', 'team', 'hiring', 'delegation', 'challenges', 'workshops', 'tools', 'docs', 'references']
+            .filter(id => !document.getElementById(id)),
+          testimonials: document.querySelectorAll('.tq').length,
+          frameworks: document.querySelectorAll('#tools .ld-card').length,
+          broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0).length
+        }));
+        console.log(`  Elements check for ${p.name}:`, el);
+        if (el.sections.length || el.testimonials < 3 || el.frameworks < 5 || el.broken) {
+          console.error('  ❌ Leadership page is missing sections');
+          allPassed = false;
+        } else {
+          console.log('  ✓ leadership.html: all 10 sections, references and frameworks present');
+        }
+      } else if (p.url.endsWith(':8080/')) {
+        const el = await page.evaluate(() => ({
+          leadBlock: !!document.querySelector('.hx'),
+          testimonials: document.querySelectorAll('.hx .tq').length,
+          emojiNav: [...document.querySelectorAll('.nav-item')].some(a => /[\u{1F300}-\u{1FAFF}]/u.test(a.textContent))
+        }));
+        console.log(`  Elements check for ${p.name}:`, el);
+        if (!el.leadBlock || el.testimonials < 3 || el.emojiNav) {
+          console.error('  ❌ Home page block or nav check failed');
+          allPassed = false;
+        } else {
+          console.log('  ✓ index.html: how-I-lead block, 3 references, plain-text nav');
+        }
       } else {
+        await page.evaluate(async () => {
+          document.querySelectorAll('img[loading=lazy]').forEach(i => { i.loading = 'eager'; });
+          await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
+        });
         const elements = await page.evaluate(() => {
           return {
-            pipeline: !!document.querySelector('.manager-process-pipeline'),
-            pipelineSteps: document.querySelectorAll('.p-step-card').length,
-            archInfographic: !!document.querySelector('.architecture-infographic-stage'),
-            annotatedScreenshot: !!document.querySelector('.annotated-screenshot-stage'),
-            behanceArtifactsShowcase: !!document.querySelector('.behance-artifacts-showcase'),
-            behanceArtifactCards: document.querySelectorAll('.behance-artifact-card').length,
-            interactivePrototype: !!document.querySelector('.interactive-prototype-window'),
-            screenshotImg: document.querySelector('.annotated-full-img')?.getAttribute('src'),
-            calloutChips: document.querySelectorAll('.callout-chip-item').length,
-            designopsPipeline: !!document.querySelector('.designops-pipeline-stage')
+            snapshotFacts: document.querySelectorAll('.cs-fact').length,
+            metrics: document.querySelectorAll('.cs-metric').length,
+            owned: document.querySelectorAll('.cs-own-me li').length,
+            delegated: document.querySelectorAll('.cs-own-team li').length,
+            processSteps: document.querySelectorAll('.cs-step').length,
+            artifacts: document.querySelectorAll('.cs-fig').length,
+            decisions: document.querySelectorAll('.cs-dec article').length,
+            learned: !!document.querySelector('.cs-learn'),
+            testimonial: !!document.querySelector('.tq'),
+            pager: document.querySelectorAll('.cs-pager a').length,
+            brokenImages: [...document.images].filter(i => !i.complete || i.naturalWidth === 0).map(i => i.getAttribute('src'))
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.pipeline || elements.pipelineSteps !== 5 || !elements.archInfographic || !elements.annotatedScreenshot || !elements.behanceArtifactsShowcase || elements.behanceArtifactCards < 2 || !elements.interactivePrototype || !elements.screenshotImg || elements.calloutChips !== 3 || !elements.designopsPipeline) {
+        if (elements.snapshotFacts !== 6 || elements.metrics !== 4 || !elements.owned || !elements.delegated ||
+            elements.processSteps !== 6 || elements.artifacts < 2 || elements.decisions !== 3 || !elements.learned ||
+            !elements.testimonial || elements.pager !== 2 || elements.brokenImages.length) {
           console.error(`  ❌ Missing expected elements on ${p.name}`);
           allPassed = false;
         } else {
-          console.log(`  ✓ All elements verified on ${p.name} (5 manager steps, arch infographic, Behance artifacts showcase (${elements.behanceArtifactCards} cards), interactive prototype, screenshot: ${elements.screenshotImg}, 3 callout chips, designops flywheel)`);
+          console.log(`  ✓ ${p.name}: snapshot (role/team/timeline), owned vs delegated, 6-step process, ${elements.artifacts} artifacts, 3 decisions, results, reflection, reference`);
         }
 
         if (p.url.includes('case-ericsson')) {
