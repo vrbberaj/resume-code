@@ -2400,7 +2400,9 @@ const workHtml = `<!DOCTYPE html>
 const { execSync } = require('child_process');
 execSync('python3 compile_work_portal_with_sidebar.py', { cwd: __dirname, stdio: 'inherit' });
 execSync('python3 compile_complete_suite_v2.py', { cwd: __dirname, stdio: 'inherit' });
-console.log('work.html and archive.html compiled with Left-Panel navigation.');
+// Gallery layout (case-study grid + Behance-style archive) replaces the left-panel pages
+execSync('python3 build_gallery_pages.py', { cwd: __dirname, stdio: 'inherit' });
+console.log('work.html and archive.html compiled as gallery pages.');
 
 // ============================================================================
 // PART C: 5 FULL-SIZE, MULTI-SECTION SCROLLABLE DEEP DIVES

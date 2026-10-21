@@ -16,7 +16,11 @@ const testPages = [
   { name: 'Watson AI Case Study', url: 'http://localhost:8080/case-ibm-watson' },
   { name: 'Zebra IoT Case Study', url: 'http://localhost:8080/case-zebra' },
   { name: 'Carbon Design System Case Study', url: 'http://localhost:8080/case-ibm-carbon' },
-  { name: 'ZF Wabco Cockpit Case Study', url: 'http://localhost:8080/case-zf-wabco' }
+  { name: 'ZF Wabco Cockpit Case Study', url: 'http://localhost:8080/case-zf-wabco' },
+  ...['sales-automation-tool', 'networks-design-project', 'an-enterprise-project', 'web-projects',
+      'my-achievements', 'gaming-projects', 'mobile-projects'].map(s => ({
+    name: `Archive project: ${s}`, url: `http://localhost:8080/archive-${s}.html`
+  }))
 ];
 
 (async () => {
@@ -62,51 +66,60 @@ const testPages = [
       await page.setViewport({ width: 1440, height: 1000 });
       await page.goto(p.url, { waitUntil: 'networkidle2' });
 
-      if (p.url.includes('/work')) {
+      if (p.url.endsWith('/work')) {
         const elements = await page.evaluate(() => {
           return {
-            specializationBanner: !!document.querySelector('.specialization-pillars-banner'),
-            specializationPillars: document.querySelectorAll('.spec-pillar-card').length,
-            sidebar: !!document.querySelector('.work-left-sidebar'),
-            sidebarItems: document.querySelectorAll('.work-nav-item').length,
-            archiveBanner: !!document.querySelector('.native-archive-banner'),
-            cards: document.querySelectorAll('.transformation-card').length,
-            methodologyStrips: document.querySelectorAll('.domain-methodology-strip').length,
-            screenshots: document.querySelectorAll('.browser-screenshot-img').length,
-            calloutBadges: document.querySelectorAll('.preview-callout-badges').length
+            leftPanel: !!document.querySelector('.work-left-sidebar, .archive-sidebar'),
+            caseCards: document.querySelectorAll('.case-card').length,
+            caseLinks: [...document.querySelectorAll('.case-card')].map(a => a.getAttribute('href')),
+            brokenCovers: [...document.querySelectorAll('.case-card img')].filter(i => !i.complete || i.naturalWidth === 0).length
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.specializationBanner || elements.specializationPillars !== 5 || !elements.sidebar || elements.sidebarItems !== 6 || !elements.archiveBanner || elements.cards !== 5 || elements.methodologyStrips !== 5 || elements.screenshots !== 5) {
-          console.error('  ❌ Missing expected elements on work.html');
+        if (elements.leftPanel || elements.caseCards !== 5 || elements.brokenCovers > 0 || elements.caseLinks.some(h => !/^case-.+\.html$/.test(h))) {
+          console.error('  ❌ Case study gallery check failed on work.html');
           allPassed = false;
         } else {
-          console.log('  ✓ All elements present on work.html (5 specialization pillars, left sidebar with 6 navigation items, 5 cards, 5 domain methodology strips, 5 screenshots)');
+          console.log('  ✓ work.html: 5 case cards, each linking to its own case page, no left panel');
         }
 
-        // Capture full page screenshot of work.html
         await page.screenshot({
           path: '/Users/bjslabs/Documents/BJSLabs/Job Hunt/Resume Code/verified_work_portal.png',
           fullPage: false,
           clip: { x: 0, y: 0, width: 1440, height: 1800 }
         });
         console.log('  📸 Saved verified_work_portal.png');
-      } else if (p.url.includes('/archive')) {
+      } else if (p.url.endsWith('/archive')) {
         const elements = await page.evaluate(() => {
           return {
-            archiveSidebar: !!document.querySelector('.archive-sidebar'),
-            archiveNavButtons: document.querySelectorAll('.archive-nav-btn').length,
-            archivePanes: document.querySelectorAll('.archive-pane').length,
-            archiveCards: document.querySelectorAll('.archive-card').length,
-            lightboxModal: !!document.querySelector('.lightbox-modal')
+            leftPanel: !!document.querySelector('.archive-sidebar, .work-left-sidebar'),
+            projectCards: document.querySelectorAll('.be-card').length,
+            names: [...document.querySelectorAll('.be-card-title')].map(e => e.textContent.trim()),
+            brokenCovers: [...document.querySelectorAll('.be-cover img')].filter(i => !i.complete || i.naturalWidth === 0).length
           };
         });
         console.log(`  Elements check for ${p.name}:`, elements);
-        if (!elements.archiveSidebar || elements.archiveNavButtons !== 7 || elements.archivePanes !== 7 || elements.archiveCards < 20 || !elements.lightboxModal) {
-          console.error('  ❌ Missing expected elements on archive.html');
+        if (elements.leftPanel || elements.projectCards !== 7 || elements.brokenCovers > 0) {
+          console.error('  ❌ Behance gallery check failed on archive.html');
           allPassed = false;
         } else {
-          console.log(`  ✓ All elements present on archive.html (Left sidebar with 7 galleries, 7 panes, ${elements.archiveCards} visual deliverable cards, zoomable lightbox modal)`);
+          console.log('  ✓ archive.html: 7 Behance projects with covers, no left panel');
+        }
+      } else if (p.url.includes('/archive-')) {
+        await page.evaluate(async () => {
+          for (let y = 0; y < document.body.scrollHeight; y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); }
+        });
+        await new Promise(r => setTimeout(r, 800));
+        const elements = await page.evaluate(() => {
+          const imgs = [...document.querySelectorAll('.bp-canvas img')];
+          return { images: imgs.length, broken: imgs.filter(i => !i.complete || i.naturalWidth === 0).length };
+        });
+        console.log(`  Elements check for ${p.name}:`, elements);
+        if (elements.images === 0 || elements.broken > 0) {
+          console.error(`  ❌ Image stack check failed on ${p.url}`);
+          allPassed = false;
+        } else {
+          console.log(`  ✓ ${elements.images} images loaded in project view`);
         }
       } else {
         const elements = await page.evaluate(() => {
