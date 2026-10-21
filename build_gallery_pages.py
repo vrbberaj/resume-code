@@ -44,6 +44,7 @@ def header(active):
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="/" class="{cls('home')}">Welcome</a>
         <a href="/leadership" class="{cls('leadership')}">Leadership</a>
+        <a href="/leadership-deck" class="{cls('leadership-deck')}">Leadership Deck</a>
         <a href="/work" class="{cls('work')}">Selected Work</a>
         <a href="/archive" class="{cls('archive')}">Visual Archive</a>
         <a href="/cv" class="{cls('cv')}">Resume</a>

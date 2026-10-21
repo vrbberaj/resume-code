@@ -1,0 +1,3541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balaajee V.R. | Design Leadership Deck</title>
+  <meta name="description" content="Design Leadership Presentation: Scaling enterprise design teams, DesignOps token governance, cross-functional collaboration, and 30-60-90 day execution plan.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+
+  <style>
+    
+  :root {
+    --primary-accent: #F00658;
+    --primary-hover: #D0054B;
+    --accent-subtle: rgba(240, 6, 88, 0.08);
+    --accent-border: rgba(240, 6, 88, 0.25);
+    --gold: #C4892A;
+
+    --font-heading: 'Overpass', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+
+    --bg-base: #F8F9FA;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F1F3F6;
+    --bg-card: #FFFFFF;
+    
+    --text-main: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --text-light: #94A3B8;
+    
+    --border-subtle: #E2E8F0;
+    --border-medium: #CBD5E1;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  /* Global Header */
+  .global-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-main);
+    white-space: nowrap;
+  }
+
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 6px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
+  }
+
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: scale(1.04);
+  }
+
+  .brand-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .nav-item {
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .nav-item:hover {
+    color: var(--text-main);
+  }
+
+  .nav-item.active {
+    background: var(--text-main);
+    color: #FFFFFF;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-download-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 100px;
+    font-size: 12.5px;
+    font-weight: 600;
+    background: #FFFFFF;
+    color: var(--text-main);
+    border: 1px solid var(--border-medium);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-download-pdf:hover {
+    border-color: var(--text-main);
+    background: var(--bg-subtle);
+  }
+
+  .btn-contact {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-contact:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 6, 88, 0.3);
+  }
+
+  @media (max-width: 1200px) {
+    .brand-role { display: none; }
+    .btn-download-pdf { display: none; }
+    .nav-item { padding: 6px 13px; font-size: 12.5px; }
+  }
+
+  @media (max-width: 1040px) {
+    .header-container {
+      padding: 0 16px;
+      gap: 10px;
+    }
+    .header-actions { display: none; }
+    .nav-links {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 100%;
+      padding: 3px 4px;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-item {
+      padding: 6px 12px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .global-header {
+      padding: 8px 0;
+    }
+    .header-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      padding: 0 12px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .brand-link {
+      justify-content: space-between;
+    }
+    .nav-links {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+    }
+  }
+
+    
+    /* ==========================================================================
+       KEYNOTE EXECUTIVE DESIGN SYSTEM — MATCHING CORPORATE RESUME DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      /* Signature Resume Color Tokens */
+      --canvas-bg: #DDD9D0;           /* Warm stone/cream presentation stage */
+      --navy-dark: #0D1B2E;           /* Deep Luxury Navy (resume sidebar) */
+      --navy-card: #13243C;           /* Navy card background */
+      --cream-paper: #F8F5EE;         /* Cream/Eggshell paper (resume main body) */
+      --white: #FFFFFF;               /* Pure white for crisp cards */
+      --gold: #C8A84A;                /* Executive Amber/Gold accent */
+      --gold-light: #DFBC55;          /* Light gold hover */
+      --gold-border: rgba(200, 168, 74, 0.35);
+      --amber-dark: #B45309;          /* Amber text on cream background */
+      --stone-50: #F8FAFC;
+      --stone-200: #E2E8F0;
+      --stone-300: #CBD5E1;
+      --stone-400: #94A3B8;
+      --stone-500: #64748B;
+      --stone-600: #475569;
+      --stone-800: #1E293B;
+
+      /* Keynote Slide Geometry (16:9 ratio) */
+      --slide-width: 1240px;
+      --slide-min-height: 698px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--canvas-bg);
+      color: var(--stone-800);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(200, 168, 74, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(13, 27, 46, 0.05) 0%, transparent 40%);
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 1240px) {
+      body.has-sidebar,
+      body.has-sidebar-padding {
+        padding-left: 290px;
+      }
+    }
+
+    /* Keynote Stage Viewport */
+    .deck-stage {
+      max-width: var(--slide-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 6.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Presentation Bar */
+    .deck-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem 1.4rem;
+      background: rgba(13, 27, 46, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(13, 27, 46, 0.15);
+      color: #fff;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .brand-text h1 span {
+      color: var(--gold);
+    }
+
+    .brand-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--stone-400);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: var(--gold);
+      color: var(--navy-dark);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.btn-gold {
+      background: linear-gradient(135deg, var(--gold), #b39235);
+      color: var(--navy-dark);
+      font-weight: 700;
+      border: none;
+    }
+
+    .btn-action.btn-gold:hover {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       KEYNOTE SLIDE CANVAS (16:9 PROPORTIONED PRESENTATION FRAME)
+       ========================================================================== */
+    .keynote-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      width: 100%;
+      min-height: var(--slide-min-height);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(13, 27, 46, 0.22), 0 0 0 1px rgba(13, 27, 46, 0.08);
+      position: relative;
+      overflow: hidden;
+      padding: 2.8rem 3.4rem 2.4rem 3.4rem;
+      box-sizing: border-box;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* THEME A: Deep Luxury Navy Slide (Cover & Closing) */
+    .slide-theme-navy {
+      background: var(--navy-dark);
+      color: #fff;
+      border-top: 3px solid var(--gold);
+    }
+
+    /* THEME B: Editorial Cream Paper Slide (Case Studies & Frameworks) */
+    .slide-theme-cream {
+      background: var(--cream-paper);
+      color: var(--navy-dark);
+      border-top: 3px solid var(--gold);
+    }
+
+    /* Top Slide Header */
+    .slide-header {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .slide-cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cover-header-left {
+      flex: 1;
+      max-width: 760px;
+    }
+
+    .presenter-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(19, 36, 60, 0.85);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 0.75rem 1.15rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+    }
+
+    .presenter-photo {
+      width: 54px;
+      height: 54px;
+      border-radius: 11px;
+      border: 1.8px solid var(--gold);
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(200, 168, 74, 0.2);
+    }
+
+    .presenter-byline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .presenter-name {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .presenter-role {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--stone-300);
+      margin-top: 2px;
+    }
+
+    .presenter-pedigree {
+      font-size: 9px;
+      color: var(--stone-400);
+      margin-top: 3px;
+      line-height: 1.4;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .slide-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.4rem;
+    }
+
+    .slide-theme-navy .slide-kicker {
+      color: var(--gold);
+    }
+
+    .slide-theme-cream .slide-kicker {
+      color: var(--amber-dark);
+    }
+
+    .kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .slide-theme-navy .kicker-dot {
+      background: var(--gold);
+    }
+
+    .slide-theme-cream .kicker-dot {
+      background: var(--amber-dark);
+    }
+
+    .slide-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 29px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .slide-theme-navy .slide-title {
+      color: #FFFFFF;
+    }
+
+    .slide-theme-cream .slide-title {
+      color: var(--navy-dark);
+    }
+
+    .slide-subtitle {
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 960px;
+    }
+
+    .slide-theme-navy .slide-subtitle {
+      color: var(--stone-300);
+    }
+
+    .slide-theme-cream .slide-subtitle {
+      color: var(--stone-600);
+    }
+
+    .slide-divider {
+      height: 1px;
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .slide-theme-navy .slide-divider {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .slide-theme-cream .slide-divider {
+      background: rgba(196, 137, 42, 0.28);
+    }
+
+    /* ==========================================================================
+       KEYNOTE CONTENT CARDS & GRIDS
+       ========================================================================== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .slide {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Keynote Card Elements */
+    .keynote-card {
+      border-radius: 14px;
+      padding: 1.4rem;
+      position: relative;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navy Slide Card */
+    .slide-theme-navy .keynote-card {
+      background: rgba(19, 36, 60, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .slide-theme-navy .keynote-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(24, 45, 75, 0.9);
+      transform: translateY(-2px);
+    }
+
+    /* Cream Slide Card */
+    .slide-theme-cream .keynote-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      color: var(--navy-dark);
+    }
+
+    .slide-theme-cream .keynote-card:hover {
+      border-color: rgba(200, 168, 74, 0.5);
+      box-shadow: 0 8px 24px rgba(13, 27, 46, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .card-icon-box svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
+    .slide-theme-navy .card-icon-box {
+      background: rgba(200, 168, 74, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(200, 168, 74, 0.3);
+    }
+
+    .slide-theme-cream .card-icon-box {
+      background: rgba(200, 168, 74, 0.12);
+      color: #b45309;
+      border: 1px solid rgba(200, 168, 74, 0.35);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--stone-300);
+    }
+
+    .contact-item-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(200, 168, 74, 0.12);
+      border: 1px solid rgba(200, 168, 74, 0.25);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    .card-heading {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .slide-theme-navy .card-heading {
+      color: #FFFFFF;
+    }
+
+    .slide-theme-cream .card-heading {
+      color: var(--navy-dark);
+    }
+
+    .card-desc {
+      font-size: 12.8px;
+      line-height: 1.6;
+    }
+
+    .slide-theme-navy .card-desc {
+      color: var(--stone-300);
+    }
+
+    .slide-theme-cream .card-desc {
+      color: var(--stone-600);
+    }
+
+    /* Executive Metrics Display (Exact Resume Look & Feel) */
+    .metric-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .slide-theme-navy .metric-strip {
+      background: rgba(19, 36, 60, 0.85);
+      border: 1px solid rgba(200, 168, 74, 0.3);
+    }
+
+    .slide-theme-cream .metric-strip {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      box-shadow: 0 4px 16px rgba(13, 27, 46, 0.05);
+    }
+
+    .metric-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .metric-number {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .slide-theme-navy .metric-number {
+      color: var(--gold);
+    }
+
+    .slide-theme-cream .metric-number {
+      color: var(--navy-dark);
+    }
+
+    .slide-theme-cream .metric-number span {
+      color: #b45309;
+    }
+
+    .metric-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .slide-theme-navy .metric-label {
+      color: var(--stone-300);
+    }
+
+    .slide-theme-cream .metric-label {
+      color: var(--stone-500);
+    }
+
+    .metric-sep {
+      width: 1px;
+      height: 32px;
+    }
+
+    .slide-theme-navy .metric-sep {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .slide-theme-cream .metric-sep {
+      background: var(--stone-200);
+    }
+
+    /* Diamond Bullets (Signature Resume Item) */
+    .diamond-bullet {
+      color: var(--gold);
+      font-size: 7px;
+      display: inline-block;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .slide-theme-cream .diamond-bullet {
+      color: #b45309;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .bullet-list li span:last-child {
+      flex: 1;
+    }
+
+    /* Badges & Tags */
+    .tag-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    .slide-theme-navy .tag-pill {
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .slide-theme-cream .tag-pill {
+      background: rgba(13, 27, 46, 0.05);
+      color: var(--navy-dark);
+      border: 1px solid rgba(13, 27, 46, 0.1);
+    }
+
+    .tag-pill.tag-gold {
+      background: rgba(200, 168, 74, 0.15);
+      color: #92400e;
+      border: 1px solid rgba(200, 168, 74, 0.35);
+    }
+
+    .slide-theme-navy .tag-pill.tag-gold {
+      color: var(--gold);
+      background: rgba(200, 168, 74, 0.15);
+      border-color: rgba(200, 168, 74, 0.3);
+    }
+
+    /* Company Case Study Banner */
+    .company-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy-dark);
+      color: #fff;
+      border-radius: 12px;
+      padding: 0.9rem 1.4rem;
+      margin-bottom: 1.4rem;
+      border: 1px solid rgba(200, 168, 74, 0.3);
+      box-shadow: 0 4px 16px rgba(13, 27, 46, 0.1);
+    }
+
+    .company-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .company-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #FFFFFF;
+    }
+
+    .company-role-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(200, 168, 74, 0.15);
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    .company-dates {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--stone-300);
+    }
+
+    /* Impact Callout Box */
+    .impact-panel {
+      border-radius: 12px;
+      padding: 1.15rem 1.4rem;
+      margin-top: 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .slide-theme-navy .impact-panel {
+      background: rgba(200, 168, 74, 0.1);
+      border: 1px solid rgba(200, 168, 74, 0.3);
+      color: #f1f5f9;
+    }
+
+    .slide-theme-cream .impact-panel {
+      background: #FEF3C7;
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      color: #78350F;
+    }
+
+    .impact-icon {
+      font-size: 20px;
+      line-height: 1;
+      margin-top: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .impact-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+
+    .slide-theme-navy .impact-icon {
+      color: var(--gold);
+    }
+
+    .slide-theme-cream .impact-icon {
+      color: var(--amber-dark);
+    }
+
+    .impact-content {
+      font-size: 12.8px;
+      line-height: 1.6;
+    }
+
+    .impact-content strong {
+      font-weight: 700;
+    }
+
+    .slide-theme-navy .impact-content strong {
+      color: var(--gold);
+    }
+
+    .slide-theme-cream .impact-content strong {
+      color: #92400e;
+    }
+
+    /* Stepper / Process Sequence (Slide 3) */
+    .stepper-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .stepper-box {
+      border-radius: 11px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide-theme-navy .stepper-box {
+      background: rgba(19, 36, 60, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .slide-theme-cream .stepper-box {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      box-shadow: 0 2px 8px rgba(13, 27, 46, 0.03);
+    }
+
+    .stepper-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .slide-theme-navy .stepper-num {
+      color: var(--gold);
+    }
+
+    .slide-theme-cream .stepper-num {
+      color: #b45309;
+    }
+
+    /* Keynote Slide Footer Bar */
+    .slide-keynote-footer {
+      margin-top: auto;
+      padding-top: 1.2rem;
+      border-top: 1px solid;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .slide-theme-navy .slide-keynote-footer {
+      border-color: rgba(255, 255, 255, 0.08);
+      color: var(--stone-400);
+    }
+
+    .slide-theme-cream .slide-keynote-footer {
+      border-color: rgba(13, 27, 46, 0.08);
+      color: var(--stone-500);
+    }
+
+    /* ==========================================================================
+       EXECUTIVE INFOGRAPHIC DESIGN SYSTEM (FLYWHEEL, TOPOLOGY, PIPELINE)
+       ========================================================================== */
+    
+    /* 1. Compounding Flywheel (Slide 2) */
+    .flywheel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .flywheel-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 13px;
+      padding: 1.15rem 1.35rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .flywheel-card:hover {
+      border-color: rgba(200, 168, 74, 0.5);
+      box-shadow: 0 8px 24px rgba(13, 27, 46, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .flywheel-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .flywheel-step-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    .flywheel-flow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* 2. Hub-and-Spoke Org Model (Slide 3) */
+    .org-topology-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.1fr 1.75fr;
+      gap: 0;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .org-hub-card {
+      background: rgba(13, 27, 46, 0.95);
+      color: #FFFFFF;
+      border: 1.5px solid var(--gold);
+      border-radius: 14px;
+      padding: 1.25rem 1.35rem;
+      box-shadow: 0 8px 24px rgba(13, 27, 46, 0.18);
+    }
+
+    .org-hub-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.4rem;
+    }
+
+    .org-hub-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .org-bus-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .org-squads-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .org-squad-item {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 11px;
+      padding: 0.75rem 1.1rem;
+      box-shadow: 0 2px 10px rgba(13, 27, 46, 0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-left: 3.5px solid var(--gold);
+    }
+
+    .squad-info h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 2px;
+    }
+
+    .squad-info p {
+      font-size: 11.5px;
+      color: var(--stone-500);
+      line-height: 1.35;
+    }
+
+    .squad-scale-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: var(--navy-dark);
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      flex-shrink: 0;
+    }
+
+    /* 3. Token Pipeline Infographic (Slide 7) */
+    .token-pipeline-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.3rem;
+      position: relative;
+    }
+
+    .pipeline-step-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 1.1rem 1rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .pipeline-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+    }
+
+    .pipeline-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #B45309;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .pipeline-card-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .pipeline-card-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--stone-500);
+      margin-bottom: 0.65rem;
+    }
+
+    .pipeline-flow-arrow {
+      margin-top: auto;
+      padding-top: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #B45309;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 4. Transformation Case Study Architecture (Slides 4, 5, 6) */
+    .case-flow-container {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 0.65rem;
+      align-items: stretch;
+      margin-bottom: 0.9rem;
+    }
+
+    .case-box-friction {
+      background: #FFFBF5;
+      border: 1px solid rgba(180, 83, 9, 0.22);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 10px rgba(180, 83, 9, 0.03);
+    }
+
+    .case-box-solution {
+      background: var(--white);
+      border: 1.5px solid rgba(200, 168, 74, 0.45);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+    }
+
+    .case-flow-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .case-flow-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .case-connector-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy-dark);
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(13, 27, 46, 0.15);
+      flex-shrink: 0;
+    }
+
+    .case-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    .case-kpi-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      border-radius: 11px;
+      padding: 0.8rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(13, 27, 46, 0.03);
+      border-top: 3.5px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-kpi-num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .case-kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #B45309;
+      margin-bottom: 0.35rem;
+    }
+
+    .case-kpi-desc {
+      font-size: 11px;
+      color: var(--stone-600);
+      line-height: 1.4;
+    }
+
+    /* 5. Dual-Engine AI Architecture (Slide 8) */
+    .ai-dual-engine-grid {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 0.65rem;
+      align-items: stretch;
+      margin-bottom: 0.95rem;
+    }
+
+    .ai-engine-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ai-engine-card.engine-accent {
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 6px 18px rgba(200, 168, 74, 0.1);
+    }
+
+    .ai-feature-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .ai-feature-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .ai-feature-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(200, 168, 74, 0.15);
+      color: #B45309;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .ai-feature-text h5 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 2px;
+    }
+
+    .ai-feature-text p {
+      font-size: 11px;
+      color: var(--stone-600);
+      line-height: 1.35;
+    }
+
+    .ai-bridge-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .ai-bridge-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--stone-500);
+      background: rgba(13, 27, 46, 0.05);
+      border: 1px dashed rgba(13, 27, 46, 0.2);
+      padding: 6px 4px;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 1.25;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+
+    /* 6. Talent Development Ladder & Mentorship (Slide 9) */
+    .talent-layout-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .ladder-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .ladder-step {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      background: #F8FAFC;
+      border-left: 3.5px solid var(--stone-300);
+      transition: all 0.2s ease;
+    }
+
+    .ladder-step.active-exec {
+      background: rgba(13, 27, 46, 0.04);
+      border-left-color: var(--gold);
+    }
+
+    .ladder-step-info h5 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 1px;
+    }
+
+    .ladder-step-info p {
+      font-size: 10.5px;
+      color: var(--stone-600);
+      line-height: 1.3;
+    }
+
+    .ladder-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 3px 6px;
+      border-radius: 4px;
+      background: #E2E8F0;
+      color: var(--stone-800);
+      white-space: nowrap;
+    }
+
+    .ladder-step.active-exec .ladder-badge {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+
+    .leadership-side-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .side-honor-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.09);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.04);
+    }
+
+    .leadership-kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 46, 0.08);
+      border-radius: 10px;
+      padding: 0.75rem 1.1rem;
+      box-shadow: 0 2px 8px rgba(13, 27, 46, 0.03);
+    }
+
+    .leadership-kpi-item {
+      text-align: center;
+      border-right: 1px solid rgba(13, 27, 46, 0.08);
+      padding: 0 0.5rem;
+    }
+
+    .leadership-kpi-item:last-child {
+      border-right: none;
+    }
+
+    .leadership-kpi-num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .leadership-kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #B45309;
+    }
+
+    /* ==========================================================================
+       BOTTOM KEYNOTE PRESENTATION CONTROLLER
+       ========================================================================== */
+    .deck-bottombar {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(13, 27, 46, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--gold);
+      border-radius: 40px;
+      padding: 0.55rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      z-index: 9999;
+      box-shadow: 0 12px 35px rgba(13, 27, 46, 0.35);
+      color: #fff;
+    }
+
+    @media (min-width: 1240px) {
+      body.has-sidebar .deck-bottombar,
+      body.has-sidebar-padding .deck-bottombar {
+        left: calc(50% + 145px);
+      }
+    }
+
+    .nav-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .nav-counter span {
+      color: var(--gold);
+    }
+
+    .nav-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-dot:hover {
+      background: rgba(200, 168, 74, 0.6);
+      transform: scale(1.2);
+    }
+
+    .nav-dot.active {
+      width: 22px;
+      border-radius: 5px;
+      background: var(--gold);
+    }
+
+    .btn-keynote {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-keynote:hover:not(:disabled) {
+      background: var(--gold);
+      color: var(--navy-dark);
+      border-color: var(--gold);
+      transform: scale(1.08);
+    }
+
+    .btn-keynote:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* ==========================================================================
+       PRINT & EXPORT PRESENTATION PDF STYLES (EXACT 10 PAGES 16:9)
+       ========================================================================== */
+    @media print {
+      @page {
+        size: 16in 9in;
+        margin: 0;
+      }
+      *, *::before, *::after {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+      html, body {
+        width: 16in !important;
+        height: auto !important;
+        background: var(--canvas-bg) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .deck-stage {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 16in !important;
+      }
+      .deck-topbar, .deck-bottombar, #app-left-sidebar, #sidebar-toggle-btn {
+        display: none !important;
+      }
+      .slide {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 16in !important;
+        height: 9in !important;
+        max-height: 9in !important;
+        box-sizing: border-box !important;
+        opacity: 1 !important;
+        transform: none !important;
+        page-break-before: always !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        break-before: page !important;
+        break-after: page !important;
+        break-inside: avoid !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 3rem 4.5rem 2.5rem 4.5rem !important;
+        overflow: hidden !important;
+      }
+      .slide:first-of-type {
+        page-break-before: auto !important;
+        break-before: auto !important;
+      }
+      .grid-2 {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+      }
+      .grid-3 {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.4rem !important;
+      }
+      .grid-4 {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .stepper-row {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .flywheel-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.2rem !important;
+      }
+      .org-topology-grid {
+        display: grid !important;
+        grid-template-columns: 1.15fr 40px 1.75fr !important;
+        gap: 0 !important;
+        align-items: center !important;
+      }
+      .token-pipeline-flow {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .case-flow-container {
+        display: grid !important;
+        grid-template-columns: 1fr 44px 1fr !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+      }
+      .case-kpi-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.2rem !important;
+      }
+      .ai-dual-engine-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 44px 1fr !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+      }
+      .talent-layout-grid {
+        display: grid !important;
+        grid-template-columns: 1.25fr 1fr !important;
+        gap: 1.4rem !important;
+        align-items: stretch !important;
+      }
+      .leadership-kpi-strip {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+      .slide-title {
+        font-size: 32px !important;
+      }
+    }
+  
+
+    /* Override deck layout for pure vertical scroll */
+    body {
+      background-color: #070B14;
+      color: #E2E8F0;
+    }
+
+    .leadership-wrap {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 24px 24px 80px;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .deck-workspace {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    /* Left PPT Filmstrip Panel */
+    .ppt-sorter-sidebar {
+      width: 236px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 76px;
+      height: calc(100vh - 96px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(200, 168, 74, 0.3) transparent;
+      z-index: 50;
+    }
+    .ppt-sorter-sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .ppt-sorter-sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .ppt-sorter-sidebar::-webkit-scrollbar-thumb {
+      background: rgba(200, 168, 74, 0.25);
+      border-radius: 4px;
+    }
+    .ppt-sorter-sidebar::-webkit-scrollbar-thumb:hover {
+      background: rgba(200, 168, 74, 0.5);
+    }
+
+    .sorter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 2px;
+    }
+    .sorter-title-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-code, monospace);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold, #C8A84A);
+      letter-spacing: 0.08em;
+    }
+    .sorter-count {
+      font-family: var(--font-code, monospace);
+      font-size: 10px;
+      color: #64748B;
+    }
+
+    .ppt-thumb-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .ppt-thumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 6px;
+      border-radius: 8px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .ppt-thumb:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(200, 168, 74, 0.35);
+      transform: translateX(3px);
+    }
+    .ppt-thumb.active {
+      background: rgba(200, 168, 74, 0.09);
+      border-color: var(--gold, #C8A84A);
+      box-shadow: 0 4px 16px rgba(200, 168, 74, 0.15);
+    }
+    .ppt-thumb-num {
+      font-family: var(--font-code, monospace);
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748B;
+      width: 14px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .ppt-thumb.active .ppt-thumb-num {
+      color: var(--gold, #C8A84A);
+      font-weight: 700;
+    }
+    .ppt-thumb-card {
+      flex: 1;
+      min-width: 0;
+      height: 58px;
+      background: #0B1322;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 5px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .ppt-thumb.active .ppt-thumb-card {
+      border-color: rgba(200, 168, 74, 0.6);
+      background: #0e1b2f;
+    }
+    .ppt-thumb-tag {
+      font-family: var(--font-code, monospace);
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold, #C8A84A);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ppt-thumb-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: #E2E8F0;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ppt-thumb-preview {
+      display: flex;
+      gap: 3px;
+      height: 5px;
+      align-items: center;
+    }
+    .mini-bar {
+      flex: 1;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 1px;
+    }
+    .mini-bar.highlight {
+      background: rgba(200, 168, 74, 0.5);
+    }
+
+    .keynote-container {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .slide {
+      display: flex !important;
+      flex-direction: column !important;
+      opacity: 1 !important;
+      transform: none !important;
+      min-height: auto !important;
+      padding: 3rem 3.4rem 2.5rem !important;
+      margin-bottom: 0 !important;
+      scroll-margin-top: 85px !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+
+    @media (min-width: 1081px) {
+      .deck-jump-bar {
+        display: none !important;
+      }
+      .ppt-sorter-sidebar {
+        display: flex !important;
+      }
+      .slide {
+        scroll-margin-top: 85px !important;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .ppt-sorter-sidebar {
+        display: none !important;
+      }
+      .deck-jump-bar {
+        display: block !important;
+      }
+      .slide {
+        scroll-margin-top: 135px !important;
+      }
+    }
+
+    @media (max-width: 960px) {
+      .leadership-wrap {
+        padding: 16px 16px 60px !important;
+      }
+      .keynote-container {
+        gap: 28px !important;
+      }
+      .slide {
+        padding: 2.2rem 1.8rem 1.8rem !important;
+      }
+      .slide-cover-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.2rem !important;
+      }
+      .flywheel-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .org-topology-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .stepper-row {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr !important;
+      }
+      .grid-4 {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .slide {
+        padding: 1.5rem 1rem !important;
+        scroll-margin-top: 165px !important;
+      }
+      .stepper-row, .grid-4 {
+        grid-template-columns: 1fr !important;
+      }
+      .metric-strip {
+        flex-wrap: wrap !important;
+        gap: 14px !important;
+      }
+      .metric-sep {
+        display: none !important;
+      }
+    }
+
+    /* Single Clean Jump Bar directly under Global Header */
+    .deck-jump-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 950;
+      background: rgba(13, 27, 46, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 168, 74, 0.3);
+      padding: 10px 0;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .jump-bar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      .jump-bar-inner {
+        padding: 0 12px;
+      }
+    }
+
+    .jump-links {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      align-items: center;
+      scrollbar-width: none;
+      width: 100%;
+      max-width: 100%;
+    }
+    .jump-links::-webkit-scrollbar { display: none; }
+
+    .jump-item {
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 600;
+      color: #94A3B8;
+      background: rgba(255, 255, 255, 0.06);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .jump-item:hover {
+      color: #FFFFFF;
+      background: var(--primary-accent);
+    }
+
+    .jump-item.active {
+      color: #FFFFFF;
+      background: var(--primary-accent);
+      border-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <header class="global-header">
+    <div class="header-container">
+      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="/" class="nav-item">Welcome</a>
+        <a href="/leadership" class="nav-item">Leadership</a>
+        <a href="/leadership-deck" class="nav-item active">Leadership Deck</a>
+        <a href="/work" class="nav-item">Selected Work</a>
+        <a href="/archive" class="nav-item">Visual Archive</a>
+        <a href="/cv" class="nav-item">Resume</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
+          Get In Touch &rarr;
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Comparison Banner -->
+  <aside class="deck-compare-banner" style="background: #0D1B2E; color: #CBD5E1; border-bottom: 1px solid rgba(200, 168, 74, 0.35); padding: 12px 24px; position: relative; z-index: 999;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C8A84A;"></span>
+        <span><strong>10-Slide Keynote Presentation Deck</strong> &bull; Executive Pitch Format</span>
+      </div>
+      <a href="/leadership" style="color: #DFBC55; font-weight: 700; text-decoration: underline; font-family: var(--font-body); display: inline-flex; align-items: center; gap: 6px;">
+        Compare with Leadership Playbook &amp; Frameworks &rarr;
+      </a>
+    </div>
+  </aside>
+  
+
+  <!-- Sticky Quick Jump Sub-Navigation -->
+  <div class="deck-jump-bar">
+    <div class="jump-bar-inner">
+      <div class="jump-links">
+        <span style="font-family: var(--font-code); font-size: 11px; color: var(--gold); font-weight: 700; margin-right: 6px;">STRATEGIC SECTIONS:</span>
+        <a href="#slide-1" class="jump-item">01. Overview</a>
+        <a href="#slide-2" class="jump-item">02. 4 Pillars</a>
+        <a href="#slide-3" class="jump-item">03. Team Topology</a>
+        <a href="#slide-4" class="jump-item">04. IBM AI-UX</a>
+        <a href="#slide-5" class="jump-item">05. Zebra IoT</a>
+        <a href="#slide-6" class="jump-item">06. ZF Wabco HUD</a>
+        <a href="#slide-7" class="jump-item">07. Token Ops</a>
+        <a href="#slide-8" class="jump-item">08. Agentic DesignOps</a>
+        <a href="#slide-9" class="jump-item">09. 30-60-90 Plan</a>
+        <a href="#slide-10" class="jump-item">10. Target Roles</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="leadership-wrap">
+    <div class="deck-workspace">
+      <!-- Left PPT Filmstrip Panel (PowerPoint Style) -->
+      <aside class="ppt-sorter-sidebar" id="pptSorter" aria-label="Slide Deck Sorter">
+        <div class="sorter-header">
+          <div class="sorter-title-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+            <span>SLIDES</span>
+          </div>
+          <span class="sorter-count">10 Slides</span>
+        </div>
+
+        <nav class="ppt-thumb-list">
+          <a href="#slide-1" class="ppt-thumb active" data-slide="slide-1">
+            <span class="ppt-thumb-num">1</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">01 • COVER</span>
+              <span class="ppt-thumb-title">Executive Pedigree</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar highlight" style="flex: 2;"></div>
+                <div class="mini-bar" style="flex: 1;"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-2" class="ppt-thumb" data-slide="slide-2">
+            <span class="ppt-thumb-num">2</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">02 • STRATEGY</span>
+              <span class="ppt-thumb-title">4 Leadership Pillars</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar"></div>
+                <div class="mini-bar highlight"></div>
+                <div class="mini-bar"></div>
+                <div class="mini-bar highlight"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-3" class="ppt-thumb" data-slide="slide-3">
+            <span class="ppt-thumb-num">3</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">03 • ORG SCALE</span>
+              <span class="ppt-thumb-title">Team Topology &amp; Pods</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar highlight"></div>
+                <div class="mini-bar"></div>
+                <div class="mini-bar"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-4" class="ppt-thumb" data-slide="slide-4">
+            <span class="ppt-thumb-num">4</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">04 • AI-UX CASE</span>
+              <span class="ppt-thumb-title">IBM Watson Discovery</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar highlight" style="flex: 3;"></div>
+                <div class="mini-bar" style="flex: 2;"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-5" class="ppt-thumb" data-slide="slide-5">
+            <span class="ppt-thumb-num">5</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">05 • MOBILE CASE</span>
+              <span class="ppt-thumb-title">Zebra IoT Platform</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar"></div>
+                <div class="mini-bar highlight" style="flex: 2;"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-6" class="ppt-thumb" data-slide="slide-6">
+            <span class="ppt-thumb-num">6</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">06 • AUTO CASE</span>
+              <span class="ppt-thumb-title">ZF Wabco ADAS HUD</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar highlight" style="flex: 3;"></div>
+                <div class="mini-bar"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-7" class="ppt-thumb" data-slide="slide-7">
+            <span class="ppt-thumb-num">7</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">07 • DESIGN SYSTEMS</span>
+              <span class="ppt-thumb-title">Enterprise Token Ops</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar"></div>
+                <div class="mini-bar"></div>
+                <div class="mini-bar highlight"></div>
+                <div class="mini-bar"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-8" class="ppt-thumb" data-slide="slide-8">
+            <span class="ppt-thumb-num">8</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">08 • DESIGNOPS</span>
+              <span class="ppt-thumb-title">Agentic AI Pipelines</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar highlight"></div>
+                <div class="mini-bar highlight"></div>
+                <div class="mini-bar"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-9" class="ppt-thumb" data-slide="slide-9">
+            <span class="ppt-thumb-num">9</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">09 • EXECUTION</span>
+              <span class="ppt-thumb-title">30-60-90 Day Plan</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar"></div>
+                <div class="mini-bar highlight"></div>
+                <div class="mini-bar"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="#slide-10" class="ppt-thumb" data-slide="slide-10">
+            <span class="ppt-thumb-num">10</span>
+            <div class="ppt-thumb-card">
+              <span class="ppt-thumb-tag">10 • SYNTHESIS</span>
+              <span class="ppt-thumb-title">Target Roles &amp; Contact</span>
+              <div class="ppt-thumb-preview">
+                <div class="mini-bar highlight" style="flex: 2;"></div>
+                <div class="mini-bar" style="flex: 1;"></div>
+              </div>
+            </div>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- The 10 Strategic Sections (Scrollable Vertically) -->
+      <main class="keynote-container">
+      
+
+      <!-- SLIDE 1: Cover / Executive Pedigree (Navy Signature) -->
+      <section class="slide slide-theme-navy active" id="slide-1">
+        <div class="slide-cover-header">
+          <div class="cover-header-left">
+            <div class="slide-kicker">
+              <span class="kicker-dot"></span> Design Leadership Portfolio • 2026
+            </div>
+            <h1 class="slide-title">Design Leadership at Scale</h1>
+            <p class="slide-subtitle">
+              Architecting Enterprise UX, Production Design Systems, and High-Velocity Engineering Collaboration across Global Fortune 500 Technology Organizations.
+            </p>
+          </div>
+          <div class="presenter-card">
+            <img src="/profile.jpg" alt="Balaajee V.R." class="presenter-photo">
+            <div class="presenter-details">
+              <div class="presenter-byline">Presenter</div>
+              <div class="presenter-name">Balaajee V.R.</div>
+              <div class="presenter-role">UI/UX Design Senior Manager</div>
+              <div class="presenter-pedigree">Ex-IBM • Zebra • ZF Wabco<br>Ericsson • Infosys</div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-divider" style="margin-top: 0.6rem; margin-bottom: 1.4rem;"></div>
+
+        <div class="metric-strip">
+          <div class="metric-item">
+            <div class="metric-number">18+</div>
+            <div class="metric-label">Years Experience</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">10M+</div>
+            <div class="metric-label">Users Impacted</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">15+</div>
+            <div class="metric-label">Team Scale Led</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">40%</div>
+            <div class="metric-label">Velocity Gain</div>
+          </div>
+        </div>
+
+        <div class="grid-3" style="flex: 1;">
+          <div class="keynote-card">
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 3L2 10h20L12 3z"/></svg>
+            </div>
+            <h3 class="card-heading">Enterprise Pedigree</h3>
+            <p class="card-desc">
+              Senior design leadership spanning <strong>IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson, Samsung, and Infosys</strong> across multi-tier B2B, B2C, and B2E architectures.
+            </p>
+            <div style="margin-top: auto; padding-top: 0.9rem;">
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.65rem;">
+                <span class="tag-pill tag-gold">IBM</span>
+                <span class="tag-pill tag-gold">Zebra</span>
+                <span class="tag-pill">ZF Wabco</span>
+                <span class="tag-pill">Ericsson</span>
+                <span class="tag-pill">Infosys</span>
+                <span class="tag-pill">Samsung</span>
+              </div>
+              <ul class="bullet-list" style="font-size: 11.5px; opacity: 0.9;">
+                <li><span class="diamond-bullet">&#9670;</span><span>18+ Years Global Tech Experience</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span>Enterprise AI, B2B SaaS &amp; Industrial IoT</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="keynote-card">
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="card-heading">Systems &amp; Token Architecture</h3>
+            <p class="card-desc">
+              Pioneered cross-brand enterprise design systems with automated token pipelines bridging Figma to React, Angular, and native Android Kotlin repositories with zero visual drift.
+            </p>
+            <div style="margin-top: auto; padding-top: 0.9rem;">
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.65rem;">
+                <span class="tag-pill tag-gold">Figma Tokens</span>
+                <span class="tag-pill tag-gold">Style-Dictionary</span>
+                <span class="tag-pill">React &amp; Angular</span>
+                <span class="tag-pill">Android Compose</span>
+              </div>
+              <ul class="bullet-list" style="font-size: 11.5px; opacity: 0.9;">
+                <li><span class="diamond-bullet">&#9670;</span><span>Automated Zero-Drift CI/CD Pipelines</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span>Multi-Brand Theming &amp; WCAG AA Compliance</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="keynote-card">
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="card-heading">People &amp; Culture Catalyst</h3>
+            <p class="card-desc">
+              Mentored 50+ designers. Established career leveling frameworks, design sprint rituals, and psychological safety that drive retention and high innovation velocity.
+            </p>
+            <div style="margin-top: auto; padding-top: 0.9rem;">
+              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.65rem;">
+                <span class="tag-pill tag-gold">50+ Mentored</span>
+                <span class="tag-pill tag-gold">Team Scale (3 to 15+)</span>
+                <span class="tag-pill">DesignOps</span>
+                <span class="tag-pill">10-Yr US Visa</span>
+              </div>
+              <ul class="bullet-list" style="font-size: 11.5px; opacity: 0.9;">
+                <li><span class="diamond-bullet">&#9670;</span><span>Structured Career Ladders (Assoc. to Principal)</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span>Global Hack-Fest &amp; Spot Innovation Awards</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 01 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>ENTERPRISE DESIGN KEYNOTE</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Four Pillars of Executive Design (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-2">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Core Leadership Framework
+          </div>
+          <h2 class="slide-title">Four Pillars of Design Leadership</h2>
+          <p class="slide-subtitle">
+            Bridging business objectives, technical engineering constraints, and human-centered design to build compounding enterprise value.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="flywheel-grid">
+          <!-- QUADRANT 01 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 01 • Product Strategy</span>
+            </div>
+            <h3 class="card-heading">1. Strategic Product Alignment &amp; Usability Impact</h3>
+            <p class="card-desc">
+              Design drives adoption, workflow efficiency, and team velocity. Every initiative directly targets mission-critical usability benchmarks: accelerating task completion velocity, eliminating workflow friction, reducing user error rates, and compressing enterprise onboarding cycles.
+            </p>
+            <div style="margin: 0.6rem 0;">
+              <span class="tag-pill tag-gold">Product Adoption</span>
+              <span class="tag-pill">Task Velocity</span>
+              <span class="tag-pill">Workflow Usability</span>
+            </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Dictates Systems Architecture</span>
+            </div>
+          </div>
+
+          <!-- QUADRANT 02 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 02 • Scale &amp; Governance</span>
+            </div>
+            <h3 class="card-heading">2. Systems-First Scalability</h3>
+            <p class="card-desc">
+              Eliminating redundant component rebuilds through automated token pipelines. Enforcing multi-brand UI governance, WCAG 2.1 AA accessibility compliance, and code-aligned component libraries.
+            </p>
+            <div style="margin: 0.6rem 0;">
+              <span class="tag-pill tag-gold">Design Tokens</span>
+              <span class="tag-pill">WCAG 2.1 AA</span>
+              <span class="tag-pill">Single Source of Truth</span>
+            </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Unlocks Engineering Velocity</span>
+            </div>
+          </div>
+
+          <!-- QUADRANT 04 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 04 • People &amp; Culture</span>
+            </div>
+            <h3 class="card-heading">4. High-Empathy Talent Cultivation</h3>
+            <p class="card-desc">
+              Empowering designers through psychological safety, constructive critiques, and explicit career progression pathways (from Associate to Principal). Fostering an inclusive, high-retention environment.
+            </p>
+            <div style="margin: 0.6rem 0;">
+              <span class="tag-pill tag-gold">Career Frameworks</span>
+              <span class="tag-pill">Psychological Safety</span>
+              <span class="tag-pill">DesignOps Mentorship</span>
+            </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Compounds Business Strategy</span>
+            </div>
+          </div>
+
+          <!-- QUADRANT 03 -->
+          <div class="flywheel-card">
+            <div class="flywheel-header-row">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <span class="flywheel-step-badge">Pillar 03 • Engineering Synergy</span>
+            </div>
+            <h3 class="card-heading">3. Engineering Synergy &amp; Code Parity</h3>
+            <p class="card-desc">
+              With an engineering background (B.E. Information Technology), I speak the language of software architects. I eliminate the "designer-developer divide" through shared design-to-code pipelines and proactive technical feasibility reviews.
+            </p>
+            <div style="margin: 0.6rem 0;">
+              <span class="tag-pill tag-gold">Zero-Drift Handoff</span>
+              <span class="tag-pill">Component Parity</span>
+              <span class="tag-pill">Feasibility Reviews</span>
+            </div>
+            <div class="flywheel-flow-badge">
+              <span>➔ Empowers Autonomous Talent</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 02 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>CORE LEADERSHIP FRAMEWORK</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Operating Model & Pod Architecture (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-3">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Operating Model &amp; Organizational Architecture
+          </div>
+          <h2 class="slide-title">How I Structure &amp; Scale Design Teams</h2>
+          <p class="slide-subtitle">
+            The Hybrid Pod Model: Combining centralized design system governance with decentralized, embedded product squad execution.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="org-topology-grid">
+          <!-- LEFT: CENTRAL DESIGNOPS HUB -->
+          <div class="org-hub-card">
+            <div class="org-hub-badge">
+              <span class="kicker-dot" style="background: var(--gold);"></span> Central Core Hub
+            </div>
+            <h3 class="org-hub-title">DesignOps &amp; Systems Governance</h3>
+            <p style="font-size: 11.5px; color: var(--stone-300); line-height: 1.5; margin-bottom: 0.75rem;">
+              Dedicated organizational core establishing scalable design standards, accessibility compliance, and design-to-code pipelines across all enterprise software suites.
+            </p>
+            <ul class="bullet-list" style="font-size: 11.5px; color: var(--stone-300);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Figma Token Studio &amp; Semantic Variables</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Automated Style-Dictionary CI/CD Engine</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>WCAG 2.1 AAA Accessibility &amp; Usability Lab</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Storybook Parity &amp; Zero Visual Drift</span></li>
+            </ul>
+          </div>
+
+          <!-- CONNECTOR ARROW -->
+          <div class="org-bus-connector">
+            <span>⟷</span>
+          </div>
+
+          <!-- RIGHT: 3 EMBEDDED PRODUCT SQUADS -->
+          <div class="org-squads-col">
+            <div class="org-squad-item">
+              <div class="squad-info">
+                <h4>Squad A: Enterprise AI &amp; Systems Modeling</h4>
+                <p>Embedded with Watson AI architects &amp; aerospace systems engineering leads at IBM.</p>
+              </div>
+              <div class="squad-scale-pill">4 Designers • 18 Eng</div>
+            </div>
+
+            <div class="org-squad-item">
+              <div class="squad-info">
+                <h4>Squad B: Industrial B2B &amp; Rugged Ecosystem</h4>
+                <p>Embedded with Android Kotlin &amp; hardware firmware engineering teams at Zebra.</p>
+              </div>
+              <div class="squad-scale-pill">5 Designers • 22 Eng</div>
+            </div>
+
+            <div class="org-squad-item">
+              <div class="squad-info">
+                <h4>Squad C: Commercial Telematics &amp; Safety IoT</h4>
+                <p>Embedded with cloud telemetry &amp; vehicle HMI engineers at ZF Wabco.</p>
+              </div>
+              <div class="squad-scale-pill">3 Designers • 14 Eng</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stepper-row">
+          <div class="stepper-box">
+            <div class="stepper-num">STAGE 01 • DISCOVER</div>
+            <p class="card-desc">Generative user research, stakeholder alignment, persona definitions, and KPI mapping.</p>
+          </div>
+          <div class="stepper-box">
+            <div class="stepper-num">STAGE 02 • DEFINE</div>
+            <p class="card-desc">Information architecture, journey mapping, low-fi wireframing, and technical feasibility.</p>
+          </div>
+          <div class="stepper-box">
+            <div class="stepper-num">STAGE 03 • DESIGN &amp; TEST</div>
+            <p class="card-desc">Token-based high-fidelity UI, interactive prototypes, usability validation, and critiques.</p>
+          </div>
+          <div class="stepper-box">
+            <div class="stepper-num">STAGE 04 • DELIVER &amp; SCALE</div>
+            <p class="card-desc">Automated token handoff, QA visual review, production rollout, and analytics feedback.</p>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 03 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>HYBRID POD OPERATING MODEL</span>
+          <div style="margin-top: 18px; text-align: right;">
+       <a href="/case-ericsson.html" class="btn-read-case" style="display: inline-flex; text-decoration: none; padding: 8px 18px; border-radius: 100px; background: var(--gold); color: #0D1B2E; font-weight: 700; font-size: 12.5px;">
+         Explore Dedicated Ericsson Case Study &amp; Live Data Grid &rarr;
+       </a>
+     </div>
+   </div>
+ </section>
+ <!-- SLIDE 4: Case Study 01 - IBM Software Labs (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-4">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Flagship Enterprise Case Study 01
+          </div>
+          <h2 class="slide-title">IBM Software Labs: Enterprise AI-UX Transformation</h2>
+          <p class="slide-subtitle">
+            Re-architecting complex enterprise modeling (Rhapsody SE) and enterprise mobility management (MaaS360) by integrating IBM Watson AI workflows.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="company-banner">
+          <div class="company-title-area">
+            <span class="company-name">IBM INDIA SOFTWARE LABS</span>
+            <span class="company-role-tag">UI/UX Design Senior Manager</span>
+          </div>
+          <div class="company-dates">Sep 2024 – Jan 2026 • Enterprise Systems Portfolio</div>
+        </div>
+
+        <div class="case-flow-container">
+          <!-- LEFT: OPERATIONAL FRICTION -->
+          <div class="case-box-friction">
+            <div class="case-flow-kicker" style="color: #B45309;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Operational Friction
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: #B45309; margin-bottom: 0.45rem;">
+              Cognitive Fatigue &amp; Policy Fragmentation
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Legacy Modeling Overload:</strong> Aerospace &amp; automotive systems engineers faced severe cognitive fatigue navigating dense legacy UML/SysML modeling suites in Rhapsody SE.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Fragmented Endpoint Triage:</strong> IT administrators faced constant alert fatigue manually auditing policy compliance across hundreds of thousands of corporate devices in MaaS360.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">High Support Escalations</span>
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Cognitive Overload</span>
+            </div>
+          </div>
+
+          <!-- CONNECTOR ARROW -->
+          <div class="case-flow-connector">
+            <div class="case-connector-circle">➔</div>
+          </div>
+
+          <!-- RIGHT: STRATEGIC INTERVENTION -->
+          <div class="case-box-solution">
+            <div class="case-flow-kicker" style="color: var(--navy-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Strategic Systems Intervention
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.45rem;">
+              UX-as-a-Service Pods &amp; Contextual Watson AI
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>UXaaS Pod Organization:</strong> Re-architected 12 designers from isolated product silos into a unified UX-as-a-Service model, establishing shared design sprint cadences and component governance.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Watson AI Interaction Patterns:</strong> Designed conversational copilots and contextual AI recommendations that proactively suggest policy fixes and automate model validations.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill tag-gold">UX-as-a-Service</span>
+              <span class="tag-pill tag-gold">IBM Watson AI</span>
+              <span class="tag-pill">Predictive Workflows</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM: EXECUTIVE IMPACT KPI GRID -->
+        <div class="case-kpi-grid">
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">35%</div>
+            <div class="case-kpi-label">Model Verification Velocity</div>
+            <p class="case-kpi-desc">Reduction in model verification cycle time for global aerospace &amp; automotive engineering clients.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">45%</div>
+            <div class="case-kpi-label">Admin Triage Reduction</div>
+            <p class="case-kpi-desc">Cut IT administrator triage time by replacing reactive alert dashboards with proactive AI policy mitigations.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">15+</div>
+            <div class="case-kpi-label">Global Designers Unified</div>
+            <p class="case-kpi-desc">Standardized cross-product design execution and component reuse across squads in the US, Europe, and India.</p>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 04 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>IBM ENTERPRISE AI-UX CASE STUDY</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Case Study 02 - Zebra Technologies (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-5">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Flagship Enterprise Case Study 02
+          </div>
+          <h2 class="slide-title">Zebra Technologies: Industrial B2B Ecosystem at Scale</h2>
+          <p class="slide-subtitle">
+            Unifying hardware-software UX ecosystems across rugged mobile computers, RFID scanners, and enterprise supply chain platforms.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="company-banner">
+          <div class="company-title-area">
+            <span class="company-name">ZEBRA TECHNOLOGIES</span>
+            <span class="company-role-tag">UI/UX Product Design Manager</span>
+          </div>
+          <div class="company-dates">Jul 2021 – Aug 2024 • Global B2B Hardware &amp; Software</div>
+        </div>
+
+        <div class="case-flow-container">
+          <!-- LEFT: OPERATIONAL FRICTION -->
+          <div class="case-box-friction">
+            <div class="case-flow-kicker" style="color: #B45309;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Operational Friction
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: #B45309; margin-bottom: 0.45rem;">
+              Extreme Ambient &amp; Harsh Physical Constraints
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Hostile Environmental Factors:</strong> Warehouse operators and drivers operate in direct sunlight glare, dark cold storage (-20°C), loud ambient noise, and heavy gloved one-hand touch.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Fragmented Device UX:</strong> Disconnected design execution across legacy rugged Android devices and web portals caused high cognitive fatigue and scanning error rates.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Gloved Touch Bottlenecks</span>
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">High Scan Errors</span>
+            </div>
+          </div>
+
+          <!-- CONNECTOR ARROW -->
+          <div class="case-flow-connector">
+            <div class="case-connector-circle">➔</div>
+          </div>
+
+          <!-- RIGHT: STRATEGIC INTERVENTION -->
+          <div class="case-box-solution">
+            <div class="case-flow-kicker" style="color: var(--navy-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Strategic Systems Intervention
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.45rem;">
+              Glanceable Patterns &amp; Multi-Platform Governance
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Industrial-Grade Design System:</strong> Standardized high-contrast glanceable color tokens, touch targets calibrated for heavy gloves, and multi-modal audio/haptic feedback.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Shared Token Architecture:</strong> Deployed unified design tokens directly bridging Figma variants to Android Kotlin/Jetpack Compose and cloud web repositories.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill tag-gold">Android Compose</span>
+              <span class="tag-pill tag-gold">Glanceable HMI</span>
+              <span class="tag-pill">Haptic/Audio Feedback</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM: EXECUTIVE IMPACT KPI GRID -->
+        <div class="case-kpi-grid">
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">40%</div>
+            <div class="case-kpi-label">Handoff Acceleration</div>
+            <p class="case-kpi-desc">Accelerated sprint velocity and engineering handoff through shared Android Kotlin/Compose design tokens.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">22%</div>
+            <div class="case-kpi-label">Operator Throughput</div>
+            <p class="case-kpi-desc">Increased scanning throughput and slashed input error rates across Tier-1 retail &amp; logistics enterprise hubs.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">100%</div>
+            <div class="case-kpi-label">Enterprise Governance</div>
+            <p class="case-kpi-desc">Architected design system governance adopted across Zebra's hardware product lines and enterprise cloud software.</p>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 05 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>ZEBRA INDUSTRIAL ECOSYSTEM CASE STUDY</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Case Study 03 - ZF Wabco (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-6">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Flagship Enterprise Case Study 03
+          </div>
+          <h2 class="slide-title">ZF Wabco: Mission-Critical Fleet Telematics</h2>
+          <p class="slide-subtitle">
+            Designing safety-critical, zero-distraction driver interfaces and real-time cloud telemetry platforms for commercial fleet operators.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="company-banner">
+          <div class="company-title-area">
+            <span class="company-name">ZF WABCO</span>
+            <span class="company-role-tag">UI/UX Senior Specialist</span>
+          </div>
+          <div class="company-dates">Oct 2020 – Jul 2021 • Commercial Vehicle Telematics</div>
+        </div>
+
+        <div class="case-flow-container">
+          <!-- LEFT: OPERATIONAL FRICTION -->
+          <div class="case-box-friction">
+            <div class="case-flow-kicker" style="color: #B45309;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Operational Friction
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: #B45309; margin-bottom: 0.45rem;">
+              Driver Distraction Risks &amp; Highway Breakdown Latency
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Safety-Critical HMI Cognitive Load:</strong> In-cabin commercial truck interfaces risked severe driver distraction during high-speed freight transit if alerts were not strictly glanceable and ISO-compliant.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Unplanned Fleet Downtime:</strong> Fleet dispatchers lacked predictive insights into vehicle health, resulting in sudden roadside breakdowns, delivery penalties, and severe freight scheduling disruptions.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Driver Distraction Hazard</span>
+              <span class="tag-pill" style="background: rgba(180, 83, 9, 0.1); color: #B45309; border-color: rgba(180, 83, 9, 0.25);">Unplanned Fleet Downtime</span>
+            </div>
+          </div>
+
+          <!-- CONNECTOR ARROW -->
+          <div class="case-flow-connector">
+            <div class="case-connector-circle">➔</div>
+          </div>
+
+          <!-- RIGHT: STRATEGIC INTERVENTION -->
+          <div class="case-box-solution">
+            <div class="case-flow-kicker" style="color: var(--navy-dark);">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Strategic Systems Intervention
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.45rem;">
+              ISO 15005 Glanceable HMI &amp; Predictive Telematics Portal
+            </h4>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600); margin-bottom: 0.6rem;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Zero-Distraction HMI Architecture:</strong> Engineered in-cabin driver displays strictly compliant with NHTSA &amp; ISO 15005 driver distraction standards, prioritizing critical brake &amp; ESC alerts.</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>High-Density Telemetry Portal:</strong> Built real-time dispatch telemetry maps and predictive dashboards enabling fleet operators to monitor thousands of vehicles with zero latency.</span></li>
+            </ul>
+            <div style="margin-top: auto;">
+              <span class="tag-pill tag-gold">ISO 15005 Compliant</span>
+              <span class="tag-pill tag-gold">Real-Time IoT Maps</span>
+              <span class="tag-pill">Predictive Maintenance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM: EXECUTIVE IMPACT KPI GRID -->
+        <div class="case-kpi-grid">
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">18%</div>
+            <div class="case-kpi-label">Braking Reaction Velocity</div>
+            <p class="case-kpi-desc">Reduced driver reaction latency to critical safety and brake warnings through glanceable HMI interaction design.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">48 hrs</div>
+            <div class="case-kpi-label">Predictive Fault Window</div>
+            <p class="case-kpi-desc">Enabled fleet managers to schedule predictive maintenance 48 hours earlier, preventing catastrophic highway failures.</p>
+          </div>
+          <div class="case-kpi-card">
+            <div class="case-kpi-num">Zero</div>
+            <div class="case-kpi-label">HMI to Cloud Drift</div>
+            <p class="case-kpi-desc">Single unified design token pipeline established across in-vehicle Android automotive units and cloud dispatch web consoles.</p>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 06 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>ZF WABCO FLEET TELEMATICS CASE STUDY</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Enterprise Token Architecture (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-7">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Design Systems &amp; Token Architecture
+          </div>
+          <h2 class="slide-title">Enterprise Token Architecture</h2>
+          <p class="slide-subtitle">
+            How I architect robust, multi-brand design systems that eliminate redundant coding and guarantee 100% fidelity from Figma to Production.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="token-pipeline-flow">
+          <!-- STAGE 01: DESIGN TOKENS -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 01</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7l-6-6a1 1 0 0 0-1.4 0l-12 12a1 1 0 0 0 0 1.4l6 6a1 1 0 0 0 1.4 0l12-12a1 1 0 0 0 0-1.4zM7.5 13.5l1.5-1.5M10.5 16.5l1.5-1.5M13.5 19.5l1.5-1.5"/></svg>
+              </div>
+            </div>
+            <h4 class="pipeline-card-title">Figma Token Studio</h4>
+            <div class="pipeline-card-sub">Design Token Authoring</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Semantic color &amp; typography scales</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Calibrated 8pt spacing &amp; elevation</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Multi-brand alias theme tokens</span></li>
+            </ul>
+            <div class="pipeline-flow-arrow">
+              <span>➔ Git Webhook Push</span>
+            </div>
+          </div>
+
+          <!-- STAGE 02: AUTOMATED CI/CD -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 02</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+            </div>
+            <h4 class="pipeline-card-title">Style-Dictionary CI/CD</h4>
+            <div class="pipeline-card-sub">Automated Compilation</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>GitHub Actions automated trigger</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>JSON parsing &amp; contract checks</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Zero manual copy-pasting of hex</span></li>
+            </ul>
+            <div class="pipeline-flow-arrow">
+              <span>➔ Multi-Platform Build</span>
+            </div>
+          </div>
+
+          <!-- STAGE 03: MULTI-PLATFORM ARTIFACTS -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 03</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+            </div>
+            <h4 class="pipeline-card-title">Multi-Platform Repos</h4>
+            <div class="pipeline-card-sub">Native Code Artifacts</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Web: CSS Variables &amp; SCSS Maps</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Frontend: React &amp; Angular TS packages</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Mobile: Android Kotlin / Compose</span></li>
+            </ul>
+            <div class="pipeline-flow-arrow">
+              <span>➔ Continuous Verification</span>
+            </div>
+          </div>
+
+          <!-- STAGE 04: STORYBOOK & A11Y PARITY -->
+          <div class="pipeline-step-card">
+            <div class="pipeline-step-header">
+              <span class="pipeline-badge">Phase 04</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </div>
+            </div>
+            <h4 class="pipeline-card-title">Storybook &amp; WCAG AA</h4>
+            <div class="pipeline-card-sub">Zero Visual Drift</div>
+            <ul class="bullet-list" style="font-size: 11px; color: var(--stone-600);">
+              <li><span class="diamond-bullet">&#9670;</span><span>Automated axe-core a11y scanner</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>1:1 component props mirror Figma</span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span>Zeroheight live documentation sync</span></li>
+            </ul>
+            <div class="pipeline-flow-arrow" style="color: #16A34A;">
+              <span>✓ Production Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="metric-strip">
+          <div class="metric-item">
+            <div class="metric-number">40<span>%</span></div>
+            <div class="metric-label">Handoff Acceleration</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">100<span>%</span></div>
+            <div class="metric-label">WCAG 2.1 AA Compliance</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">0</div>
+            <div class="metric-label">Redundant Component Code</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">Multi</div>
+            <div class="metric-label">Brand Theming Enabled</div>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 07 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>ENTERPRISE TOKEN ARCHITECTURE</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: AI-Augmented DesignOps & Agentic UX (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-8">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Innovation &amp; Future-Proofing
+          </div>
+          <h2 class="slide-title">AI-Augmented DesignOps &amp; Agentic UX</h2>
+          <p class="slide-subtitle">
+            Integrating modern generative AI into user research, prototyping, and product design operations while designing intuitive AI interaction models.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="ai-dual-engine-grid">
+          <!-- ENGINE 01: DESIGNOPS TEAM MULTIPLIER -->
+          <div class="ai-engine-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.55rem;">
+              <span class="pipeline-badge">Engine 01 • Internal Acceleration</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.15rem;">
+              AI for DesignOps (Team Multiplier)
+            </h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: var(--stone-500); margin-bottom: 0.75rem;">
+              Scaling sprint throughput &amp; eliminating repetitive operational friction
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon">01</div>
+              <div class="ai-feature-text">
+                <h5>LLM User Research Synthesis</h5>
+                <p>Synthesizing thousands of customer support transcripts and usability session recordings into prioritized thematic clusters and executive opportunity maps.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon">02</div>
+              <div class="ai-feature-text">
+                <h5>Automated Heuristic &amp; A11y Gates</h5>
+                <p>Running automated axe-core accessibility contrast scanners and Figma token conformance audits directly within GitHub Actions pull requests.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon">03</div>
+              <div class="ai-feature-text">
+                <h5>Agentic Prototype Scaffolding</h5>
+                <p>Utilizing agentic code generation to convert Figma component token specs into interactive React / Storybook test harnesses in minutes.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONNECTOR / EVALUATION LOOP -->
+          <div class="ai-bridge-column">
+            <div class="ai-bridge-pill">Evaluation &amp; Feedback Loop</div>
+          </div>
+
+          <!-- ENGINE 02: PRODUCT AI-UX ARCHITECTURE -->
+          <div class="ai-engine-card engine-accent">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.55rem;">
+              <span class="pipeline-badge" style="background: rgba(200, 168, 74, 0.15); color: #B45309; border-color: rgba(200, 168, 74, 0.35);">Engine 02 • Enterprise UX</span>
+              <div class="card-icon-box" style="margin-bottom: 0; width: 28px; height: 28px;">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 14px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.15rem;">
+              UX for AI Systems (Human Agency)
+            </h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9.5px; color: var(--stone-500); margin-bottom: 0.75rem;">
+              Designing human-in-the-loop interfaces for non-deterministic AI workflows
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon" style="background: rgba(13, 27, 46, 0.08); color: var(--navy-dark);">01</div>
+              <div class="ai-feature-text">
+                <h5>Explainability &amp; Confidence Scoring</h5>
+                <p>Designing user-facing confidence ratings, transparent inline citations, and progressive reasoning disclosure to build operator trust in enterprise AI.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon" style="background: rgba(13, 27, 46, 0.08); color: var(--navy-dark);">02</div>
+              <div class="ai-feature-text">
+                <h5>Graceful Degradation &amp; Streaming UI</h5>
+                <p>Ensuring non-blocking progressive skeleton loaders and instant fallbacks when inference models experience elevated network or processing latency.</p>
+              </div>
+            </div>
+
+            <div class="ai-feature-row">
+              <div class="ai-feature-icon" style="background: rgba(13, 27, 46, 0.08); color: var(--navy-dark);">03</div>
+              <div class="ai-feature-text">
+                <h5>Authoritative Human-in-the-Loop Controls</h5>
+                <p>Providing explicit one-click undo affordances, manual parameter override sliders, and audit logging so enterprise operators maintain absolute decision authority.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.4rem;">
+          <p style="font-size: 10.5px; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #b45309; margin-bottom: 0.5rem;">
+            Enterprise Tooling &amp; AI Stack (Matching Resume Profile):
+          </p>
+          <span class="tag-pill tag-gold">Microsoft Copilot</span>
+          <span class="tag-pill tag-gold">ChatGPT Enterprise</span>
+          <span class="tag-pill tag-gold">IBM Watson</span>
+          <span class="tag-pill tag-gold">Google Stitch &amp; NotebookLM</span>
+          <span class="tag-pill">Figma &amp; Token Studio</span>
+          <span class="tag-pill">Storybook &amp; React</span>
+          <span class="tag-pill">UserTesting &amp; Hotjar</span>
+          <span class="tag-pill">Jira &amp; Confluence</span>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 08 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>AI-AUGMENTED DESIGNOPS &amp; AGENTIC UX</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: Cultivating High-Performance Design Teams (Editorial Cream Paper) -->
+      <section class="slide slide-theme-cream" id="slide-9">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Leadership, Culture &amp; Mentorship
+          </div>
+          <h2 class="slide-title">Cultivating High-Performance Design Teams</h2>
+          <p class="slide-subtitle">
+            How I hire, mentor, and elevate multi-disciplinary design organizations through structured career progression and psychological safety.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="talent-layout-grid">
+          <!-- LEFT: 4-TIER CAREER LADDER MATRIX -->
+          <div class="ladder-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span class="pipeline-badge">Organizational Framework</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--stone-500);">Transparent Progression</span>
+            </div>
+            <h4 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 13.5px; font-weight: 700; color: var(--navy-dark); margin-bottom: 0.15rem;">
+              Structured 4-Tier Career Progression Ladder
+            </h4>
+            <div style="font-size: 10.5px; color: var(--stone-500); margin-bottom: 0.4rem;">
+              Explicit evaluation across Craft, Strategy, Systems Thinking &amp; Organizational Leadership
+            </div>
+
+            <div class="ladder-step active-exec">
+              <div class="ladder-step-info">
+                <h5>Tier 04 • Principal / Staff Designer</h5>
+                <p>Enterprise Portfolio Strategy, Systems-to-Code Governance &amp; Executive Board Alignment.</p>
+              </div>
+              <span class="ladder-badge">Staff / Principal</span>
+            </div>
+
+            <div class="ladder-step">
+              <div class="ladder-step-info">
+                <h5>Tier 03 • Lead / Senior Product Designer</h5>
+                <p>Autonomous Squad Leadership, Complex Problem Framing &amp; Cross-Functional Mentorship.</p>
+              </div>
+              <span class="ladder-badge">Senior / Lead</span>
+            </div>
+
+            <div class="ladder-step">
+              <div class="ladder-step-info">
+                <h5>Tier 02 • Mid-Level Product Designer</h5>
+                <p>End-to-End Feature UX, Usability Validation &amp; Tokenized Design System Contributions.</p>
+              </div>
+              <span class="ladder-badge">Mid-Level</span>
+            </div>
+
+            <div class="ladder-step">
+              <div class="ladder-step-info">
+                <h5>Tier 01 • Associate Designer</h5>
+                <p>UI/UX Craft Fundamentals, Component Token Adherence &amp; Active Critique Participation.</p>
+              </div>
+              <span class="ladder-badge">Associate</span>
+            </div>
+          </div>
+
+          <!-- RIGHT: CULTURE & GLOBAL RECOGNITION -->
+          <div class="leadership-side-col">
+            <div class="side-honor-card">
+              <div class="case-flow-kicker" style="color: var(--navy-dark); margin-bottom: 0.25rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Culture &amp; Psychological Safety
+              </div>
+              <p style="font-size: 11px; color: var(--stone-600); line-height: 1.35; margin-bottom: 0.4rem;">
+                Cultivating safe-to-fail experimentation, weekly cross-product design jams, constructive critiques, and proactive 1-on-1 coaching that eliminates burnout and drives team retention.
+              </p>
+              <span class="tag-pill tag-gold">Weekly Design Jams</span>
+              <span class="tag-pill">Psychological Safety</span>
+            </div>
+
+            <div class="side-honor-card">
+              <div class="case-flow-kicker" style="color: #B45309; margin-bottom: 0.25rem;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Global Innovation Honors
+              </div>
+              <ul class="bullet-list" style="font-size: 10.5px; color: var(--stone-600);">
+                <li><span class="diamond-bullet">&#9670;</span><span><strong>Samsung:</strong> 10-Year US Business Visa for global healthcare UX research.</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span><strong>Ericsson:</strong> Spot Award for UX innovation &amp; 1st Place in Global Hack-fest.</span></li>
+                <li><span class="diamond-bullet">&#9670;</span><span><strong>Industry:</strong> 1st Place in MockingBOT &amp; UP Labs global design challenges.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM: LEADERSHIP QUANTITATIVE SCORECARD -->
+        <div class="leadership-kpi-strip">
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">50+</div>
+            <div class="leadership-kpi-label">Designers Mentored</div>
+          </div>
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">3 ➔ 15+</div>
+            <div class="leadership-kpi-label">Squad Scaling Capacity</div>
+          </div>
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">0%</div>
+            <div class="leadership-kpi-label">Regretted Attrition</div>
+          </div>
+          <div class="leadership-kpi-item">
+            <div class="leadership-kpi-num">18+ Yrs</div>
+            <div class="leadership-kpi-label">Enterprise Leadership Track</div>
+          </div>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 09 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>PEOPLE LEADERSHIP &amp; CULTURE</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: Executive Scorecard & Next Steps (Navy Signature Closing) -->
+      <section class="slide slide-theme-navy" id="slide-10">
+        <div class="slide-header">
+          <div class="slide-kicker">
+            <span class="kicker-dot"></span> Executive Summary &amp; Engagement
+          </div>
+          <h2 class="slide-title">Executive Scorecard &amp; Next Steps</h2>
+          <p class="slide-subtitle">
+            Ready to drive enterprise UX transformation, scalable design systems, and world-class product design leadership for your organization.
+          </p>
+          <div class="slide-divider"></div>
+        </div>
+
+        <div class="metric-strip">
+          <div class="metric-item">
+            <div class="metric-number">18+</div>
+            <div class="metric-label">Years Experience</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">10M+</div>
+            <div class="metric-label">Users Impacted</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">40%</div>
+            <div class="metric-label">Dev Velocity Gain</div>
+          </div>
+          <div class="metric-sep"></div>
+          <div class="metric-item">
+            <div class="metric-number">100%</div>
+            <div class="metric-label">Design-to-Code Parity</div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 0.5rem; flex: 1;">
+          <div class="keynote-card">
+            <h3 class="card-heading" style="color: var(--gold);">Target Leadership Roles</h3>
+            <ul class="bullet-list" style="font-size: 13.5px; line-height: 2;">
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Director of Product Design / Head of UX</strong></span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Senior Manager — UI/UX &amp; Design Systems</strong></span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Principal UX Architect / DesignOps Leader</strong></span></li>
+              <li><span class="diamond-bullet">&#9670;</span><span><strong>Head of Design / UX Practice Director (Enterprise / B2B)</strong></span></li>
+            </ul>
+          </div>
+
+          <div class="keynote-card">
+            <h3 class="card-heading" style="color: var(--gold);">Direct Contact &amp; Portfolio Channels</h3>
+            <div style="margin-top: 0.6rem; display: flex; flex-direction: column; gap: 8px;">
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div><strong style="color: #fff;">Balaajee V.R.</strong> <span style="font-size: 11px; color: var(--stone-400);">• Executive Design Leader</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div><a href="mailto:vrbberaj@gmail.com" style="color: #93c5fd; text-decoration: none; font-weight: 500;">vrbberaj@gmail.com</a></div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div><span style="color: #fff; font-weight: 500;">+91 9994761293</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div><span>Chennai &amp; Bengaluru (Open to Relocation / Hybrid)</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <div><a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" style="color: #93c5fd; text-decoration: none; font-weight: 500;">linkedin.com/in/balaajee-vr-21647967</a></div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                </div>
+                <div><a href="/archive" style="color: #93c5fd; text-decoration: none; font-weight: 500;">Visual Archive &bull; 7 Shipped Projects</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="/leadership" class="btn-action">
+            Read Leadership Playbook &rarr;
+          </a>
+          <a href="/cv" class="btn-action">
+            View Resume
+          </a>
+          <button class="btn-action btn-gold" onclick="window.print()">
+            Download Presentation PDF
+          </button>
+        </div>
+
+        <div class="slide-keynote-footer">
+          <span>SLIDE 10 / 10 • BALAAJEE V.R. | DESIGN LEADERSHIP</span>
+          <span>LEADERSHIP SCORECARD &amp; NEXT STEPS</span>
+        </div>
+      </section>
+
+    
+    </main>
+    </div><!-- /.deck-workspace -->
+  </div><!-- /.leadership-wrap -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.slide');
+      const jumpLinks = document.querySelectorAll('.jump-item');
+      const pptThumbs = document.querySelectorAll('.ppt-thumb');
+      const sidebar = document.getElementById('pptSorter') || document.querySelector('.ppt-sorter-sidebar');
+      const jumpLinksContainer = document.querySelector('.jump-links') || document.querySelector('.jump-bar-inner');
+      let isNavClicking = false;
+      let navTimer = null;
+
+      function scrollToSlide(targetSlide, targetId) {
+        if (!targetSlide) return;
+        isNavClicking = true;
+        clearTimeout(navTimer);
+
+        // Header offset
+        const isDesktop = window.innerWidth > 1080;
+        const headerOffset = isDesktop ? 80 : 130;
+        const targetTop = targetSlide.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth'
+        });
+
+        // Sync active states immediately
+        syncActiveStates(targetId);
+
+        navTimer = setTimeout(() => {
+          isNavClicking = false;
+        }, 900);
+
+        if (window.history && window.history.pushState) {
+          window.history.pushState(null, null, targetId);
+        }
+      }
+
+      function syncActiveStates(targetId) {
+        // Sync Top Jump Bar links
+        jumpLinks.forEach(link => {
+          if (link.getAttribute('href') === targetId) {
+            link.classList.add('active');
+            if (jumpLinksContainer) {
+              const linkLeft = link.offsetLeft - jumpLinksContainer.offsetLeft;
+              jumpLinksContainer.scrollTo({ left: Math.max(0, linkLeft - 24), behavior: 'smooth' });
+            }
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        // Sync Left PPT Sorter Thumbnails
+        pptThumbs.forEach(thumb => {
+          if (thumb.getAttribute('href') === targetId) {
+            thumb.classList.add('active');
+            if (sidebar) {
+              const thumbTop = thumb.offsetTop - sidebar.offsetTop;
+              sidebar.scrollTo({ top: Math.max(0, thumbTop - 36), behavior: 'smooth' });
+            }
+          } else {
+            thumb.classList.remove('active');
+          }
+        });
+      }
+
+      // Handle smooth click navigation for PPT thumbs
+      pptThumbs.forEach(thumb => {
+        thumb.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = thumb.getAttribute('href');
+          const targetSlide = document.querySelector(targetId);
+          scrollToSlide(targetSlide, targetId);
+        });
+      });
+
+      // Handle smooth click navigation for Top Jump Bar
+      jumpLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetSlide = document.querySelector(targetId);
+          scrollToSlide(targetSlide, targetId);
+        });
+      });
+
+      // IntersectionObserver for natural mouse/touch scrolling
+      const observer = new IntersectionObserver((entries) => {
+        if (isNavClicking) return;
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            syncActiveStates(`#${id}`);
+          }
+        });
+      }, {
+        rootMargin: '-15% 0px -65% 0px',
+        threshold: 0
+      });
+
+      slides.forEach(slide => observer.observe(slide));
+    });
+  </script>
+</body>
+</html>

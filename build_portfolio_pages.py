@@ -601,12 +601,28 @@ def build_leadership():
     subnav = "".join(f'<a href="#{i}">{e(t)}</a>' for i, t in links)
 
     body = f"""
+  <aside class="ld-compare-banner" style="background:#0F172A;color:#CBD5E1;border-bottom:1px solid rgba(200, 168, 74, 0.35);padding:12px 24px;position:relative;z-index:999;">
+    <div class="g-wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--primary-accent);"></span>
+        <span><strong>UX Management Playbook &amp; Frameworks</strong> &bull; Long-form Documentation</span>
+      </div>
+      <a href="/leadership-deck" style="color:#DFBC55;font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;gap:6px;">
+        Compare with 10-Slide Keynote Presentation Deck &rarr;
+      </a>
+    </div>
+  </aside>
   <main>
     <section class="g-wrap ld-hero">
       <div>
         <div class="g-overline">Leadership</div>
         <h1>How I lead design teams</h1>
         <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 12 designers.</p>
+        <div style="margin: 16px 0 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="/leadership-deck" class="ld-btn ld-btn-s" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:8px 16px;">
+            📊 View 10-Slide Keynote Deck &rarr;
+          </a>
+        </div>
         <div class="ld-roles">{roles}</div>
       </div>
       <div class="ld-photo"><img src="speaking-gesture.jpg" alt="Balaajee V.R." loading="eager"></div>

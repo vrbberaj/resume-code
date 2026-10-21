@@ -18,6 +18,7 @@ const testPages = [
   { name: 'Carbon Design System Case Study', url: 'http://localhost:8080/case-ibm-carbon' },
   { name: 'ZF Wabco Cockpit Case Study', url: 'http://localhost:8080/case-zf-wabco' },
   { name: 'Leadership', url: 'http://localhost:8080/leadership' },
+  { name: 'Leadership Deck (10 Slides)', url: 'http://localhost:8080/leadership-deck.html' },
   { name: 'Home', url: 'http://localhost:8080/' },
   ...['sales-automation-tool', 'networks-design-project', 'an-enterprise-project', 'web-projects',
       'my-achievements', 'gaming-projects', 'mobile-projects'].map(s => ({
@@ -137,6 +138,20 @@ const testPages = [
           allPassed = false;
         } else {
           console.log('  ✓ leadership.html: all 10 sections, references and frameworks present');
+        }
+      } else if (p.url.includes('/leadership-deck')) {
+        const el = await page.evaluate(() => ({
+          slides: document.querySelectorAll('.slide').length,
+          thumbs: document.querySelectorAll('.ppt-thumb').length,
+          compareBanner: !!document.querySelector('.deck-compare-banner'),
+          broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0).length
+        }));
+        console.log(`  Elements check for ${p.name}:`, el);
+        if (el.slides !== 10 || el.thumbs !== 10 || !el.compareBanner || el.broken) {
+          console.error('  ❌ Leadership Deck check failed');
+          allPassed = false;
+        } else {
+          console.log('  ✓ leadership-deck.html: 10 slides, 10 thumbnails, compare banner present, 0 broken images');
         }
       } else if (p.url.endsWith(':8080/')) {
         const el = await page.evaluate(() => ({
