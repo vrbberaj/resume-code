@@ -124,6 +124,8 @@ CASE_STUDIES = [
         ],
         "artifacts": [
             {"kind": "photo", "src": "assets/photos/action_ibm_presentation.jpg", "caption": "Cross-functional governance session: presenting multi-agent AI system architecture and confidence tripwires to engineering and compliance."},
+            {"kind": "photo", "src": "assets/photos/action_laptop_presentation.jpg", "caption": "Sprint architecture review: walking through multi-agent orchestration and UI diff drawers with squad designers."},
+            {"kind": "photo", "src": "assets/photos/artifact_ux_scorecard_warroom.jpg", "caption": "Enterprise UX Scorecard & Sprint Quality Bar: criteria linking validation heuristics to physical war-room deliverables."},
             {"kind": "photo", "src": "assets/photos/action_whiteboard_ia.jpg", "caption": "Working session: breaking down SysML v2.0 block hierarchy and information architecture with squad members."},
             {"kind": "diagram", "diagram": "confidence", "caption": "The three-tier confidence model the team designed and shipped."},
             {"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png", "caption": "Workshop #3 whiteboard: why unguided AI fails in regulated systems."},
@@ -182,10 +184,11 @@ CASE_STUDIES = [
             ("Measure", "Adoption, turnaround time and error rate tracked for 30 days after launch."),
         ],
         "artifacts": [
+            {"kind": "photo", "src": "assets/photos/action_focus_pod_laptop.jpg", "caption": "Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow."},
             {"kind": "real", "src": "assets/behance/sales/sales_2_1200x1196.png", "caption": "Business case summary: profit and loss, cost of sales and cash flow per scenario."},
-            {"kind": "real", "src": "assets/behance/sales/sales_3_1200x788.png", "caption": "Recent scenarios and opportunities: the engineer\u2019s starting point."},
+            {"kind": "real", "src": "assets/behance/sales/sales_3_1200x788.png", "caption": "Recent scenarios and opportunities: the engineer’s starting point."},
             {"kind": "real", "src": "assets/behance/sales/sales_1_1200x3772.png", "caption": "Scenario A vs B: engineering, transitional and transformational cost compared.", "tall": True},
-            {"kind": "real", "src": "screenshots/behance/ericsson_hackfest_cert.png", "caption": "Also at Ericsson: 1st place, Group IT India Hackfest 2020 (Optimization), for the \u201cEricxa\u201d employee-onboarding idea."},
+            {"kind": "real", "src": "screenshots/behance/ericsson_hackfest_cert.png", "caption": "Also at Ericsson: 1st place, Group IT India Hackfest 2020 (Optimization), for the “Ericxa” employee-onboarding idea."},
         ],
         "decisions": [
             ("A grid, not a wizard", "Engineers would only switch if the tool was as fast as Excel.", "Harder to build and test than a form wizard. We spent a sprint on grid performance."),
@@ -202,7 +205,7 @@ CASE_STUDIES = [
         "company": "Zebra Technologies",
         "domain": "Industrial IoT",
         "title": "Device health insights for rugged enterprise fleets",
-        "lead": "IT managers running thousands of Zebra handhelds couldn\u2019t see why devices failed. I led the design team behind VisibilityIQ device-health dashboards, and built the team while doing it.",
+        "lead": "IT managers running thousands of Zebra handhelds couldn’t see why devices failed. I led the design team behind VisibilityIQ device-health dashboards, and built the team while doing it.",
         "cover": "screenshots/behance/zebra_iot_dashboard.png",
         "cover_kind": "real",
         "snapshot": {
@@ -215,8 +218,8 @@ CASE_STUDIES = [
         },
         "metrics": [("38,000+", "handhelds managed"), ("84%", "fewer pairing failures"), ("3.2×", "staging throughput"), ("−33%", "tier-1 support tickets")],
         "problem": [
-            "Enterprise IT managers like \u201cJamie\u201d (our main persona) had battery, application and memory data spread across separate reports. They found out about failing devices when workers complained.",
-            "Customers such as Australia Post asked for things we couldn\u2019t show: which app was draining the battery, and which devices needed repair before the shift.",
+            "Enterprise IT managers like “Jamie” (our main persona) had battery, application and memory data spread across separate reports. They found out about failing devices when workers complained.",
+            "Customers such as Australia Post asked for things we couldn’t show: which app was draining the battery, and which devices needed repair before the shift.",
             "On the warehouse floor, workers in freezers wore thick gloves that made standard touch targets unusable.",
         ],
         "owned": [
@@ -233,14 +236,15 @@ CASE_STUDIES = [
             "Scanner and staging flows on handhelds: designer pair embedded with Android team",
         ],
         "process": [
-            ("Research", "Interviews with IT managers and customer meetings (Australia Post, Viva Aqua). Built the \u201cJamie\u201d persona."),
+            ("Research", "Interviews with IT managers and customer meetings (Australia Post, Viva Aqua). Built the “Jamie” persona."),
             ("Define", "Card sorting with stakeholders grouped 100+ data points into Devices, Applications, Battery and Performance."),
             ("Wireframe", "User flows and low-fi Device Health Summary, where every insight ends in an action."),
             ("Prototype", "Hi-fi VisibilityIQ dashboard in Figma, tested with customer IT teams."),
-            ("Test", "Customer feedback sessions. \u201cThis version seems clearer, much less crowded.\u201d"),
+            ("Test", "Customer feedback sessions. “This version seems clearer, much less crowded.”"),
             ("Measure", "Support tickets, pairing failures and staging throughput tracked after release."),
         ],
         "artifacts": [
+            {"kind": "photo", "src": "assets/photos/action_wireframe_wall_critique.jpg", "caption": "Design studio wall: reviewing mobile workflow branching, alert states, and device-health wireframes with the squad lead."},
             {"kind": "photo", "src": "assets/photos/action_cardsort_workshop.jpg", "caption": "Facilitating hands-on card-sorting and information architecture grouping with squad designers."},
             {"kind": "photo", "src": "assets/photos/action_coffee_deepwork.jpg", "caption": "Deep work & sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_1_1400x889.png", "caption": "Persona: Jamie, IT manager. Goals, frustrations and device usage."},

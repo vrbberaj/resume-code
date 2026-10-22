@@ -591,6 +591,10 @@ def build_leadership():
     roles = "".join(f"<span>{e(r)}</span>" for r in TARGET_ROLES)
     action_photo = figure({"kind": "photo", "src": "assets/photos/action_whiteboard_ia.jpg",
                            "caption": "Cross-functional design thinking & information architecture session."})
+    wall_critique = figure({"kind": "photo", "src": "assets/photos/action_wireframe_wall_critique.jpg",
+                            "caption": "Design studio wall: reviewing mobile workflow branching, alert states, and wireframes with the squad lead."})
+    scorecard_fig = figure({"kind": "photo", "src": "assets/photos/artifact_ux_scorecard_warroom.jpg",
+                            "caption": "Enterprise UX Scorecard & Sprint Quality Bar: criteria linking heuristic standards to physical war-room deliverables."})
     card_sort = figure({"kind": "real", "src": "assets/behance/enterprise/enterprise_2_1400x730.png",
                         "caption": "Card-sorting board from a Zebra stakeholder workshop I ran."})
 
@@ -674,7 +678,7 @@ def build_leadership():
 
     <section class="g-wrap ld-sec" id="workshops">
       {lead_head("Workshops and facilitation", "Bringing people into the room")}
-      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{action_photo}{card_sort}</div></div>
+      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{action_photo}{wall_critique}{card_sort}</div></div>
     </section>
 
     <section class="g-wrap ld-sec" id="tools">
@@ -685,7 +689,8 @@ def build_leadership():
     </section>
 
     <section class="g-wrap ld-sec" id="docs">
-      {lead_head("Business documentation", "How I run the business side of design", "Briefs, OKRs and roadmaps are how design earns a seat at the planning table.")}
+      {lead_head("Business documentation & governance", "How I run the business side of design", "Briefs, OKRs, quality scorecards and roadmaps are how design earns a seat at the planning table.")}
+      <div style="margin-bottom:28px;">{scorecard_fig}</div>
       {doc_samples()}
     </section>
 
