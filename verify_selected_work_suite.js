@@ -128,16 +128,16 @@ const testPages = [
         const el = await page.evaluate(() => ({
           sections: ['philosophy', 'evolution', 'team', 'hiring', 'delegation', 'challenges', 'workshops', 'tools', 'docs', 'references']
             .filter(id => !document.getElementById(id)),
-          testimonials: document.querySelectorAll('.tq').length,
           frameworks: document.querySelectorAll('#tools .ld-card').length,
+          hasReferencesSec: !!document.getElementById('references'),
           broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0).length
         }));
         console.log(`  Elements check for ${p.name}:`, el);
-        if (el.sections.length || el.testimonials < 3 || el.frameworks < 5 || el.broken) {
-          console.error('  ❌ Leadership page is missing sections');
+        if (el.sections.length || el.frameworks < 5 || !el.hasReferencesSec || el.broken) {
+          console.error('  ❌ Leadership page check failed');
           allPassed = false;
         } else {
-          console.log('  ✓ leadership.html: all 10 sections, references and frameworks present');
+          console.log('  ✓ leadership.html: all 10 sections, formal references block, and frameworks present');
         }
       } else if (p.url.includes('/leadership-deck')) {
         const el = await page.evaluate(() => ({
@@ -156,15 +156,14 @@ const testPages = [
       } else if (p.url.endsWith(':8080/')) {
         const el = await page.evaluate(() => ({
           leadBlock: !!document.querySelector('.hx'),
-          testimonials: document.querySelectorAll('.hx .tq').length,
           emojiNav: [...document.querySelectorAll('.nav-item')].some(a => /[\u{1F300}-\u{1FAFF}]/u.test(a.textContent))
         }));
         console.log(`  Elements check for ${p.name}:`, el);
-        if (!el.leadBlock || el.testimonials < 3 || el.emojiNav) {
+        if (!el.leadBlock || el.emojiNav) {
           console.error('  ❌ Home page block or nav check failed');
           allPassed = false;
         } else {
-          console.log('  ✓ index.html: how-I-lead block, 3 references, plain-text nav');
+          console.log('  ✓ index.html: how-I-lead block, clean plain-text nav');
         }
       } else {
         await page.evaluate(async () => {
@@ -181,7 +180,6 @@ const testPages = [
             artifacts: document.querySelectorAll('.cs-fig').length,
             decisions: document.querySelectorAll('.cs-dec article').length,
             learned: !!document.querySelector('.cs-learn'),
-            testimonial: !!document.querySelector('.tq'),
             pager: document.querySelectorAll('.cs-pager a').length,
             brokenImages: [...document.images].filter(i => !i.complete || i.naturalWidth === 0).map(i => i.getAttribute('src'))
           };
@@ -189,11 +187,11 @@ const testPages = [
         console.log(`  Elements check for ${p.name}:`, elements);
         if (elements.snapshotFacts !== 6 || elements.metrics !== 4 || !elements.owned || !elements.delegated ||
             elements.processSteps !== 6 || elements.artifacts < 2 || elements.decisions !== 3 || !elements.learned ||
-            !elements.testimonial || elements.pager !== 2 || elements.brokenImages.length) {
+            elements.pager !== 2 || elements.brokenImages.length) {
           console.error(`  ❌ Missing expected elements on ${p.name}`);
           allPassed = false;
         } else {
-          console.log(`  ✓ ${p.name}: snapshot (role/team/timeline), owned vs delegated, 6-step process, ${elements.artifacts} artifacts, 3 decisions, results, reflection, reference`);
+          console.log(`  ✓ ${p.name}: snapshot (role/team/timeline), owned vs delegated, 6-step process, ${elements.artifacts} artifacts, 3 decisions, results, reflection`);
         }
 
         if (p.url.includes('case-ericsson')) {

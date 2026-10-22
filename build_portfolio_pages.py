@@ -324,10 +324,6 @@ def build_case(i, c):
     decisions = "".join(
         f'<article><span class="cs-dec-n">{k + 1}</span><h3>{e(t)}</h3><p><b>Why:</b> {e(w)}</p><p><b>Trade-off:</b> {e(o)}</p></article>'
         for k, (t, w, o) in enumerate(c["decisions"]))
-    t = TESTIMONIAL_BY_KEY.get(c.get("testimonial"))
-    quote_sec = section("08", "What colleagues say", None,
-                        f'<div style="max-width:720px">{testimonial_card(t)}</div>{DRAFT_NOTE if TESTIMONIALS_ARE_DRAFTS else ""}',
-                        "references") if t else ""
 
     body = f"""
   <main>
@@ -356,7 +352,6 @@ def build_case(i, c):
 {section("05", "Key decisions", "The calls I made and what they cost", f'<div class="cs-dec">{decisions}</div>', "decisions")}
 {section("06", "Results", "Business and user impact", f'<div class="cs-prose cs-result-text"><p>{e(c["results"])}</p></div>', "results")}
 {section("07", "What I learned", None, f'<p class="cs-learn">{e(c["learned"])}</p>', "learned")}
-{quote_sec}
     <nav class="g-wrap cs-pager" aria-label="Case study navigation">
       <a href="{prev_c['file']}" id="cs-prev"><small>&larr; Previous</small><strong>{e(prev_c['company'])}: {e(prev_c['title'])}</strong></a>
       <a href="{next_c['file']}" class="next" id="cs-next"><small>Next &rarr;</small><strong>{e(next_c['company'])}: {e(next_c['title'])}</strong></a>
@@ -617,7 +612,7 @@ def build_leadership():
         <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--primary-accent);"></span>
         <span><strong>UX Management Playbook &amp; Frameworks</strong> &bull; Long-form Documentation</span>
       </div>
-      <a href="/leadership-deck" style="color:#DFBC55;font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;gap:6px;">
+      <a href="leadership-deck.html" style="color:#DFBC55;font-weight:700;text-decoration:underline;display:inline-flex;align-items:center;gap:6px;">
         Compare with 10-Slide Keynote Presentation Deck &rarr;
       </a>
     </div>
@@ -629,7 +624,7 @@ def build_leadership():
         <h1>How I lead design teams</h1>
         <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 12 designers.</p>
         <div style="margin: 18px 0 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="/leadership-deck" style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;padding:9px 18px;border-radius:100px;background:#0F172A;color:#FFFFFF;text-decoration:none;font-weight:700;transition:all 0.2s ease;">
+          <a href="leadership-deck.html" style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;padding:9px 18px;border-radius:100px;background:#0F172A;color:#FFFFFF;text-decoration:none;font-weight:700;transition:all 0.2s ease;">
             📊 View 10-Slide Keynote Deck &rarr;
           </a>
         </div>
@@ -705,9 +700,19 @@ def build_leadership():
     </section>
 
     <section class="g-wrap ld-sec" id="references">
-      {lead_head("References", "What colleagues say")}
-      <div class="tq-grid tq-grid-5">{refs}</div>
-      {DRAFT_NOTE if TESTIMONIALS_ARE_DRAFTS else ""}
+      {lead_head("References & Verification", "Available upon request", "Formal reference letters and direct referee contacts from engineering managers, product directors, and former design reports are provided to hiring committees during the interview stage.")}
+      <div class="ld-card" style="padding:28px 32px;background:#FFFFFF;border:1px solid var(--border-subtle);border-radius:12px;max-width:780px;">
+        <p style="font-size:15px;line-height:1.65;color:var(--text-body);margin:0 0 16px;">
+          To respect colleague privacy and corporate confidentiality across IBM, Zebra Technologies, Ericsson, and ZF Wabco, personal contact details and endorsements are not published openly on this website.
+        </p>
+        <p style="font-size:15px;line-height:1.65;color:var(--text-body);margin:0 0 24px;">
+          Verified professional references from former engineering directors, product counterparts, and design mentees are available to hiring committees and executive recruiters upon request during interview stages.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+          <a href="mailto:vrbberaj@gmail.com?subject=Professional%20Reference%20Request%20-%20Balaajee%20V.R." class="ld-btn ld-btn-p" style="padding:10px 22px;font-size:14px;">Request References &rarr;</a>
+          <a href="https://linkedin.com/in/vrbberaj" target="_blank" rel="noopener" class="ld-btn ld-btn-s" style="padding:10px 22px;font-size:14px;">Connect on LinkedIn ↗</a>
+        </div>
+      </div>
     </section>
 
     <section class="g-wrap">
@@ -739,7 +744,7 @@ HOME_CSS = """
   .hx .g-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
   .hx-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
   .hx-link { font-size: 14px; font-weight: 700; color: var(--primary-accent); text-decoration: none; white-space: nowrap; }
-  .hx-phil { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-bottom: 96px; }
+  .hx-phil { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-bottom: 32px; }
   .hx-phil div { border-top: 2px solid var(--text-main); padding-top: 16px; }
   .hx-phil h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
   .hx-phil p { font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
@@ -753,22 +758,18 @@ def inject_home():
         src = f.read()
     src = re.sub(re.escape(HOME_START) + r"[\s\S]*?" + re.escape(HOME_END) + r"\n?", "", src)
     phil = "".join(f"<div><h3>{e(t)}</h3><p>{e(d)}</p></div>" for t, d in PHILOSOPHY)
-    refs = "".join(testimonial_card(t) for t in TESTIMONIALS[:3])
     block = f"""{HOME_START}
   <style>{SHARED_CSS}{HOME_CSS}</style>
   <section class="hx" aria-label="How I lead">
     <div class="g-wrap">
       <div class="hx-row">
-        <div><div class="sec-label">How I lead</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
-        <a href="/leadership" class="hx-link" id="hx-leadership-link">Leadership, hiring &amp; delegation &rarr;</a>
+        <div><div class="sec-label">Leadership</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="leadership-deck.html" class="hx-link" id="hx-deck-link">📊 10-Slide Keynote Deck &rarr;</a>
+          <a href="leadership.html" class="hx-link" id="hx-leadership-link">Leadership Playbook &rarr;</a>
+        </div>
       </div>
       <div class="hx-phil">{phil}</div>
-      <div class="hx-row">
-        <div><div class="sec-label">References</div><h2 class="sec-title">What colleagues say</h2></div>
-        <a href="/leadership#references" class="hx-link" id="hx-references-link">All references &rarr;</a>
-      </div>
-      <div class="tq-grid">{refs}</div>
-      {DRAFT_NOTE if TESTIMONIALS_ARE_DRAFTS else ""}
     </div>
   </section>
 {HOME_END}

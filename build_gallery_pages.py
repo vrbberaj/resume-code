@@ -37,17 +37,17 @@ def header(active):
     return f"""
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+      <a href="index.html" class="brand-link" aria-label="BVR Portfolio Home">
         <span class="brand-monogram">BVR</span>
         <span class="brand-tag">Product Design Suite</span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="/" class="{cls('home')}">Welcome</a>
-        <a href="/leadership" class="{cls('leadership')}">Leadership</a>
-        <a href="/leadership-deck" class="{cls('leadership-deck')}">Leadership Deck</a>
-        <a href="/work" class="{cls('work')}">Selected Work</a>
-        <a href="/archive" class="{cls('archive')}">Visual Archive</a>
-        <a href="/cv" class="{cls('cv')}">Resume</a>
+        <a href="index.html" class="{cls('home')}">Welcome</a>
+        <a href="leadership.html" class="{cls('leadership')}">Leadership</a>
+        <a href="leadership-deck.html" class="{cls('leadership-deck')}">Leadership Deck</a>
+        <a href="work.html" class="{cls('work')}">Selected Work</a>
+        <a href="archive.html" class="{cls('archive')}">Visual Archive</a>
+        <a href="cv.html" class="{cls('cv')}">Resume</a>
       </nav>
       <div class="header-actions">
         <a href="mailto:vrbberaj@gmail.com" class="btn-contact">Get In Touch &rarr;</a>
