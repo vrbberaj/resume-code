@@ -382,10 +382,10 @@ CASE_STUDIES = [
 # Leadership page
 # ---------------------------------------------------------------------------
 PHILOSOPHY = [
-    ("Clarity before pixels", "Every project starts with a one-page brief: problem, user, success metric, constraints. If we can\u2019t write it down, we\u2019re not ready to design."),
-    ("Delegate outcomes, not tasks", "I give designers a problem and a definition of done, not a list of screens. I stay close through critique, not control."),
-    ("Engineering is a design partner", "Designers pair with engineers from sprint zero. Shared tokens, shared demos, shared credit."),
-    ("Evidence over opinion", "Research, usability scores and analytics settle debates, not seniority. That includes mine."),
+    ("Clarity before pixels", "Zero-waste scoping: every initiative starts with a 1-page executive brief defining the user problem, business ROI metric, technical constraints, and definition of done before designers touch Figma."),
+    ("Delegate outcomes, not tasks", "Autonomous squad leadership: I empower designers with ownership of measurable problem spaces and definition of done, staying close through rigorous design critique rather than micro-control."),
+    ("Engineering is a design partner", "Sprint zero velocity: designers pair directly with engineering leads from sprint zero. Shared design tokens, shared live demos, and shared velocity metrics eliminate handoff churn and code debt."),
+    ("Evidence over opinion", "Empirical decision architecture: usability scores, contextual research, production telemetry, and business ROI settle architectural debates—never corporate hierarchy or subjective opinion."),
 ]
 
 EVOLUTION = [

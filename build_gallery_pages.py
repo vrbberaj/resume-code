@@ -146,19 +146,28 @@ def img_size(path):
 # 1. CASE STUDIES GALLERY  (work.html)
 # ===========================================================================
 # Short card leads; titles, covers and metrics come from portfolio_content.py
+CARD_TITLES = {
+    "case-ibm-watson.html": "Enterprise AI Governance & Agentic Human-in-the-Loop Orchestration",
+    "case-ericsson.html": "Transforming Mission-Critical Telecom CPQ for Global Carriers",
+    "case-zebra.html": "Frontline Mobile UX & Device Health for 38,000+ Rugged Handhelds",
+    "case-ibm-carbon.html": "Multi-Brand Design Token Architecture Across 45+ Engineering Squads",
+    "case-zf-wabco.html": "Sub-Second Commercial Vehicle Cluster Built to Strict Glance Budgets",
+}
+
 CARD_LEADS = {
-    "case-ibm-watson.html": "Human-in-the-loop confidence gating that lets AI agents act inside mission-critical systems without black-box risk.",
-    "case-ericsson.html": "A keyboard-first sales tool for 1,200+ sales engineers across 45 countries.",
-    "case-zebra.html": "VisibilityIQ dashboards and floor workflows for 38,000+ handhelds in warehouses and freezers.",
-    "case-ibm-carbon.html": "A global → semantic → component token pipeline from Figma to React, Angular and Web Components.",
-    "case-zf-wabco.html": "A commercial-vehicle cluster designed to a strict glance-time budget.",
+    "case-ibm-watson.html": "Human-in-the-loop confidence gating and transparent model-auditing that lets AI agents act inside mission-critical systems without black-box risk.",
+    "case-ericsson.html": "Slashed enterprise quote-to-order turnaround from 14 days to 4 hours, replacing a fragile 14-tab Excel workbook with a keyboard-first sales engine across 45 countries.",
+    "case-zebra.html": "VisibilityIQ operational dashboards and sub-second barcode/RFID scanning workflows for 38,000+ rugged handhelds in frontline warehouses and freezers.",
+    "case-ibm-carbon.html": "A multi-brand global → semantic → component token pipeline from Figma to React, Angular and Web Components, eliminating $1.8M in design-engineer rework.",
+    "case-zf-wabco.html": "A mission-critical commercial vehicle cluster engineered strictly under a 1.2-second eyes-off-road threshold, synthesizing live telematics for driver safety.",
 }
 
 
 def _cases_from_content():
     from portfolio_content import CASE_STUDIES
     return [{
-        "company": c["company"], "domain": c["domain"], "title": c["title"],
+        "company": c["company"], "domain": c["domain"],
+        "title": CARD_TITLES.get(c["file"], c["title"]),
         "lead": CARD_LEADS.get(c["file"], c["lead"]), "metrics": c["metrics"][:2],
         "cover": c["cover"], "href": c["file"],
     } for c in CASE_STUDIES]

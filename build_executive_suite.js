@@ -437,53 +437,14 @@ const indexHtml = `<!DOCTYPE html>
       }
     }
 
-    .availability-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 14px;
-      border-radius: 100px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      color: #059669;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #059669;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    .hero-name {
+    .hero-headline {
       font-family: var(--font-heading);
-      font-size: 44px;
+      font-size: 34px;
       font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      letter-spacing: -0.025em;
+      line-height: 1.22;
       color: var(--text-main);
-      margin-bottom: 10px;
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--primary-accent);
-      line-height: 1.35;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .hero-bio-lead {
@@ -522,6 +483,28 @@ const indexHtml = `<!DOCTYPE html>
       background: var(--primary-accent);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(240, 6, 88, 0.25);
+    }
+
+    .btn-hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 100px;
+      background: transparent;
+      border: 1.5px solid var(--border-medium);
+      color: var(--text-main);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 14.5px;
+      font-weight: 700;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-hero-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--text-main);
+      transform: translateY(-2px);
     }
 
     /* Dedicated Executive Pedigree & Global Brand Trust Section */
@@ -832,15 +815,11 @@ const indexHtml = `<!DOCTYPE html>
         
         <!-- Left: Executive Positioning & Direct Pathways -->
         <div class="hero-left">
-          <div class="availability-pill">
-            <span class="pulse-dot"></span>
-            Open to Senior Design Leadership • Open to Relocation (India &amp; Global)
-          </div>
+          <h1 class="hero-headline">
+            Enterprise product design leadership for mission-critical software architectures.
+          </h1>
 
-          <h1 class="hero-name">BALAAJEE V.R.</h1>
-          <h2 class="hero-subtitle">Senior UI/UX Design Manager</h2>
-
-          <!-- Executive Career Key Metrics Strip (Elevated directly below Name & Title) -->
+          <!-- Executive Career Key Metrics Strip (Elevated directly below Headline) -->
           <div class="hero-stats-row">
             <div class="h-stat">
               <div class="h-stat-num">18<span>+</span></div>
@@ -865,13 +844,17 @@ const indexHtml = `<!DOCTYPE html>
           </div>
 
           <p class="hero-bio-lead">
-            Senior UI/UX Design Manager with <strong>18+ years</strong> orchestrating enterprise design systems, agentic AI UX, and mission-critical software architectures across global product teams. Proven track record leading multi-disciplinary squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong>.
+            Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.
           </p>
 
           <!-- Executive Primary Action (Zero Redundancy with Nav Bar) -->
           <div class="hero-cta-group">
-            <a href="/work" class="btn-hero-primary">
-              <span>🎨 Explore Selected Work (5 Deep Dives)</span>
+            <a href="#featured-work" class="btn-hero-primary">
+              <span>Explore flagship case studies (5 deep dives)</span>
+              <span>&darr;</span>
+            </a>
+            <a href="leadership-deck.html" class="btn-hero-secondary">
+              <span>10-Slide Leadership Deck</span>
               <span>&rarr;</span>
             </a>
           </div>
@@ -910,7 +893,7 @@ const indexHtml = `<!DOCTYPE html>
       <!-- Dedicated Executive Pedigree & Global Brand Trust Section -->
       <div class="pedigree-trust-section">
         <div class="pedigree-trust-header">
-          <span class="pedigree-trust-title">PROVEN DESIGN LEADERSHIP TRACK RECORD</span>
+          <span class="pedigree-trust-title">Enterprise Design Leadership Across Global Tech</span>
         </div>
         <div class="pedigree-brands-grid">
           <div class="brand-item">

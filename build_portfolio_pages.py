@@ -740,16 +740,312 @@ def build_leadership():
 HOME_START, HOME_END = "<!-- BVR:HOME-EXTRA:START -->", "<!-- BVR:HOME-EXTRA:END -->"
 
 HOME_CSS = """
-  .hx { background: #FAFAF9; padding: 88px 0 24px; border-top: 1px solid var(--border-subtle); }
-  .hx .g-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-  .hx-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
-  .hx-link { font-size: 14px; font-weight: 700; color: var(--primary-accent); text-decoration: none; white-space: nowrap; }
-  .hx-phil { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-bottom: 32px; }
-  .hx-phil div { border-top: 2px solid var(--text-main); padding-top: 16px; }
-  .hx-phil h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
-  .hx-phil p { font-size: 14.5px; line-height: 1.6; color: var(--text-body); }
-  @media (max-width: 900px) { .hx-phil { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .hx-phil { grid-template-columns: 1fr; } .hx .g-wrap { padding: 0 16px; } }
+  /* -------------------------------------------------------------------------
+     Featured Executive Work on Homepage
+     ------------------------------------------------------------------------- */
+  .home-featured-work {
+    padding: 72px 0 80px;
+    background: #FFFFFF;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .home-featured-work .g-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .sec-header-block {
+    margin-bottom: 48px;
+    max-width: 820px;
+  }
+  .sec-header-block .sec-intro {
+    margin-top: 12px;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px 40px;
+  }
+  .case-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .case-card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .case-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #ECEEF1;
+    aspect-ratio: 16 / 10;
+    transition: background 0.3s ease;
+  }
+  .case-card.featured .case-stage {
+    aspect-ratio: 21 / 9;
+  }
+  .case-stage img {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 9%;
+    width: 86%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 18px 50px -12px rgba(15, 23, 42, 0.28);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .case-card:hover .case-stage {
+    background: #E4E7EB;
+  }
+  .case-card:hover .case-stage img {
+    transform: translateY(-8px);
+  }
+
+  .case-meta {
+    padding-top: 24px;
+  }
+  .case-co {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .case-co b {
+    color: var(--text-main);
+    font-weight: 700;
+  }
+  .case-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 25px;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+  }
+  .case-card.featured .case-title {
+    font-size: 32px;
+    max-width: 820px;
+  }
+  .case-card:hover .case-title {
+    color: var(--primary-accent);
+  }
+  .case-lead {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--text-body);
+    max-width: 620px;
+  }
+  .case-card.featured .case-lead {
+    max-width: 780px;
+    font-size: 16.5px;
+  }
+
+  .case-foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .case-metrics {
+    display: flex;
+    gap: 36px;
+  }
+  .case-metric strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .case-metric span {
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .case-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-accent);
+    white-space: nowrap;
+  }
+  .case-link i {
+    font-style: normal;
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .case-card:hover .case-link i {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+    .case-card.featured .case-stage {
+      aspect-ratio: 16 / 10;
+    }
+    .case-card.featured .case-title {
+      font-size: 26px;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Historical Breadth / Archive Teaser Banner
+     ------------------------------------------------------------------------- */
+  .archive-teaser-banner {
+    margin-top: 64px;
+    background: linear-gradient(135deg, #0B0E17 0%, #171E2E 100%);
+    border-radius: 18px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  .archive-teaser-content {
+    flex: 1;
+    min-width: 280px;
+  }
+  .archive-teaser-badge {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #38BDF8;
+    margin-bottom: 8px;
+  }
+  .archive-teaser-content h3 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .archive-teaser-content p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: #94A3B8;
+    max-width: 640px;
+  }
+  .btn-archive-teaser {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 26px;
+    border-radius: 100px;
+    background: #FFFFFF;
+    color: #0F172A;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+  }
+  .btn-archive-teaser:hover {
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.3);
+  }
+  @media (max-width: 760px) {
+    .archive-teaser-banner {
+      padding: 28px 20px;
+    }
+    .btn-archive-teaser {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Executive Leadership Playbook
+     ------------------------------------------------------------------------- */
+  .hx {
+    background: #FAFAF9;
+    padding: 88px 0 80px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .hx .g-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .hx-row {
+    margin-bottom: 40px;
+    max-width: 820px;
+  }
+  .hx-phil {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+  }
+  .hx-phil > div {
+    border-top: 3px solid var(--text-main);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .hx-pill {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-accent);
+    margin-bottom: 8px;
+  }
+  .hx-phil h3 {
+    font-family: var(--font-heading);
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .hx-phil p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-body);
+    flex: 1;
+  }
+  @media (max-width: 960px) {
+    .hx-phil {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 24px;
+    }
+  }
+  @media (max-width: 560px) {
+    .hx-phil {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .hx .g-wrap,
+    .home-featured-work .g-wrap {
+      padding: 0 16px;
+    }
+  }
 """
 
 
@@ -757,13 +1053,84 @@ def inject_home():
     with open("index.html", "r", encoding="utf-8") as f:
         src = f.read()
     src = re.sub(re.escape(HOME_START) + r"[\s\S]*?" + re.escape(HOME_END) + r"\n?", "", src)
-    phil = "".join(f"<div><h3>{e(t)}</h3><p>{e(d)}</p></div>" for t, d in PHILOSOPHY)
+
+    # 1. Build Case Cards using the elevated Chris Gielow-style headlines & leads
+    cases = g._cases_from_content()
+    cards = []
+    for i, c in enumerate(cases):
+        metrics = "".join(
+            f'<div class="case-metric"><strong>{e(v)}</strong><span>{e(l)}</span></div>'
+            for v, l in c["metrics"]
+        )
+        is_feat = (i == 0)
+        cards.append(f"""
+        <a href="{c['href']}" class="case-card{' featured' if is_feat else ''}" id="home-case-{i + 1}">
+          <div class="case-stage">
+            <img src="{c['cover']}" alt="{e(c['title'])}" loading="{'eager' if i < 2 else 'lazy'}">
+          </div>
+          <div class="case-meta">
+            <div class="case-co"><b>{e(c['company'])}</b> &nbsp;·&nbsp; {e(c['domain'])}</div>
+            <h3 class="case-title">{e(c['title'])}</h3>
+            <p class="case-lead">{e(c['lead'])}</p>
+            <div class="case-foot">
+              <div class="case-metrics">{metrics}</div>
+              <span class="case-link">Read case study <i>&rarr;</i></span>
+            </div>
+          </div>
+        </a>""")
+
+    # 2. Build Executive Leadership Playbook Cards
+    phil_items = [
+        ("Clarity before pixels", "Zero-Waste Scoping", "Every initiative starts with a 1-page executive brief defining the user problem, business ROI metric, technical constraints, and definition of done before designers touch Figma."),
+        ("Delegate outcomes, not tasks", "Autonomous Squad Leadership", "I empower designers with ownership of measurable problem spaces and definition of done, staying close through rigorous design critique rather than micro-control."),
+        ("Engineering is a design partner", "Sprint Zero Velocity", "Designers pair directly with engineering leads from sprint zero. Shared design tokens, shared live demos, and shared velocity metrics eliminate handoff churn and code debt."),
+        ("Evidence over opinion", "Empirical Decision Architecture", "Usability scores, contextual research, production telemetry, and business ROI settle architectural debates—never corporate hierarchy or subjective opinion.")
+    ]
+    phil = "".join(
+        f'<div><span class="hx-pill">{e(sub)}</span><h3>{e(t)}</h3><p>{e(d)}</p></div>'
+        for t, sub, d in phil_items
+    )
+
     block = f"""{HOME_START}
-  <style>{SHARED_CSS}{HOME_CSS}</style>
+  <style>{HOME_CSS}</style>
+
+  <!-- Featured Executive Work Section (Chris Gielow Pattern) -->
+  <section id="featured-work" class="home-featured-work" aria-label="Featured Executive Work">
+    <div class="g-wrap">
+      <div class="sec-header-block">
+        <div class="sec-label">Featured Executive Work</div>
+        <h2 class="sec-title">Mission-critical product architecture &amp; design transformation</h2>
+        <p class="sec-intro">Five flagship enterprise initiatives where I led design from initial ambiguity through systems architecture to global production scale.</p>
+      </div>
+
+      <div class="case-grid">
+{''.join(cards)}
+      </div>
+
+      <!-- Historical Breadth / Visual Archive Teaser -->
+      <div class="archive-teaser-banner">
+        <div class="archive-teaser-content">
+          <span class="archive-teaser-badge">Historical Depth &bull; 18+ Years</span>
+          <h3>Looking for broader architectural breadth?</h3>
+          <p>Explore 7 deep-dive Behance project archives spanning enterprise sales tools, telecom network topology, interactive gaming, and early mobile design.</p>
+        </div>
+        <a href="archive.html" class="btn-archive-teaser">
+          <span>Explore Visual Archive (7 Projects)</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Leadership Playbook -->
   <section class="hx" aria-label="How I lead">
     <div class="g-wrap">
       <div class="hx-row">
-        <div><div class="sec-label">Leadership Philosophy</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
+        <div>
+          <div class="sec-label">Executive Leadership Playbook</div>
+          <h2 class="sec-title">How I scale teams, systems &amp; engineering velocity</h2>
+          <p class="sec-intro">Four core leadership frameworks honed over 18+ years leading cross-functional design organizations across global technology leaders.</p>
+        </div>
       </div>
       <div class="hx-phil">{phil}</div>
     </div>
@@ -773,7 +1140,7 @@ def inject_home():
     src = re.sub(r"(</main>[ \t]*\r?\n)", lambda m: m.group(1) + block, src, count=1)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(src)
-    print("  ✓ index.html (how-I-lead + references block)")
+    print("  ✓ index.html (featured case studies + archive teaser + leadership playbook)")
 
 
 NAV_LABELS = [
