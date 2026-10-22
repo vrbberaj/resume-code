@@ -443,20 +443,16 @@ def build_archive():
         </div>
       </a>"""
 
-    profile = f"""
-    <section class="g-wrap be-profile">
-      <img src="profile.jpg" alt="{OWNER}" class="be-avatar">
-      <div class="be-who">
-        <div class="g-overline" style="margin-bottom:6px">Visual Archive</div>
-        <h1 class="be-name">{OWNER}</h1>
-        <div class="be-role">UI/UX Design Manager &bull; Chennai, India &bull; {len(projects)} projects &bull; {total} images</div>
-      </div>
-      <a href="{BEHANCE_PROFILE}" class="be-btn" target="_blank" rel="noopener">View on Behance &#8599;</a>
+    intro = f"""
+    <section class="g-wrap g-intro">
+      <div class="g-overline">Visual Archive</div>
+      <h1 class="g-title">Historical Projects</h1>
+      <p class="g-sub">Seven curated deep-dive Behance project archives spanning enterprise tools, telecom network systems, mobile applications, and interactive design across 18+ years.</p>
     </section>"""
 
     # ---- gallery home
     body = f"""
-  <main>{profile}
+  <main>{intro}
     <section class="g-wrap">
       <div class="be-tabs"><div class="be-tab">Work<span>{len(projects)}</span></div></div>
       <div class="be-grid">{''.join(card(p, i < 4) for i, p in enumerate(projects))}
