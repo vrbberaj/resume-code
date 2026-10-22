@@ -125,6 +125,45 @@ const globalCoreStyles = `
     text-decoration: none;
     color: var(--text-main);
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .brand-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 2px solid var(--border-medium);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .brand-link:hover .brand-avatar {
+    transform: scale(1.05);
+    border-color: var(--primary-accent);
+  }
+
+  .brand-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .brand-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 14.5px;
+    color: var(--text-main);
+    letter-spacing: -0.01em;
+  }
+
+  .brand-role {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
   }
 
   .brand-monogram {

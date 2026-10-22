@@ -37,9 +37,12 @@ def header(active):
     return f"""
   <header class="global-header">
     <div class="header-container">
-      <a href="index.html" class="brand-link" aria-label="BVR Portfolio Home">
-        <span class="brand-monogram">BVR</span>
-        <span class="brand-tag">Product Design Suite</span>
+      <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
+        <img src="profile.jpg" alt="Balaajee V.R." class="brand-avatar">
+        <div class="brand-meta">
+          <span class="brand-name">Balaajee V.R.</span>
+          <span class="brand-role">Senior UI/UX Design Manager</span>
+        </div>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="{cls('home')}">Welcome</a>

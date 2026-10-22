@@ -763,11 +763,7 @@ def inject_home():
   <section class="hx" aria-label="How I lead">
     <div class="g-wrap">
       <div class="hx-row">
-        <div><div class="sec-label">Leadership</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="leadership-deck.html" class="hx-link" id="hx-deck-link">📊 10-Slide Keynote Deck &rarr;</a>
-          <a href="leadership.html" class="hx-link" id="hx-leadership-link">Leadership Playbook &rarr;</a>
-        </div>
+        <div><div class="sec-label">Leadership Philosophy</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
       </div>
       <div class="hx-phil">{phil}</div>
     </div>

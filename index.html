@@ -89,36 +89,44 @@
     text-decoration: none;
     color: var(--text-main);
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
-  .brand-monogram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .brand-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 2px solid var(--border-medium);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .brand-link:hover .brand-avatar {
+    transform: scale(1.05);
+    border-color: var(--primary-accent);
+  }
+
+  .brand-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .brand-name {
     font-family: var(--font-heading);
-    font-weight: 900;
+    font-weight: 800;
     font-size: 14.5px;
-    letter-spacing: 0.08em;
-    padding: 4px 9px;
-    background: var(--text-main);
-    color: #FFFFFF;
-    border-radius: 6px;
-    line-height: 1;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
-    transition: all 0.2s ease;
+    color: var(--text-main);
+    letter-spacing: -0.01em;
   }
 
-  .brand-link:hover .brand-monogram {
-    background: var(--primary-accent);
-    transform: scale(1.04);
-  }
-
-  .brand-tag {
-    font-family: var(--font-code);
+  .brand-role {
+    font-family: var(--font-body);
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-weight: 600;
     color: var(--text-muted);
   }
 
@@ -376,23 +384,14 @@
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
 
-    .hero-name {
+    .hero-headline {
       font-family: var(--font-heading);
-      font-size: 44px;
+      font-size: 34px;
       font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
+      letter-spacing: -0.025em;
+      line-height: 1.22;
       color: var(--text-main);
-      margin-bottom: 10px;
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--primary-accent);
-      line-height: 1.35;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .hero-bio-lead {
@@ -685,14 +684,11 @@
         width: 100%;
         max-width: 100%;
       }
-      .hero-name {
-        font-size: 32px;
-        line-height: 1.15;
+      .hero-headline {
+        font-size: 26px;
+        line-height: 1.25;
+        margin-bottom: 18px;
         word-break: break-word;
-      }
-      .hero-subtitle {
-        font-size: 17px;
-        margin-bottom: 16px;
       }
       .hero-bio-lead {
         font-size: 14.5px;
@@ -734,9 +730,12 @@
   
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
-        <span class="brand-monogram">BVR</span>
-        <span class="brand-tag">Product Design Suite</span>
+      <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
+        <img src="profile.jpg" alt="Balaajee V.R." class="brand-avatar">
+        <div class="brand-meta">
+          <span class="brand-name">Balaajee V.R.</span>
+          <span class="brand-role">Senior UI/UX Design Manager</span>
+        </div>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
@@ -769,10 +768,11 @@
             Open to Senior Design Leadership • Open to Relocation (India &amp; Global)
           </div>
 
-          <h1 class="hero-name">BALAAJEE V.R.</h1>
-          <h2 class="hero-subtitle">Senior UI/UX Design Manager</h2>
+          <h1 class="hero-headline">
+            Enterprise product design leadership for mission-critical software architectures.
+          </h1>
 
-          <!-- Executive Career Key Metrics Strip (Elevated directly below Name & Title) -->
+          <!-- Executive Career Key Metrics Strip (Elevated directly below Headline) -->
           <div class="hero-stats-row">
             <div class="h-stat">
               <div class="h-stat-num">18<span>+</span></div>
@@ -802,7 +802,7 @@
 
           <!-- Executive Primary Action (Zero Redundancy with Nav Bar) -->
           <div class="hero-cta-group">
-            <a href="/work" class="btn-hero-primary">
+            <a href="work.html" class="btn-hero-primary">
               <span>Explore selected work (5 case studies)</span>
               <span>&rarr;</span>
             </a>
@@ -842,7 +842,7 @@
       <!-- Dedicated Executive Pedigree & Global Brand Trust Section -->
       <div class="pedigree-trust-section">
         <div class="pedigree-trust-header">
-          <span class="pedigree-trust-title">PROVEN DESIGN LEADERSHIP TRACK RECORD</span>
+          <span class="pedigree-trust-title">Enterprise Design Leadership Across Global Tech</span>
         </div>
         <div class="pedigree-brands-grid">
           <div class="brand-item">
@@ -973,11 +973,7 @@
   <section class="hx" aria-label="How I lead">
     <div class="g-wrap">
       <div class="hx-row">
-        <div><div class="sec-label">Leadership</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="leadership-deck.html" class="hx-link" id="hx-deck-link">📊 10-Slide Keynote Deck &rarr;</a>
-          <a href="leadership.html" class="hx-link" id="hx-leadership-link">Leadership Playbook &rarr;</a>
-        </div>
+        <div><div class="sec-label">Leadership Philosophy</div><h2 class="sec-title">Four things I believe about leading design</h2></div>
       </div>
       <div class="hx-phil"><div><h3>Clarity before pixels</h3><p>Every project starts with a one-page brief: problem, user, success metric, constraints. If we can’t write it down, we’re not ready to design.</p></div><div><h3>Delegate outcomes, not tasks</h3><p>I give designers a problem and a definition of done, not a list of screens. I stay close through critique, not control.</p></div><div><h3>Engineering is a design partner</h3><p>Designers pair with engineers from sprint zero. Shared tokens, shared demos, shared credit.</p></div><div><h3>Evidence over opinion</h3><p>Research, usability scores and analytics settle debates, not seniority. That includes mine.</p></div></div>
     </div>
