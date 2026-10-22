@@ -85,7 +85,7 @@ CASE_STUDIES = [
         "domain": "Agentic AI",
         "title": "Making AI agents safe to use in mission-critical engineering tools",
         "lead": "IBM wanted Watson inside Rhapsody SE (systems modelling) and MaaS360 (endpoint security). Users refused to trust AI that changed models or laptops silently. I led the team that made AI decisions visible, reviewable and auditable.",
-        "cover": "screenshots/ibm_rhapsody_ai_modeling.png",
+        "cover": "screenshots/ibm_maas360_ai_endpoint.png",
         "cover_kind": "recreation",
         "snapshot": {
             "My role": "Senior Manager, UI/UX Design",
@@ -115,9 +115,9 @@ CASE_STUDIES = [
             "Agentic IA chapter (4): shared AI patterns, test logistics and synthesis",
         ],
         "process": [
-            ("Research", "Shadowed 24 engineers and admins. Key insight: \u201cverification fatigue\u201d. Checking AI output took longer than writing it."),
+            ("Research", "Shadowed 24 engineers and admins. Key insight: “verification fatigue”. Checking AI output took longer than writing it."),
             ("Align", "14 workshops turned a research-vs-compliance stand-off into written AI trust rules."),
-            ("Wireframe", "Low-fi confidence states. Round 1 tested raw scores: SUS 61. Users asked \u201cwhy 92%?\u201d"),
+            ("Wireframe", "Low-fi confidence states. Round 1 tested raw scores: SUS 61. Users asked “why 92%?”"),
             ("Prototype", "Mid-fi reasoning trace showing each agent step. Round 2: SUS 78."),
             ("Test", "Hi-fi side-by-side diff and one-click approval with 32 users. Round 3: SUS 89, 97% task success."),
             ("Measure", "Tracked OKRs with product directors: tracing time, triage time, SUS and token sync speed."),
@@ -130,6 +130,7 @@ CASE_STUDIES = [
             {"kind": "diagram", "diagram": "confidence", "caption": "The three-tier confidence model the team designed and shipped."},
             {"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png", "caption": "Workshop #3 whiteboard: why unguided AI fails in regulated systems."},
             {"kind": "recreation", "src": "screenshots/ibm_maas360_ai_endpoint.png", "caption": "MaaS360: AI remediation with staged rollout and supervised approval."},
+            {"kind": "recreation", "src": "screenshots/ibm_rhapsody_ai_modeling.png", "caption": "Rhapsody SE: multi-agent SysML statechart copilot with mathematical safety guardrails."},
             {"kind": "recreation", "src": "screenshots/verified_manager_spreadsheet.png", "caption": "Prioritisation workbook (RICE + UX debt) I used to set sprint allocation across squads."},
         ],
         "decisions": [

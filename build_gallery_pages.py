@@ -38,11 +38,7 @@ def header(active):
   <header class="global-header">
     <div class="header-container">
       <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <img src="profile.jpg" alt="Balaajee V.R." class="brand-avatar">
-        <div class="brand-meta">
-          <span class="brand-name">Balaajee V.R.</span>
-          <span class="brand-role">Senior UI/UX Design Manager</span>
-        </div>
+        <span class="brand-monogram" aria-hidden="true">B</span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="{cls('home')}">Welcome</a>
@@ -179,14 +175,12 @@ WORK_CSS = """
     gap: 56px 40px;
   }
   .case-card { display: block; text-decoration: none; color: inherit; }
-  .case-card.featured { grid-column: 1 / -1; }
 
   .case-stage {
     position: relative; overflow: hidden; border-radius: 20px;
     background: #ECEEF1; aspect-ratio: 16 / 10;
     transition: background 0.3s ease;
   }
-  .case-card.featured .case-stage { aspect-ratio: 21 / 9; }
   .case-stage img {
     position: absolute; left: 7%; right: 7%; top: 9%;
     width: 86%; height: auto; min-height: 100%;
@@ -209,7 +203,6 @@ WORK_CSS = """
     font-size: 26px; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 10px;
     transition: color 0.2s ease;
   }
-  .case-card.featured .case-title { font-size: 34px; max-width: 760px; }
   .case-card:hover .case-title { color: var(--primary-accent); }
   .case-lead { font-size: 16px; line-height: 1.6; color: var(--text-body); max-width: 620px; }
 
@@ -229,8 +222,7 @@ WORK_CSS = """
 
   @media (max-width: 860px) {
     .case-grid { grid-template-columns: 1fr; gap: 48px; }
-    .case-card.featured .case-stage { aspect-ratio: 16 / 10; }
-    .case-card.featured .case-title, .case-title { font-size: 24px; }
+    .case-title { font-size: 24px; }
   }
   @media (max-width: 480px) {
     .case-metrics { gap: 24px; }

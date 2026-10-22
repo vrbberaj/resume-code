@@ -91,42 +91,27 @@
     flex-shrink: 0;
   }
 
-  .brand-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center 25%;
-    border: 2px solid var(--border-medium);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .brand-link:hover .brand-avatar {
-    transform: scale(1.05);
-    border-color: var(--primary-accent);
-  }
-
-  .brand-meta {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25;
-  }
-
-  .brand-name {
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 14.5px;
-    color: var(--text-main);
-    letter-spacing: -0.01em;
+    font-weight: 900;
+    font-size: 18px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 8px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .brand-role {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 6, 88, 0.25);
   }
 
   .nav-links {
@@ -885,11 +870,7 @@
   <header class="global-header">
     <div class="header-container">
       <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <img src="profile.jpg" alt="Balaajee V.R." class="brand-avatar">
-        <div class="brand-meta">
-          <span class="brand-name">Balaajee V.R.</span>
-          <span class="brand-role">Senior UI/UX Design Manager</span>
-        </div>
+        <span class="brand-monogram" aria-hidden="true">B</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
@@ -921,45 +902,9 @@
             Enterprise product design leadership for mission-critical software architectures.
           </h1>
 
-          <!-- Executive Career Key Metrics Strip (Elevated directly below Headline) -->
-          <div class="hero-stats-row">
-            <div class="h-stat">
-              <div class="h-stat-num">18<span>+</span></div>
-              <div class="h-stat-lbl">Years Exp.</div>
-              <div class="h-stat-sub">Enterprise UX Lead</div>
-            </div>
-            <div class="h-stat">
-              <div class="h-stat-num">15<span>+</span></div>
-              <div class="h-stat-lbl">Team Scale</div>
-              <div class="h-stat-sub">Designers &amp; Squads</div>
-            </div>
-            <div class="h-stat">
-              <div class="h-stat-num">50<span>+</span></div>
-              <div class="h-stat-lbl">Mentored</div>
-              <div class="h-stat-sub">UI/UX &amp; Product Designers</div>
-            </div>
-            <div class="h-stat">
-              <div class="h-stat-num">6</div>
-              <div class="h-stat-lbl">Design Systems</div>
-              <div class="h-stat-sub">Token Architectures</div>
-            </div>
-          </div>
-
           <p class="hero-bio-lead">
             Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.
           </p>
-
-          <!-- Executive Primary Action (Zero Redundancy with Nav Bar) -->
-          <div class="hero-cta-group">
-            <a href="#featured-work" class="btn-hero-primary">
-              <span>Explore flagship case studies (5 deep dives)</span>
-              <span>&darr;</span>
-            </a>
-            <a href="leadership-deck.html" class="btn-hero-secondary">
-              <span>10-Slide Leadership Deck</span>
-              <span>&rarr;</span>
-            </a>
-          </div>
         </div>
 
         <!-- Right: 60-Second Executive Video Stage -->
@@ -1061,9 +1006,6 @@
     text-decoration: none;
     color: inherit;
   }
-  .case-card.featured {
-    grid-column: 1 / -1;
-  }
 
   .case-stage {
     position: relative;
@@ -1072,9 +1014,6 @@
     background: #ECEEF1;
     aspect-ratio: 16 / 10;
     transition: background 0.3s ease;
-  }
-  .case-card.featured .case-stage {
-    aspect-ratio: 21 / 9;
   }
   .case-stage img {
     position: absolute;
@@ -1121,10 +1060,6 @@
     margin-bottom: 10px;
     transition: color 0.2s ease;
   }
-  .case-card.featured .case-title {
-    font-size: 32px;
-    max-width: 820px;
-  }
   .case-card:hover .case-title {
     color: var(--primary-accent);
   }
@@ -1133,10 +1068,6 @@
     line-height: 1.6;
     color: var(--text-body);
     max-width: 620px;
-  }
-  .case-card.featured .case-lead {
-    max-width: 780px;
-    font-size: 16.5px;
   }
 
   .case-foot {
@@ -1183,12 +1114,6 @@
     .case-grid {
       grid-template-columns: 1fr;
       gap: 44px;
-    }
-    .case-card.featured .case-stage {
-      aspect-ratio: 16 / 10;
-    }
-    .case-card.featured .case-title {
-      font-size: 26px;
     }
   }
 
@@ -1267,71 +1192,7 @@
       justify-content: center;
     }
   }
-
-  /* -------------------------------------------------------------------------
-     Executive Leadership Playbook
-     ------------------------------------------------------------------------- */
-  .hx {
-    background: #FAFAF9;
-    padding: 88px 0 80px;
-    border-top: 1px solid var(--border-subtle);
-  }
-  .hx .g-wrap {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .hx-row {
-    margin-bottom: 40px;
-    max-width: 820px;
-  }
-  .hx-phil {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px;
-  }
-  .hx-phil > div {
-    border-top: 3px solid var(--text-main);
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  .hx-pill {
-    font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary-accent);
-    margin-bottom: 8px;
-  }
-  .hx-phil h3 {
-    font-family: var(--font-heading);
-    font-size: 19px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 10px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-  .hx-phil p {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--text-body);
-    flex: 1;
-  }
-  @media (max-width: 960px) {
-    .hx-phil {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 32px 24px;
-    }
-  }
   @media (max-width: 560px) {
-    .hx-phil {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .hx .g-wrap,
     .home-featured-work .g-wrap {
       padding: 0 16px;
     }
@@ -1349,9 +1210,9 @@
 
       <div class="case-grid">
 
-        <a href="case-ibm-watson.html" class="case-card featured" id="home-case-1">
+        <a href="case-ibm-watson.html" class="case-card" id="home-case-1">
           <div class="case-stage">
-            <img src="screenshots/ibm_rhapsody_ai_modeling.png" alt="Enterprise AI Governance &amp; Agentic Human-in-the-Loop Orchestration" loading="eager">
+            <img src="screenshots/ibm_maas360_ai_endpoint.png" alt="Enterprise AI Governance &amp; Agentic Human-in-the-Loop Orchestration" loading="eager">
           </div>
           <div class="case-meta">
             <div class="case-co"><b>IBM Software Labs</b> &nbsp;·&nbsp; Agentic AI</div>
@@ -1433,20 +1294,6 @@
           <span>&rarr;</span>
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Executive Leadership Playbook -->
-  <section class="hx" aria-label="How I lead">
-    <div class="g-wrap">
-      <div class="hx-row">
-        <div>
-          <div class="sec-label">Executive Leadership Playbook</div>
-          <h2 class="sec-title">How I scale teams, systems &amp; engineering velocity</h2>
-          <p class="sec-intro">Four core leadership frameworks honed over 18+ years leading cross-functional design organizations across global technology leaders.</p>
-        </div>
-      </div>
-      <div class="hx-phil"><div><span class="hx-pill">Zero-Waste Scoping</span><h3>Clarity before pixels</h3><p>Every initiative starts with a 1-page executive brief defining the user problem, business ROI metric, technical constraints, and definition of done before designers touch Figma.</p></div><div><span class="hx-pill">Autonomous Squad Leadership</span><h3>Delegate outcomes, not tasks</h3><p>I empower designers with ownership of measurable problem spaces and definition of done, staying close through rigorous design critique rather than micro-control.</p></div><div><span class="hx-pill">Sprint Zero Velocity</span><h3>Engineering is a design partner</h3><p>Designers pair directly with engineering leads from sprint zero. Shared design tokens, shared live demos, and shared velocity metrics eliminate handoff churn and code debt.</p></div><div><span class="hx-pill">Empirical Decision Architecture</span><h3>Evidence over opinion</h3><p>Usability scores, contextual research, production telemetry, and business ROI settle architectural debates—never corporate hierarchy or subjective opinion.</p></div></div>
     </div>
   </section>
 <!-- BVR:HOME-EXTRA:END -->

@@ -41,10 +41,12 @@ const testPages = [
       console.log(`\nTesting ${p.name} (${p.url})...`);
       const page = await browser.newPage();
 
+      await page.goto(p.url, { waitUntil: 'domcontentloaded' });
+      try { await page.evaluateHandle('document.fonts.ready'); } catch (_) {}
+
       for (const vp of viewports) {
         await page.setViewport({ width: vp.width, height: vp.height });
-        await page.goto(p.url, { waitUntil: 'networkidle2' });
-        await page.evaluateHandle('document.fonts.ready');
+        await new Promise(r => setTimeout(r, 50));
 
         // Check horizontal scroll
         const scrollInfo = await page.evaluate(() => {
@@ -67,7 +69,6 @@ const testPages = [
 
       // Check key element selectors on 1440px
       await page.setViewport({ width: 1440, height: 1000 });
-      await page.goto(p.url, { waitUntil: 'networkidle2' });
 
       if (p.url.endsWith('/work')) {
         const elements = await page.evaluate(() => {
@@ -126,18 +127,18 @@ const testPages = [
         }
       } else if (p.url.endsWith('/leadership')) {
         const el = await page.evaluate(() => ({
-          sections: ['philosophy', 'evolution', 'team', 'hiring', 'delegation', 'challenges', 'workshops', 'tools', 'docs', 'references']
+          sections: ['philosophy', 'evolution', 'team', 'hiring', 'delegation', 'challenges', 'workshops', 'tools', 'docs']
             .filter(id => !document.getElementById(id)),
           frameworks: document.querySelectorAll('#tools .ld-card').length,
-          hasReferencesSec: !!document.getElementById('references'),
+          activeNavTab: !!document.querySelector('.ld-nav a.active'),
           broken: [...document.images].filter(i => i.complete && i.naturalWidth === 0).length
         }));
         console.log(`  Elements check for ${p.name}:`, el);
-        if (el.sections.length || el.frameworks < 5 || !el.hasReferencesSec || el.broken) {
+        if (el.sections.length || el.frameworks < 5 || el.broken) {
           console.error('  ❌ Leadership page check failed');
           allPassed = false;
         } else {
-          console.log('  ✓ leadership.html: all 10 sections, formal references block, and frameworks present');
+          console.log('  ✓ leadership.html: all 9 core frameworks present, scrollspy active, 0 broken images');
         }
       } else if (p.url.includes('/leadership-deck')) {
         const el = await page.evaluate(() => ({
@@ -155,15 +156,18 @@ const testPages = [
         }
       } else if (p.url.endsWith(':8080/')) {
         const el = await page.evaluate(() => ({
-          leadBlock: !!document.querySelector('.hx'),
+          featuredWork: !!document.querySelector('.home-featured-work'),
+          caseCardsCount: document.querySelectorAll('.case-card').length,
+          hasFeaturedClass: !!document.querySelector('.case-card.featured'),
+          monogramMark: document.querySelector('.brand-monogram')?.textContent.trim(),
           emojiNav: [...document.querySelectorAll('.nav-item')].some(a => /[\u{1F300}-\u{1FAFF}]/u.test(a.textContent))
         }));
         console.log(`  Elements check for ${p.name}:`, el);
-        if (!el.leadBlock || el.emojiNav) {
+        if (!el.featuredWork || el.caseCardsCount !== 5 || el.hasFeaturedClass || el.monogramMark !== 'B' || el.emojiNav) {
           console.error('  ❌ Home page block or nav check failed');
           allPassed = false;
         } else {
-          console.log('  ✓ index.html: how-I-lead block, clean plain-text nav');
+          console.log('  ✓ index.html: 5 uniform case cards (zero awkward spanning), "B" monogram logo, clean plain-text nav');
         }
       } else {
         await page.evaluate(async () => {

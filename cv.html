@@ -90,42 +90,27 @@
     flex-shrink: 0;
   }
 
-  .brand-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center 25%;
-    border: 2px solid var(--border-medium);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .brand-link:hover .brand-avatar {
-    transform: scale(1.05);
-    border-color: var(--primary-accent);
-  }
-
-  .brand-meta {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25;
-  }
-
-  .brand-name {
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 14.5px;
-    color: var(--text-main);
-    letter-spacing: -0.01em;
+    font-weight: 900;
+    font-size: 18px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 8px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
   }
 
-  .brand-role {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 6, 88, 0.25);
   }
 
   .nav-links {
@@ -383,11 +368,7 @@
   <header class="global-header">
     <div class="header-container">
       <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <img src="profile.jpg" alt="Balaajee V.R." class="brand-avatar">
-        <div class="brand-meta">
-          <span class="brand-name">Balaajee V.R.</span>
-          <span class="brand-role">Senior UI/UX Design Manager</span>
-        </div>
+        <span class="brand-monogram" aria-hidden="true">B</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">

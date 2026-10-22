@@ -386,8 +386,9 @@ LEAD_CSS = """
   .ld-nav { position: sticky; top: 61px; z-index: 50; background: rgba(250, 250, 249, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-subtle); margin-top: 56px; }
   .ld-nav .g-wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 12px; padding-bottom: 12px; scrollbar-width: none; }
   .ld-nav .g-wrap::-webkit-scrollbar { display: none; }
-  .ld-nav a { flex: 0 0 auto; font-size: 13px; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 7px 14px; border-radius: 100px; }
+  .ld-nav a { flex: 0 0 auto; font-size: 13px; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 7px 14px; border-radius: 100px; transition: all 0.2s ease; }
   .ld-nav a:hover { color: var(--text-main); background: #FFFFFF; }
+  .ld-nav a.active { background: #0F172A; color: #FFFFFF; font-weight: 700; }
 
   .ld-sec { padding-top: 96px; scroll-margin-top: 120px; }
   .ld-head { margin-bottom: 36px; }
@@ -484,7 +485,7 @@ LEAD_CSS = """
   .ld-cta p { color: #CBD5E1; font-size: 16px; margin-top: 6px; }
   .ld-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
   .ld-btn { text-decoration: none; font-weight: 700; font-size: 15px; border-radius: 100px; padding: 13px 22px; }
-  .ld-btn-p { background: var(--primary-accent); color: #FFFFFF; }
+  .ld-btn-p { background: var(--primary-accent); color: #FFFFFF !important; }
   .ld-btn-p:hover { background: var(--primary-hover); }
   .ld-btn-s { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; }
 
@@ -601,8 +602,7 @@ def build_leadership():
 
     links = [("philosophy", "Philosophy"), ("evolution", "How I evolved"), ("team", "Team structure"),
              ("hiring", "Hiring & growth"), ("delegation", "Delegation"), ("challenges", "Challenges"),
-             ("workshops", "Workshops"), ("tools", "Tools & frameworks"), ("docs", "Documentation"),
-             ("references", "References")]
+             ("workshops", "Workshops"), ("tools", "Tools & frameworks"), ("docs", "Documentation")]
     subnav = "".join(f'<a href="#{i}">{e(t)}</a>' for i, t in links)
 
     body = f"""
@@ -623,11 +623,6 @@ def build_leadership():
         <div class="g-overline">Leadership</div>
         <h1>How I lead design teams</h1>
         <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 12 designers.</p>
-        <div style="margin: 18px 0 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="leadership-deck.html" style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;padding:9px 18px;border-radius:100px;background:#0F172A;color:#FFFFFF;text-decoration:none;font-weight:700;transition:all 0.2s ease;">
-            📊 View 10-Slide Keynote Deck &rarr;
-          </a>
-        </div>
         <div class="ld-roles">{roles}</div>
       </div>
       <div class="ld-photo"><img src="speaking-gesture.jpg" alt="Balaajee V.R." loading="eager"></div>
@@ -699,22 +694,6 @@ def build_leadership():
       {doc_samples()}
     </section>
 
-    <section class="g-wrap ld-sec" id="references">
-      {lead_head("References & Verification", "Available upon request", "Formal reference letters and direct referee contacts from engineering managers, product directors, and former design reports are provided to hiring committees during the interview stage.")}
-      <div class="ld-card" style="padding:28px 32px;background:#FFFFFF;border:1px solid var(--border-subtle);border-radius:12px;max-width:780px;">
-        <p style="font-size:15px;line-height:1.65;color:var(--text-body);margin:0 0 16px;">
-          To respect colleague privacy and corporate confidentiality across IBM, Zebra Technologies, Ericsson, and ZF Wabco, personal contact details and endorsements are not published openly on this website.
-        </p>
-        <p style="font-size:15px;line-height:1.65;color:var(--text-body);margin:0 0 24px;">
-          Verified professional references from former engineering directors, product counterparts, and design mentees are available to hiring committees and executive recruiters upon request during interview stages.
-        </p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-          <a href="mailto:vrbberaj@gmail.com?subject=Professional%20Reference%20Request%20-%20Balaajee%20V.R." class="ld-btn ld-btn-p" style="padding:10px 22px;font-size:14px;">Request References &rarr;</a>
-          <a href="https://linkedin.com/in/vrbberaj" target="_blank" rel="noopener" class="ld-btn ld-btn-s" style="padding:10px 22px;font-size:14px;">Connect on LinkedIn ↗</a>
-        </div>
-      </div>
-    </section>
-
     <section class="g-wrap">
       <div class="ld-cta">
         <div><h2>Let's talk about your design team</h2><p>Open to senior design leadership roles in India and globally. Available in 30 days.</p></div>
@@ -724,14 +703,48 @@ def build_leadership():
         </div>
       </div>
     </section>
-  </main>"""
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {{
+      var navLinks = document.querySelectorAll('.ld-nav a');
+      var sections = Array.from(navLinks).map(function(link) {{
+        var id = link.getAttribute('href').replace('#', '');
+        return document.getElementById(id);
+      }}).filter(Boolean);
+
+      function onScroll() {{
+        var scrollPos = window.scrollY + 140;
+        var currentSection = sections[0];
+        for (var i = 0; i < sections.length; i++) {{
+          if (sections[i].offsetTop <= scrollPos) {{
+            currentSection = sections[i];
+          }}
+        }}
+        if (currentSection) {{
+          var id = currentSection.getAttribute('id');
+          navLinks.forEach(function(link) {{
+            if (link.getAttribute('href') === '#' + id) {{
+              if (!link.classList.contains('active')) {{
+                link.classList.add('active');
+                link.scrollIntoView({{ behavior: 'smooth', inline: 'nearest', block: 'nearest' }});
+              }}
+            }} else {{
+              link.classList.remove('active');
+            }}
+          }});
+        }}
+      }}
+      window.addEventListener('scroll', onScroll, {{ passive: true }});
+      onScroll();
+    }});
+  </script>"""
     out = g.page(
         "Leadership: How I Lead Design Teams | Balaajee V.R.",
-        "Leadership philosophy, team structure, hiring, delegation, frameworks and references of design manager Balaajee V.R.",
+        "Leadership philosophy, team structure, hiring, delegation, frameworks and documentation of design manager Balaajee V.R.",
         "leadership", body, SHARED_CSS + LEAD_CSS)
     with open("leadership.html", "w", encoding="utf-8") as f:
         f.write(out)
-    print("  ✓ leadership.html (philosophy, hiring, delegation, tools, docs, references)")
+    print("  ✓ leadership.html (9 leadership frameworks, scrollspy navigation)")
 
 
 # ===========================================================================
@@ -772,9 +785,6 @@ HOME_CSS = """
     text-decoration: none;
     color: inherit;
   }
-  .case-card.featured {
-    grid-column: 1 / -1;
-  }
 
   .case-stage {
     position: relative;
@@ -783,9 +793,6 @@ HOME_CSS = """
     background: #ECEEF1;
     aspect-ratio: 16 / 10;
     transition: background 0.3s ease;
-  }
-  .case-card.featured .case-stage {
-    aspect-ratio: 21 / 9;
   }
   .case-stage img {
     position: absolute;
@@ -832,10 +839,6 @@ HOME_CSS = """
     margin-bottom: 10px;
     transition: color 0.2s ease;
   }
-  .case-card.featured .case-title {
-    font-size: 32px;
-    max-width: 820px;
-  }
   .case-card:hover .case-title {
     color: var(--primary-accent);
   }
@@ -844,10 +847,6 @@ HOME_CSS = """
     line-height: 1.6;
     color: var(--text-body);
     max-width: 620px;
-  }
-  .case-card.featured .case-lead {
-    max-width: 780px;
-    font-size: 16.5px;
   }
 
   .case-foot {
@@ -894,12 +893,6 @@ HOME_CSS = """
     .case-grid {
       grid-template-columns: 1fr;
       gap: 44px;
-    }
-    .case-card.featured .case-stage {
-      aspect-ratio: 16 / 10;
-    }
-    .case-card.featured .case-title {
-      font-size: 26px;
     }
   }
 
@@ -978,71 +971,7 @@ HOME_CSS = """
       justify-content: center;
     }
   }
-
-  /* -------------------------------------------------------------------------
-     Executive Leadership Playbook
-     ------------------------------------------------------------------------- */
-  .hx {
-    background: #FAFAF9;
-    padding: 88px 0 80px;
-    border-top: 1px solid var(--border-subtle);
-  }
-  .hx .g-wrap {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .hx-row {
-    margin-bottom: 40px;
-    max-width: 820px;
-  }
-  .hx-phil {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px;
-  }
-  .hx-phil > div {
-    border-top: 3px solid var(--text-main);
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  .hx-pill {
-    font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--primary-accent);
-    margin-bottom: 8px;
-  }
-  .hx-phil h3 {
-    font-family: var(--font-heading);
-    font-size: 19px;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 10px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-  .hx-phil p {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--text-body);
-    flex: 1;
-  }
-  @media (max-width: 960px) {
-    .hx-phil {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 32px 24px;
-    }
-  }
   @media (max-width: 560px) {
-    .hx-phil {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .hx .g-wrap,
     .home-featured-work .g-wrap {
       padding: 0 16px;
     }
@@ -1055,7 +984,7 @@ def inject_home():
         src = f.read()
     src = re.sub(re.escape(HOME_START) + r"[\s\S]*?" + re.escape(HOME_END) + r"\n?", "", src)
 
-    # 1. Build Case Cards using the elevated Chris Gielow-style headlines & leads
+    # 1. Build Case Cards using uniform proportions and clean layout
     cases = g._cases_from_content()
     cards = []
     for i, c in enumerate(cases):
@@ -1063,9 +992,8 @@ def inject_home():
             f'<div class="case-metric"><strong>{e(v)}</strong><span>{e(l)}</span></div>'
             for v, l in c["metrics"]
         )
-        is_feat = (i == 0)
         cards.append(f"""
-        <a href="{c['href']}" class="case-card{' featured' if is_feat else ''}" id="home-case-{i + 1}">
+        <a href="{c['href']}" class="case-card" id="home-case-{i + 1}">
           <div class="case-stage">
             <img src="{c['cover']}" alt="{e(c['title'])}" loading="{'eager' if i < 2 else 'lazy'}">
           </div>
@@ -1079,18 +1007,6 @@ def inject_home():
             </div>
           </div>
         </a>""")
-
-    # 2. Build Executive Leadership Playbook Cards
-    phil_items = [
-        ("Clarity before pixels", "Zero-Waste Scoping", "Every initiative starts with a 1-page executive brief defining the user problem, business ROI metric, technical constraints, and definition of done before designers touch Figma."),
-        ("Delegate outcomes, not tasks", "Autonomous Squad Leadership", "I empower designers with ownership of measurable problem spaces and definition of done, staying close through rigorous design critique rather than micro-control."),
-        ("Engineering is a design partner", "Sprint Zero Velocity", "Designers pair directly with engineering leads from sprint zero. Shared design tokens, shared live demos, and shared velocity metrics eliminate handoff churn and code debt."),
-        ("Evidence over opinion", "Empirical Decision Architecture", "Usability scores, contextual research, production telemetry, and business ROI settle architectural debates—never corporate hierarchy or subjective opinion.")
-    ]
-    phil = "".join(
-        f'<div><span class="hx-pill">{e(sub)}</span><h3>{e(t)}</h3><p>{e(d)}</p></div>'
-        for t, sub, d in phil_items
-    )
 
     block = f"""{HOME_START}
   <style>{HOME_CSS}</style>
@@ -1122,26 +1038,12 @@ def inject_home():
       </div>
     </div>
   </section>
-
-  <!-- Executive Leadership Playbook -->
-  <section class="hx" aria-label="How I lead">
-    <div class="g-wrap">
-      <div class="hx-row">
-        <div>
-          <div class="sec-label">Executive Leadership Playbook</div>
-          <h2 class="sec-title">How I scale teams, systems &amp; engineering velocity</h2>
-          <p class="sec-intro">Four core leadership frameworks honed over 18+ years leading cross-functional design organizations across global technology leaders.</p>
-        </div>
-      </div>
-      <div class="hx-phil">{phil}</div>
-    </div>
-  </section>
 {HOME_END}
 """
     src = re.sub(r"(</main>[ \t]*\r?\n)", lambda m: m.group(1) + block, src, count=1)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(src)
-    print("  ✓ index.html (featured case studies + archive teaser + leadership playbook)")
+    print("  ✓ index.html (featured case studies + archive teaser)")
 
 
 NAV_LABELS = [
