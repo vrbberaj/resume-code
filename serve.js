@@ -7,7 +7,11 @@ const server = http.createServer((req, res) => {
   let targetFile = decodedUrl === '/' ? 'index.html' : decodedUrl;
 
   // Clean Route Mappings
-  if (decodedUrl === '/work' || decodedUrl === '/portfolio' || decodedUrl === '/selected-work') targetFile = 'work.html';
+  if (decodedUrl === '/work' || decodedUrl === '/work.html' || decodedUrl === '/portfolio' || decodedUrl === '/selected-work') {
+    res.writeHead(302, { 'Location': '/#featured-work' });
+    res.end();
+    return;
+  }
   else if (decodedUrl === '/archive' || decodedUrl === '/visual-archive' || decodedUrl === '/visuals' || decodedUrl === '/gallery') targetFile = 'archive.html';
   else if (decodedUrl === '/leadership') targetFile = 'leadership.html';
   else if (decodedUrl === '/leadership-deck') targetFile = 'leadership-deck.html';

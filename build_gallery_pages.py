@@ -48,7 +48,7 @@ def header(active):
         <a href="index.html" class="{cls('home')}">Welcome</a>
         <a href="leadership.html" class="{cls('leadership')}">Leadership</a>
         <a href="leadership-deck.html" class="{cls('leadership-deck')}">Leadership Deck</a>
-        <a href="work.html" class="{cls('work')}">Selected Work</a>
+        <a href="index.html#featured-work" class="{cls('work')}">Selected Work</a>
         <a href="archive.html" class="{cls('archive')}">Visual Archive</a>
         <a href="cv.html" class="{cls('cv')}">Resume</a>
       </nav>
@@ -240,45 +240,22 @@ WORK_CSS = """
 
 
 def build_work():
-    cards = []
-    for i, c in enumerate(_cases_from_content()):
-        metrics = "".join(
-            f'<div class="case-metric"><strong>{html.escape(v)}</strong><span>{html.escape(l)}</span></div>'
-            for v, l in c["metrics"]
-        )
-        cards.append(f"""
-      <a href="{c['href']}" class="case-card{' featured' if i == 0 else ''}" id="case-card-{i + 1}">
-        <div class="case-stage">
-          <img src="{c['cover']}" alt="{html.escape(c['title'])}" loading="{'eager' if i < 2 else 'lazy'}">
-        </div>
-        <div class="case-meta">
-          <div class="case-co"><b>{html.escape(c['company'])}</b> &nbsp;·&nbsp; {html.escape(c['domain'])}</div>
-          <h2 class="case-title">{html.escape(c['title'])}</h2>
-          <p class="case-lead">{html.escape(c['lead'])}</p>
-          <div class="case-foot">
-            <div class="case-metrics">{metrics}</div>
-            <span class="case-link">Read case study <i>&rarr;</i></span>
-          </div>
-        </div>
-      </a>""")
-
-    body = f"""
-  <main>
-    <section class="g-wrap g-intro">
-      <div class="g-overline">Selected Work</div>
-      <h1 class="g-title">Case studies</h1>
-      <p class="g-sub">Five enterprise products where I led design, from discovery to shipped outcome. Each one opens as its own case study.</p>
-    </section>
-    <section class="g-wrap case-grid" aria-label="Case studies">{''.join(cards)}
-    </section>
-  </main>"""
-    out = page(
-        "Selected Work: Case Studies | Balaajee V.R.",
-        "Five enterprise UX case studies by Balaajee V.R.: IBM, Ericsson, Zebra Technologies, IBM Carbon and ZF Wabco.",
-        "work", body, WORK_CSS)
+    out = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Work | Balaajee V.R.</title>
+  <meta http-equiv="refresh" content="0; url=index.html#featured-work">
+  <script>window.location.replace("index.html#featured-work");</script>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #FAFAF9; padding: 40px; text-align: center; color: #0F172A;">
+  <p>Redirecting to <a href="index.html#featured-work" style="color: #F00658; font-weight: 700;">Selected Work on Home Stage</a>...</p>
+</body>
+</html>"""
     with open("work.html", "w", encoding="utf-8") as f:
         f.write(out)
-    print("  ✓ work.html (case study gallery, 5 cards)")
+    print("  ✓ work.html (redirect to index.html#featured-work)")
 
 
 # ===========================================================================
@@ -523,5 +500,5 @@ if __name__ == "__main__":
     bp.build_cases()
     bp.build_leadership()
     bp.inject_home()
-    bp.clean_nav(["index.html", "cv.html", "leadership_deck.html"])
+    bp.clean_nav(["index.html", "cv.html", "leadership-deck.html", "leadership_deck.html"])
     print("Done.")

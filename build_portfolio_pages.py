@@ -328,7 +328,7 @@ def build_case(i, c):
     body = f"""
   <main>
     <section class="g-wrap cs-top">
-      <a href="work.html" class="cs-back">&larr; All case studies</a>
+      <a href="index.html#featured-work" class="cs-back">&larr; All case studies</a>
       <div class="cs-over"><b>{e(c['company'])}</b> &nbsp;·&nbsp; {e(c['domain'])} &nbsp;·&nbsp; {e(c['snapshot']['Timeline'])}</div>
       <h1 class="cs-title">{e(c['title'])}</h1>
       <p class="cs-lead">{e(c['lead'])}</p>
@@ -720,7 +720,7 @@ def build_leadership():
         <div><h2>Let's talk about your design team</h2><p>Open to senior design leadership roles in India and globally. Available in 30 days.</p></div>
         <div class="ld-cta-btns">
           <a href="mailto:vrbberaj@gmail.com" class="ld-btn ld-btn-p" id="ld-cta-email">Email me</a>
-          <a href="work.html" class="ld-btn ld-btn-s" id="ld-cta-work">See case studies</a>
+          <a href="index.html#featured-work" class="ld-btn ld-btn-s" id="ld-cta-work">See case studies</a>
         </div>
       </div>
     </section>
@@ -1160,7 +1160,11 @@ def clean_nav(files):
         new = src
         for old, lab in NAV_LABELS:
             new = new.replace(old, lab)
+        if fn == "index.html":
+            new = new.replace('href="work.html"', 'href="#featured-work"')
+        else:
+            new = new.replace('href="work.html"', 'href="index.html#featured-work"')
         if new != src:
             with open(fn, "w", encoding="utf-8") as f:
                 f.write(new)
-            print(f"  ✓ {fn} (navigation labels cleaned)")
+            print(f"  ✓ {fn} (navigation cleaned)")
