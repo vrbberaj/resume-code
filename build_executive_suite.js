@@ -576,17 +576,18 @@ const indexHtml = `<!DOCTYPE html>
     }
 
     .brand-logo-img {
-      height: 28px;
-      max-width: 80px;
+      height: 30px;
+      max-width: 88px;
       width: auto;
       object-fit: contain;
       margin-bottom: 10px;
-      filter: grayscale(100%) opacity(0.7);
-      transition: all 0.25s ease;
+      filter: none;
+      opacity: 1;
+      transition: transform 0.25s ease;
     }
 
     .brand-item:hover .brand-logo-img {
-      filter: grayscale(0%) opacity(1);
+      transform: scale(1.08);
     }
 
     .brand-item-name {
