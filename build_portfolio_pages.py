@@ -744,6 +744,7 @@ HOME_CSS = """
      Featured Executive Work on Homepage
      ------------------------------------------------------------------------- */
   .home-featured-work {
+    scroll-margin-top: 72px;
     padding: 72px 0 80px;
     background: #FFFFFF;
     border-top: 1px solid var(--border-subtle);
