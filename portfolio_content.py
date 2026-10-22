@@ -123,10 +123,10 @@ CASE_STUDIES = [
             ("Measure", "Tracked OKRs with product directors: tracing time, triage time, SUS and token sync speed."),
         ],
         "artifacts": [
-            {"kind": "photo", "src": "assets/photos/action_ibm_presentation.jpg", "caption": "Cross-functional governance session: presenting multi-agent AI system architecture and confidence tripwires to engineering and compliance."},
+            {"kind": "photo", "src": "assets/photos/candid_allhands_panel.jpg", "caption": "Cross-functional governance session: presenting multi-agent AI system architecture and confidence tripwires to engineering and compliance."},
             {"kind": "photo", "src": "assets/photos/action_laptop_presentation.jpg", "caption": "Sprint architecture review: walking through multi-agent orchestration and UI diff drawers with squad designers."},
             {"kind": "photo", "src": "assets/photos/artifact_ux_scorecard_warroom.jpg", "caption": "Enterprise UX Scorecard & Sprint Quality Bar: criteria linking validation heuristics to physical war-room deliverables."},
-            {"kind": "photo", "src": "assets/photos/action_whiteboard_ia.jpg", "caption": "Working session: breaking down SysML v2.0 block hierarchy and information architecture with squad members."},
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Deep-work modelling session: synthesising multi-tier confidence models, reasoning traces, and error recovery states."},
             {"kind": "diagram", "diagram": "confidence", "caption": "The three-tier confidence model the team designed and shipped."},
             {"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png", "caption": "Workshop #3 whiteboard: why unguided AI fails in regulated systems."},
             {"kind": "recreation", "src": "screenshots/ibm_maas360_ai_endpoint.png", "caption": "MaaS360: AI remediation with staged rollout and supervised approval."},
@@ -135,7 +135,7 @@ CASE_STUDIES = [
         "decisions": [
             ("Three levels of AI autonomy instead of on/off", "Compliance needed control; engineers needed speed. High-confidence actions run, medium ones open a diff for review, low ones hand control back.", "Added a review step for mid-confidence actions. Accepted because it removed the compliance veto."),
             ("Show what changed, not just a confidence score", "Round 1 users ignored percentages. They trusted a visual before/after diff.", "Two extra sprints, and we dropped a chatbot window that product wanted for marketing."),
-            ("Re-organise 12 designers into chapters", "Three silos were building six different AI feedback widgets.", "Product teams lost \u201ctheir\u201d designer. Fixed by embedding designer pairs in each product squad."),
+            ("Re-organise 12 designers into chapters", "Three silos were building six different AI feedback widgets.", "Product teams lost “their” designer. Fixed by embedding designer pairs in each product squad."),
         ],
         "results": "AI moved from banned to adopted. Model drafting went from 14.2 hours to 3.6, threat triage from 4.1 hours to 43 minutes, with zero compliance violations across 140,000+ AI-assisted tasks. The team kept 100% retention over 16 months and three designers were promoted.",
         "learned": "Trust is a design deliverable. Next time I would bring compliance into the first research round, not the third workshop. It would have saved us a month of debate.",
@@ -161,7 +161,7 @@ CASE_STUDIES = [
         "metrics": [("6 days → 42 min", "deal turnaround"), ("0", "formula errors"), ("94%", "adoption in 30 days"), ("34 → 87", "usability score (SUS)")],
         "problem": [
             "1,200+ sales engineers in 45 countries built quotes and business cases in one unversioned 50 MB workbook with 14 tabs and fragile macros.",
-            "One edited cell could break formulas across the file. Every deal waited in a commercial director\u2019s inbox for manual checking: about six days per quote.",
+            "One edited cell could break formulas across the file. Every deal waited in a commercial director’s inbox for manual checking: about six days per quote.",
             "Earlier web tools had failed with under 15% adoption because they felt slower than Excel.",
         ],
         "owned": [
@@ -184,7 +184,7 @@ CASE_STUDIES = [
             ("Measure", "Adoption, turnaround time and error rate tracked for 30 days after launch."),
         ],
         "artifacts": [
-            {"kind": "photo", "src": "assets/photos/action_focus_pod_laptop.jpg", "caption": "Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow."},
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow."},
             {"kind": "real", "src": "assets/behance/sales/sales_2_1200x1196.png", "caption": "Business case summary: profit and loss, cost of sales and cash flow per scenario."},
             {"kind": "real", "src": "assets/behance/sales/sales_3_1200x788.png", "caption": "Recent scenarios and opportunities: the engineer’s starting point."},
             {"kind": "real", "src": "assets/behance/sales/sales_1_1200x3772.png", "caption": "Scenario A vs B: engineering, transitional and transformational cost compared.", "tall": True},
@@ -244,9 +244,10 @@ CASE_STUDIES = [
             ("Measure", "Support tickets, pairing failures and staging throughput tracked after release."),
         ],
         "artifacts": [
-            {"kind": "photo", "src": "assets/photos/action_wireframe_wall_critique.jpg", "caption": "Design studio wall: reviewing mobile workflow branching, alert states, and device-health wireframes with the squad lead."},
-            {"kind": "photo", "src": "assets/photos/action_cardsort_workshop.jpg", "caption": "Facilitating hands-on card-sorting and information architecture grouping with squad designers."},
-            {"kind": "photo", "src": "assets/photos/action_coffee_deepwork.jpg", "caption": "Deep work & sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations."},
+            {"kind": "photo", "src": "assets/photos/candid_desk_review.jpg", "caption": "Desk review & 1:1 critique: walking through telemetry alert states, pairing logic, and touch targets on an iMac workstation with a junior designer."},
+            {"kind": "photo", "src": "assets/photos/candid_window_wireframes.jpg", "caption": "Studio wireframe wall: taping up and inspecting handheld staging flows and glove-friendly 72px touch targets on the studio window."},
+            {"kind": "photo", "src": "assets/photos/candid_flipchart_huddle.jpg", "caption": "Facilitating hands-on affinity mapping and card sorting on an easel flipchart with squad designers."},
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Deep work & sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations over coffee."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_1_1400x889.png", "caption": "Persona: Jamie, IT manager. Goals, frustrations and device usage."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_2_1400x730.png", "caption": "Card-sorting board from the stakeholder workshop."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_3_1400x1106.png", "caption": "Device-health user flow and branching logic."},
@@ -257,10 +258,10 @@ CASE_STUDIES = [
         ],
         "decisions": [
             ("Organise by what IT managers act on", "The card sort showed people think in Devices, Applications and Battery, not in our data sources.", "Engineering had to join data from three back-ends into one view."),
-            ("Every insight ends in an action", "Customers didn\u2019t want charts; they wanted \u201cRequest repair\u201d or \u201cRequest OS update\u201d.", "Each action needed a back-end workflow, so we launched with four and added more later."),
+            ("Every insight ends in an action", "Customers didn’t want charts; they wanted “Request repair” or “Request OS update”.", "Each action needed a back-end workflow, so we launched with four and added more later."),
             ("Glove-friendly handheld UI", "Freezer visits showed 44px targets failed with thermal gloves. We moved to 72px with high contrast.", "Fewer items per screen, so flows got one step longer."),
         ],
-        "results": "Customers called the new dashboards \u201cclearer, much less crowded\u201d. Pairing failures dropped 84%, staging throughput rose 3.2×, and tier-1 tickets fell by a third across 38,000+ managed handhelds.",
+        "results": "Customers called the new dashboards “clearer, much less crowded”. Pairing failures dropped 84%, staging throughput rose 3.2×, and tier-1 tickets fell by a third across 38,000+ managed handhelds.",
         "learned": "Customer quotes moved the roadmap more than any deck I made. I now put a customer voice in every roadmap review.",
         "testimonial": "zebra-pm",
     },
@@ -300,18 +301,19 @@ CASE_STUDIES = [
         ],
         "process": [
             ("Audit", "Inventoried colours, spacing and components across 14 squads."),
-            ("Define", "Three token tiers: global \u2192 semantic \u2192 component."),
+            ("Define", "Three token tiers: global → semantic → component."),
             ("Design", "Figma variables with light and dark modes from day one."),
             ("Build", "Publishing a token opens pull requests in every squad repo automatically."),
             ("Govern", "Squads propose changes with a one-page RFC; council reviews weekly."),
             ("Measure", "Visual QA bugs, handoff time and front-end velocity per sprint."),
         ],
         "artifacts": [
+            {"kind": "photo", "src": "assets/photos/candid_desk_review.jpg", "caption": "DesignOps chapter review: auditing hard-coded color values and aligning token hierarchies across squads."},
             {"kind": "diagram", "diagram": "tokens", "caption": "The three-tier token structure: designers change intent, not hex codes."},
             {"kind": "recreation", "src": "screenshots/transformation-ibm-carbon.png", "caption": "Token sync console: which tokens reached which squads."},
         ],
         "decisions": [
-            ("Semantic tokens between brand and components", "Squads should change \u201cprimary action\u201d, not \u201cblue-60\u201d.", "A learning curve for designers used to picking colours directly."),
+            ("Semantic tokens between brand and components", "Squads should change “primary action”, not “blue-60”.", "A learning curve for designers used to picking colours directly."),
             ("A council, not a central gatekeeper", "A small central team would become a bottleneck for 14 squads.", "Slower for one-off requests; faster for everyone overall."),
             ("Automate pull requests instead of writing docs", "Docs go stale; automated PRs make the right thing the easy thing.", "Needed engineering time up front from two front-end engineers."),
         ],
@@ -361,6 +363,7 @@ CASE_STUDIES = [
             ("Measure", "Route errors and driver feedback tracked across the fleet rollout."),
         ],
         "artifacts": [
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Glance-time analysis & HUD ergonomics: structuring the three-zone cluster information architecture for safety-critical highway driving."},
             {"kind": "diagram", "diagram": "zones", "caption": "Three glance zones: what the driver sees first, second and only peripherally."},
             {"kind": "recreation", "src": "screenshots/transformation-zf-wabco.png", "caption": "Cluster layout with zone 1 speed and radar, zone 2 turn card, zone 3 eco-coaching."},
         ],
