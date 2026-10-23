@@ -315,7 +315,7 @@
     .welcome-hero-stage {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 44px 0 40px;
+      padding: 28px 0 24px;
     }
 
     .hero-container {
@@ -440,8 +440,8 @@
 
     /* Dedicated Executive Pedigree & Global Brand Trust Section */
     .pedigree-trust-section {
-      margin-top: 40px;
-      padding-top: 28px;
+      margin-top: 24px;
+      padding-top: 20px;
       border-top: 1px solid var(--border-subtle);
     }
 
@@ -502,6 +502,74 @@
 
     .brand-item:hover .brand-logo-img {
       transform: scale(1.08);
+    }
+
+    /* Visual Scroll Affordance Cue */
+    .hero-scroll-cue {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 22px;
+      padding-top: 6px;
+    }
+
+    .scroll-cue-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .scroll-cue-link:hover {
+      background: #FFFFFF;
+      color: var(--primary-accent);
+      border-color: var(--primary-accent);
+      transform: translateY(2px);
+      box-shadow: 0 4px 14px rgba(240, 6, 88, 0.12);
+    }
+
+    .scroll-cue-mouse {
+      width: 14px;
+      height: 22px;
+      border: 2px solid currentColor;
+      border-radius: 8px;
+      display: inline-flex;
+      justify-content: center;
+      padding-top: 3px;
+    }
+
+    .scroll-cue-wheel {
+      width: 2px;
+      height: 5px;
+      background: currentColor;
+      border-radius: 1px;
+      animation: mouseWheel 1.6s infinite ease-in-out;
+    }
+
+    @keyframes mouseWheel {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(4px); opacity: 0.25; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .scroll-cue-arrow {
+      font-size: 15px;
+      font-weight: 700;
+      animation: arrowBounce 1.6s infinite ease-in-out;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
     }
 
     .brand-item-name {
@@ -735,21 +803,21 @@
        Chris Gielow-Style Fixed Executive Masthead Banner & Scroll Reveal
        ------------------------------------------------------------------------- */
     :root {
-      --masthead-height: 440px;
+      --masthead-height: 280px;
     }
     @media (max-width: 1024px) {
       :root {
-        --masthead-height: 380px;
+        --masthead-height: 250px;
       }
     }
     @media (max-width: 768px) {
       :root {
-        --masthead-height: 320px;
+        --masthead-height: 210px;
       }
     }
     @media (max-width: 480px) {
       :root {
-        --masthead-height: 270px;
+        --masthead-height: 180px;
       }
     }
 
@@ -786,7 +854,7 @@
       width: 100%;
       max-width: 1240px;
       margin: 0 auto;
-      padding: 0 24px 34px;
+      padding: 0 24px 20px;
       box-sizing: border-box;
       position: relative;
       z-index: 2;
@@ -798,12 +866,12 @@
 
     .masthead-title {
       font-family: var(--font-heading);
-      font-size: clamp(38px, 5.5vw, 72px);
+      font-size: clamp(32px, 4.2vw, 56px);
       font-weight: 900;
       color: #FFFFFF;
       line-height: 1.05;
       letter-spacing: -0.03em;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.5);
     }
 
@@ -856,7 +924,7 @@
     <div class="masthead-contents">
       <div class="masthead-text">
         <h1 class="masthead-title">Design at Scale.</h1>
-        <p class="masthead-sub">Balaajee V.R. &nbsp;|&nbsp; Senior UI/UX Design Manager &amp; Enterprise Product Architect</p>
+        <p class="masthead-sub">Balaajee V.R. &nbsp;|&nbsp; Senior UI/UX Design Manager &bull; 18+ Years Leadership</p>
       </div>
     </div>
   </aside>
@@ -936,6 +1004,17 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Visual Scroll Affordance Cue -->
+      <div class="hero-scroll-cue">
+        <a href="#featured-work" class="scroll-cue-link" aria-label="Scroll to explore 5 flagship enterprise case studies">
+          <span class="scroll-cue-mouse">
+            <span class="scroll-cue-wheel"></span>
+          </span>
+          <span class="scroll-cue-label">Scroll to explore 5 flagship enterprise case studies</span>
+          <span class="scroll-cue-arrow">&darr;</span>
+        </a>
       </div>
 
       <!-- Dedicated Executive Pedigree & Global Brand Trust Section -->
