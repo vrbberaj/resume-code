@@ -848,7 +848,10 @@
           </p>
         </div>
 
-        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <form id="contactForm" action="https://formsubmit.co/vrbberaj@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://vrbberaj.github.io/resume-code/contact.html?sent=1">
           <div class="form-row">
             <div class="form-group">
               <label for="senderName" class="form-label">
@@ -911,16 +914,12 @@
 
           <!-- Toast Feedback -->
           <div id="statusToast" class="status-toast" role="alert">
-            <div class="toast-title">
-              <span>✓</span> Email Client Opened Successfully!
+            <div class="toast-title" id="toastTitle">
+              <span>✓</span> Message Sent to Balaajee!
             </div>
             <p class="toast-desc" id="toastDesc">
-              Your default email app has been launched with your message pre-filled. If it didn't trigger automatically, you can copy the prepared draft or email directly.
+              Thank you for reaching out. Your message has been sent directly to Balaajee's inbox (vrbberaj@gmail.com). You will typically receive a response within 24 hours.
             </p>
-            <div class="toast-copy-box">
-              <span id="toastCopyText">vrbberaj@gmail.com</span>
-              <button type="button" class="copy-btn" id="copyDraftBtn" onclick="copyPreparedDraft()">Copy Full Draft</button>
-            </div>
           </div>
         </form>
       </section>
@@ -967,11 +966,29 @@
       });
     }
 
-    let lastPreparedDraft = "";
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('sent') === '1') {
+        const toast = document.getElementById('statusToast');
+        if (toast) {
+          toast.className = 'status-toast visible';
+          toast.style.background = '#ECFDF5';
+          toast.style.borderColor = '#A7F3D0';
+          toast.style.color = '#065F46';
+          document.getElementById('toastTitle').innerHTML = '<span>✓</span> Message Delivered to Balaajee\'s Inbox!';
+          document.getElementById('toastDesc').innerHTML = 'Thank you for reaching out. Your message has been delivered directly to <code>vrbberaj@gmail.com</code>.';
+        }
+      }
+    });
 
     function handleFormSubmit(event) {
       event.preventDefault();
-      
+
+      const submitBtn = document.getElementById('submitBtn');
+      const toast = document.getElementById('statusToast');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastDesc = document.getElementById('toastDesc');
+
       const name = document.getElementById('senderName').value.trim();
       const email = document.getElementById('senderEmail').value.trim();
       const company = document.getElementById('senderCompany').value.trim();
@@ -980,44 +997,68 @@
       const message = document.getElementById('msgBody').value.trim();
 
       const fullSubject = `[Portfolio Inquiry: ${inquiryType}] ${subject}`;
-      
-      const bodyLines = [
-        `Sender: ${name}`,
-        `Email: ${email}`,
-        company ? `Company / Org: ${company}` : '',
-        `Inquiry Type: ${inquiryType}`,
-        '',
-        '--- Message ---',
-        message,
-        '',
-        '--- Sent via Executive Portfolio (vrbberaj.github.io/resume-code/) ---'
-      ].filter(line => line !== null).join('\n');
 
-      lastPreparedDraft = `To: vrbberaj@gmail.com\nSubject: ${fullSubject}\n\n${bodyLines}`;
+      // Set loading state on button
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending to Balaajee...</span>';
+      submitBtn.style.opacity = '0.75';
+      toast.classList.remove('visible');
 
-      // Open mailto
-      const mailtoUrl = `mailto:vrbberaj@gmail.com?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(bodyLines)}`;
-      
-      window.location.href = mailtoUrl;
+      // Submit directly in the background via FormSubmit API to Balaajee's inbox
+      fetch("https://formsubmit.co/ajax/vrbberaj@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Name: name,
+          Email: email,
+          Company: company || "N/A",
+          Inquiry_Type: inquiryType,
+          _subject: fullSubject,
+          Message: message,
+          _replyto: email,
+          _template: "table",
+          _captcha: "false"
+        })
+      })
+      .then(async (response) => {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
 
-      // Show toast confirmation
-      const toast = document.getElementById('statusToast');
-      toast.classList.add('visible');
-      document.getElementById('toastCopyText').textContent = `Recipient: vrbberaj@gmail.com`;
+        if (response.ok) {
+          submitBtn.innerHTML = '<span>Message Delivered ✓</span>';
+          submitBtn.style.background = '#10B981';
 
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.innerHTML = '<span>Message Drafted ✓</span>';
-      submitBtn.style.background = '#10B981';
-      setTimeout(() => {
+          toastTitle.innerHTML = '<span>✓</span> Message Delivered to Balaajee\'s Inbox!';
+          toastDesc.innerHTML = `Thank you, <strong>${name}</strong>. Your message has been sent directly to <code>vrbberaj@gmail.com</code> without opening any mail app. Balaajee typically reviews inquiries and replies within 24 hours.`;
+          toast.className = 'status-toast visible';
+          toast.style.background = '#ECFDF5';
+          toast.style.borderColor = '#A7F3D0';
+          toast.style.color = '#065F46';
+
+          // Reset the form
+          document.getElementById('contactForm').reset();
+
+          setTimeout(() => {
+            submitBtn.innerHTML = '<span>Send Message &rarr;</span>';
+            submitBtn.style.background = '';
+          }, 6000);
+        } else {
+          throw new Error('Server response not ok');
+        }
+      })
+      .catch((err) => {
+        console.error("Submission error:", err);
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
         submitBtn.innerHTML = '<span>Send Message &rarr;</span>';
-        submitBtn.style.background = '';
-      }, 4000);
-    }
 
-    function copyPreparedDraft() {
-      const draft = lastPreparedDraft || "Recipient: vrbberaj@gmail.com";
-      const btn = document.getElementById('copyDraftBtn');
-      copyText(draft, btn);
+        toastTitle.innerHTML = '<span>✉️</span> Direct Contact Details';
+        toastDesc.innerHTML = `Your message could not be sent automatically. You can email Balaajee directly at <a href="mailto:vrbberaj@gmail.com" style="color: #065F46; font-weight: 700; text-decoration: underline;">vrbberaj@gmail.com</a> or reach out on <a href="https://wa.me/919994761293" target="_blank" style="color: #065F46; font-weight: 700; text-decoration: underline;">WhatsApp (+91 9994761293)</a>.`;
+        toast.className = 'status-toast visible';
+      });
     }
   </script>
 </body>
