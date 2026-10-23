@@ -123,11 +123,13 @@ CASE_STUDIES = [
             ("Measure", "Tracked OKRs with product directors: tracing time, triage time, SUS and token sync speed."),
         ],
         "artifacts": [
-            {"kind": "recreation", "src": "screenshots/transformation-ibm-watson.png", "caption": "Multi-agent AI telemetry cockpit: orchestrating task routing, safety tripwires, and supervised diff approvals."},
-            {"kind": "recreation", "src": "screenshots/ibm_maas360_ai_endpoint.png", "caption": "MaaS360: AI remediation with staged rollout and supervised approval."},
-            {"kind": "recreation", "src": "screenshots/ibm_rhapsody_ai_modeling.png", "caption": "Rhapsody SE: multi-agent SysML statechart copilot with mathematical safety guardrails."},
+            {"kind": "photo", "src": "assets/photos/candid_allhands_panel.jpg", "caption": "Cross-functional governance session: presenting multi-agent AI system architecture and confidence tripwires to engineering and compliance."},
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Deep-work modelling session: synthesising multi-tier confidence models, reasoning traces, and error recovery states."},
             {"kind": "diagram", "diagram": "confidence", "caption": "The three-tier confidence model the team designed and shipped."},
             {"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png", "caption": "Workshop #3 whiteboard: why unguided AI fails in regulated systems."},
+            {"kind": "recreation", "src": "screenshots/ibm_maas360_ai_endpoint.png", "caption": "MaaS360: AI remediation with staged rollout and supervised approval."},
+            {"kind": "recreation", "src": "screenshots/ibm_rhapsody_ai_modeling.png", "caption": "Rhapsody SE: multi-agent SysML statechart copilot with mathematical safety guardrails."},
+            {"kind": "recreation", "src": "screenshots/verified_manager_spreadsheet.png", "caption": "Prioritisation workbook (RICE + UX debt) I used to set sprint allocation across squads."},
         ],
         "decisions": [
             ("Three levels of AI autonomy instead of on/off", "Compliance needed control; engineers needed speed. High-confidence actions run, medium ones open a diff for review, low ones hand control back.", "Added a review step for mid-confidence actions. Accepted because it removed the compliance veto."),
@@ -181,7 +183,7 @@ CASE_STUDIES = [
             ("Measure", "Adoption, turnaround time and error rate tracked for 30 days after launch."),
         ],
         "artifacts": [
-            {"kind": "recreation", "src": "screenshots/transformation-ericsson.png", "caption": "Shipped single-screen scenario pricing tool: translating 14 complex Excel formula sheets into high-density grid comparison."},
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow."},
             {"kind": "real", "src": "assets/behance/sales/sales_2_1200x1196.png", "caption": "Business case summary: profit and loss, cost of sales and cash flow per scenario."},
             {"kind": "real", "src": "assets/behance/sales/sales_3_1200x788.png", "caption": "Recent scenarios and opportunities: the engineer’s starting point."},
             {"kind": "real", "src": "assets/behance/sales/sales_1_1200x3772.png", "caption": "Scenario A vs B: engineering, transitional and transformational cost compared.", "tall": True},
@@ -241,14 +243,17 @@ CASE_STUDIES = [
             ("Measure", "Support tickets, pairing failures and staging throughput tracked after release."),
         ],
         "artifacts": [
-            {"kind": "recreation", "src": "screenshots/transformation-zebra.png", "caption": "Shipped VisibilityIQ: Enterprise IoT device telemetry and actionable health dashboard across 38,000+ managed handhelds."},
+            {"kind": "photo", "src": "assets/photos/candid_desk_review.jpg", "caption": "Desk review & 1:1 critique: walking through telemetry alert states, pairing logic, and touch targets on an iMac workstation with a junior designer."},
+            {"kind": "photo", "src": "assets/photos/candid_window_wireframes.jpg", "caption": "Studio wireframe wall: taping up and inspecting handheld staging flows and glove-friendly 72px touch targets on the studio window."},
+            {"kind": "photo", "src": "assets/photos/candid_flipchart_huddle.jpg", "caption": "Facilitating hands-on affinity mapping and card sorting on an easel flipchart with squad designers."},
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Deep work & sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations over coffee."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_1_1400x889.png", "caption": "Persona: Jamie, IT manager. Goals, frustrations and device usage."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_2_1400x730.png", "caption": "Card-sorting board from the stakeholder workshop."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_3_1400x1106.png", "caption": "Device-health user flow and branching logic."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_5_1400x788.png", "caption": "Research findings from customer meetings."},
             {"kind": "real", "src": "assets/behance/enterprise/enterprise_4_1400x2319.png", "caption": "Low-fi Device Health Summary: every card ends in an action.", "tall": True},
-            {"kind": "real", "src": "assets/behance/enterprise/enterprise_6_1400x1569.png", "caption": "Shipped VisibilityIQ dashboard in production.", "tall": True},
-            {"kind": "real", "src": "assets/behance/enterprise/enterprise_7_1400x788.png", "caption": "Customer feedback and validated usability responses."},
+            {"kind": "real", "src": "assets/behance/enterprise/enterprise_6_1400x1569.png", "caption": "Shipped VisibilityIQ dashboard.", "tall": True},
+            {"kind": "real", "src": "assets/behance/enterprise/enterprise_7_1400x788.png", "caption": "What customers said about the new version."},
         ],
         "decisions": [
             ("Organise by what IT managers act on", "The card sort showed people think in Devices, Applications and Battery, not in our data sources.", "Engineering had to join data from three back-ends into one view."),
@@ -302,6 +307,7 @@ CASE_STUDIES = [
             ("Measure", "Visual QA bugs, handoff time and front-end velocity per sprint."),
         ],
         "artifacts": [
+            {"kind": "photo", "src": "assets/photos/candid_desk_review.jpg", "caption": "DesignOps chapter review: auditing hard-coded color values and aligning token hierarchies across squads."},
             {"kind": "diagram", "diagram": "tokens", "caption": "The three-tier token structure: designers change intent, not hex codes."},
             {"kind": "recreation", "src": "screenshots/transformation-ibm-carbon.png", "caption": "Token sync console: which tokens reached which squads."},
         ],
@@ -356,6 +362,7 @@ CASE_STUDIES = [
             ("Measure", "Route errors and driver feedback tracked across the fleet rollout."),
         ],
         "artifacts": [
+            {"kind": "photo", "src": "assets/photos/candid_deep_thinking_coffee.jpg", "caption": "Glance-time analysis & HUD ergonomics: structuring the three-zone cluster information architecture for safety-critical highway driving."},
             {"kind": "diagram", "diagram": "zones", "caption": "Three glance zones: what the driver sees first, second and only peripherally."},
             {"kind": "recreation", "src": "screenshots/transformation-zf-wabco.png", "caption": "Cluster layout with zone 1 speed and radar, zone 2 turn card, zone 3 eco-coaching."},
         ],
