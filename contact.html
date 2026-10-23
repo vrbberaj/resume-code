@@ -848,7 +848,7 @@
           </p>
         </div>
 
-        <form id="contactForm" action="https://formsubmit.co/vrbberaj@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
+        <form id="contactForm" action="https://formsubmit.co/2433df5501cb1a4c4fddea00814e6134" method="POST" onsubmit="handleFormSubmit(event)">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://vrbberaj.github.io/resume-code/contact.html?sent=1">
@@ -1004,9 +1004,14 @@
       submitBtn.style.opacity = '0.75';
       toast.classList.remove('visible');
 
-      // Submit directly in the background via FormSubmit API to Balaajee's inbox
-      fetch("https://formsubmit.co/ajax/vrbberaj@gmail.com", {
+      // AbortController with 10s timeout to prevent hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      // Submit directly in the background via FormSubmit API to Balaajee's inbox using secure token
+      fetch("https://formsubmit.co/ajax/2433df5501cb1a4c4fddea00814e6134", {
         method: "POST",
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
@@ -1024,15 +1029,18 @@
         })
       })
       .then(async (response) => {
+        clearTimeout(timeoutId);
         submitBtn.disabled = false;
         submitBtn.style.opacity = '1';
 
-        if (response.ok) {
+        const data = await response.json().catch(() => ({}));
+
+        if (response.ok && data.success !== "false") {
           submitBtn.innerHTML = '<span>Message Delivered ✓</span>';
           submitBtn.style.background = '#10B981';
 
           toastTitle.innerHTML = '<span>✓</span> Message Delivered to Balaajee\'s Inbox!';
-          toastDesc.innerHTML = `Thank you, <strong>${name}</strong>. Your message has been sent directly to <code>vrbberaj@gmail.com</code> without opening any mail app. Balaajee typically reviews inquiries and replies within 24 hours.`;
+          toastDesc.innerHTML = `Thank you, <strong>${name}</strong>. Your message has been sent directly to Balaajee's inbox without opening any mail app. Balaajee typically reviews inquiries and replies within 24 hours.`;
           toast.className = 'status-toast visible';
           toast.style.background = '#ECFDF5';
           toast.style.borderColor = '#A7F3D0';
@@ -1045,11 +1053,17 @@
             submitBtn.innerHTML = '<span>Send Message &rarr;</span>';
             submitBtn.style.background = '';
           }, 6000);
+        } else if (data.success === "false" && data.message && data.message.includes("Activation")) {
+          submitBtn.innerHTML = '<span>Activation Sent ✓</span>';
+          toastTitle.innerHTML = '<span>📧</span> One-Time Activation Sent';
+          toastDesc.innerHTML = `An activation email has been sent to Balaajee's inbox. Please click 'Activate Form' once to activate direct delivery for this domain.`;
+          toast.className = 'status-toast visible';
         } else {
           throw new Error('Server response not ok');
         }
       })
       .catch((err) => {
+        clearTimeout(timeoutId);
         console.error("Submission error:", err);
         submitBtn.disabled = false;
         submitBtn.style.opacity = '1';
