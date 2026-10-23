@@ -585,20 +585,14 @@ def build_leadership():
     fw = "".join(f'<div class="ld-card"><h3>{e(t)}</h3><p>{e(d)}</p><div class="meta">Used at: {e(u)}</div></div>' for t, d, u in FRAMEWORKS)
     refs = "".join(testimonial_card(t) for t in TESTIMONIALS)
     roles = "".join(f"<span>{e(r)}</span>" for r in TARGET_ROLES)
-    action_photo = figure({"kind": "photo", "src": "assets/photos/candid_flipchart_huddle.jpg",
-                           "caption": "Cross-functional design thinking & affinity mapping workshop with squad designers."})
-    wall_critique = figure({"kind": "photo", "src": "assets/photos/candid_desk_review.jpg",
-                            "caption": "Desk review & 1:1 critique: walking through interaction details and pairing logic on an iMac workstation."})
-    window_photo = figure({"kind": "photo", "src": "assets/photos/candid_window_wireframes.jpg",
-                           "caption": "Studio wireframe wall: taping up and inspecting full handheld staging flows on the studio window."})
-    stage_panel = figure({"kind": "photo", "src": "assets/photos/candid_allhands_panel.jpg",
-                          "caption": "Design All-Hands Town Hall: presenting user-centric innovation and enterprise systems to 100+ stakeholders."})
-    team_culture = figure({"kind": "photo", "src": "assets/photos/candid_team_marathon.jpg",
-                           "caption": "Team culture & camaraderie: celebrating at the corporate charity 5K finish line."})
-    scorecard_fig = figure({"kind": "photo", "src": "assets/photos/artifact_ux_scorecard_warroom.jpg",
-                            "caption": "Enterprise UX Scorecard & Sprint Quality Bar: criteria linking heuristic standards to physical war-room deliverables."})
+    team_artifact = figure({"kind": "recreation", "src": "screenshots/ibm_research_leadership_matrix.png",
+                            "caption": "Executive operational evidence: 12-designer UX-as-a-Service re-organisation, squad pod embedding, and 3-round SUS usability benchmark trajectory (61.4 → 89.4)."})
+    whiteboard_artifact = figure({"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png",
+                                 "caption": "Workshop whiteboard: defining human-in-the-loop cognitive boundaries and error recovery rules with squad engineers."})
     card_sort = figure({"kind": "real", "src": "assets/behance/enterprise/enterprise_2_1400x730.png",
                         "caption": "Card-sorting board from a Zebra stakeholder workshop I ran."})
+    spreadsheet_fig = figure({"kind": "recreation", "src": "screenshots/verified_manager_spreadsheet.png",
+                             "caption": "Prioritisation workbook (RICE + UX debt): balancing technical debt, usability issues, and roadmap features across squads."})
 
     links = [("philosophy", "Philosophy"), ("evolution", "How I evolved"), ("team", "Team structure"),
              ("hiring", "Hiring & growth"), ("delegation", "Delegation"), ("challenges", "Challenges"),
@@ -649,9 +643,8 @@ def build_leadership():
         <div class="ld-col ld-after"><h3>After: UX as a service</h3><p>Shared patterns, embedded pairs, one quality bar</p>{after}</div>
       </div>
       <div class="ld-callout"><b>Result:</b> 6 different AI feedback widgets consolidated into 1, feature cycle time down from 6 weeks to under 2, 100% retention and 3 promotions over 16 months.</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;margin-top:28px;">
-        {stage_panel}
-        {team_culture}
+      <div style="margin-top:28px;">
+        {team_artifact}
       </div>
     </section>
 
@@ -678,7 +671,7 @@ def build_leadership():
 
     <section class="g-wrap ld-sec" id="workshops">
       {lead_head("Workshops and facilitation", "Bringing people into the room")}
-      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{action_photo}{wall_critique}{window_photo}{card_sort}</div></div>
+      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{card_sort}{whiteboard_artifact}</div></div>
     </section>
 
     <section class="g-wrap ld-sec" id="tools">
@@ -690,7 +683,7 @@ def build_leadership():
 
     <section class="g-wrap ld-sec" id="docs">
       {lead_head("Business documentation & governance", "How I run the business side of design", "Briefs, OKRs, quality scorecards and roadmaps are how design earns a seat at the planning table.")}
-      <div style="margin-bottom:28px;">{scorecard_fig}</div>
+      <div style="margin-bottom:28px;">{spreadsheet_fig}</div>
       {doc_samples()}
     </section>
 
