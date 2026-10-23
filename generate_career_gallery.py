@@ -1,0 +1,1140 @@
+#!/usr/bin/env python3
+# generate_career_gallery.py
+# Generates gallery.html: Career Moments & Leadership in Action
+
+import os
+import json
+import html
+
+GALLERY_ITEMS = [
+    {
+        "id": "global-1",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_boardroom_review.jpg",
+        "title": "Executive UX Strategy Review with International Stakeholders",
+        "role": "Executive Design Leadership • Global Product Review",
+        "desc": "Presenting enterprise UX scorecard metrics and design system ROI to international product and engineering executives. Aligning user-centered metrics directly with global business outcomes."
+    },
+    {
+        "id": "ibm-1",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_whiteboard_sprint.jpg",
+        "title": "Enterprise AI System Architecture & Whiteboard Sprint",
+        "role": "Senior UX Manager • IBM Watson & Enterprise Modeling",
+        "desc": "Collaborating on complex system architecture and user flow modeling with global engineering leads and product architects, ensuring seamless AI-UX integration for enterprise SaaS."
+    },
+    {
+        "id": "ibm-2",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_ibm_global_trio.jpg",
+        "title": "Global Product Leadership Sync at IBM Software Labs",
+        "role": "Senior UX Manager • Global Cross-Functional Alignment",
+        "desc": "Standing with European and American product leadership counterparts in the IBM corridor following an executive UX alignment review on enterprise endpoint management."
+    },
+    {
+        "id": "global-2",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_gear_team.jpg",
+        "title": "Cross-Functional Product Design & Engineering Squad",
+        "role": "Design Organization Lead • Multi-Disciplinary Squad",
+        "desc": "Celebrating milestone delivery with an integrated cross-functional team of UX designers, researchers, and global engineering partners across international development tracks."
+    },
+    {
+        "id": "ibm-3",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_real_ibm_team_floor.jpg",
+        "title": "The IBM Software Labs Enterprise Design Squad",
+        "role": "Senior UX Manager • 12-Designer Enterprise Studio",
+        "desc": "On the IBM design floor with the dedicated enterprise UX team responsible for Rhapsody SE, MaaS360, and core enterprise AI capabilities across mission-critical products."
+    },
+    {
+        "id": "zebra-1",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_hardware_lab.jpg",
+        "title": "Enterprise Rugged Mobile & Scanner Ergonomics Lab",
+        "role": "Product Design Manager • Hardware-Software Usability",
+        "desc": "Evaluating physical ergonomics, thermal performance, and one-handed scan flows on rugged enterprise mobile computers with senior hardware engineering specialists."
+    },
+    {
+        "id": "global-3",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_journey_warroom.jpg",
+        "title": "Multi-Tenant User Journey War Room & Discovery Session",
+        "role": "Lead Design Strategist • Enterprise Journey Mapping",
+        "desc": "Leading an interactive design discovery workshop with international researchers and architects, mapping multi-tenant touchpoints and identifying mission-critical cognitive bottlenecks."
+    },
+    {
+        "id": "global-4",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_keynote_summit.jpg",
+        "title": "Keynote: Enterprise AI & UX Governance at Scale",
+        "role": "Design Executive • Global Conference Speaker",
+        "desc": "Delivering a keynote address to an amphitheater of international tech executives on scaling design governance, bridging engineering feasibility, and embedding human-centered AI."
+    },
+    {
+        "id": "zebra-2",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_stage_solo.jpg",
+        "title": "Zebra Technologies Innovation Celebration: Srujana 2022",
+        "role": "Design Manager • Annual Innovation Stage",
+        "desc": "Recognized for UX innovation and design team scale at the Zebra Technologies annual innovation summit, celebrating culture, team spirit, and creative momentum."
+    },
+    {
+        "id": "zebra-3",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_stage_trio.jpg",
+        "title": "Design Leadership at Zebra Innovation Summit",
+        "role": "UI/UX Product Design Manager • Design Team Mentorship",
+        "desc": "With design team leads on the main stage at Zebra Srujana, reflecting a vibrant design studio culture that scaled from reactive delivery to strategic innovation."
+    },
+    {
+        "id": "zebra-4",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_stage_full.jpg",
+        "title": "Studio Showcase: Zebra Enterprise Design Squad",
+        "role": "UI/UX Product Design Manager • Organizational Pedigree",
+        "desc": "Stage presence at Zebra Technologies corporate convention, highlighting the design team's role in powering 80,000+ commercial fleets and global enterprise accounts."
+    },
+    {
+        "id": "zebra-5",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_convention.jpg",
+        "title": "Zebra Global Innovation Convention Floor",
+        "role": "Design Manager • All-Hands Gathering",
+        "desc": "In the grand hall of the annual Zebra all-hands convention alongside fellow engineering and product leaders representing the India Design Center."
+    },
+    {
+        "id": "zebra-6",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_audience.jpg",
+        "title": "Executive Keynotes: Zebra Innovation Summit Auditorium",
+        "role": "Design Leadership • Strategic Alignment",
+        "desc": "Front-row at the Zebra annual technology summit, absorbing global corporate vision, enterprise roadmaps, and cross-business unit technological breakthroughs."
+    },
+    {
+        "id": "ericsson-1",
+        "category": "ericsson",
+        "category_label": "Ericsson Global",
+        "badge_color": "bg-emerald-600",
+        "image": "assets/gallery/gallery_ericsson_selfie.jpg",
+        "title": "Ericsson Global Hack-fest & Innovation Celebration",
+        "role": "UI/UX Designer • 1st Place Global Optimization",
+        "desc": "Celebrating with the Ericsson team after securing 1st place in the Global Hack-fest Optimization Contest, fostering an enduring culture of UX innovation."
+    },
+    {
+        "id": "ericsson-2",
+        "category": "ericsson",
+        "category_label": "Ericsson Global",
+        "badge_color": "bg-emerald-600",
+        "image": "assets/gallery/gallery_real_ericsson_lounge.jpg",
+        "title": "Ericsson Design Studio Lounge & Morning Sync",
+        "role": "UI/UX Designer • Telecommunications Infrastructure",
+        "desc": "A candid morning pause at the Ericsson campus lounge with the signature Ericsson coffee mug, where cross-functional design sprints and design system governance began."
+    },
+    {
+        "id": "culture-1",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_campus_courtyard.jpg",
+        "title": "Tech Park Courtyard Huddle: Enterprise Campus",
+        "role": "Design Manager • Informal Sprint Sync",
+        "desc": "Taking design strategy out of the boardroom into the campus courtyard with squad leads, fostering camaraderie and high-trust peer relationships."
+    },
+    {
+        "id": "culture-2",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_team_lunch.jpg",
+        "title": "Studio Milestone Celebration Lunch",
+        "role": "Design Manager • Team Bonding & Retention",
+        "desc": "Celebrating sprint velocity and design system releases over an authentic team banquet, building strong personal connections that drove low team attrition."
+    },
+    {
+        "id": "culture-3",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_bowling_night.jpg",
+        "title": "Design Studio Bowling Championship & Offsite",
+        "role": "Design Leader • Team Morale & Camaraderie",
+        "desc": "Energizing the design squad at an offsite bowling evening, proving that world-class design delivery is sustained by genuine mutual trust and shared joy."
+    },
+    {
+        "id": "culture-4",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_holiday_cubicle.jpg",
+        "title": "Holiday Bay Celebration & Hybrid Remote Sync",
+        "role": "Design Manager • Inclusive Hybrid Culture",
+        "desc": "Bringing in festive joy with holiday cubicle decor while looping in remote teammates on video call, ensuring every designer feels connected regardless of location."
+    },
+    {
+        "id": "culture-5",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_festive_desk.jpg",
+        "title": "Traditional Festivities at the Office Bay",
+        "role": "Design Manager • Authentic Workplace Culture",
+        "desc": "Embracing cultural heritage with traditional attire at the workplace during festive celebrations, championing diversity and authentic personal expression."
+    },
+    {
+        "id": "culture-6",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_kite_workshop.jpg",
+        "title": "Hands-on Creative Workshop & Artifact Showcase",
+        "role": "Design Mentor • Creative Expression",
+        "desc": "Leading a tactile craft workshop emphasizing color theory, tactile prototyping, and creative storytelling beyond digital screens."
+    }
+]
+
+HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Moments &amp; Leadership Gallery | Balaajee V.R.</title>
+  <meta name="description" content="Authentic photographic record of 18+ years of enterprise design leadership across IBM Software Labs, Zebra Technologies, Ericsson, and global product teams.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+
+  <style>
+    :root {
+      --primary-accent: #F00658;
+      --primary-hover: #D0054B;
+      --accent-subtle: rgba(240, 6, 88, 0.08);
+      --accent-border: rgba(240, 6, 88, 0.25);
+      --gold: #C4892A;
+
+      --font-heading: 'Overpass', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+
+      --bg-base: #F8F9FA;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F3F6;
+      --bg-card: #FFFFFF;
+      
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      
+      --border-subtle: #E2E8F0;
+      --border-medium: #CBD5E1;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+    }
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Global Header */
+    .global-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 10px 0;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .header-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-monogram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 19px;
+      background: var(--text-main);
+      color: #FFFFFF;
+      border-radius: 9px;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .nav-item {
+      padding: 7px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-item:hover {
+      color: var(--text-main);
+    }
+
+    .nav-item.active {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-accent);
+      color: #FFFFFF;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid var(--primary-accent);
+    }
+
+    .btn-contact:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Container */
+    .g-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Gallery Hero */
+    .gallery-hero {
+      padding: 60px 0 40px;
+      text-align: center;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-base) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent-border);
+      color: var(--primary-accent);
+      font-family: var(--font-code);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-hero h1 {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+
+    .gallery-hero p {
+      font-size: 17px;
+      color: var(--text-body);
+      max-width: 780px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    /* Stat strip */
+    .stat-strip {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .stat-pill strong {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stat-pill span {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Filter Controls */
+    .filter-section {
+      padding: 30px 0 20px;
+      position: sticky;
+      top: 60px;
+      z-index: 900;
+      background: rgba(248, 249, 250, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 40px;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border-medium);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text-main);
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: var(--text-main);
+      border-color: var(--text-main);
+      color: #FFFFFF;
+    }
+
+    .filter-btn .count-tag {
+      font-family: var(--font-code);
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-btn.active .count-tag {
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+    }
+
+    /* Grid Layout */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      padding-bottom: 80px;
+    }
+
+    @media (max-width: 1040px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .gallery-hero h1 {
+        font-size: 30px;
+      }
+    }
+
+    /* Gallery Card */
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-col: column;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
+      border-color: var(--border-medium);
+    }
+
+    .gallery-card.hidden {
+      display: none;
+    }
+
+    .card-thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #E2E8F0;
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover .card-thumb {
+      transform: scale(1.04);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      color: #FFFFFF;
+      padding: 5px 12px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .badge-global { background: #2563EB; }
+    .badge-ibm { background: #4F46E5; }
+    .badge-zebra { background: #D97706; }
+    .badge-ericsson { background: #059669; }
+    .badge-culture { background: #E11D48; }
+
+    .card-content {
+      padding: 20px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-role {
+      font-family: var(--font-code);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin: 0 0 10px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 0 16px;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      margin-top: auto;
+    }
+
+    .btn-view-photo {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--primary-accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+
+    .gallery-card:hover .btn-view-photo {
+      gap: 9px;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      background: #FFFFFF;
+      max-width: 1040px;
+      width: 100%;
+      max-height: 92vh;
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    @media (max-width: 860px) {
+      .lightbox-content {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    }
+
+    .lightbox-media {
+      background: #0B1120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .lightbox-sidebar {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .lb-badge {
+      display: inline-block;
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+
+    .lb-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin: 0 0 10px;
+    }
+
+    .lb-role {
+      font-family: var(--font-code);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .lb-desc {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: 24px;
+    }
+
+    .lb-counter {
+      font-family: var(--font-code);
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lb-nav-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lb-btn-nav {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .lb-btn-nav:hover {
+      background: var(--text-main);
+      color: #FFFFFF;
+    }
+
+    .btn-close-lb {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+
+    .btn-close-lb:hover {
+      background: var(--primary-accent);
+      color: #FFFFFF;
+    }
+
+    /* Footer */
+    .g-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      margin-top: 60px;
+    }
+
+    .g-footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: var(--text-main);
+      font-size: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Global Header -->
+  <header class="global-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
+        <span class="brand-monogram" aria-hidden="true">B</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-item">Welcome</a>
+        <a href="leadership.html" class="nav-item">Leadership</a>
+        <a href="leadership-deck.html" class="nav-item">Leadership Deck</a>
+        <a href="index.html#featured-work" class="nav-item">Selected Work</a>
+        <a href="gallery.html" class="nav-item active">Career Gallery</a>
+        <a href="archive.html" class="nav-item">Visual Archive</a>
+        <a href="cv.html" class="nav-item">Resume</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
+          Get In Touch &rarr;
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gallery-hero">
+    <div class="g-wrap">
+      <div class="hero-eyebrow">
+        <span>●</span> Authentic Career Archive &bull; 18+ Years
+      </div>
+      <h1>Inside the Studio: Career Moments &amp; Leadership</h1>
+      <p>
+        An authentic photographic record spanning IBM Software Labs, Zebra Technologies, Ericsson, and cross-functional enterprise engagements. Capturing real team moments, executive strategy sessions, design sprints, usability testing, and cross-cultural leadership across global hubs.
+      </p>
+
+      <div class="stat-strip">
+        <div class="stat-pill">
+          <strong>21</strong>
+          <span>Curated Moments</span>
+        </div>
+        <div class="stat-pill">
+          <strong>4</strong>
+          <span>Global Tech Giants</span>
+        </div>
+        <div class="stat-pill">
+          <strong>18+</strong>
+          <span>Years of Pedigree</span>
+        </div>
+        <div class="stat-pill">
+          <strong>Multi-Cultural</strong>
+          <span>Global Stakeholders &amp; Squads</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Filter Bar -->
+  <section class="filter-section">
+    <div class="g-wrap">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">
+          All Moments <span class="count-tag">21</span>
+        </button>
+        <button class="filter-btn" data-filter="global">
+          Global Leadership <span class="count-tag">4</span>
+        </button>
+        <button class="filter-btn" data-filter="ibm">
+          IBM Software Labs <span class="count-tag">3</span>
+        </button>
+        <button class="filter-btn" data-filter="zebra">
+          Zebra Technologies <span class="count-tag">6</span>
+        </button>
+        <button class="filter-btn" data-filter="ericsson">
+          Ericsson Global <span class="count-tag">2</span>
+        </button>
+        <button class="filter-btn" data-filter="culture">
+          Team Culture &amp; Celebrations <span class="count-tag">6</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <main class="g-wrap">
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Cards rendered here -->
+      {CARD_ITEMS_HTML}
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" role="dialog">
+    <div class="lightbox-content">
+      <button class="btn-close-lb" id="closeLbBtn" aria-label="Close Lightbox">&times;</button>
+      
+      <div class="lightbox-media">
+        <img src="" alt="" id="lbImg" class="lightbox-img">
+      </div>
+
+      <div class="lightbox-sidebar">
+        <div>
+          <span class="lb-badge" id="lbBadge">Global Leadership</span>
+          <h2 class="lb-title" id="lbTitle">Moment Title</h2>
+          <div class="lb-role" id="lbRole">Role details</div>
+          <p class="lb-desc" id="lbDesc">Detailed description...</p>
+        </div>
+
+        <div class="lb-counter">
+          <span id="lbCounter">Moment 1 of 21</span>
+          <div class="lb-nav-group">
+            <button class="lb-btn-nav" id="prevLbBtn" aria-label="Previous">&larr;</button>
+            <button class="lb-btn-nav" id="nextLbBtn" aria-label="Next">&rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="g-footer">
+    <div class="g-wrap g-footer-row">
+      <div class="footer-brand">
+        Balaajee V.R. &bull; Senior UI/UX Design Manager
+      </div>
+      <div class="footer-copy">
+        18+ Years Leadership &bull; Ex-IBM, Zebra Technologies, Ericsson &bull; Chennai, India
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const galleryData = {GALLERY_JSON};
+    let currentIndex = 0;
+    let filteredData = [...galleryData];
+
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.gallery-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        if (filter === 'all') {
+          filteredData = [...galleryData];
+          cards.forEach(card => card.classList.remove('hidden'));
+        } else {
+          filteredData = galleryData.filter(item => item.category === filter);
+          cards.forEach(card => {
+            if (card.getAttribute('data-cat') === filter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        }
+      });
+    });
+
+    // Lightbox functionality
+    const modal = document.getElementById('lightboxModal');
+    const lbImg = document.getElementById('lbImg');
+    const lbBadge = document.getElementById('lbBadge');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbRole = document.getElementById('lbRole');
+    const lbDesc = document.getElementById('lbDesc');
+    const lbCounter = document.getElementById('lbCounter');
+    const closeBtn = document.getElementById('closeLbBtn');
+    const prevBtn = document.getElementById('prevLbBtn');
+    const nextBtn = document.getElementById('nextLbBtn');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const item = filteredData[currentIndex];
+      if (!item) return;
+
+      lbImg.src = item.image;
+      lbImg.alt = item.title;
+      lbBadge.textContent = item.category_label;
+      lbBadge.className = 'lb-badge ' + 'badge-' + item.category;
+      lbTitle.textContent = item.title;
+      lbRole.textContent = item.role;
+      lbDesc.textContent = item.desc;
+      lbCounter.textContent = `Moment ${currentIndex + 1} of ${filteredData.length}`;
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function showNext() {
+      if (filteredData.length === 0) return;
+      currentIndex = (currentIndex + 1) % filteredData.length;
+      openLightbox(currentIndex);
+    }
+
+    function showPrev() {
+      if (filteredData.length === 0) return;
+      currentIndex = (currentIndex - 1 + filteredData.length) % filteredData.length;
+      openLightbox(currentIndex);
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        const idx = filteredData.findIndex(item => item.id === id);
+        if (idx !== -1) {
+          openLightbox(idx);
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  </script>
+</body>
+</html>
+"""
+
+def generate():
+    card_chunks = []
+    for item in GALLERY_ITEMS:
+        chunk = f"""
+      <article class="gallery-card" data-cat="{item['category']}" data-id="{item['id']}">
+        <div class="card-thumb-wrap">
+          <img src="{item['image']}" alt="{html.escape(item['title'])}" class="card-thumb" loading="lazy">
+          <span class="card-badge badge-{item['category']}">{html.escape(item['category_label'])}</span>
+        </div>
+        <div class="card-content">
+          <div class="card-role">{html.escape(item['role'])}</div>
+          <h3 class="card-title">{html.escape(item['title'])}</h3>
+          <p class="card-desc">{html.escape(item['desc'])}</p>
+          <div class="card-footer">
+            <span class="btn-view-photo">Enlarge Moment &rarr;</span>
+          </div>
+        </div>
+      </article>"""
+        card_chunks.append(chunk)
+
+    final_html = HTML_TEMPLATE.replace("{CARD_ITEMS_HTML}", "\n".join(card_chunks))
+    final_html = final_html.replace("{GALLERY_JSON}", json.dumps(GALLERY_ITEMS))
+
+    with open("gallery.html", "w", encoding="utf-8") as f:
+        f.write(final_html)
+    print("Successfully generated gallery.html with", len(GALLERY_ITEMS), "moments!")
+
+if __name__ == "__main__":
+    generate()
