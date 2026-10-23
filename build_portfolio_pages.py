@@ -383,12 +383,70 @@ LEAD_CSS = """
   .ld-roles { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
   .ld-roles span { font-size: 13px; font-weight: 600; color: var(--text-main); background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 100px; padding: 6px 14px; }
 
-  .ld-nav { position: sticky; top: 61px; z-index: 50; background: rgba(250, 250, 249, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-subtle); margin-top: 56px; }
-  .ld-nav .g-wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 12px; padding-bottom: 12px; scrollbar-width: none; }
+  .ld-nav { 
+    position: sticky; 
+    top: 61px; 
+    z-index: 50; 
+    background: rgba(255, 255, 255, 0.96); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); 
+    border-bottom: 1px solid var(--border-subtle); 
+    margin-top: 56px; 
+  }
+  .ld-nav .g-wrap { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    overflow-x: auto; 
+    padding-top: 0; 
+    padding-bottom: 0; 
+    scrollbar-width: none; 
+  }
   .ld-nav .g-wrap::-webkit-scrollbar { display: none; }
-  .ld-nav a { flex: 0 0 auto; font-size: 13px; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 7px 14px; border-radius: 100px; transition: all 0.2s ease; }
-  .ld-nav a:hover { color: var(--text-main); background: #FFFFFF; }
-  .ld-nav a.active { background: #0F172A; color: #FFFFFF; font-weight: 700; }
+  
+  /* Context label distinguishing in-page sections from page tabs */
+  .ld-nav-label { 
+    flex: 0 0 auto; 
+    font-family: var(--font-code); 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: var(--text-muted); 
+    text-transform: uppercase; 
+    letter-spacing: 0.08em; 
+    padding-right: 14px; 
+    border-right: 1px solid var(--border-subtle); 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 6px; 
+  }
+  .ld-nav-label svg { 
+    color: var(--primary-accent); 
+  }
+
+  /* In-page Anchor Links: flat text with underline indicator, NOT pill buttons */
+  .ld-nav a { 
+    flex: 0 0 auto; 
+    font-size: 13px; 
+    font-weight: 500; 
+    color: var(--text-muted); 
+    text-decoration: none; 
+    padding: 14px 4px 12px; 
+    border-bottom: 2px solid transparent; 
+    border-radius: 0; 
+    background: transparent; 
+    transition: all 0.2s ease; 
+  }
+  .ld-nav a:hover { 
+    color: var(--text-main); 
+    background: transparent; 
+    border-bottom-color: var(--border-medium); 
+  }
+  .ld-nav a.active { 
+    background: transparent; 
+    color: var(--primary-accent); 
+    font-weight: 700; 
+    border-bottom: 2px solid var(--primary-accent); 
+  }
 
   .ld-sec { padding-top: 96px; scroll-margin-top: 120px; }
   .ld-head { margin-bottom: 36px; }
@@ -629,7 +687,15 @@ def build_leadership():
     </section>
     <section class="g-wrap"><div class="ld-nums" aria-label="Leadership by the numbers">{nums}</div></section>
 
-    <nav class="ld-nav" aria-label="On this page"><div class="g-wrap">{subnav}</div></nav>
+    <nav class="ld-nav" aria-label="On this page">
+      <div class="g-wrap">
+        <span class="ld-nav-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+          On This Page:
+        </span>
+        {subnav}
+      </div>
+    </nav>
 
     <section class="g-wrap ld-sec" id="philosophy">
       {lead_head("Leadership philosophy", "Four things I believe about leading design")}
