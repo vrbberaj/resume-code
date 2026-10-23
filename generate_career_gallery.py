@@ -13,9 +13,9 @@ GALLERY_ITEMS = [
         "category_label": "Global Leadership",
         "badge_color": "bg-blue-600",
         "image": "assets/gallery/gallery_boardroom_review.jpg",
-        "title": "Carbon Design System: Enterprise Adoption & Velocity Scorecard",
-        "role": "Carbon Design System Governance • Global Review",
-        "desc": "Reviewing multi-squad component adoption (94%) and velocity ROI with cross-functional engineering leads and product executives. Driving design consistency and sprint velocity across 14 enterprise squads."
+        "title": "IBM MaaS360: Enterprise Endpoint Security & UX Modernization",
+        "role": "IBM MaaS360 • Enterprise Strategy Review",
+        "desc": "Reviewing unified endpoint security architecture, policy compliance telemetry (1.2M+ devices), and AI threat triage velocity (+42%) with cross-functional engineering leads and product executives."
     },
     {
         "id": "ibm-1",
