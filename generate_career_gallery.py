@@ -57,16 +57,7 @@ GALLERY_ITEMS = [
         "role": "Senior UX Manager • 12-Designer Enterprise Studio",
         "desc": "On the IBM design floor with the dedicated enterprise UX team responsible for Rhapsody SE, MaaS360, and core enterprise AI capabilities across mission-critical products."
     },
-    {
-        "id": "zebra-1",
-        "category": "zebra",
-        "category_label": "Zebra Technologies",
-        "badge_color": "bg-amber-600",
-        "image": "assets/gallery/gallery_hardware_lab.jpg",
-        "title": "Enterprise Rugged Mobile & Scanner Ergonomics Lab",
-        "role": "Product Design Manager • Hardware-Software Usability",
-        "desc": "Evaluating physical ergonomics, thermal performance, and one-handed scan flows on rugged enterprise mobile computers with senior hardware engineering specialists."
-    },
+
     {
         "id": "global-3",
         "category": "global",
@@ -835,7 +826,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="g-wrap">
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">
-          All Moments <span class="count-tag">20</span>
+          All Moments <span class="count-tag">19</span>
         </button>
         <button class="filter-btn" data-filter="global">
           Global Leadership <span class="count-tag">2</span>
@@ -844,7 +835,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           IBM Software Labs <span class="count-tag">4</span>
         </button>
         <button class="filter-btn" data-filter="zebra">
-          Zebra Technologies <span class="count-tag">6</span>
+          Zebra Technologies <span class="count-tag">5</span>
         </button>
         <button class="filter-btn" data-filter="ericsson">
           Ericsson Global <span class="count-tag">2</span>
