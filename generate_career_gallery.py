@@ -78,16 +78,6 @@ GALLERY_ITEMS = [
         "desc": "Leading an interactive design discovery workshop with international researchers and architects, mapping multi-tenant touchpoints and identifying mission-critical cognitive bottlenecks."
     },
     {
-        "id": "global-4",
-        "category": "global",
-        "category_label": "Global Leadership",
-        "badge_color": "bg-blue-600",
-        "image": "assets/gallery/gallery_keynote_summit.jpg",
-        "title": "Keynote: Enterprise AI & UX Governance at Scale",
-        "role": "Design Executive • Global Conference Speaker",
-        "desc": "Delivering a keynote address to an amphitheater of international tech executives on scaling design governance, bridging engineering feasibility, and embedding human-centered AI."
-    },
-    {
         "id": "zebra-2",
         "category": "zebra",
         "category_label": "Zebra Technologies",
@@ -905,7 +895,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
       <div class="stat-strip">
         <div class="stat-pill">
-          <strong>21</strong>
+          <strong>20</strong>
           <span>Curated Moments</span>
         </div>
         <div class="stat-pill">
@@ -929,10 +919,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="g-wrap">
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">
-          All Moments <span class="count-tag">21</span>
+          All Moments <span class="count-tag">20</span>
         </button>
         <button class="filter-btn" data-filter="global">
-          Global Leadership <span class="count-tag">4</span>
+          Global Leadership <span class="count-tag">3</span>
         </button>
         <button class="filter-btn" data-filter="ibm">
           IBM Software Labs <span class="count-tag">3</span>
