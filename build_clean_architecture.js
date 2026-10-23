@@ -40,7 +40,7 @@ function getGlobalNav(activePage) {
       </nav>
 
       <div class="header-actions">
-        <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-download-pdf">
+        <a href="Balaajee_VR_Senior_UX_Manager_CV.pdf" download="Balaajee_VR_Senior_UX_Manager_CV.pdf" class="btn-download-pdf">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download CV (PDF)
         </a>
@@ -1498,7 +1498,7 @@ const cvHtml = `<!DOCTYPE html>
         <div style="font-size: 12px; color: var(--text-muted);">Senior UI/UX Design Manager &bull; 18+ Years Enterprise Experience</div>
       </div>
       <div class="cv-bar-actions">
-        <a href="Balaajee VR POP Resume 20261015.pdf" download class="btn-contact" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px;">
+        <a href="Balaajee_VR_Senior_UX_Manager_CV.pdf" download="Balaajee_VR_Senior_UX_Manager_CV.pdf" class="btn-contact" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Official PDF (A4)
         </a>
