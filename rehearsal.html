@@ -440,7 +440,9 @@
           <button id="playBtn" class="btn btn-primary">▶ Start Rehearsal</button>
           <button id="resetBtn" class="btn btn-secondary">↺ Reset</button>
           <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ Audio Voice Guide: ON</button>
+          <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play 60s Executive Audio Guide</button>
         </div>
+        <audio id="refAudioPlayer" src="assets/audio_guide_daniel.m4a" preload="auto" onended="onRefAudioEnded()"></audio>
       </div>
     </div>
 
@@ -471,11 +473,11 @@
         duration: 75,
         durationFormatted: "01:15",
         headerDuration: "70–75s",
-        fullText: "I’m a Senior UI/UX Design Manager with over 18 years of experience building and scaling product design organizations across global technology leaders, including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. My core focus has always been mission-critical, high-complexity systems, spanning telecom CPQ, enterprise agentic AI, rugged industrial IoT, and commercial automotive cockpits. My design leadership philosophy centers on bridging deep technical logic with seamless usability, ensuring design is a direct driver of engineering velocity and product adoption. Throughout my career, I’ve established zero-defect design systems that accelerated cross-functional release cycles, led multi-disciplinary teams across global time zones, and mentored over 50 product designers into high-performing contributors. What excited me about this role with your organization is your focus on scaling complex enterprise systems. I’m looking to bring my background in design operations, systems thinking, and leadership to help your team achieve that next level of scale.",
+        fullText: "I’m a Senior UI/UX Design Manager with over 18 years of experience building and scaling product design organizations across global technology leaders, including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. My core focus has always been mission-critical, high-complexity systems, spanning enterprise agentic AI, telecom CPQ, rugged industrial IoT, and connected automotive platforms. My design leadership philosophy centers on bridging deep technical logic with frictionless usability. Today, I actively champion AI transformation across design—both crafting explainable, human-centered AI product experiences and modernizing internal UX workflows with AI-assisted research and design-system automation. Throughout my career, I’ve established zero-defect design systems that accelerated engineering release cycles, led multi-disciplinary teams across global time zones, and mentored over 50 product designers into high-performing contributors. What excited me about this role with your organization is your focus on scaling complex enterprise products. I’m looking to bring my background in design operations, systems thinking, and AI-era UX leadership to help your team achieve that next level of scale.",
         timeline: [
           { start: 0, end: 18, lineId: 'beat_b', frame: 'frame1', cue: '[B] Background & Executive Scope (18+ Yrs, Global Giants)' },
-          { start: 18, end: 36, lineId: 'beat_e1', frame: 'frame2', cue: '[E] Expertise & Domains (Telecom CPQ, AI, Industrial IoT)' },
-          { start: 36, end: 52, lineId: 'beat_e2', frame: 'frame2', cue: '[E] Leadership Philosophy (Engineering Velocity & Systems)' },
+          { start: 18, end: 34, lineId: 'beat_e1', frame: 'frame2', cue: '[E] Expertise & Domains (Enterprise AI, Telecom, Industrial IoT)' },
+          { start: 34, end: 52, lineId: 'beat_e2', frame: 'frame2', cue: '[E] 2026 AI Leadership (AI UX Transformation & Modern Workflows)' },
           { start: 52, end: 64, lineId: 'beat_a', frame: 'frame2', cue: '[A] Accomplishments (Zero-Defect Systems, Mentored 50+)' },
           { start: 64, end: 75, lineId: 'beat_t', frame: 'frame3', cue: '[T] Strategic Tie-in (Forward Lean, Company Alignment)' }
         ],
@@ -490,26 +492,26 @@
           <p id="beat_e1">
             <span class="coach-pill cue-framework">E — Expertise</span>
             <span class="coach-pill cue-gesture">Open Palm Gesture</span>
-            “My core focus has always been mission-critical, high-complexity systems—spanning <strong>telecom CPQ</strong>, <strong>enterprise agentic AI</strong>, <strong>rugged industrial IoT</strong>, and <strong>commercial automotive cockpits</strong>.”
+            “My core focus has always been mission-critical, high-complexity systems—spanning <strong>enterprise agentic AI</strong>, <strong>telecom CPQ</strong>, <strong>rugged industrial IoT</strong>, and <strong>connected automotive platforms</strong>.”
           </p>
 
           <p id="beat_e2">
-            <span class="coach-pill cue-framework">E — Philosophy</span>
-            “My design leadership philosophy centers on bridging deep technical logic with seamless usability, ensuring design isn’t just aesthetic, but a direct driver of engineering velocity and product adoption.”
+            <span class="coach-pill cue-framework">E — 2026 AI Leadership</span>
+            “My design leadership philosophy centers on bridging deep technical logic with frictionless usability. Today, I actively champion <strong>AI transformation across design</strong>—both crafting explainable, human-centered AI product experiences and modernizing internal UX workflows with AI-assisted research and design-system automation.”
             <span class="coach-pill cue-pause">1s Pause</span>
           </p>
 
           <p id="beat_a">
             <span class="coach-pill cue-framework">A — Accomplishments</span>
             <span class="coach-pill cue-gesture">Conviction & Scale</span>
-            “Throughout my career, I’ve established zero-defect design systems that accelerated cross-functional release cycles, led multi-disciplinary teams across global time zones, and <strong>mentored over 50 product designers</strong> into high-performing contributors.”
+            “Throughout my career, I’ve established zero-defect design systems that accelerated engineering release cycles, led multi-disciplinary teams across global time zones, and <strong>mentored over 50 product designers</strong> into high-performing contributors.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="beat_t">
             <span class="coach-pill cue-framework">T — Tie-In</span>
             <span class="coach-pill cue-smile">Slight Forward Lean</span>
-            “What excited me about this role with your organization is your focus on scaling complex enterprise systems. I’m looking to bring my background in design operations, systems thinking, and team leadership to help your team achieve that next level of scale.”
+            “What excited me about this role with your organization is your focus on scaling complex enterprise products. I’m looking to bring my background in design operations, systems thinking, and AI-era UX leadership to help your team achieve that next level of scale.”
           </p>
         `,
         tips: `
@@ -518,73 +520,65 @@
             <div>Mentioning IBM, Ericsson, and Zebra in the first 15 seconds establishes enterprise authority without reciting college.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">⚡ [A] Concrete Scale</div>
-            <div>Highlighting zero-defect systems and 50+ designers mentored answers the management question before they even ask.</div>
+            <div class="tip-title">🤖 [2026 AI Era] Future-Proof</div>
+            <div>Calling out AI UX transformation & automated workflows proves you lead modern 2026 design orgs, not legacy waterfall teams.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">🤝 [T] Tailor on the Fly</div>
-            <div>In actual interviews, customize the last line with the specific product or initiative the company is hiring for.</div>
+            <div class="tip-title">⚡ [A] Concrete Scale</div>
+            <div>Highlighting zero-defect systems and 50+ designers mentored answers the management question before they even ask.</div>
           </div>
         `
       },
       welcome: {
-        title: "Portfolio Welcome Video Prompter (60–65s)",
-        duration: 62,
-        durationFormatted: "01:02",
-        headerDuration: "60–65s",
-        fullText: "Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global enterprise leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. I began my career in software engineering before transitioning into design leadership. That technical foundation shaped my philosophy: I bridge the gap between design vision and technical feasibility to protect delivery timelines, scale design system governance, and mentor high-performing design squads. Across this portfolio, you’ll find my five flagship case studies in enterprise AI, industrial IoT, and telecom, along with my 10-slide Leadership Deck and Career Gallery. Thank you for stopping by, and I look forward to connecting with you.",
+        title: "Portfolio Welcome Video Prompter (Evergreen & AI-Era • 60s)",
+        duration: 60,
+        durationFormatted: "01:00",
+        headerDuration: "55–60s",
+        fullText: "Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. I started in software engineering before moving into design leadership. That technical foundation allows me to bridge design vision with engineering reality, protecting delivery timelines and scaling enterprise design systems. Today, a key focus is driving the AI transformation in UX: both designing trusted, agentic AI experiences for enterprise software, and modernizing our internal design workflows with AI-accelerated research and prototyping. As you explore my work, you'll see how my teams turn complex technical ecosystems into high-adoption products. Take a look around, and let’s connect to build what's next.",
         timeline: [
-          { start: 0, end: 8, lineId: 'line1', frame: 'frame1', cue: 'Act 1: Warm Welcome & Intro (Direct Eye Contact & Warm Smile)' },
-          { start: 8, end: 20, lineId: 'line2', frame: 'frame1', cue: 'Act 1: Brand Pedigree (Steady, Authoritative Cadence)' },
-          { start: 20, end: 32, lineId: 'line3', frame: 'frame2', cue: 'Act 2: The Differentiator (Engineer to Design Leader)' },
-          { start: 32, end: 46, lineId: 'line4', frame: 'frame2', cue: 'Act 2: Leadership Impact (Open Hand, Conviction)' },
-          { start: 46, end: 56, lineId: 'line5', frame: 'frame3', cue: 'Act 3: Portfolio Tour (Slight Forward Lean)' },
-          { start: 56, end: 62, lineId: 'line6', frame: 'frame3', cue: 'Act 3: Warm Sign-off (Friendly Eye Contact, Hold 2s)' }
+          { start: 0, end: 12, lineId: 'line1', frame: 'frame1', cue: 'Act 1: Identity & Enterprise Pedigree (Warm Smile & Direct Eye Contact)' },
+          { start: 12, end: 26, lineId: 'line2', frame: 'frame2', cue: 'Act 2: The Differentiator (Engineer to Design Leader • Grounded)' },
+          { start: 26, end: 44, lineId: 'line3', frame: 'frame2', cue: 'Act 3: 2026 AI Transformation & UX Workflows (Forward Lean • Visionary)' },
+          { start: 44, end: 60, lineId: 'line4', frame: 'frame3', cue: 'Act 4: Evergreen Invitation & Closing (Warm Eye Contact • Hold 2s)' }
         ],
         html: `
           <p id="line1" class="active-sentence">
             <span class="coach-pill cue-smile">Warm Smile</span>
-            “Hello and welcome. I’m <strong>Balaajee</strong>.”
+            “Hello and welcome. I’m <strong>Balaajee</strong>. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Zebra Technologies</strong>, <strong>Ericsson</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line2">
-            “Over the past 18 years, I’ve built and scaled product design organizations across global enterprise leaders—including <strong>IBM</strong>, <strong>Zebra Technologies</strong>, <strong>Ericsson</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
-          </p>
-
-          <p id="line3">
             <span class="coach-pill cue-framework">The Differentiator</span>
             <span class="coach-pill cue-gesture">Open Palm</span>
-            “I began my career in software engineering before transitioning into design leadership. That technical foundation shaped my philosophy:”
-          </p>
-
-          <p id="line4">
-            “—I bridge the gap between design vision and technical feasibility to <strong>protect delivery timelines</strong>, scale design system governance, and mentor high-performing design squads.”
+            “I started in software engineering before moving into design leadership. That technical foundation allows me to <strong>bridge design vision with engineering reality</strong>, protecting delivery timelines and scaling enterprise design systems.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
-          <p id="line5">
-            <span class="coach-pill cue-smile">Slight Lean Forward</span>
-            “Across this portfolio, you’ll find my five flagship case studies in <strong>enterprise AI, industrial IoT, and telecom</strong>, along with my 10-slide <strong>Leadership Deck</strong> and <strong>Career Gallery</strong>.”
+          <p id="line3">
+            <span class="coach-pill cue-framework">2026 AI Transformation</span>
+            <span class="coach-pill cue-gesture">Thoughtful & Forward-Looking</span>
+            “Today, a key focus is driving the <strong>AI transformation in UX</strong>: both designing trusted, agentic AI experiences for enterprise software, and modernizing our internal design workflows with <strong>AI-accelerated research, prototyping, and governance</strong>.”
+            <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
-          <p id="line6">
-            <span class="coach-pill cue-smile">Warm Closing Eye Contact</span>
-            “Thank you for stopping by, and I look forward to connecting with you.”
+          <p id="line4">
+            <span class="coach-pill cue-smile">Warm Closing Invitation</span>
+            “As you explore my work, you'll see how my teams turn complex technical ecosystems into high-adoption products. <strong>Take a look around, and let’s connect to build what's next.</strong>”
           </p>
         `,
         tips: `
           <div class="tip-box">
-            <div class="tip-title">🎯 The 15-Second Hook</div>
-            <div>Mentioning your name, 18+ years, and IBM/Zebra/Ericsson right away locks in senior credibility immediately.</div>
+            <div class="tip-title">♾️ 100% Evergreen (Zero Reshoots)</div>
+            <div>Notice there are no project names or page counts mentioned. You can add, remove, or redesign case studies anytime—your video stays perpetually fresh.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">⚡ The 'Engineer-to-Leader' Anchor</div>
-            <div>VPs of Design and Engineering love leaders who understand technical feasibility—deliver this line with grounded conviction.</div>
+            <div class="tip-title">🤖 Dual AI Leadership Hook</div>
+            <div>You address BOTH sides of AI: 1) Designing AI products (agentic UX), and 2) Transforming internal UX team workflows with AI tools. That's exactly what 2026 VPs look for.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">👀 Lens Focus & Ending</div>
-            <div>Look right into the camera lens, not at your screen. At the end, smile and hold your gaze for 2 full seconds before hitting stop.</div>
+            <div class="tip-title">👀 The Final 2-Second Hold</div>
+            <div>After saying "let's connect to build what's next", maintain friendly eye contact with the camera for 2 full seconds before reaching for the stop button.</div>
           </div>
         `
       }
@@ -771,8 +765,31 @@
       }
     });
 
-    // Initialize in BEAT mode on load
-    switchMode('beat');
+    const refAudioPlayer = document.getElementById('refAudioPlayer');
+    const playRefAudioBtn = document.getElementById('playRefAudioBtn');
+
+    function toggleRefAudio() {
+      if (!refAudioPlayer) return;
+      if (refAudioPlayer.paused) {
+        if (isRunning) resetRehearsal();
+        if (synth) synth.cancel();
+        refAudioPlayer.play();
+        playRefAudioBtn.textContent = '⏸ Pause Audio Guide';
+        playRefAudioBtn.classList.add('active');
+      } else {
+        refAudioPlayer.pause();
+        playRefAudioBtn.textContent = '🎧 Play 60s Executive Audio Guide';
+        playRefAudioBtn.classList.remove('active');
+      }
+    }
+
+    function onRefAudioEnded() {
+      playRefAudioBtn.textContent = '🎧 Play 60s Executive Audio Guide';
+      playRefAudioBtn.classList.remove('active');
+    }
+
+    // Initialize in Portfolio Welcome mode by default
+    switchMode('welcome');
   </script>
 </body>
 </html>
