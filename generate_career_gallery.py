@@ -59,6 +59,26 @@ GALLERY_ITEMS = [
     },
 
     {
+        "id": "zebra-usability-desk",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_zebra_usability_desk.jpg",
+        "title": "Handheld Scanner Ergonomics & Touch Usability Review",
+        "role": "Product Design Manager • Hardware-Software Usability",
+        "desc": "Collaborating with senior engineering leads at a studio standing desk, validating one-handed thumb-reach zones and screen interaction flows on rugged enterprise mobile touch computers."
+    },
+    {
+        "id": "global-townhall-talk",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_townhall_review.jpg",
+        "title": "Design System Sprint Review & Chapter Townhall",
+        "role": "UI/UX Design Manager • Chapter Lead & Sprint Demo",
+        "desc": "Presenting Design System component adoption metrics, token architecture, and sprint velocity to product managers, engineering leads, and design squad members in an open studio townhall."
+    },
+    {
         "id": "global-3",
         "category": "global",
         "category_label": "Global Leadership",
@@ -826,16 +846,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="g-wrap">
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">
-          All Moments <span class="count-tag">19</span>
+          All Moments <span class="count-tag">21</span>
         </button>
         <button class="filter-btn" data-filter="global">
-          Global Leadership <span class="count-tag">2</span>
+          Global Leadership <span class="count-tag">3</span>
         </button>
         <button class="filter-btn" data-filter="ibm">
           IBM Software Labs <span class="count-tag">4</span>
         </button>
         <button class="filter-btn" data-filter="zebra">
-          Zebra Technologies <span class="count-tag">5</span>
+          Zebra Technologies <span class="count-tag">6</span>
         </button>
         <button class="filter-btn" data-filter="ericsson">
           Ericsson Global <span class="count-tag">2</span>
