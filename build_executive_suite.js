@@ -37,7 +37,7 @@ function getGlobalNav(activePage) {
       </nav>
 
       <div class="header-actions">
-        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
+        <a href="contact.html" class="btn-contact">
           Get In Touch &rarr;
         </a>
       </div>
@@ -7057,7 +7057,7 @@ function updateNavInHtml(filePath, activeKey) {
   const actionsPattern = /<div class="header-actions">[\s\S]*?<\/div>/;
   const newActions = `
       <div class="header-actions">
-        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
+        <a href="contact.html" class="btn-contact">
           Get In Touch &rarr;
         </a>
       </div>

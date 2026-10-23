@@ -767,7 +767,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       </nav>
 
       <div class="header-actions">
-        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">
+        <a href="contact.html" class="btn-contact">
           Get In Touch &rarr;
         </a>
       </div>

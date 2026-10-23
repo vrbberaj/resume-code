@@ -49,7 +49,7 @@ def header(active):
         <a href="cv.html" class="{cls('cv')}">Resume</a>
       </nav>
       <div class="header-actions">
-        <a href="mailto:vrbberaj@gmail.com" class="btn-contact">Get In Touch &rarr;</a>
+        <a href="contact.html" class="btn-contact">Get In Touch &rarr;</a>
       </div>
     </div>
   </header>"""
