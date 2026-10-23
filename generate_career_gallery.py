@@ -13,9 +13,9 @@ GALLERY_ITEMS = [
         "category_label": "Global Leadership",
         "badge_color": "bg-blue-600",
         "image": "assets/gallery/gallery_boardroom_review.jpg",
-        "title": "Executive UX Strategy Review with International Stakeholders",
-        "role": "Executive Design Leadership • Global Product Review",
-        "desc": "Presenting enterprise UX scorecard metrics and design system ROI to international product and engineering executives. Aligning user-centered metrics directly with global business outcomes."
+        "title": "Carbon Design System: Enterprise Adoption & Velocity Scorecard",
+        "role": "Carbon Design System Governance • Global Review",
+        "desc": "Reviewing multi-squad component adoption (94%) and velocity ROI with cross-functional engineering leads and product executives. Driving design consistency and sprint velocity across 14 enterprise squads."
     },
     {
         "id": "ibm-1",
@@ -394,10 +394,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     /* Clean Minimal Gallery Header */
     .gallery-header {
-      padding: 36px 0 20px;
+      padding: 36px 0 24px;
       border-bottom: 1px solid var(--border-subtle);
       background: #FFFFFF;
       text-align: center;
+      margin-bottom: 40px;
     }
 
     .gallery-title {
@@ -407,67 +408,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       color: var(--text-main);
       letter-spacing: -0.02em;
       margin: 0;
-    }
-
-    /* Filter Controls */
-    .filter-section {
-      padding: 30px 0 20px;
-      position: sticky;
-      top: 60px;
-      z-index: 900;
-      background: rgba(248, 249, 250, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 40px;
-    }
-
-    .filter-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-      color: var(--text-body);
-      font-family: var(--font-body);
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 9999px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--text-main);
-      color: var(--text-main);
-    }
-
-    .filter-btn.active {
-      background: var(--text-main);
-      border-color: var(--text-main);
-      color: #FFFFFF;
-    }
-
-    .filter-btn .count-tag {
-      font-family: var(--font-code);
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 9999px;
-      background: rgba(0, 0, 0, 0.08);
-    }
-
-    .filter-btn.active .count-tag {
-      background: rgba(255, 255, 255, 0.25);
-      color: #FFFFFF;
     }
 
     /* Grid Layout */
@@ -841,32 +781,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- Sticky Filter Bar -->
-  <section class="filter-section">
-    <div class="g-wrap">
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">
-          All Moments <span class="count-tag">21</span>
-        </button>
-        <button class="filter-btn" data-filter="global">
-          Global Leadership <span class="count-tag">3</span>
-        </button>
-        <button class="filter-btn" data-filter="ibm">
-          IBM Software Labs <span class="count-tag">4</span>
-        </button>
-        <button class="filter-btn" data-filter="zebra">
-          Zebra Technologies <span class="count-tag">6</span>
-        </button>
-        <button class="filter-btn" data-filter="ericsson">
-          Ericsson Global <span class="count-tag">2</span>
-        </button>
-        <button class="filter-btn" data-filter="culture">
-          Team Culture &amp; Celebrations <span class="count-tag">6</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <!-- Gallery Grid -->
   <main class="g-wrap">
     <div class="gallery-grid" id="galleryGrid">
@@ -918,33 +832,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <script>
     const galleryData = {GALLERY_JSON};
     let currentIndex = 0;
-    let filteredData = [...galleryData];
-
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filteredData = galleryData;
     const cards = document.querySelectorAll('.gallery-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-        if (filter === 'all') {
-          filteredData = [...galleryData];
-          cards.forEach(card => card.classList.remove('hidden'));
-        } else {
-          filteredData = galleryData.filter(item => item.category === filter);
-          cards.forEach(card => {
-            if (card.getAttribute('data-cat') === filter) {
-              card.classList.remove('hidden');
-            } else {
-              card.classList.add('hidden');
-            }
-          });
-        }
-      });
-    });
 
     // Lightbox functionality
     const modal = document.getElementById('lightboxModal');
