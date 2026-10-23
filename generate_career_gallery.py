@@ -38,14 +38,14 @@ GALLERY_ITEMS = [
         "desc": "Standing with European and American product leadership counterparts in the IBM corridor following an executive UX alignment review on enterprise endpoint management."
     },
     {
-        "id": "global-2",
-        "category": "global",
-        "category_label": "Global Leadership",
-        "badge_color": "bg-blue-600",
+        "id": "ibm-full-team",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
         "image": "assets/gallery/gallery_gear_team.jpg",
-        "title": "Cross-Functional Product Design & Engineering Squad",
-        "role": "Design Organization Lead • Multi-Disciplinary Squad",
-        "desc": "Celebrating milestone delivery with an integrated cross-functional team of UX designers, researchers, and global engineering partners across international development tracks."
+        "title": "The Full Enterprise Design Team",
+        "role": "Senior UX Manager • Complete Design Organization",
+        "desc": "The complete enterprise product design team gathered together, comprising UI/UX designers, design researchers, and global design leadership across enterprise product tracks."
     },
     {
         "id": "ibm-3",
@@ -838,10 +838,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           All Moments <span class="count-tag">20</span>
         </button>
         <button class="filter-btn" data-filter="global">
-          Global Leadership <span class="count-tag">3</span>
+          Global Leadership <span class="count-tag">2</span>
         </button>
         <button class="filter-btn" data-filter="ibm">
-          IBM Software Labs <span class="count-tag">3</span>
+          IBM Software Labs <span class="count-tag">4</span>
         </button>
         <button class="filter-btn" data-filter="zebra">
           Zebra Technologies <span class="count-tag">6</span>
