@@ -587,8 +587,8 @@ def build_leadership():
     roles = "".join(f"<span>{e(r)}</span>" for r in TARGET_ROLES)
     team_artifact = figure({"kind": "recreation", "src": "screenshots/ibm_research_leadership_matrix.png",
                             "caption": "Executive operational evidence: 12-designer UX-as-a-Service re-organisation, squad pod embedding, and 3-round SUS usability benchmark trajectory (61.4 → 89.4)."})
-    whiteboard_artifact = figure({"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png",
-                                 "caption": "Workshop whiteboard: defining human-in-the-loop cognitive boundaries and error recovery rules with squad engineers."})
+    research_artifact = figure({"kind": "real", "src": "assets/behance/enterprise/enterprise_8_1400x788.png",
+                                "caption": "Contextual inquiry & qualitative readout: customer research findings from Australia Post field interviews."})
     card_sort = figure({"kind": "real", "src": "assets/behance/enterprise/enterprise_2_1400x730.png",
                         "caption": "Card-sorting board from a Zebra stakeholder workshop I ran."})
     spreadsheet_fig = figure({"kind": "recreation", "src": "screenshots/verified_manager_spreadsheet.png",
@@ -671,7 +671,7 @@ def build_leadership():
 
     <section class="g-wrap ld-sec" id="workshops">
       {lead_head("Workshops and facilitation", "Bringing people into the room")}
-      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{card_sort}{whiteboard_artifact}</div></div>
+      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{card_sort}{research_artifact}</div></div>
     </section>
 
     <section class="g-wrap ld-sec" id="tools">

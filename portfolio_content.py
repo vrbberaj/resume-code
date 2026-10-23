@@ -123,13 +123,11 @@ CASE_STUDIES = [
             ("Measure", "Tracked OKRs with product directors: tracing time, triage time, SUS and token sync speed."),
         ],
         "artifacts": [
-            {"kind": "recreation", "src": "screenshots/ibm_research_leadership_matrix.png", "caption": "UX research & team re-organisation evidence: moving 12 designers into chapters and measuring 3-round SUS usability benchmarks (61.4 → 89.4)."},
             {"kind": "recreation", "src": "screenshots/transformation-ibm-watson.png", "caption": "Multi-agent AI telemetry cockpit: orchestrating task routing, safety tripwires, and supervised diff approvals."},
             {"kind": "recreation", "src": "screenshots/ibm_maas360_ai_endpoint.png", "caption": "MaaS360: AI remediation with staged rollout and supervised approval."},
             {"kind": "recreation", "src": "screenshots/ibm_rhapsody_ai_modeling.png", "caption": "Rhapsody SE: multi-agent SysML statechart copilot with mathematical safety guardrails."},
             {"kind": "diagram", "diagram": "confidence", "caption": "The three-tier confidence model the team designed and shipped."},
             {"kind": "recreation", "src": "screenshots/verified_whiteboard_sketch.png", "caption": "Workshop #3 whiteboard: why unguided AI fails in regulated systems."},
-            {"kind": "recreation", "src": "screenshots/verified_manager_spreadsheet.png", "caption": "Prioritisation workbook (RICE + UX debt) I used to set sprint allocation across squads."},
         ],
         "decisions": [
             ("Three levels of AI autonomy instead of on/off", "Compliance needed control; engineers needed speed. High-confidence actions run, medium ones open a diff for review, low ones hand control back.", "Added a review step for mid-confidence actions. Accepted because it removed the compliance veto."),
