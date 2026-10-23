@@ -381,80 +381,21 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       padding: 0 24px;
     }
 
-    /* Gallery Hero */
-    .gallery-hero {
-      padding: 60px 0 40px;
-      text-align: center;
-      background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-base) 100%);
+    /* Clean Minimal Gallery Header */
+    .gallery-header {
+      padding: 36px 0 20px;
       border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-subtle);
-      border: 1px solid var(--accent-border);
-      color: var(--primary-accent);
-      font-family: var(--font-code);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 9999px;
-      margin-bottom: 20px;
-    }
-
-    .gallery-hero h1 {
-      font-family: var(--font-heading);
-      font-size: 44px;
-      font-weight: 900;
-      color: var(--text-main);
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin: 0 0 16px;
-    }
-
-    .gallery-hero p {
-      font-size: 17px;
-      color: var(--text-body);
-      max-width: 780px;
-      margin: 0 auto 32px;
-      line-height: 1.65;
-    }
-
-    /* Stat strip */
-    .stat-strip {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .stat-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
       background: #FFFFFF;
-      border: 1px solid var(--border-medium);
-      padding: 8px 18px;
-      border-radius: 9999px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      text-align: center;
     }
 
-    .stat-pill strong {
+    .gallery-title {
       font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 700;
       color: var(--text-main);
-    }
-
-    .stat-pill span {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0;
     }
 
     /* Filter Controls */
@@ -882,35 +823,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="gallery-hero">
+  <!-- Clean Minimal Title Section -->
+  <section class="gallery-header">
     <div class="g-wrap">
-      <div class="hero-eyebrow">
-        <span>●</span> Authentic Career Archive &bull; 18+ Years
-      </div>
-      <h1>Inside the Studio: Career Moments &amp; Leadership</h1>
-      <p>
-        An authentic photographic record spanning IBM Software Labs, Zebra Technologies, Ericsson, and cross-functional enterprise engagements. Capturing real team moments, executive strategy sessions, design sprints, usability testing, and cross-cultural leadership across global hubs.
-      </p>
-
-      <div class="stat-strip">
-        <div class="stat-pill">
-          <strong>20</strong>
-          <span>Curated Moments</span>
-        </div>
-        <div class="stat-pill">
-          <strong>4</strong>
-          <span>Global Tech Giants</span>
-        </div>
-        <div class="stat-pill">
-          <strong>18+</strong>
-          <span>Years of Pedigree</span>
-        </div>
-        <div class="stat-pill">
-          <strong>Multi-Cultural</strong>
-          <span>Global Stakeholders &amp; Squads</span>
-        </div>
-      </div>
+      <h1 class="gallery-title">Inside the Studio: Career Moments &amp; Leadership</h1>
     </div>
   </section>
 
