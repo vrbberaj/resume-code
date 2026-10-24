@@ -50,7 +50,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IBM Watson AI in Enterprise Systems &amp; Security: Rhapsody SE &amp; MaaS360 | Balaajee V.R.</title>
-  <meta name="description" content="End-to-end design leadership story at IBM India Software Labs: Leading UX research from the front, restructuring 12 designers into UX-as-a-Service, and architecting mathematical confidence gating for Rhapsody SE and MaaS360.">
+  <meta name="description" content="End-to-end design leadership story at IBM India Software Labs: Leading UX research from the front, restructuring 14 Designers into UX-as-a-Service, and architecting mathematical confidence gating for Rhapsody SE and MaaS360.">
   ${commonHeadLinks}
   <style>
     ${globalCoreStyles}
@@ -864,7 +864,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
         IBM Watson: Autonomous Multi-Agent Systems Modeling (Rhapsody SE) &amp; Proactive Endpoint Governance (MaaS360)
       </h1>
       <p class="case-main-lead">
-        Leading UX research from the front line, restructuring 12 designers into a centralized UX-as-a-Service model, and architecting mathematical confidence gating across enterprise systems engineering (Rhapsody SE) and unified endpoint management (MaaS360)—transforming unguided generative AI risks into an auditable, human-governed enterprise advantage.
+        Leading UX research from the front line, restructuring 14 Designers into a centralized UX-as-a-Service model, and architecting mathematical confidence gating across enterprise systems engineering (Rhapsody SE) and unified endpoint management (MaaS360)—transforming unguided generative AI risks into an auditable, human-governed enterprise advantage.
       </p>
 
       <div class="hero-metric-bar">
@@ -881,7 +881,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
           <div class="h-metric-lbl">SOX &amp; DO-178C Compliance Breaches Across 140,000+ Tasks</div>
         </div>
         <div class="h-metric-item">
-          <div class="h-metric-val">12 Designers</div>
+          <div class="h-metric-val">14 Designers</div>
           <div class="h-metric-lbl">Centralized UX-as-a-Service Team Re-Organization</div>
         </div>
       </div>
@@ -893,7 +893,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
             <span class="pipeline-tag">Senior UI/UX Design Manager Execution Framework</span>
             <h3 class="pipeline-heading">End-to-End Design Leadership &amp; Operational Governance &bull; IBM Watson</h3>
           </div>
-          <span class="pipeline-role-badge">Front-Line Field Research &rarr; 12-Designer Re-Org &rarr; Executive ROI</span>
+          <span class="pipeline-role-badge">Front-Line Field Research &rarr; 14-Designer Re-Org &rarr; Executive ROI</span>
         </div>
         <div class="pipeline-steps-grid">
           <div class="p-step-card">
@@ -947,8 +947,8 @@ const ibmStoryHtml = `<!DOCTYPE html>
                 <span class="p-step-num">04</span>
                 <span class="p-step-phase">Managing Designers</span>
               </div>
-              <h4 class="p-step-title">12-Designer UX-as-a-Service Re-Org</h4>
-              <p class="p-step-desc">Dismantled product silos; restructured 12 designers into 3 specialized chapters (Agentic IA, Embedded Product Pods, DesignOps Token Pipeline) with AI upskilling.</p>
+              <h4 class="p-step-title">14-Designer UX-as-a-Service Re-Org</h4>
+              <p class="p-step-desc">Dismantled product silos; restructured 14 Designers into 3 specialized chapters (Agentic IA, Embedded Product Pods, DesignOps Token Pipeline) with AI upskilling.</p>
             </div>
             <div class="p-step-meta">
               <span class="p-step-deliverable"><strong>Deliverable:</strong> UX-as-a-Service Operating Model</span>
@@ -982,7 +982,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
       <a href="#sec-research" class="toc-link">02. Front-Line Research</a>
       <a href="#sec-personas" class="toc-link">03. Dual User Personas</a>
       <a href="#sec-ia" class="toc-link">04. Info Architecture &amp; Workflows</a>
-      <a href="#sec-team" class="toc-link">05. 12-Designer Team Re-Org</a>
+      <a href="#sec-team" class="toc-link">05. 14-Designer Team Re-Org</a>
       <a href="#sec-testing" class="toc-link">06. Usability Benchmark (SUS)</a>
       <a href="#sec-evidence" class="toc-link">07. Production Deliverables</a>
       <a href="#sec-roi" class="toc-link">08. Enterprise ROI &amp; CAR Defense</a>
@@ -1039,7 +1039,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
         <div class="callout-box gold">
           <div class="callout-title">Senior Manager Strategic Design Mandate</div>
           <div class="callout-text">
-            Bridge the chasm between Watson Core AI researchers pushing for pure autonomy and risk-averse enterprise operators. Architect a deterministic Human-in-the-Loop (HITL) Agentic UX framework featuring mathematical confidence gating, live side-by-side diff previews, and immutable cryptographic audit trails—scaling this governance across both Rhapsody SE and MaaS360 squads through a reorganized 12-designer team.
+            Bridge the chasm between Watson Core AI researchers pushing for pure autonomy and risk-averse enterprise operators. Architect a deterministic Human-in-the-Loop (HITL) Agentic UX framework featuring mathematical confidence gating, live side-by-side diff previews, and immutable cryptographic audit trails—scaling this governance across both Rhapsody SE and MaaS360 squads through a reorganized 14-Designer team.
           </div>
         </div>
       </section>
@@ -1500,7 +1500,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
               <span class="method-kit-pill">Method Kit 03 &bull; Talent Ladder</span>
               <h4 class="method-kit-title">Designer AI Growth &amp; 1:1 Coaching Matrix</h4>
               <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.5;">
-                The 4-stage talent elevation ladder I used during bi-weekly 1:1s to upskill 12 traditional UI designers into Agentic UX architects:
+                The 4-stage talent elevation ladder I used during bi-weekly 1:1s to upskill 14 traditional UI designers into Agentic UX architects:
               </p>
               <ul class="method-kit-list">
                 <li><strong>Stage 1 (Craft):</strong> Carbon token mastery &amp; statechart drawing.</li>
@@ -1514,18 +1514,18 @@ const ibmStoryHtml = `<!DOCTYPE html>
       </section>
 
       <!-- ====================================================================
-           CHAPTER 05: MANAGING DESIGNERS: 12-PERSON TEAM RE-ORG
+           CHAPTER 05: MANAGING DESIGNERS: 14-person TEAM RE-ORG
            ==================================================================== -->
       <section class="section-block" id="sec-team">
         <div class="story-chapter-badge">Chapter 05 &bull; Team Leadership &amp; Operational Excellence</div>
-        <h2 class="section-title-h2">Managing 12 Designers: Transitioning from Siloed Pods to UX-as-a-Service</h2>
+        <h2 class="section-title-h2">Managing 14 Designers: Transitioning from Siloed Pods to UX-as-a-Service</h2>
         <div class="section-prose">
           <p>
-            One of my most significant executive responsibilities as Senior Manager was leading and evolving the design organization. Upon taking over the team, I found 12 talented product designers operating in completely isolated product silos:
+            One of my most significant executive responsibilities as Senior Manager was leading and evolving the design organization. Upon taking over the team, I found 14 talented product designers operating in completely isolated product silos:
           </p>
           <ul style="margin-left: 20px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
             <li><strong>The Problem:</strong> 4 designers worked exclusively on Rhapsody, 5 on MaaS360, and 3 on Watson Core AI. Each group was inventing separate UI components for AI confidence ratings, diverging from IBM Carbon design tokens, and duplicating research. Sprint velocity was sluggish, and cross-pollination was virtually non-existent.</li>
-            <li><strong>The Strategic Re-Org:</strong> I dismantled the product silos and reorganized the 12 designers into a centralized <strong>UX-as-a-Service Operating Model</strong> organized around three specialized chapters:</li>
+            <li><strong>The Strategic Re-Org:</strong> I dismantled the product silos and reorganized the 14 Designers into a centralized <strong>UX-as-a-Service Operating Model</strong> organized around three specialized chapters:</li>
           </ul>
         </div>
 
@@ -1560,7 +1560,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
         <div class="designops-pipeline-stage" style="margin-top: 24px;">
           <div class="designops-pipeline-header">
             <span class="designops-tag">DESIGNOPS GOVERNANCE FLYWHEEL</span>
-            <h4>12-Designer UX-as-a-Service Token Architecture: Figma Variables &rarr; CI/CD &rarr; Rhapsody &amp; MaaS360 Repos</h4>
+            <h4>14-Designer UX-as-a-Service Token Architecture: Figma Variables &rarr; CI/CD &rarr; Rhapsody &amp; MaaS360 Repos</h4>
           </div>
           <div class="designops-nodes-grid">
             <div class="d-node">
@@ -1603,7 +1603,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
           </p>
           <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 6px;">
             <li><strong>3.4x Increase in AI Feature Sprint Velocity:</strong> By sharing component patterns, feature delivery cycle time dropped from 6 weeks to 1.8 weeks.</li>
-            <li><strong>100% Team Retention:</strong> Zero attrition across the 12 designers over my 16-month tenure, with 3 designers promoted to senior and lead roles.</li>
+            <li><strong>100% Team Retention:</strong> Zero attrition across the 14 Designers over my 16-month tenure, with 3 designers promoted to senior and lead roles.</li>
             <li><strong>Zero Redundant UI Components:</strong> Consolidated 6 disparate AI feedback widgets into 1 unified Carbon AI component package.</li>
           </ul>
         </div>
@@ -1654,7 +1654,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
         <h2 class="section-title-h2">Pulling Out the Sheets: Prioritization Engine, Customer OKRs &amp; Interview Taxonomy</h2>
         <div class="section-prose">
           <p>
-            Many people assume design managers live exclusively in Figma. The reality of enterprise product leadership is that our most high-leverage battles are won inside spreadsheets. To align 12 designers, 4 engineering squads, and 3 product directors, I built and managed through these interactive operational sheets:
+            Many people assume design managers live exclusively in Figma. The reality of enterprise product leadership is that our most high-leverage battles are won inside spreadsheets. To align 14 Designers, 4 engineering squads, and 3 product directors, I built and managed through these interactive operational sheets:
           </p>
         </div>
 
@@ -2041,7 +2041,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
         <h2 class="section-title-h2">Shipped Production Screens &amp; Senior Manager Operational Deliverables</h2>
         <div class="section-prose">
           <p>
-            Below are authentic, high-resolution production screens and operational deliverables created at IBM India Software Labs for IBM Rhapsody SE, IBM MaaS360, and our 12-designer team re-organization:
+            Below are authentic, high-resolution production screens and operational deliverables created at IBM India Software Labs for IBM Rhapsody SE, IBM MaaS360, and our 14-Designer team re-organization:
           </p>
         </div>
 
@@ -2053,7 +2053,7 @@ const ibmStoryHtml = `<!DOCTYPE html>
               <h3 class="behance-showcase-title">Transformed Final Products &amp; Senior Manager Operational Deliverables</h3>
             </div>
             <p class="behance-showcase-desc">
-              Direct, unaltered production screens, information architecture maps, and operational frameworks created at IBM India Software Labs for IBM Rhapsody SE, IBM MaaS360, and our 12-designer UX-as-a-Service team.
+              Direct, unaltered production screens, information architecture maps, and operational frameworks created at IBM India Software Labs for IBM Rhapsody SE, IBM MaaS360, and our 14-Designer UX-as-a-Service team.
             </p>
           </div>
           <div class="behance-gallery-grid">
@@ -2088,11 +2088,11 @@ const ibmStoryHtml = `<!DOCTYPE html>
             <!-- Card 3: Research & Team Re-Org Matrix -->
             <div class="behance-artifact-card">
               <div class="behance-card-img-wrap">
-                <img src="screenshots/ibm_research_leadership_matrix.png" alt="UX-as-a-Service 12-Designer Re-Org & Usability Trajectory" class="behance-card-img" loading="lazy">
+                <img src="screenshots/ibm_research_leadership_matrix.png" alt="UX-as-a-Service 14-Designer Re-Org & Usability Trajectory" class="behance-card-img" loading="lazy">
                 <span class="behance-img-tag">OPERATIONAL LEADERSHIP ARTIFACT</span>
               </div>
               <div class="behance-card-info">
-                <h4 class="behance-card-title">12-Designer UX-as-a-Service Re-Org &amp; Usability Benchmark Matrix</h4>
+                <h4 class="behance-card-title">14-Designer UX-as-a-Service Re-Org &amp; Usability Benchmark Matrix</h4>
                 <p class="behance-card-desc">
                   Operational framework comparing siloed vs centralized service model, sprint velocity multipliers, and longitudinal SUS score progression from 61.4 to 89.4.
                 </p>
@@ -2362,12 +2362,12 @@ const ibmStoryHtml = `<!DOCTYPE html>
           <div class="car-item-card">
             <div class="car-q-header">
               <span class="q-badge">CAR 02</span>
-              <span>How did you restructure 12 designers from isolated product silos into a centralized UX-as-a-Service organization?</span>
+              <span>How did you restructure 14 Designers from isolated product silos into a centralized UX-as-a-Service organization?</span>
             </div>
             <div class="car-three-split">
               <div class="car-col">
                 <strong>Situation</strong>
-                <p>12 designers were isolated in product silos (Rhapsody, MaaS360, Watson Core). Each team was reinventing divergent AI patterns and conflicting Carbon tokens, resulting in sluggish sprint velocity and designer burnout.</p>
+                <p>14 Designers were isolated in product silos (Rhapsody, MaaS360, Watson Core). Each team was reinventing divergent AI patterns and conflicting Carbon tokens, resulting in sluggish sprint velocity and designer burnout.</p>
               </div>
               <div class="car-col">
                 <strong>UX Leadership Action</strong>

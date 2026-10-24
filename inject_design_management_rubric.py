@@ -772,7 +772,7 @@ ch04_content = '''
               <span class="method-kit-pill">Method Kit 03 &bull; Talent Ladder</span>
               <h4 class="method-kit-title">Designer AI Growth &amp; 1:1 Coaching Matrix</h4>
               <p style="font-size: 12.5px; color: var(--text-body); line-height: 1.5;">
-                The 4-stage talent elevation ladder I used during bi-weekly 1:1s to upskill 12 traditional UI designers into Agentic UX architects:
+                The 4-stage talent elevation ladder I used during bi-weekly 1:1s to upskill 14 traditional UI designers into Agentic UX architects:
               </p>
               <ul class="method-kit-list">
                 <li><strong>Stage 1 (Craft):</strong> Carbon token mastery &amp; statechart drawing.</li>
@@ -840,7 +840,7 @@ ch05b_content = '''
         <h2 class="section-title-h2">Pulling Out the Sheets: Prioritization Engine, Customer OKRs &amp; Interview Taxonomy</h2>
         <div class="section-prose">
           <p>
-            Many people assume design managers live exclusively in Figma. The reality of enterprise product leadership is that our most high-leverage battles are won inside spreadsheets. To align 12 designers, 4 engineering squads, and 3 product directors, I built and managed through these interactive operational sheets:
+            Many people assume design managers live exclusively in Figma. The reality of enterprise product leadership is that our most high-leverage battles are won inside spreadsheets. To align 14 Designers, 4 engineering squads, and 3 product directors, I built and managed through these interactive operational sheets:
           </p>
         </div>
 

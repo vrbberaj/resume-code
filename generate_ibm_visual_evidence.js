@@ -1021,7 +1021,7 @@ async function main() {
   await page.screenshot({ path: maas360Path, type: 'png' });
   console.log('Saved:', maas360Path);
 
-  // 3. UX Research & 12-Designer Leadership Matrix
+  // 3. UX Research & 14-Designer Leadership Matrix
   console.log('Rendering UX Research & Leadership Matrix...');
   const leadershipHtml = `
 <!DOCTYPE html>
@@ -1177,10 +1177,10 @@ async function main() {
   </div>
 
   <div class="grid-2">
-    <!-- Card 1: 12-Designer Re-Org -->
+    <!-- Card 1: 14-Designer Re-Org -->
     <div class="card">
       <div class="card-title">
-        <span>UX-as-a-Service Team Re-Organization (12 Designers)</span>
+        <span>UX-as-a-Service Team Re-Organization (14 Designers)</span>
         <span class="card-tag">OPERATIONAL EXCELLENCE</span>
       </div>
       <p style="font-size: 12px; color: #94a3b8; line-height: 1.5;">

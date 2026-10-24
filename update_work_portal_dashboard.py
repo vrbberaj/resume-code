@@ -55,7 +55,7 @@ projects_data = [
             {"val": "74% Faster", "label": "Model Drafting (14h -> 3.6h)"},
             {"val": "82% Faster", "label": "Endpoint Triage (4h -> 43m)"},
             {"val": "0 Violations", "label": "SOX / Compliance Risk Across 140k Tasks"},
-            {"val": "12 Designers", "label": "UX-as-a-Service Team Re-Org"}
+            {"val": "14 Designers", "label": "UX-as-a-Service Team Re-Org"}
         ],
         "screenshot": "screenshots/transformation-ibm-watson.png",
         "screenshotAlt": "IBM Watson Agentic AI Production Interface",
