@@ -295,48 +295,158 @@
       justify-content: space-between;
       align-items: center;
       background: #FFFFFF !important;
-      border: 1px solid #CBD5E1 !important;
-      border-radius: 12px !important;
-      padding: 12px 20px !important;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
-      gap: 12px;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 14px !important;
+      padding: 14px 22px !important;
+      box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+      gap: 16px;
+    }
+
+    .cv-meta-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cv-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cv-bar-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.015em;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .cv-bar-sep {
+      color: #CBD5E1;
+      font-size: 14px;
+    }
+
+    .cv-bar-role {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .cv-badges-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cv-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 5px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .cv-badge-avail {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+
+    .cv-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+      animation: cvPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes cvPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.15); }
+    }
+
+    .cv-badge-eu {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border: 1px solid #BFDBFE;
+    }
+
+    .cv-badge-loc {
+      background: #F8FAFC;
+      color: #475569;
+      border: 1px solid #E2E8F0;
+    }
+
+    .cv-actions-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
     .btn-cv-page-download {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 7px !important;
-      padding: 9px 18px !important;
-      border-radius: 100px !important;
+      gap: 9px !important;
+      padding: 10px 20px !important;
+      border-radius: 10px !important;
       background: #0F172A !important;
       color: #FFFFFF !important;
       font-family: var(--font-heading) !important;
-      font-size: 13px !important;
-      font-weight: 800 !important;
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
       text-decoration: none !important;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15) !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12) !important;
+      white-space: nowrap !important;
     }
 
     .btn-cv-page-download:hover {
       background: var(--primary-accent) !important;
       color: #FFFFFF !important;
       transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(240, 6, 88, 0.25) !important;
+      box-shadow: 0 6px 18px rgba(240, 6, 88, 0.25) !important;
+    }
+
+    .btn-cv-fmt {
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.18);
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
     }
 
     @media (max-width: 680px) {
       .cv-page-actions {
         flex-direction: column !important;
         align-items: stretch !important;
-        gap: 12px !important;
+        gap: 14px !important;
         padding: 14px 16px !important;
         margin-bottom: 14px !important;
       }
+      .cv-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .cv-bar-sep {
+        display: none;
+      }
       .cv-actions-btns {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
         width: 100% !important;
       }
       .btn-cv-page-download {
@@ -399,15 +509,33 @@
             
             <!-- On-Page Dedicated CV Actions Bar (Responsive across all screens) -->
             <div class="cv-page-actions">
-              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
-                <span style="font-family: var(--font-heading); font-size: 14px; font-weight: 800; color: #0D1B2E;">Executive Resume</span>
-                <span style="font-family: var(--font-code); font-size: 11px; color: #64748B;">• Senior UI/UX Design Manager • Open to Relocation (India and Global) • Immediate Availability • EU Blue Card Eligible</span>
+              <div class="cv-meta-col">
+                <div class="cv-title-row">
+                  <h2 class="cv-bar-title">Curriculum Vitae</h2>
+                  <span class="cv-bar-sep" aria-hidden="true">&bull;</span>
+                  <span class="cv-bar-role">Senior UI/UX Design Manager</span>
+                </div>
+                <div class="cv-badges-row">
+                  <span class="cv-badge cv-badge-avail">
+                    <span class="cv-pulse-dot"></span>
+                    Immediate Availability
+                  </span>
+                  <span class="cv-badge cv-badge-eu">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+                    EU Blue Card Eligible
+                  </span>
+                  <span class="cv-badge cv-badge-loc">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Bangalore, India &bull; Open to Relocation
+                  </span>
+                </div>
               </div>
-              <div class="cv-actions-btns" style="display: flex; align-items: center; gap: 10px;">
+
+              <div class="cv-actions-btns">
                 <a href="Balaajee_VR_Senior_UX_Manager_CV.pdf" download="Balaajee_VR_Senior_UX_Manager_CV.pdf" class="btn-cv-page-download">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download CV (PDF)
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Download CV</span>
+                  <span class="btn-cv-fmt">PDF</span>
                 </a>
               </div>
             </div>
