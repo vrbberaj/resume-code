@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Senior UI/UX Design Manager</title>
-  <meta name="description" content="Welcome Portal of Balaajee V.R. — Senior UI/UX Design Manager. 18+ years leading enterprise UI/UX design, AI orchestration, and design systems across IBM, Ericsson, Zebra, ZF Wabco, and Infosys.">
+  <title>Balaajee V.R. | Senior UI/UX Design Manager • Case Studies</title>
+  <meta name="description" content="Enterprise Case Studies &amp; Product Design Leadership of Balaajee V.R. — Senior UI/UX Design Manager. 18+ years leading enterprise UI/UX design, AI orchestration, and design systems across IBM, Ericsson, Zebra, ZF Wabco, and Infosys.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +68,6 @@
     padding: 10px 0;
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
   }
 
   .header-container {
@@ -92,56 +91,18 @@
     flex-shrink: 0;
   }
 
-  .brand-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center 25%;
-    border: 2px solid var(--border-medium);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-    flex-shrink: 0;
-  }
-
-  .brand-link:hover .brand-avatar {
-    transform: scale(1.05);
-    border-color: var(--primary-accent);
-  }
-
-  .brand-meta {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25;
-  }
-
-  .brand-name {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 14.5px;
-    color: var(--text-main);
-    letter-spacing: -0.01em;
-  }
-
-  .brand-role {
-    font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-
   .brand-monogram {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 36px;
+    height: 36px;
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: 14.5px;
-    letter-spacing: 0.08em;
-    padding: 4px 9px;
+    font-size: 18px;
     background: var(--text-main);
     color: #FFFFFF;
-    border-radius: 6px;
+    border-radius: 8px;
     line-height: 1;
     box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
     transition: all 0.2s ease;
@@ -149,16 +110,8 @@
 
   .brand-link:hover .brand-monogram {
     background: var(--primary-accent);
-    transform: scale(1.04);
-  }
-
-  .brand-tag {
-    font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 6, 88, 0.25);
   }
 
   .nav-links {
@@ -358,291 +311,258 @@
   }
 
 
-    /* Welcome Hero Stage */
+    /* =========================================================================
+       Unified Executive Banner Stage (165px Compact Power Strip)
+       ========================================================================= */
     .welcome-hero-stage {
-      background: #FFFFFF;
+      padding: 14px 0 14px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 44px 0 40px;
     }
 
     .hero-container {
-      max-width: 1240px;
+      max-width: 1260px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-    }
-
-    .hero-headline {
-      font-family: var(--font-heading);
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      line-height: 1.22;
-      color: var(--text-main);
-      margin-bottom: 22px;
-    }
-
-    .hero-bio-lead {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text-body);
-      margin-bottom: 22px;
-      max-width: 620px;
-    }
-
-    .hero-cta-group {
+    .exec-banner-row {
       display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 6px;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 22px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 12px 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
 
-    .btn-hero-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 28px;
-      border-radius: 100px;
-      background: var(--text-main);
-      color: #FFFFFF;
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      font-weight: 800;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
-    }
-
-    .btn-hero-primary:hover {
-      background: var(--primary-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(240, 6, 88, 0.25);
-    }
-
-    .btn-hero-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 24px;
-      border-radius: 100px;
-      background: transparent;
-      border: 1.5px solid var(--border-medium);
-      color: var(--text-main);
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      font-weight: 700;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .btn-hero-secondary:hover {
-      background: var(--bg-subtle);
-      border-color: var(--text-main);
-      transform: translateY(-2px);
-    }
-
-    /* Dedicated Executive Pedigree & Global Brand Trust Section */
-    .pedigree-trust-section {
-      margin-top: 40px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .pedigree-trust-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .pedigree-trust-title {
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .pedigree-brands-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      align-items: center;
-    }
-
-    .brand-item {
+    /* Zone 1: Mini Video Briefing launcher (Slightly Bigger) */
+    .exec-banner-video-pill {
+      flex: 0 0 260px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 16px 12px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: default;
     }
-
-    .brand-item:hover {
-      background: #FFFFFF;
-      border-color: var(--border-medium);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-      transform: translateY(-2px);
-    }
-
-    .brand-logo-img {
-      height: 30px;
-      max-width: 88px;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: 10px;
-      filter: none;
-      opacity: 1;
-      transition: transform 0.25s ease;
-    }
-
-    .brand-item:hover .brand-logo-img {
-      transform: scale(1.08);
-    }
-
-    .brand-item-name {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .brand-item-role {
-      font-family: var(--font-code);
-      font-size: 10.5px;
-      color: var(--text-muted);
-      margin-top: 3px;
-      letter-spacing: 0.02em;
-    }
-
-    @media (max-width: 880px) {
-      .pedigree-brands-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 580px) {
-      .pedigree-brands-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-    }
-
-    /* Video Player Centerpiece Card */
-    .video-showcase-box {
-      background: #0B0E17;
-      border-radius: 20px;
+    .exec-video-thumb-container {
+      width: 260px;
+      height: 146px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
-    }
-
-    .video-player-frame {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9.8;
-      background: #000000;
+      background: #000;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
-
-    .video-player-frame video {
+    .exec-video-thumb-container video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
-    .video-time-tag {
+    .exec-video-badge {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 7px;
+      left: 7px;
       background: rgba(11, 14, 23, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
       color: #FFFFFF;
       font-family: var(--font-code);
-      font-size: 11px;
+      font-size: 9.5px;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-      z-index: 10;
-      letter-spacing: 0.04em;
+      padding: 2px 7px;
+      border-radius: 4px;
     }
-
-    .video-caption-bar {
-      padding: 16px 20px;
-      background: #111624;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    .exec-video-subbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      color: #FFFFFF;
+      justify-content: space-between;
+      margin-top: 5px;
+      font-size: 10.5px;
+      color: var(--text-muted);
     }
-
-    .video-caption-bar h4 {
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 2px;
-    }
-
-    .video-caption-bar p {
-      font-size: 12px;
-      color: #94A3B8;
-    }
-
-    .btn-transcript-toggle {
-      font-family: var(--font-heading);
-      font-size: 12px;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-      padding: 6px 12px;
-      border-radius: 6px;
+    .btn-micro-transcript {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: all 0.15s ease;
+      font-weight: 600;
+    }
+    .btn-micro-transcript:hover {
+      color: var(--primary-accent);
+      border-color: var(--primary-accent);
     }
 
-    .btn-transcript-toggle:hover {
-      background: rgba(255, 255, 255, 0.2);
+    /* Zone 2: Executive Pitch & Metrics */
+    .exec-banner-center {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 4px;
+    }
+    .exec-tag-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .exec-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 700;
+      color: #0284C7;
+      background: #E0F2FE;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .status-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0284C7;
+      box-shadow: 0 0 6px #0284C7;
+    }
+    .exec-exp-badge {
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary-accent);
+      background: rgba(240,6,88,0.08);
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .exec-headline {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin: 0 0 5px 0;
+    }
+    .exec-sub-pitch {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--text-body);
+      margin: 0 0 9px 0;
+    }
+    .exec-stats-ribbon {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: nowrap;
+    }
+    .exec-stat-pill {
+      font-size: 11px;
+      background: #F1F5F9;
+      border: 1px solid var(--border-subtle);
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--text-body);
+      white-space: nowrap;
+    }
+    .exec-stat-pill strong {
+      font-weight: 800;
+      color: var(--text-main);
     }
 
+    /* Zone 3: Enterprise Pedigree (Bigger Logos + Titles, No CTA) */
+    .exec-banner-brands {
+      flex: 0 0 440px;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .exec-brands-header {
+      font-family: var(--font-code);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+    .exec-brands-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+    .exec-brand-card {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 6px 9px;
+      transition: all 0.2s ease;
+    }
+    .exec-brand-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+    .exec-brand-logo-img {
+      height: 22px;
+      max-width: 54px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .exec-brand-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .exec-brand-name {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.15;
+    }
+    .exec-brand-role {
+      font-size: 9.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .exec-brand-card.wide {
+      grid-column: 1 / -1;
+      padding: 5px 10px;
+    }
+    .exec-brand-card.wide .exec-brand-role {
+      white-space: normal;
+    }
+
+    /* Transcript Drawer */
     .transcript-drawer {
       display: none;
-      padding: 18px 20px;
-      background: #0B0E17;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #CBD5E1;
+      background: #F8F9FA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 12px;
       font-size: 13px;
       line-height: 1.6;
+      color: var(--text-body);
+      animation: fadeIn 0.3s ease;
     }
-
     .transcript-drawer.open {
       display: block;
-      animation: fadeIn 0.2s ease;
     }
 
     @keyframes fadeIn {
@@ -650,124 +570,276 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Executive Career Key Metrics Strip */
-    .hero-stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-bottom: 22px;
-      max-width: 620px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    @media (max-width: 1100px) {
+      .exec-banner-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .exec-banner-video-pill {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+      }
+      .exec-video-thumb-container {
+        width: 100%;
+        max-width: 340px;
+        height: 191px;
+      }
+      .exec-banner-center {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 12px;
+        margin-bottom: 4px;
+      }
+      .exec-stats-ribbon {
+        flex-wrap: wrap;
+      }
+      .exec-banner-brands {
+        border-left: none;
+        padding-left: 0;
+      }
     }
 
-    .h-stat {
+    @media (max-width: 560px) {
+      .exec-brands-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       Chris Gielow-Style Fixed Executive Masthead Banner & Scroll Reveal
+       ------------------------------------------------------------------------- */
+    :root {
+      --masthead-height: 360px;
+    }
+    @media (max-width: 1200px) {
+      :root {
+        --masthead-height: 320px;
+      }
+    }
+    @media (max-width: 768px) {
+      :root {
+        --masthead-height: 260px;
+      }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --masthead-height: 200px;
+      }
+    }
+
+    .masthead {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100vw;
+      height: var(--masthead-height);
+      z-index: 1;
+      background-color: #F5B703;
       display: flex;
-      flex-direction: column;
+      align-items: stretch;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
-    .h-stat-num {
+    .masthead-contents {
+      width: 100%;
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 0 40px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .masthead-text {
+      max-width: 480px;
+      padding-bottom: 34px;
+      position: relative;
+      z-index: 3;
+      flex-shrink: 0;
+    }
+
+    .masthead-title {
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: clamp(24px, 2.6vw, 42px);
       font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      color: #0D1B2E;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
     }
 
-    .h-stat-num span {
-      color: var(--primary-accent);
+    .masthead-sub {
+      font-family: var(--font-body);
+      font-size: clamp(13px, 1.1vw, 15.5px);
+      font-weight: 600;
+      color: #1E293B;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
     }
 
-    .h-stat-lbl {
+    .masthead-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .masthead-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #0D1B2E;
+      color: #FFFFFF;
       font-family: var(--font-code);
-      font-size: 10px;
+      font-size: 11.5px;
       font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 3px;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(13, 27, 46, 0.15);
+      letter-spacing: 0.01em;
     }
 
-    .h-stat-sub {
-      font-size: 11px;
-      color: #868e96;
-      margin-top: 1px;
-      line-height: 1.3;
+    .masthead-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 8px #38BDF8;
+    }
+
+    .masthead-badge.exp {
+      background: #FFFFFF;
+      color: #0F172A;
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      font-weight: 700;
+    }
+
+    .masthead-visual {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .masthead-photo {
+      height: 86%;
+      width: auto;
+      max-width: min(820px, 54vw);
+      max-height: var(--masthead-height);
+      object-fit: contain;
+      object-position: right bottom;
+      display: block;
+    }
+
+    @media (max-width: 1100px) {
+      .masthead-contents {
+        padding: 0 24px;
+      }
+      .masthead-text {
+        max-width: 400px;
+        padding-bottom: 24px;
+        background: transparent;
+      }
+      .masthead-title {
+        font-size: clamp(22px, 3.0vw, 34px);
+      }
+      .masthead-photo {
+        height: 80%;
+        max-width: 50vw;
+        opacity: 0.85;
+      }
     }
 
     @media (max-width: 640px) {
-      .welcome-hero-stage {
-        padding: 36px 0 32px;
+      .masthead-title {
+        font-size: 22px;
+        margin-bottom: 4px;
       }
-      .hero-container {
-        padding: 0 16px;
-        width: 100%;
-        max-width: 100%;
+      .masthead-sub {
+        font-size: 12px;
+        white-space: normal;
       }
-      .hero-name {
-        font-size: 32px;
-        line-height: 1.15;
-        word-break: break-word;
+      .masthead-photo {
+        height: 72%;
+        max-width: 46vw;
+        opacity: 0.65;
       }
-      .hero-subtitle {
-        font-size: 17px;
-        margin-bottom: 16px;
-      }
-      .hero-bio-lead {
-        font-size: 14.5px;
-        margin-bottom: 20px;
-      }
-      .hero-cta-group {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
-      .btn-hero-primary,
-      .btn-hero-secondary {
-        justify-content: center;
-        width: 100%;
-        padding: 12px 20px;
-        font-size: 14px;
-      }
-      .hero-stats-row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px 12px;
-        margin-bottom: 20px;
-      }
-      .h-stat-num {
-        font-size: 19px;
-      }
-      .video-caption-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 14px 16px;
-      }
+    }
+
+    .masthead-placeholder {
+      height: var(--masthead-height);
+      width: 100%;
+      max-width: 100vw;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .site-wrap {
+      position: relative;
+      z-index: 10;
+      background-color: var(--bg-base);
+      box-shadow: 0 -14px 36px rgba(15, 23, 42, 0.12);
+      width: 100%;
+      max-width: 100vw;
+      min-height: 100vh;
     }
   </style>
 </head>
 <body>
 
+  <!-- Chris Gielow-Style Fixed Executive Masthead Banner -->
+  <aside class="masthead js-masthead-fixed" aria-label="Executive Design Leadership Masthead">
+    <div class="masthead-contents">
+      <div class="masthead-text">
+        <h1 class="masthead-title">Building Teams.<br>Shaping Products.</h1>
+        <p class="masthead-sub">Balaajee V.R. &nbsp;·&nbsp; Senior UI/UX Design Manager</p>
+        <div class="masthead-badges">
+          <span class="masthead-badge"><span class="masthead-dot"></span> Immediate Availability • EU Blue Card Eligible</span>
+          <span class="masthead-badge exp">18+ Years in Product Design</span>
+        </div>
+      </div>
+    </div>
+    <div class="masthead-visual" aria-hidden="true">
+      <img src="masthead-banner.jpg" alt="Balaajee V.R. - Enterprise UX Leadership" class="masthead-photo">
+    </div>
+  </aside>
+
+  <!-- Masthead Placeholder: Preserves natural scroll offset so header starts directly below the banner -->
+  <div class="masthead-placeholder" aria-hidden="true"></div>
+
+  <!-- Page Surface / Site Wrap (slides up OVER the fixed masthead as user scrolls) -->
+  <div class="site-wrap">
   
   <header class="global-header">
     <div class="header-container">
-      <a href="index.html" class="brand-link" aria-label="BVR Portfolio Home">
-        <span class="brand-monogram">BVR</span>
-        <span class="brand-tag">Product Design Suite</span>
+      <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
+        <span class="brand-monogram" aria-hidden="true">B</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="index.html" class="nav-item active">Selected Work</a>
-        <a href="leadership.html" class="nav-item ">Leadership</a>
-        <a href="archive.html" class="nav-item ">Design Artifacts</a>
-        <a href="gallery.html" class="nav-item ">Career Gallery</a>
-        <a href="cv.html" class="nav-item ">My Resume</a>
+        <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="nav-item active">Selected Work</a>
+        <a href="leadership.html" class="nav-item">Leadership</a>
+        <a href="archive.html" class="nav-item">Design Artifacts</a>
+        <a href="gallery.html" class="nav-item">Career Gallery</a>
+        <a href="cv.html" class="nav-item">My Resume</a>
       </nav>
 
       <div class="header-actions">
@@ -779,121 +851,91 @@
   </header>
   
 
-  <!-- Welcome Hero Stage -->
+  <!-- Executive Hero Stage -->
   <main class="welcome-hero-stage">
     <div class="hero-container">
-      <div class="hero-grid">
+      
+      <div class="exec-banner-row">
         
-        <!-- Left: Executive Positioning & Direct Pathways -->
-        <div class="hero-left">
-          <h1 class="hero-headline">
-            Enterprise product design leadership for mission-critical software architectures.
-          </h1>
-
-          <!-- Executive Career Key Metrics Strip (Elevated directly below Headline) -->
-          <div class="hero-stats-row">
-            <div class="h-stat">
-              <div class="h-stat-num">18<span>+</span></div>
-              <div class="h-stat-lbl">Years Exp.</div>
-              <div class="h-stat-sub">Enterprise UX Lead</div>
-            </div>
-            <div class="h-stat">
-              <div class="h-stat-num">15<span>+</span></div>
-              <div class="h-stat-lbl">Team Scale</div>
-              <div class="h-stat-sub">Designers &amp; Squads</div>
-            </div>
-            <div class="h-stat">
-              <div class="h-stat-num">50<span>+</span></div>
-              <div class="h-stat-lbl">Mentored</div>
-              <div class="h-stat-sub">UI/UX &amp; Product Designers</div>
-            </div>
-            <div class="h-stat">
-              <div class="h-stat-num">6</div>
-              <div class="h-stat-lbl">Design Systems</div>
-              <div class="h-stat-sub">Token Architectures</div>
-            </div>
+        <!-- Zone 1: Mini 60s Video Briefing (Slightly Bigger) -->
+        <div class="exec-banner-video-pill">
+          <div class="exec-video-thumb-container">
+            <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
+              <source src="intro.mp4" type="video/mp4">
+            </video>
+            <span class="exec-video-badge">60s Briefing</span>
           </div>
-
-          <p class="hero-bio-lead">
-            Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.
-          </p>
-
-          <!-- Executive Primary Action (Zero Redundancy with Nav Bar) -->
-          <div class="hero-cta-group">
-            <a href="#featured-work" class="btn-hero-primary">
-              <span>Explore flagship case studies (5 deep dives)</span>
-              <span>&darr;</span>
-            </a>
-            <a href="leadership-deck.html" class="btn-hero-secondary">
-              <span>10-Slide Leadership Deck</span>
-              <span>&rarr;</span>
-            </a>
+          <div class="exec-video-subbar">
+            <span>Balaajee V.R. • HD</span>
+            <button class="btn-micro-transcript" onclick="toggleTranscript()">📝 Transcript</button>
           </div>
         </div>
 
-        <!-- Right: 60-Second Executive Video Stage -->
-        <div class="hero-right">
-          <div class="video-showcase-box">
-            <div class="video-player-frame">
-              <span class="video-time-tag">60s Video Briefing</span>
-              
-              <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
-                <source src="intro.mp4" type="video/mp4">
-                Your browser does not support high-definition video playback.
-              </video>
-            </div>
+        <!-- Zone 2: Executive Pitch & Metrics (Better Description, No repeated companies, No 5-giants tag) -->
+        <div class="exec-banner-center">
+          <h1 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h1>
+          <p class="exec-sub-pitch">Directing cross-functional design squads, scaling design system governance, and engineering trusted AI product experiences for mission-critical software platforms.</p>
+          <div class="exec-stats-ribbon">
+            <span class="exec-stat-pill"><strong>14</strong> Squads Directed</span>
+            <span class="exec-stat-pill"><strong>94%</strong> Carbon Adoption</span>
+            <span class="exec-stat-pill"><strong>$14M+</strong> Enterprise Impact</span>
+          </div>
+        </div>
 
-            <div class="video-caption-bar">
-              <div>
-                <h4>Executive Video Introduction</h4>
-                <p>Balaajee V.R. &bull; 1080p HD</p>
+        <!-- Zone 3: Global Brand Logos & Roles (Bigger Logos, Job Titles, No CTA) -->
+        <div class="exec-banner-brands">
+          <div class="exec-brands-header">PROVEN AT GLOBAL TECH LEADERS</div>
+          <div class="exec-brands-grid">
+            
+            <div class="exec-brand-card" title="IBM: Senior UI/UX Design Manager">
+              <img src="logos/ibm.svg" alt="IBM" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">IBM</span>
+                <span class="exec-brand-role">Senior UI/UX Design Manager</span>
               </div>
-              <button class="btn-transcript-toggle" onclick="toggleTranscript()">
-                📝 Transcript
-              </button>
             </div>
 
-            <div class="transcript-drawer" id="transcriptDrawer">
-              <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. Over the past 18 years, I’ve led product design organizations across global technology leaders including IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys. As a Senior UI/UX Design Manager, my focus is taking high-complexity, mission-critical systems—whether telecom CPQ, agentic enterprise AI, rugged industrial IoT, or commercial automotive cockpits—and transforming them into intuitive, high-velocity experiences that scale seamlessly across global engineering and product teams. Please explore my <strong>Selected Work</strong> for complete end-to-end deep dives, review my <strong>Leadership Deck</strong> to see how I scale teams and systems, or view <strong>My Resume</strong>. I look forward to connecting with you.”</p>
+            <div class="exec-brand-card" title="Ericsson: UI/UX Designer">
+              <img src="logos/ericsson.svg" alt="Ericsson" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">Ericsson</span>
+                <span class="exec-brand-role">UI/UX Designer</span>
+              </div>
             </div>
+
+            <div class="exec-brand-card" title="Zebra Technologies: UI/UX Product Design Manager">
+              <img src="logos/zebra.svg" alt="Zebra Technologies" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">Zebra Technologies</span>
+                <span class="exec-brand-role">UI/UX Product Design Manager</span>
+              </div>
+            </div>
+
+            <div class="exec-brand-card" title="ZF Wabco: UI/UX Senior Specialist">
+              <img src="logos/zf.svg" alt="ZF Wabco" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">ZF Wabco</span>
+                <span class="exec-brand-role">UI/UX Senior Specialist</span>
+              </div>
+            </div>
+
+            <div class="exec-brand-card wide" title="Infosys: Senior Software Engineer • Digital Experience">
+              <img src="logos/infosys.svg" alt="Infosys" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">Infosys</span>
+                <span class="exec-brand-role">Senior Software Engineer &bull; Digital Experience</span>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
 
-      <!-- Dedicated Executive Pedigree & Global Brand Trust Section -->
-      <div class="pedigree-trust-section">
-        <div class="pedigree-trust-header">
-          <span class="pedigree-trust-title">Enterprise Design Leadership Across Global Tech</span>
-        </div>
-        <div class="pedigree-brands-grid">
-          <div class="brand-item">
-            <img src="logos/ibm.svg" alt="IBM" class="brand-logo-img">
-            <span class="brand-item-name">IBM</span>
-            <span class="brand-item-role">Software Labs</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/ericsson.svg" alt="Ericsson" class="brand-logo-img">
-            <span class="brand-item-name">Ericsson</span>
-            <span class="brand-item-role">Global OSS/BSS</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/zebra.svg" alt="Zebra Technologies" class="brand-logo-img">
-            <span class="brand-item-name">Zebra Technologies</span>
-            <span class="brand-item-role">Enterprise Mobile</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/zf.svg" alt="ZF Wabco" class="brand-logo-img">
-            <span class="brand-item-name">ZF Wabco</span>
-            <span class="brand-item-role">Commercial Auto</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/infosys.svg" alt="Infosys" class="brand-logo-img">
-            <span class="brand-item-name">Infosys</span>
-            <span class="brand-item-role">Digital Experience</span>
-          </div>
-        </div>
+      <div class="transcript-drawer" id="transcriptDrawer" style="margin-top: 10px; max-width: 100%;">
+        <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. I started in software engineering before moving into design leadership. That technical foundation allows me to bridge design vision with engineering reality, protecting delivery timelines and scaling enterprise design systems. Today, a key focus is driving the AI transformation in UX: both designing trusted, agentic AI experiences for enterprise software, and modernizing our internal design workflows with AI-accelerated research, prototyping, and governance. As you explore my work, you'll see how my teams turn complex technical ecosystems into high-adoption products. Take a look around, and let’s connect to build what's next.”</p>
       </div>
+
     </div>
   </main>
 <!-- BVR:HOME-EXTRA:START -->
@@ -1395,7 +1437,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <h5>Balaajee V.R. &bull; Senior UI/UX Design Manager</h5>
-        <p>Chennai / Bengaluru, India &bull; Open to Relocation (India &amp; Global) &bull; Available in 30 Days</p>
+        <p>Chennai / Bengaluru, India &bull; Open to Relocation (India and Global) &bull; Immediate Availability &bull; EU Blue Card Eligible</p>
       </div>
       <div class="footer-links">
         <a href="mailto:vrbberaj@gmail.com">
@@ -1413,6 +1455,7 @@
       </div>
     </div>
   </footer>
+  </div> <!-- /.site-wrap -->
 
   <script>
     function toggleTranscript() {
@@ -1421,5 +1464,6 @@
     }
   </script>
 
+  <script src="contact-drawer.js" defer></script>
 </body>
 </html>
