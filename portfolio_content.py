@@ -399,12 +399,12 @@ EVOLUTION = [
 ]
 
 LEADERSHIP_NUMBERS = [
-    ("12", "designers led at IBM"),
+    ("18+", "years in product and design"),
+    ("14", "Max team size"),
     ("100%", "team retention over 16 months"),
-    ("3", "designers promoted"),
+    ("5", "designers promoted"),
     ("50+", "designers mentored"),
     ("6", "design systems built or scaled"),
-    ("18+", "years in product and design"),
 ]
 
 HIRING_STEPS = [
