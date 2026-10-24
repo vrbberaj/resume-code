@@ -1071,7 +1071,7 @@ def inject_home():
     <div class="g-wrap">
       <div class="sec-header-block">
         <div class="sec-label">Featured Executive Work</div>
-        <h2 class="sec-title">Mission-critical product architecture &amp; design transformation</h2>
+        <h2 class="sec-title">Enterprise product architecture &amp; design transformation</h2>
         <p class="sec-intro">Five flagship enterprise initiatives where I led design from initial ambiguity through systems architecture to global production scale.</p>
       </div>
 
