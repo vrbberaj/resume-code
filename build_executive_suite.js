@@ -864,9 +864,7 @@ const indexHtml = `<!DOCTYPE html>
         <div class="hero-right">
           <div class="video-showcase-box">
             <div class="video-player-frame">
-              <span class="video-time-tag">60s Video Briefing</span>
-              
-              <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
+              <video id="welcomeVideo" controls poster="video-thumbnail.jpg" preload="metadata">
                 <source src="intro.mp4" type="video/mp4">
                 Your browser does not support high-definition video playback.
               </video>
