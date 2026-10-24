@@ -688,6 +688,44 @@
       white-space: nowrap;
     }
 
+    .masthead-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .masthead-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #0D1B2E;
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(13, 27, 46, 0.15);
+      letter-spacing: 0.01em;
+    }
+
+    .masthead-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 8px #38BDF8;
+    }
+
+    .masthead-badge.exp {
+      background: rgba(13, 27, 46, 0.12);
+      color: #0D1B2E;
+      border: 1px solid rgba(13, 27, 46, 0.25);
+      box-shadow: none;
+    }
+
     .masthead-visual {
       position: absolute;
       right: 0;
@@ -766,6 +804,10 @@
       <div class="masthead-text">
         <h1 class="masthead-title">Design at Scale.</h1>
         <p class="masthead-sub">Balaajee V.R. &nbsp;·&nbsp; Senior UI/UX Design Manager</p>
+        <div class="masthead-badges">
+          <span class="masthead-badge"><span class="masthead-dot"></span> Immediate Availability • EU Blue Card Eligible</span>
+          <span class="masthead-badge exp">18+ Years Executive Leadership</span>
+        </div>
       </div>
     </div>
     <div class="masthead-visual" aria-hidden="true">
@@ -825,10 +867,6 @@
 
         <!-- Zone 2: Executive Pitch & Metrics (Better Description, No repeated companies, No 5-giants tag) -->
         <div class="exec-banner-center">
-          <div class="exec-tag-line">
-            <span class="exec-status-pill"><span class="status-pulse-dot"></span> Immediate Availability • EU Blue Card Eligible</span>
-            <span class="exec-exp-badge">18+ Years Executive Leadership</span>
-          </div>
           <h1 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h1>
           <p class="exec-sub-pitch">Directing cross-functional design squads, scaling design system governance, and engineering trusted AI product experiences for mission-critical software platforms.</p>
           <div class="exec-stats-ribbon">
