@@ -343,6 +343,7 @@
       flex: 0 0 260px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
     }
     .exec-video-thumb-container {
       width: 260px;
@@ -857,17 +858,13 @@
       
       <div class="exec-banner-row">
         
-        <!-- Zone 1: Mini 60s Video Briefing (Slightly Bigger) -->
+        <!-- Zone 1: Mini 60s Video Briefing -->
         <div class="exec-banner-video-pill">
           <div class="exec-video-thumb-container">
             <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
               <source src="intro.mp4" type="video/mp4">
             </video>
             <span class="exec-video-badge">60s Briefing</span>
-          </div>
-          <div class="exec-video-subbar">
-            <span>Balaajee V.R. • HD</span>
-            <button class="btn-micro-transcript" onclick="toggleTranscript()">📝 Transcript</button>
           </div>
         </div>
 
@@ -930,10 +927,6 @@
           </div>
         </div>
 
-      </div>
-
-      <div class="transcript-drawer" id="transcriptDrawer" style="margin-top: 10px; max-width: 100%;">
-        <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. I started in software engineering before moving into design leadership. That technical foundation allows me to bridge design vision with engineering reality, protecting delivery timelines and scaling enterprise design systems. Today, a key focus is driving the AI transformation in UX: both designing trusted, agentic AI experiences for enterprise software, and modernizing our internal design workflows with AI-accelerated research, prototyping, and governance. As you explore my work, you'll see how my teams turn complex technical ecosystems into high-adoption products. Take a look around, and let’s connect to build what's next.”</p>
       </div>
 
     </div>
@@ -1456,13 +1449,6 @@
     </div>
   </footer>
   </div> <!-- /.site-wrap -->
-
-  <script>
-    function toggleTranscript() {
-      const drawer = document.getElementById('transcriptDrawer');
-      drawer.classList.toggle('open');
-    }
-  </script>
 
   <script src="contact-drawer.js" defer></script>
 </body>
