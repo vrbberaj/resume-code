@@ -459,6 +459,77 @@ WORKSHOPS = [
     ("Executive war-room synthesis", "ZF Wabco", "Led cross-functional alignment sessions with global fleet directors and engineering leads to prioritize commercial telematics roadmaps."),
 ]
 
+FACILITATION_METRICS = [
+    ("14+", "AI Governance War Rooms · IBM"),
+    ("18", "Enterprise Admins Co-Designing · Zebra"),
+    ("10-Wk", "SAFe Sprint Zero Cadence Embedded"),
+    ("100%", "Cross-Functional Sign-Off Pre-Build"),
+]
+
+FEATURED_WORKSHOPS = [
+    {
+        "tag": "AI GOVERNANCE & TELEMETRY",
+        "format": "14 Multi-Squad Sessions",
+        "company": "IBM Software Labs",
+        "title": "AI Governance & Algorithmic Trust War Rooms",
+        "desc": "Brought AI research scientists, product managers, compliance officers, and legal teams into one room to agree on telemetry capture, explainability thresholds, and rollback triggers before development started.",
+        "outcome": "Unified 3-tier confidence model co-signed by legal and engineering, eliminating late-stage compliance halts.",
+        "img": "assets/photos/candid_flipchart_huddle.jpg",
+        "alt": "Cross-functional design thinking & affinity mapping workshop with squad designers",
+    },
+    {
+        "tag": "SYSTEM IA & MODELING",
+        "format": "Architecture Sprints",
+        "company": "IBM Software Labs",
+        "title": "Enterprise System Architecture & Whiteboard Sprints",
+        "desc": "Facilitated technical architecture and UX wireframe sprints directly at the whiteboard with global engineering leads and product architects, ensuring complex AI models mapped cleanly into intuitive SaaS interactions.",
+        "outcome": "Consolidated 3 product silo patterns into a single reusable telemetry and action pipeline across enterprise tracks.",
+        "img": "assets/gallery/gallery_whiteboard_sprint.jpg",
+        "alt": "Enterprise AI System Architecture and Whiteboard Sprint",
+    },
+    {
+        "tag": "FLOW STRESS-TESTING",
+        "format": "Studio Wall Critiques",
+        "company": "Zebra Technologies",
+        "title": "Studio Wireframe Wall & Physical Flow Staging",
+        "desc": "Taped up end-to-end handheld staging flows across the studio glass to walk engineering leads and industrial designers through scan latency, glove-mode touch targets, and ergonomic hand-offs in warehouse conditions.",
+        "outcome": "Uncovered 8 critical cold-storage operational blockers before hardware deployment, saving months of physical re-tooling.",
+        "img": "assets/photos/candid_window_wireframes.jpg",
+        "alt": "Studio wireframe wall: taping up and inspecting full handheld staging flows on the studio window",
+    },
+    {
+        "tag": "CRAFT & STATE LOGIC",
+        "format": "Weekly 1:1 Pairing",
+        "company": "Design Studio Floor",
+        "title": "1:1 Pairing & Micro-Interaction Logic Reviews",
+        "desc": "Conducted hands-on pairing sessions at the workstation with squad designers, stepping through edge-case state machines, error fallbacks, and micro-interactions on live prototypes before handover.",
+        "outcome": "Maintained 100% component token compliance across 14 contributing designers with zero design regressions during sprint QA.",
+        "img": "assets/photos/candid_desk_review.jpg",
+        "alt": "Desk review & 1:1 critique: walking through interaction details and pairing logic on an iMac workstation",
+    },
+]
+
+CONTINUOUS_RITUALS = [
+    {
+        "org": "Zebra · Ericsson",
+        "cadence": "Discovery & IA",
+        "title": "Customer Card Sorting & Field Shadowing",
+        "desc": "Facilitated open and closed card-sorting with 18 enterprise administrators to establish an intuitive 4-tier device-health taxonomy; shadowed senior sales engineers on high-stakes live bids in Stockholm to map calculation drift.",
+    },
+    {
+        "org": "Zebra Technologies",
+        "cadence": "Sprint Cadence",
+        "title": "SAFe PI Planning & Sprint Zero Definition",
+        "desc": "Embedded UX sprint zero definition into every 10-week SAFe Programme Increment, aligning engineering capacity with validated design outcomes and eliminating design debt before sprint kickoff.",
+    },
+    {
+        "org": "IBM · ZF Wabco",
+        "cadence": "Strategic Alignment",
+        "title": "Executive War Rooms & AI Masterclasses",
+        "desc": "Led cross-functional alignment sessions with global fleet directors to prioritize commercial telematics roadmaps, and ran weekly AI-UX masterclasses upskilling 14 designers on human-in-the-loop interaction patterns.",
+    },
+]
+
 TOOLS = [
     ("Design & prototyping", ["Figma", "FigJam", "Miro", "Mural"]),
     ("Research & analytics", ["UserTesting", "Hotjar", "Google Analytics"]),

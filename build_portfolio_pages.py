@@ -16,6 +16,7 @@ from portfolio_content import (
     PHILOSOPHY, EVOLUTION, LEADERSHIP_NUMBERS, HIRING_STEPS, GROWTH_PRACTICES,
     HIRING_FACTS, DELEGATION_LEVELS, DELEGATION_EXAMPLE, TEAM_BEFORE, TEAM_AFTER,
     CHALLENGES, WORKSHOPS, TOOLS, FRAMEWORKS, TARGET_ROLES,
+    FEATURED_WORKSHOPS, CONTINUOUS_RITUALS, FACILITATION_METRICS,
 )
 
 e = html.escape
@@ -585,15 +586,231 @@ LEAD_CSS = """
   }
   .ld-callout b { color: var(--text-main); }
 
-  .ld-workshop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-bottom: 36px; }
-  .ld-wcard { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 22px 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03); transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
-  .ld-wcard:hover { transform: translateY(-2px); border-color: var(--primary-accent); box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); }
-  .ld-wcard-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-  .ld-wcard-num { font-family: var(--font-code); font-size: 11px; font-weight: 700; color: var(--primary-accent); letter-spacing: 0.06em; }
-  .ld-wcard-co { font-style: normal; font-size: 11px; font-weight: 700; color: var(--text-main); background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: 100px; padding: 3px 10px; white-space: nowrap; }
-  .ld-wcard h3 { font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main); line-height: 1.3; margin-bottom: 6px; letter-spacing: -0.01em; }
-  .ld-wcard p { font-size: 13.5px; color: var(--text-body); line-height: 1.55; }
-  .ld-workshop-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  /* Workshops and Facilitation Section */
+  .ld-workshops-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+  .ld-workshops-title-block {
+    flex: 1;
+    max-width: 680px;
+  }
+  .ld-workshops-title-block .sec-intro {
+    margin-bottom: 0;
+  }
+  .ld-workshops-metrics-pill {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 24px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    min-width: 380px;
+  }
+  .ld-wmetric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ld-wmetric-val {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-accent);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .ld-wmetric-lbl {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .ld-featured-workshops-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .ld-fworkshop-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .ld-fworkshop-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-accent);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  }
+  .ld-fworkshop-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0F172A;
+  }
+  .ld-fworkshop-media a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .ld-fworkshop-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .ld-fworkshop-card:hover .ld-fworkshop-media img {
+    transform: scale(1.02);
+  }
+  .ld-fworkshop-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+  }
+  .ld-fworkshop-body {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .ld-fworkshop-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .ld-fworkshop-tag {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary-accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .ld-fworkshop-format {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+  .ld-fworkshop-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .ld-fworkshop-desc {
+    font-size: 13.5px;
+    color: var(--text-body);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .ld-fworkshop-outcome {
+    background: #F8FAFC;
+    border-left: 3px solid var(--primary-accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--text-main);
+    line-height: 1.45;
+  }
+  .ld-fworkshop-outcome strong {
+    color: var(--primary-accent);
+    font-weight: 700;
+  }
+
+  .ld-rituals-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .ld-ritual-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ld-ritual-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-accent);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  }
+  .ld-ritual-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+  .ld-ritual-org {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-main);
+    background: var(--bg-subtle);
+    border-radius: 100px;
+    padding: 2px 9px;
+    border: 1px solid var(--border-subtle);
+    white-space: nowrap;
+  }
+  .ld-ritual-cadence {
+    font-family: var(--font-code);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--primary-accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .ld-ritual-card h4 {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.35;
+    margin: 0;
+  }
+  .ld-ritual-card p {
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.5;
+    margin: 0;
+  }
 
   .ld-tools { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
   .ld-tools div { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 18px; }
@@ -631,7 +848,9 @@ LEAD_CSS = """
   .ld-btn-s { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; }
 
   @media (max-width: 1100px) {
-    .ld-workshop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ld-workshops-header { flex-direction: column; align-items: stretch; gap: 24px; }
+    .ld-workshops-metrics-pill { min-width: auto; }
+    .ld-rituals-strip { grid-template-columns: 1fr; }
     .ld-tools { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ld-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ld-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -641,7 +860,7 @@ LEAD_CSS = """
   }
   @media (max-width: 900px) {
     .ld-hero { grid-template-columns: 1fr; gap: 32px; }
-    .ld-workshop-gallery { grid-template-columns: 1fr; }
+    .ld-featured-workshops-grid { grid-template-columns: 1fr; }
     .ld-team { grid-template-columns: 1fr; }
     .ld-arrow { transform: rotate(90deg); height: 30px; }
     .ld-deleg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -723,35 +942,55 @@ def build_leadership():
     facts = "".join(f'<div class="ld-card"><h3>{e(t)}</h3><p>{e(d)}</p></div>' for t, d in HIRING_FACTS)
     deleg = "".join(f'<div><small>Level {k + 1}</small><h3>{e(t)}</h3><p>{e(d)}</p></div>' for k, (t, d) in enumerate(DELEGATION_LEVELS))
     chall = "".join(f'<div class="ld-card"><small>{e(co)}</small><h3>{e(t)}</h3><p>{e(d)}</p><a href="{href}">Read the case study &rarr;</a></div>' for t, co, d, href in CHALLENGES)
-    works = "".join(f"""
-        <div class="ld-wcard">
-          <div class="ld-wcard-top">
-            <span class="ld-wcard-num">0{k + 1} / 06</span>
-            <span class="ld-wcard-co">{e(co)}</span>
+    wmetrics_html = "".join(f"""
+        <div class="ld-wmetric-item">
+          <span class="ld-wmetric-val">{e(val)}</span>
+          <span class="ld-wmetric-lbl">{e(lbl)}</span>
+        </div>""" for val, lbl in FACILITATION_METRICS)
+
+    fworks_html = "".join(f"""
+        <div class="ld-fworkshop-card">
+          <div class="ld-fworkshop-media">
+            <a href="{e(w['img'])}" target="_blank" rel="noopener" aria-label="Open full image: {e(w['title'])}">
+              <img src="{e(w['img'])}" alt="{e(w['alt'])}" width="1200" height="896" loading="lazy">
+            </a>
+            <span class="ld-fworkshop-badge">{e(w['company'])}</span>
           </div>
-          <div>
-            <h3>{e(t)}</h3>
-            <p>{e(d)}</p>
+          <div class="ld-fworkshop-body">
+            <div class="ld-fworkshop-meta">
+              <span class="ld-fworkshop-tag">{e(w['tag'])}</span>
+              <span class="ld-fworkshop-format">{e(w['format'])}</span>
+            </div>
+            <div>
+              <h3 class="ld-fworkshop-title">{e(w['title'])}</h3>
+              <p class="ld-fworkshop-desc" style="margin-top: 8px;">{e(w['desc'])}</p>
+            </div>
+            <div class="ld-fworkshop-outcome">
+              <strong>Shipped:</strong> {e(w['outcome'])}
+            </div>
           </div>
-        </div>""" for k, (t, co, d) in enumerate(WORKSHOPS))
+        </div>""" for w in FEATURED_WORKSHOPS)
+
+    rituals_html = "".join(f"""
+        <div class="ld-ritual-card">
+          <div class="ld-ritual-top">
+            <span class="ld-ritual-org">{e(r['org'])}</span>
+            <span class="ld-ritual-cadence">{e(r['cadence'])}</span>
+          </div>
+          <h4>{e(r['title'])}</h4>
+          <p>{e(r['desc'])}</p>
+        </div>""" for r in CONTINUOUS_RITUALS)
+
     tools = "".join(f'<div><h3>{e(cat)}</h3><ul>{"".join(f"<li>{e(x)}</li>" for x in items)}</ul></div>' for cat, items in TOOLS)
     fw = "".join(f'<div class="ld-card"><h3>{e(t)}</h3><p>{e(d)}</p><div class="meta">Used at: {e(u)}</div></div>' for t, d, u in FRAMEWORKS)
     refs = "".join(testimonial_card(t) for t in TESTIMONIALS)
     roles = "".join(f"<span>{e(r)}</span>" for r in TARGET_ROLES)
-    action_photo = figure({"kind": "photo", "src": "assets/photos/candid_flipchart_huddle.jpg",
-                           "caption": "Cross-functional design thinking & affinity mapping workshop with squad designers."})
-    wall_critique = figure({"kind": "photo", "src": "assets/photos/candid_desk_review.jpg",
-                            "caption": "Desk review & 1:1 critique: walking through interaction details and pairing logic on an iMac workstation."})
-    window_photo = figure({"kind": "photo", "src": "assets/photos/candid_window_wireframes.jpg",
-                           "caption": "Studio wireframe wall: taping up and inspecting full handheld staging flows on the studio window."})
     stage_panel = figure({"kind": "photo", "src": "assets/photos/candid_allhands_panel.jpg",
                           "caption": "Design All-Hands Town Hall: presenting user-centric innovation and enterprise systems to 100+ stakeholders."})
     team_culture = figure({"kind": "photo", "src": "assets/photos/candid_team_marathon.jpg",
                            "caption": "Team culture & camaraderie: celebrating at the corporate charity 5K finish line."})
     scorecard_fig = figure({"kind": "photo", "src": "assets/photos/artifact_ux_scorecard_warroom.jpg",
                             "caption": "Enterprise UX Scorecard & Sprint Quality Bar: criteria linking heuristic standards to physical war-room deliverables."})
-    card_sort = figure({"kind": "real", "src": "assets/behance/enterprise/enterprise_2_1400x730.png",
-                        "caption": "Card-sorting board from a Zebra stakeholder workshop I ran."})
 
     links = [("philosophy", "Philosophy"), ("evolution", "How I evolved"), ("team", "Team structure"),
              ("hiring", "Hiring & growth"), ("delegation", "Delegation"), ("challenges", "Challenges"),
@@ -846,16 +1085,21 @@ def build_leadership():
     </section>
 
     <section class="g-wrap ld-sec" id="workshops">
-      {lead_head("Workshops and facilitation", "Bringing people into the room", "Cross-functional alignment doesn't happen over email or Jira tickets. I design and facilitate structured workshops that bring engineering leads, product directors, compliance officers, and frontline operators into the same room to build consensus, stress-test assumptions, and unblock roadmaps.")}
-      <div class="ld-workshop-grid">
-        {works}
+      <div class="ld-workshops-header">
+        <div class="ld-workshops-title-block">
+          <div class="sec-label">Workshops and facilitation</div>
+          <h2 class="sec-title">Bringing people into the room</h2>
+          <p class="sec-intro">Cross-functional alignment doesn't happen over email or Jira tickets. I design and facilitate structured workshops that bring engineering leads, product directors, compliance officers, and frontline operators into the same room to build consensus, stress-test assumptions, and unblock roadmaps.</p>
+        </div>
+        <div class="ld-workshops-metrics-pill">
+          {wmetrics_html}
+        </div>
       </div>
-      <h3 class="ld-sub">Workshops in Action · Facilitation &amp; Artifacts</h3>
-      <div class="ld-workshop-gallery">
-        {action_photo}
-        {wall_critique}
-        {window_photo}
-        {card_sort}
+      <div class="ld-featured-workshops-grid">
+        {fworks_html}
+      </div>
+      <div class="ld-rituals-strip">
+        {rituals_html}
       </div>
     </section>
 
@@ -1422,3 +1666,7 @@ def clean_nav(files):
             with open(fn, "w", encoding="utf-8") as f:
                 f.write(new)
             print(f"  ✓ {fn} (navigation cleaned)")
+
+
+if __name__ == "__main__":
+    build_leadership()
