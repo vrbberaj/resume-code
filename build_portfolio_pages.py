@@ -669,7 +669,7 @@ def build_leadership():
       <div>
         <div class="g-overline">Leadership</div>
         <h1>How I lead design teams</h1>
-        <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 12 designers.</p>
+        <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 14 designers.</p>
         <div class="ld-roles">{roles}</div>
       </div>
       <div class="ld-photo"><img src="speaking-gesture.jpg" alt="Balaajee V.R." loading="eager"></div>
@@ -697,7 +697,7 @@ def build_leadership():
     </section>
 
     <section class="g-wrap ld-sec" id="team">
-      {lead_head("Team structure", "Re-organising 12 designers at IBM", "Three product silos were duplicating AI patterns and research. I moved the team to a service model with chapters, while keeping designers embedded in product squads.")}
+      {lead_head("Team structure", "Re-organising 14 designers at IBM", "Three product silos were duplicating AI patterns and research. I moved the team to a service model with chapters, while keeping designers embedded in product squads.")}
       <div class="ld-team">
         <div class="ld-col"><h3>Before: product silos</h3><p>Separate patterns, duplicated research</p>{before}</div>
         <div class="ld-arrow">&rarr;</div>

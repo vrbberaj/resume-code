@@ -89,7 +89,7 @@ CASE_STUDIES = [
         "cover_kind": "recreation",
         "snapshot": {
             "My role": "Senior Manager, UI/UX Design",
-            "Team": "12 designers in 3 chapters",
+            "Team": "14 designers in 3 chapters",
             "Timeline": "Sep 2024 – Jan 2026 (16 months)",
             "Stakeholders": "Watson AI research, 3 product directors, 4 engineering squads, compliance & CISO",
             "Methods": "Field shadowing, workshops, wireframes, prototypes, 3 rounds of usability testing, OKRs",
@@ -105,7 +105,7 @@ CASE_STUDIES = [
             "Framed the research and personally ran 24 shadowing sessions",
             "Defined the confidence-gating model with the AI research lead",
             "Facilitated 14 alignment workshops with research, product and compliance",
-            "Re-organised the 12-person team and coached through bi-weekly 1:1s",
+            "Re-organised the 14-person team and coached through bi-weekly 1:1s",
             "Presented design direction and results to VPs and the steering committee",
         ],
         "delegated": [
@@ -134,9 +134,9 @@ CASE_STUDIES = [
         "decisions": [
             ("Three levels of AI autonomy instead of on/off", "Compliance needed control; engineers needed speed. High-confidence actions run, medium ones open a diff for review, low ones hand control back.", "Added a review step for mid-confidence actions. Accepted because it removed the compliance veto."),
             ("Show what changed, not just a confidence score", "Round 1 users ignored percentages. They trusted a visual before/after diff.", "Two extra sprints, and we dropped a chatbot window that product wanted for marketing."),
-            ("Re-organise 12 designers into chapters", "Three silos were building six different AI feedback widgets.", "Product teams lost “their” designer. Fixed by embedding designer pairs in each product squad."),
+            ("Re-organise 14 designers into chapters", "Three silos were building six different AI feedback widgets.", "Product teams lost “their” designer. Fixed by embedding designer pairs in each product squad."),
         ],
-        "results": "AI moved from banned to adopted. Model drafting went from 14.2 hours to 3.6, threat triage from 4.1 hours to 43 minutes, with zero compliance violations across 140,000+ AI-assisted tasks. The team kept 100% retention over 16 months and three designers were promoted.",
+        "results": "AI moved from banned to adopted. Model drafting went from 14.2 hours to 3.6, threat triage from 4.1 hours to 43 minutes, with zero compliance violations across 140,000+ AI-assisted tasks. The team kept 100% retention over 16 months and five designers were promoted.",
         "learned": "Trust is a design deliverable. Next time I would bring compliance into the first research round, not the third workshop. It would have saved us a month of debate.",
         "testimonial": "ibm-designer",
     },
@@ -395,7 +395,7 @@ EVOLUTION = [
     ("2019 – 2020", "Ericsson", "UI/UX Designer", "Went back to hands-on work at global scale. Field research changed how I start every project."),
     ("2020 – 2021", "ZF Wabco", "UI/UX Senior Specialist", "Safety-critical work taught me that evidence has to be rigorous, not convenient."),
     ("2021 – 2024", "Zebra Technologies", "Product Design Manager", "Became a hiring manager. Learned that hiring and coaching are the job, not a distraction from it."),
-    ("2024 – 2026", "IBM Software Labs", "Senior Manager, UI/UX Design", "Led 12 designers through a re-org and an AI transformation. Leading through ambiguity."),
+    ("2024 – 2026", "IBM Software Labs", "Senior Manager, UI/UX Design", "Led 14 designers through a re-org and an AI transformation. Leading through ambiguity."),
 ]
 
 LEADERSHIP_NUMBERS = [
@@ -424,7 +424,7 @@ GROWTH_PRACTICES = [
 
 HIRING_FACTS = [
     ("Hiring manager at Zebra", "Built the design team from 3 to 9 people."),  # CONFIRM
-    ("12 designers at IBM", "Re-organised from three silos into a service model."),
+    ("Max team size of 14", "Re-organised from three silos into a service model at IBM."),
     ("50+ mentored", "Across Ericsson, Zebra, IBM and earlier roles."),
 ]
 
