@@ -813,38 +813,76 @@
       position: relative;
       z-index: 2;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
       height: 100%;
     }
 
     .masthead-text {
-      max-width: 480px;
-      padding-bottom: 34px;
+      max-width: 500px;
       position: relative;
       z-index: 3;
       flex-shrink: 0;
     }
 
+    .masthead-eyebrow {
+      font-family: var(--font-heading);
+      font-size: clamp(11.5px, 0.95vw, 13.5px);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #0D1B2E;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .masthead-title {
       font-family: var(--font-heading);
-      font-size: clamp(24px, 2.6vw, 42px);
+      font-size: clamp(26px, 2.7vw, 42px);
       font-weight: 900;
       color: #0D1B2E;
       line-height: 1.08;
       letter-spacing: -0.025em;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
     }
 
-    .masthead-sub {
-      font-family: var(--font-body);
-      font-size: clamp(13px, 1.1vw, 15.5px);
-      font-weight: 600;
-      color: #1E293B;
-      line-height: 1.4;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
+    .masthead-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 0;
+    }
+
+    .masthead-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0D1B2E;
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.18);
+      letter-spacing: 0.02em;
+    }
+
+    .masthead-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 8px #38BDF8;
+      animation: mastheadPulseDot 2s infinite ease-in-out;
+    }
+
+    @keyframes mastheadPulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.85); }
     }
 
     .masthead-visual {
@@ -1491,8 +1529,11 @@ body.comparison-mode .global-header {
   <aside class="masthead js-masthead-fixed" aria-label="Executive Design Leadership Masthead">
     <div class="masthead-contents">
       <div class="masthead-text">
+        <div class="masthead-eyebrow">Balaajee V.R. &nbsp;—&nbsp; Senior UI/UX Design Manager</div>
         <h1 class="masthead-title">Building Teams.<br>Shaping Products.</h1>
-        <p class="masthead-sub">Balaajee V.R. &nbsp;·&nbsp; Senior UI/UX Design Manager</p>
+        <div class="masthead-badges">
+          <span class="masthead-badge"><span class="masthead-dot"></span> Immediate Availability &bull; EU Blue Card &bull; 18+ Years</span>
+        </div>
       </div>
     </div>
     <div class="masthead-visual" aria-hidden="true">
@@ -2309,9 +2350,9 @@ body.comparison-mode .global-header {
       <!-- Historical Breadth / Design Artifacts Teaser -->
       <div class="archive-teaser-banner">
         <div class="archive-teaser-content">
-          <span class="archive-teaser-badge">Historical Depth &bull; 18+ Years</span>
+          <span class="archive-teaser-badge">Architectural Breadth &bull; Design Artifacts</span>
           <h3>Looking for broader architectural breadth?</h3>
-          <p>Explore curated production design artifacts spanning enterprise tools, telecom network topology, interactive gaming, and early mobile design across 18+ years.</p>
+          <p>Explore curated production design artifacts spanning enterprise tools, telecom network topology, interactive gaming, and mission-critical multi-industry systems.</p>
         </div>
         <a href="archive.html" class="btn-archive-teaser">
           <span>Explore Design Artifacts</span>
