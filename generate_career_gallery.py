@@ -18,46 +18,15 @@ GALLERY_ITEMS = [
         "desc": "Reviewing unified endpoint security architecture, policy compliance telemetry (1.2M+ devices), and AI threat triage velocity (+42%) with cross-functional engineering leads and product executives."
     },
     {
-        "id": "ibm-1",
-        "category": "ibm",
-        "category_label": "IBM Software Labs",
-        "badge_color": "bg-indigo-600",
-        "image": "assets/gallery/gallery_whiteboard_sprint.jpg",
-        "title": "Enterprise AI System Architecture & Whiteboard Sprint",
-        "role": "Senior UX Manager • IBM Watson & Enterprise Modeling",
-        "desc": "Collaborating on complex system architecture and user flow modeling with global engineering leads and product architects, ensuring seamless AI-UX integration for enterprise SaaS."
+        "id": "culture-2",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_team_lunch.jpg",
+        "title": "Studio Milestone Celebration Lunch",
+        "role": "Design Manager • Team Bonding & Retention",
+        "desc": "Celebrating sprint velocity and design system releases over an authentic team banquet, building strong personal connections that drove low team attrition."
     },
-    {
-        "id": "ibm-2",
-        "category": "ibm",
-        "category_label": "IBM Software Labs",
-        "badge_color": "bg-indigo-600",
-        "image": "assets/gallery/gallery_ibm_global_trio.jpg",
-        "title": "Global Product Leadership Sync at IBM Software Labs",
-        "role": "Senior UX Manager • Global Cross-Functional Alignment",
-        "desc": "Standing with European and American product leadership counterparts in the IBM corridor following an executive UX alignment review on enterprise endpoint management."
-    },
-    {
-        "id": "ibm-full-team",
-        "category": "ibm",
-        "category_label": "IBM Software Labs",
-        "badge_color": "bg-indigo-600",
-        "image": "assets/gallery/gallery_gear_team.jpg",
-        "title": "The Full Enterprise Design Team",
-        "role": "Senior UX Manager • Complete Design Organization",
-        "desc": "The complete enterprise product design team gathered together, comprising UI/UX designers, design researchers, and global design leadership across enterprise product tracks."
-    },
-    {
-        "id": "ibm-3",
-        "category": "ibm",
-        "category_label": "IBM Software Labs",
-        "badge_color": "bg-indigo-600",
-        "image": "assets/gallery/gallery_real_ibm_team_floor.jpg",
-        "title": "The IBM Software Labs Enterprise Design Squad",
-        "role": "Senior UX Manager • 12-Designer Enterprise Studio",
-        "desc": "On the IBM design floor with the dedicated enterprise UX team responsible for Rhapsody SE, MaaS360, and core enterprise AI capabilities across mission-critical products."
-    },
-
     {
         "id": "zebra-usability-desk",
         "category": "zebra",
@@ -69,24 +38,14 @@ GALLERY_ITEMS = [
         "desc": "Collaborating with senior engineering leads at a studio standing desk, validating one-handed thumb-reach zones and screen interaction flows on rugged enterprise mobile touch computers."
     },
     {
-        "id": "global-townhall-talk",
-        "category": "global",
-        "category_label": "Global Leadership",
-        "badge_color": "bg-blue-600",
-        "image": "assets/gallery/gallery_townhall_review.jpg",
-        "title": "Design System Sprint Review & Chapter Townhall",
-        "role": "UI/UX Design Manager • Chapter Lead & Sprint Demo",
-        "desc": "Presenting Design System component adoption metrics, token architecture, and sprint velocity to product managers, engineering leads, and design squad members in an open studio townhall."
-    },
-    {
-        "id": "global-3",
-        "category": "global",
-        "category_label": "Global Leadership",
-        "badge_color": "bg-blue-600",
-        "image": "assets/gallery/gallery_journey_warroom.jpg",
-        "title": "Multi-Tenant User Journey War Room & Discovery Session",
-        "role": "Lead Design Strategist • Enterprise Journey Mapping",
-        "desc": "Leading an interactive design discovery workshop with international researchers and architects, mapping multi-tenant touchpoints and identifying mission-critical cognitive bottlenecks."
+        "id": "ibm-1",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_whiteboard_sprint.jpg",
+        "title": "Enterprise AI System Architecture & Whiteboard Sprint",
+        "role": "Senior UX Manager • IBM Watson & Enterprise Modeling",
+        "desc": "Collaborating on complex system architecture and user flow modeling with global engineering leads and product architects, ensuring seamless AI-UX integration for enterprise SaaS."
     },
     {
         "id": "zebra-2",
@@ -99,44 +58,24 @@ GALLERY_ITEMS = [
         "desc": "Recognized for UX innovation and design team scale at the Zebra Technologies annual innovation summit, celebrating culture, team spirit, and creative momentum."
     },
     {
-        "id": "zebra-3",
-        "category": "zebra",
-        "category_label": "Zebra Technologies",
-        "badge_color": "bg-amber-600",
-        "image": "assets/gallery/gallery_real_zebra_stage_trio.jpg",
-        "title": "Design Leadership at Zebra Innovation Summit",
-        "role": "UI/UX Product Design Manager • Design Team Mentorship",
-        "desc": "With design team leads on the main stage at Zebra Srujana, reflecting a vibrant design studio culture that scaled from reactive delivery to strategic innovation."
+        "id": "culture-1",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_campus_courtyard.jpg",
+        "title": "Tech Park Courtyard Huddle: Enterprise Campus",
+        "role": "Design Manager • Informal Sprint Sync",
+        "desc": "Taking design strategy out of the boardroom into the campus courtyard with squad leads, fostering camaraderie and high-trust peer relationships."
     },
     {
-        "id": "zebra-4",
-        "category": "zebra",
-        "category_label": "Zebra Technologies",
-        "badge_color": "bg-amber-600",
-        "image": "assets/gallery/gallery_real_zebra_stage_full.jpg",
-        "title": "Studio Showcase: Zebra Enterprise Design Squad",
-        "role": "UI/UX Product Design Manager • Organizational Pedigree",
-        "desc": "Stage presence at Zebra Technologies corporate convention, highlighting the design team's role in powering 80,000+ commercial fleets and global enterprise accounts."
-    },
-    {
-        "id": "zebra-5",
-        "category": "zebra",
-        "category_label": "Zebra Technologies",
-        "badge_color": "bg-amber-600",
-        "image": "assets/gallery/gallery_real_zebra_convention.jpg",
-        "title": "Zebra Global Innovation Convention Floor",
-        "role": "Design Manager • All-Hands Gathering",
-        "desc": "In the grand hall of the annual Zebra all-hands convention alongside fellow engineering and product leaders representing the India Design Center."
-    },
-    {
-        "id": "zebra-6",
-        "category": "zebra",
-        "category_label": "Zebra Technologies",
-        "badge_color": "bg-amber-600",
-        "image": "assets/gallery/gallery_real_zebra_audience.jpg",
-        "title": "Executive Keynotes: Zebra Innovation Summit Auditorium",
-        "role": "Design Leadership • Strategic Alignment",
-        "desc": "Front-row at the Zebra annual technology summit, absorbing global corporate vision, enterprise roadmaps, and cross-business unit technological breakthroughs."
+        "id": "global-townhall-talk",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_townhall_review.jpg",
+        "title": "Design System Sprint Review & Chapter Townhall",
+        "role": "UI/UX Design Manager • Chapter Lead & Sprint Demo",
+        "desc": "Presenting Design System component adoption metrics, token architecture, and sprint velocity to product managers, engineering leads, and design squad members in an open studio townhall."
     },
     {
         "id": "ericsson-1",
@@ -149,34 +88,24 @@ GALLERY_ITEMS = [
         "desc": "Celebrating with the Ericsson team after securing 1st place in the Global Hack-fest Optimization Contest, fostering an enduring culture of UX innovation."
     },
     {
-        "id": "ericsson-2",
-        "category": "ericsson",
-        "category_label": "Ericsson Global",
-        "badge_color": "bg-emerald-600",
-        "image": "assets/gallery/gallery_real_ericsson_lounge.jpg",
-        "title": "Ericsson Design Studio Lounge & Morning Sync",
-        "role": "UI/UX Designer • Telecommunications Infrastructure",
-        "desc": "A candid morning pause at the Ericsson campus lounge with the signature Ericsson coffee mug, where cross-functional design sprints and design system governance began."
+        "id": "ibm-full-team",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_gear_team.jpg",
+        "title": "The Full Enterprise Design Team",
+        "role": "Senior UX Manager • Complete Design Organization",
+        "desc": "The complete enterprise product design team gathered together, comprising UI/UX designers, design researchers, and global design leadership across enterprise product tracks."
     },
     {
-        "id": "culture-1",
-        "category": "culture",
-        "category_label": "Team Culture",
-        "badge_color": "bg-rose-600",
-        "image": "assets/gallery/gallery_real_campus_courtyard.jpg",
-        "title": "Tech Park Courtyard Huddle: Enterprise Campus",
-        "role": "Design Manager • Informal Sprint Sync",
-        "desc": "Taking design strategy out of the boardroom into the campus courtyard with squad leads, fostering camaraderie and high-trust peer relationships."
-    },
-    {
-        "id": "culture-2",
-        "category": "culture",
-        "category_label": "Team Culture",
-        "badge_color": "bg-rose-600",
-        "image": "assets/gallery/gallery_real_team_lunch.jpg",
-        "title": "Studio Milestone Celebration Lunch",
-        "role": "Design Manager • Team Bonding & Retention",
-        "desc": "Celebrating sprint velocity and design system releases over an authentic team banquet, building strong personal connections that drove low team attrition."
+        "id": "zebra-3",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_stage_trio.jpg",
+        "title": "Design Leadership at Zebra Innovation Summit",
+        "role": "UI/UX Product Design Manager • Design Team Mentorship",
+        "desc": "With design team leads on the main stage at Zebra Srujana, reflecting a vibrant design studio culture that scaled from reactive delivery to strategic innovation."
     },
     {
         "id": "culture-3",
@@ -189,24 +118,34 @@ GALLERY_ITEMS = [
         "desc": "Energizing the design squad at an offsite bowling evening, proving that world-class design delivery is sustained by genuine mutual trust and shared joy."
     },
     {
-        "id": "culture-4",
-        "category": "culture",
-        "category_label": "Team Culture",
-        "badge_color": "bg-rose-600",
-        "image": "assets/gallery/gallery_real_holiday_cubicle.jpg",
-        "title": "Holiday Bay Celebration & Hybrid Remote Sync",
-        "role": "Design Manager • Inclusive Hybrid Culture",
-        "desc": "Bringing in festive joy with holiday cubicle decor while looping in remote teammates on video call, ensuring every designer feels connected regardless of location."
+        "id": "global-3",
+        "category": "global",
+        "category_label": "Global Leadership",
+        "badge_color": "bg-blue-600",
+        "image": "assets/gallery/gallery_journey_warroom.jpg",
+        "title": "Multi-Tenant User Journey War Room & Discovery Session",
+        "role": "Lead Design Strategist • Enterprise Journey Mapping",
+        "desc": "Leading an interactive design discovery workshop with international researchers and architects, mapping multi-tenant touchpoints and identifying complex cognitive bottlenecks."
     },
     {
-        "id": "culture-5",
-        "category": "culture",
-        "category_label": "Team Culture",
-        "badge_color": "bg-rose-600",
-        "image": "assets/gallery/gallery_real_festive_desk.jpg",
-        "title": "Traditional Festivities at the Office Bay",
-        "role": "Design Manager • Authentic Workplace Culture",
-        "desc": "Embracing cultural heritage with traditional attire at the workplace during festive celebrations, championing diversity and authentic personal expression."
+        "id": "ibm-2",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_ibm_global_trio.jpg",
+        "title": "Global Product Leadership Sync at IBM Software Labs",
+        "role": "Senior UX Manager • Global Cross-Functional Alignment",
+        "desc": "Standing with European and American product leadership counterparts in the IBM corridor following an executive UX alignment review on enterprise endpoint management."
+    },
+    {
+        "id": "zebra-4",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_stage_full.jpg",
+        "title": "Studio Showcase: Zebra Enterprise Design Squad",
+        "role": "UI/UX Product Design Manager • Organizational Pedigree",
+        "desc": "Stage presence at Zebra Technologies corporate convention, highlighting the design team's role in powering 80,000+ commercial fleets and global enterprise accounts."
     },
     {
         "id": "culture-6",
@@ -217,6 +156,66 @@ GALLERY_ITEMS = [
         "title": "Hands-on Creative Workshop & Artifact Showcase",
         "role": "Design Mentor • Creative Expression",
         "desc": "Leading a tactile craft workshop emphasizing color theory, tactile prototyping, and creative storytelling beyond digital screens."
+    },
+    {
+        "id": "ericsson-2",
+        "category": "ericsson",
+        "category_label": "Ericsson Global",
+        "badge_color": "bg-emerald-600",
+        "image": "assets/gallery/gallery_real_ericsson_lounge.jpg",
+        "title": "Ericsson Design Studio Lounge & Morning Sync",
+        "role": "UI/UX Designer • Telecommunications Infrastructure",
+        "desc": "A candid morning pause at the Ericsson campus lounge with the signature Ericsson coffee mug, where cross-functional design sprints and design system governance began."
+    },
+    {
+        "id": "ibm-3",
+        "category": "ibm",
+        "category_label": "IBM Software Labs",
+        "badge_color": "bg-indigo-600",
+        "image": "assets/gallery/gallery_real_ibm_team_floor.jpg",
+        "title": "The IBM Software Labs Enterprise Design Squad",
+        "role": "Senior UX Manager • 14-Designer Enterprise Studio",
+        "desc": "On the IBM design floor with the dedicated enterprise UX team responsible for Rhapsody SE, MaaS360, and core enterprise AI capabilities across enterprise products."
+    },
+    {
+        "id": "zebra-5",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_convention.jpg",
+        "title": "Zebra Global Innovation Convention Floor",
+        "role": "Design Manager • All-Hands Gathering",
+        "desc": "In the grand hall of the annual Zebra all-hands convention alongside fellow engineering and product leaders representing the India Design Center."
+    },
+    {
+        "id": "culture-4",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_holiday_cubicle.jpg",
+        "title": "Holiday Bay Celebration & Hybrid Remote Sync",
+        "role": "Design Manager • Inclusive Hybrid Culture",
+        "desc": "Bringing in festive joy with holiday cubicle decor while looping in remote teammates on video call, ensuring every designer feels connected regardless of location."
+    },
+    {
+        "id": "zebra-6",
+        "category": "zebra",
+        "category_label": "Zebra Technologies",
+        "badge_color": "bg-amber-600",
+        "image": "assets/gallery/gallery_real_zebra_audience.jpg",
+        "title": "Executive Keynotes: Zebra Innovation Summit Auditorium",
+        "role": "Design Leadership • Strategic Alignment",
+        "desc": "Front-row at the Zebra annual technology summit, absorbing global corporate vision, enterprise roadmaps, and cross-business unit technological breakthroughs."
+    },
+    {
+        "id": "culture-5",
+        "category": "culture",
+        "category_label": "Team Culture",
+        "badge_color": "bg-rose-600",
+        "image": "assets/gallery/gallery_real_festive_desk.jpg",
+        "title": "Traditional Festivities at the Office Bay",
+        "role": "Design Manager • Authentic Workplace Culture",
+        "desc": "Embracing cultural heritage with traditional attire at the workplace during festive celebrations, championing diversity and authentic personal expression."
     }
 ]
 
