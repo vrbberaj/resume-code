@@ -813,8 +813,8 @@ HOME_CSS = """
      ------------------------------------------------------------------------- */
   .home-featured-work {
     scroll-margin-top: 72px;
-    padding: 72px 0 80px;
-    background: #FFFFFF;
+    padding: 72px 0 88px;
+    background: #FAFBFC;
     border-top: 1px solid var(--border-subtle);
   }
   .home-featured-work .g-wrap {
@@ -823,62 +823,189 @@ HOME_CSS = """
     padding: 0 24px;
   }
   .sec-header-block {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     max-width: 960px;
   }
   .sec-header-block .sec-intro {
-    margin-top: 12px;
+    margin-top: 14px;
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--text-body);
   }
 
   .case-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 56px 40px;
+    gap: 32px;
   }
-  .case-card {
-    display: block;
+
+  /* -------------------------------------------------------------------------
+     Card 01: Flagship Full-Width Split Card (Hero Showcase)
+     ------------------------------------------------------------------------- */
+  .case-card-flagship {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 36px;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 22px;
+    padding: 24px;
     text-decoration: none;
     color: inherit;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin-bottom: 8px;
+  }
+  .case-card-flagship:hover {
+    border-color: var(--border-medium);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .case-stage-flagship {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #ECEEF1;
+    aspect-ratio: 16 / 10;
+    transition: background 0.3s ease;
+  }
+  .case-stage-flagship img {
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    top: 8%;
+    width: 88%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 16px 44px -10px rgba(15, 23, 42, 0.28);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .case-card-flagship:hover .case-stage-flagship {
+    background: #E4E7EB;
+  }
+  .case-card-flagship:hover .case-stage-flagship img {
+    transform: translateY(-6px);
+  }
+
+  .case-meta-flagship {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: 8px 12px 8px 0;
+  }
+  .case-title-flagship {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 8px 0 12px;
+    transition: color 0.2s ease;
+  }
+  .case-card-flagship:hover .case-title-flagship {
+    color: var(--primary-accent);
+  }
+  .case-card-flagship .case-lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin-bottom: 20px;
+  }
+
+  /* -------------------------------------------------------------------------
+     Cards 02 - 05: Balanced 2x2 Grid Cards
+     ------------------------------------------------------------------------- */
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  }
+  .case-card:hover {
+    border-color: var(--border-medium);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+    transform: translateY(-4px);
   }
 
   .case-stage {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 12px;
     background: #ECEEF1;
     aspect-ratio: 16 / 10;
     transition: background 0.3s ease;
   }
   .case-stage img {
     position: absolute;
-    left: 7%;
-    right: 7%;
-    top: 9%;
-    width: 86%;
+    left: 6%;
+    right: 6%;
+    top: 8%;
+    width: 88%;
     height: auto;
     min-height: 100%;
     object-fit: cover;
     object-position: left top;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 18px 50px -12px rgba(15, 23, 42, 0.28);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 14px 36px -10px rgba(15, 23, 42, 0.25);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .case-card:hover .case-stage {
     background: #E4E7EB;
   }
   .case-card:hover .case-stage img {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 
   .case-meta {
-    padding-top: 24px;
+    padding-top: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .case-meta-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .case-num-pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+  }
+  .case-num-pill.flagship {
+    background: rgba(240, 6, 88, 0.08);
+    border-color: rgba(240, 6, 88, 0.2);
+    color: var(--primary-accent);
   }
   .case-co {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
     color: var(--text-muted);
     letter-spacing: 0.02em;
-    margin-bottom: 8px;
   }
   .case-co b {
     color: var(--text-main);
@@ -888,9 +1015,9 @@ HOME_CSS = """
     font-family: var(--font-heading);
     font-weight: 800;
     color: var(--text-main);
-    font-size: 25px;
-    line-height: 1.22;
-    letter-spacing: -0.02em;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
     margin-bottom: 10px;
     transition: color 0.2s ease;
   }
@@ -898,56 +1025,75 @@ HOME_CSS = """
     color: var(--primary-accent);
   }
   .case-lead {
-    font-size: 15.5px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.55;
     color: var(--text-body);
-    max-width: 620px;
+    margin-bottom: 18px;
+    flex: 1;
   }
 
   .case-foot {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 24px;
-    margin-top: 20px;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
     flex-wrap: wrap;
   }
   .case-metrics {
     display: flex;
-    gap: 36px;
+    gap: 24px;
   }
   .case-metric strong {
     display: block;
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 22px;
+    font-size: 20px;
     color: var(--text-main);
     letter-spacing: -0.02em;
     line-height: 1.1;
   }
   .case-metric span {
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--text-muted);
   }
   .case-link {
-    font-size: 14px;
-    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    font-weight: 800;
     color: var(--primary-accent);
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
   .case-link i {
     font-style: normal;
     display: inline-block;
     transition: transform 0.2s ease;
   }
-  .case-card:hover .case-link i {
+  .case-card:hover .case-link i,
+  .case-card-flagship:hover .case-link i {
     transform: translateX(4px);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 980px) {
+    .case-card-flagship {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    .case-meta-flagship {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 860px) {
     .case-grid {
       grid-template-columns: 1fr;
-      gap: 44px;
+      gap: 24px;
     }
   }
 
@@ -1039,7 +1185,7 @@ def inject_home():
         src = f.read()
     src = re.sub(re.escape(HOME_START) + r"[\s\S]*?" + re.escape(HOME_END) + r"\n?", "", src)
 
-    # 1. Build Case Cards using uniform proportions and clean layout
+    # 1. Build Case Cards: Card 01 is Flagship full-width horizontal split, Cards 02-05 are 2x2 grid
     cases = g._cases_from_content()
     cards = []
     for i, c in enumerate(cases):
@@ -1047,13 +1193,40 @@ def inject_home():
             f'<div class="case-metric"><strong>{e(v)}</strong><span>{e(l)}</span></div>'
             for v, l in c["metrics"]
         )
-        cards.append(f"""
+        if i == 0:
+            # Full-width Flagship Hero Showcase Card (Side-by-side horizontal split)
+            cards.append(f"""
+        <!-- Flagship Case Study 01 (Full-Width Split Showcase) -->
+        <a href="{c['href']}" class="case-card-flagship" id="home-case-{i + 1}">
+          <div class="case-stage-flagship">
+            <img src="{c['cover']}" alt="{e(c['title'])}" loading="eager">
+          </div>
+          <div class="case-meta-flagship">
+            <div class="case-meta-top">
+              <span class="case-num-pill flagship">01 / 05 &bull; Flagship</span>
+              <span class="case-co"><b>{e(c['company'])}</b> &nbsp;·&nbsp; {e(c['domain'])}</span>
+            </div>
+            <h3 class="case-title-flagship">{e(c['title'])}</h3>
+            <p class="case-lead">{e(c['lead'])}</p>
+            <div class="case-foot">
+              <div class="case-metrics">{metrics}</div>
+              <span class="case-link">Read case study <i>&rarr;</i></span>
+            </div>
+          </div>
+        </a>""")
+        else:
+            # Balanced 2x2 Grid Cards
+            cards.append(f"""
+        <!-- Case Study 0{i + 1} of 05 -->
         <a href="{c['href']}" class="case-card" id="home-case-{i + 1}">
           <div class="case-stage">
             <img src="{c['cover']}" alt="{e(c['title'])}" loading="{'eager' if i < 2 else 'lazy'}">
           </div>
           <div class="case-meta">
-            <div class="case-co"><b>{e(c['company'])}</b> &nbsp;·&nbsp; {e(c['domain'])}</div>
+            <div class="case-meta-top">
+              <span class="case-num-pill">0{i + 1} / 05</span>
+              <span class="case-co"><b>{e(c['company'])}</b> &nbsp;·&nbsp; {e(c['domain'])}</span>
+            </div>
             <h3 class="case-title">{e(c['title'])}</h3>
             <p class="case-lead">{e(c['lead'])}</p>
             <div class="case-foot">
@@ -1066,13 +1239,13 @@ def inject_home():
     block = f"""{HOME_START}
   <style>{HOME_CSS}</style>
 
-  <!-- Featured Executive Work Section (Chris Gielow Pattern) -->
+  <!-- Featured Executive Work Section (Flagship + Balanced 2x2 Grid) -->
   <section id="featured-work" class="home-featured-work" aria-label="Enterprise Case Studies">
     <div class="g-wrap">
       <div class="sec-header-block">
-        <div class="sec-label">Enterprise Case Studies</div>
+        <div class="sec-label">Selected Portfolio &bull; 5 Case Studies</div>
         <h2 class="sec-title">Enterprise product design leadership for mission-critical software architectures.</h2>
-        <p class="sec-intro">Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.</p>
+        <p class="sec-intro">Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Five selected initiatives across IBM, Ericsson, Zebra Technologies, ZF Wabco, and Infosys.</p>
       </div>
 
       <div class="case-grid">
