@@ -43,8 +43,7 @@ def header(active):
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="{cls('work')}">Selected Work</a>
         <a href="leadership.html" class="{cls('leadership')}">Leadership</a>
-        <a href="leadership-deck.html" class="{cls('leadership-deck')}">Leadership Deck</a>
-        <a href="archive.html" class="{cls('archive')}">Visual Archive</a>
+        <a href="archive.html" class="{cls('archive')}">Design Artifacts</a>
         <a href="gallery.html" class="{cls('gallery')}">Career Gallery</a>
         <a href="cv.html" class="{cls('cv')}">My Resume</a>
       </nav>
@@ -125,6 +124,7 @@ def page(title, description, active, body, extra_css=""):
 {header(active)}
 {body}
 {FOOTER}
+  <script src="contact-drawer.js" defer></script>
 </body>
 </html>
 """
@@ -439,8 +439,8 @@ def build_archive():
 
     intro = f"""
     <section class="g-wrap g-intro">
-      <h1 class="g-title">Visual Archive</h1>
-      <p class="g-sub">Curated project collections and visual design archives spanning enterprise tools, telecom network systems, mobile applications, and digital product craft across 18+ years.</p>
+      <h1 class="g-title">Design Artifacts</h1>
+      <p class="g-sub">Curated production UI screens, complex workflows, design systems, and product deliverables spanning 18+ years of enterprise software.</p>
     </section>"""
 
     # ---- gallery home
@@ -453,8 +453,8 @@ def build_archive():
   </main>"""
     with open("archive.html", "w", encoding="utf-8") as f:
         f.write(page(
-            "Visual Archive | Balaajee V.R.",
-            "Visual design archive of Balaajee V.R.: enterprise software, telecom systems, web, and mobile application archives.",
+            "Design Artifacts | Balaajee V.R.",
+            "Curated production UI screens, complex workflows, design systems, and product deliverables spanning 18+ years of enterprise software by Balaajee V.R.",
             "archive", body, ARCHIVE_CSS))
     print(f"  ✓ archive.html (gallery, {len(projects)} projects, {total} images)")
 
@@ -472,7 +472,7 @@ def build_archive():
         body = f"""
   <main>
     <section class="g-wrap bp-top">
-      <a href="archive.html" class="bp-back">&larr; Visual Archive</a>
+      <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
       <h1 class="bp-title">{html.escape(p['name'])}</h1>
       <div class="bp-owner-row">
         <div class="bp-owner"><small>{len(p['images'])} artifact{'s' if len(p['images']) != 1 else ''}</small></div>
@@ -488,13 +488,13 @@ def build_archive():
     <section class="g-wrap">
       <div class="bp-end">
         <h2>{html.escape(p['name'])}</h2>
-        <p>Visual Design Archive</p>
+        <p>Design Artifacts &amp; Production Screens</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-{prev_p['slug']}.html"><small>&larr; Previous</small><strong>{html.escape(prev_p['name'])}</strong></a>
         <a href="archive-{next_p['slug']}.html" class="next"><small>Next &rarr;</small><strong>{html.escape(next_p['name'])}</strong></a>
       </nav>
-      <h3 class="bp-more-title">More Archive Collections</h3>
+      <h3 class="bp-more-title">More Design Artifacts</h3>
       <div class="be-grid">{''.join(card(q) for q in others)}
       </div>
     </section>
@@ -502,8 +502,8 @@ def build_archive():
         fname = f"archive-{p['slug']}.html"
         with open(fname, "w", encoding="utf-8") as f:
             f.write(page(
-                f"{p['name']} | Visual Archive | Balaajee V.R.",
-                f"{p['name']}: design work by Balaajee V.R., from his Behance portfolio.",
+                f"{p['name']} | Design Artifacts | Balaajee V.R.",
+                f"{p['name']}: curated production screens and design artifacts by Balaajee V.R.",
                 "archive", body, ARCHIVE_CSS))
         print(f"  ✓ {fname} ({len(p['images'])} images)")
 

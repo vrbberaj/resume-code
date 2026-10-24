@@ -758,8 +758,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="nav-item">Selected Work</a>
         <a href="leadership.html" class="nav-item">Leadership</a>
-        <a href="leadership-deck.html" class="nav-item">Leadership Deck</a>
-        <a href="archive.html" class="nav-item">Visual Archive</a>
+        <a href="archive.html" class="nav-item">Design Artifacts</a>
         <a href="gallery.html" class="nav-item active">Career Gallery</a>
         <a href="cv.html" class="nav-item">My Resume</a>
       </nav>

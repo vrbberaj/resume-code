@@ -357,7 +357,7 @@
           <div>
             <div class="bvr-drawer-name" id="bvrDrawerNameTitle">Balaajee V.R.</div>
             <div class="bvr-drawer-title">Senior UI/UX Design Manager</div>
-            <div class="bvr-drawer-pedigree">18+ Years Exp</div>
+            <div class="bvr-drawer-pedigree">18+ Years in Product Design</div>
           </div>
         </div>
         <button type="button" class="bvr-drawer-close" id="bvrDrawerClose" aria-label="Close Contact Drawer">&times;</button>
