@@ -470,11 +470,37 @@
   .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
   .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
 
-  .bp-canvas {
-    max-width: 1400px; margin: 0 auto; background: #FFFFFF;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 12px 40px -12px rgba(15, 23, 42, 0.12);
+  .bp-canvas-wrap {
+    max-width: 1240px;
+    margin: 36px auto 64px;
+    padding: 0 24px;
   }
-  .bp-canvas img { display: block; width: 100%; height: auto; }
+  .bp-canvas {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .bp-canvas img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+    background: #FFFFFF;
+  }
+  @media (max-width: 640px) {
+    .bp-canvas-wrap {
+      margin: 20px auto 44px;
+      padding: 0 16px;
+    }
+    .bp-canvas {
+      gap: 20px;
+    }
+    .bp-canvas img {
+      border-radius: 12px;
+    }
+  }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
   .bp-end h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--text-main); }
@@ -529,9 +555,11 @@
       </div>
     </section>
 
-    <section class="bp-canvas" aria-label="An Enterprise Project images">
+    <div class="bp-canvas-wrap">
+      <section class="bp-canvas" aria-label="An Enterprise Project images">
       <img src="assets/behance/enterprise/enterprise_1_1400x889.png" alt="An Enterprise Project, image 1" width="1920" height="1219" loading="eager"><img src="assets/behance/enterprise/enterprise_2_1400x730.png" alt="An Enterprise Project, image 2" width="1920" height="1002" loading="eager"><img src="assets/behance/enterprise/enterprise_3_1400x1106.png" alt="An Enterprise Project, image 3" width="1920" height="1517" loading="lazy"><img src="assets/behance/enterprise/enterprise_4_1400x2319.png" alt="An Enterprise Project, image 4" width="1920" height="3180" loading="lazy"><img src="assets/behance/enterprise/enterprise_5_1400x788.png" alt="An Enterprise Project, image 5" width="1920" height="1080" loading="lazy"><img src="assets/behance/enterprise/enterprise_6_1400x1569.png" alt="An Enterprise Project, image 6" width="1920" height="2152" loading="lazy"><img src="assets/behance/enterprise/enterprise_7_1400x788.png" alt="An Enterprise Project, image 7" width="1920" height="1080" loading="lazy"><img src="assets/behance/enterprise/enterprise_8_1400x788.png" alt="An Enterprise Project, image 8" width="1920" height="1080" loading="lazy">
     </section>
+    </div>
 
     <section class="g-wrap">
       <div class="bp-end">

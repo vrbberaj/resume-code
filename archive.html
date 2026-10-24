@@ -470,11 +470,37 @@
   .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
   .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
 
-  .bp-canvas {
-    max-width: 1400px; margin: 0 auto; background: #FFFFFF;
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 12px 40px -12px rgba(15, 23, 42, 0.12);
+  .bp-canvas-wrap {
+    max-width: 1240px;
+    margin: 36px auto 64px;
+    padding: 0 24px;
   }
-  .bp-canvas img { display: block; width: 100%; height: auto; }
+  .bp-canvas {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .bp-canvas img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+    background: #FFFFFF;
+  }
+  @media (max-width: 640px) {
+    .bp-canvas-wrap {
+      margin: 20px auto 44px;
+      padding: 0 16px;
+    }
+    .bp-canvas {
+      gap: 20px;
+    }
+    .bp-canvas img {
+      border-radius: 12px;
+    }
+  }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
   .bp-end h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: var(--text-main); }
