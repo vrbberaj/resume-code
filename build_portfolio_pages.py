@@ -348,7 +348,7 @@ def build_case(i, c):
           <div class="cs-own-team"><h3>What I delegated</h3><ul>{delegated}</ul></div>
         </div>''', "role")}
 {section("03", "Process", "From research to measured outcome", f'<div class="cs-steps">{steps}</div>', "process")}
-{section("04", "Evidence", "Artifacts from the project", f'<div class="cs-figs" style="margin-top:0">{figs}</div>', "evidence")}
+{section("04", "Design Deliverables", "Core workflows, interface architecture, and shipped designs", f'<div class="cs-figs" style="margin-top:0">{figs}</div>', "deliverables")}
 {section("05", "Key decisions", "The calls I made and what they cost", f'<div class="cs-dec">{decisions}</div>', "decisions")}
 {section("06", "Results", "Business and user impact", f'<div class="cs-prose cs-result-text"><p>{e(c["results"])}</p></div>', "results")}
 {section("07", "What I learned", None, f'<p class="cs-learn">{e(c["learned"])}</p>', "learned")}
