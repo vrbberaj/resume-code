@@ -312,7 +312,7 @@
 
 
     /* =========================================================================
-       Unified Executive Banner Stage (Approach B: 165px Compact Power Strip)
+       Unified Executive Banner Stage (165px Compact Power Strip)
        ========================================================================= */
     .welcome-hero-stage {
       padding: 14px 0 14px;
@@ -321,16 +321,16 @@
     }
 
     .hero-container {
-      max-width: 1240px;
+      max-width: 1260px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
     .exec-banner-row {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: space-between;
-      gap: 24px;
+      gap: 22px;
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
@@ -338,20 +338,21 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
 
-    /* Zone 1: Mini Video Briefing launcher */
+    /* Zone 1: Mini Video Briefing launcher (Slightly Bigger) */
     .exec-banner-video-pill {
-      flex: 0 0 210px;
-      position: relative;
+      flex: 0 0 260px;
+      display: flex;
+      flex-direction: column;
     }
     .exec-video-thumb-container {
-      width: 210px;
-      height: 118px;
+      width: 260px;
+      height: 146px;
       border-radius: 10px;
       overflow: hidden;
       position: relative;
       background: #000;
       border: 1px solid rgba(0,0,0,0.1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     }
     .exec-video-thumb-container video {
       width: 100%;
@@ -361,15 +362,15 @@
     }
     .exec-video-badge {
       position: absolute;
-      top: 6px;
-      left: 6px;
+      top: 7px;
+      left: 7px;
       background: rgba(11, 14, 23, 0.85);
       backdrop-filter: blur(4px);
       color: #FFFFFF;
       font-family: var(--font-code);
       font-size: 9.5px;
       font-weight: 700;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
     }
     .exec-video-subbar {
@@ -399,20 +400,23 @@
     .exec-banner-center {
       flex: 1 1 auto;
       min-width: 0;
-      padding: 0 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 4px;
     }
     .exec-tag-line {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
     .exec-status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       font-family: var(--font-code);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       color: #0284C7;
       background: #E0F2FE;
@@ -428,10 +432,10 @@
     }
     .exec-exp-badge {
       font-family: var(--font-code);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       color: var(--primary-accent);
-      background: var(--accent-subtle);
+      background: rgba(240,6,88,0.08);
       padding: 2px 8px;
       border-radius: 9999px;
     }
@@ -442,19 +446,19 @@
       letter-spacing: -0.02em;
       color: var(--text-main);
       line-height: 1.25;
-      margin-bottom: 4px;
+      margin: 0 0 5px 0;
     }
     .exec-sub-pitch {
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 12.5px;
+      line-height: 1.45;
       color: var(--text-body);
-      margin-bottom: 8px;
+      margin: 0 0 9px 0;
     }
     .exec-stats-ribbon {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 7px;
+      flex-wrap: nowrap;
     }
     .exec-stat-pill {
       font-size: 11px;
@@ -463,98 +467,85 @@
       padding: 2px 8px;
       border-radius: 6px;
       color: var(--text-body);
+      white-space: nowrap;
     }
     .exec-stat-pill strong {
       font-weight: 800;
       color: var(--text-main);
     }
-    .exec-stat-pill.highlight {
-      background: #FFFBEB;
-      border-color: #FDE68A;
-      color: #B45309;
-    }
-    .exec-stat-pill.highlight strong {
-      color: #B45309;
-    }
 
-    /* Zone 3: Enterprise Pedigree Strip & Actions */
-    .exec-banner-right {
-      flex: 0 0 320px;
+    /* Zone 3: Enterprise Pedigree (Bigger Logos + Titles, No CTA) */
+    .exec-banner-brands {
+      flex: 0 0 440px;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 18px;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
-      border-left: 1px solid var(--border-subtle);
-      padding-left: 20px;
+      justify-content: center;
     }
-    .exec-brands-title {
+    .exec-brands-header {
       font-family: var(--font-code);
-      font-size: 9.5px;
+      font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-muted);
+      margin-bottom: 7px;
     }
-    .exec-logos-row {
+    .exec-brands-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+    .exec-brand-card {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-    .mini-brand-chip {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 28px;
-      padding: 3px 6px;
-      border-radius: 6px;
+      gap: 9px;
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
-      transition: all 0.2s ease;
-    }
-    .mini-brand-chip:hover {
-      border-color: var(--border-medium);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transform: translateY(-1px);
-    }
-    .mini-brand-chip img {
-      height: 16px;
-      max-width: 48px;
-      object-fit: contain;
-    }
-    .exec-banner-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .btn-banner-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
       border-radius: 8px;
-      font-size: 11.5px;
-      font-weight: 700;
-      text-decoration: none;
+      padding: 6px 9px;
       transition: all 0.2s ease;
     }
-    .btn-banner-action.primary {
-      background: var(--primary-accent);
-      color: #FFFFFF;
-    }
-    .btn-banner-action.primary:hover {
-      background: var(--primary-hover);
+    .exec-brand-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       transform: translateY(-1px);
     }
-    .btn-banner-action.secondary {
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
+    .exec-brand-logo-img {
+      height: 22px;
+      max-width: 54px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
     }
-    .btn-banner-action.secondary:hover {
-      background: var(--bg-subtle);
-      border-color: var(--border-medium);
+    .exec-brand-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .exec-brand-name {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.15;
+    }
+    .exec-brand-role {
+      font-size: 9.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .exec-brand-card.wide {
+      grid-column: 1 / -1;
+      padding: 5px 10px;
+    }
+    .exec-brand-card.wide .exec-brand-role {
+      white-space: normal;
     }
 
     /* Transcript Drawer */
@@ -587,23 +578,32 @@
       .exec-banner-video-pill {
         flex: 0 0 auto;
         width: 100%;
-        max-width: 320px;
+        max-width: 340px;
+        margin: 0 auto;
       }
       .exec-video-thumb-container {
         width: 100%;
-        max-width: 320px;
-        height: 180px;
+        max-width: 340px;
+        height: 191px;
       }
-      .exec-banner-right {
+      .exec-banner-center {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 12px;
+        margin-bottom: 4px;
+      }
+      .exec-stats-ribbon {
+        flex-wrap: wrap;
+      }
+      .exec-banner-brands {
         border-left: none;
         padding-left: 0;
-        align-items: flex-start;
-        border-top: 1px solid var(--border-subtle);
-        padding-top: 12px;
       }
-      .exec-logos-row {
-        justify-content: flex-start;
-        flex-wrap: wrap;
+    }
+
+    @media (max-width: 560px) {
+      .exec-brands-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -803,13 +803,13 @@
   </header>
   
 
-  <!-- Executive Hero Stage (Approach B: Unified Executive Banner) -->
+  <!-- Executive Hero Stage -->
   <main class="welcome-hero-stage">
     <div class="hero-container">
       
       <div class="exec-banner-row">
         
-        <!-- Zone 1: Mini 60s Video Briefing -->
+        <!-- Zone 1: Mini 60s Video Briefing (Slightly Bigger) -->
         <div class="exec-banner-video-pill">
           <div class="exec-video-thumb-container">
             <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
@@ -823,51 +823,66 @@
           </div>
         </div>
 
-        <!-- Zone 2: Executive Pitch & Core Capabilities -->
+        <!-- Zone 2: Executive Pitch & Metrics (Better Description, No repeated companies, No 5-giants tag) -->
         <div class="exec-banner-center">
           <div class="exec-tag-line">
             <span class="exec-status-pill"><span class="status-pulse-dot"></span> Immediate Availability • EU Blue Card Eligible</span>
             <span class="exec-exp-badge">18+ Years Executive Leadership</span>
           </div>
           <h1 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h1>
-          <p class="exec-sub-pitch">Directing multi-disciplinary design squads and scaling enterprise design systems across <strong>IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys</strong>.</p>
+          <p class="exec-sub-pitch">Directing cross-functional design squads, scaling design system governance, and engineering trusted AI product experiences for mission-critical software platforms.</p>
           <div class="exec-stats-ribbon">
             <span class="exec-stat-pill"><strong>14</strong> Squads Directed</span>
             <span class="exec-stat-pill"><strong>94%</strong> Carbon Adoption</span>
             <span class="exec-stat-pill"><strong>$14M+</strong> Enterprise Impact</span>
-            <span class="exec-stat-pill highlight"><strong>5</strong> Global Tier-1 Tech Giants</span>
           </div>
         </div>
 
-        <!-- Zone 3: Global Brand Logos & Immediate Work Jump -->
-        <div class="exec-banner-right">
-          <span class="exec-brands-title">PROVEN AT GLOBAL TECH LEADERS</span>
-          <div class="exec-logos-row">
-            <div class="mini-brand-chip" title="IBM: Senior UI/UX Design Manager">
-              <img src="logos/ibm.svg" alt="IBM">
+        <!-- Zone 3: Global Brand Logos & Roles (Bigger Logos, Job Titles, No CTA) -->
+        <div class="exec-banner-brands">
+          <div class="exec-brands-header">PROVEN AT GLOBAL TECH LEADERS</div>
+          <div class="exec-brands-grid">
+            
+            <div class="exec-brand-card" title="IBM: Senior UI/UX Design Manager">
+              <img src="logos/ibm.svg" alt="IBM" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">IBM</span>
+                <span class="exec-brand-role">Senior UI/UX Design Manager</span>
+              </div>
             </div>
-            <div class="mini-brand-chip" title="Ericsson: UI/UX Designer">
-              <img src="logos/ericsson.svg" alt="Ericsson">
+
+            <div class="exec-brand-card" title="Ericsson: UI/UX Designer">
+              <img src="logos/ericsson.svg" alt="Ericsson" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">Ericsson</span>
+                <span class="exec-brand-role">UI/UX Designer</span>
+              </div>
             </div>
-            <div class="mini-brand-chip" title="Zebra Technologies: UI/UX Product Design Manager">
-              <img src="logos/zebra.svg" alt="Zebra Technologies">
+
+            <div class="exec-brand-card" title="Zebra Technologies: UI/UX Product Design Manager">
+              <img src="logos/zebra.svg" alt="Zebra Technologies" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">Zebra Technologies</span>
+                <span class="exec-brand-role">UI/UX Product Design Manager</span>
+              </div>
             </div>
-            <div class="mini-brand-chip" title="ZF Wabco: UI/UX Senior Specialist">
-              <img src="logos/zf.svg" alt="ZF Wabco">
+
+            <div class="exec-brand-card" title="ZF Wabco: UI/UX Senior Specialist">
+              <img src="logos/zf.svg" alt="ZF Wabco" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">ZF Wabco</span>
+                <span class="exec-brand-role">UI/UX Senior Specialist</span>
+              </div>
             </div>
-            <div class="mini-brand-chip" title="Infosys: Senior Software Engineer">
-              <img src="logos/infosys.svg" alt="Infosys">
+
+            <div class="exec-brand-card wide" title="Infosys: Senior Software Engineer • Digital Experience">
+              <img src="logos/infosys.svg" alt="Infosys" class="exec-brand-logo-img">
+              <div class="exec-brand-info">
+                <span class="exec-brand-name">Infosys</span>
+                <span class="exec-brand-role">Senior Software Engineer &bull; Digital Experience</span>
+              </div>
             </div>
-          </div>
-          <div class="exec-banner-actions">
-            <a href="#featured-work" class="btn-banner-action primary">
-              <span>Explore 5 Case Studies</span>
-              <span>&darr;</span>
-            </a>
-            <a href="leadership-deck.html" class="btn-banner-action secondary">
-              <span>Leadership Deck</span>
-              <span>&rarr;</span>
-            </a>
+
           </div>
         </div>
 
