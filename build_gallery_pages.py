@@ -406,24 +406,21 @@ def build_archive():
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">{html.escape(p['name'])}</div>
-            <div class="be-card-owner"><img src="profile.jpg" alt="">{OWNER}</div>
           </div>
-          <span class="be-count">{n} image{'s' if n != 1 else ''}</span>
+          <span class="be-count">{n} artifact{'s' if n != 1 else ''}</span>
         </div>
       </a>"""
 
     intro = f"""
     <section class="g-wrap g-intro">
-      <div class="g-overline">Visual Archive</div>
-      <h1 class="g-title">Historical Projects</h1>
-      <p class="g-sub">Seven curated deep-dive Behance project archives spanning enterprise tools, telecom network systems, mobile applications, and interactive design across 18+ years.</p>
+      <h1 class="g-title">Visual Archive</h1>
+      <p class="g-sub">Curated project collections and visual design archives spanning enterprise tools, telecom network systems, mobile applications, and digital product craft across 18+ years.</p>
     </section>"""
 
     # ---- gallery home
     body = f"""
   <main>{intro}
     <section class="g-wrap">
-      <div class="be-tabs"><div class="be-tab">Work<span>{len(projects)}</span></div></div>
       <div class="be-grid">{''.join(card(p, i < 4) for i, p in enumerate(projects))}
       </div>
     </section>
@@ -431,9 +428,9 @@ def build_archive():
     with open("archive.html", "w", encoding="utf-8") as f:
         f.write(page(
             "Visual Archive | Balaajee V.R.",
-            "Behance portfolio archive of Balaajee V.R.: enterprise, web, mobile and gaming design projects.",
+            "Visual design archive of Balaajee V.R.: enterprise software, telecom systems, web, and mobile application archives.",
             "archive", body, ARCHIVE_CSS))
-    print(f"  ✓ archive.html (Behance gallery, {len(projects)} projects, {total} images)")
+    print(f"  ✓ archive.html (gallery, {len(projects)} projects, {total} images)")
 
     # ---- one page per project
     for i, p in enumerate(projects):
@@ -452,8 +449,7 @@ def build_archive():
       <a href="archive.html" class="bp-back">&larr; Visual Archive</a>
       <h1 class="bp-title">{html.escape(p['name'])}</h1>
       <div class="bp-owner-row">
-        <div class="bp-owner"><img src="profile.jpg" alt=""><div>{OWNER}<small>{len(p['images'])} images</small></div></div>
-        <a href="{p['url']}" class="be-btn" target="_blank" rel="noopener">View on Behance &#8599;</a>
+        <div class="bp-owner"><small>{len(p['images'])} artifact{'s' if len(p['images']) != 1 else ''}</small></div>
       </div>
     </section>
 
@@ -464,13 +460,13 @@ def build_archive():
     <section class="g-wrap">
       <div class="bp-end">
         <h2>{html.escape(p['name'])}</h2>
-        <p>Published on Behance by {OWNER}</p>
+        <p>Visual Design Archive</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-{prev_p['slug']}.html"><small>&larr; Previous</small><strong>{html.escape(prev_p['name'])}</strong></a>
         <a href="archive-{next_p['slug']}.html" class="next"><small>Next &rarr;</small><strong>{html.escape(next_p['name'])}</strong></a>
       </nav>
-      <h3 class="bp-more-title">More by {OWNER}</h3>
+      <h3 class="bp-more-title">More Archive Collections</h3>
       <div class="be-grid">{''.join(card(q) for q in others)}
       </div>
     </section>

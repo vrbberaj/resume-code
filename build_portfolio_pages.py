@@ -1084,10 +1084,10 @@ def inject_home():
         <div class="archive-teaser-content">
           <span class="archive-teaser-badge">Historical Depth &bull; 18+ Years</span>
           <h3>Looking for broader architectural breadth?</h3>
-          <p>Explore 7 deep-dive Behance project archives spanning enterprise sales tools, telecom network topology, interactive gaming, and early mobile design.</p>
+          <p>Explore curated visual design archives spanning enterprise tools, telecom network topology, interactive gaming, and early mobile design across 18+ years.</p>
         </div>
         <a href="archive.html" class="btn-archive-teaser">
-          <span>Explore Visual Archive (7 Projects)</span>
+          <span>Explore Visual Archive</span>
           <span>&rarr;</span>
         </a>
       </div>
