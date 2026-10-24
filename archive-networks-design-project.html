@@ -391,7 +391,7 @@
   }
 
 
-  /* Behance-style profile strip */
+  /* Profile & Header */
   .be-profile {
     display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
     padding-top: 64px; padding-bottom: 32px;
@@ -424,20 +424,21 @@
   }
   .be-tab span { color: var(--text-muted); font-weight: 600; margin-left: 6px; }
 
-  /* Project grid */
+  /* Gallery Home Grid */
   .be-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px 24px;
   }
   .be-card { display: block; text-decoration: none; color: inherit; }
   .be-cover {
-    position: relative; overflow: hidden; border-radius: 8px;
+    position: relative; overflow: hidden; border-radius: 10px;
     aspect-ratio: 808 / 632; background: #E9EBEE;
+    border: 1px solid var(--border-subtle);
   }
   .be-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .be-cover::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
     opacity: 0; transition: opacity 0.25s ease;
   }
   .be-cover-title {
@@ -448,58 +449,169 @@
   .be-card:hover .be-cover::after, .be-card:focus-visible .be-cover::after { opacity: 1; }
   .be-card:hover .be-cover-title, .be-card:focus-visible .be-cover-title { opacity: 1; transform: none; }
 
-  .be-card-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
-  .be-card-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
-  .be-card-owner { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
-  .be-card-owner img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
-  .be-count { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-
-  /* Single project view */
-  .bp-top { padding-top: 40px; padding-bottom: 28px; }
-  .bp-back {
-    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 24px;
+  .be-card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 12px; }
+  .be-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.25; }
+  .be-card-tag { font-size: 12px; font-weight: 600; color: var(--primary-accent); margin-top: 4px; }
+  .be-count {
+    font-size: 11px; font-weight: 700; color: var(--text-muted); background: #F1F3F6;
+    padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   }
-  .bp-back:hover { color: var(--text-main); }
+
+  /* Single Project View: Executive Header */
+  .bp-top { padding-top: 48px; padding-bottom: 24px; }
+  .bp-back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px;
+    transition: color 0.2s ease;
+  }
+  .bp-back:hover { color: var(--primary-accent); }
+  .bp-badge {
+    display: inline-block; font-family: var(--font-code); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
   .bp-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.15;
+    font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 14px;
   }
-  .bp-owner-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-  .bp-owner { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-main); }
-  .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+  .bp-deck {
+    font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 940px; margin-bottom: 32px;
+  }
 
+  /* Executive Stat Grid */
+  .bp-stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .bp-stat-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 16px 20px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .bp-stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .bp-stat-val {
+    font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.35;
+  }
+  .bp-stat-val.highlight {
+    color: var(--primary-accent); font-family: var(--font-heading); font-size: 15px;
+  }
+
+  /* Executive Case Brief */
+  .bp-case-brief {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.06);
+  }
+  .bp-brief-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .bp-brief-col h3 {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .bp-brief-col p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
+  }
+
+  /* Executive Honors Section (My Achievements) */
+  .bp-honors-wrap {
+    margin-bottom: 56px;
+  }
+  .bp-sec-heading {
+    margin-bottom: 24px;
+  }
+  .bp-sec-title {
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.02em; margin-top: 6px; margin-bottom: 8px;
+  }
+  .bp-sec-sub {
+    font-size: 15px; color: var(--text-muted); max-width: 760px;
+  }
+  .bp-honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .bp-honor-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .bp-honor-card:hover {
+    transform: translateY(-2px); border-color: var(--primary-accent);
+  }
+  .bp-honor-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+  .bp-honor-title {
+    font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .bp-honor-year {
+    font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+  }
+  .bp-honor-issuer {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .bp-honor-desc {
+    font-size: 13.5px; line-height: 1.6; color: var(--text-body);
+  }
+
+  /* Artifact Story Card Canvas */
   .bp-canvas-wrap {
-    max-width: 1240px;
-    margin: 36px auto 64px;
-    padding: 0 24px;
+    max-width: 1240px; margin: 0 auto 64px; padding: 0 24px;
   }
   .bp-canvas {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+    display: flex; flex-direction: column; gap: 56px;
   }
-  .bp-canvas img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-    background: #FFFFFF;
+  .bp-story-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 10px 36px -12px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease;
   }
-  @media (max-width: 640px) {
-    .bp-canvas-wrap {
-      margin: 20px auto 44px;
-      padding: 0 16px;
-    }
-    .bp-canvas {
-      gap: 20px;
-    }
-    .bp-canvas img {
-      border-radius: 12px;
-    }
+  .bp-story-card:hover {
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.12);
+  }
+  .bp-card-top {
+    padding: 24px 30px 18px; border-bottom: 1px solid var(--border-subtle);
+    background: #FAFAF9; display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .bp-card-phase {
+    display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .bp-card-title {
+    font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 6px;
+  }
+  .bp-card-sub {
+    font-size: 14px; color: var(--text-muted); line-height: 1.5; max-width: 860px;
+  }
+  .bp-card-num {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 900; color: var(--border-medium);
+  }
+  .bp-card-media {
+    background: #F1F3F6; padding: 24px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-card-media img {
+    display: block; width: 100%; height: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); background: #FFFFFF;
+  }
+  .bp-card-details {
+    padding: 28px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .bp-detail-box h4 {
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .bp-detail-box p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
   }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
@@ -517,11 +629,22 @@
   .bp-pager .next { text-align: right; }
   .bp-more-title { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
 
+  @media (max-width: 960px) {
+    .bp-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bp-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+    .bp-card-details { grid-template-columns: 1fr; gap: 20px; }
+    .bp-honors-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     .be-profile { padding-top: 40px; padding-bottom: 24px; gap: 16px; }
     .be-avatar { width: 64px; height: 64px; }
     .be-name { font-size: 24px; }
     .be-grid { grid-template-columns: 1fr; }
+    .bp-stat-grid { grid-template-columns: 1fr; }
+    .bp-card-media { padding: 12px; }
+    .bp-card-top, .bp-card-details { padding: 20px; }
+    .bp-case-brief { padding: 20px; }
+    .bp-canvas { gap: 36px; }
   }
 
   </style>
@@ -549,22 +672,375 @@
   <main>
     <section class="g-wrap bp-top">
       <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
+      <div><span class="bp-badge">Network Operations &amp; Cognitive Ergonomics • Juniper Networks</span></div>
       <h1 class="bp-title">Networks design project</h1>
-      <div class="bp-owner-row">
-        <div class="bp-owner"><small>11 artifacts</small></div>
+      <p class="bp-deck">A next-generation enterprise network monitoring platform engineered to conquer alarm fatigue through cognitive load reduction, contextual drawer workflows, and breakthrough &#x27;Invisible Links&#x27; topology mapping.</p>
+      <div class="bp-stat-grid">
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Client &amp; Domain</div>
+          <div class="bp-stat-val">Juniper Networks · NOC Management</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Role &amp; Ownership</div>
+          <div class="bp-stat-val">Principal UX Architect · Full Lifecycle</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Core Methodologies</div>
+          <div class="bp-stat-val">Cognitive Ergonomics, Competitor Teardown, Hover-Occlusion Topology</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Key Impact</div>
+          <div class="bp-stat-val highlight">75% Less Visual Noise · MTTD 18m → 45s</div>
+        </div></div>
+      
+      <div class="bp-case-brief">
+        <div class="bp-brief-grid">
+          <div class="bp-brief-col">
+            <h3><span>⚠️</span> The Operational Bottleneck</h3>
+            <p>Network Operations Center (NOC) engineers monitor thousands of switches, routers, and fiber links across global enterprise backbones. Legacy tools presented an overwhelming &#x27;visual spaghetti&#x27; of connected lines and flashing alarms. During major fiber cuts or switch failures, operators suffered severe alarm fatigue, taking 18+ minutes just to isolate the root cause.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>🔍</span> How I Arrived at the Solution</h3>
+            <p>Led a comprehensive 5-phase UX process: Problem Definition → Competitor Benchmarking (SolarWinds, ManageEngine, PRTG) → Persona Modeling (&#x27;Emma&#x27; Frontline Admin vs &#x27;Jamie&#x27; Operations Manager) → Sticky Note Affinity Synthesis → Interactive Topology Prototyping. Developed the breakthrough &#x27;Invisible Links&#x27; interaction model that hides resting connector lines until hover or failure.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>📈</span> Measurable Business Impact</h3>
+            <p>Reduced visual noise on complex mesh networks by 75%. Slashed Mean-Time-to-Detect (MTTD) from 18 minutes to 45 seconds during high-severity network outages. Delivered a unified design system adopted across Juniper&#x27;s next-gen management suite.</p>
+          </div>
+        </div>
       </div>
+      
     </section>
 
     <div class="bp-canvas-wrap">
-      <section class="bp-canvas" aria-label="Networks design project images">
-        <img src="assets/behance/networks/networks_1_1400x964.png" alt="Networks design project, image 1" width="1920" height="1322" loading="eager"><img src="assets/behance/networks/networks_2_1400x1409.png" alt="Networks design project, image 2" width="1920" height="1933" loading="eager"><img src="assets/behance/networks/networks_3_1400x536.png" alt="Networks design project, image 3" width="1920" height="735" loading="lazy"><img src="assets/behance/networks/networks_4_1400x598.png" alt="Networks design project, image 4" width="1920" height="820" loading="lazy"><img src="assets/behance/networks/networks_5_1400x337.png" alt="Networks design project, image 5" width="1920" height="462" loading="lazy"><img src="assets/behance/networks/networks_6_1400x764.png" alt="Networks design project, image 6" width="1920" height="1048" loading="lazy"><img src="assets/behance/networks/networks_7_1400x869.png" alt="Networks design project, image 7" width="1920" height="1192" loading="lazy"><img src="assets/behance/networks/networks_8_1400x732.png" alt="Networks design project, image 8" width="1920" height="1004" loading="lazy"><img src="assets/behance/networks/networks_9_1400x680.png" alt="Networks design project, image 9" width="1920" height="932" loading="lazy"><img src="assets/behance/networks/networks_10_1400x680.png" alt="Networks design project, image 10" width="1920" height="932" loading="lazy"><img src="assets/behance/networks/networks_11_1400x680.png" alt="Networks design project, image 11" width="1920" height="933" loading="lazy">
+      <section class="bp-canvas" aria-label="Networks design project artifacts and process narrative">
+        
+        <article class="bp-story-card" id="artifact-1">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 01 · Research Foundations</span>
+              <h2 class="bp-card-title">Problem Definition &amp; North Star Engineering Goals</h2>
+              <p class="bp-card-sub">Framing user pain points, cognitive friction, and business imperatives into clear measurable design objectives.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">01</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_1_1400x964.png" alt="Problem Definition &amp; North Star Engineering Goals" width="1920" height="1322" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Legacy network management tools lacked user-centered focus, optimizing for raw data dumping rather than rapid operator decision-making during high-stress outages.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Established three core design pillars: sub-minute root-cause isolation, customizable role-based cockpits, and progressive disclosure of network topology complexity.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Aligned engineering, product, and UX leadership around shared human-centered KPIs before writing a single line of frontend code.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-2">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 01 · Competitive Benchmarking</span>
+              <h2 class="bp-card-title">Deep Competitive Teardown &amp; Industry Heuristic Analysis</h2>
+              <p class="bp-card-sub">Evaluating ManageEngine, SolarWinds, Paessler PRTG, ConfiBack, and Zoho to identify systemic industry UX flaws.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">02</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_2_1400x1409.png" alt="Deep Competitive Teardown &amp; Industry Heuristic Analysis" width="1920" height="1933" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Industry tools suffered from identical design pitfalls: impenetrable table density, rigid non-customizable dashboards, and disconnected configuration workflows.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Benchmarked task completion times across competitor interfaces, highlighting how multi-window switching degraded operator focus and delayed disaster recovery.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Identified the critical market whitespace: a calm, high-efficiency interface combining high-density tables with instant contextual slide-over drawers.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-3">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 02 · User Archetype Modeling</span>
+              <h2 class="bp-card-title">Dual Persona Architecture: Emma (NOC Admin) vs Jamie (Manager)</h2>
+              <p class="bp-card-sub">Distinguishing the high-speed triage needs of frontline triage operators from executive capacity planning.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">03</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_3_1400x536.png" alt="Dual Persona Architecture: Emma (NOC Admin) vs Jamie (Manager)" width="1920" height="735" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Previous iterations tried to serve all users with a single view, leaving frontline engineers overwhelmed with management charts and managers blind to active incidents.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Developed two distinct archetypes: &#x27;Emma&#x27; (frontline speed, keyboard triage, zero ambient noise) and &#x27;Jamie&#x27; (SLA compliance, team workload, infrastructure forecasting).</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Drove the architecture of a modular dashboard system where operators and managers customize cards based on shift responsibilities.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-4">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 02 · Need Prioritization</span>
+              <h2 class="bp-card-title">Affinity Mapping &amp; Observational Research Synthesis</h2>
+              <p class="bp-card-sub">Clustering qualitative insights from 24 hours of live NOC observational shadowing.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">04</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_4_1400x598.png" alt="Affinity Mapping &amp; Observational Research Synthesis" width="1920" height="820" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Engineers reported feeling &#x27;blinded by red&#x27; during cascade failures, where one router failure spawned 400 redundant downstream alarm notifications.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Grouped user friction points into actionable technical clusters: intelligent alarm correlation, non-modal device configuration, and spatial topology filtering.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Defined the feature backlog that prioritized cognitive noise reduction over adding more raw data metrics.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-5">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 02 · Strategic Scoping</span>
+              <h2 class="bp-card-title">Feature Prioritization Matrix (Value vs Engineering Complexity)</h2>
+              <p class="bp-card-sub">Balancing high-impact user desires against backend telematics polling capabilities.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">05</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_5_1400x337.png" alt="Feature Prioritization Matrix (Value vs Engineering Complexity)" width="1920" height="462" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Engineering constraints around real-time SNMP polling frequency threatened to stall development without clear trade-off agreements.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Facilitated a cross-functional 2x2 prioritization matrix, securing immediate commitment for customizable widgets and contextual drawers while staging predictive AI for v2.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Delivered the MVP release on schedule with 100% agreement across frontend, backend, and product management teams.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-6">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 03 · Information Architecture</span>
+              <h2 class="bp-card-title">Low-Fidelity Wireframes &amp; Navigational User Flows</h2>
+              <p class="bp-card-sub">Iterative structural wireframes establishing the 3-tier navigational hierarchy.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">06</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_6_1400x764.png" alt="Low-Fidelity Wireframes &amp; Navigational User Flows" width="1920" height="1048" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Operators frequently lost their navigational orientation when drilling three or four levels deep into sub-networks.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Prototyped a persistent 3-tier mental model: High-level System Health → High-density Filterable Inventory → Interactive Spatial Topology Canvas.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Validated seamless user flow transitions with NOC operators, achieving a 92% first-time task completion rate on wireframe prototypes.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-7">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 04 · High-Fidelity Design Execution</span>
+              <h2 class="bp-card-title">Modular Executive NOC Monitoring Dashboard</h2>
+              <p class="bp-card-sub">High-density production interface featuring drag-and-drop telemetry widgets and priority alarm queues.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">07</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_7_1400x869.png" alt="Modular Executive NOC Monitoring Dashboard" width="1920" height="1192" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Different NOC shifts handle different responsibilities (core backbone vs edge devices), making static dashboards ineffective.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Architected a modular card grid allowing operators to pin critical device clusters, real-time bandwidth consumption graphs, and unacknowledged alarm counters.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Became the default daily landing screen for over 800 NOC technicians across global operations centers.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-8">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 04 · Data Density &amp; Ergonomics</span>
+              <h2 class="bp-card-title">Dense Inventory List View with Contextual Slide-Over Drawer</h2>
+              <p class="bp-card-sub">High-throughput tabular interface enabling instant device diagnostic commands without losing table context.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">08</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_8_1400x732.png" alt="Dense Inventory List View with Contextual Slide-Over Drawer" width="1920" height="1004" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Opening device settings previously navigated operators away from the inventory table, forcing them to re-filter and re-scroll upon return.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Implemented an 8px grid data table paired with a contextual right-hand slide-over drawer for ping diagnostics, port reboots, and configuration rollbacks.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Eliminated table context loss completely, saving operators an estimated 45 seconds per diagnostic intervention.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-9">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 05 · Topology Innovation</span>
+              <h2 class="bp-card-title">Mesh Map View Option 1 (Traditional Force-Directed Graph)</h2>
+              <p class="bp-card-sub">Initial full-mesh topology visualization revealing the fundamental limits of traditional node-link diagrams.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">09</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_9_1400x680.png" alt="Mesh Map View Option 1 (Traditional Force-Directed Graph)" width="1920" height="932" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Rendering every physical connection line simultaneously created an impenetrable &#x27;visual thicket&#x27; with 50+ nodes, making it impossible to trace failure propagation paths.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Documented this baseline state during usability testing to prove to engineering stakeholders why traditional force-directed graph models failed frontline operators.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Provided the empirical justification to develop an innovative cognitive load reduction model for dense networks.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-10">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 05 · Cognitive Load Breakthrough</span>
+              <h2 class="bp-card-title">Map View Option 2: The Breakthrough &#x27;Invisible Links&#x27; Interaction</h2>
+              <p class="bp-card-sub">Contextual hover occlusion where connection lines remain hidden until triggered by user focus or active alarms.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">10</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_10_1400x680.png" alt="Map View Option 2: The Breakthrough &#x27;Invisible Links&#x27; Interaction" width="1920" height="932" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>How do you provide complete topological awareness without overwhelming the human visual cortex with hundreds of intersecting lines?</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Pioneered the &#x27;Invisible Links&#x27; model: connector lines remain invisible at rest, keeping the canvas calm. Hovering over any device or triggering an alert instantly illuminates its upstream and downstream pathways.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Reduced visual noise by 75% while slashing root-cause identification time from 18 minutes down to 45 seconds.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-11">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Phase 05 · Outage Triage Verification</span>
+              <h2 class="bp-card-title">Real-Time Incident Triage &amp; Cascading Failure Isolation</h2>
+              <p class="bp-card-sub">Interactive incident state highlighting affected parent switches while suppressing redundant downstream noise.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">11</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/networks/networks_11_1400x680.png" alt="Real-Time Incident Triage &amp; Cascading Failure Isolation" width="1920" height="933" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>When a core switch goes down, operators receive hundreds of simultaneous alerts from dependent devices, obscuring the primary root cause.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed an automated incident clustering state where the primary root-cause switch pulses in high-visibility crimson while downstream devices are dimmed into secondary dependency rings.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Empowered frontline operators to trigger automated failover scripts in under 60 seconds with zero false-positive reboots.</p>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
 
     <section class="g-wrap">
       <div class="bp-end">
         <h2>Networks design project</h2>
-        <p>Design Artifacts &amp; Production Screens</p>
+        <p>Design Artifacts &amp; Deep Process Narratives</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-sales-automation-tool.html"><small>&larr; Previous</small><strong>Sales Automation Tool</strong></a>
@@ -580,6 +1056,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Sales Automation Tool</div>
+            <div class="be-card-tag">Telecom CPQ &amp; Financial Modeling Engine</div>
           </div>
           <span class="be-count">3 artifacts</span>
         </div>
@@ -592,6 +1069,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">An Enterprise Project</div>
+            <div class="be-card-tag">IoT Fleet Intelligence &amp; Predictive Device Health</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -604,6 +1082,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Web Projects</div>
+            <div class="be-card-tag">Enterprise Web Platforms, SaaS Portals &amp; Strategic Proposals</div>
           </div>
           <span class="be-count">6 artifacts</span>
         </div>
@@ -616,6 +1095,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">My Achievements</div>
+            <div class="be-card-tag">Executive Honors, Global Hackathon Wins &amp; Patent Milestones</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -628,6 +1108,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Gaming Projects</div>
+            <div class="be-card-tag">Game Design UX, Player Retention Psychology &amp; EdTech Gamification</div>
           </div>
           <span class="be-count">4 artifacts</span>
         </div>
@@ -640,6 +1121,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Mobile Projects</div>
+            <div class="be-card-tag">Production Native Applications &amp; Mobile Ergonomics</div>
           </div>
           <span class="be-count">13 artifacts</span>
         </div>

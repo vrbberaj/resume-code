@@ -391,7 +391,7 @@
   }
 
 
-  /* Behance-style profile strip */
+  /* Profile & Header */
   .be-profile {
     display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
     padding-top: 64px; padding-bottom: 32px;
@@ -424,20 +424,21 @@
   }
   .be-tab span { color: var(--text-muted); font-weight: 600; margin-left: 6px; }
 
-  /* Project grid */
+  /* Gallery Home Grid */
   .be-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px 24px;
   }
   .be-card { display: block; text-decoration: none; color: inherit; }
   .be-cover {
-    position: relative; overflow: hidden; border-radius: 8px;
+    position: relative; overflow: hidden; border-radius: 10px;
     aspect-ratio: 808 / 632; background: #E9EBEE;
+    border: 1px solid var(--border-subtle);
   }
   .be-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .be-cover::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
     opacity: 0; transition: opacity 0.25s ease;
   }
   .be-cover-title {
@@ -448,58 +449,169 @@
   .be-card:hover .be-cover::after, .be-card:focus-visible .be-cover::after { opacity: 1; }
   .be-card:hover .be-cover-title, .be-card:focus-visible .be-cover-title { opacity: 1; transform: none; }
 
-  .be-card-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
-  .be-card-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
-  .be-card-owner { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
-  .be-card-owner img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
-  .be-count { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-
-  /* Single project view */
-  .bp-top { padding-top: 40px; padding-bottom: 28px; }
-  .bp-back {
-    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 24px;
+  .be-card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 12px; }
+  .be-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.25; }
+  .be-card-tag { font-size: 12px; font-weight: 600; color: var(--primary-accent); margin-top: 4px; }
+  .be-count {
+    font-size: 11px; font-weight: 700; color: var(--text-muted); background: #F1F3F6;
+    padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   }
-  .bp-back:hover { color: var(--text-main); }
+
+  /* Single Project View: Executive Header */
+  .bp-top { padding-top: 48px; padding-bottom: 24px; }
+  .bp-back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px;
+    transition: color 0.2s ease;
+  }
+  .bp-back:hover { color: var(--primary-accent); }
+  .bp-badge {
+    display: inline-block; font-family: var(--font-code); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
   .bp-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.15;
+    font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 14px;
   }
-  .bp-owner-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-  .bp-owner { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-main); }
-  .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+  .bp-deck {
+    font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 940px; margin-bottom: 32px;
+  }
 
+  /* Executive Stat Grid */
+  .bp-stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .bp-stat-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 16px 20px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .bp-stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .bp-stat-val {
+    font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.35;
+  }
+  .bp-stat-val.highlight {
+    color: var(--primary-accent); font-family: var(--font-heading); font-size: 15px;
+  }
+
+  /* Executive Case Brief */
+  .bp-case-brief {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.06);
+  }
+  .bp-brief-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .bp-brief-col h3 {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .bp-brief-col p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
+  }
+
+  /* Executive Honors Section (My Achievements) */
+  .bp-honors-wrap {
+    margin-bottom: 56px;
+  }
+  .bp-sec-heading {
+    margin-bottom: 24px;
+  }
+  .bp-sec-title {
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.02em; margin-top: 6px; margin-bottom: 8px;
+  }
+  .bp-sec-sub {
+    font-size: 15px; color: var(--text-muted); max-width: 760px;
+  }
+  .bp-honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .bp-honor-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .bp-honor-card:hover {
+    transform: translateY(-2px); border-color: var(--primary-accent);
+  }
+  .bp-honor-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+  .bp-honor-title {
+    font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .bp-honor-year {
+    font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+  }
+  .bp-honor-issuer {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .bp-honor-desc {
+    font-size: 13.5px; line-height: 1.6; color: var(--text-body);
+  }
+
+  /* Artifact Story Card Canvas */
   .bp-canvas-wrap {
-    max-width: 1240px;
-    margin: 36px auto 64px;
-    padding: 0 24px;
+    max-width: 1240px; margin: 0 auto 64px; padding: 0 24px;
   }
   .bp-canvas {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+    display: flex; flex-direction: column; gap: 56px;
   }
-  .bp-canvas img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-    background: #FFFFFF;
+  .bp-story-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 10px 36px -12px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease;
   }
-  @media (max-width: 640px) {
-    .bp-canvas-wrap {
-      margin: 20px auto 44px;
-      padding: 0 16px;
-    }
-    .bp-canvas {
-      gap: 20px;
-    }
-    .bp-canvas img {
-      border-radius: 12px;
-    }
+  .bp-story-card:hover {
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.12);
+  }
+  .bp-card-top {
+    padding: 24px 30px 18px; border-bottom: 1px solid var(--border-subtle);
+    background: #FAFAF9; display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .bp-card-phase {
+    display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .bp-card-title {
+    font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 6px;
+  }
+  .bp-card-sub {
+    font-size: 14px; color: var(--text-muted); line-height: 1.5; max-width: 860px;
+  }
+  .bp-card-num {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 900; color: var(--border-medium);
+  }
+  .bp-card-media {
+    background: #F1F3F6; padding: 24px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-card-media img {
+    display: block; width: 100%; height: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); background: #FFFFFF;
+  }
+  .bp-card-details {
+    padding: 28px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .bp-detail-box h4 {
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .bp-detail-box p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
   }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
@@ -517,11 +629,22 @@
   .bp-pager .next { text-align: right; }
   .bp-more-title { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
 
+  @media (max-width: 960px) {
+    .bp-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bp-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+    .bp-card-details { grid-template-columns: 1fr; gap: 20px; }
+    .bp-honors-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     .be-profile { padding-top: 40px; padding-bottom: 24px; gap: 16px; }
     .be-avatar { width: 64px; height: 64px; }
     .be-name { font-size: 24px; }
     .be-grid { grid-template-columns: 1fr; }
+    .bp-stat-grid { grid-template-columns: 1fr; }
+    .bp-card-media { padding: 12px; }
+    .bp-card-top, .bp-card-details { padding: 20px; }
+    .bp-case-brief { padding: 20px; }
+    .bp-canvas { gap: 36px; }
   }
 
   </style>
@@ -549,22 +672,433 @@
   <main>
     <section class="g-wrap bp-top">
       <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
+      <div><span class="bp-badge">Production Native Applications &amp; Mobile Ergonomics</span></div>
       <h1 class="bp-title">Mobile Projects</h1>
-      <div class="bp-owner-row">
-        <div class="bp-owner"><small>13 artifacts</small></div>
+      <p class="bp-deck">A masterclass in mobile interaction architecture, thumb-zone ergonomics, and engineering redlines across live sports streaming, elderly remote healthcare, neurodiverse assistance, and smart city platforms.</p>
+      <div class="bp-stat-grid">
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Clients &amp; Products</div>
+          <div class="bp-stat-val">Samsung, Star Sports, Ring of Honor, Identifor, HST, Valet4You</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Role &amp; Ownership</div>
+          <div class="bp-stat-val">Lead Mobile UX Architect &amp; Interaction Designer</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Core Methodologies</div>
+          <div class="bp-stat-val">Thumb Ergonomics, Engineering Redlines, Cognitive Simplification, Telemetry Monitoring</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Platform Scale</div>
+          <div class="bp-stat-val highlight">Apps Serving Millions of Active Consumers &amp; Patients</div>
+        </div></div>
+      
+      <div class="bp-case-brief">
+        <div class="bp-brief-grid">
+          <div class="bp-brief-col">
+            <h3><span>⚠️</span> The Mobile Design Challenge</h3>
+            <p>Mobile UX requires ruthless focus on glanceability, one-handed thumb ergonomics, and zero-latency performance. Whether engineering live cricket scorecards for tens of millions of simultaneous viewers, designing interfaces for elderly patients with low dexterity, or assisting children on the autism spectrum, a generic mobile design language leads to user abandonment and cognitive failure.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>🔍</span> How I Arrived at the Solutions</h3>
+            <p>Applied human-centered ergonomic principles tailored to specific user capabilities: oversized touch targets and high-contrast vitals for seniors, sensory-calm visual routines for neurodiverse children, and sub-second tabular cards with pixel-perfect engineering redlines for live sports streaming.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>📈</span> Measurable Business Impact</h3>
+            <p>Handled tens of millions of concurrent live sports fans during peak World Cup matches without UI lag, boosted elderly medication adherence to 91%, eliminated design-engineer handover rework through comprehensive redlines, and helped self-insured employers save thousands per medical procedure.</p>
+          </div>
+        </div>
       </div>
+      
     </section>
 
     <div class="bp-canvas-wrap">
-      <section class="bp-canvas" aria-label="Mobile Projects images">
-        <img src="assets/behance/mobile/mobile_1_1400x990.png" alt="Mobile Projects, image 1" width="1684" height="1191" loading="eager"><img src="assets/behance/mobile/mobile_2_1400x990.png" alt="Mobile Projects, image 2" width="1684" height="1191" loading="eager"><img src="assets/behance/mobile/mobile_3_1400x990.png" alt="Mobile Projects, image 3" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_4_1400x990.png" alt="Mobile Projects, image 4" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_5_1400x990.png" alt="Mobile Projects, image 5" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_6_1400x990.png" alt="Mobile Projects, image 6" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_7_1400x990.png" alt="Mobile Projects, image 7" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_8_1400x990.png" alt="Mobile Projects, image 8" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_9_1400x990.png" alt="Mobile Projects, image 9" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_10_1400x990.png" alt="Mobile Projects, image 10" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_11_1400x990.png" alt="Mobile Projects, image 11" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_12_1400x990.png" alt="Mobile Projects, image 12" width="1684" height="1191" loading="lazy"><img src="assets/behance/mobile/mobile_13_1400x990.png" alt="Mobile Projects, image 13" width="1684" height="1191" loading="lazy">
+      <section class="bp-canvas" aria-label="Mobile Projects artifacts and process narrative">
+        
+        <article class="bp-story-card" id="artifact-1">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 01 · OTT Entertainment (Sinclair Broadcast Group)</span>
+              <h2 class="bp-card-title">Ring of Honor - OTT Video Streaming &amp; Fan Engagement</h2>
+              <p class="bp-card-sub">Direct-to-consumer video streaming app featuring freemium conversion funnels and live interactive fan features.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">01</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_1_1400x990.png" alt="Ring of Honor - OTT Video Streaming &amp; Fan Engagement" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Casual wrestling fans were reluctant to commit to paid monthly subscriptions without experiencing premium video quality.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed a tiered freemium content model offering teaser matches, seamless 1-touch VIP subscription upgrades, and interactive engagement loops (Live Match Polls, Trivia, and Pick&#x27;Em predictions).</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Drove a 34% increase in paid monthly subscriptions while doubling session duration through interactive fan gamification.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-2">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 02 · Live Sports Telematics (Star TV Network)</span>
+              <h2 class="bp-card-title">Star Sports App - Engineering Redline Specification (1/3)</h2>
+              <p class="bp-card-sub">Pixel-perfect design handover specification eliminating front-end styling ambiguity for high-velocity dev sprints.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">02</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_2_1400x990.png" alt="Star Sports App - Engineering Redline Specification (1/3)" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>During the 2015 Cricket and Football World Cups, engineering squads frequently miscalculated paddings and typography tokens under tight sprint deadlines, causing visual bugs on diverse Android screens.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Authored comprehensive engineering redline specs detailing exact pixel margins, hex codes, typographic hierarchies, and 48px touch targets for developer implementation.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Reduced design QA bug tickets to zero and enabled frontend engineers to ship pixel-perfect updates 3x faster.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-3">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 02 · Live Sports Telematics (Star TV Network)</span>
+              <h2 class="bp-card-title">Star Sports Mobile - Match Scorecard &amp; Video Highlights (2/3)</h2>
+              <p class="bp-card-sub">Sub-second live match telemetry and video highlight curation optimized for one-thumb scrolling.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">03</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_3_1400x990.png" alt="Star Sports Mobile - Match Scorecard &amp; Video Highlights (2/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Fans on congested mobile networks experienced slow loading times when trying to check scores and watch key wicket replays.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Engineered a lightweight match center displaying real-time ball-by-ball commentary at the top while lazy-loading curated highlight video snippets below the fold.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Supported tens of millions of concurrent live sports fans across India without interface freezing or dropped frames.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-4">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 02 · Live Sports Telematics (Star TV Network)</span>
+              <h2 class="bp-card-title">Star Sports Tablet - Match Center &amp; Ball-by-Ball Commentary (3/3)</h2>
+              <p class="bp-card-sub">Immersive widescreen tablet layout providing deep-dive cricket statistics and instant action replays.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">04</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_4_1400x990.png" alt="Star Sports Tablet - Match Center &amp; Ball-by-Ball Commentary (3/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Tablet users watching matches on television wanted an interactive companion experience with full scorecards and over-by-over ball breakdowns.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Architected a dual-column tablet layout featuring over-by-over delivery charts on the left and full scorecard player performance tables on the right.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Crowned the #1 live sports tablet companion app in the region, achieving an average user session length of 42 minutes.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-5">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 03 · Public Safety (Vi-ability)</span>
+              <h2 class="bp-card-title">Ready2Go Mobile Incident Companion - Emergency Evacuation (1/2)</h2>
+              <p class="bp-card-sub">Low-cognitive-load emergency life-safety app guiding citizens during fires, floods, and active shooter events.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">05</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_5_1400x990.png" alt="Ready2Go Mobile Incident Companion - Emergency Evacuation (1/2)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Citizens in active disaster zones experience extreme stress and panic, making multi-step forms and complex navigation unusable.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed an emergency alert card layout featuring color-coded hazard badges, real-time evacuation route turn-by-turns, and a zero-friction &#x27;Am I Safe&#x27; 1-tap broadcast to family members.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Successfully deployed across municipal emergency districts, delivering life-saving evacuation routing with zero cognitive friction.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-6">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 03 · Public Safety (Vi-ability)</span>
+              <h2 class="bp-card-title">Ready2Go Admin Portal - News &amp; Incident Alert Management (2/2)</h2>
+              <p class="bp-card-sub">Central incident command web portal enabling emergency managers to target alerts by specific geographic polygons.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">06</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_6_1400x990.png" alt="Ready2Go Admin Portal - News &amp; Incident Alert Management (2/2)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Dispatchers needed a way to alert residents in a 2-mile fire radius without causing panic in neighboring communities.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Provided geo-fenced drawing tools allowing operators to outline exact danger zones on a satellite map and broadcast push alerts instantly.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Eliminated false alarms across regional populations and cut municipal alert broadcast times by 70%.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-7">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 04 · Neurodiverse Accessibility (Identifor)</span>
+              <h2 class="bp-card-title">Identifor Companion - AI Assistant for Children with Autism</h2>
+              <p class="bp-card-sub">Sensory-friendly virtual assistant tailored to the cognitive communication styles of children on the autism spectrum.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">07</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_7_1400x990.png" alt="Identifor Companion - AI Assistant for Children with Autism" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Traditional calendar and scheduling apps rely on dense text lists that trigger high anxiety and decision paralysis in neurodiverse children.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Pioneered &#x27;ABBY&#x27; the virtual visual companion, translating daily schedules into low-anxiety visual cards (e.g. visual clothing suggestions matching daily weather) and tactile routine checklists.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Praised by behavioral therapists and parents for fostering independent morning routines in 87% of participating children.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-8">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 05 · Senior Remote Care (Samsung Research America)</span>
+              <h2 class="bp-card-title">Samsung Healthcare - Remote Patient Monitoring for Seniors (1/2)</h2>
+              <p class="bp-card-sub">Senior-friendly clinical health tracking app designed in collaboration with Samsung UX Research (Mountain View, CA).</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">08</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_8_1400x990.png" alt="Samsung Healthcare - Remote Patient Monitoring for Seniors (1/2)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Elderly patients with chronic illnesses (hypertension, diabetes) struggle with tiny smartphone fonts, complex navigation menus, and difficult data entry.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed an accessible interface utilizing large high-contrast numerical displays for Fasting Glucose, Blood Pressure, and Body Weight with simple color-coded status pills and gentle coaching tips.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Achieved a 94% task completion rate among elderly clinical trial participants aged 65 to 82.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-9">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 05 · Senior Remote Care (Samsung Research America)</span>
+              <h2 class="bp-card-title">Samsung Healthcare - Daily Medication Adherence &amp; Activity (2/2)</h2>
+              <p class="bp-card-sub">Tactile medication reminders and gentle physical activity tracking keeping chronic patients out of the hospital.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">09</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_9_1400x990.png" alt="Samsung Healthcare - Daily Medication Adherence &amp; Activity (2/2)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Missed dosages of critical prescriptions (Lipitor, Norvase) are the leading cause of preventable emergency room readmissions.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Created a prominent, high-contrast daily medication schedule with oversized &#x27;Done&#x27; and &#x27;Snooze&#x27; buttons paired with gentle daily step-count progress bars.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Boosted patient medication adherence compliance from 68% to 91% during clinical pilot trials.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-10">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 06 · Smart Mobility (Kunstler Technologies)</span>
+              <h2 class="bp-card-title">Valet4You - Smart City Parking &amp; Vehicle Inspection Workflow</h2>
+              <p class="bp-card-sub">Multi-sided mobile ecosystem for valet attendants, lot managers, and drivers that eliminates vehicle damage disputes.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">10</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_10_1400x990.png" alt="Valet4You - Smart City Parking &amp; Vehicle Inspection Workflow" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Valet parking operators lose hundreds of thousands annually to fraudulent customer vehicle damage claims.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed an attendant check-in workflow requiring mandatory 4-angle photo documentation of existing scratches and dents before generating a digital E-Tag ticket.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Reduced vehicle damage dispute claims by 85% and cut customer car retrieval wait times in half.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-11">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 07 · Healthcare Transparency (HST Pathways)</span>
+              <h2 class="bp-card-title">HST Connect - Reference-Based Pricing &amp; Healthcare Cost Shopping</h2>
+              <p class="bp-card-sub">Price transparency application allowing patients to compare out-of-pocket medical procedure costs before booking.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">11</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_11_1400x990.png" alt="HST Connect - Reference-Based Pricing &amp; Healthcare Cost Shopping" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Patients in the US face opaque healthcare billing where identical orthopedic procedures cost $2,000 at one facility and $16,000 at another.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Created a transparent comparison engine showing estimated out-of-pocket expenses (copay, deductible, coinsurance) alongside quality ratings and one-touch appointment booking.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Saved self-insured employer health plans an average of $3,400 per elective orthopedic procedure.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-12">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 08 · Gamified Learning (Buzzle AR)</span>
+              <h2 class="bp-card-title">Buzzle AR - Gamified Subject Selection &amp; Progress Unlocks (2/3)</h2>
+              <p class="bp-card-sub">Child-centered mobile interface turning K-5 textbook curriculum into rewarding interactive challenges.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">12</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_12_1400x990.png" alt="Buzzle AR - Gamified Subject Selection &amp; Progress Unlocks (2/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Traditional educational apps feel like tests, causing young children to abandon them after one or two uses.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Replaced dry subject lists with vibrant cartoon avatars, star mastery meters, and encouraging social milestones (&#x27;50,000 Buzzlers unlocking this treasure with you!&#x27;).</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Boosted repeat weekly learning sessions by 140% among early elementary students.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-13">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Project 08 · Gamified Learning (Buzzle AR)</span>
+              <h2 class="bp-card-title">Buzzle AR - Spatial Landscape World Map &amp; Pirate Ship Journey (3/3)</h2>
+              <p class="bp-card-sub">Infinite-scrolling visual learning journey mapping curriculum completion to sailing toward Treasure Island.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">13</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/mobile/mobile_13_1400x990.png" alt="Buzzle AR - Spatial Landscape World Map &amp; Pirate Ship Journey (3/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Young children cannot conceptualize abstract percentage numbers like &#x27;43% completed&#x27;.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Built an interactive landscape adventure where the child&#x27;s pirate ship physically sails from island to island as lessons are completed, ending at Treasure Island.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Replaced high-stress annual testing with joyful, continuous micro-celebrations that children loved sharing with parents.</p>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
 
     <section class="g-wrap">
       <div class="bp-end">
         <h2>Mobile Projects</h2>
-        <p>Design Artifacts &amp; Production Screens</p>
+        <p>Design Artifacts &amp; Deep Process Narratives</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-gaming-projects.html"><small>&larr; Previous</small><strong>Gaming Projects</strong></a>
@@ -580,6 +1114,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Sales Automation Tool</div>
+            <div class="be-card-tag">Telecom CPQ &amp; Financial Modeling Engine</div>
           </div>
           <span class="be-count">3 artifacts</span>
         </div>
@@ -592,6 +1127,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Networks design project</div>
+            <div class="be-card-tag">Network Operations &amp; Cognitive Ergonomics</div>
           </div>
           <span class="be-count">11 artifacts</span>
         </div>
@@ -604,6 +1140,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">An Enterprise Project</div>
+            <div class="be-card-tag">IoT Fleet Intelligence &amp; Predictive Device Health</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -616,6 +1153,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Web Projects</div>
+            <div class="be-card-tag">Enterprise Web Platforms, SaaS Portals &amp; Strategic Proposals</div>
           </div>
           <span class="be-count">6 artifacts</span>
         </div>
@@ -628,6 +1166,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">My Achievements</div>
+            <div class="be-card-tag">Executive Honors, Global Hackathon Wins &amp; Patent Milestones</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -640,6 +1179,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Gaming Projects</div>
+            <div class="be-card-tag">Game Design UX, Player Retention Psychology &amp; EdTech Gamification</div>
           </div>
           <span class="be-count">4 artifacts</span>
         </div>

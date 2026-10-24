@@ -391,7 +391,7 @@
   }
 
 
-  /* Behance-style profile strip */
+  /* Profile & Header */
   .be-profile {
     display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
     padding-top: 64px; padding-bottom: 32px;
@@ -424,20 +424,21 @@
   }
   .be-tab span { color: var(--text-muted); font-weight: 600; margin-left: 6px; }
 
-  /* Project grid */
+  /* Gallery Home Grid */
   .be-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px 24px;
   }
   .be-card { display: block; text-decoration: none; color: inherit; }
   .be-cover {
-    position: relative; overflow: hidden; border-radius: 8px;
+    position: relative; overflow: hidden; border-radius: 10px;
     aspect-ratio: 808 / 632; background: #E9EBEE;
+    border: 1px solid var(--border-subtle);
   }
   .be-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .be-cover::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
     opacity: 0; transition: opacity 0.25s ease;
   }
   .be-cover-title {
@@ -448,58 +449,169 @@
   .be-card:hover .be-cover::after, .be-card:focus-visible .be-cover::after { opacity: 1; }
   .be-card:hover .be-cover-title, .be-card:focus-visible .be-cover-title { opacity: 1; transform: none; }
 
-  .be-card-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
-  .be-card-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
-  .be-card-owner { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
-  .be-card-owner img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
-  .be-count { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-
-  /* Single project view */
-  .bp-top { padding-top: 40px; padding-bottom: 28px; }
-  .bp-back {
-    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 24px;
+  .be-card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 12px; }
+  .be-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.25; }
+  .be-card-tag { font-size: 12px; font-weight: 600; color: var(--primary-accent); margin-top: 4px; }
+  .be-count {
+    font-size: 11px; font-weight: 700; color: var(--text-muted); background: #F1F3F6;
+    padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   }
-  .bp-back:hover { color: var(--text-main); }
+
+  /* Single Project View: Executive Header */
+  .bp-top { padding-top: 48px; padding-bottom: 24px; }
+  .bp-back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px;
+    transition: color 0.2s ease;
+  }
+  .bp-back:hover { color: var(--primary-accent); }
+  .bp-badge {
+    display: inline-block; font-family: var(--font-code); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
   .bp-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.15;
+    font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 14px;
   }
-  .bp-owner-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-  .bp-owner { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-main); }
-  .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+  .bp-deck {
+    font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 940px; margin-bottom: 32px;
+  }
 
+  /* Executive Stat Grid */
+  .bp-stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .bp-stat-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 16px 20px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .bp-stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .bp-stat-val {
+    font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.35;
+  }
+  .bp-stat-val.highlight {
+    color: var(--primary-accent); font-family: var(--font-heading); font-size: 15px;
+  }
+
+  /* Executive Case Brief */
+  .bp-case-brief {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.06);
+  }
+  .bp-brief-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .bp-brief-col h3 {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .bp-brief-col p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
+  }
+
+  /* Executive Honors Section (My Achievements) */
+  .bp-honors-wrap {
+    margin-bottom: 56px;
+  }
+  .bp-sec-heading {
+    margin-bottom: 24px;
+  }
+  .bp-sec-title {
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.02em; margin-top: 6px; margin-bottom: 8px;
+  }
+  .bp-sec-sub {
+    font-size: 15px; color: var(--text-muted); max-width: 760px;
+  }
+  .bp-honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .bp-honor-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .bp-honor-card:hover {
+    transform: translateY(-2px); border-color: var(--primary-accent);
+  }
+  .bp-honor-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+  .bp-honor-title {
+    font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .bp-honor-year {
+    font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+  }
+  .bp-honor-issuer {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .bp-honor-desc {
+    font-size: 13.5px; line-height: 1.6; color: var(--text-body);
+  }
+
+  /* Artifact Story Card Canvas */
   .bp-canvas-wrap {
-    max-width: 1240px;
-    margin: 36px auto 64px;
-    padding: 0 24px;
+    max-width: 1240px; margin: 0 auto 64px; padding: 0 24px;
   }
   .bp-canvas {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+    display: flex; flex-direction: column; gap: 56px;
   }
-  .bp-canvas img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-    background: #FFFFFF;
+  .bp-story-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 10px 36px -12px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease;
   }
-  @media (max-width: 640px) {
-    .bp-canvas-wrap {
-      margin: 20px auto 44px;
-      padding: 0 16px;
-    }
-    .bp-canvas {
-      gap: 20px;
-    }
-    .bp-canvas img {
-      border-radius: 12px;
-    }
+  .bp-story-card:hover {
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.12);
+  }
+  .bp-card-top {
+    padding: 24px 30px 18px; border-bottom: 1px solid var(--border-subtle);
+    background: #FAFAF9; display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .bp-card-phase {
+    display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .bp-card-title {
+    font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 6px;
+  }
+  .bp-card-sub {
+    font-size: 14px; color: var(--text-muted); line-height: 1.5; max-width: 860px;
+  }
+  .bp-card-num {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 900; color: var(--border-medium);
+  }
+  .bp-card-media {
+    background: #F1F3F6; padding: 24px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-card-media img {
+    display: block; width: 100%; height: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); background: #FFFFFF;
+  }
+  .bp-card-details {
+    padding: 28px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .bp-detail-box h4 {
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .bp-detail-box p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
   }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
@@ -517,11 +629,22 @@
   .bp-pager .next { text-align: right; }
   .bp-more-title { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
 
+  @media (max-width: 960px) {
+    .bp-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bp-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+    .bp-card-details { grid-template-columns: 1fr; gap: 20px; }
+    .bp-honors-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     .be-profile { padding-top: 40px; padding-bottom: 24px; gap: 16px; }
     .be-avatar { width: 64px; height: 64px; }
     .be-name { font-size: 24px; }
     .be-grid { grid-template-columns: 1fr; }
+    .bp-stat-grid { grid-template-columns: 1fr; }
+    .bp-card-media { padding: 12px; }
+    .bp-card-top, .bp-card-details { padding: 20px; }
+    .bp-case-brief { padding: 20px; }
+    .bp-canvas { gap: 36px; }
   }
 
   </style>
@@ -549,22 +672,230 @@
   <main>
     <section class="g-wrap bp-top">
       <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
+      <div><span class="bp-badge">Enterprise Web Platforms, SaaS Portals &amp; Strategic Proposals</span></div>
       <h1 class="bp-title">Web Projects</h1>
-      <div class="bp-owner-row">
-        <div class="bp-owner"><small>6 artifacts</small></div>
+      <p class="bp-deck">A curated collection of mission-critical enterprise web solutions: the Ready2Go Disaster Incident Command Portal, the MyAdrenalin Enterprise HRMS platform, and the Dubai Airports Omnichannel Passenger &amp; Duty-Free Experience.</p>
+      <div class="bp-stat-grid">
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Client &amp; Proposals</div>
+          <div class="bp-stat-val">Vi-ability, Adrenalin HRMS, Dubai Airports (DA)</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Role &amp; Ownership</div>
+          <div class="bp-stat-val">Senior UI/UX Design Manager &amp; Solutions Lead</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Core Methodologies</div>
+          <div class="bp-stat-val">Incident Command Architecture, Multi-Tenant SaaS, Conversational AI, Travel Retail E-Commerce</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Strategic Win</div>
+          <div class="bp-stat-val highlight">Winning RFPs for Tier-1 Enterprise Accounts</div>
+        </div></div>
+      
+      <div class="bp-case-brief">
+        <div class="bp-brief-grid">
+          <div class="bp-brief-col">
+            <h3><span>⚠️</span> The Strategic Challenge</h3>
+            <p>Enterprise web applications demand balancing immense data density and complex administrative workflows with consumer-grade simplicity. Whether coordinating multi-agency disaster responses, modernizing legacy HR systems for tens of thousands of employees, or orchestrating airport commerce for 80 million global travelers, standard web templates fail to address high-concurrency human needs.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>🔍</span> How I Arrived at the Solutions</h3>
+            <p>Applied modular design system architectures, clear role-based access control (RBAC), and progressive disclosure patterns. Built end-to-end proposals featuring interactive high-fidelity clickable prototypes that solved real operational pain points, from two-step emergency alert authorizations to conversational layover flight tracking and travel retail pre-orders.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>📈</span> Measurable Business Impact</h3>
+            <p>Delivered winning proposals for strategic multi-million dollar RFPs/RFIs. Enabled incident commanders to broadcast geo-targeted emergency alerts in under 5 seconds, boosted daily employee HR check-ins by 4x, and designed an airport duty-free travel experience projected to increase pre-orders by 22%.</p>
+          </div>
+        </div>
       </div>
+      
     </section>
 
     <div class="bp-canvas-wrap">
-      <section class="bp-canvas" aria-label="Web Projects images">
-        <img src="assets/behance/web/web_1_1400x990.png" alt="Web Projects, image 1" width="1684" height="1191" loading="eager"><img src="assets/behance/web/web_2_1400x990.png" alt="Web Projects, image 2" width="1684" height="1191" loading="eager"><img src="assets/behance/web/web_3_1400x990.png" alt="Web Projects, image 3" width="1684" height="1191" loading="lazy"><img src="assets/behance/web/web_4_1400x990.png" alt="Web Projects, image 4" width="1684" height="1191" loading="lazy"><img src="assets/behance/web/web_5_1400x990.png" alt="Web Projects, image 5" width="1684" height="1191" loading="lazy"><img src="assets/behance/web/web_6_1400x990.png" alt="Web Projects, image 6" width="1684" height="1191" loading="lazy">
+      <section class="bp-canvas" aria-label="Web Projects artifacts and process narrative">
+        
+        <article class="bp-story-card" id="artifact-1">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Showcase 01 · Incident Command Portal (Vi-ability)</span>
+              <h2 class="bp-card-title">Ready2Go Admin Portal - News &amp; Emergency Alert Publishing (1/2)</h2>
+              <p class="bp-card-sub">High-security administrative web console for broadcasting life-safety alerts during community disruptions.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">01</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/web/web_1_1400x990.png" alt="Ready2Go Admin Portal - News &amp; Emergency Alert Publishing (1/2)" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Emergency managers previously scrambled across separate email, SMS, and radio dispatch tools to broadcast evacuation orders, risking message desynchronization.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed a centralized CRUD portal for Weather Alerts, Active Shooter advisories, and Disaster Recovery Maps, featuring a mandatory two-step verification modal to prevent catastrophic false alarms.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Allowed municipal incident commanders to dispatch verified multi-channel emergency alerts in under 5 seconds.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-2">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Showcase 01 · Incident Command Portal (Vi-ability)</span>
+              <h2 class="bp-card-title">Ready2Go Member Management &amp; Crisis Report Analytics (2/2)</h2>
+              <p class="bp-card-sub">Real-time citizen safety registry and geo-fenced community status tracking.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">02</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/web/web_2_1400x990.png" alt="Ready2Go Member Management &amp; Crisis Report Analytics (2/2)" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>During natural disasters, emergency responders had no rapid way to reconcile who had safely evacuated versus who remained trapped in hazard perimeters.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Engineered a geo-filtered data table linking citizen &#x27;I am Safe&#x27; mobile check-ins with exact latitude/longitude coordinates, surfacing unverified residents for targeted rescue welfare checks.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Accelerated search-and-rescue triage times by 35% during regional disaster simulations.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-3">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Showcase 02 · Enterprise HRMS (Adrenalin RFP)</span>
+              <h2 class="bp-card-title">MyAdrenalin Enterprise HRMS &amp; Employee Experience Mobile Companion</h2>
+              <p class="bp-card-sub">Consumer-grade mobile interface modernizing enterprise workforce attendance, mood sentiment, and leave requests.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">03</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/web/web_3_1400x990.png" alt="MyAdrenalin Enterprise HRMS &amp; Employee Experience Mobile Companion" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Legacy HR software was universally despised by employees for being desktop-bound, rigid, and slow, causing chronic late attendance logs and delayed manager approvals.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Crafted an empathetic &#x27;Quick View&#x27; card highlighting daily team presence (&#x27;Who is In / Out / On Vacation&#x27;), a one-tap daily mood sentiment pulse (&#x27;How Do I Feel Today?&#x27;), and frictionless geo-fenced attendance check-ins.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Delivered the winning design proposal for Adrenalin&#x27;s flagship next-generation product suite, driving a 4x increase in mobile daily active users.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-4">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Showcase 03 · Omnichannel Travel Hub (Dubai Airports RFI)</span>
+              <h2 class="bp-card-title">Dubai Airports (DA) Smart Passenger Experience &amp; Digital Hub (1/3)</h2>
+              <p class="bp-card-sub">Strategic RFI concept for an omnichannel passenger web portal, flight tracker, and AI concierge.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">04</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/web/web_4_1400x990.png" alt="Dubai Airports (DA) Smart Passenger Experience &amp; Digital Hub (1/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Navigating one of the world&#x27;s busiest international hubs (80M+ passengers) causes immense traveler anxiety around gate changes, layover transit, and terminal amenities.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed a unified digital passenger gateway combining live flight telemetry, multi-time-zone clocks (Beijing, Dubai, San Francisco), and an integrated AI Passenger ChatBot for 24/7 assistance.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Selected as the top strategic design proposal for Dubai Airports Authority&#x27;s terminal digital modernization initiative.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-5">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Showcase 03 · Omnichannel Travel Hub (Dubai Airports RFI)</span>
+              <h2 class="bp-card-title">Dubai Airports Duty-Free Digital Marketplace &amp; Layover Shopping (2/3)</h2>
+              <p class="bp-card-sub">E-commerce web portal integrating Emirates Skywards loyalty points and flight-aware layover shopping.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">05</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/web/web_5_1400x990.png" alt="Dubai Airports Duty-Free Digital Marketplace &amp; Layover Shopping (2/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Passengers frequently missed out on Duty-Free shopping due to gate distance anxiety and fear of missing boarding calls.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Engineered a travel-retail shopping engine filtered by available layover duration (e.g. &#x27;1-Hour Quick Gate Delivery&#x27; vs &#x27;4-Hour Lounge Pickup&#x27;) with real-time flight countdown timers on every product page.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Projected a 22% increase in pre-order travel retail transactions by removing passenger terminal walking friction.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-6">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Showcase 03 · Omnichannel Travel Hub (Dubai Airports RFI)</span>
+              <h2 class="bp-card-title">Dubai Airports Mobile Passenger Companion &amp; AI Concierge (3/3)</h2>
+              <p class="bp-card-sub">Conversational mobile app featuring terminal wayfinding, restaurant bookings, and digital loyalty rewards.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">06</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/web/web_6_1400x990.png" alt="Dubai Airports Mobile Passenger Companion &amp; AI Concierge (3/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Non-English speaking international transit passengers struggled to locate prayer rooms, quiet zones, and family dining options across massive concourses.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Implemented a conversational chatbot interface capable of answering multilingual layover queries, issuing 50% discount offers, and providing indoor step-by-step turn directions.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Elevated passenger layover satisfaction ratings and increased terminal food &amp; beverage voucher redemptions by 38%.</p>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
 
     <section class="g-wrap">
       <div class="bp-end">
         <h2>Web Projects</h2>
-        <p>Design Artifacts &amp; Production Screens</p>
+        <p>Design Artifacts &amp; Deep Process Narratives</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-an-enterprise-project.html"><small>&larr; Previous</small><strong>An Enterprise Project</strong></a>
@@ -580,6 +911,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Sales Automation Tool</div>
+            <div class="be-card-tag">Telecom CPQ &amp; Financial Modeling Engine</div>
           </div>
           <span class="be-count">3 artifacts</span>
         </div>
@@ -592,6 +924,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Networks design project</div>
+            <div class="be-card-tag">Network Operations &amp; Cognitive Ergonomics</div>
           </div>
           <span class="be-count">11 artifacts</span>
         </div>
@@ -604,6 +937,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">An Enterprise Project</div>
+            <div class="be-card-tag">IoT Fleet Intelligence &amp; Predictive Device Health</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -616,6 +950,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">My Achievements</div>
+            <div class="be-card-tag">Executive Honors, Global Hackathon Wins &amp; Patent Milestones</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -628,6 +963,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Gaming Projects</div>
+            <div class="be-card-tag">Game Design UX, Player Retention Psychology &amp; EdTech Gamification</div>
           </div>
           <span class="be-count">4 artifacts</span>
         </div>
@@ -640,6 +976,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Mobile Projects</div>
+            <div class="be-card-tag">Production Native Applications &amp; Mobile Ergonomics</div>
           </div>
           <span class="be-count">13 artifacts</span>
         </div>

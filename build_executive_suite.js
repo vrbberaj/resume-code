@@ -23,17 +23,17 @@ function getGlobalNav(activePage) {
   return `
   <header class="global-header">
     <div class="header-container">
-      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+      <a href="index.html" class="brand-link" aria-label="BVR Portfolio Home">
         <span class="brand-monogram">BVR</span>
         <span class="brand-tag">Product Design Suite</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="/" class="nav-item ${activePage === 'home' ? 'active' : ''}">Welcome</a>
-        <a href="/leadership" class="nav-item ${activePage === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
-        <a href="/work" class="nav-item ${activePage === 'work' ? 'active' : ''}">🎨 Selected Work</a>
-        <a href="/archive" class="nav-item ${activePage === 'archive' ? 'active' : ''}">🖼️ Visual Archive</a>
-        <a href="/cv" class="nav-item ${activePage === 'cv' ? 'active' : ''}">📄 My Resume</a>
+        <a href="index.html" class="nav-item ${activePage === 'home' ? 'active' : ''}">Selected Work</a>
+        <a href="leadership.html" class="nav-item ${activePage === 'leadership' ? 'active' : ''}">Leadership</a>
+        <a href="archive.html" class="nav-item ${activePage === 'archive' ? 'active' : ''}">Design Artifacts</a>
+        <a href="gallery.html" class="nav-item ${activePage === 'gallery' ? 'active' : ''}">Career Gallery</a>
+        <a href="cv.html" class="nav-item ${activePage === 'cv' ? 'active' : ''}">My Resume</a>
       </nav>
 
       <div class="header-actions">
@@ -1744,7 +1744,7 @@ const workHtml = `<!DOCTYPE html>
         <div class="behance-left-info">
           <div class="behance-icon-badge">Bē</div>
           <div class="behance-text-block">
-            <strong>Authentic Behance Visual Archive &bull; behance.net/balaajeeVR</strong>
+            <strong>Authentic Behance Design Artifacts &bull; behance.net/balaajeeVR</strong>
             <p>
               Direct production screens, telematic dashboards, and information architecture maps extracted directly from my public Behance portfolio. While Behance displays the visual execution, each case study below provides the end-to-end Senior Design Manager defense: user shadowing, architecture blueprints, DesignOps governance, and enterprise ROI.
             </p>
@@ -7026,9 +7026,9 @@ function updateNavInHtml(filePath, activeKey) {
   let content = fs.readFileSync(filePath, 'utf8');
   
   // Replace brand link
-  const brandPattern = /<a href="\/" class="brand-link"[\s\S]*?<\/a>/;
+  const brandPattern = /<a href="[^"]*" class="brand-link"[\s\S]*?<\/a>/;
   const newBrand = `
-      <a href="/" class="brand-link" aria-label="BVR Portfolio Home">
+      <a href="index.html" class="brand-link" aria-label="BVR Portfolio Home">
         <span class="brand-monogram">BVR</span>
         <span class="brand-tag">Product Design Suite</span>
       </a>
@@ -7041,11 +7041,11 @@ function updateNavInHtml(filePath, activeKey) {
   const navPattern = /<nav class="nav-links"[\s\S]*?<\/nav>/;
   const newNav = `
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="/" class="nav-item ${activeKey === 'home' ? 'active' : ''}">Welcome</a>
-        <a href="/leadership" class="nav-item ${activeKey === 'leadership' ? 'active' : ''}">👔 Leadership Deck</a>
-        <a href="/work" class="nav-item ${activeKey === 'work' ? 'active' : ''}">🎨 Selected Work</a>
-        <a href="/archive" class="nav-item ${activeKey === 'archive' ? 'active' : ''}">🖼️ Visual Archive</a>
-        <a href="/cv" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">📄 My Resume</a>
+        <a href="index.html" class="nav-item ${activeKey === 'home' ? 'active' : ''}">Selected Work</a>
+        <a href="leadership.html" class="nav-item ${activeKey === 'leadership' ? 'active' : ''}">Leadership</a>
+        <a href="archive.html" class="nav-item ${activeKey === 'archive' ? 'active' : ''}">Design Artifacts</a>
+        <a href="gallery.html" class="nav-item ${activeKey === 'gallery' ? 'active' : ''}">Career Gallery</a>
+        <a href="cv.html" class="nav-item ${activeKey === 'cv' ? 'active' : ''}">My Resume</a>
       </nav>
   `.trim();
 

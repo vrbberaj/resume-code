@@ -391,7 +391,7 @@
   }
 
 
-  /* Behance-style profile strip */
+  /* Profile & Header */
   .be-profile {
     display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
     padding-top: 64px; padding-bottom: 32px;
@@ -424,20 +424,21 @@
   }
   .be-tab span { color: var(--text-muted); font-weight: 600; margin-left: 6px; }
 
-  /* Project grid */
+  /* Gallery Home Grid */
   .be-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px 24px;
   }
   .be-card { display: block; text-decoration: none; color: inherit; }
   .be-cover {
-    position: relative; overflow: hidden; border-radius: 8px;
+    position: relative; overflow: hidden; border-radius: 10px;
     aspect-ratio: 808 / 632; background: #E9EBEE;
+    border: 1px solid var(--border-subtle);
   }
   .be-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .be-cover::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
     opacity: 0; transition: opacity 0.25s ease;
   }
   .be-cover-title {
@@ -448,58 +449,169 @@
   .be-card:hover .be-cover::after, .be-card:focus-visible .be-cover::after { opacity: 1; }
   .be-card:hover .be-cover-title, .be-card:focus-visible .be-cover-title { opacity: 1; transform: none; }
 
-  .be-card-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
-  .be-card-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
-  .be-card-owner { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
-  .be-card-owner img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
-  .be-count { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-
-  /* Single project view */
-  .bp-top { padding-top: 40px; padding-bottom: 28px; }
-  .bp-back {
-    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 24px;
+  .be-card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 12px; }
+  .be-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.25; }
+  .be-card-tag { font-size: 12px; font-weight: 600; color: var(--primary-accent); margin-top: 4px; }
+  .be-count {
+    font-size: 11px; font-weight: 700; color: var(--text-muted); background: #F1F3F6;
+    padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   }
-  .bp-back:hover { color: var(--text-main); }
+
+  /* Single Project View: Executive Header */
+  .bp-top { padding-top: 48px; padding-bottom: 24px; }
+  .bp-back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px;
+    transition: color 0.2s ease;
+  }
+  .bp-back:hover { color: var(--primary-accent); }
+  .bp-badge {
+    display: inline-block; font-family: var(--font-code); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
   .bp-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.15;
+    font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 14px;
   }
-  .bp-owner-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-  .bp-owner { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-main); }
-  .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+  .bp-deck {
+    font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 940px; margin-bottom: 32px;
+  }
 
+  /* Executive Stat Grid */
+  .bp-stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .bp-stat-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 16px 20px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .bp-stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .bp-stat-val {
+    font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.35;
+  }
+  .bp-stat-val.highlight {
+    color: var(--primary-accent); font-family: var(--font-heading); font-size: 15px;
+  }
+
+  /* Executive Case Brief */
+  .bp-case-brief {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.06);
+  }
+  .bp-brief-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .bp-brief-col h3 {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .bp-brief-col p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
+  }
+
+  /* Executive Honors Section (My Achievements) */
+  .bp-honors-wrap {
+    margin-bottom: 56px;
+  }
+  .bp-sec-heading {
+    margin-bottom: 24px;
+  }
+  .bp-sec-title {
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.02em; margin-top: 6px; margin-bottom: 8px;
+  }
+  .bp-sec-sub {
+    font-size: 15px; color: var(--text-muted); max-width: 760px;
+  }
+  .bp-honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .bp-honor-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .bp-honor-card:hover {
+    transform: translateY(-2px); border-color: var(--primary-accent);
+  }
+  .bp-honor-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+  .bp-honor-title {
+    font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .bp-honor-year {
+    font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+  }
+  .bp-honor-issuer {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .bp-honor-desc {
+    font-size: 13.5px; line-height: 1.6; color: var(--text-body);
+  }
+
+  /* Artifact Story Card Canvas */
   .bp-canvas-wrap {
-    max-width: 1240px;
-    margin: 36px auto 64px;
-    padding: 0 24px;
+    max-width: 1240px; margin: 0 auto 64px; padding: 0 24px;
   }
   .bp-canvas {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+    display: flex; flex-direction: column; gap: 56px;
   }
-  .bp-canvas img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-    background: #FFFFFF;
+  .bp-story-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 10px 36px -12px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease;
   }
-  @media (max-width: 640px) {
-    .bp-canvas-wrap {
-      margin: 20px auto 44px;
-      padding: 0 16px;
-    }
-    .bp-canvas {
-      gap: 20px;
-    }
-    .bp-canvas img {
-      border-radius: 12px;
-    }
+  .bp-story-card:hover {
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.12);
+  }
+  .bp-card-top {
+    padding: 24px 30px 18px; border-bottom: 1px solid var(--border-subtle);
+    background: #FAFAF9; display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .bp-card-phase {
+    display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .bp-card-title {
+    font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 6px;
+  }
+  .bp-card-sub {
+    font-size: 14px; color: var(--text-muted); line-height: 1.5; max-width: 860px;
+  }
+  .bp-card-num {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 900; color: var(--border-medium);
+  }
+  .bp-card-media {
+    background: #F1F3F6; padding: 24px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-card-media img {
+    display: block; width: 100%; height: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); background: #FFFFFF;
+  }
+  .bp-card-details {
+    padding: 28px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .bp-detail-box h4 {
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .bp-detail-box p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
   }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
@@ -517,11 +629,22 @@
   .bp-pager .next { text-align: right; }
   .bp-more-title { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
 
+  @media (max-width: 960px) {
+    .bp-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bp-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+    .bp-card-details { grid-template-columns: 1fr; gap: 20px; }
+    .bp-honors-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     .be-profile { padding-top: 40px; padding-bottom: 24px; gap: 16px; }
     .be-avatar { width: 64px; height: 64px; }
     .be-name { font-size: 24px; }
     .be-grid { grid-template-columns: 1fr; }
+    .bp-stat-grid { grid-template-columns: 1fr; }
+    .bp-card-media { padding: 12px; }
+    .bp-card-top, .bp-card-details { padding: 20px; }
+    .bp-case-brief { padding: 20px; }
+    .bp-canvas { gap: 36px; }
   }
 
   </style>
@@ -549,22 +672,172 @@
   <main>
     <section class="g-wrap bp-top">
       <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
+      <div><span class="bp-badge">Game Design UX, Player Retention Psychology &amp; EdTech Gamification</span></div>
       <h1 class="bp-title">Gaming Projects</h1>
-      <div class="bp-owner-row">
-        <div class="bp-owner"><small>4 artifacts</small></div>
+      <p class="bp-deck">Demonstrating that game design is fundamentally advanced cognitive psychology and ergonomic engineering: habit loops, progressive onboarding physics, telemetry-tuned powerups, and K-5 spatial learning progression.</p>
+      <div class="bp-stat-grid">
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Flagship iOS Title</div>
+          <div class="bp-stat-val">Greedy Jump · iPhone &amp; iPad</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Organic Scale</div>
+          <div class="bp-stat-val highlight">80,000+ Downloads · 4.5+ Rating</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Player Retention</div>
+          <div class="bp-stat-val">+310% Multi-Session Day-1 Retention</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">EdTech Gamification</div>
+          <div class="bp-stat-val">Buzzle AR · K-5 Spatial Adventure</div>
+        </div></div>
+      
+      <div class="bp-case-brief">
+        <div class="bp-brief-grid">
+          <div class="bp-brief-col">
+            <h3><span>⚠️</span> The Game UX Challenge: Beyond Mere Graphics</h3>
+            <p>Anyone can draw colorful sprites and backgrounds. But a game only succeeds if its underlying interaction psychology works: the instant tactile feedback of a jump, the calibrated anticipation of a reward, the cognitive ergonomics of one-handed reflex control, and an onboarding curve that prevents immediate player drop-off. Without rigorous UX thinking, casual games churn 90% of players within 60 seconds.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>🔍</span> How I Arrived at the Solutions</h3>
+            <p>Treated game mechanics through the lens of behavioral psychology: Nir Eyal&#x27;s Hooked model (Trigger → Action → Variable Reward → Investment). Engineered &#x27;Training Wheels&#x27; physics that progressively eased new players into reflex mechanics, conducted user interviews to calibrate powerup drop frequencies, and built a spatial nautical progression metaphor for young learners in Buzzle AR.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>📈</span> Measurable Engagement &amp; Commercial Success</h3>
+            <p>Greedy Jump earned over 80,000 organic downloads and maintained a 4.5+ star App Store rating with zero paid advertising. The &#x27;Training Wheels&#x27; onboarding UX boosted 5+ session day-1 player retention by 310%, while Buzzle AR&#x27;s spatial treasure island progression reduced elementary school learning churn by 58%.</p>
+          </div>
+        </div>
       </div>
+      
     </section>
 
     <div class="bp-canvas-wrap">
-      <section class="bp-canvas" aria-label="Gaming Projects images">
-        <img src="assets/behance/gaming/gaming_1_1400x990.png" alt="Gaming Projects, image 1" width="1684" height="1191" loading="eager"><img src="assets/behance/gaming/gaming_2_1400x990.png" alt="Gaming Projects, image 2" width="1920" height="1357" loading="eager"><img src="assets/behance/gaming/gaming_3_1400x990.png" alt="Gaming Projects, image 3" width="1684" height="1191" loading="lazy"><img src="assets/behance/gaming/gaming_4_1400x990.png" alt="Gaming Projects, image 4" width="1684" height="1191" loading="lazy">
+      <section class="bp-canvas" aria-label="Gaming Projects artifacts and process narrative">
+        
+        <article class="bp-story-card" id="artifact-1">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Flagship iOS Game · Core UX Architecture</span>
+              <h2 class="bp-card-title">Greedy Jump - Core Habit Loop &amp; Player Retention Architecture (1/2)</h2>
+              <p class="bp-card-sub">End-to-end product design, habit loop mechanics, and telemetry-calibrated power-play timings for iOS.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">01</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/gaming/gaming_1_1400x990.png" alt="Greedy Jump - Core Habit Loop &amp; Player Retention Architecture (1/2)" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Casual mobile reflex games suffer from brutal early drop-off: players die within 15 seconds, feel cheated by unresponsive physics, and immediately delete the app.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Pioneered the &#x27;Training Wheels&#x27; progressive onboarding curve: dampening jump gravity and hazard velocities for the first 30 seconds of gameplay. Calibrated powerup drop intervals through player interviews to induce prolonged &#x27;flow state&#x27; before introducing punishing obstacles.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Drove a 310% increase in players returning for 5 or more sessions on Day 1, powering Greedy Jump to over 80,000 organic App Store downloads and a 4.5+ rating.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-2">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Visual Juice &amp; Ergonomic Feedback</span>
+              <h2 class="bp-card-title">Greedy Jump - Asset Hierarchy, Visual Juice &amp; Micro-Rewards (2/2)</h2>
+              <p class="bp-card-sub">Tactile asset design, haptic feedback timing, and high-contrast affordances separating collectibles from hazards.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">02</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/gaming/gaming_2_1400x990.png" alt="Greedy Jump - Asset Hierarchy, Visual Juice &amp; Micro-Rewards (2/2)" width="1920" height="1357" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>In fast-paced jumping games, players have less than 200 milliseconds to distinguish between a collectible powerup, a harmless decorative prop, and a fatal hazard.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Engineered an unambiguous visual asset hierarchy: lethal monsters and spikes share angular, saturated crimson palettes, while collectibles glow with warm golden hues. Added &#x27;visual juice&#x27;—subtle screen shakes, floating multiplier scores, and bouncy squash-and-stretch animations.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Achieved effortless visual readability at 60 FPS across all iPhone and iPad screen sizes, praised by reviewers for responsive, satisfying controls.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-3">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">EdTech Gamification · K-5 Child Ergonomics</span>
+              <h2 class="bp-card-title">Buzzle AR - Child-Centered Learning UX &amp; Peer Motivation (2/3)</h2>
+              <p class="bp-card-sub">Gamified mobile learning upgrade converting dry textbook drills into joyful subject adventures.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">03</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/gaming/gaming_3_1400x990.png" alt="Buzzle AR - Child-Centered Learning UX &amp; Peer Motivation (2/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Traditional educational apps mirror school worksheets, triggering anxiety, resistance, and rapid app abandonment in elementary school children.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Applied kid-friendly ergonomic standards: oversized tap cards, bright cheerful illustrations, auditory celebration chimes, and supportive social validation (&#x27;There are 50,000 Buzzlers unlocking this treasure with you!&#x27;).</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Increased weekly voluntary learning sessions by 140% and reduced homework resistance among participating student cohorts.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-4">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Spatial Progress Metaphor · Intrinsic Motivation</span>
+              <h2 class="bp-card-title">Buzzle AR - Spatial Journey Map &amp; Celebration Dashboard (3/3)</h2>
+              <p class="bp-card-sub">Infinite-scrolling nautical adventure replacing abstract percentages with a pirate ship sailing to Treasure Island.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">04</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/gaming/gaming_4_1400x990.png" alt="Buzzle AR - Spatial Journey Map &amp; Celebration Dashboard (3/3)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Children cannot conceptualize abstract numerical progress indicators like &#x27;Lesson 2: 43% complete&#x27;, leading to loss of motivation.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Transformed curriculum progression into a physical spatial journey: each completed exercise moves the child&#x27;s pirate ship closer across the ocean to Treasure Island. Recommended twice-yearly milestone certificates instead of stressful annual tests.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Created an intrinsically rewarding learning loop where 92% of students voluntarily completed all activity modules to &#x27;reach the island&#x27;.</p>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
 
     <section class="g-wrap">
       <div class="bp-end">
         <h2>Gaming Projects</h2>
-        <p>Design Artifacts &amp; Production Screens</p>
+        <p>Design Artifacts &amp; Deep Process Narratives</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-my-achievements.html"><small>&larr; Previous</small><strong>My Achievements</strong></a>
@@ -580,6 +853,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Sales Automation Tool</div>
+            <div class="be-card-tag">Telecom CPQ &amp; Financial Modeling Engine</div>
           </div>
           <span class="be-count">3 artifacts</span>
         </div>
@@ -592,6 +866,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Networks design project</div>
+            <div class="be-card-tag">Network Operations &amp; Cognitive Ergonomics</div>
           </div>
           <span class="be-count">11 artifacts</span>
         </div>
@@ -604,6 +879,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">An Enterprise Project</div>
+            <div class="be-card-tag">IoT Fleet Intelligence &amp; Predictive Device Health</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -616,6 +892,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Web Projects</div>
+            <div class="be-card-tag">Enterprise Web Platforms, SaaS Portals &amp; Strategic Proposals</div>
           </div>
           <span class="be-count">6 artifacts</span>
         </div>
@@ -628,6 +905,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">My Achievements</div>
+            <div class="be-card-tag">Executive Honors, Global Hackathon Wins &amp; Patent Milestones</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -640,6 +918,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Mobile Projects</div>
+            <div class="be-card-tag">Production Native Applications &amp; Mobile Ergonomics</div>
           </div>
           <span class="be-count">13 artifacts</span>
         </div>

@@ -276,7 +276,7 @@ def project_images(key):
 
 
 ARCHIVE_CSS = """
-  /* Behance-style profile strip */
+  /* Profile & Header */
   .be-profile {
     display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
     padding-top: 64px; padding-bottom: 32px;
@@ -309,20 +309,21 @@ ARCHIVE_CSS = """
   }
   .be-tab span { color: var(--text-muted); font-weight: 600; margin-left: 6px; }
 
-  /* Project grid */
+  /* Gallery Home Grid */
   .be-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px 24px;
   }
   .be-card { display: block; text-decoration: none; color: inherit; }
   .be-cover {
-    position: relative; overflow: hidden; border-radius: 8px;
+    position: relative; overflow: hidden; border-radius: 10px;
     aspect-ratio: 808 / 632; background: #E9EBEE;
+    border: 1px solid var(--border-subtle);
   }
   .be-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .be-cover::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
     opacity: 0; transition: opacity 0.25s ease;
   }
   .be-cover-title {
@@ -333,58 +334,169 @@ ARCHIVE_CSS = """
   .be-card:hover .be-cover::after, .be-card:focus-visible .be-cover::after { opacity: 1; }
   .be-card:hover .be-cover-title, .be-card:focus-visible .be-cover-title { opacity: 1; transform: none; }
 
-  .be-card-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
-  .be-card-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
-  .be-card-owner { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
-  .be-card-owner img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
-  .be-count { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-
-  /* Single project view */
-  .bp-top { padding-top: 40px; padding-bottom: 28px; }
-  .bp-back {
-    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 24px;
+  .be-card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 12px; }
+  .be-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.25; }
+  .be-card-tag { font-size: 12px; font-weight: 600; color: var(--primary-accent); margin-top: 4px; }
+  .be-count {
+    font-size: 11px; font-weight: 700; color: var(--text-muted); background: #F1F3F6;
+    padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   }
-  .bp-back:hover { color: var(--text-main); }
+
+  /* Single Project View: Executive Header */
+  .bp-top { padding-top: 48px; padding-bottom: 24px; }
+  .bp-back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px;
+    transition: color 0.2s ease;
+  }
+  .bp-back:hover { color: var(--primary-accent); }
+  .bp-badge {
+    display: inline-block; font-family: var(--font-code); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
   .bp-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.15;
+    font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 14px;
   }
-  .bp-owner-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-  .bp-owner { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-main); }
-  .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+  .bp-deck {
+    font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 940px; margin-bottom: 32px;
+  }
 
+  /* Executive Stat Grid */
+  .bp-stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .bp-stat-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 16px 20px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .bp-stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .bp-stat-val {
+    font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.35;
+  }
+  .bp-stat-val.highlight {
+    color: var(--primary-accent); font-family: var(--font-heading); font-size: 15px;
+  }
+
+  /* Executive Case Brief */
+  .bp-case-brief {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.06);
+  }
+  .bp-brief-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .bp-brief-col h3 {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .bp-brief-col p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
+  }
+
+  /* Executive Honors Section (My Achievements) */
+  .bp-honors-wrap {
+    margin-bottom: 56px;
+  }
+  .bp-sec-heading {
+    margin-bottom: 24px;
+  }
+  .bp-sec-title {
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.02em; margin-top: 6px; margin-bottom: 8px;
+  }
+  .bp-sec-sub {
+    font-size: 15px; color: var(--text-muted); max-width: 760px;
+  }
+  .bp-honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .bp-honor-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .bp-honor-card:hover {
+    transform: translateY(-2px); border-color: var(--primary-accent);
+  }
+  .bp-honor-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+  .bp-honor-title {
+    font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .bp-honor-year {
+    font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+  }
+  .bp-honor-issuer {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .bp-honor-desc {
+    font-size: 13.5px; line-height: 1.6; color: var(--text-body);
+  }
+
+  /* Artifact Story Card Canvas */
   .bp-canvas-wrap {
-    max-width: 1240px;
-    margin: 36px auto 64px;
-    padding: 0 24px;
+    max-width: 1240px; margin: 0 auto 64px; padding: 0 24px;
   }
   .bp-canvas {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+    display: flex; flex-direction: column; gap: 56px;
   }
-  .bp-canvas img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-    background: #FFFFFF;
+  .bp-story-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 10px 36px -12px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease;
   }
-  @media (max-width: 640px) {
-    .bp-canvas-wrap {
-      margin: 20px auto 44px;
-      padding: 0 16px;
-    }
-    .bp-canvas {
-      gap: 20px;
-    }
-    .bp-canvas img {
-      border-radius: 12px;
-    }
+  .bp-story-card:hover {
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.12);
+  }
+  .bp-card-top {
+    padding: 24px 30px 18px; border-bottom: 1px solid var(--border-subtle);
+    background: #FAFAF9; display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .bp-card-phase {
+    display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .bp-card-title {
+    font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 6px;
+  }
+  .bp-card-sub {
+    font-size: 14px; color: var(--text-muted); line-height: 1.5; max-width: 860px;
+  }
+  .bp-card-num {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 900; color: var(--border-medium);
+  }
+  .bp-card-media {
+    background: #F1F3F6; padding: 24px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-card-media img {
+    display: block; width: 100%; height: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); background: #FFFFFF;
+  }
+  .bp-card-details {
+    padding: 28px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .bp-detail-box h4 {
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .bp-detail-box p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
   }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
@@ -402,16 +514,28 @@ ARCHIVE_CSS = """
   .bp-pager .next { text-align: right; }
   .bp-more-title { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
 
+  @media (max-width: 960px) {
+    .bp-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bp-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+    .bp-card-details { grid-template-columns: 1fr; gap: 20px; }
+    .bp-honors-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     .be-profile { padding-top: 40px; padding-bottom: 24px; gap: 16px; }
     .be-avatar { width: 64px; height: 64px; }
     .be-name { font-size: 24px; }
     .be-grid { grid-template-columns: 1fr; }
+    .bp-stat-grid { grid-template-columns: 1fr; }
+    .bp-card-media { padding: 12px; }
+    .bp-card-top, .bp-card-details { padding: 20px; }
+    .bp-case-brief { padding: 20px; }
+    .bp-canvas { gap: 36px; }
   }
 """
 
 
 def build_archive():
+    from archive_data import PROJECT_STORIES
     projects = []
     for key, name, url in BEHANCE_PROJECTS:
         projects.append({
@@ -423,6 +547,8 @@ def build_archive():
 
     def card(p, eager=False):
         n = len(p["images"])
+        story = PROJECT_STORIES.get(p["key"], {})
+        tag_preview = story.get("tag", "").split("•")[0].strip()
         return f"""
       <a href="archive-{p['slug']}.html" class="be-card" id="be-card-{p['slug']}">
         <div class="be-cover">
@@ -432,6 +558,7 @@ def build_archive():
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">{html.escape(p['name'])}</div>
+            {f'<div class="be-card-tag">{html.escape(tag_preview)}</div>' if tag_preview else ''}
           </div>
           <span class="be-count">{n} artifact{'s' if n != 1 else ''}</span>
         </div>
@@ -462,33 +589,140 @@ def build_archive():
     for i, p in enumerate(projects):
         prev_p = projects[i - 1] if i > 0 else projects[-1]
         next_p = projects[(i + 1) % len(projects)]
-        imgs = []
+        story = PROJECT_STORIES.get(p["key"], {})
+        tag = story.get("tag", p["name"])
+        deck = story.get("deck", "")
+        stats = story.get("stats", [])
+        brief = story.get("brief", {})
+        honors = story.get("executive_honors", [])
+        artifacts = story.get("artifacts", [])
+
+        stat_cards = []
+        for label, val, *hl in stats:
+            is_hl = hl[0] if hl else False
+            stat_cards.append(f"""
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">{html.escape(label)}</div>
+          <div class="bp-stat-val{' highlight' if is_hl else ''}">{html.escape(val)}</div>
+        </div>""")
+        stat_grid_html = f'<div class="bp-stat-grid">{"".join(stat_cards)}</div>' if stat_cards else ''
+
+        brief_html = ""
+        if brief:
+            prob = brief.get("problem", {})
+            meth = brief.get("methodology", {})
+            outc = brief.get("outcome", {})
+            brief_html = f"""
+      <div class="bp-case-brief">
+        <div class="bp-brief-grid">
+          <div class="bp-brief-col">
+            <h3><span>⚠️</span> {html.escape(prob.get('title', 'The Problem Context'))}</h3>
+            <p>{html.escape(prob.get('text', ''))}</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>🔍</span> {html.escape(meth.get('title', 'UX Methodology & Process'))}</h3>
+            <p>{html.escape(meth.get('text', ''))}</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>📈</span> {html.escape(outc.get('title', 'Business & Engineering Impact'))}</h3>
+            <p>{html.escape(outc.get('text', ''))}</p>
+          </div>
+        </div>
+      </div>"""
+
+        honors_html = ""
+        if honors:
+            honor_cards = []
+            for h in honors:
+                honor_cards.append(f"""
+          <div class="bp-honor-card">
+            <div>
+              <div class="bp-honor-top">
+                <h3 class="bp-honor-title">{html.escape(h['title'])}</h3>
+                <span class="bp-honor-year">{html.escape(h['year'])}</span>
+              </div>
+              <div class="bp-honor-issuer">{html.escape(h['issuer'])}</div>
+              <p class="bp-honor-desc">{html.escape(h['description'])}</p>
+            </div>
+          </div>""")
+            honors_html = f"""
+      <div class="bp-honors-wrap">
+        <div class="bp-sec-heading">
+          <span class="bp-badge">Peer Recognition &amp; Enterprise Impact</span>
+          <h2 class="bp-sec-title">Executive Honors &amp; Leadership Recognition</h2>
+          <p class="bp-sec-sub">Career milestones, corporate innovation awards, and defensive patent publications earned across global technology leaders.</p>
+        </div>
+        <div class="bp-honors-grid">
+          {''.join(honor_cards)}
+        </div>
+      </div>"""
+
+        story_cards = []
         for j, src in enumerate(p["images"]):
             w, h = img_size(src)
-            imgs.append(
-                f'<img src="{src}" alt="{html.escape(p["name"])}, image {j + 1}" width="{w}" height="{h}" '
-                f'loading="{"eager" if j < 2 else "lazy"}">')
+            art = artifacts[j] if j < len(artifacts) else {}
+            phase = art.get("phase", f"Artifact 0{j + 1}")
+            title = art.get("title", f"{p['name']} - Artifact {j + 1}")
+            sub = art.get("subtitle", "")
+            problem = art.get("problem", "Operational context and frontline user workflow challenges addressed by this design deliverable.")
+            rationale = art.get("rationale", "User-centered architecture, ergonomic hierarchy, and cognitive load reduction principles.")
+            outcome = art.get("outcome", "Measurable productivity gains, error reduction, and customer adoption across target enterprise fleets.")
+            num_str = f"0{j + 1}" if j < 9 else f"{j + 1}"
+
+            story_cards.append(f"""
+        <article class="bp-story-card" id="artifact-{j + 1}">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">{html.escape(phase)}</span>
+              <h2 class="bp-card-title">{html.escape(title)}</h2>
+              <p class="bp-card-sub">{html.escape(sub)}</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">{num_str}</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="{src}" alt="{html.escape(title)}" width="{w}" height="{h}" loading="{'eager' if j < 2 else 'lazy'}">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>{html.escape(problem)}</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>{html.escape(rationale)}</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>{html.escape(outcome)}</p>
+            </div>
+          </div>
+        </article>""")
+
         others = [q for q in projects if q["key"] != p["key"]]
         body = f"""
   <main>
     <section class="g-wrap bp-top">
       <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
+      <div><span class="bp-badge">{html.escape(tag)}</span></div>
       <h1 class="bp-title">{html.escape(p['name'])}</h1>
-      <div class="bp-owner-row">
-        <div class="bp-owner"><small>{len(p['images'])} artifact{'s' if len(p['images']) != 1 else ''}</small></div>
-      </div>
+      <p class="bp-deck">{html.escape(deck)}</p>
+      {stat_grid_html}
+      {brief_html}
+      {honors_html}
     </section>
 
     <div class="bp-canvas-wrap">
-      <section class="bp-canvas" aria-label="{html.escape(p['name'])} images">
-        {''.join(imgs)}
+      <section class="bp-canvas" aria-label="{html.escape(p['name'])} artifacts and process narrative">
+        {''.join(story_cards)}
       </section>
     </div>
 
     <section class="g-wrap">
       <div class="bp-end">
         <h2>{html.escape(p['name'])}</h2>
-        <p>Design Artifacts &amp; Production Screens</p>
+        <p>Design Artifacts &amp; Deep Process Narratives</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-{prev_p['slug']}.html"><small>&larr; Previous</small><strong>{html.escape(prev_p['name'])}</strong></a>
@@ -506,6 +740,7 @@ def build_archive():
                 f"{p['name']}: curated production screens and design artifacts by Balaajee V.R.",
                 "archive", body, ARCHIVE_CSS))
         print(f"  ✓ {fname} ({len(p['images'])} images)")
+
 
 
 if __name__ == "__main__":

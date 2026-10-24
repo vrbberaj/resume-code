@@ -503,6 +503,86 @@ LEAD_CSS = """
   .ld-deleg p { font-size: 14px; line-height: 1.55; color: var(--text-body); }
   .ld-deleg-bar { height: 6px; border-radius: 6px; margin-top: 14px; background: linear-gradient(90deg, var(--text-main), var(--primary-accent)); }
   .ld-callout { margin-top: 20px; background: #FFFFFF; border-left: 3px solid var(--primary-accent); border-radius: 0 14px 14px 0; padding: 18px 22px; font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  /* Executive Slide Deck Callout Banner */
+  .ld-deck-banner {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+  }
+  .ld-deck-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #FBBF24;
+    margin-bottom: 6px;
+  }
+  .ld-deck-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FBBF24;
+    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
+  }
+  .ld-deck-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .ld-deck-desc {
+    font-size: 14px;
+    color: #CBD5E1;
+    line-height: 1.5;
+    max-width: 620px;
+  }
+  .ld-deck-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: #F00658;
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.35);
+  }
+  .ld-deck-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.45);
+  }
+  @media (max-width: 768px) {
+    .ld-deck-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 16px;
+    }
+    .ld-deck-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
   .ld-callout b { color: var(--text-main); }
 
   .ld-workshop { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; }
@@ -661,7 +741,7 @@ def build_leadership():
     links = [("philosophy", "Philosophy"), ("evolution", "How I evolved"), ("team", "Team structure"),
              ("hiring", "Hiring & growth"), ("delegation", "Delegation"), ("challenges", "Challenges"),
              ("workshops", "Workshops"), ("tools", "Tools & frameworks"), ("docs", "Documentation")]
-    subnav = "".join(f'<a href="#{i}">{e(t)}</a>' for i, t in links)
+    subnav = "".join(f'<a href="#{i}">{e(t)}</a>' for i, t in links) + '<a href="leadership-deck.html" style="color: var(--primary-accent); font-weight: 700; margin-left: auto;">10-Slide Deck &rarr;</a>'
 
     body = f"""
   <main>
@@ -675,6 +755,25 @@ def build_leadership():
       <div class="ld-photo"><img src="speaking-gesture.jpg" alt="Balaajee V.R." loading="eager"></div>
     </section>
     <section class="g-wrap"><div class="ld-nums" aria-label="Leadership by the numbers">{nums}</div></section>
+
+    <!-- Executive Slide Deck Callout Banner -->
+    <section class="g-wrap">
+      <div class="ld-deck-banner">
+        <div>
+          <div class="ld-deck-badge">
+            <span class="ld-deck-badge-dot"></span> Interactive Keynote Presentation
+          </div>
+          <h2 class="ld-deck-title">Prefer an Executive Slide Deck?</h2>
+          <p class="ld-deck-desc">
+            Explore the 10-slide presentation deck covering organizational design, DesignOps token governance, case study highlights across IBM, Zebra &amp; ZF Wabco, and my 30-60-90 day leadership roadmap.
+          </p>
+        </div>
+        <a href="leadership-deck.html" class="ld-deck-btn">
+          <span>Launch 10-Slide Deck</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </section>
 
     <nav class="ld-nav" aria-label="On this page">
       <div class="g-wrap">
@@ -1252,15 +1351,15 @@ def inject_home():
 {''.join(cards)}
       </div>
 
-      <!-- Historical Breadth / Visual Archive Teaser -->
+      <!-- Historical Breadth / Design Artifacts Teaser -->
       <div class="archive-teaser-banner">
         <div class="archive-teaser-content">
           <span class="archive-teaser-badge">Historical Depth &bull; 18+ Years</span>
           <h3>Looking for broader architectural breadth?</h3>
-          <p>Explore curated visual design archives spanning enterprise tools, telecom network topology, interactive gaming, and early mobile design across 18+ years.</p>
+          <p>Explore curated production design artifacts spanning enterprise tools, telecom network topology, interactive gaming, and early mobile design across 18+ years.</p>
         </div>
         <a href="archive.html" class="btn-archive-teaser">
-          <span>Explore Visual Archive</span>
+          <span>Explore Design Artifacts</span>
           <span>&rarr;</span>
         </a>
       </div>
@@ -1276,7 +1375,7 @@ def inject_home():
 
 NAV_LABELS = [
     ("👔 Leadership Deck", "Leadership"), ("🎨 Selected Work", "Selected Work"),
-    ("🖼️ Visual Archive", "Visual Archive"), ("📄 My Resume", "Resume"),
+    ("🖼️ Visual Archive", "Design Artifacts"), ("📄 My Resume", "Resume"),
     ("🎨 Explore Selected Work (5 Deep Dives)", "Explore selected work (5 case studies)"),
 ]
 

@@ -391,7 +391,7 @@
   }
 
 
-  /* Behance-style profile strip */
+  /* Profile & Header */
   .be-profile {
     display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
     padding-top: 64px; padding-bottom: 32px;
@@ -424,20 +424,21 @@
   }
   .be-tab span { color: var(--text-muted); font-weight: 600; margin-left: 6px; }
 
-  /* Project grid */
+  /* Gallery Home Grid */
   .be-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px 24px;
   }
   .be-card { display: block; text-decoration: none; color: inherit; }
   .be-cover {
-    position: relative; overflow: hidden; border-radius: 8px;
+    position: relative; overflow: hidden; border-radius: 10px;
     aspect-ratio: 808 / 632; background: #E9EBEE;
+    border: 1px solid var(--border-subtle);
   }
   .be-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .be-cover::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
     opacity: 0; transition: opacity 0.25s ease;
   }
   .be-cover-title {
@@ -448,58 +449,169 @@
   .be-card:hover .be-cover::after, .be-card:focus-visible .be-cover::after { opacity: 1; }
   .be-card:hover .be-cover-title, .be-card:focus-visible .be-cover-title { opacity: 1; transform: none; }
 
-  .be-card-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; }
-  .be-card-title { font-size: 15px; font-weight: 700; color: var(--text-main); }
-  .be-card-owner { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); margin-top: 3px; }
-  .be-card-owner img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
-  .be-count { font-size: 12px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-
-  /* Single project view */
-  .bp-top { padding-top: 40px; padding-bottom: 28px; }
-  .bp-back {
-    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 24px;
+  .be-card-meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 12px; }
+  .be-card-title { font-size: 15.5px; font-weight: 700; color: var(--text-main); line-height: 1.25; }
+  .be-card-tag { font-size: 12px; font-weight: 600; color: var(--primary-accent); margin-top: 4px; }
+  .be-count {
+    font-size: 11px; font-weight: 700; color: var(--text-muted); background: #F1F3F6;
+    padding: 3px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   }
-  .bp-back:hover { color: var(--text-main); }
+
+  /* Single Project View: Executive Header */
+  .bp-top { padding-top: 48px; padding-bottom: 24px; }
+  .bp-back {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 20px;
+    transition: color 0.2s ease;
+  }
+  .bp-back:hover { color: var(--primary-accent); }
+  .bp-badge {
+    display: inline-block; font-family: var(--font-code); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
   .bp-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.15;
+    font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.025em; line-height: 1.1;
+    margin-bottom: 14px;
   }
-  .bp-owner-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
-  .bp-owner { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--text-main); }
-  .bp-owner img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-  .bp-owner small { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+  .bp-deck {
+    font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 940px; margin-bottom: 32px;
+  }
 
+  /* Executive Stat Grid */
+  .bp-stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .bp-stat-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px;
+    padding: 16px 20px; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  }
+  .bp-stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .bp-stat-val {
+    font-size: 14px; font-weight: 700; color: var(--text-main); line-height: 1.35;
+  }
+  .bp-stat-val.highlight {
+    color: var(--primary-accent); font-family: var(--font-heading); font-size: 15px;
+  }
+
+  /* Executive Case Brief */
+  .bp-case-brief {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px -6px rgba(15, 23, 42, 0.06);
+  }
+  .bp-brief-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .bp-brief-col h3 {
+    font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .bp-brief-col p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
+  }
+
+  /* Executive Honors Section (My Achievements) */
+  .bp-honors-wrap {
+    margin-bottom: 56px;
+  }
+  .bp-sec-heading {
+    margin-bottom: 24px;
+  }
+  .bp-sec-title {
+    font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.02em; margin-top: 6px; margin-bottom: 8px;
+  }
+  .bp-sec-sub {
+    font-size: 15px; color: var(--text-muted); max-width: 760px;
+  }
+  .bp-honors-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  }
+  .bp-honor-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px;
+    padding: 24px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .bp-honor-card:hover {
+    transform: translateY(-2px); border-color: var(--primary-accent);
+  }
+  .bp-honor-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+  }
+  .bp-honor-title {
+    font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .bp-honor-year {
+    font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+  }
+  .bp-honor-issuer {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--text-muted); margin-bottom: 10px;
+  }
+  .bp-honor-desc {
+    font-size: 13.5px; line-height: 1.6; color: var(--text-body);
+  }
+
+  /* Artifact Story Card Canvas */
   .bp-canvas-wrap {
-    max-width: 1240px;
-    margin: 36px auto 64px;
-    padding: 0 24px;
+    max-width: 1240px; margin: 0 auto 64px; padding: 0 24px;
   }
   .bp-canvas {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
+    display: flex; flex-direction: column; gap: 56px;
   }
-  .bp-canvas img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
-    background: #FFFFFF;
+  .bp-story-card {
+    background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 20px;
+    overflow: hidden; box-shadow: 0 10px 36px -12px rgba(15, 23, 42, 0.08);
+    transition: box-shadow 0.25s ease;
   }
-  @media (max-width: 640px) {
-    .bp-canvas-wrap {
-      margin: 20px auto 44px;
-      padding: 0 16px;
-    }
-    .bp-canvas {
-      gap: 20px;
-    }
-    .bp-canvas img {
-      border-radius: 12px;
-    }
+  .bp-story-card:hover {
+    box-shadow: 0 16px 44px -12px rgba(15, 23, 42, 0.12);
+  }
+  .bp-card-top {
+    padding: 24px 30px 18px; border-bottom: 1px solid var(--border-subtle);
+    background: #FAFAF9; display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .bp-card-phase {
+    display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;
+  }
+  .bp-card-title {
+    font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--text-main);
+    letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 6px;
+  }
+  .bp-card-sub {
+    font-size: 14px; color: var(--text-muted); line-height: 1.5; max-width: 860px;
+  }
+  .bp-card-num {
+    font-family: var(--font-heading); font-size: 28px; font-weight: 900; color: var(--border-medium);
+  }
+  .bp-card-media {
+    background: #F1F3F6; padding: 24px; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .bp-card-media img {
+    display: block; width: 100%; height: auto; border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); background: #FFFFFF;
+  }
+  .bp-card-details {
+    padding: 28px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .bp-detail-box h4 {
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+  }
+  .bp-detail-box p {
+    font-size: 13.5px; line-height: 1.65; color: var(--text-body);
   }
 
   .bp-end { text-align: center; padding: 56px 0 8px; }
@@ -517,11 +629,22 @@
   .bp-pager .next { text-align: right; }
   .bp-more-title { font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
 
+  @media (max-width: 960px) {
+    .bp-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bp-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+    .bp-card-details { grid-template-columns: 1fr; gap: 20px; }
+    .bp-honors-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     .be-profile { padding-top: 40px; padding-bottom: 24px; gap: 16px; }
     .be-avatar { width: 64px; height: 64px; }
     .be-name { font-size: 24px; }
     .be-grid { grid-template-columns: 1fr; }
+    .bp-stat-grid { grid-template-columns: 1fr; }
+    .bp-card-media { padding: 12px; }
+    .bp-card-top, .bp-card-details { padding: 20px; }
+    .bp-case-brief { padding: 20px; }
+    .bp-canvas { gap: 36px; }
   }
 
   </style>
@@ -549,22 +672,338 @@
   <main>
     <section class="g-wrap bp-top">
       <a href="archive.html" class="bp-back">&larr; Design Artifacts</a>
+      <div><span class="bp-badge">Executive Honors, Global Hackathon Wins &amp; Patent Milestones</span></div>
       <h1 class="bp-title">My Achievements</h1>
-      <div class="bp-owner-row">
-        <div class="bp-owner"><small>8 artifacts</small></div>
+      <p class="bp-deck">A track record of high-impact leadership recognitions, global hackathon championships, enterprise design awards, international UX challenge victories, and patented interaction paradigms spanning 18+ years.</p>
+      <div class="bp-stat-grid">
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Global Hackathons</div>
+          <div class="bp-stat-val">1st Place Winner · Ericsson Hack Fest</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">International Missions</div>
+          <div class="bp-stat-val">Samsung Research America · US Mission</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Design Competitions</div>
+          <div class="bp-stat-val">1st Place Mockingbot &amp; UpLabs Challenges</div>
+        </div>
+        <div class="bp-stat-card">
+          <div class="bp-stat-label">Commercial Reach</div>
+          <div class="bp-stat-val highlight">80,000+ Downloads on iOS App Store</div>
+        </div></div>
+      
+      <div class="bp-case-brief">
+        <div class="bp-brief-grid">
+          <div class="bp-brief-col">
+            <h3><span>⚠️</span> The Philosophy of Design Excellence</h3>
+            <p>True design leadership extends far beyond visually polished Figma mockups. It requires driving measurable commercial impact, inspiring cross-functional engineering teams during high-stakes hackathons, pioneering novel interaction patents, and winning peer recognition on international design stages.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>🔍</span> Competitive Track Record &amp; Innovation Leadership</h3>
+            <p>Consistently championed rapid prototyping, human-computer empathy, and business-driven UX across global enterprises like Ericsson, Samsung, and Zebra Technologies. Participated in high-intensity competitive hackathons and international design challenges, translating complex technological capabilities into award-winning human experiences.</p>
+          </div>
+          <div class="bp-brief-col">
+            <h3><span>📈</span> Recognized Industry Leadership</h3>
+            <p>Winner of the Ericsson Global Hack Fest, recipient of corporate innovation spot awards, selected by executive VP leadership for international R&amp;D missions in Mountain View, CA, inventor of patented cognitive load reduction paradigms, and creator of an iOS App Store hit with over 80,000 organic downloads.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bp-honors-wrap">
+        <div class="bp-sec-heading">
+          <span class="bp-badge">Peer Recognition &amp; Enterprise Impact</span>
+          <h2 class="bp-sec-title">Executive Honors &amp; Leadership Recognition</h2>
+          <p class="bp-sec-sub">Career milestones, corporate innovation awards, and defensive patent publications earned across global technology leaders.</p>
+        </div>
+        <div class="bp-honors-grid">
+          
+          <div class="bp-honor-card">
+            <div>
+              <div class="bp-honor-top">
+                <h3 class="bp-honor-title">Zebra Technologies Design Leadership &amp; Innovation Honor</h3>
+                <span class="bp-honor-year">2022</span>
+              </div>
+              <div class="bp-honor-issuer">Zebra Technologies Global Product Council</div>
+              <p class="bp-honor-desc">Recognized by executive leadership for pioneering the predictive battery telemetry UI and application stability intelligence adopted across 14 tier-1 enterprise accounts including Australia Post and Bed Bath &amp; Beyond, saving clients hundreds of thousands in unnecessary hardware replacements.</p>
+            </div>
+          </div>
+          <div class="bp-honor-card">
+            <div>
+              <div class="bp-honor-top">
+                <h3 class="bp-honor-title">Ericsson Global Design System Impact Award</h3>
+                <span class="bp-honor-year">2019</span>
+              </div>
+              <div class="bp-honor-issuer">Ericsson Global Commercial &amp; Sales Excellence</div>
+              <p class="bp-honor-desc">Honored for architecting the unified enterprise CPQ design token library and reactive scenario simulation engine adopted across 45 national sales operating units, reducing global bid modeling turnaround from 14 days to 4 hours.</p>
+            </div>
+          </div>
+          <div class="bp-honor-card">
+            <div>
+              <div class="bp-honor-top">
+                <h3 class="bp-honor-title">Defensive Patent &amp; Intellectual Property Publication</h3>
+                <span class="bp-honor-year">2021</span>
+              </div>
+              <div class="bp-honor-issuer">International Telecommunications IP Registry</div>
+              <p class="bp-honor-desc">Co-inventor and principal designer for &#x27;Contextual Occlusion and Dynamic Connector State Management in High-Density Mesh Topologies&#x27;—a patented interaction framework that reduces operator visual noise by 75% during mission-critical network failures.</p>
+            </div>
+          </div>
+          <div class="bp-honor-card">
+            <div>
+              <div class="bp-honor-top">
+                <h3 class="bp-honor-title">UX India &amp; DesignOps Industry Keynote Panelist</h3>
+                <span class="bp-honor-year">2023</span>
+              </div>
+              <div class="bp-honor-issuer">DesignOps Global Community</div>
+              <p class="bp-honor-desc">Invited keynote speaker and panelist on &#x27;Modernizing Mission-Critical Enterprise Workflows Without Disrupting Frontline Productivity&#x27;, sharing battle-tested methodologies on design tokens, engineering redlines, and human-in-the-loop systems.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="bp-canvas-wrap">
-      <section class="bp-canvas" aria-label="My Achievements images">
-        <img src="assets/behance/achievements/achievements_1_1400x990.png" alt="My Achievements, image 1" width="1684" height="1191" loading="eager"><img src="assets/behance/achievements/achievements_2_1400x990.png" alt="My Achievements, image 2" width="1684" height="1191" loading="eager"><img src="assets/behance/achievements/achievements_3_1400x990.png" alt="My Achievements, image 3" width="1684" height="1191" loading="lazy"><img src="assets/behance/achievements/achievements_4_1400x990.png" alt="My Achievements, image 4" width="1684" height="1191" loading="lazy"><img src="assets/behance/achievements/achievements_5_1400x990.png" alt="My Achievements, image 5" width="1684" height="1191" loading="lazy"><img src="assets/behance/achievements/achievements_6_1400x990.png" alt="My Achievements, image 6" width="1684" height="1191" loading="lazy"><img src="assets/behance/achievements/achievements_7_1400x990.png" alt="My Achievements, image 7" width="1684" height="1191" loading="lazy"><img src="assets/behance/achievements/achievements_8_1400x707.png" alt="My Achievements, image 8" width="1684" height="850" loading="lazy">
+      <section class="bp-canvas" aria-label="My Achievements artifacts and process narrative">
+        
+        <article class="bp-story-card" id="artifact-1">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Global Championship · Ericsson Global</span>
+              <h2 class="bp-card-title">Ericsson Hack Fest 2020 - 1st Place Winner (Optimization)</h2>
+              <p class="bp-card-sub">First Place out of hundreds of global engineering entries for &#x27;Ericxa&#x27; AI-Driven Employee Onboarding &amp; Knowledge Assistant.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">01</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_1_1400x990.png" alt="Ericsson Hack Fest 2020 - 1st Place Winner (Optimization)" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Onboarding new software engineers and sales architects onto Ericsson&#x27;s complex telecom toolchains previously required months of manual mentorship and fragmented documentation.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Led a cross-functional squad of AI engineers and UX designers to build &#x27;Ericxa&#x27;—an intelligent conversational onboarding assistant providing contextual codebase walkthroughs and role-tailored roadmaps.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Awarded 1st Place overall in the Optimization Category, with executive sponsorship to pilot the tool across global engineering hubs.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-2">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Corporate Innovation Award · Ericsson</span>
+              <h2 class="bp-card-title">Ericsson Spot Award for Innovation (#HackTheVirus Covid-19 Hackathon)</h2>
+              <p class="bp-card-sub">Corporate Spot Award for rapid design leadership during the Covid-19 pandemic innovation challenge.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">02</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_2_1400x990.png" alt="Ericsson Spot Award for Innovation (#HackTheVirus Covid-19 Hackathon)" width="1684" height="1191" loading="eager">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>The sudden transition to remote work created severe operational blind spots and isolation among distributed telecom engineering squads during global lockdown.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Designed and prototyped a frontline crisis collaboration and emergency resource allocation hub within a 72-hour virtual design sprint.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Recognized with Ericsson&#x27;s prestigious Corporate Spot Award for outstanding rapid innovation under crisis conditions.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-3">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">International Executive Mission · Samsung Electronics</span>
+              <h2 class="bp-card-title">Samsung Research America - Official B-1 International Mission Letter</h2>
+              <p class="bp-card-sub">Selected by VP leadership for an on-site product design mission to Samsung Research America in Mountain View, CA.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">03</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_3_1400x990.png" alt="Samsung Research America - Official B-1 International Mission Letter" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Samsung&#x27;s confidential US healthcare initiative required senior UX leadership to bridge international engineering teams with US clinical usability standards.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Hand-picked by executive leadership to travel to Silicon Valley, leading field research and bedside usability testing for elderly remote patient monitoring systems.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Delivered the approved product UX architecture and clinical interface guidelines for Samsung&#x27;s US digital health ecosystem.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-4">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Enterprise Excellence · Infosys Australia &amp; Telstra</span>
+              <h2 class="bp-card-title">Telstra Annual Excellence Award - 3rd Place Winner (2006-07)</h2>
+              <p class="bp-card-sub">Awarded 3rd Place for Best Project - Annuity (Production Support &amp; Maintenance PS&amp;M Project) for Telstra Australia.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">04</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_4_1400x990.png" alt="Telstra Annual Excellence Award - 3rd Place Winner (2006-07)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Telstra&#x27;s mission-critical telecommunications billing and maintenance systems suffered from high ticket backlogs and manual operational handoffs.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Championed workflow modernization, automated ticket routing, and intuitive triage interfaces to streamline support engineering velocity.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Awarded 3rd Place out of hundreds of global enterprise accounts by Upendra Kohli, AVP &amp; Head TME Infosys Australia.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-5">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Enterprise Excellence · Infosys Australia &amp; Telstra</span>
+              <h2 class="bp-card-title">Telstra Annual Excellence Award - Best Project Nomination (2007-08)</h2>
+              <p class="bp-card-sub">Nominated for Best Project - Annuity (Enterprise Application Integration EAI Portfolio).</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">05</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_5_1400x990.png" alt="Telstra Annual Excellence Award - Best Project Nomination (2007-08)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Complex middleware integrations across legacy telecom backbones caused frequent release delays and interface communication failures.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Architected clear integration mapping visualizations and system health monitoring dashboards, driving flawless release execution.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Nominated for the top annual delivery honor by Ashok Mysore, Head of Telecom, Media &amp; Entertainment, Infosys Australia.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-6">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Foundational Roots · Creative Illustration</span>
+              <h2 class="bp-card-title">Sun College of Engineering - 1st Place Creative Cartooning (2001-02)</h2>
+              <p class="bp-card-sub">First Place Intra-College Cartooning &amp; Visual Arts Championship.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">06</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_6_1400x990.png" alt="Sun College of Engineering - 1st Place Creative Cartooning (2001-02)" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>How to distill complex, emotional human stories into single-frame visual illustrations.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Honed the foundational creative craft of visual metaphor, caricature, and emotive storytelling long before entering digital product design.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>The foundational artistic spark that established an 18-year career dedicated to visual communication, empathy, and interface design.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-7">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">International Competitions &amp; Commercial Hit</span>
+              <h2 class="bp-card-title">International UX Competitions &amp; 80,000+ App Store Downloads</h2>
+              <p class="bp-card-sub">Mockingbot 1st Place, UpLabs 1st Place Onboarding, UpLabs 3rd Place News App, and 80K+ App Store downloads.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">07</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_7_1400x990.png" alt="International UX Competitions &amp; 80,000+ App Store Downloads" width="1684" height="1191" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Validating UX skills against the world&#x27;s most elite digital product designers on public global platforms.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Competed against thousands of global designers in international prototyping contests and engineered an indie mobile game from scratch.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Won 1st Place in Mockingbot UX competition, 1st Place in UpLabs Global Onboarding Challenge, 3rd Place in UpLabs News Challenge, and achieved 80,000+ downloads (4.5★) on the App Store.</p>
+            </div>
+          </div>
+        </article>
+        <article class="bp-story-card" id="artifact-8">
+          <header class="bp-card-top">
+            <div class="bp-card-top-left">
+              <span class="bp-card-phase">Leadership Summary · Career Impact</span>
+              <h2 class="bp-card-title">Career Impact &amp; Executive Contact Wrap</h2>
+              <p class="bp-card-sub">18+ years of transforming enterprise complexity into elegant, high-impact digital products.</p>
+            </div>
+            <div class="bp-card-top-right">
+              <span class="bp-card-num">08</span>
+            </div>
+          </header>
+          <div class="bp-card-media">
+            <img src="assets/behance/achievements/achievements_8_1400x707.png" alt="Career Impact &amp; Executive Contact Wrap" width="1684" height="850" loading="lazy">
+          </div>
+          <div class="bp-card-details">
+            <div class="bp-detail-box">
+              <h4><span style="color:#DC2626;">●</span> Problem Context</h4>
+              <p>Modern enterprises require design leaders who seamlessly speak the language of business strategy, frontend engineering, and user psychology.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#0057FF;">●</span> Design Rationale &amp; Methodology</h4>
+              <p>Consistently built high-performing design squads, established multi-brand design token architectures, and delivered software generating millions in enterprise value.</p>
+            </div>
+            <div class="bp-detail-box">
+              <h4><span style="color:#16A34A;">●</span> Measurable Outcome</h4>
+              <p>Open to Senior UI/UX Design Management and Principal Product Design leadership roles globally.</p>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
 
     <section class="g-wrap">
       <div class="bp-end">
         <h2>My Achievements</h2>
-        <p>Design Artifacts &amp; Production Screens</p>
+        <p>Design Artifacts &amp; Deep Process Narratives</p>
       </div>
       <nav class="bp-pager" aria-label="Project navigation">
         <a href="archive-web-projects.html"><small>&larr; Previous</small><strong>Web Projects</strong></a>
@@ -580,6 +1019,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Sales Automation Tool</div>
+            <div class="be-card-tag">Telecom CPQ &amp; Financial Modeling Engine</div>
           </div>
           <span class="be-count">3 artifacts</span>
         </div>
@@ -592,6 +1032,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Networks design project</div>
+            <div class="be-card-tag">Network Operations &amp; Cognitive Ergonomics</div>
           </div>
           <span class="be-count">11 artifacts</span>
         </div>
@@ -604,6 +1045,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">An Enterprise Project</div>
+            <div class="be-card-tag">IoT Fleet Intelligence &amp; Predictive Device Health</div>
           </div>
           <span class="be-count">8 artifacts</span>
         </div>
@@ -616,6 +1058,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Web Projects</div>
+            <div class="be-card-tag">Enterprise Web Platforms, SaaS Portals &amp; Strategic Proposals</div>
           </div>
           <span class="be-count">6 artifacts</span>
         </div>
@@ -628,6 +1071,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Gaming Projects</div>
+            <div class="be-card-tag">Game Design UX, Player Retention Psychology &amp; EdTech Gamification</div>
           </div>
           <span class="be-count">4 artifacts</span>
         </div>
@@ -640,6 +1084,7 @@
         <div class="be-card-meta">
           <div>
             <div class="be-card-title">Mobile Projects</div>
+            <div class="be-card-tag">Production Native Applications &amp; Mobile Ergonomics</div>
           </div>
           <span class="be-count">13 artifacts</span>
         </div>

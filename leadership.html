@@ -482,86 +482,6 @@
   .ld-roles { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
   .ld-roles span { font-size: 13px; font-weight: 600; color: var(--text-main); background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 100px; padding: 6px 14px; }
 
-  /* Executive Slide Deck Callout Banner */
-  .ld-deck-banner {
-    margin-top: 28px;
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 24px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
-  }
-  .ld-deck-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #FBBF24;
-    margin-bottom: 6px;
-  }
-  .ld-deck-badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #FBBF24;
-    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
-  }
-  .ld-deck-title {
-    font-family: var(--font-heading);
-    font-size: 20px;
-    font-weight: 800;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-  .ld-deck-desc {
-    font-size: 14px;
-    color: #CBD5E1;
-    line-height: 1.5;
-    max-width: 620px;
-  }
-  .ld-deck-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    background: #F00658;
-    color: #FFFFFF;
-    font-size: 13.5px;
-    font-weight: 700;
-    border-radius: 100px;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.35);
-  }
-  .ld-deck-btn:hover {
-    background: #D0054B;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.45);
-  }
-  @media (max-width: 768px) {
-    .ld-deck-banner {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-      gap: 16px;
-    }
-    .ld-deck-btn {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-
   .ld-nav { 
     position: sticky; 
     top: 61px; 
@@ -682,6 +602,86 @@
   .ld-deleg p { font-size: 14px; line-height: 1.55; color: var(--text-body); }
   .ld-deleg-bar { height: 6px; border-radius: 6px; margin-top: 14px; background: linear-gradient(90deg, var(--text-main), var(--primary-accent)); }
   .ld-callout { margin-top: 20px; background: #FFFFFF; border-left: 3px solid var(--primary-accent); border-radius: 0 14px 14px 0; padding: 18px 22px; font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  /* Executive Slide Deck Callout Banner */
+  .ld-deck-banner {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+  }
+  .ld-deck-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #FBBF24;
+    margin-bottom: 6px;
+  }
+  .ld-deck-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FBBF24;
+    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
+  }
+  .ld-deck-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .ld-deck-desc {
+    font-size: 14px;
+    color: #CBD5E1;
+    line-height: 1.5;
+    max-width: 620px;
+  }
+  .ld-deck-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: #F00658;
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.35);
+  }
+  .ld-deck-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.45);
+  }
+  @media (max-width: 768px) {
+    .ld-deck-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 16px;
+    }
+    .ld-deck-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
   .ld-callout b { color: var(--text-main); }
 
   .ld-workshop { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; }
@@ -762,18 +762,21 @@
 
   <header class="global-header">
     <div class="header-container">
-      <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <span class="brand-monogram" aria-hidden="true">B</span>
+      <a href="index.html" class="brand-link" aria-label="BVR Portfolio Home">
+        <span class="brand-monogram">BVR</span>
+        <span class="brand-tag">Product Design Suite</span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="index.html" class="nav-item">Selected Work</a>
+        <a href="index.html" class="nav-item ">Selected Work</a>
         <a href="leadership.html" class="nav-item active">Leadership</a>
-<a href="archive.html" class="nav-item">Design Artifacts</a>
-        <a href="gallery.html" class="nav-item">Career Gallery</a>
-        <a href="cv.html" class="nav-item">My Resume</a>
+        <a href="archive.html" class="nav-item ">Design Artifacts</a>
+        <a href="gallery.html" class="nav-item ">Career Gallery</a>
+        <a href="cv.html" class="nav-item ">My Resume</a>
       </nav>
       <div class="header-actions">
-        <a href="contact.html" class="btn-contact">Get In Touch &rarr;</a>
+        <a href="contact.html" class="btn-contact">
+          Get In Touch &rarr;
+        </a>
       </div>
     </div>
   </header>
@@ -815,8 +818,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
           On This Page:
         </span>
-        <a href="#philosophy">Philosophy</a><a href="#evolution">How I evolved</a><a href="#team">Team structure</a><a href="#hiring">Hiring &amp; growth</a><a href="#delegation">Delegation</a><a href="#challenges">Challenges</a><a href="#workshops">Workshops</a><a href="#tools">Tools &amp; frameworks</a><a href="#docs">Documentation</a>
-        <a href="leadership-deck.html" style="color: var(--primary-accent); font-weight: 700; margin-left: auto;">10-Slide Deck &rarr;</a>
+        <a href="#philosophy">Philosophy</a><a href="#evolution">How I evolved</a><a href="#team">Team structure</a><a href="#hiring">Hiring &amp; growth</a><a href="#delegation">Delegation</a><a href="#challenges">Challenges</a><a href="#workshops">Workshops</a><a href="#tools">Tools &amp; frameworks</a><a href="#docs">Documentation</a><a href="leadership-deck.html" style="color: var(--primary-accent); font-weight: 700; margin-left: auto;">10-Slide Deck &rarr;</a>
       </div>
     </nav>
 
