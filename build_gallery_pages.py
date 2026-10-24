@@ -75,18 +75,22 @@ GALLERY_STYLES = """
   .g-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
   /* Page intro */
-  .g-intro { padding-top: 72px; padding-bottom: 40px; }
+  .g-intro { padding-top: 40px; padding-bottom: 24px; }
   .g-overline {
-    font-family: var(--font-body); font-size: 13px; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
-    margin-bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-code); font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08); border: 1px solid rgba(240, 6, 88, 0.2);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 12px;
   }
   .g-title {
     font-family: var(--font-heading); font-weight: 800; color: var(--text-main);
-    font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.03em;
-    margin-bottom: 16px;
+    font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; letter-spacing: -0.02em;
+    margin-bottom: 10px;
   }
-  .g-sub { font-size: 18px; line-height: 1.6; color: var(--text-body); max-width: 640px; }
+  .g-sub { font-size: 15.5px; line-height: 1.55; color: var(--text-muted); max-width: 720px; }
 
   /* Footer */
   .g-footer { border-top: 1px solid var(--border-subtle); background: #FFFFFF; margin-top: 96px; padding: 36px 0; }
@@ -566,8 +570,9 @@ def build_archive():
 
     intro = f"""
     <section class="g-wrap g-intro">
-      <h1 class="g-title">Design Artifacts</h1>
-      <p class="g-sub">Curated production UI screens, complex workflows, design systems, and product deliverables spanning 18+ years of enterprise software.</p>
+      <div class="g-overline">Curated Deliverables · 18+ Years</div>
+      <h1 class="g-title">Production Workflows &amp; Enterprise Systems</h1>
+      <p class="g-sub">Behind-the-scenes UI flows, design systems, ergonomic frameworks, and product deliverables spanning enterprise telecom, NOC operations, hardware fleets, and interactive media.</p>
     </section>"""
 
     # ---- gallery home
