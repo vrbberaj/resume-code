@@ -404,10 +404,10 @@
                 LinkedIn Professional Network
               </span>
             </div>
-            <div class="bvr-card-value">linkedin.com/in/balaajee-vr-21647967</div>
+            <div class="bvr-card-value">LinkedIn Profile</div>
             <div class="bvr-card-actions">
               <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" rel="noopener noreferrer" class="bvr-btn-primary" style="background: #0A66C2;">
-                Open LinkedIn Profile &rarr;
+                Connect on LinkedIn &rarr;
               </a>
               <button type="button" class="bvr-btn-secondary" onclick="bvrCopyText('https://www.linkedin.com/in/balaajee-vr-21647967/', 'LinkedIn URL copied!')">
                 Copy
