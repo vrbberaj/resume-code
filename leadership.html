@@ -482,6 +482,86 @@
   .ld-roles { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
   .ld-roles span { font-size: 13px; font-weight: 600; color: var(--text-main); background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 100px; padding: 6px 14px; }
 
+  /* Executive Slide Deck Callout Banner */
+  .ld-deck-banner {
+    margin-top: 28px;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+  }
+  .ld-deck-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #FBBF24;
+    margin-bottom: 6px;
+  }
+  .ld-deck-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FBBF24;
+    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
+  }
+  .ld-deck-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .ld-deck-desc {
+    font-size: 14px;
+    color: #CBD5E1;
+    line-height: 1.5;
+    max-width: 620px;
+  }
+  .ld-deck-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: #F00658;
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.35);
+  }
+  .ld-deck-btn:hover {
+    background: #D0054B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.45);
+  }
+  @media (max-width: 768px) {
+    .ld-deck-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 16px;
+    }
+    .ld-deck-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
   .ld-nav { 
     position: sticky; 
     top: 61px; 
@@ -688,8 +768,7 @@
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="nav-item">Selected Work</a>
         <a href="leadership.html" class="nav-item active">Leadership</a>
-        <a href="leadership-deck.html" class="nav-item">Leadership Deck</a>
-        <a href="archive.html" class="nav-item">Visual Archive</a>
+<a href="archive.html" class="nav-item">Visual Archive</a>
         <a href="gallery.html" class="nav-item">Career Gallery</a>
         <a href="cv.html" class="nav-item">My Resume</a>
       </nav>
@@ -711,6 +790,25 @@
     </section>
     <section class="g-wrap"><div class="ld-nums" aria-label="Leadership by the numbers"><div><strong>18+</strong><span>years in product and design</span></div><div><strong>14</strong><span>Max team size</span></div><div><strong>100%</strong><span>team retention over 16 months</span></div><div><strong>5</strong><span>designers promoted</span></div><div><strong>50+</strong><span>designers mentored</span></div><div><strong>6</strong><span>design systems built or scaled</span></div></div></section>
 
+    <!-- Executive Slide Deck Callout Banner -->
+    <section class="g-wrap">
+      <div class="ld-deck-banner">
+        <div>
+          <div class="ld-deck-badge">
+            <span class="ld-deck-badge-dot"></span> Interactive Keynote Presentation
+          </div>
+          <h2 class="ld-deck-title">Prefer an Executive Slide Deck?</h2>
+          <p class="ld-deck-desc">
+            Explore the 10-slide presentation deck covering organizational design, DesignOps token governance, case study highlights across IBM, Zebra &amp; ZF Wabco, and my 30-60-90 day leadership roadmap.
+          </p>
+        </div>
+        <a href="leadership-deck.html" class="ld-deck-btn">
+          <span>Launch 10-Slide Deck</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </section>
+
     <nav class="ld-nav" aria-label="On this page">
       <div class="g-wrap">
         <span class="ld-nav-label">
@@ -718,6 +816,7 @@
           On This Page:
         </span>
         <a href="#philosophy">Philosophy</a><a href="#evolution">How I evolved</a><a href="#team">Team structure</a><a href="#hiring">Hiring &amp; growth</a><a href="#delegation">Delegation</a><a href="#challenges">Challenges</a><a href="#workshops">Workshops</a><a href="#tools">Tools &amp; frameworks</a><a href="#docs">Documentation</a>
+        <a href="leadership-deck.html" style="color: var(--primary-accent); font-weight: 700; margin-left: auto;">10-Slide Deck &rarr;</a>
       </div>
     </nav>
 
