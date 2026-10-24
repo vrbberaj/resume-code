@@ -55,6 +55,15 @@
     width: 100%;
   }
 
+  /* Embedded iframe support */
+  html.is-embedded .global-header,
+  body.is-embedded .global-header {
+    display: none !important;
+  }
+  body.is-embedded {
+    min-height: 100vh;
+  }
+
   /* Global Header */
   .global-header {
     position: sticky;
@@ -3527,6 +3536,11 @@
 
       slides.forEach(slide => observer.observe(slide));
     });
+
+    if (window.self !== window.top) {
+      document.documentElement.classList.add('is-embedded');
+      document.body.classList.add('is-embedded');
+    }
   </script>
   <script src="contact-drawer.js" defer></script>
 </body>

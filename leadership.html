@@ -607,84 +607,232 @@
   .ld-deleg-bar { height: 6px; border-radius: 6px; margin-top: 14px; background: linear-gradient(90deg, var(--text-main), var(--primary-accent)); }
   .ld-callout { margin-top: 20px; background: #FFFFFF; border-left: 3px solid var(--primary-accent); border-radius: 0 14px 14px 0; padding: 18px 22px; font-size: 15px; line-height: 1.6; color: var(--text-body); }
 
-  /* Executive Slide Deck Callout Banner */
-  .ld-deck-banner {
-    margin-top: 28px;
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 24px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
-  }
-  .ld-deck-badge {
+  /* Hero Executive Briefing CTA */
+  .ld-hero-briefing {
+    margin-top: 24px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-family: var(--font-code);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #FBBF24;
-    margin-bottom: 6px;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    padding: 6px 8px 6px 16px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    flex-wrap: wrap;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .ld-deck-badge-dot {
-    width: 6px;
-    height: 6px;
+  .ld-hero-briefing:hover {
+    border-color: rgba(240, 6, 88, 0.3);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.07);
+  }
+  .ld-briefing-copy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-body);
+    font-weight: 500;
+  }
+  .ld-briefing-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: #FBBF24;
-    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
+    background: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(240, 6, 88, 0.2);
+    flex-shrink: 0;
   }
-  .ld-deck-title {
-    font-family: var(--font-heading);
-    font-size: 20px;
-    font-weight: 800;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-  .ld-deck-desc {
-    font-size: 14px;
-    color: #CBD5E1;
-    line-height: 1.5;
-    max-width: 620px;
-  }
-  .ld-deck-btn {
+  .ld-briefing-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 22px;
-    background: #F00658;
-    color: #FFFFFF;
-    font-size: 13.5px;
+    background: var(--text-main);
+    color: #FFFFFF !important;
+    font-family: var(--font-body);
+    font-size: 12.5px;
     font-weight: 700;
+    border: none;
     border-radius: 100px;
-    text-decoration: none;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(240, 6, 88, 0.35);
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .ld-deck-btn:hover {
-    background: #D0054B;
+  .ld-briefing-btn:hover {
+    background: var(--primary-accent);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(240, 6, 88, 0.45);
+    box-shadow: 0 4px 12px rgba(240, 6, 88, 0.35);
   }
+  .ld-briefing-arrow {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+  .ld-briefing-btn:hover .ld-briefing-arrow {
+    transform: translateX(2px);
+  }
+
+  /* Nav Deck Trigger */
+  .ld-nav-deck-trigger {
+    color: var(--primary-accent);
+    font-weight: 700;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .ld-nav-deck-trigger:hover {
+    background: rgba(240, 6, 88, 0.08);
+  }
+
+  /* Executive Slide Deck Modal Dialog */
+  .ld-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  .ld-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .ld-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .ld-modal-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(1380px, 95vw);
+    height: min(88vh, 880px);
+    background: #0F172A;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.96);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ld-modal.is-open .ld-modal-dialog {
+    transform: scale(1);
+  }
+  .ld-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    background: #0B1324;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+  }
+  .ld-modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .ld-modal-badge {
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.12);
+    border: 1px solid rgba(240, 6, 88, 0.3);
+    border-radius: 100px;
+    padding: 2px 10px;
+    text-transform: uppercase;
+  }
+  .ld-modal-title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .ld-modal-subtitle {
+    font-size: 12.5px;
+    color: #94A3B8;
+  }
+  .ld-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ld-modal-ext-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #CBD5E1;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .ld-modal-ext-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+  }
+  .ld-modal-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .ld-modal-close-btn:hover {
+    background: var(--primary-accent);
+    border-color: var(--primary-accent);
+    transform: scale(1.05);
+  }
+  .ld-modal-body {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    background: #0D1B2E;
+    overflow: hidden;
+    position: relative;
+  }
+  .ld-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
   @media (max-width: 768px) {
-    .ld-deck-banner {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-      gap: 16px;
-    }
-    .ld-deck-btn {
-      width: 100%;
-      justify-content: center;
-    }
+    .ld-hero-briefing { border-radius: 16px; padding: 12px 14px; }
+    .ld-modal { padding: 8px; }
+    .ld-modal-dialog { width: 100%; height: 94vh; border-radius: 14px; }
+    .ld-modal-subtitle { display: none; }
   }
   .ld-callout b { color: var(--text-main); }
 
@@ -1012,29 +1160,21 @@
         <h1>How I lead design teams</h1>
         <p>I build teams that make clear decisions, ship with engineering, and prove impact with evidence. Here is what I believe, how I hire and delegate, and the tools I've built to run teams of up to 14 designers.</p>
         <div class="ld-roles"><span>Head of Design</span><span>Design Director</span><span>Senior UX Design Manager</span></div>
+        <div class="ld-hero-briefing">
+          <div class="ld-briefing-copy">
+            <span class="ld-briefing-dot"></span>
+            <span>Looking for a quick executive briefing?</span>
+          </div>
+          <button type="button" class="ld-briefing-btn" id="openDeckHeroBtn" aria-haspopup="dialog" aria-controls="deckModal">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>Launch 10-Slide Keynote Deck</span>
+            <span class="ld-briefing-arrow">&rarr;</span>
+          </button>
+        </div>
       </div>
       <div class="ld-photo"><img src="speaking-gesture.jpg" alt="Balaajee V.R." loading="eager"></div>
     </section>
     <section class="g-wrap"><div class="ld-nums" aria-label="Leadership by the numbers"><div><strong>18+</strong><span>years in product and design</span></div><div><strong>14</strong><span>Max team size</span></div><div><strong>100%</strong><span>team retention over 16 months</span></div><div><strong>5</strong><span>designers promoted</span></div><div><strong>50+</strong><span>designers mentored</span></div><div><strong>6</strong><span>design systems built or scaled</span></div></div></section>
-
-    <!-- Executive Slide Deck Callout Banner -->
-    <section class="g-wrap">
-      <div class="ld-deck-banner">
-        <div>
-          <div class="ld-deck-badge">
-            <span class="ld-deck-badge-dot"></span> Interactive Keynote Presentation
-          </div>
-          <h2 class="ld-deck-title">Prefer an Executive Slide Deck?</h2>
-          <p class="ld-deck-desc">
-            Explore the 10-slide presentation deck covering organizational design, DesignOps token governance, case study highlights across IBM, Zebra &amp; ZF Wabco, and my 30-60-90 day leadership roadmap.
-          </p>
-        </div>
-        <a href="leadership-deck.html" class="ld-deck-btn">
-          <span>Launch 10-Slide Deck</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-      </div>
-    </section>
 
     <nav class="ld-nav" aria-label="On this page">
       <div class="g-wrap">
@@ -1042,7 +1182,7 @@
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
           On This Page:
         </span>
-        <a href="#philosophy">Philosophy</a><a href="#evolution">How I evolved</a><a href="#team">Team structure</a><a href="#hiring">Hiring &amp; growth</a><a href="#delegation">Delegation</a><a href="#challenges">Challenges</a><a href="#workshops">Workshops</a><a href="#tools">Tools &amp; frameworks</a><a href="#docs">Documentation</a><a href="leadership-deck.html" style="color: var(--primary-accent); font-weight: 700; margin-left: auto;">10-Slide Deck &rarr;</a>
+        <a href="#philosophy">Philosophy</a><a href="#evolution">How I evolved</a><a href="#team">Team structure</a><a href="#hiring">Hiring &amp; growth</a><a href="#delegation">Delegation</a><a href="#challenges">Challenges</a><a href="#workshops">Workshops</a><a href="#tools">Tools &amp; frameworks</a><a href="#docs">Documentation</a><button type="button" class="ld-nav-deck-trigger" id="openDeckNavBtn" aria-haspopup="dialog" aria-controls="deckModal">10-Slide Deck &rarr;</button>
       </div>
     </nav>
 
@@ -1316,6 +1456,32 @@
         </div>
       </div>
     </section>
+
+    <!-- Executive Slide Deck Modal Dialog -->
+    <div id="deckModal" class="ld-modal" role="dialog" aria-modal="true" aria-labelledby="deckModalTitle" aria-hidden="true" hidden>
+      <div class="ld-modal-backdrop" id="deckModalBackdrop"></div>
+      <div class="ld-modal-dialog">
+        <div class="ld-modal-header">
+          <div class="ld-modal-header-left">
+            <span class="ld-modal-badge">Executive Briefing</span>
+            <h2 id="deckModalTitle" class="ld-modal-title">Design Leadership Keynote Deck</h2>
+            <span class="ld-modal-subtitle">10 Interactive Slides · Balaajee V.R.</span>
+          </div>
+          <div class="ld-modal-actions">
+            <a href="leadership-deck.html" target="_blank" rel="noopener" class="ld-modal-ext-btn" title="Open presentation in full new tab">
+              <span>Open in New Tab</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <button type="button" class="ld-modal-close-btn" id="deckModalClose" aria-label="Close presentation deck (Esc)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+        <div class="ld-modal-body">
+          <iframe id="deckIframe" data-src="leadership-deck.html" title="Interactive 10-Slide Leadership Deck" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
   </main>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1349,6 +1515,51 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      // Deck Modal Dialog handling
+      var modal = document.getElementById('deckModal');
+      var iframe = document.getElementById('deckIframe');
+      var heroBtn = document.getElementById('openDeckHeroBtn');
+      var navBtn = document.getElementById('openDeckNavBtn');
+      var closeBtn = document.getElementById('deckModalClose');
+      var backdrop = document.getElementById('deckModalBackdrop');
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        if (!modal) return;
+        if (iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.src === window.location.href)) {
+          iframe.src = iframe.getAttribute('data-src') || 'leadership-deck.html';
+        }
+        modal.removeAttribute('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        modal.offsetHeight;
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(function() {
+          if (!modal.classList.contains('is-open')) {
+            modal.setAttribute('hidden', '');
+          }
+        }, 250);
+      }
+
+      if (heroBtn) heroBtn.addEventListener('click', openModal);
+      if (navBtn) navBtn.addEventListener('click', openModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
     });
   </script>
 
