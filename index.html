@@ -516,17 +516,18 @@
     .scroll-cue-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 20px;
+      gap: 8px;
+      padding: 6px 14px;
       border-radius: 9999px;
       background: var(--bg-subtle);
       border: 1px solid var(--border-subtle);
-      color: var(--text-body);
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
+      letter-spacing: 0.01em;
       transition: all 0.25s ease;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
 
     .scroll-cue-link:hover {
@@ -1042,12 +1043,12 @@
 
       <!-- Visual Scroll Affordance Cue -->
       <div class="hero-scroll-cue">
-        <a href="#featured-work" class="scroll-cue-link" aria-label="Scroll to explore 5 flagship enterprise case studies">
-          <span class="scroll-cue-mouse">
+        <a href="#featured-work" class="scroll-cue-link" aria-label="Scroll to explore">
+          <span class="scroll-cue-mouse" aria-hidden="true">
             <span class="scroll-cue-wheel"></span>
           </span>
-          <span class="scroll-cue-label">Scroll to explore 5 flagship enterprise case studies</span>
-          <span class="scroll-cue-arrow">&darr;</span>
+          <span class="scroll-cue-label">Scroll to explore</span>
+          <span class="scroll-cue-arrow" aria-hidden="true">&darr;</span>
         </a>
       </div>
 
