@@ -311,11 +311,13 @@
   }
 
 
-    /* Executive Hero Stage */
+    /* =========================================================================
+       Unified Executive Banner Stage (Approach B: 165px Compact Power Strip)
+       ========================================================================= */
     .welcome-hero-stage {
-      background: #FFFFFF;
+      padding: 14px 0 14px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 32px 0 28px;
     }
 
     .hero-container {
@@ -324,343 +326,252 @@
       padding: 0 24px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 36px;
-      align-items: stretch;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    /* Left: Video Showcase Column */
-    .hero-video-col {
+    .exec-banner-row {
       display: flex;
-      flex-direction: column;
-    }
-
-    /* Right: Enterprise Pedigree Column */
-    .pedigree-hero-col {
-      display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
-      background: #F8F9FA;
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 24px 24px 20px;
-    }
-
-    .pedigree-hero-header {
-      margin-bottom: 14px;
-    }
-
-    .pedigree-hero-label {
-      font-family: var(--font-code);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--primary-accent);
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .pedigree-hero-title {
-      font-family: var(--font-heading);
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .pedigree-hero-sub {
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: var(--text-muted);
-    }
-
-    .pedigree-brands-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      flex: 1;
-    }
-
-    .brand-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 14px 10px;
+      gap: 24px;
       background: #FFFFFF;
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: default;
-    }
-
-    .brand-item:hover {
-      background: #FFFFFF;
-      border-color: var(--border-medium);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-      transform: translateY(-2px);
-    }
-
-    .brand-item.brand-item-wide {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      gap: 16px;
+      border-radius: 16px;
       padding: 12px 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
 
-    .brand-item.brand-item-wide .brand-logo-img {
-      margin-bottom: 0;
-      height: 24px;
-    }
-
-    .brand-item.brand-item-wide .brand-item-text {
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-logo-img {
-      height: 28px;
-      max-width: 84px;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: 8px;
-      filter: none;
-      opacity: 1;
-      transition: transform 0.25s ease;
-    }
-
-    .brand-item:hover .brand-logo-img {
-      transform: scale(1.08);
-    }
-
-    .brand-item-name {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .brand-item-role {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-      font-weight: 500;
-    }
-
-    @media (max-width: 580px) {
-      .pedigree-hero-col {
-        padding: 20px 16px;
-      }
-      .pedigree-brands-grid {
-        grid-template-columns: 1fr;
-      }
-      .brand-item.brand-item-wide {
-        flex-direction: column;
-        text-align: center;
-      }
-      .brand-item.brand-item-wide .brand-item-text {
-        text-align: center;
-      }
-      .brand-item.brand-item-wide .brand-logo-img {
-        margin-bottom: 8px;
-      }
-    }
-
-    /* Visual Scroll Affordance Cue */
-    .hero-scroll-cue {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 22px;
-      padding-top: 6px;
-    }
-
-    .scroll-cue-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      transition: all 0.25s ease;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    }
-
-    .scroll-cue-link:hover {
-      background: #FFFFFF;
-      color: var(--primary-accent);
-      border-color: var(--primary-accent);
-      transform: translateY(2px);
-      box-shadow: 0 4px 14px rgba(240, 6, 88, 0.12);
-    }
-
-    .scroll-cue-mouse {
-      width: 14px;
-      height: 22px;
-      border: 2px solid currentColor;
-      border-radius: 8px;
-      display: inline-flex;
-      justify-content: center;
-      padding-top: 3px;
-    }
-
-    .scroll-cue-wheel {
-      width: 2px;
-      height: 5px;
-      background: currentColor;
-      border-radius: 1px;
-      animation: mouseWheel 1.6s infinite ease-in-out;
-    }
-
-    @keyframes mouseWheel {
-      0% { transform: translateY(0); opacity: 1; }
-      50% { transform: translateY(4px); opacity: 0.25; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    .scroll-cue-arrow {
-      font-size: 15px;
-      font-weight: 700;
-      animation: arrowBounce 1.6s infinite ease-in-out;
-    }
-
-    @keyframes arrowBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(3px); }
-    }
-
-    .brand-item-name {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.2;
-    }
-
-    .brand-item-role {
-      font-family: var(--font-code);
-      font-size: 10.5px;
-      color: var(--text-muted);
-      margin-top: 3px;
-      letter-spacing: 0.02em;
-    }
-
-
-
-    /* Video Player Centerpiece Card */
-    .video-showcase-box {
-      background: #0B0E17;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
-    }
-
-    .video-player-frame {
+    /* Zone 1: Mini Video Briefing launcher */
+    .exec-banner-video-pill {
+      flex: 0 0 210px;
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9.8;
-      background: #000000;
     }
-
-    .video-player-frame video {
+    .exec-video-thumb-container {
+      width: 210px;
+      height: 118px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .exec-video-thumb-container video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
-    .video-time-tag {
+    .exec-video-badge {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 6px;
+      left: 6px;
       background: rgba(11, 14, 23, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
       color: #FFFFFF;
       font-family: var(--font-code);
-      font-size: 11px;
+      font-size: 9.5px;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-      z-index: 10;
-      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
-
-    .video-caption-bar {
-      padding: 16px 20px;
-      background: #111624;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    .exec-video-subbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      color: #FFFFFF;
+      justify-content: space-between;
+      margin-top: 5px;
+      font-size: 10.5px;
+      color: var(--text-muted);
     }
-
-    .video-caption-bar h4 {
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 2px;
-    }
-
-    .video-caption-bar p {
-      font-size: 12px;
-      color: #94A3B8;
-    }
-
-    .btn-transcript-toggle {
-      font-family: var(--font-heading);
-      font-size: 12px;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-      padding: 6px 12px;
-      border-radius: 6px;
+    .btn-micro-transcript {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: all 0.15s ease;
+      font-weight: 600;
+    }
+    .btn-micro-transcript:hover {
+      color: var(--primary-accent);
+      border-color: var(--primary-accent);
     }
 
-    .btn-transcript-toggle:hover {
-      background: rgba(255, 255, 255, 0.2);
+    /* Zone 2: Executive Pitch & Metrics */
+    .exec-banner-center {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 0 10px;
+    }
+    .exec-tag-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .exec-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0284C7;
+      background: #E0F2FE;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .status-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0284C7;
+      box-shadow: 0 0 6px #0284C7;
+    }
+    .exec-exp-badge {
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--primary-accent);
+      background: var(--accent-subtle);
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .exec-headline {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+    .exec-sub-pitch {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-body);
+      margin-bottom: 8px;
+    }
+    .exec-stats-ribbon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .exec-stat-pill {
+      font-size: 11px;
+      background: #F1F5F9;
+      border: 1px solid var(--border-subtle);
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--text-body);
+    }
+    .exec-stat-pill strong {
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .exec-stat-pill.highlight {
+      background: #FFFBEB;
+      border-color: #FDE68A;
+      color: #B45309;
+    }
+    .exec-stat-pill.highlight strong {
+      color: #B45309;
     }
 
+    /* Zone 3: Enterprise Pedigree Strip & Actions */
+    .exec-banner-right {
+      flex: 0 0 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 20px;
+    }
+    .exec-brands-title {
+      font-family: var(--font-code);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .exec-logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .mini-brand-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+      padding: 3px 6px;
+      border-radius: 6px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+    }
+    .mini-brand-chip:hover {
+      border-color: var(--border-medium);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transform: translateY(-1px);
+    }
+    .mini-brand-chip img {
+      height: 16px;
+      max-width: 48px;
+      object-fit: contain;
+    }
+    .exec-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-banner-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-banner-action.primary {
+      background: var(--primary-accent);
+      color: #FFFFFF;
+    }
+    .btn-banner-action.primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+    .btn-banner-action.secondary {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+    .btn-banner-action.secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--border-medium);
+    }
+
+    /* Transcript Drawer */
     .transcript-drawer {
       display: none;
-      padding: 18px 20px;
-      background: #0B0E17;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #CBD5E1;
+      background: #F8F9FA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 12px;
       font-size: 13px;
       line-height: 1.6;
+      color: var(--text-body);
+      animation: fadeIn 0.3s ease;
     }
-
     .transcript-drawer.open {
       display: block;
-      animation: fadeIn 0.2s ease;
     }
 
     @keyframes fadeIn {
@@ -668,101 +579,31 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Executive Career Key Metrics Strip */
-    .hero-stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-bottom: 22px;
-      max-width: 620px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-    }
-
-    .h-stat {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .h-stat-num {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--text-main);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    .h-stat-num span {
-      color: var(--primary-accent);
-    }
-
-    .h-stat-lbl {
-      font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 3px;
-    }
-
-    .h-stat-sub {
-      font-size: 11px;
-      color: #868e96;
-      margin-top: 1px;
-      line-height: 1.3;
-    }
-
-    @media (max-width: 640px) {
-      .welcome-hero-stage {
-        padding: 36px 0 32px;
-      }
-      .hero-container {
-        padding: 0 16px;
-        width: 100%;
-        max-width: 100%;
-      }
-      .hero-headline {
-        font-size: 26px;
-        line-height: 1.25;
-        margin-bottom: 18px;
-        word-break: break-word;
-      }
-      .hero-bio-lead {
-        font-size: 14.5px;
-        margin-bottom: 20px;
-      }
-      .hero-cta-group {
-        width: 100%;
+    @media (max-width: 1100px) {
+      .exec-banner-row {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
       }
-      .btn-hero-primary,
-      .btn-hero-secondary {
-        justify-content: center;
+      .exec-banner-video-pill {
+        flex: 0 0 auto;
         width: 100%;
-        padding: 12px 20px;
-        font-size: 14px;
+        max-width: 320px;
       }
-      .hero-stats-row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px 12px;
-        margin-bottom: 20px;
+      .exec-video-thumb-container {
+        width: 100%;
+        max-width: 320px;
+        height: 180px;
       }
-      .h-stat-num {
-        font-size: 19px;
-      }
-      .video-caption-bar {
-        flex-direction: column;
+      .exec-banner-right {
+        border-left: none;
+        padding-left: 0;
         align-items: flex-start;
-        gap: 12px;
-        padding: 14px 16px;
+        border-top: 1px solid var(--border-subtle);
+        padding-top: 12px;
+      }
+      .exec-logos-row {
+        justify-content: flex-start;
+        flex-wrap: wrap;
       }
     }
 
@@ -962,90 +803,80 @@
   </header>
   
 
-  <!-- Executive Hero Stage -->
+  <!-- Executive Hero Stage (Approach B: Unified Executive Banner) -->
   <main class="welcome-hero-stage">
     <div class="hero-container">
-      <div class="hero-grid">
+      
+      <div class="exec-banner-row">
         
-        <!-- Left: 60-Second Executive Video Stage -->
-        <div class="hero-video-col">
-          <div class="video-showcase-box">
-            <div class="video-player-frame">
-              <span class="video-time-tag">60s Video Briefing</span>
-              
-              <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
-                <source src="intro.mp4" type="video/mp4">
-                Your browser does not support high-definition video playback.
-              </video>
-            </div>
-
-            <div class="video-caption-bar">
-              <div>
-                <h4>Executive Video Introduction</h4>
-                <p>Balaajee V.R. &bull; 1080p HD</p>
-              </div>
-              <button class="btn-transcript-toggle" onclick="toggleTranscript()">
-                📝 Transcript
-              </button>
-            </div>
-
-            <div class="transcript-drawer" id="transcriptDrawer">
-              <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. I started in software engineering before moving into design leadership. That technical foundation allows me to bridge design vision with engineering reality, protecting delivery timelines and scaling enterprise design systems. Today, a key focus is driving the AI transformation in UX: both designing trusted, agentic AI experiences for enterprise software, and modernizing our internal design workflows with AI-accelerated research, prototyping, and governance. As you explore my work, you'll see how my teams turn complex technical ecosystems into high-adoption products. Take a look around, and let’s connect to build what's next.”</p>
-            </div>
+        <!-- Zone 1: Mini 60s Video Briefing -->
+        <div class="exec-banner-video-pill">
+          <div class="exec-video-thumb-container">
+            <video id="welcomeVideo" controls poster="profile.jpg" preload="metadata">
+              <source src="intro.mp4" type="video/mp4">
+            </video>
+            <span class="exec-video-badge">60s Briefing</span>
+          </div>
+          <div class="exec-video-subbar">
+            <span>Balaajee V.R. • HD</span>
+            <button class="btn-micro-transcript" onclick="toggleTranscript()">📝 Transcript</button>
           </div>
         </div>
 
-        <!-- Right: Enterprise Design Leadership Across Global Tech -->
-        <div class="pedigree-hero-col">
-          <div class="pedigree-hero-header">
-            <span class="pedigree-hero-label">Executive Pedigree &bull; 18+ Years</span>
-            <h2 class="pedigree-hero-title">Enterprise Design Leadership Across Global Tech</h2>
-            <p class="pedigree-hero-sub">Leading cross-functional design squads, scaling design systems, and driving mission-critical software transformations.</p>
+        <!-- Zone 2: Executive Pitch & Core Capabilities -->
+        <div class="exec-banner-center">
+          <div class="exec-tag-line">
+            <span class="exec-status-pill"><span class="status-pulse-dot"></span> Immediate Availability • EU Blue Card Eligible</span>
+            <span class="exec-exp-badge">18+ Years Executive Leadership</span>
           </div>
+          <h1 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h1>
+          <p class="exec-sub-pitch">Directing multi-disciplinary design squads and scaling enterprise design systems across <strong>IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys</strong>.</p>
+          <div class="exec-stats-ribbon">
+            <span class="exec-stat-pill"><strong>14</strong> Squads Directed</span>
+            <span class="exec-stat-pill"><strong>94%</strong> Carbon Adoption</span>
+            <span class="exec-stat-pill"><strong>$14M+</strong> Enterprise Impact</span>
+            <span class="exec-stat-pill highlight"><strong>5</strong> Global Tier-1 Tech Giants</span>
+          </div>
+        </div>
 
-          <div class="pedigree-brands-grid">
-            <div class="brand-item">
-              <img src="logos/ibm.svg" alt="IBM" class="brand-logo-img">
-              <span class="brand-item-name">IBM</span>
-              <span class="brand-item-role">Senior UI/UX Design Manager</span>
+        <!-- Zone 3: Global Brand Logos & Immediate Work Jump -->
+        <div class="exec-banner-right">
+          <span class="exec-brands-title">PROVEN AT GLOBAL TECH LEADERS</span>
+          <div class="exec-logos-row">
+            <div class="mini-brand-chip" title="IBM: Senior UI/UX Design Manager">
+              <img src="logos/ibm.svg" alt="IBM">
             </div>
-            <div class="brand-item">
-              <img src="logos/ericsson.svg" alt="Ericsson" class="brand-logo-img">
-              <span class="brand-item-name">Ericsson</span>
-              <span class="brand-item-role">UI/UX Designer</span>
+            <div class="mini-brand-chip" title="Ericsson: UI/UX Designer">
+              <img src="logos/ericsson.svg" alt="Ericsson">
             </div>
-            <div class="brand-item">
-              <img src="logos/zebra.svg" alt="Zebra Technologies" class="brand-logo-img">
-              <span class="brand-item-name">Zebra Technologies</span>
-              <span class="brand-item-role">UI/UX Product Design Manager</span>
+            <div class="mini-brand-chip" title="Zebra Technologies: UI/UX Product Design Manager">
+              <img src="logos/zebra.svg" alt="Zebra Technologies">
             </div>
-            <div class="brand-item">
-              <img src="logos/zf.svg" alt="ZF Wabco" class="brand-logo-img">
-              <span class="brand-item-name">ZF Wabco</span>
-              <span class="brand-item-role">UI/UX Senior Specialist</span>
+            <div class="mini-brand-chip" title="ZF Wabco: UI/UX Senior Specialist">
+              <img src="logos/zf.svg" alt="ZF Wabco">
             </div>
-            <div class="brand-item brand-item-wide">
-              <img src="logos/infosys.svg" alt="Infosys" class="brand-logo-img">
-              <div class="brand-item-text">
-                <span class="brand-item-name">Infosys</span>
-                <span class="brand-item-role">Senior Software Engineer &bull; Digital Experience</span>
-              </div>
+            <div class="mini-brand-chip" title="Infosys: Senior Software Engineer">
+              <img src="logos/infosys.svg" alt="Infosys">
             </div>
+          </div>
+          <div class="exec-banner-actions">
+            <a href="#featured-work" class="btn-banner-action primary">
+              <span>Explore 5 Case Studies</span>
+              <span>&darr;</span>
+            </a>
+            <a href="leadership-deck.html" class="btn-banner-action secondary">
+              <span>Leadership Deck</span>
+              <span>&rarr;</span>
+            </a>
           </div>
         </div>
 
       </div>
 
-      <!-- Visual Scroll Affordance Cue -->
-      <div class="hero-scroll-cue">
-        <a href="#featured-work" class="scroll-cue-link" aria-label="Scroll to explore case studies">
-          <span class="scroll-cue-mouse" aria-hidden="true">
-            <span class="scroll-cue-wheel"></span>
-          </span>
-          <span class="scroll-cue-label">Scroll to explore case studies</span>
-          <span class="scroll-cue-arrow" aria-hidden="true">&darr;</span>
-        </a>
+      <div class="transcript-drawer" id="transcriptDrawer" style="margin-top: 10px; max-width: 100%;">
+        <p><strong>Balaajee V.R. Speaking:</strong> “Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. I started in software engineering before moving into design leadership. That technical foundation allows me to bridge design vision with engineering reality, protecting delivery timelines and scaling enterprise design systems. Today, a key focus is driving the AI transformation in UX: both designing trusted, agentic AI experiences for enterprise software, and modernizing our internal design workflows with AI-accelerated research, prototyping, and governance. As you explore my work, you'll see how my teams turn complex technical ecosystems into high-adoption products. Take a look around, and let’s connect to build what's next.”</p>
       </div>
+
     </div>
   </main>
 <!-- BVR:HOME-EXTRA:START -->
