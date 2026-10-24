@@ -688,12 +688,15 @@
   }
   .ld-callout b { color: var(--text-main); }
 
-  .ld-workshop { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; }
-  .ld-wlist { display: grid; gap: 10px; }
-  .ld-witem { display: flex; justify-content: space-between; gap: 16px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 16px 18px; }
-  .ld-witem b { display: block; font-size: 15px; color: var(--text-main); }
-  .ld-witem span { font-size: 13px; color: var(--text-muted); }
-  .ld-witem em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--text-main); background: var(--bg-subtle); border-radius: 100px; padding: 3px 10px; height: fit-content; white-space: nowrap; }
+  .ld-workshop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-bottom: 36px; }
+  .ld-wcard { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 22px 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03); transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+  .ld-wcard:hover { transform: translateY(-2px); border-color: var(--primary-accent); box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); }
+  .ld-wcard-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .ld-wcard-num { font-family: var(--font-code); font-size: 11px; font-weight: 700; color: var(--primary-accent); letter-spacing: 0.06em; }
+  .ld-wcard-co { font-style: normal; font-size: 11px; font-weight: 700; color: var(--text-main); background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: 100px; padding: 3px 10px; white-space: nowrap; }
+  .ld-wcard h3 { font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main); line-height: 1.3; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .ld-wcard p { font-size: 13.5px; color: var(--text-body); line-height: 1.55; }
+  .ld-workshop-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 
   .ld-tools { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
   .ld-tools div { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 18px; }
@@ -731,6 +734,7 @@
   .ld-btn-s { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; }
 
   @media (max-width: 1100px) {
+    .ld-workshop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .ld-tools { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ld-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ld-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -739,7 +743,8 @@
     .ld-cards-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 900px) {
-    .ld-hero, .ld-workshop { grid-template-columns: 1fr; gap: 32px; }
+    .ld-hero { grid-template-columns: 1fr; gap: 32px; }
+    .ld-workshop-gallery { grid-template-columns: 1fr; }
     .ld-team { grid-template-columns: 1fr; }
     .ld-arrow { transform: rotate(90deg); height: 30px; }
     .ld-deleg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -883,8 +888,73 @@
     </section>
 
     <section class="g-wrap ld-sec" id="workshops">
-      <div class="ld-head"><div class="sec-label">Workshops and facilitation</div><h2 class="sec-title">Bringing people into the room</h2></div>
-      <div class="ld-workshop"><div class="ld-wlist"><div class="ld-witem"><div><b>14 AI governance workshops</b><span>Research, product, compliance and legal agreeing AI trust rules.</span></div><em>IBM</em></div><div class="ld-witem"><div><b>Customer card sorting</b><span>Stakeholders and customers grouping device-health data.</span></div><em>Zebra</em></div><div class="ld-witem"><div><b>PI planning &amp; Lean UX</b><span>Design represented in every programme increment.</span></div><em>Zebra</em></div><div class="ld-witem"><div><b>Contextual inquiry</b><span>Shadowing sales engineers on live bids in Stockholm.</span></div><em>Ericsson</em></div><div class="ld-witem"><div><b>Weekly AI-UX masterclasses</b><span>Upskilling the team on designing for AI.</span></div><em>IBM</em></div></div><div style="display:grid;gap:24px;">
+      <div class="ld-head"><div class="sec-label">Workshops and facilitation</div><h2 class="sec-title">Bringing people into the room</h2><p class="sec-intro">Cross-functional alignment doesn&#x27;t happen over email or Jira tickets. I design and facilitate structured workshops that bring engineering leads, product directors, compliance officers, and frontline operators into the same room to build consensus, stress-test assumptions, and unblock roadmaps.</p></div>
+      <div class="ld-workshop-grid">
+        
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">01 / 06</span>
+            <span class="ld-wcard-co">IBM</span>
+          </div>
+          <div>
+            <h3>14 AI governance workshops</h3>
+            <p>Brought research, product, compliance and legal squads into one room to agree on AI trust, telemetry, and rollback rules before development started.</p>
+          </div>
+        </div>
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">02 / 06</span>
+            <span class="ld-wcard-co">Zebra</span>
+          </div>
+          <div>
+            <h3>Customer card sorting</h3>
+            <p>Facilitated open and closed card-sorting with 18 enterprise administrators to establish intuitive 4-tier device-health taxonomy.</p>
+          </div>
+        </div>
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">03 / 06</span>
+            <span class="ld-wcard-co">Zebra</span>
+          </div>
+          <div>
+            <h3>PI planning &amp; Lean UX</h3>
+            <p>Embedded UX sprint zero definition into every 10-week SAFe Programme Increment, aligning engineering capacity with design outcomes.</p>
+          </div>
+        </div>
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">04 / 06</span>
+            <span class="ld-wcard-co">Ericsson</span>
+          </div>
+          <div>
+            <h3>Contextual inquiry &amp; shadowing</h3>
+            <p>Shadowed senior sales engineers on high-stakes live bids in Stockholm to map calculation drift and approval bottlenecks.</p>
+          </div>
+        </div>
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">05 / 06</span>
+            <span class="ld-wcard-co">IBM</span>
+          </div>
+          <div>
+            <h3>Weekly AI-UX masterclasses</h3>
+            <p>Upskilled cross-functional squads on human-in-the-loop interaction patterns, explainability thresholds, and progressive disclosure.</p>
+          </div>
+        </div>
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">06 / 06</span>
+            <span class="ld-wcard-co">ZF Wabco</span>
+          </div>
+          <div>
+            <h3>Executive war-room synthesis</h3>
+            <p>Led cross-functional alignment sessions with global fleet directors and engineering leads to prioritize commercial telematics roadmaps.</p>
+          </div>
+        </div>
+      </div>
+      <h3 class="ld-sub">Workshops in Action · Facilitation &amp; Artifacts</h3>
+      <div class="ld-workshop-gallery">
+        
         <figure class="cs-fig">
           <a href="assets/photos/candid_flipchart_huddle.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Cross-functional design thinking &amp; affinity mapping workshop with squad designers.">
             <img src="assets/photos/candid_flipchart_huddle.jpg" alt="Cross-functional design thinking &amp; affinity mapping workshop with squad designers." width="1200" height="896" loading="lazy">
@@ -892,6 +962,7 @@
           </a>
           <figcaption><span class="tag tag-photo">In action</span><span>Cross-functional design thinking &amp; affinity mapping workshop with squad designers.</span></figcaption>
         </figure>
+        
         <figure class="cs-fig">
           <a href="assets/photos/candid_desk_review.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Desk review &amp; 1:1 critique: walking through interaction details and pairing logic on an iMac workstation.">
             <img src="assets/photos/candid_desk_review.jpg" alt="Desk review &amp; 1:1 critique: walking through interaction details and pairing logic on an iMac workstation." width="1200" height="896" loading="lazy">
@@ -899,6 +970,7 @@
           </a>
           <figcaption><span class="tag tag-photo">In action</span><span>Desk review &amp; 1:1 critique: walking through interaction details and pairing logic on an iMac workstation.</span></figcaption>
         </figure>
+        
         <figure class="cs-fig">
           <a href="assets/photos/candid_window_wireframes.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Studio wireframe wall: taping up and inspecting full handheld staging flows on the studio window.">
             <img src="assets/photos/candid_window_wireframes.jpg" alt="Studio wireframe wall: taping up and inspecting full handheld staging flows on the studio window." width="1200" height="896" loading="lazy">
@@ -906,13 +978,15 @@
           </a>
           <figcaption><span class="tag tag-photo">In action</span><span>Studio wireframe wall: taping up and inspecting full handheld staging flows on the studio window.</span></figcaption>
         </figure>
+        
         <figure class="cs-fig">
           <a href="assets/behance/enterprise/enterprise_2_1400x730.png" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Card-sorting board from a Zebra stakeholder workshop I ran.">
             <img src="assets/behance/enterprise/enterprise_2_1400x730.png" alt="Card-sorting board from a Zebra stakeholder workshop I ran." width="1920" height="1002" loading="lazy">
             
           </a>
           <figcaption><span class="tag tag-real">Original artifact</span><span>Card-sorting board from a Zebra stakeholder workshop I ran.</span></figcaption>
-        </figure></div></div>
+        </figure>
+      </div>
     </section>
 
     <section class="g-wrap ld-sec" id="tools">

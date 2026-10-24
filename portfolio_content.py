@@ -451,11 +451,12 @@ CHALLENGES = [
 ]
 
 WORKSHOPS = [
-    ("14 AI governance workshops", "IBM", "Research, product, compliance and legal agreeing AI trust rules."),
-    ("Customer card sorting", "Zebra", "Stakeholders and customers grouping device-health data."),
-    ("PI planning & Lean UX", "Zebra", "Design represented in every programme increment."),
-    ("Contextual inquiry", "Ericsson", "Shadowing sales engineers on live bids in Stockholm."),
-    ("Weekly AI-UX masterclasses", "IBM", "Upskilling the team on designing for AI."),
+    ("14 AI governance workshops", "IBM", "Brought research, product, compliance and legal squads into one room to agree on AI trust, telemetry, and rollback rules before development started."),
+    ("Customer card sorting", "Zebra", "Facilitated open and closed card-sorting with 18 enterprise administrators to establish intuitive 4-tier device-health taxonomy."),
+    ("PI planning & Lean UX", "Zebra", "Embedded UX sprint zero definition into every 10-week SAFe Programme Increment, aligning engineering capacity with design outcomes."),
+    ("Contextual inquiry & shadowing", "Ericsson", "Shadowed senior sales engineers on high-stakes live bids in Stockholm to map calculation drift and approval bottlenecks."),
+    ("Weekly AI-UX masterclasses", "IBM", "Upskilled cross-functional squads on human-in-the-loop interaction patterns, explainability thresholds, and progressive disclosure."),
+    ("Executive war-room synthesis", "ZF Wabco", "Led cross-functional alignment sessions with global fleet directors and engineering leads to prioritize commercial telematics roadmaps."),
 ]
 
 TOOLS = [

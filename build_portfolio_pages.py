@@ -585,12 +585,15 @@ LEAD_CSS = """
   }
   .ld-callout b { color: var(--text-main); }
 
-  .ld-workshop { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; }
-  .ld-wlist { display: grid; gap: 10px; }
-  .ld-witem { display: flex; justify-content: space-between; gap: 16px; background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 16px 18px; }
-  .ld-witem b { display: block; font-size: 15px; color: var(--text-main); }
-  .ld-witem span { font-size: 13px; color: var(--text-muted); }
-  .ld-witem em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--text-main); background: var(--bg-subtle); border-radius: 100px; padding: 3px 10px; height: fit-content; white-space: nowrap; }
+  .ld-workshop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-bottom: 36px; }
+  .ld-wcard { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 22px 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03); transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+  .ld-wcard:hover { transform: translateY(-2px); border-color: var(--primary-accent); box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08); }
+  .ld-wcard-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .ld-wcard-num { font-family: var(--font-code); font-size: 11px; font-weight: 700; color: var(--primary-accent); letter-spacing: 0.06em; }
+  .ld-wcard-co { font-style: normal; font-size: 11px; font-weight: 700; color: var(--text-main); background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: 100px; padding: 3px 10px; white-space: nowrap; }
+  .ld-wcard h3 { font-family: var(--font-heading); font-size: 16px; font-weight: 800; color: var(--text-main); line-height: 1.3; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .ld-wcard p { font-size: 13.5px; color: var(--text-body); line-height: 1.55; }
+  .ld-workshop-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 
   .ld-tools { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
   .ld-tools div { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 18px; }
@@ -628,6 +631,7 @@ LEAD_CSS = """
   .ld-btn-s { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; }
 
   @media (max-width: 1100px) {
+    .ld-workshop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .ld-tools { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ld-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ld-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -636,7 +640,8 @@ LEAD_CSS = """
     .ld-cards-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 900px) {
-    .ld-hero, .ld-workshop { grid-template-columns: 1fr; gap: 32px; }
+    .ld-hero { grid-template-columns: 1fr; gap: 32px; }
+    .ld-workshop-gallery { grid-template-columns: 1fr; }
     .ld-team { grid-template-columns: 1fr; }
     .ld-arrow { transform: rotate(90deg); height: 30px; }
     .ld-deleg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -718,7 +723,17 @@ def build_leadership():
     facts = "".join(f'<div class="ld-card"><h3>{e(t)}</h3><p>{e(d)}</p></div>' for t, d in HIRING_FACTS)
     deleg = "".join(f'<div><small>Level {k + 1}</small><h3>{e(t)}</h3><p>{e(d)}</p></div>' for k, (t, d) in enumerate(DELEGATION_LEVELS))
     chall = "".join(f'<div class="ld-card"><small>{e(co)}</small><h3>{e(t)}</h3><p>{e(d)}</p><a href="{href}">Read the case study &rarr;</a></div>' for t, co, d, href in CHALLENGES)
-    works = "".join(f'<div class="ld-witem"><div><b>{e(t)}</b><span>{e(d)}</span></div><em>{e(co)}</em></div>' for t, co, d in WORKSHOPS)
+    works = "".join(f"""
+        <div class="ld-wcard">
+          <div class="ld-wcard-top">
+            <span class="ld-wcard-num">0{k + 1} / 06</span>
+            <span class="ld-wcard-co">{e(co)}</span>
+          </div>
+          <div>
+            <h3>{e(t)}</h3>
+            <p>{e(d)}</p>
+          </div>
+        </div>""" for k, (t, co, d) in enumerate(WORKSHOPS))
     tools = "".join(f'<div><h3>{e(cat)}</h3><ul>{"".join(f"<li>{e(x)}</li>" for x in items)}</ul></div>' for cat, items in TOOLS)
     fw = "".join(f'<div class="ld-card"><h3>{e(t)}</h3><p>{e(d)}</p><div class="meta">Used at: {e(u)}</div></div>' for t, d, u in FRAMEWORKS)
     refs = "".join(testimonial_card(t) for t in TESTIMONIALS)
@@ -831,8 +846,17 @@ def build_leadership():
     </section>
 
     <section class="g-wrap ld-sec" id="workshops">
-      {lead_head("Workshops and facilitation", "Bringing people into the room")}
-      <div class="ld-workshop"><div class="ld-wlist">{works}</div><div style="display:grid;gap:24px;">{action_photo}{wall_critique}{window_photo}{card_sort}</div></div>
+      {lead_head("Workshops and facilitation", "Bringing people into the room", "Cross-functional alignment doesn't happen over email or Jira tickets. I design and facilitate structured workshops that bring engineering leads, product directors, compliance officers, and frontline operators into the same room to build consensus, stress-test assumptions, and unblock roadmaps.")}
+      <div class="ld-workshop-grid">
+        {works}
+      </div>
+      <h3 class="ld-sub">Workshops in Action · Facilitation &amp; Artifacts</h3>
+      <div class="ld-workshop-gallery">
+        {action_photo}
+        {wall_critique}
+        {window_photo}
+        {card_sort}
+      </div>
     </section>
 
     <section class="g-wrap ld-sec" id="tools">
