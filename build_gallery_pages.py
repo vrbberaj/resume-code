@@ -41,12 +41,12 @@ def header(active):
         <span class="brand-monogram" aria-hidden="true">B</span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="index.html" class="{cls('case-studies')}">Case Studies</a>
+        <a href="index.html" class="{cls('work')}">Selected Work</a>
         <a href="leadership.html" class="{cls('leadership')}">Leadership</a>
         <a href="leadership-deck.html" class="{cls('leadership-deck')}">Leadership Deck</a>
-        <a href="gallery.html" class="{cls('gallery')}">Career Gallery</a>
         <a href="archive.html" class="{cls('archive')}">Visual Archive</a>
-        <a href="cv.html" class="{cls('cv')}">Resume</a>
+        <a href="gallery.html" class="{cls('gallery')}">Career Gallery</a>
+        <a href="cv.html" class="{cls('cv')}">My Resume</a>
       </nav>
       <div class="header-actions">
         <a href="contact.html" class="btn-contact">Get In Touch &rarr;</a>
