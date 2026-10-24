@@ -824,7 +824,7 @@ HOME_CSS = """
   }
   .sec-header-block {
     margin-bottom: 48px;
-    max-width: 820px;
+    max-width: 960px;
   }
   .sec-header-block .sec-intro {
     margin-top: 12px;
@@ -1067,12 +1067,12 @@ def inject_home():
   <style>{HOME_CSS}</style>
 
   <!-- Featured Executive Work Section (Chris Gielow Pattern) -->
-  <section id="featured-work" class="home-featured-work" aria-label="Featured Executive Work">
+  <section id="featured-work" class="home-featured-work" aria-label="Enterprise Case Studies">
     <div class="g-wrap">
       <div class="sec-header-block">
-        <div class="sec-label">Featured Executive Work</div>
-        <h2 class="sec-title">Enterprise product architecture &amp; design transformation</h2>
-        <p class="sec-intro">Five flagship enterprise initiatives where I led design from initial ambiguity through systems architecture to global production scale.</p>
+        <div class="sec-label">Enterprise Case Studies</div>
+        <h2 class="sec-title">Enterprise product design leadership for mission-critical software architectures.</h2>
+        <p class="sec-intro">Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.</p>
       </div>
 
       <div class="case-grid">

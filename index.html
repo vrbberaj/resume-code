@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Senior UI/UX Design Manager</title>
-  <meta name="description" content="Welcome Portal of Balaajee V.R. — Senior UI/UX Design Manager. 18+ years leading enterprise UI/UX design, AI orchestration, and design systems across IBM, Ericsson, Zebra, ZF Wabco, and Infosys.">
+  <title>Balaajee V.R. | Senior UI/UX Design Manager • Case Studies</title>
+  <meta name="description" content="Enterprise Case Studies &amp; Product Design Leadership of Balaajee V.R. — Senior UI/UX Design Manager. 18+ years leading enterprise UI/UX design, AI orchestration, and design systems across IBM, Ericsson, Zebra, ZF Wabco, and Infosys.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -311,11 +311,11 @@
   }
 
 
-    /* Welcome Hero Stage */
+    /* Executive Hero Stage */
     .welcome-hero-stage {
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
-      padding: 28px 0 24px;
+      padding: 32px 0 28px;
     }
 
     .hero-container {
@@ -326,146 +326,71 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
-      align-items: start;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 36px;
+      align-items: stretch;
     }
 
     @media (max-width: 980px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
       }
     }
 
-    .availability-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 14px;
-      border-radius: 100px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      color: #059669;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #059669;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    .hero-headline {
-      font-family: var(--font-heading);
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      line-height: 1.22;
-      color: var(--text-main);
-      margin-bottom: 22px;
-    }
-
-    .hero-bio-lead {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--text-body);
-      margin-bottom: 22px;
-      max-width: 620px;
-    }
-
-    .hero-cta-group {
+    /* Left: Video Showcase Column */
+    .hero-video-col {
       display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 6px;
+      flex-direction: column;
     }
 
-    .btn-hero-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 28px;
-      border-radius: 100px;
-      background: var(--text-main);
-      color: #FFFFFF;
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      font-weight: 800;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
-    }
-
-    .btn-hero-primary:hover {
-      background: var(--primary-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(240, 6, 88, 0.25);
-    }
-
-    .btn-hero-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 24px;
-      border-radius: 100px;
-      background: transparent;
-      border: 1.5px solid var(--border-medium);
-      color: var(--text-main);
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      font-weight: 700;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .btn-hero-secondary:hover {
-      background: var(--bg-subtle);
-      border-color: var(--text-main);
-      transform: translateY(-2px);
-    }
-
-    /* Dedicated Executive Pedigree & Global Brand Trust Section */
-    .pedigree-trust-section {
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .pedigree-trust-header {
+    /* Right: Enterprise Pedigree Column */
+    .pedigree-hero-col {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #F8F9FA;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px 24px 20px;
     }
 
-    .pedigree-trust-title {
+    .pedigree-hero-header {
+      margin-bottom: 14px;
+    }
+
+    .pedigree-hero-label {
       font-family: var(--font-code);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--primary-accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .pedigree-hero-title {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .pedigree-hero-sub {
+      font-size: 13.5px;
+      line-height: 1.5;
       color: var(--text-muted);
     }
 
     .pedigree-brands-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      flex: 1;
     }
 
     .brand-item {
@@ -474,8 +399,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 16px 12px;
-      background: var(--bg-surface);
+      padding: 14px 10px;
+      background: #FFFFFF;
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -489,12 +414,30 @@
       transform: translateY(-2px);
     }
 
+    .brand-item.brand-item-wide {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      gap: 16px;
+      padding: 12px 18px;
+    }
+
+    .brand-item.brand-item-wide .brand-logo-img {
+      margin-bottom: 0;
+      height: 24px;
+    }
+
+    .brand-item.brand-item-wide .brand-item-text {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
     .brand-logo-img {
-      height: 30px;
-      max-width: 88px;
+      height: 28px;
+      max-width: 84px;
       width: auto;
       object-fit: contain;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       filter: none;
       opacity: 1;
       transition: transform 0.25s ease;
@@ -502,6 +445,40 @@
 
     .brand-item:hover .brand-logo-img {
       transform: scale(1.08);
+    }
+
+    .brand-item-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .brand-item-role {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 580px) {
+      .pedigree-hero-col {
+        padding: 20px 16px;
+      }
+      .pedigree-brands-grid {
+        grid-template-columns: 1fr;
+      }
+      .brand-item.brand-item-wide {
+        flex-direction: column;
+        text-align: center;
+      }
+      .brand-item.brand-item-wide .brand-item-text {
+        text-align: center;
+      }
+      .brand-item.brand-item-wide .brand-logo-img {
+        margin-bottom: 8px;
+      }
     }
 
     /* Visual Scroll Affordance Cue */
@@ -589,18 +566,7 @@
       letter-spacing: 0.02em;
     }
 
-    @media (max-width: 880px) {
-      .pedigree-brands-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
 
-    @media (max-width: 580px) {
-      .pedigree-brands-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-    }
 
     /* Video Player Centerpiece Card */
     .video-showcase-box {
@@ -979,10 +945,9 @@
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
-        <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="nav-item active">Welcome</a>
+        <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="nav-item active">Case Studies</a>
         <a href="leadership.html" class="nav-item">Leadership</a>
         <a href="leadership-deck.html" class="nav-item">Leadership Deck</a>
-        <a href="#featured-work" class="nav-item">Selected Work</a>
         <a href="gallery.html" class="nav-item">Career Gallery</a>
         <a href="archive.html" class="nav-item">Visual Archive</a>
         <a href="cv.html" class="nav-item">Resume</a>
@@ -997,24 +962,13 @@
   </header>
   
 
-  <!-- Welcome Hero Stage -->
+  <!-- Executive Hero Stage -->
   <main class="welcome-hero-stage">
     <div class="hero-container">
       <div class="hero-grid">
         
-        <!-- Left: Executive Positioning & Direct Pathways -->
-        <div class="hero-left">
-          <h1 class="hero-headline">
-            Enterprise product design leadership for mission-critical software architectures.
-          </h1>
-
-          <p class="hero-bio-lead">
-            Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.
-          </p>
-        </div>
-
-        <!-- Right: 60-Second Executive Video Stage -->
-        <div class="hero-right">
+        <!-- Left: 60-Second Executive Video Stage -->
+        <div class="hero-video-col">
           <div class="video-showcase-box">
             <div class="video-player-frame">
               <span class="video-time-tag">60s Video Briefing</span>
@@ -1041,51 +995,56 @@
           </div>
         </div>
 
+        <!-- Right: Enterprise Design Leadership Across Global Tech -->
+        <div class="pedigree-hero-col">
+          <div class="pedigree-hero-header">
+            <span class="pedigree-hero-label">Executive Pedigree &bull; 18+ Years</span>
+            <h2 class="pedigree-hero-title">Enterprise Design Leadership Across Global Tech</h2>
+            <p class="pedigree-hero-sub">Leading cross-functional design squads, scaling design systems, and driving mission-critical software transformations.</p>
+          </div>
+
+          <div class="pedigree-brands-grid">
+            <div class="brand-item">
+              <img src="logos/ibm.svg" alt="IBM" class="brand-logo-img">
+              <span class="brand-item-name">IBM</span>
+              <span class="brand-item-role">Software Labs</span>
+            </div>
+            <div class="brand-item">
+              <img src="logos/ericsson.svg" alt="Ericsson" class="brand-logo-img">
+              <span class="brand-item-name">Ericsson</span>
+              <span class="brand-item-role">Global OSS/BSS</span>
+            </div>
+            <div class="brand-item">
+              <img src="logos/zebra.svg" alt="Zebra Technologies" class="brand-logo-img">
+              <span class="brand-item-name">Zebra Technologies</span>
+              <span class="brand-item-role">Enterprise Mobile</span>
+            </div>
+            <div class="brand-item">
+              <img src="logos/zf.svg" alt="ZF Wabco" class="brand-logo-img">
+              <span class="brand-item-name">ZF Wabco</span>
+              <span class="brand-item-role">Commercial Auto</span>
+            </div>
+            <div class="brand-item brand-item-wide">
+              <img src="logos/infosys.svg" alt="Infosys" class="brand-logo-img">
+              <div class="brand-item-text">
+                <span class="brand-item-name">Infosys</span>
+                <span class="brand-item-role">Digital Experience &bull; Enterprise Architecture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Visual Scroll Affordance Cue -->
       <div class="hero-scroll-cue">
-        <a href="#featured-work" class="scroll-cue-link" aria-label="Scroll to explore">
+        <a href="#featured-work" class="scroll-cue-link" aria-label="Scroll to explore case studies">
           <span class="scroll-cue-mouse" aria-hidden="true">
             <span class="scroll-cue-wheel"></span>
           </span>
-          <span class="scroll-cue-label">Scroll to explore</span>
+          <span class="scroll-cue-label">Scroll to explore case studies</span>
           <span class="scroll-cue-arrow" aria-hidden="true">&darr;</span>
         </a>
-      </div>
-
-      <!-- Dedicated Executive Pedigree & Global Brand Trust Section -->
-      <div class="pedigree-trust-section">
-        <div class="pedigree-trust-header">
-          <span class="pedigree-trust-title">Enterprise Design Leadership Across Global Tech</span>
-        </div>
-        <div class="pedigree-brands-grid">
-          <div class="brand-item">
-            <img src="logos/ibm.svg" alt="IBM" class="brand-logo-img">
-            <span class="brand-item-name">IBM</span>
-            <span class="brand-item-role">Software Labs</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/ericsson.svg" alt="Ericsson" class="brand-logo-img">
-            <span class="brand-item-name">Ericsson</span>
-            <span class="brand-item-role">Global OSS/BSS</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/zebra.svg" alt="Zebra Technologies" class="brand-logo-img">
-            <span class="brand-item-name">Zebra Technologies</span>
-            <span class="brand-item-role">Enterprise Mobile</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/zf.svg" alt="ZF Wabco" class="brand-logo-img">
-            <span class="brand-item-name">ZF Wabco</span>
-            <span class="brand-item-role">Commercial Auto</span>
-          </div>
-          <div class="brand-item">
-            <img src="logos/infosys.svg" alt="Infosys" class="brand-logo-img">
-            <span class="brand-item-name">Infosys</span>
-            <span class="brand-item-role">Digital Experience</span>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -1107,7 +1066,7 @@
   }
   .sec-header-block {
     margin-bottom: 48px;
-    max-width: 820px;
+    max-width: 960px;
   }
   .sec-header-block .sec-intro {
     margin-top: 12px;
@@ -1317,12 +1276,12 @@
 </style>
 
   <!-- Featured Executive Work Section (Chris Gielow Pattern) -->
-  <section id="featured-work" class="home-featured-work" aria-label="Featured Executive Work">
+  <section id="featured-work" class="home-featured-work" aria-label="Enterprise Case Studies">
     <div class="g-wrap">
       <div class="sec-header-block">
-        <div class="sec-label">Featured Executive Work</div>
-        <h2 class="sec-title">Enterprise product architecture &amp; design transformation</h2>
-        <p class="sec-intro">Five flagship enterprise initiatives where I led design from initial ambiguity through systems architecture to global production scale.</p>
+        <div class="sec-label">Enterprise Case Studies</div>
+        <h2 class="sec-title">Enterprise product design leadership for mission-critical software architectures.</h2>
+        <p class="sec-intro">Senior UI/UX Design Manager with <strong>18+ years</strong> transforming complex enterprise software into high-velocity, market-leading digital experiences. Proven track record leading multi-disciplinary design squads and partnering directly with cross-functional engineering and product leadership across <strong>IBM, Ericsson, Zebra Technologies, ZF Wabco,</strong> and <strong>Infosys</strong> to scale multi-brand design systems, de-risk agentic enterprise AI, and slash operational latency.</p>
       </div>
 
       <div class="case-grid">
