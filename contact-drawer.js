@@ -447,7 +447,7 @@
 
         <!-- Personal note -->
         <div class="bvr-note">
-          <strong>Direct Scope:</strong> Currently exploring full-time <strong>Senior UI/UX Design Leadership</strong> and <strong>Design System Leadership</strong> roles across India and Europe / Global. 
+          <strong>Direct Scope:</strong> Currently exploring full-time <strong>Senior UI/UX Design Leadership</strong> roles across India and Europe / Global. 
         </div>
 
       </div>
