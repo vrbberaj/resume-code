@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI UX Leadership Mastery Hub | Balaajee V.R.</title>
+  <meta name="description" content="Executive study portal for Google PAIR, Microsoft HAX, and IBM Carbon for AI. Tailored for Senior UX Managers and Product Design Directors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --bg-base: #090D16;
+      --bg-surface: #0F172A;
+      --bg-card: #151F36;
+      --bg-card-hover: #1A2744;
+      --bg-subtle: #1E293B;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --border-highlight: rgba(56, 189, 248, 0.4);
+      
+      --text-main: #F8FAFC;
+      --text-body: #CBD5E1;
+      --text-muted: #94A3B8;
+      
+      --cyan: #38BDF8;
+      --cyan-glow: rgba(56, 189, 248, 0.15);
+      --emerald: #34D399;
+      --emerald-glow: rgba(52, 211, 153, 0.15);
+      --amber: #FBBF24;
+      --amber-glow: rgba(251, 191, 36, 0.15);
+      --rose: #F43F5E;
+      --rose-glow: rgba(244, 63, 94, 0.15);
+      --purple: #A855F7;
+      --purple-glow: rgba(168, 85, 247, 0.15);
+      
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-body);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Left Sidebar Navigation */
+    aside.sidebar {
+      width: 320px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 50;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .pulse-indicator {
+      width: 7px;
+      height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Progress Widget */
+    .progress-box {
+      margin: 16px 20px;
+      padding: 14px;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+    }
+
+    .progress-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .progress-bar-bg {
+      height: 6px;
+      background: var(--bg-subtle);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      border-radius: 100px;
+      transition: width 0.4s ease;
+    }
+
+    .progress-metric {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Nav Links */
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px;
+    }
+
+    .nav-group-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 12px 10px 6px;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      color: var(--text-body);
+      font-family: var(--font-main);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .nav-btn:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+    }
+
+    .nav-btn.active {
+      background: var(--cyan-glow);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .nav-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .nav-btn.active .nav-num {
+      background: var(--cyan);
+      color: #04101E;
+    }
+
+    .nav-btn.completed .nav-num {
+      background: var(--emerald);
+      color: #04101E;
+    }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--cyan);
+    }
+
+    /* Main Content Area */
+    main.content-area {
+      flex: 1;
+      padding: 32px 48px 80px;
+      max-width: 1080px;
+      margin: 0 auto;
+      overflow-y: auto;
+    }
+
+    /* Top Bar */
+    .top-action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 32px;
+    }
+
+    .module-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-pill {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-pair { background: rgba(56, 189, 248, 0.12); color: var(--cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-hax { background: rgba(168, 85, 247, 0.12); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+    .badge-carbon { background: rgba(52, 211, 153, 0.12); color: var(--emerald); border: 1px solid rgba(52, 211, 153, 0.3); }
+    .badge-exec { background: rgba(251, 191, 36, 0.12); color: var(--amber); border: 1px solid rgba(251, 191, 36, 0.3); }
+
+    .btn-mark-complete {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-medium);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-mark-complete:hover {
+      border-color: var(--emerald);
+      color: var(--emerald);
+      background: var(--emerald-glow);
+    }
+
+    .btn-mark-complete.is-done {
+      background: var(--emerald);
+      color: #04101E;
+      border-color: var(--emerald);
+    }
+
+    /* Content Typography */
+    h1.module-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    p.module-subtitle {
+      font-size: 16px;
+      color: var(--text-body);
+      max-width: 780px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    /* Section Cards */
+    .study-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-header-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .card-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .card-source-tag {
+      margin-left: auto;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      background: var(--bg-base);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Bullet List (Zero Fluff) */
+    .executive-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .executive-bullets li {
+      position: relative;
+      padding-left: 28px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .executive-bullets li strong {
+      color: var(--text-main);
+    }
+
+    .executive-bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--cyan);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    /* Interactive Diagrams & Visual Models */
+    .diagram-stage {
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .diagram-caption {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Confidence Slider Demo */
+    .confidence-meter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .confidence-card {
+      background: var(--bg-card);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .confidence-card.high { border-top: 3px solid var(--emerald); }
+    .confidence-card.medium { border-top: 3px solid var(--amber); }
+    .confidence-card.low { border-top: 3px solid var(--rose); }
+
+    .conf-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .high .conf-tag { color: var(--emerald); }
+    .medium .conf-tag { color: var(--amber); }
+    .low .conf-tag { color: var(--rose); }
+
+    .conf-action {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .conf-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Do vs Don't Matrix */
+    .dodont-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .dodont-col {
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .dodont-col.dont {
+      background: rgba(244, 63, 94, 0.04);
+      border: 1px solid rgba(244, 63, 94, 0.2);
+    }
+
+    .dodont-col.do {
+      background: rgba(52, 211, 153, 0.04);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+    }
+
+    .dodont-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dont .dodont-label { color: var(--rose); }
+    .do .dodont-label { color: var(--emerald); }
+
+    .dodont-item {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    .dodont-item:last-child { margin-bottom: 0; }
+
+    /* Executive Interview Defense Box */
+    .interview-defense-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid var(--border-highlight);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 24px;
+      position: relative;
+    }
+
+    .interview-q-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .interview-question {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .interview-script-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--cyan);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #E2E8F0;
+      position: relative;
+    }
+
+    .btn-copy-script {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-copy-script:hover {
+      color: var(--text-main);
+      background: var(--bg-card);
+    }
+
+    /* Navigation Footer for Next Module */
+    .module-nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .btn-nav-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-medium);
+    }
+
+    .btn-nav-step:hover {
+      background: var(--bg-subtle);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .btn-nav-step.primary {
+      background: var(--cyan);
+      color: #04101E;
+      border-color: var(--cyan);
+    }
+
+    .btn-nav-step.primary:hover {
+      background: #7DD3FC;
+      transform: translateY(-1px);
+    }
+
+    /* Content Visibility States */
+    .module-content-section {
+      display: none;
+    }
+
+    .module-content-section.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Agentic State Machine SVG style */
+    .state-machine-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    .state-node {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: center;
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+
+    .state-node.highlight {
+      border-color: var(--cyan);
+      background: var(--cyan-glow);
+    }
+
+    .state-node.approval {
+      border-color: var(--amber);
+      background: var(--amber-glow);
+    }
+
+    .state-step-num {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .state-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .state-arrow {
+      color: var(--text-muted);
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside.sidebar { width: 100%; height: auto; position: static; }
+      main.content-area { padding: 24px 16px; }
+      .confidence-meter-grid, .dodont-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-eyebrow">
+        <span class="pulse-indicator"></span>
+        Enterprise AI Executive Hub
+      </div>
+      <div class="brand-title">AI UX Leadership Mastery</div>
+      <div class="brand-sub">Google PAIR &bull; Microsoft HAX &bull; IBM Carbon</div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="progress-box">
+      <div class="progress-label-row">
+        <span>Executive Study Progress</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <div class="progress-metric">
+        <span id="progressCount">0 of 5 Modules Completed</span>
+        <span id="masteryBadge" style="color: var(--cyan); font-weight: 700;">Director Track</span>
+      </div>
+    </div>
+
+    <!-- Navigation List -->
+    <nav class="sidebar-nav">
+      <div class="nav-group-title">Executive Modules</div>
+
+      <button class="nav-btn active" onclick="loadModule(1)">
+        <span class="nav-num">01</span>
+        <span>Mental Models & Calibration</span>
+      </button>
+
+      <button class="nav-btn" onclick="loadModule(2)">
+        <span class="nav-num">02</span>
+        <span>Explainability & Trust Telemetry</span>
+      </button>
+
+      <button class="nav-btn" onclick="loadModule(3)">
+        <span class="nav-num">03</span>
+        <span>Errors, Hallucinations & HAX</span>
+      </button>
+
+      <button class="nav-btn" onclick="loadModule(4)">
+        <span class="nav-num">04</span>
+        <span>Enterprise Agentic UI (Carbon)</span>
+      </button>
+
+      <button class="nav-btn" onclick="loadModule(5)">
+        <span class="nav-num">05</span>
+        <span>Director Interview Playbook</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="footer-link">
+        <span>← Return to Portfolio Homepage</span>
+      </a>
+      <a href="rehearsal.html" class="footer-link">
+        <span>🎙️ Open Speaking Coach & Prompter</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="content-area">
+
+    <!-- Top Action Bar -->
+    <div class="top-action-bar">
+      <div class="module-badge-row">
+        <span class="badge-pill badge-pair" id="modulePill">Google PAIR</span>
+        <span style="font-size: 13px; color: var(--text-muted);" id="moduleEstTime">12 Min Read &bull; 1 Interview Defense Script</span>
+      </div>
+
+      <button class="btn-mark-complete" id="markCompleteBtn" onclick="toggleCurrentModuleComplete()">
+        <span id="markCompleteText">✓ Mark Module Complete</span>
+      </button>
+    </div>
+
+    <!-- MODULE 1: Mental Models & Expectations (Google PAIR) -->
+    <section id="module1" class="module-content-section active">
+      <h1 class="module-title">Mental Models & Calibrating Expectations</h1>
+      <p class="module-subtitle">How to transition users from deterministic software (*“I click button A, result B happens”*) to probabilistic AI (*“The model predicts outcome B with 88% confidence”*).</p>
+
+      <!-- Executive Essence -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--cyan-glow); color: var(--cyan);">🧠</div>
+          <div class="card-title">The Executive Essence (Zero Fluff)</div>
+          <span class="card-source-tag">Source: Google PAIR (Needs & Mental Models)</span>
+        </div>
+        <ul class="executive-bullets">
+          <li><strong>Deterministic vs. Probabilistic Gap:</strong> Traditional enterprise software fails if it produces different results twice. AI is inherently non-deterministic. If you do not explicitly teach the user that the system is probabilistic, every minor inconsistency is registered as a critical system bug.</li>
+          <li><strong>The Peril of Over-Promising:</strong> Anthropomorphic framing (*“I’m your omniscient AI brain”*) creates inflated expectations that guarantee user disillusionment. High-stature UX frames the AI as an <em>instrument / co-pilot</em> with defined capability boundaries.</li>
+          <li><strong>Onboarding via Co-Planning:</strong> Do not hide capabilities behind an empty chat prompt. Show explicit starter chips with scope boundaries (*“What I can automate: Inventory sync, Order triage. What requires human oversight: Wire transfers > $10,000”*).</li>
+        </ul>
+      </div>
+
+      <!-- Diagram: Calibrating Expectations -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--emerald-glow); color: var(--emerald);">📊</div>
+          <div class="card-title">PAIR Mental Model Calibration Curve</div>
+          <span class="card-source-tag">PAIR Chapter 2</span>
+        </div>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 14px;">The danger zone in enterprise AI adoption occurs when user expectation outpaces system competency.</p>
+
+        <div class="diagram-stage">
+          <div class="diagram-caption">Architecture: Expectation vs. Competency Gap</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+            <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; padding: 14px;">
+              <div style="color: var(--rose); font-weight: 700; font-size: 12px; text-transform: uppercase;">1. The Skeptic Drop</div>
+              <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin: 4px 0;">Under-Confidence</div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">User assumes AI is useless and rejects automation, clinging to legacy manual workflows.</div>
+            </div>
+
+            <div style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 8px; padding: 14px;">
+              <div style="color: var(--emerald); font-weight: 700; font-size: 12px; text-transform: uppercase;">2. The Sweet Spot ⭐</div>
+              <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin: 4px 0;">Calibrated Trust</div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">User knows exact boundaries: verifies critical edge-cases, lets AI automate repetitive tasks.</div>
+            </div>
+
+            <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 8px; padding: 14px;">
+              <div style="color: var(--amber); font-weight: 700; font-size: 12px; text-transform: uppercase;">3. The Liability Trap</div>
+              <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin: 4px 0;">Over-Reliance</div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">User blindly approves unverified agent outputs, leading to catastrophic compliance failures.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dodont-grid">
+          <div class="dodont-col dont">
+            <div class="dodont-label">❌ Don't (Junior Mistake)</div>
+            <div class="dodont-item">Using conversational bots that pretend to have emotions or unlimited intelligence (*“I can do anything you need!”*).</div>
+            <div class="dodont-item">Hiding AI non-determinism behind zero feedback, leaving users baffled when output varies.</div>
+          </div>
+          <div class="dodont-col do">
+            <div class="dodont-label">✓ Do (Director Standard)</div>
+            <div class="dodont-item">Explicitly label system inputs, freshness date of data (*“Trained on telecom telemetry up to Oct 2026”*), and scope boundaries.</div>
+            <div class="dodont-item">Provide a predictable progressive disclosure path for verification before execution.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Interview Script -->
+      <div class="interview-defense-card">
+        <div class="interview-q-title">🎯 Executive Interview Defense Script</div>
+        <div class="interview-question">“How do you design for user trust when introducing AI into enterprise software?”</div>
+        <div class="interview-script-box">
+          <button class="btn-copy-script" onclick="copyScript(this)">📋 Copy Script</button>
+          “In enterprise systems, trust is not an aesthetic—it is calibrated mathematical expectation. I design around the <strong>Google PAIR Mental Model framework</strong>. First, we clearly delineate deterministic rules from probabilistic predictions. If an AI agent suggests an action, we never position it as an omniscient decree; we surface the model’s competency envelope: what data it analyzed, its confidence threshold, and what parameters require human verification. By anchoring the user's mental model to the AI as a high-velocity co-pilot rather than an autonomous decision-maker, we eliminate over-reliance liabilities and accelerate enterprise adoption.”
+        </div>
+      </div>
+
+      <div class="module-nav-footer">
+        <div></div>
+        <button class="btn-nav-step primary" onclick="loadModule(2)">Next: Explainability & Trust Telemetry →</button>
+      </div>
+    </section>
+
+
+    <!-- MODULE 2: Explainability & Trust Telemetry (PAIR + HAX) -->
+    <section id="module2" class="module-content-section">
+      <h1 class="module-title">Explainability, Lineage & Trust Telemetry</h1>
+      <p class="module-subtitle">Transforming opaque black-box AI models into transparent, auditable enterprise software compliant with the EU AI Act.</p>
+
+      <!-- Executive Essence -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--purple-glow); color: var(--purple);">🔍</div>
+          <div class="card-title">Global vs. Local Explainability</div>
+          <span class="card-source-tag">Source: PAIR + Microsoft HAX G1/G2</span>
+        </div>
+        <ul class="executive-bullets">
+          <li><strong>Global Explainability:</strong> How the model works in general (*“This dispute model prioritizes merchant transaction history and chargeback velocity”*). Belongs in settings, documentation, and compliance audit dashboards.</li>
+          <li><strong>Local Explainability:</strong> Why the model made <em>this specific prediction right now</em> (*“This invoice was flagged because shipping address differs from 12 past orders”*). Must be integrated inline at the decision point.</li>
+          <li><strong>The EU AI Act Mandate (Article 13 & 14):</strong> High-risk enterprise software legally requires technical transparency and human oversight mechanisms. Black-box outputs without explainability are becoming un-deployable in Europe.</li>
+        </ul>
+      </div>
+
+      <!-- Diagram: 3-Tier Confidence Pattern -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--cyan-glow); color: var(--cyan);">🎛️</div>
+          <div class="card-title">The 3-Tier Confidence Telemetry Pattern</div>
+          <span class="card-source-tag">Microsoft HAX Guideline G2</span>
+        </div>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px;">How UI adapts dynamically based on model confidence scoring:</p>
+
+        <div class="confidence-meter-grid">
+          <div class="confidence-card high">
+            <div class="conf-tag">
+              <span>High Confidence (&gt;90%)</span>
+              <span>Autonomous</span>
+            </div>
+            <div class="conf-action">Automate & Notify</div>
+            <div class="conf-desc">System performs the task automatically and posts an ambient audit receipt. Minimal user friction. Example: routine invoice categorization.</div>
+          </div>
+
+          <div class="confidence-card medium">
+            <div class="conf-tag">
+              <span>Medium Confidence (60–90%)</span>
+              <span>Human-in-Loop</span>
+            </div>
+            <div class="conf-action">Suggest & Require Approval</div>
+            <div class="conf-desc">UI presents the recommended solution with reasoning lineage, requiring 1-click human confirmation before commit. Example: dispute settlement.</div>
+          </div>
+
+          <div class="confidence-card low">
+            <div class="conf-tag">
+              <span>Low Confidence (&lt;60%)</span>
+              <span>Manual Triage</span>
+            </div>
+            <div class="conf-action">Graceful Fallback / Manual</div>
+            <div class="conf-desc">AI gracefully defers decision. Presents raw telemetry to the human specialist with search filters. No automated guesses allowed.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Interview Script -->
+      <div class="interview-defense-card">
+        <div class="interview-q-title">🎯 Executive Interview Defense Script</div>
+        <div class="interview-question">“How do you design explainability for enterprise users who are not data scientists?”</div>
+        <div class="interview-script-box">
+          <button class="btn-copy-script" onclick="copyScript(this)">📋 Copy Script</button>
+          “We separate mathematical complexity from decision-making utility. Non-technical operators do not want to inspect weight matrices; they need <strong>causal lineage and confidence telemetry</strong>. I implement a progressive disclosure model aligned with <strong>Microsoft HAX Guideline G2</strong>: at a glance, the user sees a confidence rating and the primary driving factor. On hover or expand, we reveal the specific source documents, telemetry data, and a comparison against historical baselines. This meets both operator speed requirements and regulatory compliance standards like Article 13 of the EU AI Act.”
+        </div>
+      </div>
+
+      <div class="module-nav-footer">
+        <button class="btn-nav-step" onclick="loadModule(1)">← Previous: Mental Models</button>
+        <button class="btn-nav-step primary" onclick="loadModule(3)">Next: Errors & HAX Guidelines →</button>
+      </div>
+    </section>
+
+
+    <!-- MODULE 3: Errors, Hallucinations & Microsoft HAX -->
+    <section id="module3" class="module-content-section">
+      <h1 class="module-title">Errors, Hallucinations & The 18 HAX Guidelines</h1>
+      <p class="module-subtitle">Engineering graceful recovery systems when models hallucinate, drift, or encounter unfamiliar enterprise edge cases.</p>
+
+      <!-- Executive Essence -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--rose-glow); color: var(--rose);">🛡️</div>
+          <div class="card-title">Microsoft HAX Error Architecture</div>
+          <span class="card-source-tag">Amershi et al., Microsoft Research (CHI 2019)</span>
+        </div>
+        <ul class="executive-bullets">
+          <li><strong>G9 (Support Efficient Correction):</strong> When an AI prediction is wrong, correcting it must require fewer keystrokes than entering the entire data point from scratch. If correction friction is high, users turn the AI feature off.</li>
+          <li><strong>G10 (Scope to Context):</strong> AI suggestions must adapt to current user focus. Never interrupt high-stakes workflows with speculative automations.</li>
+          <li><strong>G11 (Acknowledge and Degrade Gracefully):</strong> When model confidence drops below threshold or an API fails, never throw a generic 500 error. The system must degrade to a predictable deterministic fallback UI.</li>
+          <li><strong>Hallucination Defense UX:</strong> Ground every generated insight with direct clickable anchors to source files. If a sentence cannot be grounded in an enterprise database, flag it visually as speculative.</li>
+        </ul>
+      </div>
+
+      <!-- Diagram: HAX Interaction Lifecycle -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--amber-glow); color: var(--amber);">🔄</div>
+          <div class="card-title">The 4 Phases of Microsoft HAX</div>
+          <span class="card-source-tag">18 Guidelines Architecture</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px;">
+          <div style="background: var(--bg-card); padding: 14px; border-radius: 8px; border-left: 3px solid var(--cyan);">
+            <div style="font-size: 11px; font-weight: 700; color: var(--cyan); text-transform: uppercase;">Phase 1</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--text-main); margin: 4px 0;">Initially</div>
+            <div style="font-size: 11.5px; color: var(--text-muted);">G1: What it can do.<br>G2: How well it can do it.</div>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 14px; border-radius: 8px; border-left: 3px solid var(--purple);">
+            <div style="font-size: 11px; font-weight: 700; color: var(--purple); text-transform: uppercase;">Phase 2</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--text-main); margin: 4px 0;">During Action</div>
+            <div style="font-size: 11.5px; color: var(--text-muted);">G3: Context match.<br>G4: Social norms.<br>G5: Mitigate bias.</div>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 14px; border-radius: 8px; border-left: 3px solid var(--rose);">
+            <div style="font-size: 11px; font-weight: 700; color: var(--rose); text-transform: uppercase;">Phase 3</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--text-main); margin: 4px 0;">When Wrong</div>
+            <div style="font-size: 11.5px; color: var(--text-muted);">G7: Dismiss easily.<br>G9: Correct easily.<br>G11: Graceful fallback.</div>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 14px; border-radius: 8px; border-left: 3px solid var(--emerald);">
+            <div style="font-size: 11px; font-weight: 700; color: var(--emerald); text-transform: uppercase;">Phase 4</div>
+            <div style="font-size: 13.5px; font-weight: 700; color: var(--text-main); margin: 4px 0;">Over Time</div>
+            <div style="font-size: 11.5px; color: var(--text-muted);">G12: Remember user.<br>G13: Learn from edits.<br>G17: Feedback loops.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Interview Script -->
+      <div class="interview-defense-card">
+        <div class="interview-q-title">🎯 Executive Interview Defense Script</div>
+        <div class="interview-question">“How do you handle LLM hallucinations in mission-critical enterprise environments?”</div>
+        <div class="interview-script-box">
+          <button class="btn-copy-script" onclick="copyScript(this)">📋 Copy Script</button>
+          “We design for the certainty of failure. Following <strong>Microsoft HAX Guideline G9 and G11</strong>, our UI treats model output as a provisional proposal until verified. First, we anchor generation with Retrieval-Augmented Generation (RAG) and cite specific database IDs. Second, we introduce inline diffing: if an operator edits an AI suggestion, the system logs the delta as explicit training telemetry without blocking the sprint release. Third, we establish automated guardrails: destructive actions—like fleet rerouting or database overwrites—always require explicit two-stage confirmation.”
+        </div>
+      </div>
+
+      <div class="module-nav-footer">
+        <button class="btn-nav-step" onclick="loadModule(2)">← Previous: Explainability</button>
+        <button class="btn-nav-step primary" onclick="loadModule(4)">Next: IBM Carbon Agentic UI →</button>
+      </div>
+    </section>
+
+
+    <!-- MODULE 4: Enterprise Agentic UI (IBM Carbon for AI) -->
+    <section id="module4" class="module-content-section">
+      <h1 class="module-title">Enterprise Agentic UI & Canvas Systems</h1>
+      <p class="module-subtitle">Moving beyond basic chat bubbles: designing multi-step autonomous agent systems, structured action cards, and Carbon design tokens.</p>
+
+      <!-- Executive Essence -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--emerald-glow); color: var(--emerald);">🏛️</div>
+          <div class="card-title">The Death of the Pure Chat Interface</div>
+          <span class="card-source-tag">Source: IBM Carbon for AI Patterns</span>
+        </div>
+        <ul class="executive-bullets">
+          <li><strong>Chat is a Discovery Channel, Not a Work Canvas:</strong> Unstructured conversational streams are impossible to audit at scale. Modern enterprise UX pairs a conversational command prompt with a <strong>structured split-pane canvas</strong>.</li>
+          <li><strong>Structured Action Cards:</strong> Never output raw markdown tables for mission-critical actions. Wrap agent execution states in structured Carbon cards featuring distinct states: <em>[Planning] → [Executing] → [Awaiting Approval] → [Committed]</em>.</li>
+          <li><strong>Human-in-the-Loop Confirmation Banners:</strong> Multi-agent workflows need clear checkpoint barriers. High-risk steps trigger a sticky approval drawer displaying the impact blast radius (*“This action will update 45 customer accounts and trigger $8,200 in credits”*).</li>
+        </ul>
+      </div>
+
+      <!-- State Machine Diagram -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--cyan-glow); color: var(--cyan);">⚙️</div>
+          <div class="card-title">Agentic Workflow State Machine</div>
+          <span class="card-source-tag">Carbon AI Orchestration Spec</span>
+        </div>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 14px;">How an autonomous enterprise agent communicates status to human operators:</p>
+
+        <div class="state-machine-box">
+          <div class="state-node">
+            <div class="state-step-num">Step 01</div>
+            <div class="state-title">1. Plan & Triage</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Decomposes user intent</div>
+          </div>
+          <span class="state-arrow">→</span>
+
+          <div class="state-node highlight">
+            <div class="state-step-num">Step 02</div>
+            <div class="state-title">2. Tool Execution</div>
+            <div style="font-size: 11px; color: var(--cyan); margin-top: 4px;">Calls APIs / Database</div>
+          </div>
+          <span class="state-arrow">→</span>
+
+          <div class="state-node approval">
+            <div class="state-step-num">Step 03 ⭐</div>
+            <div class="state-title">3. Human Review Gate</div>
+            <div style="font-size: 11px; color: var(--amber); margin-top: 4px;">Audits blast radius</div>
+          </div>
+          <span class="state-arrow">→</span>
+
+          <div class="state-node">
+            <div class="state-step-num">Step 04</div>
+            <div class="state-title">4. Ledger Commit</div>
+            <div style="font-size: 11px; color: var(--emerald); margin-top: 4px;">Immutable audit log</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Interview Script -->
+      <div class="interview-defense-card">
+        <div class="interview-q-title">🎯 Executive Interview Defense Script</div>
+        <div class="interview-question">“Why is enterprise software moving away from pure chat interfaces toward split-pane canvas systems?”</div>
+        <div class="interview-script-box">
+          <button class="btn-copy-script" onclick="copyScript(this)">📋 Copy Script</button>
+          “Chat is high-friction for spatial manipulation and dense data review. In enterprise software—such as our work with <strong>IBM Watson Orchestrate and Carbon Design System</strong>—operators manage complex multi-entity transactions. If an agent modifies 20 database rows, scrolling through 40 chat bubbles is untenable. We employ a dual-pane architecture: the left rail serves as the natural-language command and orchestration thread, while the main viewport renders an interactive, direct-manipulation canvas with structured state cards and clear approval barriers.”
+        </div>
+      </div>
+
+      <div class="module-nav-footer">
+        <button class="btn-nav-step" onclick="loadModule(3)">← Previous: Errors & HAX</button>
+        <button class="btn-nav-step primary" onclick="loadModule(5)">Next: Director Interview Playbook →</button>
+      </div>
+    </section>
+
+
+    <!-- MODULE 5: Executive Interview Defense Playbook -->
+    <section id="module5" class="module-content-section">
+      <h1 class="module-title">Director & VP Interview Playbook</h1>
+      <p class="module-subtitle">Synthesized from FAANG/Enterprise leadership rubrics, the EU AI Act compliance standards, and DesignOps business metrics.</p>
+
+      <!-- Executive Metrics -->
+      <div class="study-card">
+        <div class="card-header-bar">
+          <div class="card-icon-wrap" style="background: var(--amber-glow); color: var(--amber);">📈</div>
+          <div class="card-title">The 4 AI Business Metrics That Impress VPs</div>
+          <span class="card-source-tag">DesignOps Assembly & Executive Rubrics</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+          <div style="background: var(--bg-card); padding: 16px; border-radius: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--cyan); text-transform: uppercase;">1. Task Completion Rate (TCR)</div>
+            <div style="font-size: 13px; color: var(--text-body); margin-top: 4px;">Did the human + AI pairing complete the end-to-end task faster than the traditional legacy workflow?</div>
+          </div>
+          <div style="background: var(--bg-card); padding: 16px; border-radius: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--emerald); text-transform: uppercase;">2. Human Override Frequency (HOF)</div>
+            <div style="font-size: 13px; color: var(--text-body); margin-top: 4px;">What percentage of agent recommendations required manual human intervention? (Measures trust and model alignment).</div>
+          </div>
+          <div style="background: var(--bg-card); padding: 16px; border-radius: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--amber); text-transform: uppercase;">3. Hallucination Recovery Time (HRT)</div>
+            <div style="font-size: 13px; color: var(--text-body); margin-top: 4px;">When an anomaly occurs, how many seconds does it take an operator to identify, dismiss, and correct it?</div>
+          </div>
+          <div style="background: var(--bg-card); padding: 16px; border-radius: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--purple); text-transform: uppercase;">4. Design System Token Velocity</div>
+            <div style="font-size: 13px; color: var(--text-body); margin-top: 4px;">How quickly do multi-disciplinary engineering squads adopt new AI interaction components without custom one-off code?</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hard Question 1 -->
+      <div class="interview-defense-card">
+        <div class="interview-q-title">🎯 Hard Scenario 01: Engineering vs. UX Conflict</div>
+        <div class="interview-question">“What do you do when your ML engineering team wants to ship a 70% accuracy model, but design feels it’s too risky for users?”</div>
+        <div class="interview-script-box">
+          <button class="btn-copy-script" onclick="copyScript(this)">📋 Copy Script</button>
+          “I don’t treat model accuracy as a binary blocker; I treat it as an interaction design problem. A 70% model cannot have autonomous write-access, but it can provide immense value if framed correctly. We decouple the model from direct execution and implement <strong>progressive confidence gating</strong>: at 70%, the AI acts as an assistive recommender requiring one-click operator verification. We define the boundary where the 30% error rate creates zero customer blast radius. This aligns product release velocity with user safety.”
+        </div>
+      </div>
+
+      <!-- Hard Question 2 -->
+      <div class="interview-defense-card" style="margin-top: 20px;">
+        <div class="interview-q-title">🎯 Hard Scenario 02: Scaling AI Design Operations</div>
+        <div class="interview-question">“How do you lead and modernize a design organization of 15+ designers in the era of AI?”</div>
+        <div class="interview-script-box">
+          <button class="btn-copy-script" onclick="copyScript(this)">📋 Copy Script</button>
+          “AI design leadership operates on two simultaneous tracks: <strong>what we build</strong> and <strong>how we work</strong>. For what we build, I institutionalize system-wide governance using frameworks like Google PAIR and IBM Carbon, ensuring consistency across all squads. For how we work, we integrate generative tools into research synthesis, synthetic usability testing, and automated design token auditing. This cuts sprint research cycles by 40%, freeing our senior designers to focus on deep systems architecture and strategic product differentiation.”
+        </div>
+      </div>
+
+      <div class="module-nav-footer">
+        <button class="btn-nav-step" onclick="loadModule(4)">← Previous: IBM Carbon UI</button>
+        <button class="btn-nav-step primary" onclick="celebrateMastery()">🎉 Complete AI Leadership Program</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const totalModules = 5;
+    let completedModules = new Set(JSON.parse(localStorage.getItem('ai_mastery_completed') || '[]'));
+    let currentModule = 1;
+
+    const moduleMeta = {
+      1: { pill: 'Google PAIR', class: 'badge-pair', time: '10 Min Read • 1 Interview Defense Script' },
+      2: { pill: 'Google PAIR + HAX', class: 'badge-hax', time: '12 Min Read • 1 Interview Defense Script' },
+      3: { pill: 'Microsoft HAX', class: 'badge-hax', time: '15 Min Read • 1 Interview Defense Script' },
+      4: { pill: 'IBM Carbon for AI', class: 'badge-carbon', time: '14 Min Read • 1 Interview Defense Script' },
+      5: { pill: 'Executive Playbook', class: 'badge-exec', time: '18 Min Read • 2 Hard Interview Scenarios' }
+    };
+
+    function updateProgress() {
+      const count = completedModules.size;
+      const pct = Math.round((count / totalModules) * 100);
+      document.getElementById('progressPercent').textContent = `${pct}%`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+      document.getElementById('progressCount').textContent = `${count} of ${totalModules} Modules Completed`;
+
+      if (count === totalModules) {
+        document.getElementById('masteryBadge').textContent = '🏆 Certified Ready';
+        document.getElementById('masteryBadge').style.color = 'var(--emerald)';
+      }
+
+      // Update nav styling
+      document.querySelectorAll('.nav-btn').forEach((btn, idx) => {
+        const modNum = idx + 1;
+        btn.classList.toggle('completed', completedModules.has(modNum));
+      });
+
+      // Update mark complete button state
+      const btn = document.getElementById('markCompleteBtn');
+      const isDone = completedModules.has(currentModule);
+      btn.classList.toggle('is-done', isDone);
+      document.getElementById('markCompleteText').textContent = isDone ? '✓ Module Completed' : '✓ Mark Module Complete';
+
+      localStorage.setItem('ai_mastery_completed', JSON.stringify([...completedModules]));
+    }
+
+    function loadModule(num) {
+      currentModule = num;
+      document.querySelectorAll('.module-content-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === num);
+      });
+
+      const activeSec = document.getElementById(`module${num}`);
+      if (activeSec) activeSec.classList.add('active');
+
+      const meta = moduleMeta[num];
+      const pill = document.getElementById('modulePill');
+      pill.textContent = meta.pill;
+      pill.className = `badge-pill ${meta.class}`;
+      document.getElementById('moduleEstTime').textContent = meta.time;
+
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleCurrentModuleComplete() {
+      if (completedModules.has(currentModule)) {
+        completedModules.delete(currentModule);
+      } else {
+        completedModules.add(currentModule);
+      }
+      updateProgress();
+    }
+
+    function copyScript(btn) {
+      const box = btn.closest('.interview-script-box');
+      const text = box.innerText.replace('📋 Copy Script', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy Script'; }, 2000);
+      });
+    }
+
+    function celebrateMastery() {
+      completedModules.add(1).add(2).add(3).add(4).add(5);
+      updateProgress();
+      alert("🎉 Outstanding! You have completed all 5 Executive AI UX Leadership Modules. You now command the frameworks (Google PAIR, Microsoft HAX, IBM Carbon) used by top-tier VPs and Design Directors!");
+    }
+
+    // Initialize
+    updateProgress();
+  </script>
+</body>
+</html>
