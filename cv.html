@@ -430,7 +430,138 @@
       letter-spacing: 0.04em;
     }
 
+    /* Format Comparison Banner & Switcher */
+    .format-compare-banner {
+      max-width: 900px;
+      margin: 0 auto 14px;
+      background: #0F172A;
+      border: 1px solid #1E293B;
+      border-radius: 12px;
+      padding: 10px 18px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+    }
+    .format-compare-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .format-compare-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #94A3B8;
+    }
+    .compare-tag {
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .compare-title {
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .format-compare-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .format-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.18s ease;
+    }
+    .format-pill.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+    .format-pill.active .format-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+    .format-pill.swiss-link {
+      background: #0F62FE;
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .format-pill.swiss-link:hover {
+      background: #0043CE;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(15, 98, 254, 0.35);
+    }
+    .swiss-rainbow-dot {
+      display: inline-flex;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FA4D56;
+      box-shadow: 0 0 0 2px rgba(250, 77, 86, 0.3);
+    }
+
+    .btn-cv-swiss-toggle {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 10px 16px !important;
+      border-radius: 10px !important;
+      background: #0F62FE !important;
+      color: #FFFFFF !important;
+      font-family: var(--font-heading) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-shadow: 0 2px 8px rgba(15, 98, 254, 0.25) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      white-space: nowrap !important;
+    }
+    .btn-cv-swiss-toggle:hover {
+      background: #0043CE !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(15, 98, 254, 0.35) !important;
+    }
+    .swiss-pill-badge {
+      background: #FA4D56;
+      color: #FFFFFF;
+      font-family: var(--font-code);
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 4px;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
     @media (max-width: 680px) {
+      .format-compare-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .format-compare-pills {
+        justify-content: stretch;
+      }
+      .format-pill {
+        flex: 1;
+        justify-content: center;
+      }
       .cv-page-actions {
         flex-direction: column !important;
         align-items: stretch !important;
@@ -448,7 +579,10 @@
       }
       .cv-actions-btns {
         width: 100% !important;
+        flex-direction: column !important;
+        gap: 8px !important;
       }
+      .btn-cv-swiss-toggle,
       .btn-cv-page-download {
         justify-content: center !important;
         width: 100% !important;
@@ -456,6 +590,7 @@
     }
 
     @media print {
+      .format-compare-banner,
       .cv-page-actions {
         display: none !important;
       }
@@ -501,6 +636,27 @@
         <div id="fig-code-root" style="height: 100%;">
           <div class="min-h-screen bg-[#DDD9D0] py-10 px-4" data-fg-d3bl8="0.8:24.1701:/src/app/App.tsx:117:5:4246:11188:e:div:e:1" data-fgid-d3bl8=":r0:" style="font-family: Inter, sans-serif;">
             
+            <!-- Top Comparison Switcher Banner -->
+            <div class="format-compare-banner">
+              <div class="format-compare-content">
+                <div class="format-compare-left">
+                  <span class="compare-tag">Format Switcher</span>
+                  <span class="compare-title">Compare Formats:</span>
+                  <span>Review Classic Corporate vs. Modern Swiss Layout</span>
+                </div>
+                <div class="format-compare-pills">
+                  <span class="format-pill active">
+                    <span class="format-pill-dot"></span>
+                    Classic Corporate (Active)
+                  </span>
+                  <a href="resume-swiss.html" class="format-pill swiss-link">
+                    <span class="swiss-rainbow-dot"></span>
+                    Swiss Modernist (Colorful Edition) &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <!-- On-Page Dedicated CV Actions Bar (Responsive across all screens) -->
             <div class="cv-page-actions">
               <div class="cv-meta-col">
@@ -524,6 +680,10 @@
               </div>
 
               <div class="cv-actions-btns">
+                <a href="resume-swiss.html" class="btn-cv-swiss-toggle" title="Compare with Swiss Modernist Edition">
+                  <span class="swiss-pill-badge">SWISS</span>
+                  <span>Swiss Edition &rarr;</span>
+                </a>
                 <a href="Balaajee_VR_Senior_UX_Manager_CV.pdf" download="Balaajee_VR_Senior_UX_Manager_CV.pdf" class="btn-cv-page-download">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                   <span>Download Resume</span>

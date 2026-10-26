@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balaajee V.R. | Executive Resume (Swiss Modernist Edition)</title>
+  <meta name="description" content="Swiss Modernist Executive Resume for Balaajee V.R., Senior UI/UX Design Manager & Product Systems Architect. Ex-IBM, Zebra Technologies, Ericsson, ZF Wabco, Infosys.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+
+  <style>
+    :root {
+      /* Swiss Modernist Color System */
+      --swiss-bg: #FFFFFF;
+      --swiss-surface: #F8FAFC;
+      --swiss-surface-subtle: #F1F5F9;
+      --swiss-border: #E2E8F0;
+      --swiss-border-bold: #0F172A;
+      
+      --text-black: #0F172A;
+      --text-heading: #1E293B;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+
+      /* Vibrant Swiss Accents */
+      --cobalt: #0F62FE;          /* International Swiss Blue */
+      --cobalt-soft: #EDF5FF;
+      --vermilion: #FA4D56;       /* Radiant Swiss Red / Coral */
+      --vermilion-soft: #FFF1F1;
+      --amber: #F59E0B;           /* Cyber Ochre / Amber */
+      --amber-soft: #FEF7E0;
+      --emerald: #10B981;         /* Quantitative Impact Green */
+      --emerald-soft: #E6F4EA;
+      --purple: #7C3AED;          /* Architecture / Strategy Purple */
+      --purple-soft: #F3E8FD;
+
+      --font-swiss: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background-color: #E2E8F0;
+      color: var(--text-body);
+      font-family: var(--font-swiss);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      background: #E2E8F0;
+    }
+
+    /* Top Comparison Floating Bar */
+    header.format-switcher-bar {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      padding: 10px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .switcher-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .format-label-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .format-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--cobalt);
+      color: #FFFFFF;
+    }
+
+    .format-toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3px;
+      border-radius: 8px;
+    }
+
+    .toggle-link {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #94A3B8;
+      transition: all 0.15s ease;
+    }
+
+    .toggle-link:hover {
+      color: #FFFFFF;
+    }
+
+    .toggle-link.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: none;
+      font-family: var(--font-swiss);
+    }
+
+    .btn-action.print {
+      background: var(--cobalt);
+      color: #FFFFFF;
+    }
+    .btn-action.print:hover { background: #0043CE; }
+
+    .btn-action.portfolio {
+      background: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+    }
+    .btn-action.portfolio:hover { background: rgba(255, 255, 255, 0.25); }
+
+    /* The Resume Sheet Container */
+    .resume-canvas-wrap {
+      max-width: 1040px;
+      margin: 28px auto 60px;
+      background: #FFFFFF;
+      border: 1px solid var(--swiss-border);
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    /* Swiss Architectural Top Bar */
+    .swiss-accent-bar {
+      height: 6px;
+      background: linear-gradient(90deg, var(--cobalt) 0%, var(--cobalt) 35%, var(--vermilion) 35%, var(--vermilion) 60%, var(--amber) 60%, var(--amber) 80%, var(--emerald) 80%, var(--emerald) 100%);
+    }
+
+    .resume-inner {
+      padding: 44px 48px;
+    }
+
+    /* Header Profile & Masthead */
+    .swiss-masthead {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--text-black);
+      align-items: center;
+    }
+
+    .profile-photo-frame {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid var(--text-black);
+      background: var(--swiss-surface-subtle);
+      position: relative;
+    }
+
+    .profile-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transform: scale(1.08);
+    }
+
+    .masthead-text-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .executive-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h1.swiss-name {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--text-black);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .swiss-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    /* Contact & Telemetry Strip */
+    .contact-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-heading);
+      font-weight: 500;
+    }
+
+    .contact-item a {
+      color: var(--cobalt);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-item a:hover { text-decoration: underline; }
+
+    .dot-sep {
+      color: var(--swiss-border);
+    }
+
+    /* Key Metrics Ticker (Colorful Modern Swiss Band) */
+    .metrics-ticker-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--swiss-border);
+    }
+
+    .metric-box {
+      padding: 12px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--swiss-border);
+      background: var(--swiss-surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .metric-box.blue::before { background: var(--cobalt); }
+    .metric-box.purple::before { background: var(--purple); }
+    .metric-box.emerald::before { background: var(--emerald); }
+    .metric-box.amber::before { background: var(--amber); }
+    .metric-box.vermilion::before { background: var(--vermilion); }
+
+    .metric-number {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-black);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .metric-desc {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    /* Two-Column Asymmetric Swiss Layout */
+    .swiss-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 40px;
+      padding-top: 28px;
+    }
+
+    /* Section Titles */
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cobalt);
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--text-black);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .section-eyebrow span.sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* Experience Timeline Entries */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .experience-card {
+      position: relative;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-black);
+      letter-spacing: -0.01em;
+    }
+
+    .exp-company {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--cobalt);
+    }
+
+    .exp-dates {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--swiss-surface-subtle);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .exp-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 10px;
+    }
+
+    .exp-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .exp-tag.blue { background: var(--cobalt-soft); color: var(--cobalt); }
+    .exp-tag.vermilion { background: var(--vermilion-soft); color: var(--vermilion); }
+    .exp-tag.amber { background: var(--amber-soft); color: #B45309; }
+    .exp-tag.emerald { background: var(--emerald-soft); color: #047857; }
+    .exp-tag.purple { background: var(--purple-soft); color: var(--purple); }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--text-body);
+    }
+
+    .exp-bullets li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .exp-bullets li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--cobalt);
+      font-size: 11px;
+      top: -1px;
+    }
+
+    .exp-bullets li strong {
+      color: var(--text-black);
+      font-weight: 700;
+    }
+
+    /* Right Sidebar (Executive Dossier) */
+    .dossier-column {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .dossier-card {
+      background: var(--swiss-surface);
+      border: 1px solid var(--swiss-border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .dossier-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-black);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dossier-title::before {
+      content: "";
+      width: 4px;
+      height: 12px;
+      background: var(--cobalt);
+      border-radius: 1px;
+    }
+
+    .skill-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .skill-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: #FFFFFF;
+      border: 1px solid var(--swiss-border);
+      color: var(--text-heading);
+    }
+
+    .skill-pill.highlight {
+      background: var(--cobalt-soft);
+      color: var(--cobalt);
+      border-color: rgba(15, 98, 254, 0.2);
+      font-weight: 700;
+    }
+
+    .dossier-list {
+      list-style: none;
+      font-size: 12px;
+      line-height: 1.65;
+      color: var(--text-body);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .dossier-list li strong {
+      color: var(--text-black);
+    }
+
+    /* Print Styles */
+    @media print {
+      body, html {
+        background: #FFFFFF !important;
+      }
+      header.format-switcher-bar {
+        display: none !important;
+      }
+      .resume-canvas-wrap {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+      .resume-inner {
+        padding: 0 !important;
+      }
+      .metrics-ticker-grid {
+        gap: 8px !important;
+      }
+      .metric-box {
+        padding: 8px 10px !important;
+      }
+      .swiss-layout-grid {
+        gap: 24px !important;
+      }
+      .experience-list {
+        gap: 18px !important;
+      }
+      .exp-bullets {
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+      }
+      @page {
+        margin: 12mm 10mm;
+        size: A4 portrait;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .resume-inner { padding: 24px; }
+      .swiss-masthead { grid-template-columns: 1fr; gap: 16px; }
+      .metrics-ticker-grid { grid-template-columns: 1fr 1fr; }
+      .swiss-layout-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Comparison Header Bar -->
+  <header class="format-switcher-bar">
+    <div class="switcher-inner">
+      <div class="format-label-group">
+        <span class="format-badge">Swiss Modernist</span>
+        <span style="font-weight:600;">Executive Resume Edition (Colorful & Modern)</span>
+      </div>
+
+      <div class="format-toggle-group">
+        <a href="cv.html" class="toggle-link">Classic Corporate (cv.html)</a>
+        <a href="resume-swiss.html" class="toggle-link active">Swiss Modernist (Active)</a>
+      </div>
+
+      <div class="bar-actions">
+        <a href="Balaajee_VR_Senior_UX_Manager_CV.pdf" download="Balaajee_VR_Senior_UX_Manager_CV.pdf" class="btn-action portfolio" style="border: 1px solid rgba(255,255,255,0.2);">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <button class="btn-action print" onclick="window.print()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print / Save PDF
+        </button>
+        <a href="index.html" class="btn-action portfolio">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Portfolio Hub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Resume Sheet Canvas -->
+  <div class="resume-canvas-wrap">
+    
+    <!-- Top Geometric Accent Ribbon -->
+    <div class="swiss-accent-bar"></div>
+
+    <div class="resume-inner">
+      
+      <!-- Masthead -->
+      <section class="swiss-masthead">
+        <div class="profile-photo-frame">
+          <img src="profile.jpg" alt="Balaajee V.R. — Executive Product Design Leader">
+        </div>
+
+        <div class="masthead-text-block">
+          <div class="executive-kicker">
+            <span>Executive Dossier</span>
+            <span class="dot-sep">•</span>
+            <span>18+ Years Enterprise Scale</span>
+            <span class="dot-sep">•</span>
+            <span>Bengaluru & Global</span>
+          </div>
+
+          <h1 class="swiss-name">BALAAJEE V.R.</h1>
+          <div class="swiss-title">Senior UI/UX Product Design Manager • Enterprise Systems Architect</div>
+
+          <div class="contact-pills-row">
+            <span class="contact-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +91 9994761293
+            </span>
+            <span class="dot-sep">•</span>
+            <span class="contact-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <a href="mailto:vrbberaj@gmail.com">vrbberaj@gmail.com</a>
+            </span>
+            <span class="dot-sep">•</span>
+            <span class="contact-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank">linkedin.com/in/balaajee-vr-21647967</a>
+            </span>
+            <span class="dot-sep">•</span>
+            <span class="contact-item" style="color:var(--emerald); font-weight:700;">
+              EU Blue Card Eligible • Immediate Availability
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Quantitative Proof Ticker (Modern Swiss Metric Grid) -->
+      <section class="metrics-ticker-grid">
+        <div class="metric-box blue">
+          <div class="metric-number">18+ Yrs</div>
+          <div class="metric-desc">Enterprise Product Leadership</div>
+        </div>
+        <div class="metric-box purple">
+          <div class="metric-number">50+</div>
+          <div class="metric-desc">Product Designers Mentored</div>
+        </div>
+        <div class="metric-box emerald">
+          <div class="metric-number">140k+</div>
+          <div class="metric-desc">Zero-Defect AI Tasks (Watson)</div>
+        </div>
+        <div class="metric-box amber">
+          <div class="metric-number">4w → 1d</div>
+          <div class="metric-desc">Design Token Handoff Velocity</div>
+        </div>
+        <div class="metric-box vermilion">
+          <div class="metric-number">0.94s</div>
+          <div class="metric-desc">Glance Budget (ISO 26262)</div>
+        </div>
+      </section>
+
+      <!-- Main Asymmetric Grid Body -->
+      <div class="swiss-layout-grid">
+        
+        <!-- Left Track: Executive Experience (65%) -->
+        <main class="experience-track">
+          
+          <div class="section-eyebrow">
+            <span>Executive Experience & System Track Record</span>
+            <span class="sub">2007 – 2026 • 18 Years</span>
+          </div>
+
+          <div class="experience-list">
+            
+            <!-- Role 1: IBM India Software Labs -->
+            <article class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">UI/UX Design — Senior Manager</span>
+                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span class="exp-company">IBM India Software Labs</span>
+                </div>
+                <span class="exp-dates">Sep 2024 – Jan 2026</span>
+              </div>
+              <div class="exp-tags-row">
+                <span class="exp-tag blue">AI Governance</span>
+                <span class="exp-tag purple">Agentic Human-in-the-Loop</span>
+                <span class="exp-tag emerald">Rhapsody SE</span>
+                <span class="exp-tag amber">MaaS360 Endpoint</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Orchestrated an enterprise UX team re-org, transitioning <strong>14 product designers</strong> from isolated silos into a centralized UX-as-a-Service model to optimize cross-squad capacity across global enterprise portfolios.</li>
+                <li>Spearheaded the integration of <strong>IBM Watson into Rhapsody Systems Engineering</strong>, architecting 3-tier Human-in-the-Loop (HITL) blast-radius gates that reduced systems model drafting time from <strong>14.2 hours to 3.6 hours</strong>.</li>
+                <li>Directed the UX transformation of <strong>MaaS360 Endpoint Security</strong> with proactive AI remediation workflows, slashing threat triage from <strong>4.1 hours to 43 minutes</strong> with zero compliance violations across 140,000+ live tasks.</li>
+                <li>Standardized AI-UX governance and prompt telemetry specifications across product lines, ensuring strict compliance with EU AI Act Article 14 human oversight requirements.</li>
+                <li>Maintained <strong>100% team retention</strong> over 16 months and directly mentored five senior designers into managerial promotions.</li>
+              </ul>
+            </article>
+
+            <!-- Role 2: Zebra Technologies -->
+            <article class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">UI/UX Product Design Manager</span>
+                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span class="exp-company">Zebra Technologies</span>
+                </div>
+                <span class="exp-dates">Jul 2021 – Aug 2024</span>
+              </div>
+              <div class="exp-tags-row">
+                <span class="exp-tag emerald">Frontline Ergonomics</span>
+                <span class="exp-tag blue">VisibilityIQ Telemetry</span>
+                <span class="exp-tag amber">Industrial IoT</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Led product design for <strong>VisibilityIQ Enterprise</strong> and the frontline mobile diagnostics suite, managing telemetry and device health across <strong>38,000+ rugged handheld Android computers</strong>.</li>
+                <li>Engineered high-contrast, gloved-touch ergonomic UI standards for noisy distribution centers, dropping Bluetooth scanner pairing failures by <strong>84%</strong> and accelerating device staging throughput by <strong>3.2×</strong>.</li>
+                <li>Translated complex battery impedance and drop-rate telemetry into proactive predictive swap alerts (HAX G2/G4), slashing Tier-1 hardware IT support tickets by <strong>33%</strong>.</li>
+              </ul>
+            </article>
+
+            <!-- Role 3: Ericsson Global -->
+            <article class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">Lead UI/UX Designer & Systems Architect</span>
+                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span class="exp-company">Ericsson Global</span>
+                </div>
+                <span class="exp-dates">Jul 2019 – Sep 2020</span>
+              </div>
+              <div class="exp-tags-row">
+                <span class="exp-tag purple">Telecom CPQ Deal Engine</span>
+                <span class="exp-tag blue">High-Density UX</span>
+                <span class="exp-tag emerald">Zero-Error Pricing</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Replaced a fragile 14-tab legacy Excel pricing workbook with a keyboard-first, single-screen CPQ deal engine for multi-million-dollar 5G network bids.</li>
+                <li>Slashed enterprise quote turnaround from <strong>6 days to 42 minutes</strong> while driving pricing calculation formula errors to absolute zero.</li>
+                <li>Achieved <strong>94% organic adoption</strong> across global sales engineering within 30 days without an executive mandate by prioritizing power-user keyboard velocity and instant counterfactual margin feedback.</li>
+              </ul>
+            </article>
+
+            <!-- Role 4: ZF Wabco -->
+            <article class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">UI/UX Senior Specialist</span>
+                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span class="exp-company">ZF Wabco</span>
+                </div>
+                <span class="exp-dates">Oct 2020 – Jul 2021</span>
+              </div>
+              <div class="exp-tags-row">
+                <span class="exp-tag vermilion">Safety-Critical In-Cab Cockpit</span>
+                <span class="exp-tag amber">ISO 26262</span>
+                <span class="exp-tag blue">Fleet Telematics</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Architected commercial vehicle in-cab digital cluster and telematics tracking interfaces under strict sub-second glance budgets (NHTSA / ISO 26262 functional safety).</li>
+                <li>Reduced average driver glance duration from <strong>2.8 seconds to 0.94 seconds</strong> (safely under the 1.2s regulatory ceiling) through 3-tier hierarchical alarm triage and peripheral chromatic illumination.</li>
+                <li>Reduced critical route navigation errors by <strong>18%</strong> across a tracked fleet of 80,000+ commercial transport trucks.</li>
+              </ul>
+            </article>
+
+            <!-- Role 5: Infosys -->
+            <article class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">Senior Software Engineer • Digital Experience</span>
+                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span class="exp-company">Infosys</span>
+                </div>
+                <span class="exp-dates">Jul 2007 – May 2012</span>
+              </div>
+              <div class="exp-tags-row">
+                <span class="exp-tag blue">Enterprise Portals</span>
+                <span class="exp-tag emerald">Front-End Engineering</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Spearheaded front-end architecture and interface engineering for Fortune 500 financial and telecommunications portals, building the foundational bridge between engineering code and human-centered design.</li>
+              </ul>
+            </article>
+
+          </div>
+        </main>
+
+        <!-- Right Track: Executive Dossier & Skills (35%) -->
+        <aside class="dossier-column">
+          
+          <!-- Leadership Competencies -->
+          <div class="dossier-card">
+            <div class="dossier-title">Executive Competencies</div>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">DesignOps Leadership</span>
+              <span class="skill-pill highlight">Enterprise AI-UX</span>
+              <span class="skill-pill highlight">Agentic Orchestration</span>
+              <span class="skill-pill">Multi-Brand Design Tokens</span>
+              <span class="skill-pill">Dual-Track Agile</span>
+              <span class="skill-pill">High-Density Systems</span>
+              <span class="skill-pill">Executive Mentorship</span>
+              <span class="skill-pill">Frontline Ergonomics</span>
+              <span class="skill-pill">Cross-Functional Steering</span>
+              <span class="skill-pill">Glance Budgets (ISO 26262)</span>
+            </div>
+          </div>
+
+          <!-- Frameworks & Governance Standards -->
+          <div class="dossier-card">
+            <div class="dossier-title">Standards & Governance</div>
+            <ul class="dossier-list">
+              <li><strong>Google PAIR:</strong> Trust Calibration, Decision Matrix, 4 Explanation Models.</li>
+              <li><strong>Microsoft HAX:</strong> 18 CHI '19 Guidelines, Asymmetric Error Cost.</li>
+              <li><strong>IBM Carbon:</strong> Dual-Surface Canvas, HITL Blast-Radius Gates, Prompt Telemetry.</li>
+              <li><strong>Regulatory:</strong> EU AI Act Article 14 Human Oversight, NIST AI RMF.</li>
+              <li><strong>Accessibility:</strong> WCAG 2.2 AA, Screen-Reader Live Regions.</li>
+            </ul>
+          </div>
+
+          <!-- Proven Corporate Pedigree -->
+          <div class="dossier-card">
+            <div class="dossier-title">Corporate Pedigree</div>
+            <ul class="dossier-list">
+              <li><strong>IBM Software Labs:</strong> Senior Design Manager</li>
+              <li><strong>Zebra Technologies:</strong> Product Design Manager</li>
+              <li><strong>Ericsson Global:</strong> Lead UX Designer</li>
+              <li><strong>ZF Wabco:</strong> UI/UX Senior Specialist</li>
+              <li><strong>Infosys:</strong> Senior Software Engineer</li>
+            </ul>
+          </div>
+
+          <!-- Education & Credentials -->
+          <div class="dossier-card">
+            <div class="dossier-title">Education & Credentials</div>
+            <div style="font-size:12.5px; font-weight:700; color:var(--text-black);">Bachelor of Engineering (B.E.)</div>
+            <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">Electronics & Communication Engineering</div>
+            <div style="font-size:11px; font-family:var(--font-mono); color:var(--cobalt); margin-top:6px; font-weight:600;">Technical + Human-Centered Rigor</div>
+          </div>
+
+          <!-- Mobility & Availability -->
+          <div class="dossier-card" style="border-left: 3px solid var(--emerald); background:#F6FCF8;">
+            <div class="dossier-title" style="color:var(--emerald);">Global Mobility</div>
+            <div style="font-size:12px; color:var(--text-body); line-height:1.6;">
+              <strong>Status:</strong> Immediate Availability<br>
+              <strong>Authorization:</strong> EU Blue Card Eligible<br>
+              <strong>Location:</strong> Chennai, India<br>
+              <strong>Mobility:</strong> Open to relocation globally (US, EU, UK, Middle East, APAC).
+            </div>
+          </div>
+
+          <!-- Flagship Case Studies -->
+          <div class="dossier-card">
+            <div class="dossier-title">Flagship Case Studies</div>
+            <ul class="dossier-list" style="font-size:11.5px;">
+              <li><a href="case-ibm-watson.html" style="color:var(--cobalt); text-decoration:none; font-weight:700;">1. IBM Watson Agentic AI →</a></li>
+              <li><a href="case-ericsson.html" style="color:var(--cobalt); text-decoration:none; font-weight:700;">2. Ericsson Telecom CPQ Engine →</a></li>
+              <li><a href="case-zebra.html" style="color:var(--cobalt); text-decoration:none; font-weight:700;">3. Zebra VisibilityIQ Fleet IoT →</a></li>
+              <li><a href="case-ibm-carbon.html" style="color:var(--cobalt); text-decoration:none; font-weight:700;">4. IBM Carbon Design Tokens →</a></li>
+              <li><a href="case-zf-wabco.html" style="color:var(--cobalt); text-decoration:none; font-weight:700;">5. ZF Wabco Truck Cockpit Cluster →</a></li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
