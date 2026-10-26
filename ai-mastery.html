@@ -1844,89 +1844,147 @@
       <!-- PLAYBOOK 15: Executive Defense Playbook -->
       <div id="executive-defense"></div>
       <section class="chapter-block">
-        <div class="chapter-eyebrow">Director & VP Defense Playbook</div>
-        <h2 class="chapter-title">Executive Interview Defense Scenarios & Verbatim Scripts</h2>
+        <div class="chapter-eyebrow">Executive Defense Playbook • Flagship Portfolio Grounding</div>
+        <h2 class="chapter-title">Executive Interview Defense Scenarios: The 5 Flagship Case Studies</h2>
 
         <p class="paragraph">
-          In executive interviews for Director or Head of Design roles, interviewers will challenge you with difficult organizational and technical scenarios. Below are three battle-tested scenarios with verbatim scripts you can copy and study:
+          In Director, Head of Design, and VP-level interviews, executive interviewers (CPOs, CTOs, VPs of Engineering) will pressure-test your real track record on high-stakes enterprise complexity. Below are <strong>5 battle-tested executive defense scenarios mapped directly to your five flagship portfolio case studies</strong> (IBM Watson, Ericsson, Zebra Technologies, IBM Carbon, and ZF Wabco). Each scenario equips you with the exact business context, the aggressive interviewer pushback, the verbatim defense script, and the measurable business outcome:
         </p>
 
-        <!-- Scenario 1 -->
+        <!-- Scenario 1: IBM Watson -->
         <div class="script-card">
           <div class="script-header">
             <div>
-              <div class="script-title">Scenario 1: Defending UX Against ML Engineering ("The 72% Accuracy Pushback")</div>
-              <div class="script-context">Context: The VP of Engineering says: "Our dispute classification model achieved 72% accuracy. That's state of the art in fintech—let's ship it as full automation."</div>
+              <span class="card-badge ibm" style="margin-bottom:4px;">Project 1 • IBM Software Labs (Watson / watsonx)</span>
+              <div class="script-title">Scenario 1: Defending Agentic Human-in-the-Loop Orchestration in Mission-Critical Systems</div>
+              <div class="script-context">Interview Challenge: "Systems engineers and security analysts don't trust AI. If Watson makes automated changes to an architecture model or enterprise endpoint, users reject it. How did you get elite engineers to adopt autonomous agents?"</div>
             </div>
           </div>
-          <div class="script-body" id="script-1">
-"I applaud the engineering breakthrough of 72% accuracy, but as Design Director, shipping 72% as full automation means <mark>we are actively guaranteeing a 28% catastrophic failure rate directly into our merchant balance sheets</mark>. 
+          <div class="script-body" id="script-watson">
+"When IBM introduced Watson into Rhapsody Systems Engineering and MaaS360 endpoint security, our biggest blocker was not model accuracy—it was <strong>uncalibrated automation bias and fear of catastrophic blast radius</strong>. Systems engineers designing avionics or automotive architectures refused to use an AI that modified models silently.
 
-In enterprise B2B fintech, a 28% false positive rate destroys customer retention and creates severe regulatory liability under the EU AI Act. My role is not to block the model; my role is to <mark>architect the confidence thresholds</mark>. 
+As Senior UI/UX Design Manager, I architected our <strong>3-Tier Human-in-the-Loop Governance Framework</strong>:
+1. <strong>Strict Blast-Radius Categorization:</strong> We classified all AI agent actions into Level 0 (Read-Only queries), Level 1 (Low-risk draft suggestions), and Level 2 (High-impact changes like architecture refactoring or endpoint policy deployments).
+2. <strong>Mandatory Side-by-Side Diff Previews:</strong> For any Level 2 action, Watson was architecturally prohibited from writing to the model directly. Instead, we designed a dual-surface split canvas where the AI presented a color-coded structural diff—showing precisely what nodes would change, why the model proposed it, and what historical systems models informed the inference.
+3. <strong>One-Click Selective Reversion:</strong> Users could accept three suggestions, reject two, and fine-tune one inline without breaking conversational flow.
 
-We will segment the model's inferences into three distinct UX tiers:
-1. Predictions scoring <strong>above 92% confidence</strong> will execute autonomously with asynchronous audit notifications.
-2. Predictions between <strong>60% and 92% confidence</strong> will route to a Human-in-the-Loop review queue with pre-populated inline diffs and 1-click confirmation.
-3. Predictions scoring <strong>below 60%</strong> will remain in manual triage.
-
-This guarantees we capture immediate operational efficiency on the high-confidence batch while maintaining 100% compliance and zero merchant churn on edge cases."
+By shifting from black-box automation to verifiable co-piloting, <mark>AI moved from banned to adopted: model drafting time plummeted from 14.2 hours to 3.6 hours, security threat triage dropped from 4.1 hours to 43 minutes, and we achieved zero compliance breaches across 140,000+ live enterprise tasks</mark>."
           </div>
           <div class="script-action-bar">
-            <span style="font-size:12px; color:var(--text-muted);">Key Principles: PAIR Calibration Curve • Tiered Confidence • Blast Radius</span>
-            <button class="btn-copy-script" onclick="copyScript('script-1')">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 14.2h → 3.6h drafting • 0 compliance violations across 140k tasks • Carbon Dual-Surface</span>
+            <button class="btn-copy-script" onclick="copyScript('script-watson')">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copy Script
             </button>
           </div>
         </div>
 
-        <!-- Scenario 2 -->
+        <!-- Scenario 2: Ericsson -->
         <div class="script-card">
           <div class="script-header">
             <div>
-              <div class="script-title">Scenario 2: Navigating Regulatory Explainability ("The Black-Box Dilemma")</div>
-              <div class="script-context">Context: General Counsel and Compliance demand 100% explainability for a deep neural network, threatening to kill the project because deep weights are uninterpretable.</div>
+              <span class="card-badge blue" style="margin-bottom:4px;">Project 2 • Ericsson (Telecom CPQ Deal Engine)</span>
+              <div class="script-title">Scenario 2: Eliminating Fragile 14-Tab Spreadsheets & Architecting Zero-Error Deal Engines</div>
+              <div class="script-context">Interview Challenge: "Enterprise sales engineers are married to Excel. You tried to replace a 14-tab mission-critical pricing workbook with a web tool. How did you overcome user resistance and prevent multi-million-dollar quoting errors?"</div>
             </div>
           </div>
-          <div class="script-body" id="script-2">
-"We must distinguish between mathematical interpretability of deep weights and <mark>operational explainability for human decision-makers</mark>. The law—including Article 13 of the EU AI Act—does not demand that a business user read a matrix multiplication of 70 billion parameters. It requires that the operator understands the <em>rationale</em> for the decision and can challenge it.
+          <div class="script-body" id="script-ericsson">
+"Sales engineers at Ericsson weren't using Excel because they loved spreadsheets; they used it because <mark>traditional enterprise web applications are sluggish, require endless clicks, and strip away power-user keyboard velocity</mark>. They were quoting $50M telecom carrier bids in a fragile 14-tab sheet with broken circular macros because no tool respected their speed.
 
-As Design Director, I solve this by decoupling the architecture into two layers:
-First, we implement <strong>Local Explainability through Feature Attribution and RAG Grounding</strong>. We surface the exact source documents, contract paragraphs, and mathematical parameters that shifted the model's score via SHAP attribution values.
-Second, we implement <strong>Counterfactual Telemetry</strong>: we explicitly show the user what would have to change in the transaction for the recommendation to invert.
+I led the UX transformation by treating speed and keyboard ergonomics as non-negotiable architectural constraints:
+1. <strong>Keyboard-First Data Density:</strong> We eliminated multi-step wizards entirely. I designed a high-density, single-screen deal engine with full keyboard navigation (arrow keys, rapid tab indexing, and inline arithmetic syntax like '+5%' or '*1.2').
+2. <strong>Real-Time Margin Telemetry & Heuristic Guardrails:</strong> Instead of waiting for a batch server calculation, we engineered client-side deterministic validation. If an engineer configured a hardware bundle that breached carrier margin thresholds or violated 5G spectrum compatibility, the system flagged the variance inline with instant counterfactual remediation: <em>'Swapping to Chassis B restores 14% margin'</em>.
+3. <strong>Zero-Mandate Adoption Strategy:</strong> We didn't force a top-down mandate. We rolled the tool out side-by-side with Excel to 10 senior deal champions.
 
-This satisfies legal compliance, satisfies the regulatory auditor, and empowers the human operator with actionable, verifiable reasoning."
+The result: <mark>Quote turnaround dropped from 6 days to 42 minutes, pricing calculation errors went to absolute zero, and we achieved 94% organic adoption across global sales engineering within 30 days without an executive mandate</mark>."
           </div>
           <div class="script-action-bar">
-            <span style="font-size:12px; color:var(--text-muted);">Key Principles: Local vs Global Explainability • EU AI Act Article 13 • Counterfactuals</span>
-            <button class="btn-copy-script" onclick="copyScript('script-2')">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 6 days → 42 min turnaround • 0 calculation errors • 94% organic adoption</span>
+            <button class="btn-copy-script" onclick="copyScript('script-ericsson')">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copy Script
             </button>
           </div>
         </div>
 
-        <!-- Scenario 3 -->
+        <!-- Scenario 3: Zebra Technologies -->
         <div class="script-card">
           <div class="script-header">
             <div>
-              <div class="script-title">Scenario 3: Scaling an Enterprise UX Team in the Agentic AI Era</div>
-              <div class="script-context">Context: The CPO asks: "How will you restructure and lead our 20-person design organization to design for autonomous agents rather than static screens?"</div>
+              <span class="card-badge green" style="margin-bottom:4px;">Project 3 • Zebra Technologies (Frontline Diagnostics & VisibilityIQ)</span>
+              <div class="script-context">Interview Challenge: "Frontline warehouse workers operate in loud, harsh distribution hubs with heavy gloves. How do you design software that works in that extreme physical reality while giving enterprise IT deep predictive hardware visibility?"</div>
+              <div class="script-title">Scenario 3: Designing Frontline Ergonomics & Predictive Hardware Fleet Telemetry Across 38,000+ Devices</div>
             </div>
           </div>
-          <div class="script-body" id="script-3">
-"Designing for agentic systems requires moving from <mark>static screen design to dynamic state orchestration</mark>. In traditional SaaS, designers craft invariant UI states. In agentic UX, designers craft behavioral guardrails, confidence state transitions, and error recovery loops.
+          <div class="script-body" id="script-zebra">
+"Designing for frontline industrial logistics requires throwing away desktop UX assumptions. A warehouse worker wearing heavy thermal gloves in sub-zero freezer facilities cannot pinch-to-zoom or hit a 32-pixel touch target. Meanwhile, enterprise IT managers running 38,000 handhelds were blind to why scanners failed, losing millions in battery dropouts and shift downtime.
 
-I structure my design leadership around three operational pillars:
-1. <strong>Evolving the Design System (Tokens for AI):</strong> We extend our design system from basic color/spacing tokens to include AI-specific telemetry tokens: confidence tier badges, thought-trace collapsible containers, token budget counters, and RAG attribution cards.
-2. <strong>Embedding Designers in ML Red-Teaming:</strong> Designers cannot sit at the end of the waterfall receiving a finished model. My team participates in data collection reviews, prompt evaluation benchmarks, and adversarial red-teaming to uncover failure modes before code is deployed.
-3. <strong>Standardizing the Dual-Surface Architecture:</strong> We transition our product suite away from generic chatbot interfaces toward dual-surface environments where agent orchestration lives alongside direct-manipulation enterprise artifacts.
+I led the product design for VisibilityIQ and the frontline mobile diagnostics suite with a dual-ergonomic strategy:
+1. <strong>Frontline Industrial Ergonomics:</strong> We established a minimum 64-pixel touch target grid, high-contrast monochrome modes for glare-heavy dock environments, and replaced manual menu navigation with hardware-triggered barcode scans. Workers could diagnose a failing Wi-Fi radio or Bluetooth ring scanner in 2 button presses without taking off gloves.
+2. <strong>Predictive Health Telemetry (HAX G2 & G4):</strong> On the IT fleet dashboard, we moved from reactive failure logging to predictive battery impedance modeling. Instead of showing confusing raw voltage charts, we translated telemetry into action cards: <em>'42 devices in Atlanta DC will drop charge before shift end—swap recommended at 14:00'</em>.
+3. <strong>Staging Automation:</strong> We reduced new device provisioning from a 15-minute manual IT chore into a single multi-device barcode scan.
 
-This transforms the design team from passive cosmetic stylers into foundational architects of trust, safety, and business velocity."
+The outcome: <mark>Bluetooth peripheral pairing failures dropped by 84%, device staging throughput increased 3.2×, and Tier-1 IT support tickets fell by 33% across 38,000+ active enterprise handhelds</mark>."
           </div>
           <div class="script-action-bar">
-            <span style="font-size:12px; color:var(--text-muted);">Key Principles: DesignOps for AI • State Orchestration • Dual-Surface Canvas</span>
-            <button class="btn-copy-script" onclick="copyScript('script-3')">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 84% fewer pairing failures • 3.2× staging throughput • 33% ticket reduction</span>
+            <button class="btn-copy-script" onclick="copyScript('script-zebra')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 4: IBM Carbon Design System -->
+        <div class="script-card">
+          <div class="script-header">
+            <div>
+              <span class="card-badge amber" style="margin-bottom:4px;">Project 4 • IBM Software Labs (Carbon Design System & Token Architecture)</span>
+              <div class="script-title">Scenario 4: Governing Multi-Brand Design Token Architecture Across 14 Autonomous Squads</div>
+              <div class="script-context">Interview Challenge: "Design systems often die of bureaucracy. You had 14 autonomous product squads hardcoding CSS and building duplicate components across 45+ squads. How did you scale design governance without becoming a bottleneck?"</div>
+            </div>
+          </div>
+          <div class="script-body" id="script-carbon">
+"A design system cannot scale through executive mandate or authoritarian review gates. When 14 autonomous product squads were hard-coding hex values and building divergent data table components, it wasn't because they hated consistency—it was because our design system was too slow to incorporate their edge-case needs.
+
+As Design Systems Leader, I decentralized our design operations while centralizing our source of truth:
+1. <strong>3-Tier Multi-Brand Design Token Pipeline:</strong> We decoupled design tokens into Global Core tokens (primitive colors, scales), Semantic tokens (intent-based, e.g. `border-subtle`, `text-critical`), and Component tokens. When dark mode or high-contrast accessibility themes were introduced, changes compiled automatically through Style Dictionary into React, Web Components, and iOS/Android without manual engineering intervention.
+2. <strong>The Federated Contribution Council:</strong> Instead of a centralized 'design police' squad, I established a bi-weekly Contribution Council with rotating leads from security, data science, and cloud products. If a squad needed a specialized AI thought-trace or telemetry table, they co-authored it under our Carbon RFC process. Once approved, it shipped to all 14 squads automatically.
+3. <strong>Automated Linting & CI/CD Validation:</strong> We integrated Figma-to-code token linters directly into GitHub PR workflows, catching visual drift and contrast accessibility violations before code reached staging.
+
+The result: <mark>Design-to-code handoff cycles dropped from 4 weeks to 24 hours, visual QA regressions plummeted by 70%, front-end engineering velocity accelerated by 28%, and all 14 squads achieved 100% synchronized dark/light theme parity</mark>."
+          </div>
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: Handoff 4 weeks → 1 day • 70% fewer QA bugs • 28% velocity increase across 14 squads</span>
+            <button class="btn-copy-script" onclick="copyScript('script-carbon')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 5: ZF Wabco -->
+        <div class="script-card">
+          <div class="script-header">
+            <div>
+              <span class="card-badge" style="background:#FCE4EC; color:#C2185B; margin-bottom:4px;">Project 5 • ZF Wabco (Commercial Vehicle Cockpit & Fleet Telematics)</span>
+              <div class="script-title">Scenario 5: Designing Under Strict Sub-Second Glance Budgets (0.94s) & Safety-Critical Telemetry Under ISO 26262</div>
+              <div class="script-context">Interview Challenge: "In automotive clusters, cognitive overload or delayed driver reaction can literally kill someone. How do you design high-density telemetry dashboards where drivers have less than one second to process information?"</div>
+            </div>
+          </div>
+          <div class="script-body" id="script-zfwabco">
+"Designing for a 40-ton commercial truck traveling at 65 miles per hour is the ultimate test of cognitive ergonomics. In passenger cars, drivers glance at infotainment for music; in heavy transport, drivers were juggling three aftermarket dash monitors, unprioritized audible beeps, and complex engine telematics. If a driver takes their eyes off the road for more than 1.5 seconds, the vehicle travels over 140 feet completely blind.
+
+I led the UX for the digital in-cab cluster and fleet tracking application under the strictest safety-critical constraints:
+1. <strong>The 0.94-Second Glance Budget:</strong> Under NHTSA and ISO 26262 functional safety standards, we set a strict design budget: every critical telemetry state (air brake pressure, lane departure, tire thermal overload) must be completely recognized and interpreted in under 1.0 second.
+2. <strong>Hierarchical Alarm Triage & Visual Squashing:</strong> We eliminated the cacophony of simultaneous beeps. We implemented a 3-tier deterministic prioritization engine: Critical Immediate (stops the truck), Advisory Warning (amber pulse, peripheral vision only), and Informational (queued until vehicle speed drops to zero).
+3. <strong>Ambient Chromatic Lighting:</strong> We utilized ambient LED perimeter illumination that reflected peripheral color cues (green/amber/red) directly into the driver's peripheral field of view, allowing them to comprehend system urgency without averting their foveal gaze from the highway.
+
+The empirical impact: <mark>Average driver glance duration dropped from 2.8 seconds to 0.94 seconds—safely inside the 1.2-second regulatory ceiling—and critical route navigation errors fell 18% across a fleet of 80,000+ commercial trucks</mark>."
+          </div>
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: Glance time 2.8s → 0.94s (under 1.2s ceiling) • 18% fewer critical route errors across 80k trucks</span>
+            <button class="btn-copy-script" onclick="copyScript('script-zfwabco')">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copy Script
             </button>
