@@ -122,25 +122,111 @@
       letter-spacing: 0.02em;
     }
 
-    .masthead-nav {
+    /* Primary Top Level Macro Navigation Tabs */
+    .primary-masthead-tabs {
       display: flex;
       align-items: center;
-      gap: 14px;
-    }
-
-    .nav-pill-link {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: all 0.15s ease;
-    }
-
-    .nav-pill-link:hover {
+      gap: 6px;
       background: var(--bg-subtle);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border-light);
+    }
+
+    .macro-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+
+    .macro-tab-btn:hover {
       color: var(--text-title);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .macro-tab-btn.active {
+      background: #FFFFFF;
+      color: var(--text-title);
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    }
+
+    .tab-indicator-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--google-blue);
+      background: var(--google-blue-soft);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .macro-tab-btn.active .tab-indicator-num {
+      background: var(--text-title);
+      color: #FFFFFF;
+    }
+
+    .tab-title-text {
+      white-space: nowrap;
+    }
+
+    .tab-meta-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-light);
+    }
+
+    .tab-meta-badge.pulse {
+      background: #ECFDF5;
+      color: #065F46;
+      border-color: #A7F3D0;
+    }
+
+    .masthead-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-top-swiss {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0F62FE;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: #EDF5FF;
+      border: 1px solid rgba(15, 98, 254, 0.2);
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-top-swiss:hover {
+      background: #0F62FE;
+      color: #FFFFFF;
+    }
+    .swiss-tiny-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #FA4D56;
     }
 
     .btn-return-portfolio {
@@ -159,6 +245,117 @@
 
     .btn-return-portfolio:hover {
       background: #D2E3FC;
+    }
+
+    /* Interview Preparation Suite Styles */
+    .interview-filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 32px;
+      padding: 16px 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+    }
+    .round-filter-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .btn-round-filter {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border-medium);
+      background: #FFFFFF;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: var(--font-sans);
+    }
+    .btn-round-filter:hover {
+      background: var(--bg-subtle);
+      color: var(--text-title);
+    }
+    .btn-round-filter.active {
+      background: var(--text-title);
+      color: #FFFFFF;
+      border-color: var(--text-title);
+    }
+    .interview-search-input {
+      padding: 7px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-medium);
+      font-size: 12.5px;
+      font-family: var(--font-sans);
+      width: 240px;
+      color: var(--text-title);
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    .interview-search-input:focus {
+      border-color: var(--google-blue);
+      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+    }
+    .round-card-group {
+      margin-bottom: 56px;
+    }
+    .round-header-box {
+      border-left: 4px solid var(--google-blue);
+      padding: 16px 22px;
+      background: var(--bg-surface);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 24px;
+      border-top: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .round-header-box.round-1 { border-left-color: #0F62FE; }
+    .round-header-box.round-2 { border-left-color: #7C3AED; }
+    .round-header-box.round-3 { border-left-color: #10B981; }
+    .round-header-box.round-4 { border-left-color: #F59E0B; }
+    .round-header-box.round-5 { border-left-color: #FA4D56; }
+
+    .rubric-callout {
+      margin: 14px 0;
+      padding: 12px 16px;
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 6px;
+      font-size: 12.5px;
+      color: #92400E;
+      line-height: 1.6;
+    }
+    .rubric-callout strong {
+      color: #78350F;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+    .pitfall-callout {
+      margin: 14px 0 0;
+      padding: 10px 14px;
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #991B1B;
+      line-height: 1.5;
+    }
+    .pitfall-callout strong {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      letter-spacing: 0.04em;
+      margin-right: 4px;
     }
 
     /* Layout */
@@ -833,20 +1030,31 @@
         </div>
       </a>
 
-      <nav class="masthead-nav">
-        <a href="#pair-foundations" class="nav-pill-link">1. Google PAIR</a>
-        <a href="#hax-foundations" class="nav-pill-link">2. Microsoft HAX</a>
-        <a href="#carbon-foundations" class="nav-pill-link">3. IBM Carbon Agentic</a>
-        <a href="#designops-framework" class="nav-pill-link">4. DesignOps</a>
-        <a href="#metrics-alignment" class="nav-pill-link">5. UX vs ML Metrics</a>
-        <a href="#governance-euaiact" class="nav-pill-link">6. EU AI Act</a>
-        <a href="#ai-ux-workflow" class="nav-pill-link">7. AI in UX Process</a>
-        <a href="#executive-defense" class="nav-pill-link">8. Executive Defense</a>
+      <!-- Primary Top Level Macro Navigation Tabs -->
+      <nav class="primary-masthead-tabs" aria-label="Main Navigation">
+        <button type="button" class="macro-tab-btn active" id="tab-btn-curriculum" onclick="switchMainTab('curriculum')">
+          <span class="tab-indicator-num">01</span>
+          <span class="tab-title-text">Curriculum &amp; Frameworks</span>
+          <span class="tab-meta-badge">PAIR &bull; HAX &bull; Carbon &bull; Ops</span>
+        </button>
+
+        <button type="button" class="macro-tab-btn" id="tab-btn-interview" onclick="switchMainTab('interview')">
+          <span class="tab-indicator-num">02</span>
+          <span class="tab-title-text">Leadership Interview Prep (5 Rounds)</span>
+          <span class="tab-meta-badge pulse">Resume-Aligned Q&amp;A</span>
+        </button>
+      </nav>
+
+      <div class="masthead-right-actions">
+        <a href="resume-swiss.html" class="btn-top-swiss" title="View Swiss Modernist Resume">
+          <span class="swiss-tiny-dot"></span>
+          <span>Swiss Resume</span>
+        </a>
         <a href="index.html" class="btn-return-portfolio">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          Portfolio
+          Portfolio Hub
         </a>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -854,6 +1062,9 @@
     
     <!-- Sticky TOC -->
     <aside class="editorial-toc">
+      <!-- Curriculum TOC (Tab 1) -->
+      <div id="toc-curriculum-container">
+
       <div class="toc-section-header">Google PAIR Guidebook</div>
       <ul class="toc-list">
         <li class="toc-item active"><a href="#pair-user-needs"><span class="toc-num">01.</span> User Needs & AI Decision Matrix</a></li>
@@ -903,10 +1114,64 @@
         <strong>Executive Pedigree</strong>
         Synthesized for an 18-year Design Leader refreshing contemporary AI-UX systems architecture. Grounded in Google Brain, Microsoft Research, IBM Carbon, and EU regulatory statute.
       </div>
+    
+      </div>
+
+      <!-- Interview Prep TOC (Tab 2) -->
+      <div id="toc-interview-container" style="display:none;">
+        <div class="toc-section-header">Executive Interview Masterclass</div>
+        <div style="font-size:12px; color:var(--text-secondary); margin-bottom:14px; line-height:1.5;">
+          All 5 rounds for UI/UX Design Manager &amp; Director candidates, aligned to your 18-year career across IBM, Zebra, Ericsson, ZF Wabco, and Infosys.
+        </div>
+
+        <div class="toc-section-header">Round 1: Screening &amp; Fit</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#q1-narrative"><span class="toc-num">R1.1</span> 18-Year Career Narrative</a></li>
+          <li class="toc-item"><a href="#q1-why-looking"><span class="toc-num">R1.2</span> Transition from IBM &amp; Target Scale</a></li>
+          <li class="toc-item"><a href="#q1-mobility"><span class="toc-num">R1.3</span> Global Mobility &amp; EU Blue Card</a></li>
+        </ul>
+
+        <div class="toc-section-header">Round 2: Portfolio &amp; Systems</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#q2-watson"><span class="toc-num">R2.1</span> IBM Watson Agentic AI &amp; HITL</a></li>
+          <li class="toc-item"><a href="#q2-zebra"><span class="toc-num">R2.2</span> Zebra Frontline IoT &amp; Telemetry</a></li>
+          <li class="toc-item"><a href="#q2-ericsson"><span class="toc-num">R2.3</span> Ericsson 5G CPQ Deal Engine</a></li>
+        </ul>
+
+        <div class="toc-section-header">Round 3: People &amp; DesignOps</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#q3-topology"><span class="toc-num">R3.1</span> Centralized vs Embedded Topology</a></li>
+          <li class="toc-item"><a href="#q3-retention"><span class="toc-num">R3.2</span> 100% Retention &amp; Mentorship</a></li>
+          <li class="toc-item"><a href="#q3-tokens"><span class="toc-num">R3.3</span> Multi-Brand Design Token Ops</a></li>
+        </ul>
+
+        <div class="toc-section-header">Round 4: Stakeholder &amp; VP Influence</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#q4-deadlines"><span class="toc-num">R4.1</span> Pushing Back on Engineering Scope Cuts</a></li>
+          <li class="toc-item"><a href="#q4-pm-conflict"><span class="toc-num">R4.2</span> Resolving AI Automation Conflict with PM</a></li>
+          <li class="toc-item"><a href="#q4-safety"><span class="toc-num">R4.3</span> Defending ISO 26262 Safety Budgets</a></li>
+        </ul>
+
+        <div class="toc-section-header">Round 5: Strategy &amp; Bar Raiser</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#q5-90day"><span class="toc-num">R5.1</span> 30-60-90 Day Executive Playbook</a></li>
+          <li class="toc-item"><a href="#q5-ai-framework"><span class="toc-num">R5.2</span> AI vs Deterministic Decision Matrix</a></li>
+          <li class="toc-item"><a href="#q5-future"><span class="toc-num">R5.3</span> The 5-Year Horizon of Enterprise UX</a></li>
+        </ul>
+
+        <div class="toc-pedigree-card" style="border-left-color: #10B981; margin-top:24px;">
+          <strong>Executive Preparation Tip</strong>
+          Use the <em>Copy Script</em> button on any scenario to practice on a second screen or rehearse verbatim delivery for leadership rounds.
+        </div>
+      </div>
+
     </aside>
 
     <!-- Main Content Body -->
     <main class="editorial-body">
+      <!-- TAB 1: CURRICULUM & FRAMEWORKS -->
+      <div id="view-curriculum">
+
       
       <!-- Publication Hero -->
       <section class="editorial-hero">
@@ -2158,6 +2423,657 @@ The empirical impact: <mark>Average driver glance duration dropped from 2.8 seco
         </div>
       </footer>
 
+    
+      </div>
+
+      <!-- TAB 2: LEADERSHIP INTERVIEW PREPARATION SUITE (5 ROUNDS) -->
+      <div id="view-interview" style="display:none;">
+      <!-- Publication Hero for Interview Suite -->
+      <section class="editorial-hero">
+        <div class="hero-kicker" style="color:var(--google-blue);">Executive Leadership Interview Masterclass</div>
+        <h1 class="hero-headline">The 5-Round UI/UX Leadership Interview Defense Suite</h1>
+        <p class="hero-lede">
+          A definitive, battle-tested interview defense compendium for <strong>Senior UI/UX Design Manager, Director of Product Design, and Head of UX</strong> roles. Spanning all 5 executive interview rounds, complete with interviewer grading rubrics, verbatim response scripts grounded in your 18-year enterprise track record (IBM, Zebra, Ericsson, ZF Wabco, Infosys), and 1-click script copying.
+        </p>
+        <div class="hero-meta-row">
+          <span class="hero-tag" style="background:#EDF5FF; color:#0F62FE;">15 Leadership Scenarios</span>
+          <span>Aligned to: <strong>Balaajee V.R. Executive Resume</strong></span>
+          <span>•</span>
+          <span>100% Verbatim Defense Ready</span>
+        </div>
+      </section>
+
+      <!-- Interactive Filter & Search Bar -->
+      <div class="interview-filter-bar">
+        <div class="round-filter-pills">
+          <button type="button" class="btn-round-filter active" onclick="filterInterviewRound('all', this)">All 5 Rounds (15)</button>
+          <button type="button" class="btn-round-filter" onclick="filterInterviewRound('round-1', this)">Round 1: Screening &amp; Fit</button>
+          <button type="button" class="btn-round-filter" onclick="filterInterviewRound('round-2', this)">Round 2: Portfolio &amp; Systems</button>
+          <button type="button" class="btn-round-filter" onclick="filterInterviewRound('round-3', this)">Round 3: People &amp; Ops</button>
+          <button type="button" class="btn-round-filter" onclick="filterInterviewRound('round-4', this)">Round 4: VP Alignment</button>
+          <button type="button" class="btn-round-filter" onclick="filterInterviewRound('round-5', this)">Round 5: Bar Raiser</button>
+        </div>
+
+        <input type="text" class="interview-search-input" placeholder="Search questions, tools, metrics..." oninput="searchInterviewQuestions(this.value)">
+      </div>
+
+      <!-- ========================================== -->
+      <!-- ROUND 1: RECRUITER & TALENT SCREEN         -->
+      <!-- ========================================== -->
+      <div class="round-card-group" data-round="round-1" id="round-1">
+        <div class="round-header-box round-1">
+          <span class="card-badge blue" style="margin-bottom:6px;">Executive Round 1</span>
+          <h3 style="font-size:20px; font-weight:800; color:var(--text-title); margin:4px 0 6px;">Round 1: Executive Talent &amp; Recruiter Screen (Leadership Narrative, Scale &amp; Fit)</h3>
+          <p style="font-size:13px; color:var(--text-secondary); margin:0; line-height:1.6;">
+            <strong>Primary Interviewer:</strong> Head of Executive Recruiting / Senior Talent Partner / VP of People.<br>
+            <strong>Core Focus:</strong> Executive presence, 18-year career narrative, transition from individual contributor to design leader, organizational scale (14–50+ designers), compensation &amp; global mobility.
+          </p>
+        </div>
+
+        <!-- Scenario 1.1 -->
+        <div class="script-card" id="q1-narrative">
+          <div class="script-header">
+            <div>
+              <span class="card-badge blue" style="margin-bottom:4px;">Round 1 • Question 1.1</span>
+              <div class="script-title">"Walk me through your career journey from software engineering at Infosys to Senior Design Manager at IBM, and how your technical foundation shapes your design leadership."</div>
+              <div class="script-context">Executive Screening Question: Interviewers want to verify whether you are a strategic enterprise design leader or an individual contributor masquerading as a manager.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Listening for intentional career progression, emotional intelligence, strategic scope, and whether the technical background is positioned as an unfair advantage for cross-functional alignment rather than a crutch.
+          </div>
+
+          <div class="script-body" id="script-r1-narrative">
+"I began my career in 2007 as a software engineer at <strong>Infosys</strong>, building mission-critical financial and telecom portals for Fortune 500 enterprises. That front-end engineering foundation gave me an intimate, non-negotiable understanding of software architecture, API latency, component modularity, and technical feasibility.
+<br><br>
+However, I realized early that the costliest bugs in enterprise software aren't syntax errors—they are <em>cognitive errors</em>: software that is technically flawless but cognitively overwhelming. That realization drove my transition into full-time product design and systems architecture.
+<br><br>
+Over the last 18 years, I've scaled design leadership across global tier-1 enterprises:
+1. At <strong>Ericsson</strong>, I led product design for global telecom CPQ deal engines, eliminating multi-million-dollar bidding errors and slashing quote turnaround from 6 days to 42 minutes.
+2. At <strong>ZF Wabco</strong>, I led safety-critical cockpit clusters under NHTSA and ISO 26262 functional safety, crushing driver glance durations to 0.94 seconds across 80,000 commercial vehicles.
+3. At <strong>Zebra Technologies</strong>, I directed UX for enterprise fleet telematics and rugged frontline mobile computing across 38,000 active devices, increasing device staging throughput by 3.2×.
+4. Most recently, as Senior UI/UX Design Manager at <strong>IBM India Software Labs</strong>, I orchestrated a team re-org uniting 14 product designers into a centralized UX-as-a-Service model, while spearheading the integration of IBM Watson into Systems Engineering and Cybersecurity with zero compliance violations across 140,000+ live tasks.
+<br><br>
+What makes my leadership unique is that I speak the native language of Engineering VPs, Product Directors, and C-level stakeholders. I don't treat design as superficial aesthetic styling; I treat design as <strong>enterprise risk mitigation, cognitive ergonomics, and quantified revenue velocity</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Key Metrics: 18+ Years • 5 Tier-1 Brands • 14 Direct / 50+ Mentored • Engineering Bridge</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r1-narrative')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+
+          <div class="pitfall-callout">
+            <strong>Pitfall to Avoid:</strong> Do not deliver a laundry list of job titles and dates. Recruiter resumes already list dates; what they want is the <em>narrative through-line</em>: from code to systems, from systems to human cognition, and from human cognition to enterprise business ROI.
+          </div>
+        </div>
+
+        <!-- Scenario 1.2 -->
+        <div class="script-card" id="q1-why-looking">
+          <div class="script-header">
+            <div>
+              <span class="card-badge blue" style="margin-bottom:4px;">Round 1 • Question 1.2</span>
+              <div class="script-title">"Why are you looking to leave IBM Software Labs now, and what size and type of organization are you targeting for your next chapter?"</div>
+              <div class="script-context">Motivations &amp; Stability Check: Interviewers are screening for stability, culture alignment, and whether your departure is amicable and strategic.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking for professional maturity, lack of bitterness, clear articulation of accomplished milestones, and whether you are running *towards* an ambitious challenge rather than running *away* from friction.
+          </div>
+
+          <div class="script-body" id="script-r1-why-looking">
+"My tenure at <strong>IBM India Software Labs</strong> was extraordinarily productive. I was brought in with a clear executive charter: re-organize 14 designers who were isolated in disparate product squads into an integrated, centralized UX-as-a-Service model, establish AI governance for Watson integrations, and stabilize team retention.
+<br><br>
+Over 16 months, we achieved every major milestone:
+1. We successfully transitioned the team into a federated capacity-sharing model with <strong>100% team retention</strong> and zero attrition.
+2. I directly mentored and coached five senior designers through promotions into managerial and lead positions.
+3. We architected and deployed our Human-in-the-Loop AI governance frameworks across Rhapsody Systems Engineering and MaaS360 Endpoint Security, supporting over 140,000 tasks with zero compliance or regulatory violations.
+<br><br>
+With the organization operating in a self-sustaining cadence, I am ready for my next high-impact leadership chapter. I am targeting organizations where <strong>design leadership is viewed as a strategic growth driver</strong>—specifically in complex enterprise software, generative AI platforms, industrial IoT, or high-scale SaaS—where I can build, mentor, and steer multi-disciplinary teams through hyper-growth or digital transformation."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Proof Points: 100% Retention • 5 Managers Promoted • Governance Deployed Self-Sustaining</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r1-why-looking')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+
+          <div class="pitfall-callout">
+            <strong>Pitfall to Avoid:</strong> Never speak negatively about past leadership, corporate politics, or reorganization friction. Frame your departure as the natural completion of a mission-driven turnaround.
+          </div>
+        </div>
+
+        <!-- Scenario 1.3 -->
+        <div class="script-card" id="q1-mobility">
+          <div class="script-header">
+            <div>
+              <span class="card-badge blue" style="margin-bottom:4px;">Round 1 • Question 1.3</span>
+              <div class="script-title">"What is your current location, notice period, and openness to international relocation or managing distributed global teams?"</div>
+              <div class="script-context">Logistics &amp; Executive Availability: Recruiters need unambiguous clarity on hiring lead time and visa/work authorization.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Ensuring no bureaucratic or immigration roadblocks exist and that candidate has concrete experience running cross-geography operations across multiple timezones.
+          </div>
+
+          <div class="script-body" id="script-r1-mobility">
+"I am currently based between Bengaluru and Chennai, India, and I have <strong>immediate availability</strong> with no contractual non-compete barriers.
+<br><br>
+From an authorization standpoint, I hold technical degree credentials that make me <strong>EU Blue Card eligible</strong> with an accelerated processing timeline, and I have extensive experience collaborating directly with executive stakeholders in the United States, Germany, Sweden, and across APAC.
+<br><br>
+I am fully open to global relocation—including the United States, European Union, United Kingdom, Middle East, and Singapore—as well as executive hybrid models where I establish regional design centers while maintaining regular on-site cadence with headquarters. Throughout my 18-year career across Ericsson, Zebra, and IBM, virtually all of my design squads and engineering partners were distributed across multiple continents, so asynchronous operational excellence is in my DNA."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Status: Immediate Availability • EU Blue Card Eligible • Open to Relocation</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r1-mobility')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========================================== -->
+      <!-- ROUND 2: PORTFOLIO & SYSTEMS DEEP-DIVE     -->
+      <!-- ========================================== -->
+      <div class="round-card-group" data-round="round-2" id="round-2">
+        <div class="round-header-box round-2">
+          <span class="card-badge purple" style="margin-bottom:6px;">Executive Round 2</span>
+          <h3 style="font-size:20px; font-weight:800; color:var(--text-title); margin:4px 0 6px;">Round 2: Portfolio Deep-Dive &amp; Systems Architecture (Design Presentation Round)</h3>
+          <p style="font-size:13px; color:var(--text-secondary); margin:0; line-height:1.6;">
+            <strong>Primary Interviewer:</strong> Senior Director of Product Design / VP of Design / Principal Systems Architect.<br>
+            <strong>Core Focus:</strong> Deep-dive into 1–2 flagship projects end-to-end. Problem framing, technical trade-offs, human-in-the-loop governance, design token pipelines, and quantified business impact.
+          </p>
+        </div>
+
+        <!-- Scenario 2.1: IBM Watson -->
+        <div class="script-card" id="q2-watson">
+          <div class="script-header">
+            <div>
+              <span class="card-badge ibm" style="margin-bottom:4px;">Round 2 • Project 1 • IBM Software Labs (Watson / watsonx)</span>
+              <div class="script-title">"Walk us through your design process for integrating autonomous AI agents into enterprise workflows. How did you get skeptical systems engineers to trust IBM Watson?"</div>
+              <div class="script-context">Flagship AI Defense: Interviewers want to see how you handle model uncertainty, false positives, and user trust calibration in mission-critical software.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Does the candidate understand Google PAIR trust calibration, Microsoft HAX error taxonomy, and IBM Carbon dual-surface patterns? Can they balance automation speed with user control?
+          </div>
+
+          <div class="script-body" id="script-r2-watson">
+"When IBM introduced Watson into Rhapsody Systems Engineering and MaaS360 endpoint security, our biggest blocker was not model accuracy—it was <strong>uncalibrated automation bias and fear of catastrophic blast radius</strong>. Systems engineers designing avionics or automotive architectures refused to use an AI that modified models silently.
+<br><br>
+As Senior UI/UX Design Manager, I architected our <strong>3-Tier Human-in-the-Loop Governance Framework</strong>:
+1. <strong>Strict Blast-Radius Categorization:</strong> We classified all AI agent actions into Level 0 (Read-Only queries), Level 1 (Low-risk draft suggestions), and Level 2 (High-impact changes like architecture refactoring or endpoint policy deployments).
+2. <strong>Mandatory Side-by-Side Diff Previews:</strong> For any Level 2 action, Watson was architecturally prohibited from writing to the model directly. Instead, we designed a dual-surface split canvas where the AI presented a color-coded structural diff—showing precisely what nodes would change, why the model proposed it, and what historical systems models informed the inference.
+3. <strong>One-Click Selective Reversion:</strong> Users could accept three suggestions, reject two, and fine-tune one inline without breaking conversational flow.
+<br><br>
+By shifting from black-box automation to verifiable co-piloting, <strong>AI moved from banned to adopted: model drafting time plummeted from 14.2 hours to 3.6 hours, security threat triage dropped from 4.1 hours to 43 minutes, and we achieved zero compliance breaches across 140,000+ live enterprise tasks</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 14.2h → 3.6h drafting • 0 compliance violations across 140k tasks • Carbon Dual-Surface</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r2-watson')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 2.2: Zebra Technologies -->
+        <div class="script-card" id="q2-zebra">
+          <div class="script-header">
+            <div>
+              <span class="card-badge green" style="margin-bottom:4px;">Round 2 • Project 2 • Zebra Technologies (VisibilityIQ Fleet IoT)</span>
+              <div class="script-title">"How does your UX strategy adapt when designing for frontline warehouse workers wearing heavy gloves in harsh industrial facilities versus desk workers?"</div>
+              <div class="script-context">Physical Ergonomics &amp; IoT Defense: Demonstrating design for extreme non-desktop realities, gloved interactions, and industrial telemetry.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking for contextual inquiry rigor, physical constraints mastery, and whether the candidate can translate complex raw hardware telemetry into actionable predictive UX.
+          </div>
+
+          <div class="script-body" id="script-r2-zebra">
+"Designing for frontline industrial logistics requires throwing away desktop UX assumptions. A warehouse worker wearing heavy thermal gloves in sub-zero freezer facilities cannot pinch-to-zoom or hit a 32-pixel touch target. Meanwhile, enterprise IT managers running 38,000 handhelds were blind to why scanners failed, losing millions in battery dropouts and shift downtime.
+<br><br>
+I led the product design for VisibilityIQ and the frontline mobile diagnostics suite with a dual-ergonomic strategy:
+1. <strong>Frontline Industrial Ergonomics:</strong> We established a minimum 64-pixel touch target grid, high-contrast monochrome modes for glare-heavy dock environments, and replaced manual menu navigation with hardware-triggered barcode scans. Workers could diagnose a failing Wi-Fi radio or Bluetooth ring scanner in 2 button presses without taking off gloves.
+2. <strong>Predictive Health Telemetry (HAX G2 &amp; G4):</strong> On the IT fleet dashboard, we moved from reactive failure logging to predictive battery impedance modeling. Instead of showing confusing raw voltage charts, we translated telemetry into action cards: <em>'42 devices in Atlanta DC will drop charge before shift end—swap recommended at 14:00'</em>.
+3. <strong>Staging Automation:</strong> We reduced new device provisioning from a 15-minute manual IT chore into a single multi-device barcode scan.
+<br><br>
+The outcome: <strong>Bluetooth peripheral pairing failures dropped by 84%, device staging throughput increased 3.2×, and Tier-1 IT support tickets fell by 33% across 38,000+ active enterprise handhelds</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 84% fewer pairing failures • 3.2× staging throughput • 33% ticket reduction across 38k devices</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r2-zebra')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 2.3: Ericsson -->
+        <div class="script-card" id="q2-ericsson">
+          <div class="script-header">
+            <div>
+              <span class="card-badge blue" style="margin-bottom:4px;">Round 2 • Project 3 • Ericsson (5G Telecom CPQ Deal Engine)</span>
+              <div class="script-title">"Enterprise sales engineers are married to Excel. You replaced a 14-tab mission-critical pricing workbook with a web tool. How did you overcome user resistance and eliminate pricing errors?"</div>
+              <div class="script-context">High-Density FinTech &amp; CPQ Defense: Demonstrating keyboard-first ergonomics, zero-error calculation integrity, and organic adoption without executive mandates.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking how the candidate handles power-user change management, data density, keyboard velocity, and proving adoption without top-down coercion.
+          </div>
+
+          <div class="script-body" id="script-r2-ericsson">
+"Sales engineers at Ericsson weren't using Excel because they loved spreadsheets; they used it because <strong>traditional enterprise web applications are sluggish, require endless clicks, and strip away power-user keyboard velocity</strong>. They were quoting $50M telecom carrier bids in a fragile 14-tab sheet with broken circular macros because no tool respected their speed.
+<br><br>
+I led the UX transformation by treating speed and keyboard ergonomics as non-negotiable architectural constraints:
+1. <strong>Keyboard-First Data Density:</strong> We eliminated multi-step wizards entirely. I designed a high-density, single-screen deal engine with full keyboard navigation (arrow keys, rapid tab indexing, and inline arithmetic syntax like '+5%' or '*1.2').
+2. <strong>Real-Time Margin Telemetry &amp; Heuristic Guardrails:</strong> Instead of waiting for a batch server calculation, we engineered client-side deterministic validation. If an engineer configured a hardware bundle that breached carrier margin thresholds or violated 5G spectrum compatibility, the system flagged the variance inline with instant counterfactual remediation: <em>'Swapping to Chassis B restores 14% margin'</em>.
+3. <strong>Zero-Mandate Adoption Strategy:</strong> We didn't force a top-down mandate. We rolled the tool out side-by-side with Excel to 10 senior deal champions.
+<br><br>
+The result: <strong>Quote turnaround dropped from 6 days to 42 minutes, pricing calculation errors went to absolute zero, and we achieved 94% organic adoption across global sales engineering within 30 days without an executive mandate</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 6 days → 42 min turnaround • 0 calculation errors • 94% organic adoption</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r2-ericsson')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========================================== -->
+      <!-- ROUND 3: PEOPLE LEADERSHIP & DESIGNOPS     -->
+      <!-- ========================================== -->
+      <div class="round-card-group" data-round="round-3" id="round-3">
+        <div class="round-header-box round-3">
+          <span class="card-badge green" style="margin-bottom:6px;">Executive Round 3</span>
+          <h3 style="font-size:20px; font-weight:800; color:var(--text-title); margin:4px 0 6px;">Round 3: People Leadership, DesignOps &amp; Team Culture</h3>
+          <p style="font-size:13px; color:var(--text-secondary); margin:0; line-height:1.6;">
+            <strong>Primary Interviewer:</strong> VP of Design / Head of Design / Director of Design Operations.<br>
+            <strong>Core Focus:</strong> Team topology (UXaaS vs embedded pods), 100% retention mechanics, career progression rubrics, design token pipelines, and design critiques.
+          </p>
+        </div>
+
+        <!-- Scenario 3.1 -->
+        <div class="script-card" id="q3-topology">
+          <div class="script-header">
+            <div>
+              <span class="card-badge green" style="margin-bottom:4px;">Round 3 • Question 3.1</span>
+              <div class="script-title">"How do you structure a design team across multiple product lines? Do you prefer fully embedded squads or a centralized agency model?"</div>
+              <div class="script-context">Organizational Design &amp; Topology: Evaluating how you balance deep product domain immersion with design team cohesion and capacity sharing.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking if candidate understands the trade-offs of Team Topologies: embedded squads breed siloing and inconsistency; pure centralized agencies lack product depth. Looking for the nuanced hybrid matrix model.
+          </div>
+
+          <div class="script-body" id="script-r3-topology">
+"Neither extreme works at enterprise scale: pure embedded models lead to severe design fragmentation and designer isolation, while pure agency models lack the deep domain context needed for complex engineering tools.
+<br><br>
+At <strong>IBM India Software Labs</strong>, I orchestrated a transition from 14 isolated, embedded designers into a <strong>Federated Hybrid Matrix (UX-as-a-Service)</strong>:
+1. <strong>Domain Anchor Pods:</strong> Each designer maintained a primary product home (e.g. Rhapsody SE or MaaS360) attending sprint rituals to preserve domain depth.
+2. <strong>Centralized Capacity Reserve (20% Elasticity):</strong> We pooled 20% of every designer's sprint capacity into a centralized UXaaS backlog. When one squad entered a major release crunch, designers from another squad were dynamically flexed to absorb user research, component auditing, or edge-case flows without requiring emergency contractor hiring.
+3. <strong>Weekly Design Critiques &amp; Guild Rituals:</strong> We instituted mandatory weekly cross-squad critiques where designers presented work in progress. This surfaced component duplication early and ensured consistent design token usage across products.
+<br><br>
+This hybrid model completely eliminated squad delivery bottlenecks, drove visual consistency across 14 enterprise suites, and protected designers from burnout."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Topology: Federated Matrix • 20% Elastic Capacity Pool • Zero Squad Bottlenecks</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r3-topology')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 3.2 -->
+        <div class="script-card" id="q3-retention">
+          <div class="script-header">
+            <div>
+              <span class="card-badge green" style="margin-bottom:4px;">Round 3 • Question 3.2</span>
+              <div class="script-title">"Designers frequently leave due to burnout or lack of career progression. How did you maintain 100% team retention over 16 months at IBM, and how do you coach seniors into managers?"</div>
+              <div class="script-context">People Management &amp; Retention: Checking your mentorship mechanics, psychological safety, and executive sponsorship.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Listening for concrete retention tactics, authentic mentorship stories, and a structured leadership rubric (not just 'I have 1-on-1s every week').
+          </div>
+
+          <div class="script-body" id="script-r3-retention">
+"High retention is not an accident; it is the natural byproduct of three leadership commitments: <strong>psychological safety, strategic shielding, and visible career pathways</strong>.
+<br><br>
+At IBM, I achieved <strong>100% team retention over 16 months</strong> through a structured leadership framework:
+1. <strong>The 4-Quadrant Growth Rubric:</strong> I moved my team away from vague reviews to four explicit evaluation pillars: <em>Craft Mastery, Systems Architecture, Business Literacy, and Executive Presence</em>. Every designer knew exactly what skills were required to progress from Senior to Staff, and Staff to Design Manager.
+2. <strong>Executive Shielding:</strong> I absorbed the political and administrative turbulence from executive reorganizations, protecting my team's focus and creative energy so they could execute without anxiety.
+3. <strong>Active Executive Sponsorship:</strong> I didn't just mentor; I sponsored. When presenting our AI governance strategy to IBM VP leadership, I had my senior designers co-present their individual modules, giving them high-visibility executive exposure.
+<br><br>
+Through this deliberate pathway, I directly coached and promoted <strong>five senior designers into management and lead roles</strong>, and built an enduring culture of pride and craftsmanship."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Proof: 100% Retention (16 Mos) • 5 Managers Promoted • 50+ Mentored Across Career</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r3-retention')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 3.3 -->
+        <div class="script-card" id="q3-tokens">
+          <div class="script-header">
+            <div>
+              <span class="card-badge green" style="margin-bottom:4px;">Round 3 • Question 3.3</span>
+              <div class="script-title">"Design systems often become bottlenecks where squads bypass the core team. How did you govern IBM Carbon design tokens across 14 autonomous squads?"</div>
+              <div class="script-context">DesignOps &amp; Design Systems Governance: Proving you can scale design operations without creating bureaucratic paralysis.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking if the candidate knows how modern token pipelines work (Figma tokens, Style Dictionary, CI/CD linting) and how to run federated governance without authoritarian gatekeeping.
+          </div>
+
+          <div class="script-body" id="script-r3-tokens">
+"A design system cannot scale through executive mandates or authoritarian review gates. When product squads hardcode hex values and duplicate components, it's because the central design system is too slow to incorporate their edge-case needs.
+<br><br>
+As Design Systems Leader, I established a modern <strong>Federated DesignOps Architecture</strong> on IBM Carbon:
+1. <strong>3-Tier Multi-Brand Token Pipeline:</strong> We decoupled design tokens into Global Core (raw colors, spacing scales), Semantic tokens (intent-based, e.g. `border-subtle`, `surface-critical`), and Component tokens. When dark mode or high-contrast accessibility themes were introduced, changes compiled automatically through Style Dictionary into React, Web Components, and iOS/Android without manual engineering translation.
+2. <strong>The Federated Contribution Council:</strong> Instead of a centralized 'design police', I formed a bi-weekly Contribution Council with rotating leads from security, data science, and cloud products. If a squad needed a specialized AI thought-trace or telemetry table, they co-authored it under our Carbon RFC process. Once approved, it shipped to all 14 squads automatically.
+3. <strong>Automated Linting in CI/CD:</strong> We integrated Figma-to-code token linters directly into GitHub PR workflows, catching visual drift and contrast violations before code reached staging.
+<br><br>
+The result: <strong>Design-to-code handoff cycles plummeted from 4 weeks to 24 hours, visual QA regressions fell by 70%, front-end velocity accelerated by 28%, and all 14 squads maintained 100% synchronized dark/light theme parity</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: Handoff 4 weeks → 1 day • 70% fewer QA bugs • 28% velocity increase</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r3-tokens')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========================================== -->
+      <!-- ROUND 4: VP & CROSS-FUNCTIONAL INFLUENCE   -->
+      <!-- ========================================== -->
+      <div class="round-card-group" data-round="round-4" id="round-4">
+        <div class="round-header-box round-4">
+          <span class="card-badge amber" style="margin-bottom:6px;">Executive Round 4</span>
+          <h3 style="font-size:20px; font-weight:800; color:var(--text-title); margin:4px 0 6px;">Round 4: Cross-Functional Alignment &amp; Executive Stakeholder Influence</h3>
+          <p style="font-size:13px; color:var(--text-secondary); margin:0; line-height:1.6;">
+            <strong>Primary Interviewer:</strong> VP of Product / VP of Engineering / General Manager.<br>
+            <strong>Core Focus:</strong> Executive diplomacy, pushing back on engineering deadlines, resolving fundamental PM disagreements on AI automation, and defending safety/accessibility standards.
+          </p>
+        </div>
+
+        <!-- Scenario 4.1 -->
+        <div class="script-card" id="q4-deadlines">
+          <div class="script-header">
+            <div>
+              <span class="card-badge amber" style="margin-bottom:4px;">Round 4 • Question 4.1</span>
+              <div class="script-title">"When the VP of Engineering tells you that a hard release deadline requires cutting UX research, accessibility, and edge-case design, how do you handle it?"</div>
+              <div class="script-context">Executive Conflict &amp; Trade-off Defense: Proving you can defend design integrity without being perceived as unrealistic or blocking delivery.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Does candidate whine about design purity, or do they reframe UX as risk mitigation, use the 1:10:100 rule of software rework, and offer constructive phased trade-offs?
+          </div>
+
+          <div class="script-body" id="script-r4-deadlines">
+"I never fight engineering deadlines with subjective aesthetic arguments. The moment a design leader says 'we need this because it looks cleaner,' you have lost the room.
+<br><br>
+When engineering leadership pushes to cut UX scope to hit a deadline, I reframe design as <strong>risk mitigation and operational economics</strong>:
+1. <strong>The 1:10:100 Rule of Software Rework:</strong> I remind stakeholders of empirical engineering data: fixing an architectural UX flaw in Figma costs $1; fixing it in sprint code costs $10; fixing it post-launch via emergency hotfixes, customer churn, and escalated support tickets costs $100.
+2. <strong>Quantitative Cost-of-Failure Modeling:</strong> At Zebra Technologies, when engineering wanted to bypass gloved-touch edge-case testing to hit a release date, I quantified the blast radius: <em>'If scanner pairing fails 15% of the time, that causes $1.2M in warehouse shift delays and hundreds of Tier-1 support tickets in month one.'</em>
+3. <strong>The Phased Pragmatic Compromise:</strong> I establish a non-negotiable floor: core ergonomics, error states, and WCAG accessibility cannot be cut. However, I offer staged releases: Phase 1 ships with essential guardrails; Phase 2 (secondary polish, custom animations) is explicitly ticketed in Jira for the following sprint.
+<br><br>
+By treating engineering constraints with respect while protecting business risk, I turn potential adversaries into cross-functional allies."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Approach: 1:10:100 Economic Framing • Phased MVP Guardrails • Zero Friction</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r4-deadlines')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 4.2 -->
+        <div class="script-card" id="q4-pm-conflict">
+          <div class="script-header">
+            <div>
+              <span class="card-badge amber" style="margin-bottom:4px;">Round 4 • Question 4.2</span>
+              <div class="script-title">"Tell me about a time you strongly disagreed with a Product Manager on feature behavior or AI automation levels. How did you resolve the conflict?"</div>
+              <div class="script-context">AI Automation &amp; PM Conflict: Handling aggressive feature scope where Product wants full autonomous AI action without human oversight.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking if the candidate can resolve fundamental product strategy conflicts using frameworks (PAIR, HAX) and data rather than ego.
+          </div>
+
+          <div class="script-body" id="script-r4-pm-conflict">
+"In IBM MaaS360 Endpoint Security, we faced a major conflict with Product Management: Product wanted Watson to automatically quarantine and wipe employee laptops whenever anomalous behavior was detected, marketing it as '100% Zero-Touch Autonomous Remediation'.
+<br><br>
+As Design Manager, I strongly objected based on <strong>asymmetric error cost (Microsoft HAX G8 &amp; G9)</strong>:
+1. <strong>Modeling False-Positive Blast Radius:</strong> If an autonomous agent triggers a false positive on a CFO or DevOps engineer during quarter-end earnings, the blast radius is catastrophic. The model's 96% accuracy rate meant that 4 out of 100 quarantines would falsely lock out legitimate executives.
+2. <strong>Grounding in Google PAIR Decision Framework:</strong> I mapped the workflow into the PAIR Decision Matrix: high-stakes, irreversible tasks require explicit Human-in-the-Loop confirmation.
+3. <strong>The 1-Click Actionable Compromise:</strong> Instead of full automation or tedious manual ticket filing, we designed an actionable triage card: Watson pre-drafted the quarantine rationale, highlighted telemetry anomalies, and presented a single 'Execute Quarantine' confirmation button with a 30-minute auto-rollback failsafe.
+<br><br>
+This satisfied Product's desire for velocity—reducing threat triage from <strong>4.1 hours to 43 minutes</strong>—while protecting the enterprise from catastrophic false positives, yielding <strong>zero compliance violations across 140,000+ live tasks</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: PAIR Trust Matrix • 4.1h → 43m Triage • Zero False-Positive Disasters</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r4-pm-conflict')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 4.3 -->
+        <div class="script-card" id="q4-safety">
+          <div class="script-header">
+            <div>
+              <span class="card-badge amber" style="margin-bottom:4px;">Round 4 • Question 4.3</span>
+              <div class="script-title">"In automotive and safety-critical domains, product often pushes for flashy visual infotainment. How did you defend strict 0.94s glance safety budgets at ZF Wabco?"</div>
+              <div class="script-context">Regulatory &amp; Safety Governance: Defending life-critical constraints under NHTSA and ISO 26262 functional safety.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking if the candidate has the fortitude to stand up for human life, regulatory standards, and cognitive ergonomics when commercial pressures push for flashy gimmicks.
+          </div>
+
+          <div class="script-body" id="script-r4-safety">
+"In safety-critical design, user failure is not a drop in conversion—it is a highway fatality. Designing commercial truck digital clusters under NHTSA and ISO 26262 functional safety standards requires ruthless cognitive discipline.
+<br><br>
+When commercial stakeholders wanted to add detailed weather radars and multi-layered route telemetry to the main instrument cluster, I held the line on our <strong>0.94-second glance budget</strong>:
+1. <strong>Physical Reality Physics:</strong> A 40-ton commercial truck traveling at 65 mph covers 95 feet every single second. If a driver diverts their gaze for 1.5 seconds, that vehicle travels over 140 feet completely blind.
+2. <strong>Empirical Eye-Tracking Evidence:</strong> In driver simulator tests, I proved that the proposed visual clutter caused driver gaze durations to spike to 2.8 seconds—grossly violating the 1.2-second regulatory ceiling.
+3. <strong>The 3-Tier Alarm Hierarchy:</strong> I restructured the information architecture into three tiers: Tier 1 (Critical Safety—stops the vehicle), Tier 2 (Advisory Warnings—ambient peripheral LED illumination), and Tier 3 (Informational Telemetry—strictly locked out while the vehicle is in motion).
+<br><br>
+The empirical impact: <strong>Driver glance duration plummeted from 2.8 seconds to 0.94 seconds, critical route errors dropped 18%, and we achieved full regulatory certification across 80,000+ commercial vehicles</strong>."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Impact: 2.8s → 0.94s Glance Time • ISO 26262 Compliant • 18% Fewer Route Errors</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r4-safety')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========================================== -->
+      <!-- ROUND 5: EXECUTIVE STRATEGY & BAR RAISER   -->
+      <!-- ========================================== -->
+      <div class="round-card-group" data-round="round-5" id="round-5">
+        <div class="round-header-box round-5">
+          <span class="card-badge" style="background:#FFF1F1; color:#FA4D56; margin-bottom:6px;">Executive Round 5</span>
+          <h3 style="font-size:20px; font-weight:800; color:var(--text-title); margin:4px 0 6px;">Round 5: Executive Strategy, Whiteboard &amp; Bar Raiser</h3>
+          <p style="font-size:13px; color:var(--text-secondary); margin:0; line-height:1.6;">
+            <strong>Primary Interviewer:</strong> Chief Product Officer (CPO) / Chief Executive Officer (CEO) / External Bar Raiser.<br>
+            <strong>Core Focus:</strong> 30-60-90 day leadership roadmap, AI vs deterministic decision frameworks, and the 5-year macro evolution of design leadership.
+          </p>
+        </div>
+
+        <!-- Scenario 5.1 -->
+        <div class="script-card" id="q5-90day">
+          <div class="script-header">
+            <div>
+              <span class="card-badge" style="background:#FFF1F1; color:#FA4D56; margin-bottom:4px;">Round 5 • Question 5.1</span>
+              <div class="script-title">"If you join us as Design Director, what is your exact 30-60-90 day strategic leadership playbook?"</div>
+              <div class="script-context">Executive Onboarding &amp; Strategy: Checking if the candidate has an intentional, structured methodology for entering a complex organization and driving impact.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Weak candidates promise to redesign everything on Day 1. Strong executive leaders spend the first 30 days listening and diagnosing before prescribing systems changes.
+          </div>
+
+          <div class="script-body" id="script-r5-90day">
+"My 90-day playbook is structured around three disciplined phases: <strong>Listen, Standardize, and Accelerate</strong>.
+<br><br>
+<strong>Days 1–30: Listen, Audit &amp; Build Relationships</strong>
+• Conduct 360° listening tours with all designers, Product Directors, Engineering VPs, and Customer Success leads to identify organizational friction and hidden bottlenecks.
+• Audit the design system and token pipeline: measure design-to-code velocity, design debt volume, and cross-platform inconsistencies.
+• Establish 1-on-1 trust with my design team, mapping individual career aspirations against the 4-Quadrant Leadership Rubric.
+<br><br>
+<strong>Days 31–60: Standardize DesignOps &amp; Ship a High-Visibility Win</strong>
+• Establish our Federated Contribution Council and implement dual-track agile rhythms so designers work two sprints ahead of engineering.
+• Codify our Definition of Ready (DoR) for UX, ensuring no story enters sprint planning without complete error states and accessibility specs.
+• Partner with product leadership to ship one high-visibility, measurable design win (e.g. accelerating a critical customer onboarding funnel or resolving high-friction workflow drops).
+<br><br>
+<strong>Days 61–90: Scale, Measure &amp; Future-Proof</strong>
+• Deploy the Executive Design Scorecard, reporting monthly UX metrics (Task Completion Rate, SUS, support ticket deflection) directly to C-suite leadership.
+• Embed AI-UX guidelines (Google PAIR &amp; Microsoft HAX) into the design team's daily prototyping workflow.
+• Build an proactive talent pipeline to scale hiring ahead of business roadmaps."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Phases: Days 1-30 (Listen) • Days 31-60 (Standardize & Quick Win) • Days 61-90 (Scale)</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r5-90day')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 5.2 -->
+        <div class="script-card" id="q5-ai-framework">
+          <div class="script-header">
+            <div>
+              <span class="card-badge" style="background:#FFF1F1; color:#FA4D56; margin-bottom:4px;">Round 5 • Question 5.2</span>
+              <div class="script-title">"Every company is rushing to slap generative AI onto their products. How do you evaluate whether a user problem should be solved with an AI Agent or traditional deterministic software?"</div>
+              <div class="script-context">AI Strategic Governance: Testing whether the candidate has the critical judgment to resist AI hype and choose the right technical paradigm for the user.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Checking if candidate understands the computational cost, latency penalty, and probabilistic risk of AI. Can they apply the Google PAIR Decision Matrix?
+          </div>
+
+          <div class="script-body" id="script-r5-ai-framework">
+"In the executive boardroom, the most dangerous word right now is 'AI-first'. AI is not a product strategy; it is a probabilistic computational capability.
+<br><br>
+When evaluating any proposed AI initiative, I apply our <strong>4-Pillar PAIR Decision Matrix</strong>:
+1. <strong>Predictability vs Capability:</strong> If the user requires absolute mathematical determinism (e.g. calculating 5G CPQ telecom margins or payroll tax withholding), AI is the wrong solution—deterministic algorithms are faster, cheaper, and 100% accurate. If the problem involves synthesis across unstructured data (e.g. triaging 10,000 security logs), AI excels.
+2. <strong>Asymmetric Error Cost:</strong> What happens when the model hallucinates? If the cost of a false positive is fatal (e.g. commercial vehicle braking or hospital drug dosage), the system requires strict human veto gates. If the cost is trivial (e.g. music recommendations), high automation is justified.
+3. <strong>Latency Budgets:</strong> Can the user tolerate 2,000ms LLM inference latency, or do they require sub-50ms keystroke feedback?
+4. <strong>User Mental Model:</strong> Does the user expect a tool (direct manipulation) or a collaborator (delegated agency)?
+<br><br>
+By subjecting feature proposals to this matrix, I prevent companies from wasting millions building brittle AI chatbots where crisp deterministic forms would serve users 10× better."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Framework: PAIR Decision Matrix • Determinism vs Synthesis • Latency Budgets</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r5-ai-framework')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+
+        <!-- Scenario 5.3 -->
+        <div class="script-card" id="q5-future">
+          <div class="script-header">
+            <div>
+              <span class="card-badge" style="background:#FFF1F1; color:#FA4D56; margin-bottom:4px;">Round 5 • Question 5.3</span>
+              <div class="script-title">"Where do you see enterprise product design heading in the next 5 years, and how must design leaders evolve to stay indispensable?"</div>
+              <div class="script-context">Vision &amp; Thought Leadership: Testing executive foresight, macro industry trends, and the future of human-AI collaboration.</div>
+            </div>
+          </div>
+
+          <div class="rubric-callout">
+            <strong>Interviewer's Secret Evaluation Rubric:</strong>
+            Does candidate have an inspiring, well-reasoned vision for how design systems, generative surfaces, and design leadership evolve over the next half-decade?
+          </div>
+
+          <div class="script-body" id="script-r5-future">
+"Over the next five years, enterprise product design will undergo its most profound architectural shift since the invention of the graphical user interface.
+<br><br>
+I see three major transformations:
+1. <strong>From Static UI Canvases to Intent-Driven Generative Surfaces:</strong> Today, designers manually draw every permutation of a dashboard in Figma. Tomorrow, software will generate contextual micro-surfaces on the fly based on user intent and real-time telemetry. Design systems will evolve from static component libraries into <strong>design token telemetry and prompt constraint engines</strong> that govern dynamic UI generation.
+2. <strong>From Direct Manipulation to Orchestration:</strong> Users will spend less time clicking buttons and more time supervising autonomous multi-agent swarms. The core design discipline will shift from interaction design to <strong>trust calibration, exception handling, and blast-radius governance</strong>.
+3. <strong>The Elevation of the Design Leader:</strong> Pixel craftsmanship is increasingly commoditized. The design leaders who thrive will be those who operate as <strong>enterprise system conductors</strong>: leaders who understand algorithmic trade-offs, regulatory statutes (like the EU AI Act), business unit economics, and how to build high-trust cultures.
+<br><br>
+My 18-year career spanning engineering roots, safety-critical telemetry, enterprise CPQ, and AI governance has prepared me precisely to lead organizations through this generational paradigm shift."
+          </div>
+
+          <div class="script-action-bar">
+            <span style="font-size:12px; color:var(--text-muted);">Vision: Intent Surfaces • Multi-Agent Orchestration • Design Leader as System Conductor</span>
+            <button class="btn-copy-script" onclick="copyScript('script-r5-future')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Script
+            </button>
+          </div>
+        </div>
+      </div>
+
+      </div>
     </main>
   </div>
 
@@ -2728,7 +3644,102 @@ Convert the attached UI interaction specification for an AI-powered financial su
       `;
     }
 
+    // --- Main Tab Navigation (Curriculum vs Interview Prep) ---
+    function switchMainTab(tabKey, targetAnchor) {
+      const viewCurriculum = document.getElementById('view-curriculum');
+      const viewInterview = document.getElementById('view-interview');
+      const tocCurriculum = document.getElementById('toc-curriculum-container');
+      const tocInterview = document.getElementById('toc-interview-container');
+      const btnCurriculum = document.getElementById('tab-btn-curriculum');
+      const btnInterview = document.getElementById('tab-btn-interview');
+
+      if (tabKey === 'interview') {
+        viewCurriculum.style.display = 'none';
+        viewInterview.style.display = 'block';
+        tocCurriculum.style.display = 'none';
+        tocInterview.style.display = 'block';
+
+        btnCurriculum.classList.remove('active');
+        btnInterview.classList.add('active');
+
+        if (targetAnchor) {
+          const el = document.getElementById(targetAnchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          history.replaceState(null, null, '#' + targetAnchor);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.replaceState(null, null, '#interview-prep');
+        }
+      } else {
+        viewCurriculum.style.display = 'block';
+        viewInterview.style.display = 'none';
+        tocCurriculum.style.display = 'block';
+        tocInterview.style.display = 'none';
+
+        btnCurriculum.classList.add('active');
+        btnInterview.classList.remove('active');
+
+        if (targetAnchor) {
+          const el = document.getElementById(targetAnchor);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+          history.replaceState(null, null, '#' + targetAnchor);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.replaceState(null, null, '#curriculum');
+        }
+      }
+    }
+
+    // --- Interview Round Filtering ---
+    function filterInterviewRound(roundKey, btn) {
+      document.querySelectorAll('.btn-round-filter').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const groups = document.querySelectorAll('.round-card-group');
+      groups.forEach(group => {
+        if (roundKey === 'all' || group.getAttribute('data-round') === roundKey) {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    }
+
+    // --- Interview Search Input ---
+    function searchInterviewQuestions(query) {
+      const q = query.trim().toLowerCase();
+      const cards = document.querySelectorAll('#view-interview .script-card');
+      
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (!q || text.includes(q)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
+      // Check initial URL hash for tab routing
+      const hash = window.location.hash.replace('#', '');
+      const interviewAnchors = ['interview-prep', 'round-1', 'round-2', 'round-3', 'round-4', 'round-5', 'q1-narrative', 'q1-why-looking', 'q1-mobility', 'q2-watson', 'q2-zebra', 'q2-ericsson', 'q3-topology', 'q3-retention', 'q3-tokens', 'q4-deadlines', 'q4-pm-conflict', 'q4-safety', 'q5-90day', 'q5-ai-framework', 'q5-future'];
+      
+      if (interviewAnchors.includes(hash) || hash.startsWith('q') || hash.startsWith('round-')) {
+        switchMainTab('interview', hash !== 'interview-prep' ? hash : null);
+      } else {
+        switchMainTab('curriculum', hash && hash !== 'curriculum' ? hash : null);
+      }
+
+      window.addEventListener('hashchange', () => {
+        const h = window.location.hash.replace('#', '');
+        if (interviewAnchors.includes(h) || h.startsWith('q') || h.startsWith('round-')) {
+          switchMainTab('interview', h !== 'interview-prep' ? h : null);
+        } else if (h === 'curriculum' || h.startsWith('pair-') || h.startsWith('hax-') || h.startsWith('carbon-') || h.startsWith('designops-') || h.startsWith('metrics-') || h.startsWith('governance-') || h.startsWith('ai-')) {
+          switchMainTab('curriculum', h !== 'curriculum' ? h : null);
+        }
+      });
+
       renderHaxCards(haxData);
       setWorkflowPhase('research', document.querySelector('#ai-workflow-interactive .btn-control'));
       setDesignOpsTab('topology', document.querySelector('#designops-interactive .btn-control'));
