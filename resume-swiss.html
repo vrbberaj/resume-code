@@ -260,15 +260,16 @@
 
     .executive-kicker {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 4px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
+      gap: 4px 8px;
     }
 
     h1.swiss-name {
@@ -422,8 +423,8 @@
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 4px;
-      flex-wrap: wrap;
-      gap: 6px;
+      flex-wrap: nowrap;
+      gap: 8px;
     }
 
     .exp-role {
@@ -447,6 +448,8 @@
       background: var(--swiss-surface-subtle);
       padding: 2px 8px;
       border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* Neutral Slate Scope Tags (No Blue Overload) */
@@ -521,7 +524,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 6px;
     }
 
@@ -575,6 +578,7 @@
       height: 12px;
       background: var(--text-black);
       border-radius: 1px;
+      flex-shrink: 0;
     }
 
     /* Portfolio Showcase Card (With 60s Briefing Thumbnail) */
@@ -667,10 +671,31 @@
       color: var(--text-black);
     }
 
-    /* Print Styles */
+    /* Responsive (Screen Only — Never Trigger During Print / Save as PDF) */
+    @media screen and (max-width: 860px) {
+      .resume-inner { padding: 24px; }
+      .swiss-masthead { grid-template-columns: 1fr; gap: 16px; }
+      .profile-photo-frame.mode-cutout { margin-bottom: 0; }
+      .metrics-ticker-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .metric-box { border-right: none; padding: 6px 0; }
+      .swiss-layout-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* Print / Save as PDF Styles — Locks Exact Desktop 2-Column Swiss Layout onto 2 Clean Pages */
     @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      @page {
+        margin: 8mm 10mm;
+        size: A4 portrait;
+      }
       body, html {
         background: #FFFFFF !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       header.format-switcher-bar {
         display: none !important;
@@ -680,38 +705,148 @@
         box-shadow: none !important;
         margin: 0 !important;
         max-width: 100% !important;
+        width: 100% !important;
       }
       .resume-inner {
         padding: 0 !important;
       }
+      .swiss-masthead {
+        display: grid !important;
+        grid-template-columns: 112px 1fr !important;
+        gap: 20px !important;
+        padding-bottom: 14px !important;
+        align-items: center !important;
+      }
+      .profile-photo-frame.mode-cutout {
+        width: 112px !important;
+        height: 128px !important;
+        margin-bottom: -14px !important;
+      }
+      .profile-photo-frame.mode-round,
+      .profile-photo-frame.mode-smile-round {
+        width: 108px !important;
+        height: 108px !important;
+      }
+      .profile-photo-frame.mode-smile-frame {
+        width: 108px !important;
+        height: 118px !important;
+      }
+      .executive-kicker {
+        font-size: 9.5px !important;
+        letter-spacing: 0.08em !important;
+      }
+      h1.swiss-name {
+        font-size: 30px !important;
+      }
+      .swiss-title {
+        font-size: 14.5px !important;
+        margin-bottom: 6px !important;
+      }
+      .contact-pills-row {
+        font-size: 10.5px !important;
+        gap: 4px 10px !important;
+      }
+      .mobility-header-row {
+        font-size: 10px !important;
+        margin-top: 5px !important;
+        padding-top: 5px !important;
+      }
       .metrics-ticker-grid {
-        padding: 12px 0 !important;
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 0 !important;
+        padding: 10px 0 !important;
+      }
+      .metric-box {
+        padding: 2px 10px !important;
+        border-right: 1px solid var(--swiss-border) !important;
+      }
+      .metric-box:first-child {
+        padding-left: 0 !important;
+      }
+      .metric-box:last-child {
+        border-right: none !important;
+        padding-right: 0 !important;
+      }
+      .metric-number {
+        font-size: 17px !important;
+      }
+      .metric-desc {
+        font-size: 9.5px !important;
       }
       .swiss-layout-grid {
-        gap: 24px !important;
-        padding-top: 18px !important;
+        display: grid !important;
+        grid-template-columns: 1fr 245px !important;
+        gap: 22px !important;
+        padding-top: 14px !important;
+      }
+      .section-eyebrow {
+        margin-bottom: 10px !important;
+        padding-bottom: 4px !important;
+        font-size: 10.5px !important;
       }
       .experience-list {
-        gap: 14px !important;
+        gap: 13px !important;
+      }
+      .experience-card,
+      .dossier-card,
+      .portfolio-showcase-card,
+      .earlier-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .exp-role {
+        font-size: 12.75px !important;
+      }
+      .exp-company {
+        font-size: 12px !important;
+      }
+      .exp-dates {
+        font-size: 10px !important;
+        padding: 1px 6px !important;
+      }
+      .exp-tags-row {
+        margin: 3px 0 6px !important;
+        gap: 4px !important;
+      }
+      .exp-tag {
+        font-size: 8.5px !important;
+        padding: 1.5px 5px !important;
       }
       .exp-bullets {
         font-size: 10.75px !important;
-        line-height: 1.45 !important;
+        line-height: 1.44 !important;
+        gap: 3px !important;
       }
-      @page {
-        margin: 10mm 10mm;
-        size: A4 portrait;
+      .earlier-career-section {
+        margin-top: 16px !important;
+        padding-top: 10px !important;
       }
-    }
-
-    /* Responsive */
-    @media (max-width: 860px) {
-      .resume-inner { padding: 24px; }
-      .swiss-masthead { grid-template-columns: 1fr; gap: 16px; }
-      .profile-photo-frame.mode-cutout { margin-bottom: 0; }
-      .metrics-ticker-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .metric-box { border-right: none; padding: 6px 0; }
-      .swiss-layout-grid { grid-template-columns: 1fr; gap: 32px; }
+      .earlier-grid {
+        gap: 8px !important;
+      }
+      .earlier-role {
+        font-size: 12px !important;
+      }
+      .earlier-company {
+        font-size: 11.5px !important;
+      }
+      .earlier-desc {
+        font-size: 10.5px !important;
+        line-height: 1.4 !important;
+      }
+      .dossier-column {
+        gap: 12px !important;
+      }
+      .dossier-card,
+      .portfolio-showcase-card {
+        padding: 11px 12px !important;
+      }
+      .dossier-list {
+        font-size: 10.5px !important;
+        line-height: 1.42 !important;
+        gap: 4px !important;
+      }
     }
   </style>
 </head>
@@ -740,7 +875,7 @@
       </div>
 
       <div class="bar-actions">
-        <a href="Balaajee_VR_Senior_UX_Manager_CV.pdf" download="Balaajee_VR_Senior_UX_Manager_CV.pdf" class="btn-action portfolio" style="border: 1px solid rgba(255,255,255,0.2);">
+        <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Swiss_Modernist_Resume.pdf" class="btn-action portfolio" style="border: 1px solid rgba(255,255,255,0.2);">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PDF
         </a>
