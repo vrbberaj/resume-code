@@ -68,23 +68,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-wrap: nowrap;
+      gap: 8px;
     }
 
     .format-label-group {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
+      gap: 6px;
+      font-size: 11.5px;
+      white-space: nowrap;
     }
 
     .format-badge {
       font-family: var(--font-mono);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 3px 8px;
+      padding: 3px 7px;
       border-radius: 4px;
       background: #334155;
       color: #FFFFFF;
@@ -93,16 +94,16 @@
     .format-toggle-group {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       background: rgba(255, 255, 255, 0.1);
       padding: 3px;
       border-radius: 8px;
     }
 
     .toggle-link, .photo-mode-btn {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 5px 10px;
+      padding: 4px 8px;
       border-radius: 6px;
       text-decoration: none;
       color: #94A3B8;
@@ -111,6 +112,7 @@
       cursor: pointer;
       font-family: var(--font-swiss);
       transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
     .toggle-link:hover, .photo-mode-btn:hover {
@@ -126,22 +128,24 @@
     .bar-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      white-space: nowrap;
     }
 
     .btn-action {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
+      gap: 5px;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 6px 13px;
+      padding: 5px 10px;
       border-radius: 6px;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.15s ease;
       border: none;
       font-family: var(--font-swiss);
+      white-space: nowrap;
     }
 
     .btn-action.print {
@@ -169,20 +173,20 @@
       padding: 42px 48px;
     }
 
-    /* Header Profile & Masthead — Split Layout: Identity Left, Contact Block Right */
+    /* Header Profile & Masthead — Flush 92px Top & Bottom Alignment Across All 3 Columns */
     .swiss-masthead {
       display: grid;
-      grid-template-columns: 96px 1fr auto;
-      gap: 20px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid var(--text-black);
-      align-items: center;
+      grid-template-columns: 92px 1fr auto;
+      gap: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--swiss-border);
+      align-items: stretch;
     }
 
-    /* Photo Presentation Modes — Matches Exact 96px Height of Identity Block */
+    /* Photo Presentation Modes — Exact 92px Height Locked to Text & Contact Columns */
     .profile-photo-frame {
-      width: 96px;
-      height: 96px;
+      width: 92px;
+      height: 92px;
       position: relative;
       display: flex;
       align-items: flex-end;
@@ -198,7 +202,7 @@
       border: 1px solid var(--swiss-border-strong);
       border-radius: 10px;
       margin-bottom: 0;
-      height: 96px;
+      height: 92px;
     }
     .profile-photo-frame.mode-cutout img {
       width: 100%;
@@ -209,8 +213,8 @@
 
     /* Mode 2: Large Round Portrait */
     .profile-photo-frame.mode-round {
-      width: 96px;
-      height: 96px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
       background: var(--swiss-surface-subtle);
       border: 1.5px solid var(--swiss-border-strong);
@@ -224,8 +228,8 @@
 
     /* Mode 3: Warm Smile Round */
     .profile-photo-frame.mode-smile-round {
-      width: 96px;
-      height: 96px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
       background: #F4EFEA;
       border: 1.5px solid var(--swiss-border-strong);
@@ -239,8 +243,8 @@
 
     /* Mode 4: Frameless Cutout (No Background Box) */
     .profile-photo-frame.mode-smile-frame {
-      width: 96px;
-      height: 96px;
+      width: 92px;
+      height: 92px;
       border-radius: 6px;
       background: transparent;
       border: none;
@@ -253,9 +257,11 @@
     }
 
     .masthead-text-block {
+      height: 92px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 1px 0;
     }
 
     h1.swiss-name {
@@ -263,8 +269,8 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       color: var(--text-black);
-      line-height: 1.0;
-      margin-bottom: 4px;
+      line-height: 0.82;
+      margin: 0;
     }
 
     .swiss-title {
@@ -272,8 +278,8 @@
       font-weight: 700;
       color: var(--accent);
       letter-spacing: -0.01em;
-      line-height: 1.2;
-      margin-bottom: 8px;
+      line-height: 1.1;
+      margin: 0;
     }
 
     .mobility-header-row {
@@ -281,21 +287,24 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 6px 10px;
-      font-size: 11.5px;
+      font-size: 12px;
+      line-height: 1.0;
       color: var(--text-body);
       font-weight: 600;
+      margin: 0;
     }
 
-    /* Separated Right-Side Contact Block in Header */
+    /* Separated Right-Side Contact Stack — Flush 92px Top-to-Bottom Alignment, Aligned with Right Column */
     .masthead-contact-right {
-      display: grid;
-      grid-template-columns: auto auto;
-      gap: 8px 18px;
-      background: var(--swiss-surface);
-      border: 1px solid var(--swiss-border);
-      border-radius: 8px;
-      padding: 11px 16px;
-      font-size: 11.75px;
+      width: 310px;
+      height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 0 0 22px;
+      border-left: 1px solid var(--swiss-border);
+      font-size: 12px;
+      line-height: 1.0;
       align-self: center;
     }
 
@@ -381,9 +390,9 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--text-black);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       padding-bottom: 6px;
-      border-bottom: 1.5px solid var(--text-black);
+      border-bottom: 1px solid var(--swiss-border);
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -987,11 +996,11 @@
           
           <!-- 1. Portfolio Card (Zero Redundant Title — Entire Image Clickable with Embedded Visual Cue) -->
           <div class="portfolio-showcase-card">
-            <a href="index.html" class="portfolio-thumb-only" title="Click to Open Live UI/UX Leadership Portfolio">
-              <img src="portfolio-thumb-swiss.jpg" alt="UI/UX Leadership Portfolio — Click to Open Live Portfolio">
+            <a href="index.html" class="portfolio-thumb-only" title="Click to Open My UI/UX Portfolio">
+              <img src="portfolio-thumb-swiss.jpg" alt="My UI/UX Portfolio — Click to Open">
               <span class="portfolio-click-cue">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Open Live Portfolio
+                My Portfolio
               </span>
             </a>
           </div>
