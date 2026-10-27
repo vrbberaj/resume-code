@@ -507,9 +507,11 @@
     }
 
     .earlier-company {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
-      color: var(--text-body);
+      color: var(--accent);
+      margin-bottom: 2px;
+      display: block;
     }
 
     .earlier-desc {
@@ -522,7 +524,26 @@
     .dossier-column {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    /* Industry Domains Grid inside Dossier */
+    .domain-pills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .domain-pill {
+      font-size: 10.75px;
+      font-weight: 600;
+      color: var(--text-body);
+      background: #FFFFFF;
+      border: 1px solid var(--swiss-border-strong);
+      border-radius: 4px;
+      padding: 4px 8px;
+      line-height: 1.3;
     }
 
     .dossier-card {
@@ -754,16 +775,28 @@
         line-height: 1.4 !important;
       }
       .dossier-column {
-        gap: 12px !important;
+        justify-content: flex-start !important;
+        gap: 9px !important;
       }
       .dossier-card,
       .portfolio-showcase-card {
-        padding: 11px 12px !important;
+        padding: 9px 11px !important;
+      }
+      .dossier-title {
+        font-size: 10px !important;
+        margin-bottom: 6px !important;
       }
       .dossier-list {
-        font-size: 10.5px !important;
-        line-height: 1.42 !important;
+        font-size: 10px !important;
+        line-height: 1.38 !important;
+        gap: 3px !important;
+      }
+      .domain-pills-grid {
         gap: 4px !important;
+      }
+      .domain-pill {
+        font-size: 9.25px !important;
+        padding: 3px 6px !important;
       }
     }
   </style>
@@ -862,19 +895,19 @@
       <section class="metrics-ticker-grid">
         <div class="metric-box">
           <div class="metric-number">18+ Yrs</div>
-          <div class="metric-desc">Enterprise UI/UX Experience</div>
+          <div class="metric-desc">UI/UX Experience</div>
         </div>
         <div class="metric-box">
           <div class="metric-number">15+</div>
-          <div class="metric-desc">Designers Hired, Led &amp; Mentored</div>
+          <div class="metric-desc">Designers Managed</div>
         </div>
         <div class="metric-box">
           <div class="metric-number">10M+</div>
-          <div class="metric-desc">Global B2B &amp; Consumer Users</div>
+          <div class="metric-desc">Users Impacted</div>
         </div>
         <div class="metric-box">
           <div class="metric-number">8+</div>
-          <div class="metric-desc">Industry Verticals Transformed</div>
+          <div class="metric-desc">Industries Served</div>
         </div>
       </section>
 
@@ -898,15 +931,15 @@
               </div>
               <div class="exp-company">IBM India Software Labs</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">AI UX Governance</span>
-                <span class="exp-tag">Human-in-the-Loop AI</span>
-                <span class="exp-tag">UX-as-a-Service Re-Org</span>
+                <span class="exp-tag">AI UX</span>
+                <span class="exp-tag">Human-in-the-Loop</span>
+                <span class="exp-tag">Team Re-Org</span>
                 <span class="exp-tag">Hiring &amp; Promotions</span>
               </div>
               <ul class="exp-bullets">
                 <li>Spearheaded the UX transformation of enterprise B2B software by integrating generative AI and agentic workflows (IBM Watson), accelerating complex user task completion from <strong>14.2 hours to 3.6 hours</strong>.</li>
                 <li>Restructured and scaled a multidisciplinary organization of <strong>14+ UI/UX designers</strong> into an agile <strong>UX-as-a-Service model</strong>, driving hiring, establishing career ladders, promoting 5 senior designers into leadership, and maintaining <strong>100% retention</strong>.</li>
-                <li>Architected 3-tier Human-in-the-Loop (HITL) confidence gates and proactive AI security remediation workflows, cutting threat triage from <strong>4.1 hours to 43 minutes</strong> across 140,000+ enterprise tasks.</li>
+                <li>Designed AI confidence thresholds and automated security remediation workflows, cutting threat triage from <strong>4.1 hours to 43 minutes</strong> across 140,000+ enterprise tasks.</li>
                 <li>Partnered with global product management and engineering executives across the US and Europe to align product roadmaps with enterprise accessibility and human-oversight governance.</li>
               </ul>
             </article>
@@ -919,14 +952,14 @@
               </div>
               <div class="exp-company">Zebra Technologies</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">Enterprise Mobility &amp; IoT</span>
-                <span class="exp-tag">Team Scaling &amp; Hiring</span>
-                <span class="exp-tag">Performance &amp; Exit Mgmt</span>
-                <span class="exp-tag">Agile / PI Planning</span>
+                <span class="exp-tag">Enterprise Mobility</span>
+                <span class="exp-tag">Team Scaling</span>
+                <span class="exp-tag">Performance Management</span>
+                <span class="exp-tag">PI Planning</span>
               </div>
               <ul class="exp-bullets">
                 <li>Directed UX strategy and end-to-end execution across B2B mobile devices, enterprise cloud consoles, and industrial scanner telemetry platforms serving <strong>38,000+ rugged Android endpoints</strong>.</li>
-                <li>Built and scaled high-performing UX teams from the ground up — leading hiring, mentoring, rigorous performance turnaround (PIPs and decisive exit management of underperformers), and quarterly <strong>Program Increment (PI) planning</strong>.</li>
+                <li>Built and scaled high-performing UX teams from the ground up — leading hiring, mentoring, performance &amp; exit management, and quarterly <strong>Program Increment (PI) planning</strong>.</li>
                 <li>Designed high-contrast, gloved-touch ergonomic workflows for warehouse and retail operators, dropping Bluetooth scanner pairing failures by <strong>84%</strong> and reducing Tier-1 support tickets by <strong>33%</strong>.</li>
               </ul>
             </article>
@@ -939,10 +972,10 @@
               </div>
               <div class="exp-company">ZF Wabco</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">Automotive Cockpit UX</span>
-                <span class="exp-tag">Driver Distraction Safety</span>
+                <span class="exp-tag">Cockpit UX</span>
+                <span class="exp-tag">Driver Safety</span>
                 <span class="exp-tag">Fleet Telematics</span>
-                <span class="exp-tag">Simulator Usability</span>
+                <span class="exp-tag">Usability Testing</span>
               </div>
               <ul class="exp-bullets">
                 <li>Spearheaded UX/UI design for next-generation commercial vehicle digital cockpit displays and fleet management platforms in collaboration with German engineering headquarters.</li>
@@ -959,9 +992,9 @@
               </div>
               <div class="exp-company">Ericsson Global</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">Enterprise CPQ Platform</span>
-                <span class="exp-tag">Complex Data Workflows</span>
-                <span class="exp-tag">UX Strategy Workshops</span>
+                <span class="exp-tag">CPQ Platform</span>
+                <span class="exp-tag">Data Workflows</span>
+                <span class="exp-tag">UX Workshops</span>
                 <span class="exp-tag">Information Architecture</span>
               </div>
               <ul class="exp-bullets">
@@ -979,10 +1012,10 @@
               </div>
               <div class="exp-company">NP Compete Technologies</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">End-to-End Product Design</span>
-                <span class="exp-tag">Design Team Leadership</span>
-                <span class="exp-tag">Client UX Roadmaps</span>
-                <span class="exp-tag">UI Pattern Libraries</span>
+                <span class="exp-tag">Product Design</span>
+                <span class="exp-tag">Team Leadership</span>
+                <span class="exp-tag">UX Roadmaps</span>
+                <span class="exp-tag">Pattern Libraries</span>
               </div>
               <ul class="exp-bullets">
                 <li>Directed end-to-end product design cycles, managing sprint planning, resource allocation, and a team of UI/UX designers to ensure timely delivery of high-fidelity interactive prototypes.</li>
@@ -1002,9 +1035,7 @@
             <div class="earlier-grid">
               <div class="earlier-item">
                 <div class="earlier-item-head">
-                  <div>
-                    <span class="earlier-role">Freelance UI/UX Designer</span>
-                  </div>
+                  <span class="earlier-role">Freelance UI/UX Designer</span>
                   <span class="exp-dates">May 2015 – Aug 2017</span>
                 </div>
                 <p class="earlier-desc">Designed end-to-end mobile applications, responsive web platforms, interactive wireframes, and usability flows for international startup and SMB clients.</p>
@@ -1012,25 +1043,19 @@
 
               <div class="earlier-item">
                 <div class="earlier-item-head">
-                  <div>
-                    <span class="earlier-role">Creative Head</span>
-                    <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                    <span class="earlier-company">Titi Technologies</span>
-                  </div>
+                  <span class="earlier-role">Creative Head</span>
                   <span class="exp-dates">May 2010 – Apr 2015</span>
                 </div>
+                <div class="earlier-company">Titi Technologies</div>
                 <p class="earlier-desc">Led a multidisciplinary creative team across digital product UI, brand identity systems, and interactive mobile application experiences from concept to App Store launch.</p>
               </div>
 
               <div class="earlier-item">
                 <div class="earlier-item-head">
-                  <div>
-                    <span class="earlier-role">Senior Software Engineer</span>
-                    <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                    <span class="earlier-company">Infosys Technologies</span>
-                  </div>
+                  <span class="earlier-role">Senior Software Engineer</span>
                   <span class="exp-dates">Jan 2006 – Apr 2010</span>
                 </div>
+                <div class="earlier-company">Infosys Technologies</div>
                 <p class="earlier-desc">Developed, customized, and tested enterprise banking software modules for Finacle Universal Banking, building a strong technical foundation in front-end engineering and enterprise workflows.</p>
               </div>
             </div>
@@ -1049,44 +1074,68 @@
             </a>
           </div>
 
-          <!-- 2. Core UX & Management Pillars (Complements Role Tags Without Duplicating Them) -->
+          <!-- 2. People & Org Management -->
           <div class="dossier-card">
-            <div class="dossier-title">Leadership &amp; UX Pillars</div>
+            <div class="dossier-title">People &amp; Org Management</div>
             <ul class="dossier-list">
-              <li><strong>Design Strategy:</strong> Product Vision, Service Blueprints, Multi-Brand Design Systems, DesignOps.</li>
-              <li><strong>User Research:</strong> Contextual Inquiry, Simulator &amp; Lab Usability Testing, Journey Mapping, Heuristic Audits.</li>
-              <li><strong>Executive Operations:</strong> Cross-Geo Stakeholder Alignment, Engineering Handoff Governance, Budget &amp; Vendor Management.</li>
+              <li><strong>Hiring &amp; Scaling:</strong> End-to-end interview loops, portfolio evaluations &amp; onboarding.</li>
+              <li><strong>Performance &amp; Growth:</strong> Career ladders, promotions, performance turnaround &amp; 1:1 coaching.</li>
+              <li><strong>DesignOps &amp; Delivery:</strong> UX-as-a-Service capacity planning, PI planning &amp; design critiques.</li>
+              <li><strong>Global Collaboration:</strong> Direct alignment across US, German, Swedish &amp; Indian hubs.</li>
             </ul>
           </div>
 
-          <!-- 3. Technology & AI Stack -->
+          <!-- 3. Expertise -->
           <div class="dossier-card">
-            <div class="dossier-title">Technology &amp; AI Stack</div>
+            <div class="dossier-title">Expertise</div>
             <ul class="dossier-list">
-              <li><strong>AI &amp; Automation:</strong> Microsoft Copilot, ChatGPT Enterprise, IBM Watson, Google Stitch, NotebookLM, Google AI Studio, Gemini.</li>
-              <li><strong>Design &amp; Prototyping:</strong> Figma, Miro, Mural, Adobe Creative Cloud.</li>
-              <li><strong>Product Operations:</strong> Jira, Monday.com, Confluence, Dual-Track Agile.</li>
-              <li><strong>Analytics &amp; Testing:</strong> UserTesting, Hotjar, Google Analytics.</li>
-              <li><strong>Standards &amp; Compliance:</strong> WCAG 2.2 AA, European Accessibility Act (EAA), ISO 26262, GDPR Privacy-by-Design.</li>
+              <li><strong>Strategy:</strong> Product Vision, Service Blueprints, Multi-Brand Design Systems.</li>
+              <li><strong>Research:</strong> Contextual Inquiry, Simulator &amp; Lab Usability Testing, Journey Mapping, Heuristic Audits.</li>
+              <li><strong>Execution:</strong> Information Architecture, Complex B2B Workflows, Engineering Handoff.</li>
             </ul>
           </div>
 
-          <!-- 4. Awards & Recognition -->
+          <!-- 4. Industry Domains -->
           <div class="dossier-card">
-            <div class="dossier-title">Awards &amp; Recognition</div>
+            <div class="dossier-title">Industry Domains</div>
+            <div class="domain-pills-grid">
+              <span class="domain-pill">Enterprise AI &amp; SaaS</span>
+              <span class="domain-pill">Industrial IoT &amp; Mobility</span>
+              <span class="domain-pill">Automotive &amp; Telematics</span>
+              <span class="domain-pill">5G Telecom &amp; CPQ</span>
+              <span class="domain-pill">Healthcare Systems</span>
+              <span class="domain-pill">Core Banking &amp; FinTech</span>
+            </div>
+          </div>
+
+          <!-- 5. Tools & Standards -->
+          <div class="dossier-card">
+            <div class="dossier-title">Tools &amp; Standards</div>
+            <ul class="dossier-list">
+              <li><strong>AI Tools:</strong> Microsoft Copilot, ChatGPT Enterprise, IBM Watson, Google Stitch, NotebookLM, Google AI Studio, Gemini.</li>
+              <li><strong>Design:</strong> Figma, Miro, Mural, Adobe Creative Cloud.</li>
+              <li><strong>Operations:</strong> Jira, Monday.com, Confluence, Dual-Track Agile.</li>
+              <li><strong>Research:</strong> UserTesting, Hotjar, Google Analytics.</li>
+              <li><strong>Standards:</strong> WCAG 2.2 AA, European Accessibility Act (EAA), ISO 26262, GDPR.</li>
+            </ul>
+          </div>
+
+          <!-- 6. Awards -->
+          <div class="dossier-card">
+            <div class="dossier-title">Awards</div>
             <ul class="dossier-list">
               <li><strong>Samsung:</strong> Awarded 10-Year US Business Visa for driving global healthcare UX research.</li>
-              <li><strong>Ericsson:</strong> Spot Award for UX innovation culture &amp; 1st Place in Global Hack-fest Optimization Contest.</li>
+              <li><strong>Ericsson:</strong> Spot Award for UX innovation culture &amp; 1st Place in Global Hack-fest Contest.</li>
               <li><strong>Consumer Impact:</strong> Designed <em>"Greedy Jump"</em> iOS game achieving 80,000+ organic downloads.</li>
               <li><strong>UX Challenges:</strong> 1st Place Winner in MockingBOT &amp; UP Labs Global Design Contests.</li>
             </ul>
           </div>
 
-          <!-- 5. Education -->
+          <!-- 7. Education -->
           <div class="dossier-card">
             <div class="dossier-title">Education</div>
             <div style="font-size:13px; font-weight:800; color:var(--text-black);">B.E. Information Technology</div>
-            <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">Bachelor of Engineering • Anna University</div>
+            <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">Anna University</div>
           </div>
 
         </aside>
