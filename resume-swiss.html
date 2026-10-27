@@ -382,7 +382,7 @@
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 24px;
     }
 
     .experience-card {
@@ -393,56 +393,54 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 4px;
-      flex-wrap: nowrap;
-      gap: 8px;
+      margin-bottom: 2px;
+      gap: 12px;
     }
 
     .exp-role {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 800;
       color: var(--text-black);
       letter-spacing: -0.01em;
+      line-height: 1.25;
     }
 
     .exp-company {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
-      color: var(--text-body);
-      white-space: nowrap;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
     }
 
     .exp-dates {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--text-muted);
-      background: var(--swiss-surface-subtle);
-      padding: 2px 8px;
-      border-radius: 4px;
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    /* Neutral Slate Scope Tags */
+    /* Clean Single-Line Scope Pills (Readable Title Case — Never Wraps to 2 Ragged Rows) */
     .exp-tags-row {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 6px;
-      margin: 5px 0 9px;
+      margin: 0 0 10px;
     }
 
     .exp-tag {
-      font-family: var(--font-mono);
-      font-size: 9.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 2px 7px;
-      border-radius: 3px;
-      background: var(--swiss-surface-subtle);
-      color: var(--text-heading);
+      font-family: var(--font-swiss);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 2px 9px;
+      border-radius: 4px;
+      background: var(--swiss-surface);
+      color: var(--text-body);
       border: 1px solid var(--swiss-border-strong);
+      white-space: nowrap;
     }
 
     .exp-bullets {
@@ -720,22 +718,22 @@
         page-break-inside: avoid;
       }
       .exp-role {
-        font-size: 12.25px !important;
+        font-size: 13px !important;
       }
       .exp-company {
         font-size: 11.5px !important;
+        margin-bottom: 5px !important;
       }
       .exp-dates {
-        font-size: 9.5px !important;
-        padding: 1px 6px !important;
+        font-size: 10px !important;
       }
       .exp-tags-row {
-        margin: 3px 0 6px !important;
-        gap: 4px !important;
+        margin: 0 0 7px !important;
+        gap: 5px !important;
       }
       .exp-tag {
-        font-size: 8.5px !important;
-        padding: 1.5px 5px !important;
+        font-size: 9.25px !important;
+        padding: 1.5px 7px !important;
       }
       .exp-bullets {
         font-size: 10.75px !important;
@@ -899,18 +897,15 @@
             <!-- Role 1: IBM India Software Labs -->
             <article class="experience-card">
               <div class="exp-header">
-                <div>
-                  <span class="exp-role">UI/UX Design — Senior Manager</span>
-                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                  <span class="exp-company">IBM India Software Labs</span>
-                </div>
+                <span class="exp-role">UI/UX Design — Senior Manager</span>
                 <span class="exp-dates">Sep 2024 – Jan 2026</span>
               </div>
+              <div class="exp-company">IBM India Software Labs</div>
               <div class="exp-tags-row">
                 <span class="exp-tag">AI UX Governance</span>
-                <span class="exp-tag">Agentic Human-in-the-Loop</span>
+                <span class="exp-tag">Human-in-the-Loop AI</span>
                 <span class="exp-tag">UX-as-a-Service Re-Org</span>
-                <span class="exp-tag">Hiring &amp; Talent Promotion</span>
+                <span class="exp-tag">Hiring &amp; Promotions</span>
               </div>
               <ul class="exp-bullets">
                 <li>Spearheaded the UX transformation of enterprise B2B software by integrating generative AI and agentic workflows (IBM Watson), accelerating complex user task completion from <strong>14.2 hours to 3.6 hours</strong>.</li>
@@ -923,17 +918,14 @@
             <!-- Role 2: Zebra Technologies -->
             <article class="experience-card">
               <div class="exp-header">
-                <div>
-                  <span class="exp-role">UI/UX Product Design Manager</span>
-                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                  <span class="exp-company">Zebra Technologies</span>
-                </div>
+                <span class="exp-role">UI/UX Product Design Manager</span>
                 <span class="exp-dates">Jul 2021 – Aug 2024</span>
               </div>
+              <div class="exp-company">Zebra Technologies</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">Enterprise Mobility &amp; IoT UX</span>
+                <span class="exp-tag">Enterprise Mobility &amp; IoT</span>
                 <span class="exp-tag">Team Scaling &amp; Hiring</span>
-                <span class="exp-tag">Performance &amp; Exit Management</span>
+                <span class="exp-tag">Performance &amp; Exit Mgmt</span>
                 <span class="exp-tag">Agile / PI Planning</span>
               </div>
               <ul class="exp-bullets">
@@ -946,18 +938,15 @@
             <!-- Role 3: ZF Wabco (Oct 2020 – Jul 2021) -->
             <article class="experience-card">
               <div class="exp-header">
-                <div>
-                  <span class="exp-role">UI/UX Senior Specialist</span>
-                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                  <span class="exp-company">ZF Wabco</span>
-                </div>
+                <span class="exp-role">UI/UX Senior Specialist</span>
                 <span class="exp-dates">Oct 2020 – Jul 2021</span>
               </div>
+              <div class="exp-company">ZF Wabco</div>
               <div class="exp-tags-row">
                 <span class="exp-tag">Automotive Cockpit UX</span>
                 <span class="exp-tag">Driver Distraction Safety</span>
                 <span class="exp-tag">Fleet Telematics</span>
-                <span class="exp-tag">Simulator Usability Testing</span>
+                <span class="exp-tag">Simulator Usability</span>
               </div>
               <ul class="exp-bullets">
                 <li>Spearheaded UX/UI design for next-generation commercial vehicle digital cockpit displays and fleet management platforms in collaboration with German engineering headquarters.</li>
@@ -969,15 +958,12 @@
             <!-- Role 4: Ericsson Global (Jul 2019 – Sep 2020) -->
             <article class="experience-card">
               <div class="exp-header">
-                <div>
-                  <span class="exp-role">UI/UX Designer</span>
-                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                  <span class="exp-company">Ericsson Global</span>
-                </div>
+                <span class="exp-role">UI/UX Designer</span>
                 <span class="exp-dates">Jul 2019 – Sep 2020</span>
               </div>
+              <div class="exp-company">Ericsson Global</div>
               <div class="exp-tags-row">
-                <span class="exp-tag">Enterprise CPQ Transformation</span>
+                <span class="exp-tag">Enterprise CPQ Platform</span>
                 <span class="exp-tag">Complex Data Workflows</span>
                 <span class="exp-tag">UX Strategy Workshops</span>
                 <span class="exp-tag">Information Architecture</span>
@@ -992,13 +978,10 @@
             <!-- Role 5: NP Compete Technologies (Sep 2017 – Jul 2019) -->
             <article class="experience-card">
               <div class="exp-header">
-                <div>
-                  <span class="exp-role">Lead UI/UX Designer</span>
-                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                  <span class="exp-company">NP Compete Technologies</span>
-                </div>
+                <span class="exp-role">Lead UI/UX Designer</span>
                 <span class="exp-dates">Sep 2017 – Jul 2019</span>
               </div>
+              <div class="exp-company">NP Compete Technologies</div>
               <div class="exp-tags-row">
                 <span class="exp-tag">End-to-End Product Design</span>
                 <span class="exp-tag">Design Team Leadership</span>
