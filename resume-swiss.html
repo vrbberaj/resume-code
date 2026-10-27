@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balaajee V.R. | Senior UI/UX Design Manager — Executive Resume</title>
-  <meta name="description" content="Swiss Modernist Executive Resume for Balaajee V.R., Senior UI/UX Design Manager with 18+ years of experience across IBM, Zebra Technologies, ZF Wabco, Ericsson, NP Compete, and Infosys.">
+  <meta name="description" content="Swiss Modernist Executive Resume for Balaajee V.R., Senior UI/UX Design Manager.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +26,9 @@
       --text-muted: #64748B;
       --text-light: #94A3B8;
 
-      /* Selective Interactive & Highlight Accent (Used sparingly for links & primary CTA) */
+      /* Selective Interactive Accent (Used strictly for clickable links) */
       --accent: #0F62FE;
       --accent-dark: #0043CE;
-      --accent-gold: #B45309;
 
       --font-swiss: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -157,7 +156,7 @@
     }
     .btn-action.portfolio:hover { background: rgba(255, 255, 255, 0.24); }
 
-    /* The Resume Sheet Container (Clean top edge — no top stripe border) */
+    /* The Resume Sheet Container */
     .resume-canvas-wrap {
       max-width: 1040px;
       margin: 28px auto 60px;
@@ -167,23 +166,23 @@
     }
 
     .resume-inner {
-      padding: 44px 48px;
+      padding: 42px 48px;
     }
 
     /* Header Profile & Masthead */
     .swiss-masthead {
       display: grid;
-      grid-template-columns: 138px 1fr;
+      grid-template-columns: 132px 1fr;
       gap: 28px;
-      padding-bottom: 24px;
+      padding-bottom: 22px;
       border-bottom: 2px solid var(--text-black);
       align-items: center;
     }
 
     /* Photo Presentation Modes */
     .profile-photo-frame {
-      width: 138px;
-      height: 146px;
+      width: 132px;
+      height: 138px;
       position: relative;
       display: flex;
       align-items: flex-end;
@@ -197,8 +196,8 @@
       background: transparent;
       border: none;
       border-radius: 0;
-      margin-bottom: -24px;
-      height: 158px;
+      margin-bottom: -22px;
+      height: 148px;
     }
     .profile-photo-frame.mode-cutout img {
       width: 100%;
@@ -210,8 +209,8 @@
 
     /* Mode 2: Large Round Portrait */
     .profile-photo-frame.mode-round {
-      width: 130px;
-      height: 130px;
+      width: 126px;
+      height: 126px;
       border-radius: 50%;
       background: var(--swiss-surface-subtle);
       border: 2px solid var(--swiss-border-strong);
@@ -225,8 +224,8 @@
 
     /* Mode 3: Warm Smile Round */
     .profile-photo-frame.mode-smile-round {
-      width: 130px;
-      height: 130px;
+      width: 126px;
+      height: 126px;
       border-radius: 50%;
       background: #F4EFEA;
       border: 2px solid var(--swiss-border-strong);
@@ -240,8 +239,8 @@
 
     /* Mode 4: Warm Smile Soft Portrait Box */
     .profile-photo-frame.mode-smile-frame {
-      width: 130px;
-      height: 142px;
+      width: 126px;
+      height: 136px;
       border-radius: 10px;
       background: #F4EFEA;
       border: 1px solid var(--swiss-border-strong);
@@ -258,27 +257,13 @@
       flex-direction: column;
     }
 
-    .executive-kicker {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 4px 8px;
-    }
-
     h1.swiss-name {
       font-size: 38px;
       font-weight: 900;
       letter-spacing: -0.03em;
       color: var(--text-black);
-      line-height: 1.06;
-      margin-bottom: 3px;
+      line-height: 1.05;
+      margin-bottom: 4px;
     }
 
     .swiss-title {
@@ -286,7 +271,7 @@
       font-weight: 700;
       color: var(--text-heading);
       letter-spacing: -0.01em;
-      margin-bottom: 11px;
+      margin-bottom: 12px;
     }
 
     /* Contact & Global Mobility Rows inside Header */
@@ -343,17 +328,17 @@
       color: var(--swiss-border-strong);
     }
 
-    /* Key Metrics Band (Frameless Swiss Typographic Strip — No Box Borders) */
+    /* Macro Career Summary Band (4 Career-Level Totals — Zero Overlap with Role Bullets) */
     .metrics-ticker-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
-      padding: 18px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--swiss-border);
     }
 
     .metric-box {
-      padding: 4px 16px;
+      padding: 4px 20px;
       border-right: 1px solid var(--swiss-border);
     }
 
@@ -388,10 +373,10 @@
       display: grid;
       grid-template-columns: 1fr 310px;
       gap: 38px;
-      padding-top: 26px;
+      padding-top: 24px;
     }
 
-    /* Section Titles (Charcoal Ink — Not Blue) */
+    /* Section Titles */
     .section-eyebrow {
       font-family: var(--font-mono);
       font-size: 11.5px;
@@ -411,7 +396,7 @@
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 22px;
     }
 
     .experience-card {
@@ -438,6 +423,7 @@
       font-size: 13.5px;
       font-weight: 700;
       color: var(--text-body);
+      white-space: nowrap;
     }
 
     .exp-dates {
@@ -452,7 +438,7 @@
       flex-shrink: 0;
     }
 
-    /* Neutral Slate Scope Tags (No Blue Overload) */
+    /* Neutral Slate Scope Tags */
     .exp-tags-row {
       display: flex;
       flex-wrap: wrap;
@@ -504,8 +490,8 @@
 
     /* Earlier Experience Compact Block */
     .earlier-career-section {
-      margin-top: 26px;
-      padding-top: 18px;
+      margin-top: 24px;
+      padding-top: 16px;
     }
 
     .earlier-grid {
@@ -550,14 +536,14 @@
     .dossier-column {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .dossier-card {
       background: var(--swiss-surface);
       border: 1px solid var(--swiss-border);
       border-radius: 6px;
-      padding: 15px 16px;
+      padding: 14px 16px;
     }
 
     .dossier-title {
@@ -581,7 +567,7 @@
       flex-shrink: 0;
     }
 
-    /* Portfolio Showcase Card (With 60s Briefing Thumbnail) */
+    /* Portfolio Showcase Card (With Pure UI Screens Thumbnail — No Duplicate Face) */
     .portfolio-showcase-card {
       background: var(--swiss-surface);
       border: 1px solid var(--swiss-border-strong);
@@ -596,21 +582,21 @@
       display: block;
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid var(--text-black);
-      background: #0B1120;
+      border: 1px solid var(--swiss-border-strong);
+      background: #0F172A;
       position: relative;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .portfolio-thumb-link:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
     }
 
     .portfolio-thumb-link img {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 8.4;
       object-fit: cover;
       display: block;
     }
@@ -632,29 +618,6 @@
 
     .portfolio-cta-btn:hover {
       background: var(--accent);
-    }
-
-    .skill-pills-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-
-    .skill-pill {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 4px;
-      background: #FFFFFF;
-      border: 1px solid var(--swiss-border);
-      color: var(--text-heading);
-    }
-
-    .skill-pill.highlight {
-      background: var(--swiss-surface-subtle);
-      color: var(--text-black);
-      border-color: var(--swiss-border-strong);
-      font-weight: 700;
     }
 
     .dossier-list {
@@ -712,28 +675,24 @@
       }
       .swiss-masthead {
         display: grid !important;
-        grid-template-columns: 112px 1fr !important;
+        grid-template-columns: 110px 1fr !important;
         gap: 20px !important;
         padding-bottom: 14px !important;
         align-items: center !important;
       }
       .profile-photo-frame.mode-cutout {
-        width: 112px !important;
-        height: 128px !important;
+        width: 110px !important;
+        height: 122px !important;
         margin-bottom: -14px !important;
       }
       .profile-photo-frame.mode-round,
       .profile-photo-frame.mode-smile-round {
-        width: 108px !important;
-        height: 108px !important;
+        width: 106px !important;
+        height: 106px !important;
       }
       .profile-photo-frame.mode-smile-frame {
-        width: 108px !important;
-        height: 118px !important;
-      }
-      .executive-kicker {
-        font-size: 9.5px !important;
-        letter-spacing: 0.08em !important;
+        width: 106px !important;
+        height: 116px !important;
       }
       h1.swiss-name {
         font-size: 30px !important;
@@ -753,12 +712,12 @@
       }
       .metrics-ticker-grid {
         display: grid !important;
-        grid-template-columns: repeat(5, 1fr) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
         gap: 0 !important;
         padding: 10px 0 !important;
       }
       .metric-box {
-        padding: 2px 10px !important;
+        padding: 2px 14px !important;
         border-right: 1px solid var(--swiss-border) !important;
       }
       .metric-box:first-child {
@@ -796,13 +755,13 @@
         page-break-inside: avoid;
       }
       .exp-role {
-        font-size: 12.75px !important;
+        font-size: 12.25px !important;
       }
       .exp-company {
-        font-size: 12px !important;
+        font-size: 11.5px !important;
       }
       .exp-dates {
-        font-size: 10px !important;
+        font-size: 9.5px !important;
         padding: 1px 6px !important;
       }
       .exp-tags-row {
@@ -896,21 +855,13 @@
 
     <div class="resume-inner">
       
-      <!-- Masthead (Includes Contact + Global Mobility) -->
+      <!-- Masthead (Zero Redundant Kicker — Directly Starts with Name, Role, Contact & Global Mobility) -->
       <section class="swiss-masthead">
         <div class="profile-photo-frame mode-cutout" id="resumeProfileFrame">
           <img src="profile-cutout.png" alt="Balaajee V.R. — Senior UI/UX Design Manager">
         </div>
 
         <div class="masthead-text-block">
-          <div class="executive-kicker">
-            <span>UI/UX Design Leadership</span>
-            <span class="dot-sep">•</span>
-            <span>18+ Years Enterprise Experience</span>
-            <span class="dot-sep">•</span>
-            <span>Ex-IBM, Zebra, ZF Wabco, Ericsson</span>
-          </div>
-
           <h1 class="swiss-name">BALAAJEE V.R.</h1>
           <div class="swiss-title">Senior UI/UX Design Manager</div>
 
@@ -949,27 +900,23 @@
         </div>
       </section>
 
-      <!-- Key Quantitative Proof Band (Frameless Swiss Typographic Strip) -->
+      <!-- Macro Career Summary Band (4 Career-Wide Totals — Does Not Duplicate Role Bullet Numbers) -->
       <section class="metrics-ticker-grid">
         <div class="metric-box">
           <div class="metric-number">18+ Yrs</div>
-          <div class="metric-desc">Enterprise UI/UX Leadership</div>
+          <div class="metric-desc">Enterprise UI/UX Experience</div>
         </div>
         <div class="metric-box">
           <div class="metric-number">15+</div>
-          <div class="metric-desc">Designers Led &amp; Mentored</div>
+          <div class="metric-desc">Designers Hired, Led &amp; Mentored</div>
         </div>
         <div class="metric-box">
           <div class="metric-number">10M+</div>
-          <div class="metric-desc">Global Users Impacted</div>
+          <div class="metric-desc">Global B2B &amp; Consumer Users</div>
         </div>
         <div class="metric-box">
-          <div class="metric-number">6d → 42m</div>
-          <div class="metric-desc">Enterprise Quote Velocity</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-number">0.94s</div>
-          <div class="metric-desc">Driver Glance Safety (ISO 26262)</div>
+          <div class="metric-number">8+</div>
+          <div class="metric-desc">Industry Verticals Transformed</div>
         </div>
       </section>
 
@@ -1005,7 +952,7 @@
                 <li>Spearheaded the UX transformation of enterprise B2B software by integrating generative AI and agentic workflows (IBM Watson), accelerating complex user task completion from <strong>14.2 hours to 3.6 hours</strong>.</li>
                 <li>Restructured and scaled a multidisciplinary organization of <strong>14+ UI/UX designers</strong> into an agile <strong>UX-as-a-Service model</strong>, driving hiring, establishing career ladders, promoting 5 senior designers into leadership, and maintaining <strong>100% retention</strong>.</li>
                 <li>Architected 3-tier Human-in-the-Loop (HITL) confidence gates and proactive AI security remediation workflows, cutting threat triage from <strong>4.1 hours to 43 minutes</strong> across 140,000+ enterprise tasks.</li>
-                <li>Partnered with global product management and engineering executives across the US and Europe to align product roadmaps with WCAG 2.2 AA accessibility and EU AI Act human-oversight standards.</li>
+                <li>Partnered with global product management and engineering executives across the US and Europe to align product roadmaps with enterprise accessibility and human-oversight governance.</li>
               </ul>
             </article>
 
@@ -1046,11 +993,11 @@
                 <span class="exp-tag">Automotive Cockpit UX</span>
                 <span class="exp-tag">Driver Distraction Safety</span>
                 <span class="exp-tag">Fleet Telematics</span>
-                <span class="exp-tag">Usability Testing</span>
+                <span class="exp-tag">Simulator Usability Testing</span>
               </div>
               <ul class="exp-bullets">
                 <li>Spearheaded UX/UI design for next-generation commercial vehicle digital cockpit displays and fleet management platforms in collaboration with German engineering headquarters.</li>
-                <li>Reduced average driver glance duration from <strong>2.8 seconds to 0.94 seconds</strong> (well below the 1.2s ISO 26262 safety threshold) through 3-tier hierarchical alert triage and high-contrast visual hierarchy.</li>
+                <li>Reduced average driver glance duration from <strong>2.8 seconds to 0.94 seconds</strong> (well below the 1.2s safety ceiling) through 3-tier hierarchical alert triage and high-contrast visual hierarchy.</li>
                 <li>Led contextual driver research and simulator usability testing, reducing critical route navigation errors by <strong>18%</strong> across 80,000+ commercial transport vehicles.</li>
               </ul>
             </article>
@@ -1114,8 +1061,6 @@
                 <div class="earlier-item-head">
                   <div>
                     <span class="earlier-role">Freelance UI/UX Designer</span>
-                    <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
-                    <span class="earlier-company">Independent UX Consultant</span>
                   </div>
                   <span class="exp-dates">May 2015 – Aug 2017</span>
                 </div>
@@ -1131,7 +1076,7 @@
                   </div>
                   <span class="exp-dates">May 2010 – Apr 2015</span>
                 </div>
-                <p class="earlier-desc">Led a multidisciplinary creative team across digital product UI, brand identity, and mobile game interfaces—including designing the <em>Greedy Jump</em> iOS app (80,000+ organic downloads).</p>
+                <p class="earlier-desc">Led a multidisciplinary creative team across digital product UI, brand identity systems, and interactive mobile application experiences from concept to App Store launch.</p>
               </div>
 
               <div class="earlier-item">
@@ -1150,17 +1095,17 @@
 
         </main>
 
-        <!-- Right Track: Executive Dossier & Portfolio Showcase (35%) -->
+        <!-- Right Track: Portfolio & Dossier (35%) -->
         <aside class="dossier-column">
           
-          <!-- 1. Interactive Portfolio & Case Studies Showcase (Using 60s Briefing Thumbnail) -->
+          <!-- 1. Interactive Portfolio Showcase (Pure UI Screens Preview — Zero Duplicate Face) -->
           <div class="portfolio-showcase-card">
-            <div class="dossier-title" style="margin-bottom: 2px;">Portfolio &amp; Live Case Studies</div>
+            <div class="dossier-title" style="margin-bottom: 2px;">Interactive Portfolio</div>
             <a href="index.html" class="portfolio-thumb-link" title="Open Balaajee V.R. Interactive UX Portfolio">
-              <img src="video-thumbnail.jpg" alt="18 Years of UX Leadership in 60 Seconds — Portfolio Preview">
+              <img src="portfolio-ui-preview.png" alt="Interactive UI Case Studies & Executive Deck Preview">
             </a>
             <div style="font-size: 11.5px; color: var(--text-body); line-height: 1.5;">
-              Watch the 60-second executive briefing and explore 5 end-to-end case studies (<strong>IBM Watson</strong>, <strong>Zebra IoT</strong>, <strong>ZF Wabco</strong>, <strong>Ericsson CPQ</strong>) plus my 10-slide Leadership Deck.
+              5 interactive enterprise case studies, production UI screens, 10-slide Leadership Deck, and 60s video briefing.
             </div>
             <a href="index.html" class="portfolio-cta-btn">
               <span>Explore Interactive Portfolio</span>
@@ -1168,21 +1113,14 @@
             </a>
           </div>
 
-          <!-- 2. Leadership & UX Competencies -->
+          <!-- 2. Core UX & Management Pillars (Complements Role Tags Without Duplicating Them) -->
           <div class="dossier-card">
-            <div class="dossier-title">Leadership &amp; UX Scope</div>
-            <div class="skill-pills-wrap">
-              <span class="skill-pill highlight">UX Org Scaling &amp; Hiring</span>
-              <span class="skill-pill highlight">Enterprise AI &amp; Agentic UX</span>
-              <span class="skill-pill highlight">UX-as-a-Service Operations</span>
-              <span class="skill-pill">Performance &amp; Talent Management</span>
-              <span class="skill-pill">Product Strategy &amp; Roadmaps</span>
-              <span class="skill-pill">User Research &amp; Usability Testing</span>
-              <span class="skill-pill">Complex B2B Workflows</span>
-              <span class="skill-pill">Executive Stakeholder Alignment</span>
-              <span class="skill-pill">Agile / PI Planning</span>
-              <span class="skill-pill">Design Systems &amp; Accessibility</span>
-            </div>
+            <div class="dossier-title">Leadership &amp; UX Pillars</div>
+            <ul class="dossier-list">
+              <li><strong>Design Strategy:</strong> Product Vision, Service Blueprints, Multi-Brand Design Systems, DesignOps.</li>
+              <li><strong>User Research:</strong> Contextual Inquiry, Simulator &amp; Lab Usability Testing, Journey Mapping, Heuristic Audits.</li>
+              <li><strong>Executive Operations:</strong> Cross-Geo Stakeholder Alignment, Engineering Handoff Governance, Budget &amp; Vendor Management.</li>
+            </ul>
           </div>
 
           <!-- 3. Technology & AI Stack -->
@@ -1192,8 +1130,8 @@
               <li><strong>AI &amp; Automation:</strong> Microsoft Copilot, ChatGPT Enterprise, IBM Watson, Google Stitch, NotebookLM, Google AI Studio, Gemini.</li>
               <li><strong>Design &amp; Prototyping:</strong> Figma, Miro, Mural, Adobe Creative Cloud.</li>
               <li><strong>Product Operations:</strong> Jira, Monday.com, Confluence, Dual-Track Agile.</li>
-              <li><strong>Research &amp; Analytics:</strong> UserTesting, Hotjar, Google Analytics, Contextual Inquiry.</li>
-              <li><strong>Global Standards:</strong> WCAG 2.2 AA, European Accessibility Act (EAA), ISO 26262.</li>
+              <li><strong>Analytics &amp; Testing:</strong> UserTesting, Hotjar, Google Analytics.</li>
+              <li><strong>Standards &amp; Compliance:</strong> WCAG 2.2 AA, European Accessibility Act (EAA), ISO 26262, GDPR Privacy-by-Design.</li>
             </ul>
           </div>
 
@@ -1203,7 +1141,7 @@
             <ul class="dossier-list">
               <li><strong>Samsung:</strong> Awarded 10-Year US Business Visa for driving global healthcare UX research.</li>
               <li><strong>Ericsson:</strong> Spot Award for UX innovation culture &amp; 1st Place in Global Hack-fest Optimization Contest.</li>
-              <li><strong>Consumer Impact:</strong> Designed <em>"Greedy Jump"</em> iOS game achieving 80,000+ downloads.</li>
+              <li><strong>Consumer Impact:</strong> Designed <em>"Greedy Jump"</em> iOS game achieving 80,000+ organic downloads.</li>
               <li><strong>UX Challenges:</strong> 1st Place Winner in MockingBOT &amp; UP Labs Global Design Contests.</li>
             </ul>
           </div>
