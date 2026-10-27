@@ -12,11 +12,12 @@
 
   <style>
     :root {
-      /* Unified Swiss Modernist Color System (Single Cohesive Executive Theme) */
+      /* Refined Swiss Executive Palette (85% Ink/Charcoal, 12% Warm Slate, 3% Selective Accent) */
       --swiss-bg: #FFFFFF;
       --swiss-surface: #F8FAFC;
       --swiss-surface-subtle: #F1F5F9;
       --swiss-border: #E2E8F0;
+      --swiss-border-strong: #CBD5E1;
       --swiss-border-bold: #0F172A;
       
       --text-black: #0F172A;
@@ -25,11 +26,10 @@
       --text-muted: #64748B;
       --text-light: #94A3B8;
 
-      /* Primary Resume Theme Accent (International Swiss Cobalt) */
-      --theme: #0F62FE;
-      --theme-dark: #0043CE;
-      --theme-soft: #EDF5FF;
-      --theme-border: rgba(15, 98, 254, 0.18);
+      /* Selective Interactive & Highlight Accent (Used sparingly for links & primary CTA) */
+      --accent: #0F62FE;
+      --accent-dark: #0043CE;
+      --accent-gold: #B45309;
 
       --font-swiss: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -53,7 +53,7 @@
 
     /* Top Comparison & Photo Style Floating Bar (Hidden in Print) */
     header.format-switcher-bar {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       backdrop-filter: blur(12px);
       color: #FFFFFF;
       padding: 10px 24px;
@@ -76,8 +76,8 @@
     .format-label-group {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 13px;
+      gap: 8px;
+      font-size: 12.5px;
     }
 
     .format-badge {
@@ -87,7 +87,7 @@
       text-transform: uppercase;
       padding: 3px 8px;
       border-radius: 4px;
-      background: var(--theme);
+      background: #334155;
       color: #FFFFFF;
     }
 
@@ -146,41 +146,34 @@
     }
 
     .btn-action.print {
-      background: var(--theme);
-      color: #FFFFFF;
+      background: #FFFFFF;
+      color: #0F172A;
     }
-    .btn-action.print:hover { background: var(--theme-dark); }
+    .btn-action.print:hover { background: #F1F5F9; }
 
     .btn-action.portfolio {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.14);
       color: #FFFFFF;
     }
-    .btn-action.portfolio:hover { background: rgba(255, 255, 255, 0.25); }
+    .btn-action.portfolio:hover { background: rgba(255, 255, 255, 0.24); }
 
-    /* The Resume Sheet Container */
+    /* The Resume Sheet Container (Clean top edge — no top stripe border) */
     .resume-canvas-wrap {
       max-width: 1040px;
       margin: 28px auto 60px;
       background: #FFFFFF;
-      border: 1px solid var(--swiss-border);
-      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
       position: relative;
     }
 
-    /* Unified Single-Color Swiss Top Bar */
-    .swiss-accent-bar {
-      height: 6px;
-      background: var(--theme);
-    }
-
     .resume-inner {
-      padding: 40px 48px 44px;
+      padding: 44px 48px;
     }
 
     /* Header Profile & Masthead */
     .swiss-masthead {
       display: grid;
-      grid-template-columns: 140px 1fr;
+      grid-template-columns: 138px 1fr;
       gap: 28px;
       padding-bottom: 24px;
       border-bottom: 2px solid var(--text-black);
@@ -189,8 +182,8 @@
 
     /* Photo Presentation Modes */
     .profile-photo-frame {
-      width: 140px;
-      height: 148px;
+      width: 138px;
+      height: 146px;
       position: relative;
       display: flex;
       align-items: flex-end;
@@ -199,52 +192,65 @@
       transition: all 0.2s ease;
     }
 
-    /* Mode 1 (Default): Frameless Cutout blending directly into resume background */
+    /* Mode 1 (Default): Retouched Tight Headshot Cutout sitting flush on divider */
     .profile-photo-frame.mode-cutout {
       background: transparent;
       border: none;
       border-radius: 0;
-      margin-bottom: -24px; /* Sits flush on the black masthead divider line */
-      height: 164px;
+      margin-bottom: -24px;
+      height: 158px;
     }
     .profile-photo-frame.mode-cutout img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: bottom center;
-      filter: drop-shadow(0 6px 14px rgba(15, 23, 42, 0.08));
+      filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.07));
     }
 
-    /* Mode 2: Large Round Avatar */
+    /* Mode 2: Large Round Portrait */
     .profile-photo-frame.mode-round {
-      width: 132px;
-      height: 132px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      background: var(--swiss-surface);
-      border: 2.5px solid var(--theme);
-      box-shadow: 0 4px 14px rgba(15, 98, 254, 0.12);
+      background: var(--swiss-surface-subtle);
+      border: 2px solid var(--swiss-border-strong);
     }
     .profile-photo-frame.mode-round img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
-      transform: scale(1.04);
+      object-position: center 15%;
     }
 
-    /* Mode 3: Clean Soft Portrait Frame */
-    .profile-photo-frame.mode-portrait {
-      width: 132px;
-      height: 144px;
-      border-radius: 10px;
-      background: var(--swiss-surface);
-      border: 1px solid var(--swiss-border);
+    /* Mode 3: Warm Smile Round */
+    .profile-photo-frame.mode-smile-round {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #F4EFEA;
+      border: 2px solid var(--swiss-border-strong);
     }
-    .profile-photo-frame.mode-portrait img {
+    .profile-photo-frame.mode-smile-round img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 18%;
+    }
+
+    /* Mode 4: Warm Smile Soft Portrait Box */
+    .profile-photo-frame.mode-smile-frame {
+      width: 130px;
+      height: 142px;
+      border-radius: 10px;
+      background: #F4EFEA;
+      border: 1px solid var(--swiss-border-strong);
+    }
+    .profile-photo-frame.mode-smile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
     }
 
     .masthead-text-block {
@@ -258,7 +264,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--theme);
+      color: var(--text-muted);
       margin-bottom: 4px;
       display: flex;
       align-items: center;
@@ -270,26 +276,51 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       color: var(--text-black);
-      line-height: 1.08;
-      margin-bottom: 4px;
+      line-height: 1.06;
+      margin-bottom: 3px;
     }
 
     .swiss-title {
-      font-size: 17px;
+      font-size: 17.5px;
       font-weight: 700;
       color: var(--text-heading);
       letter-spacing: -0.01em;
-      margin-bottom: 12px;
+      margin-bottom: 11px;
     }
 
-    /* Contact & Links Strip */
+    /* Contact & Global Mobility Rows inside Header */
     .contact-pills-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px 14px;
+      gap: 8px 14px;
       font-size: 12px;
       color: var(--text-muted);
+    }
+
+    .mobility-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--swiss-border);
+      font-size: 11.5px;
+      color: var(--text-body);
+    }
+
+    .mobility-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: var(--swiss-surface-subtle);
+      color: var(--text-black);
+      border: 1px solid var(--swiss-border-strong);
     }
 
     .contact-item {
@@ -297,55 +328,51 @@
       align-items: center;
       gap: 5px;
       color: var(--text-heading);
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .contact-item a {
-      color: var(--theme);
+      color: var(--accent);
       text-decoration: none;
       font-weight: 700;
     }
     .contact-item a:hover { text-decoration: underline; }
 
     .dot-sep {
-      color: var(--swiss-border);
+      color: var(--swiss-border-strong);
     }
 
-    /* Key Metrics Ticker (Unified Theme Strip) */
+    /* Key Metrics Band (Frameless Swiss Typographic Strip — No Box Borders) */
     .metrics-ticker-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      gap: 0;
       padding: 18px 0;
       border-bottom: 1px solid var(--swiss-border);
     }
 
     .metric-box {
-      padding: 12px 14px;
-      border-radius: 6px;
-      border: 1px solid var(--swiss-border);
-      background: var(--swiss-surface);
-      position: relative;
-      overflow: hidden;
+      padding: 4px 16px;
+      border-right: 1px solid var(--swiss-border);
     }
 
-    .metric-box::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--theme);
+    .metric-box:first-child {
+      padding-left: 0;
+    }
+
+    .metric-box:last-child {
+      border-right: none;
+      padding-right: 0;
     }
 
     .metric-number {
       font-family: var(--font-mono);
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 800;
       color: var(--text-black);
       line-height: 1.1;
       margin-bottom: 3px;
+      letter-spacing: -0.02em;
     }
 
     .metric-desc {
@@ -353,7 +380,6 @@
       font-weight: 600;
       color: var(--text-muted);
       line-height: 1.35;
-      letter-spacing: -0.01em;
     }
 
     /* Two-Column Asymmetric Swiss Layout */
@@ -364,27 +390,20 @@
       padding-top: 26px;
     }
 
-    /* Section Titles */
+    /* Section Titles (Charcoal Ink — Not Blue) */
     .section-eyebrow {
       font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 11.5px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--theme);
+      color: var(--text-black);
       margin-bottom: 16px;
       padding-bottom: 6px;
       border-bottom: 1.5px solid var(--text-black);
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-    }
-
-    .section-eyebrow span.sub {
-      font-size: 10px;
-      color: var(--text-muted);
-      font-weight: 500;
-      letter-spacing: 0.05em;
     }
 
     /* Experience Timeline Entries */
@@ -417,7 +436,7 @@
     .exp-company {
       font-size: 13.5px;
       font-weight: 700;
-      color: var(--theme);
+      color: var(--text-body);
     }
 
     .exp-dates {
@@ -430,7 +449,7 @@
       border-radius: 4px;
     }
 
-    /* Unified Single-Color Scope Tags */
+    /* Neutral Slate Scope Tags (No Blue Overload) */
     .exp-tags-row {
       display: flex;
       flex-wrap: wrap;
@@ -443,12 +462,12 @@
       font-size: 9.5px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       padding: 2px 7px;
       border-radius: 3px;
-      background: var(--theme-soft);
-      color: var(--theme);
-      border: 1px solid var(--theme-border);
+      background: var(--swiss-surface-subtle);
+      color: var(--text-heading);
+      border: 1px solid var(--swiss-border-strong);
     }
 
     .exp-bullets {
@@ -470,7 +489,7 @@
       content: "▪";
       position: absolute;
       left: 0;
-      color: var(--theme);
+      color: var(--text-muted);
       font-size: 11px;
       top: -1px;
     }
@@ -484,7 +503,6 @@
     .earlier-career-section {
       margin-top: 26px;
       padding-top: 18px;
-      border-top: 1px solid var(--swiss-border);
     }
 
     .earlier-grid {
@@ -516,7 +534,7 @@
     .earlier-company {
       font-size: 12.5px;
       font-weight: 700;
-      color: var(--theme);
+      color: var(--text-body);
     }
 
     .earlier-desc {
@@ -555,14 +573,14 @@
       content: "";
       width: 4px;
       height: 12px;
-      background: var(--theme);
+      background: var(--text-black);
       border-radius: 1px;
     }
 
-    /* Portfolio Showcase Card (With Visual Thumbnail) */
+    /* Portfolio Showcase Card (With 60s Briefing Thumbnail) */
     .portfolio-showcase-card {
-      background: var(--theme-soft);
-      border: 1.5px solid var(--theme-border);
+      background: var(--swiss-surface);
+      border: 1px solid var(--swiss-border-strong);
       border-radius: 8px;
       padding: 14px;
       display: flex;
@@ -574,23 +592,22 @@
       display: block;
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid var(--swiss-border);
-      background: #FFFFFF;
+      border: 1px solid var(--text-black);
+      background: #0B1120;
       position: relative;
-      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .portfolio-thumb-link:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(15, 98, 254, 0.15);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
     }
 
     .portfolio-thumb-link img {
       width: 100%;
-      height: 116px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
-      object-position: top center;
       display: block;
     }
 
@@ -599,7 +616,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      background: var(--theme);
+      background: var(--text-black);
       color: #FFFFFF;
       text-decoration: none;
       font-size: 11.5px;
@@ -610,7 +627,7 @@
     }
 
     .portfolio-cta-btn:hover {
-      background: var(--theme-dark);
+      background: var(--accent);
     }
 
     .skill-pills-wrap {
@@ -630,9 +647,9 @@
     }
 
     .skill-pill.highlight {
-      background: var(--theme-soft);
-      color: var(--theme);
-      border-color: var(--theme-border);
+      background: var(--swiss-surface-subtle);
+      color: var(--text-black);
+      border-color: var(--swiss-border-strong);
       font-weight: 700;
     }
 
@@ -668,11 +685,7 @@
         padding: 0 !important;
       }
       .metrics-ticker-grid {
-        gap: 8px !important;
         padding: 12px 0 !important;
-      }
-      .metric-box {
-        padding: 8px 10px !important;
       }
       .swiss-layout-grid {
         gap: 24px !important;
@@ -696,7 +709,8 @@
       .resume-inner { padding: 24px; }
       .swiss-masthead { grid-template-columns: 1fr; gap: 16px; }
       .profile-photo-frame.mode-cutout { margin-bottom: 0; }
-      .metrics-ticker-grid { grid-template-columns: 1fr 1fr; }
+      .metrics-ticker-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .metric-box { border-right: none; padding: 6px 0; }
       .swiss-layout-grid { grid-template-columns: 1fr; gap: 32px; }
     }
   </style>
@@ -714,13 +728,14 @@
         </div>
       </div>
 
-      <!-- Interactive Photo Shape Preview Switcher -->
+      <!-- Interactive Photo Preview Switcher -->
       <div class="format-label-group">
-        <span style="font-size:11.5px; color:#94A3B8; font-weight:600;">Photo Style:</span>
+        <span style="font-size:11.5px; color:#94A3B8; font-weight:600;">Photo Option:</span>
         <div class="format-toggle-group" id="photoStyleSwitcher">
-          <button type="button" class="photo-mode-btn active" data-mode="mode-cutout">Frameless Cutout</button>
-          <button type="button" class="photo-mode-btn" data-mode="mode-round">Large Round</button>
-          <button type="button" class="photo-mode-btn" data-mode="mode-portrait">Soft Frame</button>
+          <button type="button" class="photo-mode-btn active" data-mode="mode-cutout" data-src="profile-cutout.png">1. Suit Cutout (Closer Crop)</button>
+          <button type="button" class="photo-mode-btn" data-mode="mode-round" data-src="profile-headshot.jpg">2. Suit Round</button>
+          <button type="button" class="photo-mode-btn" data-mode="mode-smile-round" data-src="profile-smile-headshot.jpg">3. Warm Smile (Round)</button>
+          <button type="button" class="photo-mode-btn" data-mode="mode-smile-frame" data-src="profile-smile-headshot.jpg">4. Warm Smile (Frame)</button>
         </div>
       </div>
 
@@ -743,13 +758,10 @@
 
   <!-- Resume Sheet Canvas -->
   <div class="resume-canvas-wrap">
-    
-    <!-- Top Unified Accent Ribbon -->
-    <div class="swiss-accent-bar"></div>
 
     <div class="resume-inner">
       
-      <!-- Masthead -->
+      <!-- Masthead (Includes Contact + Global Mobility) -->
       <section class="swiss-masthead">
         <div class="profile-photo-frame mode-cutout" id="resumeProfileFrame">
           <img src="profile-cutout.png" alt="Balaajee V.R. — Senior UI/UX Design Manager">
@@ -767,6 +779,7 @@
           <h1 class="swiss-name">BALAAJEE V.R.</h1>
           <div class="swiss-title">Senior UI/UX Design Manager</div>
 
+          <!-- Row 1: Direct Contact & LinkedIn -->
           <div class="contact-pills-row">
             <span class="contact-item">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -784,14 +797,24 @@
             </span>
             <span class="dot-sep">•</span>
             <span class="contact-item">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <a href="index.html">Interactive Portfolio ↗</a>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Chennai / Bengaluru, India
             </span>
+          </div>
+
+          <!-- Row 2: Global Mobility Integrated into Header -->
+          <div class="mobility-header-row">
+            <span class="mobility-badge">Global Mobility</span>
+            <span><strong>Immediate Availability</strong></span>
+            <span class="dot-sep">•</span>
+            <span><strong>EU Blue Card Eligible</strong> &amp; <strong>Valid 10-Yr US B1/B2 Visa</strong></span>
+            <span class="dot-sep">•</span>
+            <span>Open to Relocation (India, EU, UK, US, Middle East &amp; APAC)</span>
           </div>
         </div>
       </section>
 
-      <!-- Key Quantitative Proof Ticker (Unified Theme Strip) -->
+      <!-- Key Quantitative Proof Band (Frameless Swiss Typographic Strip) -->
       <section class="metrics-ticker-grid">
         <div class="metric-box">
           <div class="metric-number">18+ Yrs</div>
@@ -823,7 +846,6 @@
           
           <div class="section-eyebrow">
             <span>Professional Experience</span>
-            <span class="sub">2006 – 2026 • 18+ Years</span>
           </div>
 
           <div class="experience-list">
@@ -833,7 +855,7 @@
               <div class="exp-header">
                 <div>
                   <span class="exp-role">UI/UX Design — Senior Manager</span>
-                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                   <span class="exp-company">IBM India Software Labs</span>
                 </div>
                 <span class="exp-dates">Sep 2024 – Jan 2026</span>
@@ -842,11 +864,11 @@
                 <span class="exp-tag">AI UX Governance</span>
                 <span class="exp-tag">Agentic Human-in-the-Loop</span>
                 <span class="exp-tag">UX-as-a-Service Re-Org</span>
-                <span class="exp-tag">People Management &amp; Mentoring</span>
+                <span class="exp-tag">Hiring &amp; Talent Promotion</span>
               </div>
               <ul class="exp-bullets">
                 <li>Spearheaded the UX transformation of enterprise B2B software by integrating generative AI and agentic workflows (IBM Watson), accelerating complex user task completion from <strong>14.2 hours to 3.6 hours</strong>.</li>
-                <li>Restructured and scaled a multidisciplinary organization of <strong>14+ UI/UX designers</strong> into an agile <strong>UX-as-a-Service model</strong>, establishing clear career ladders, mentoring senior designers into leadership, and maintaining <strong>100% team retention</strong>.</li>
+                <li>Restructured and scaled a multidisciplinary organization of <strong>14+ UI/UX designers</strong> into an agile <strong>UX-as-a-Service model</strong>, driving hiring, establishing career ladders, promoting 5 senior designers into leadership, and maintaining <strong>100% retention</strong>.</li>
                 <li>Architected 3-tier Human-in-the-Loop (HITL) confidence gates and proactive AI security remediation workflows, cutting threat triage from <strong>4.1 hours to 43 minutes</strong> across 140,000+ enterprise tasks.</li>
                 <li>Partnered with global product management and engineering executives across the US and Europe to align product roadmaps with WCAG 2.2 AA accessibility and EU AI Act human-oversight standards.</li>
               </ul>
@@ -857,30 +879,30 @@
               <div class="exp-header">
                 <div>
                   <span class="exp-role">UI/UX Product Design Manager</span>
-                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                   <span class="exp-company">Zebra Technologies</span>
                 </div>
                 <span class="exp-dates">Jul 2021 – Aug 2024</span>
               </div>
               <div class="exp-tags-row">
                 <span class="exp-tag">Enterprise Mobility &amp; IoT UX</span>
-                <span class="exp-tag">Frontline Hardware Ergonomics</span>
-                <span class="exp-tag">Agile / PI Planning</span>
                 <span class="exp-tag">Team Scaling &amp; Hiring</span>
+                <span class="exp-tag">Performance &amp; Exit Management</span>
+                <span class="exp-tag">Agile / PI Planning</span>
               </div>
               <ul class="exp-bullets">
                 <li>Directed UX strategy and end-to-end execution across B2B mobile devices, enterprise cloud consoles, and industrial scanner telemetry platforms serving <strong>38,000+ rugged Android endpoints</strong>.</li>
-                <li>Built and scaled high-performing UX teams from the ground up — leading hiring, mentoring, performance reviews, and quarterly <strong>Program Increment (PI) planning</strong> across global engineering squads.</li>
+                <li>Built and scaled high-performing UX teams from the ground up — leading hiring, mentoring, rigorous performance turnaround (PIPs and decisive exit management of underperformers), and quarterly <strong>Program Increment (PI) planning</strong>.</li>
                 <li>Designed high-contrast, gloved-touch ergonomic workflows for warehouse and retail operators, dropping Bluetooth scanner pairing failures by <strong>84%</strong> and reducing Tier-1 support tickets by <strong>33%</strong>.</li>
               </ul>
             </article>
 
-            <!-- Role 3: ZF Wabco (Correctly ordered before Ericsson: Oct 2020 – Jul 2021) -->
+            <!-- Role 3: ZF Wabco (Oct 2020 – Jul 2021) -->
             <article class="experience-card">
               <div class="exp-header">
                 <div>
                   <span class="exp-role">UI/UX Senior Specialist</span>
-                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                   <span class="exp-company">ZF Wabco</span>
                 </div>
                 <span class="exp-dates">Oct 2020 – Jul 2021</span>
@@ -903,7 +925,7 @@
               <div class="exp-header">
                 <div>
                   <span class="exp-role">UI/UX Designer</span>
-                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                   <span class="exp-company">Ericsson Global</span>
                 </div>
                 <span class="exp-dates">Jul 2019 – Sep 2020</span>
@@ -921,12 +943,12 @@
               </ul>
             </article>
 
-            <!-- Role 5: NP Compete Technologies (Restored: Sep 2017 – Jul 2019) -->
+            <!-- Role 5: NP Compete Technologies (Sep 2017 – Jul 2019) -->
             <article class="experience-card">
               <div class="exp-header">
                 <div>
                   <span class="exp-role">Lead UI/UX Designer</span>
-                  <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                  <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                   <span class="exp-company">NP Compete Technologies</span>
                 </div>
                 <span class="exp-dates">Sep 2017 – Jul 2019</span>
@@ -946,11 +968,10 @@
 
           </div>
 
-          <!-- Earlier Experience Section (Restored with Exact Dates from cv.html) -->
+          <!-- Earlier Experience Section -->
           <div class="earlier-career-section">
             <div class="section-eyebrow" style="margin-bottom: 12px;">
               <span>Earlier Experience</span>
-              <span class="sub">2006 – 2017</span>
             </div>
 
             <div class="earlier-grid">
@@ -958,7 +979,7 @@
                 <div class="earlier-item-head">
                   <div>
                     <span class="earlier-role">Freelance UI/UX Designer</span>
-                    <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                    <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                     <span class="earlier-company">Independent UX Consultant</span>
                   </div>
                   <span class="exp-dates">May 2015 – Aug 2017</span>
@@ -970,7 +991,7 @@
                 <div class="earlier-item-head">
                   <div>
                     <span class="earlier-role">Creative Head</span>
-                    <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                    <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                     <span class="earlier-company">Titi Technologies</span>
                   </div>
                   <span class="exp-dates">May 2010 – Apr 2015</span>
@@ -982,7 +1003,7 @@
                 <div class="earlier-item-head">
                   <div>
                     <span class="earlier-role">Senior Software Engineer</span>
-                    <span style="color:var(--swiss-border); margin:0 4px;">•</span>
+                    <span style="color:var(--swiss-border-strong); margin:0 4px;">•</span>
                     <span class="earlier-company">Infosys Technologies</span>
                   </div>
                   <span class="exp-dates">Jan 2006 – Apr 2010</span>
@@ -997,17 +1018,17 @@
         <!-- Right Track: Executive Dossier & Portfolio Showcase (35%) -->
         <aside class="dossier-column">
           
-          <!-- 1. Interactive Portfolio & Case Studies Showcase (Single Unified Link + Visual Thumbnail) -->
+          <!-- 1. Interactive Portfolio & Case Studies Showcase (Using 60s Briefing Thumbnail) -->
           <div class="portfolio-showcase-card">
             <div class="dossier-title" style="margin-bottom: 2px;">Portfolio &amp; Live Case Studies</div>
             <a href="index.html" class="portfolio-thumb-link" title="Open Balaajee V.R. Interactive UX Portfolio">
-              <img src="welcome_hero_clean_title.png" alt="Balaajee V.R. Interactive Portfolio Website Preview">
+              <img src="video-thumbnail.jpg" alt="18 Years of UX Leadership in 60 Seconds — Portfolio Preview">
             </a>
             <div style="font-size: 11.5px; color: var(--text-body); line-height: 1.5;">
-              Explore interactive deep-dives across <strong>IBM Watson AI</strong>, <strong>Zebra Enterprise IoT</strong>, <strong>ZF Wabco Cockpit</strong>, and <strong>Ericsson CPQ</strong>, plus my 10-slide Leadership Deck.
+              Watch the 60-second executive briefing and explore 5 end-to-end case studies (<strong>IBM Watson</strong>, <strong>Zebra IoT</strong>, <strong>ZF Wabco</strong>, <strong>Ericsson CPQ</strong>) plus my 10-slide Leadership Deck.
             </div>
             <a href="index.html" class="portfolio-cta-btn">
-              <span>Explore Portfolio Website</span>
+              <span>Explore Interactive Portfolio</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
           </div>
@@ -1019,17 +1040,17 @@
               <span class="skill-pill highlight">UX Org Scaling &amp; Hiring</span>
               <span class="skill-pill highlight">Enterprise AI &amp; Agentic UX</span>
               <span class="skill-pill highlight">UX-as-a-Service Operations</span>
+              <span class="skill-pill">Performance &amp; Talent Management</span>
               <span class="skill-pill">Product Strategy &amp; Roadmaps</span>
               <span class="skill-pill">User Research &amp; Usability Testing</span>
               <span class="skill-pill">Complex B2B Workflows</span>
               <span class="skill-pill">Executive Stakeholder Alignment</span>
               <span class="skill-pill">Agile / PI Planning</span>
-              <span class="skill-pill">Hardware &amp; Cockpit Ergonomics</span>
               <span class="skill-pill">Design Systems &amp; Accessibility</span>
             </div>
           </div>
 
-          <!-- 3. Technology & AI Stack (From cv.html) -->
+          <!-- 3. Technology & AI Stack -->
           <div class="dossier-card">
             <div class="dossier-title">Technology &amp; AI Stack</div>
             <ul class="dossier-list">
@@ -1041,7 +1062,7 @@
             </ul>
           </div>
 
-          <!-- 4. Awards & Recognition (From cv.html) -->
+          <!-- 4. Awards & Recognition -->
           <div class="dossier-card">
             <div class="dossier-title">Awards &amp; Recognition</div>
             <ul class="dossier-list">
@@ -1052,22 +1073,11 @@
             </ul>
           </div>
 
-          <!-- 5. Education (Corrected to B.E. Information Technology) -->
+          <!-- 5. Education -->
           <div class="dossier-card">
             <div class="dossier-title">Education</div>
             <div style="font-size:13px; font-weight:800; color:var(--text-black);">B.E. Information Technology</div>
             <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">Bachelor of Engineering • Anna University</div>
-          </div>
-
-          <!-- 6. Global Mobility -->
-          <div class="dossier-card">
-            <div class="dossier-title">Global Mobility</div>
-            <div style="font-size:11.75px; color:var(--text-body); line-height:1.6;">
-              <strong>Availability:</strong> Immediate<br>
-              <strong>Work Authorization:</strong> EU Blue Card Eligible &amp; Valid 10-Year US B1/B2 Visa<br>
-              <strong>Location:</strong> Chennai / Bengaluru, India<br>
-              <strong>Relocation:</strong> Open to India, EU, UK, US, Middle East &amp; APAC
-            </div>
           </div>
 
         </aside>
@@ -1078,7 +1088,7 @@
   </div>
 
   <script>
-    // Interactive Photo Shape Switcher so user can compare Cutout vs Round vs Soft Frame live
+    // Interactive Photo Switcher (Compare Retouched Suit Cutout vs Suit Round vs Warm Smile)
     (function() {
       const switcher = document.getElementById('photoStyleSwitcher');
       const frame = document.getElementById('resumeProfileFrame');
@@ -1089,15 +1099,14 @@
         const btn = e.target.closest('.photo-mode-btn');
         if (!btn) return;
         const mode = btn.getAttribute('data-mode');
+        const src = btn.getAttribute('data-src');
 
         switcher.querySelectorAll('.photo-mode-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        frame.classList.remove('mode-cutout', 'mode-round', 'mode-portrait');
+        frame.classList.remove('mode-cutout', 'mode-round', 'mode-smile-round', 'mode-smile-frame');
         frame.classList.add(mode);
-
-        // Use transparent cutout for cutout/round/portrait so background stays super clean
-        img.src = 'profile-cutout.png';
+        if (src) img.src = src;
       });
     })();
   </script>
