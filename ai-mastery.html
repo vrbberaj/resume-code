@@ -282,6 +282,46 @@
       background: var(--bg-subtle);
       color: var(--text-title);
     }
+    .btn-tag-filter {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid var(--border-medium);
+      background: #FFFFFF;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: var(--font-sans);
+    }
+    .btn-tag-filter:hover {
+      background: var(--bg-subtle);
+      color: var(--text-title);
+    }
+    .btn-tag-filter.active {
+      background: var(--google-blue);
+      color: #FFFFFF;
+      border-color: var(--google-blue);
+      box-shadow: 0 1px 3px rgba(15, 98, 254, 0.25);
+    }
+    .btn-clear-tag {
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid #FFCCD1;
+      background: #FFF1F2;
+      color: #E11D48;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-clear-tag:hover {
+      background: #FFE4E6;
+      border-color: #FDA4AF;
+    }
     .btn-round-filter.active {
       background: var(--text-title);
       color: #FFFFFF;
@@ -2527,14 +2567,21 @@ The empirical impact: <mark>Average driver glance duration dropped from 2.8 seco
           <button type="button" class="btn-round-filter" id="btn-filter-round-5" onclick="filterInterviewRound('round-5', this)">Round 5: Strategy &amp; Bar Raiser (11)</button>
         </div>
 
-        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px; width:100%; border-top:1px dashed var(--border-light); padding-top:10px;">
+        <div class="tag-filter-row" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px; width:100%; border-top:1px dashed var(--border-light); padding-top:10px;">
           <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--text-muted); font-family:var(--font-mono);">Quick Tag Filters:</span>
-          <button type="button" class="btn-round-filter" style="font-size:11px; padding:3px 9px;" onclick="filterInterviewTag('behavioral', this)">Behavioral ("Tell me about a time...")</button>
-          <button type="button" class="btn-round-filter" style="font-size:11px; padding:3px 9px;" onclick="filterInterviewTag('management', this)">People Management</button>
-          <button type="button" class="btn-round-filter" style="font-size:11px; padding:3px 9px;" onclick="filterInterviewTag('hands-on-technical', this)">Technical UI/UX &amp; Systems</button>
-          <button type="button" class="btn-round-filter" style="font-size:11px; padding:3px 9px;" onclick="filterInterviewTag('stakeholder-alignment', this)">Conflict &amp; Stakeholders</button>
-          <button type="button" class="btn-round-filter" style="font-size:11px; padding:3px 9px;" onclick="filterInterviewTag('executive-strategy', this)">Executive Strategy</button>
+          <button type="button" class="btn-tag-filter active" data-tag="all" id="tag-btn-all" onclick="filterInterviewTag('all', this)">All Tags (70)</button>
+          <button type="button" class="btn-tag-filter" data-tag="behavioral" onclick="filterInterviewTag('behavioral', this)">Behavioral ("Tell me about a time...")</button>
+          <button type="button" class="btn-tag-filter" data-tag="management" onclick="filterInterviewTag('management', this)">People Management</button>
+          <button type="button" class="btn-tag-filter" data-tag="hands-on-technical" onclick="filterInterviewTag('hands-on-technical', this)">Technical UI/UX &amp; Systems</button>
+          <button type="button" class="btn-tag-filter" data-tag="stakeholder-alignment" onclick="filterInterviewTag('stakeholder-alignment', this)">Conflict &amp; Stakeholders</button>
+          <button type="button" class="btn-tag-filter" data-tag="executive-strategy" onclick="filterInterviewTag('executive-strategy', this)">Executive Strategy</button>
+          <button type="button" id="btn-clear-tag" class="btn-clear-tag" style="display:none;" onclick="clearTagFilter()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <span>Reset Tag Filter</span>
+          </button>
         </div>
+
+        <div id="tag-filter-status" style="display:none; font-size:12px; color:var(--text-secondary); background:var(--bg-subtle); padding:6px 12px; border-radius:6px; margin-top:8px; border-left:3px solid var(--google-blue);"></div>
 
         <div style="width:100%; margin-top:12px;">
           <input type="text" class="interview-search-input" style="width:100%; max-width:100%; padding:10px 14px; border-radius:8px; border:1px solid var(--border-medium); font-size:13px; background:#FAFAFA;" placeholder="Search across all 70 questions by keyword, tool, or metric (e.g. 'underperforming', 'tokens', 'conflict', 'Watson', 'retention', 'Zebra', 'glance', 'promotions')..." oninput="searchInterviewQuestions(this.value)">
@@ -6062,10 +6109,15 @@ Convert the attached UI interaction specification for an AI-powered financial su
       }
     }
 
+    // State management for multi-criteria interview filtering
+    let currentRoundFilter = 'all';
+    let currentTagFilter = 'all';
+
     // --- Direct Question Navigation from TOC ---
     function navigateDirectToQuestion(roundId, questionId) {
       switchMainTab('interview');
-      filterInterviewRound('all'); // Show all so card is not hidden
+      filterInterviewRound('all'); // Show all rounds
+      clearTagFilter();            // Clear any restrictive tag filter
       setTimeout(() => {
         const el = document.getElementById(questionId);
         if (el) {
@@ -6078,31 +6130,18 @@ Convert the attached UI interaction specification for an AI-powered financial su
             el.style.boxShadow = '';
           }, 2500);
         }
-      }, 80);
+      }, 100);
     }
 
     // --- Interview Round Filtering with Smooth Scrolling ---
     function filterInterviewRound(roundKey, btn) {
+      currentRoundFilter = roundKey;
+
       document.querySelectorAll('.round-filter-pills .btn-round-filter').forEach(b => b.classList.remove('active'));
-      
       const targetBtn = btn || document.getElementById('btn-filter-' + roundKey);
       if (targetBtn) targetBtn.classList.add('active');
 
-      const groups = document.querySelectorAll('.round-card-group');
-      groups.forEach(group => {
-        if (roundKey === 'all' || group.getAttribute('data-round') === roundKey) {
-          group.style.display = 'block';
-        } else {
-          group.style.display = 'none';
-        }
-      });
-
-      // Clear any search filters
-      const searchInput = document.querySelector('.interview-search-input');
-      if (searchInput && searchInput.value) {
-        searchInput.value = '';
-        document.querySelectorAll('#view-interview .script-card').forEach(card => card.style.display = 'block');
-      }
+      applyCombinedFilters();
 
       if (roundKey !== 'all') {
         const targetGroup = document.getElementById(roundKey);
@@ -6112,52 +6151,117 @@ Convert the attached UI interaction specification for an AI-powered financial su
       }
     }
 
-    // --- Interview Tag Filtering ---
+    // --- Interview Tag Filtering with Toggle Support ---
     function filterInterviewTag(tagKey, btn) {
-      document.querySelectorAll('.interview-filter-bar .btn-round-filter').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+      // Toggle logic: If user clicks the already active tag, toggle it off to 'all'
+      if (tagKey === currentTagFilter && tagKey !== 'all') {
+        currentTagFilter = 'all';
+      } else {
+        currentTagFilter = tagKey;
+      }
 
-      // Unhide all groups first
-      document.querySelectorAll('.round-card-group').forEach(group => group.style.display = 'block');
+      document.querySelectorAll('.btn-tag-filter').forEach(b => {
+        if (b.getAttribute('data-tag') === currentTagFilter) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
 
-      const cards = document.querySelectorAll('#view-interview .script-card');
+      applyCombinedFilters();
+    }
+
+    // --- Clear All Tag Filters ---
+    function clearTagFilter() {
+      currentTagFilter = 'all';
+      document.querySelectorAll('.btn-tag-filter').forEach(b => {
+        if (b.getAttribute('data-tag') === 'all') {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+      applyCombinedFilters();
+    }
+
+    // --- Unified Filter Evaluator ---
+    function applyCombinedFilters() {
+      const searchInput = document.querySelector('.interview-search-input');
+      const searchQuery = (searchInput ? searchInput.value : '').trim().toLowerCase();
+
+      const clearBtn = document.getElementById('btn-clear-tag');
+      const statusEl = document.getElementById('tag-filter-status');
+
+      if (currentTagFilter === 'all') {
+        if (clearBtn) clearBtn.style.display = 'none';
+        if (statusEl) statusEl.style.display = 'none';
+      } else {
+        if (clearBtn) clearBtn.style.display = 'inline-flex';
+      }
+
+      let totalMatches = 0;
       let firstVisible = null;
 
-      cards.forEach(card => {
-        const tags = (card.getAttribute('data-tags') || '').split(' ');
-        if (tagKey === 'all' || tags.includes(tagKey)) {
-          card.style.display = 'block';
-          if (!firstVisible) firstVisible = card;
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      const groups = document.querySelectorAll('.round-card-group');
+      groups.forEach(group => {
+        const roundId = group.getAttribute('data-round');
+        const roundAllowed = (currentRoundFilter === 'all' || currentRoundFilter === roundId);
 
-      // Hide round header groups if all children are hidden
-      document.querySelectorAll('.round-card-group').forEach(group => {
-        const visibleCards = group.querySelectorAll('.script-card:not([style*="display: none"])');
-        if (visibleCards.length === 0) {
-          group.style.display = 'none';
-        } else {
+        let groupVisibleCount = 0;
+        const cards = group.querySelectorAll('.script-card');
+        
+        cards.forEach(card => {
+          if (!roundAllowed) {
+            card.style.display = 'none';
+            return;
+          }
+
+          const tags = (card.getAttribute('data-tags') || '').split(' ');
+          const tagAllowed = (currentTagFilter === 'all' || tags.includes(currentTagFilter));
+
+          const text = card.innerText.toLowerCase();
+          const searchAllowed = (!searchQuery || text.includes(searchQuery));
+
+          if (tagAllowed && searchAllowed) {
+            card.style.display = 'block';
+            groupVisibleCount++;
+            totalMatches++;
+            if (!firstVisible) firstVisible = card;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (roundAllowed && groupVisibleCount > 0) {
           group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
         }
       });
 
-      if (firstVisible) {
+      // Update feedback banner
+      if (statusEl && currentTagFilter !== 'all') {
+        const tagLabels = {
+          'behavioral': 'Behavioral ("Tell me about a time...")',
+          'management': 'People Management',
+          'hands-on-technical': 'Technical UI/UX & Systems',
+          'stakeholder-alignment': 'Conflict & Stakeholders',
+          'executive-strategy': 'Executive Strategy'
+        };
+        const label = tagLabels[currentTagFilter] || currentTagFilter;
+        statusEl.style.display = 'block';
+        statusEl.innerHTML = `Showing <strong>${totalMatches}</strong> questions matching <em>"${label}"</em> <button type="button" class="btn-clear-tag" style="margin-left:8px;" onclick="clearTagFilter()">✕ Reset Tag Filter (Show All 70)</button>`;
+      }
+
+      if (firstVisible && currentTagFilter !== 'all') {
         firstVisible.scrollIntoView({ behavior: 'smooth' });
       }
     }
 
     // --- Interview Search Input ---
     function searchInterviewQuestions(query) {
-      const q = query.trim().toLowerCase();
-      const cards = document.querySelectorAll('#view-interview .script-card');
-      
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if (!q || text.includes(q)) {
-          card.style.display = 'block';
-        } else {
+      applyCombinedFilters();
+    } else {
           card.style.display = 'none';
         }
       });
