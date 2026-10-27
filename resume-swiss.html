@@ -553,7 +553,7 @@
       flex-shrink: 0;
     }
 
-    /* Portfolio Showcase Card (Clean Swiss Editorial Style — No Heavy Black Slabs or Blurry Screenshots) */
+    /* Portfolio Showcase Card (Title + Clickable Thumbnail Image Only) */
     .portfolio-showcase-card {
       background: var(--swiss-surface);
       border: 1px solid var(--swiss-border);
@@ -564,25 +564,24 @@
       gap: 10px;
     }
 
-    .portfolio-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      background: #FFFFFF;
-      color: var(--accent);
-      border: 1px solid var(--swiss-border-strong);
-      text-decoration: none;
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 7px 11px;
+    .portfolio-thumb-only {
+      display: block;
       border-radius: 5px;
-      transition: all 0.15s ease;
+      overflow: hidden;
+      border: 1px solid var(--swiss-border-strong);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
-    .portfolio-cta-btn:hover {
+    .portfolio-thumb-only:hover {
+      transform: translateY(-1px);
       border-color: var(--accent);
-      background: #F8FAFC;
+      box-shadow: 0 6px 16px rgba(15, 98, 254, 0.14);
+    }
+
+    .portfolio-thumb-only img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .dossier-list {
@@ -1042,17 +1041,11 @@
         <!-- Right Track: Portfolio & Dossier (35%) -->
         <aside class="dossier-column">
           
-          <!-- 1. Portfolio & Case Studies Card (Clean Swiss Typographic Card) -->
+          <!-- 1. Portfolio Card (Single-Word Title + Clickable Visual Thumbnail Only) -->
           <div class="portfolio-showcase-card">
-            <div class="dossier-title" style="margin-bottom: 0;">Portfolio &amp; Case Studies</div>
-            <ul class="dossier-list">
-              <li><strong>5 Enterprise Case Studies:</strong> End-to-end UX flows, production UI screens &amp; business impact.</li>
-              <li><strong>10-Slide Leadership Deck:</strong> Org scaling, DesignOps &amp; AI UX governance.</li>
-              <li><strong>60s Video Briefing:</strong> Personal executive introduction.</li>
-            </ul>
-            <a href="index.html" class="portfolio-cta-btn">
-              <span>Open Live Portfolio Website</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            <div class="dossier-title" style="margin-bottom: 0;">Portfolio</div>
+            <a href="index.html" class="portfolio-thumb-only" title="Click to Open Live UI/UX Leadership Portfolio">
+              <img src="portfolio-thumb-swiss.jpg" alt="UI/UX Leadership Portfolio — Click to Open Live Portfolio">
             </a>
           </div>
 
