@@ -173,20 +173,20 @@
       padding: 42px 48px;
     }
 
-    /* Header Profile & Masthead — Flush 92px Top & Bottom Alignment Across All 3 Columns */
+    /* Header Profile & Masthead — Flush 110px Top & Bottom Alignment Across All 3 Columns */
     .swiss-masthead {
       display: grid;
-      grid-template-columns: 92px 1fr auto;
-      gap: 22px;
+      grid-template-columns: 110px 1fr auto;
+      gap: 24px;
       padding-bottom: 18px;
       border-bottom: 1px solid var(--swiss-border);
       align-items: stretch;
     }
 
-    /* Photo Presentation Modes — Exact 92px Height Locked to Text & Contact Columns */
+    /* Photo Presentation Modes — 110px Square Portrait (Larger & More Commanding) */
     .profile-photo-frame {
-      width: 92px;
-      height: 92px;
+      width: 110px;
+      height: 110px;
       position: relative;
       display: flex;
       align-items: flex-end;
@@ -202,7 +202,7 @@
       border: 1px solid var(--swiss-border-strong);
       border-radius: 10px;
       margin-bottom: 0;
-      height: 92px;
+      height: 110px;
     }
     .profile-photo-frame.mode-cutout img {
       width: 100%;
@@ -213,8 +213,8 @@
 
     /* Mode 2: Large Round Portrait */
     .profile-photo-frame.mode-round {
-      width: 92px;
-      height: 92px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: var(--swiss-surface-subtle);
       border: 1.5px solid var(--swiss-border-strong);
@@ -228,8 +228,8 @@
 
     /* Mode 3: Warm Smile Round */
     .profile-photo-frame.mode-smile-round {
-      width: 92px;
-      height: 92px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: #F4EFEA;
       border: 1.5px solid var(--swiss-border-strong);
@@ -243,8 +243,8 @@
 
     /* Mode 4: Frameless Cutout (No Background Box) */
     .profile-photo-frame.mode-smile-frame {
-      width: 92px;
-      height: 92px;
+      width: 110px;
+      height: 110px;
       border-radius: 6px;
       background: transparent;
       border: none;
@@ -257,15 +257,21 @@
     }
 
     .masthead-text-block {
-      height: 92px;
+      height: 110px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 1px 0;
+      padding: 0;
+    }
+
+    .masthead-name-group {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
     }
 
     h1.swiss-name {
-      font-size: 34px;
+      font-size: 40px;
       font-weight: 900;
       letter-spacing: -0.03em;
       color: var(--text-black);
@@ -274,9 +280,9 @@
     }
 
     .swiss-title {
-      font-size: 16px;
+      font-size: 18.5px;
       font-weight: 700;
-      color: var(--accent);
+      color: #334155;
       letter-spacing: -0.01em;
       line-height: 1.1;
       margin: 0;
@@ -286,24 +292,42 @@
       display: inline-flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 6px 10px;
-      font-size: 12px;
-      line-height: 1.0;
-      color: var(--text-body);
-      font-weight: 600;
+      gap: 8px;
       margin: 0;
     }
 
-    /* Separated Right-Side Contact Stack — Flush 92px Top-to-Bottom Alignment, Aligned with Right Column */
+    .mobility-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-body);
+      background: var(--swiss-surface);
+      border: 1px solid var(--swiss-border-strong);
+      border-radius: 5px;
+      padding: 5px 11px;
+      line-height: 1.1;
+    }
+
+    .avail-dot {
+      width: 6.5px;
+      height: 6.5px;
+      border-radius: 50%;
+      background: #10B981;
+      flex-shrink: 0;
+    }
+
+    /* Separated Right-Side Contact Stack — Flush 110px Top-to-Bottom Alignment, Aligned with Right Column */
     .masthead-contact-right {
       width: 310px;
-      height: 92px;
+      height: 110px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0 0 0 22px;
+      padding: 1px 0 1px 22px;
       border-left: 1px solid var(--swiss-border);
-      font-size: 12px;
+      font-size: 12.25px;
       line-height: 1.0;
       align-self: center;
     }
@@ -604,16 +628,15 @@
       display: block;
       border-radius: 7px;
       overflow: hidden;
-      border: 1.5px solid var(--accent);
+      border: 1px solid var(--swiss-border);
       background: #FFFFFF;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(15, 98, 254, 0.14);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .portfolio-thumb-only:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(15, 98, 254, 0.24);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
     }
 
     .portfolio-thumb-only img {
@@ -784,13 +807,14 @@
         </div>
 
         <div class="masthead-text-block">
-          <h1 class="swiss-name">BALAAJEE V.R.</h1>
-          <div class="swiss-title">Senior UI/UX Design Manager</div>
+          <div class="masthead-name-group">
+            <h1 class="swiss-name">BALAAJEE V.R.</h1>
+            <div class="swiss-title">Senior UI/UX Design Manager</div>
+          </div>
 
           <div class="mobility-header-row">
-            <span>Immediate Availability</span>
-            <span class="dot-sep">•</span>
-            <span>Open to India / Global Relocation</span>
+            <span class="mobility-pill"><span class="avail-dot"></span>Immediate Availability</span>
+            <span class="mobility-pill">Open to India / Global Relocation</span>
           </div>
         </div>
 
