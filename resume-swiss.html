@@ -553,57 +553,36 @@
       flex-shrink: 0;
     }
 
-    /* Portfolio Showcase Card (With Pure UI Screens Thumbnail — No Duplicate Face) */
+    /* Portfolio Showcase Card (Clean Swiss Editorial Style — No Heavy Black Slabs or Blurry Screenshots) */
     .portfolio-showcase-card {
       background: var(--swiss-surface);
-      border: 1px solid var(--swiss-border-strong);
-      border-radius: 8px;
-      padding: 14px;
+      border: 1px solid var(--swiss-border);
+      border-radius: 6px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .portfolio-thumb-link {
-      display: block;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--swiss-border-strong);
-      background: #0F172A;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .portfolio-thumb-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
-    }
-
-    .portfolio-thumb-link img {
-      width: 100%;
-      aspect-ratio: 16 / 8.4;
-      object-fit: cover;
-      display: block;
-    }
-
     .portfolio-cta-btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 6px;
-      background: var(--text-black);
-      color: #FFFFFF;
+      background: #FFFFFF;
+      color: var(--accent);
+      border: 1px solid var(--swiss-border-strong);
       text-decoration: none;
       font-size: 11.5px;
       font-weight: 700;
-      padding: 8px 12px;
+      padding: 7px 11px;
       border-radius: 5px;
-      transition: background 0.15s ease;
+      transition: all 0.15s ease;
     }
 
     .portfolio-cta-btn:hover {
-      background: var(--accent);
+      border-color: var(--accent);
+      background: #F8FAFC;
     }
 
     .dossier-list {
@@ -1083,17 +1062,16 @@
         <!-- Right Track: Portfolio & Dossier (35%) -->
         <aside class="dossier-column">
           
-          <!-- 1. Interactive Portfolio Showcase (Pure UI Screens Preview — Zero Duplicate Face) -->
+          <!-- 1. Portfolio & Case Studies Card (Clean Swiss Typographic Card) -->
           <div class="portfolio-showcase-card">
-            <div class="dossier-title" style="margin-bottom: 2px;">Interactive Portfolio</div>
-            <a href="index.html" class="portfolio-thumb-link" title="Open Balaajee V.R. Interactive UX Portfolio">
-              <img src="portfolio-ui-preview.png" alt="Interactive UI Case Studies & Executive Deck Preview">
-            </a>
-            <div style="font-size: 11.5px; color: var(--text-body); line-height: 1.5;">
-              5 interactive enterprise case studies, production UI screens, 10-slide Leadership Deck, and 60s video briefing.
-            </div>
+            <div class="dossier-title" style="margin-bottom: 0;">Portfolio &amp; Case Studies</div>
+            <ul class="dossier-list">
+              <li><strong>5 Enterprise Case Studies:</strong> End-to-end UX flows, production UI screens &amp; business impact.</li>
+              <li><strong>10-Slide Leadership Deck:</strong> Org scaling, DesignOps &amp; AI UX governance.</li>
+              <li><strong>60s Video Briefing:</strong> Personal executive introduction.</li>
+            </ul>
             <a href="index.html" class="portfolio-cta-btn">
-              <span>Explore Interactive Portfolio</span>
+              <span>Open Live Portfolio Website</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
           </div>
