@@ -195,10 +195,55 @@
       transform: translateY(-1px);
     }
 
+    /* Page-Level Download Resume Toolbar (Above Resume Sheet, Hidden in Print) */
+    .resume-page-toolbar {
+      max-width: 1040px;
+      margin: 22px auto 12px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .btn-download-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0F172A;
+      color: #FFFFFF;
+      font-family: var(--font-swiss);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid #0F172A;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-download-resume:hover {
+      background: #2563EB;
+      border-color: #2563EB;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-download-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+    }
+
     /* The Resume Sheet Container */
     .resume-canvas-wrap {
       max-width: 1040px;
-      margin: 28px auto 60px;
+      margin: 0 auto 60px;
       background: #FFFFFF;
       box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
       position: relative;
@@ -745,6 +790,7 @@
         padding: 0 !important;
       }
       header.global-header,
+      .resume-page-toolbar,
       #bvr-contact-drawer-backdrop,
       #bvr-contact-drawer {
         display: none !important;
@@ -818,17 +864,21 @@
       </nav>
 
       <div class="header-actions">
-        <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Resume.pdf" class="btn-resume-action download">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
+        <a href="contact.html" class="btn-contact">
+          Get In Touch &rarr;
         </a>
-        <button type="button" class="btn-resume-action print" onclick="window.print()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Print / Save PDF
-        </button>
       </div>
     </div>
   </header>
+
+  <!-- On-Page Action Bar (Part of Page, Above Resume Sheet) -->
+  <div class="resume-page-toolbar">
+    <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Resume.pdf" class="btn-download-resume">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>Download Resume</span>
+      <span class="btn-download-badge">PDF</span>
+    </a>
+  </div>
 
   <!-- Resume Sheet Canvas -->
   <div class="resume-canvas-wrap">
