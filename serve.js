@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
   else if (decodedUrl === '/archive' || decodedUrl === '/visual-archive' || decodedUrl === '/visuals' || decodedUrl === '/gallery') targetFile = 'archive.html';
   else if (decodedUrl === '/leadership') targetFile = 'leadership.html';
   else if (decodedUrl === '/leadership-deck') targetFile = 'leadership-deck.html';
-  else if (decodedUrl === '/cv' || decodedUrl === '/resume') targetFile = 'cv.html';
+  else if (decodedUrl === '/cv' || decodedUrl === '/resume') targetFile = 'resume-swiss.html';
   else if (decodedUrl === '/case-ericsson') targetFile = 'case-ericsson.html';
   else if (decodedUrl === '/case-ibm-watson') targetFile = 'case-ibm-watson.html';
   else if (decodedUrl === '/case-zebra') targetFile = 'case-zebra.html';

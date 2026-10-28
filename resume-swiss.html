@@ -50,115 +50,150 @@
       background: #E2E8F0;
     }
 
-    /* Top Comparison & Photo Style Floating Bar (Hidden in Print) */
-    header.format-switcher-bar {
-      background: rgba(15, 23, 42, 0.96);
-      backdrop-filter: blur(12px);
-      color: #FFFFFF;
-      padding: 10px 24px;
+    /* Website Global Header (Hidden in Print) */
+    header.global-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E2E8F0;
+      padding: 10px 0;
+      width: 100%;
     }
 
-    .switcher-inner {
-      max-width: 1040px;
+    .header-container {
+      max-width: 1240px;
       margin: 0 auto;
+      padding: 0 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 8px;
+      gap: 12px;
     }
 
-    .format-label-group {
+    .brand-link {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 11.5px;
-      white-space: nowrap;
-    }
-
-    .format-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 3px 7px;
-      border-radius: 4px;
-      background: #334155;
-      color: #FFFFFF;
-    }
-
-    .format-toggle-group {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 3px;
-      border-radius: 8px;
-    }
-
-    .toggle-link, .photo-mode-btn {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 6px;
+      gap: 10px;
       text-decoration: none;
-      color: #94A3B8;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-swiss);
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .toggle-link:hover, .photo-mode-btn:hover {
-      color: #FFFFFF;
-    }
-
-    .toggle-link.active, .photo-mode-btn.active {
-      background: #FFFFFF;
       color: #0F172A;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
-
-    .bar-actions {
-      display: flex;
-      align-items: center;
-      gap: 6px;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .btn-action {
+    .brand-monogram {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 11.5px;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      font-family: var(--font-swiss);
+      font-weight: 900;
+      font-size: 19px;
+      background: #0F172A;
+      color: #FFFFFF;
+      border-radius: 9px;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #F1F3F6;
+      padding: 4px;
+      border-radius: 9999px;
+      border: 1px solid #E2E8F0;
+      flex-shrink: 0;
+    }
+
+    .nav-item {
+      padding: 7px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #64748B;
+      text-decoration: none;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-item:hover {
+      color: #0F172A;
+    }
+
+    .nav-item.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-resume-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
       font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 6px;
+      padding: 8px 14px;
+      border-radius: 9999px;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.15s ease;
-      border: none;
+      transition: all 0.2s ease;
       font-family: var(--font-swiss);
       white-space: nowrap;
     }
 
-    .btn-action.print {
+    .btn-resume-action.download {
+      background: #0F172A;
+      color: #FFFFFF;
+      border: 1px solid #0F172A;
+    }
+
+    .btn-resume-action.download:hover {
+      background: #1E293B;
+      transform: translateY(-1px);
+    }
+
+    .btn-resume-action.print {
       background: #FFFFFF;
       color: #0F172A;
+      border: 1px solid #CBD5E1;
     }
-    .btn-action.print:hover { background: #F1F5F9; }
 
-    .btn-action.portfolio {
-      background: rgba(255, 255, 255, 0.14);
-      color: #FFFFFF;
+    .btn-resume-action.print:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
     }
-    .btn-action.portfolio:hover { background: rgba(255, 255, 255, 0.24); }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F00658;
+      color: #FFFFFF;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid #F00658;
+      white-space: nowrap;
+    }
+
+    .btn-contact:hover {
+      background: #D0054B;
+      transform: translateY(-1px);
+    }
 
     /* The Resume Sheet Container */
     .resume-canvas-wrap {
@@ -703,7 +738,9 @@
         margin: 0 !important;
         padding: 0 !important;
       }
-      header.format-switcher-bar {
+      header.global-header,
+      #bvr-contact-drawer-backdrop,
+      #bvr-contact-drawer {
         display: none !important;
       }
       .resume-canvas-wrap {
@@ -756,41 +793,32 @@
 </head>
 <body>
 
-  <!-- Top Comparison & Photo Style Bar (Not Printed) -->
-  <header class="format-switcher-bar">
-    <div class="switcher-inner">
-      <div class="format-label-group">
-        <span class="format-badge">Swiss Modernist</span>
-        <div class="format-toggle-group" title="Compare Resume Editions">
-          <a href="cv.html" class="toggle-link">Classic CV</a>
-          <a href="resume-swiss.html" class="toggle-link active">Swiss Modernist</a>
-        </div>
-      </div>
+  <!-- Website Global Header (Not Printed) -->
+  <header class="global-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
+        <span class="brand-monogram" aria-hidden="true">B</span>
+      </a>
 
-      <!-- Interactive Photo Preview Switcher -->
-      <div class="format-label-group">
-        <span style="font-size:11.5px; color:#94A3B8; font-weight:600;">Photo Option:</span>
-        <div class="format-toggle-group" id="photoStyleSwitcher">
-          <button type="button" class="photo-mode-btn active" data-mode="mode-cutout" data-src="profile-smile-box.jpg">1. Smile (Box)</button>
-          <button type="button" class="photo-mode-btn" data-mode="mode-smile-frame" data-src="profile-smile-cutout.png">2. Smile (Cutout)</button>
-          <button type="button" class="photo-mode-btn" data-mode="mode-smile-frame" data-src="profile-smile-navy-cutout.png">3. Smile (Navy Shirt)</button>
-          <button type="button" class="photo-mode-btn" data-mode="mode-cutout" data-src="profile-cutout.png">4. Suit (Box)</button>
-          <button type="button" class="photo-mode-btn" data-mode="mode-smile-frame" data-src="profile-cutout.png">5. Suit (Cutout)</button>
-        </div>
-      </div>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-item">Selected Work</a>
+        <a href="leadership.html" class="nav-item">Leadership</a>
+        <a href="archive.html" class="nav-item">Design Artifacts</a>
+        <a href="gallery.html" class="nav-item">Career Gallery</a>
+        <a href="resume-swiss.html" class="nav-item active">My Resume</a>
+      </nav>
 
-      <div class="bar-actions">
-        <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Swiss_Modernist_Resume.pdf" class="btn-action portfolio" style="border: 1px solid rgba(255,255,255,0.2);">
+      <div class="header-actions">
+        <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Resume.pdf" class="btn-resume-action download">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PDF
         </a>
-        <button class="btn-action print" onclick="window.print()">
+        <button type="button" class="btn-resume-action print" onclick="window.print()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           Print / Save PDF
-        </a>
-        <a href="index.html" class="btn-action portfolio">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          Portfolio Website
+        </button>
+        <a href="contact.html" class="btn-contact">
+          Get In Touch &rarr;
         </a>
       </div>
     </div>
@@ -1103,29 +1131,6 @@
     </div>
   </div>
 
-  <script>
-    // Interactive Photo Switcher (Compare Retouched Suit Cutout vs Suit Round vs Warm Smile)
-    (function() {
-      const switcher = document.getElementById('photoStyleSwitcher');
-      const frame = document.getElementById('resumeProfileFrame');
-      const img = frame ? frame.querySelector('img') : null;
-      if (!switcher || !frame || !img) return;
-
-      switcher.addEventListener('click', function(e) {
-        const btn = e.target.closest('.photo-mode-btn');
-        if (!btn) return;
-        const mode = btn.getAttribute('data-mode');
-        const src = btn.getAttribute('data-src');
-
-        switcher.querySelectorAll('.photo-mode-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        frame.classList.remove('mode-cutout', 'mode-round', 'mode-smile-round', 'mode-smile-frame');
-        frame.classList.add(mode);
-        if (src) img.src = src;
-      });
-    })();
-  </script>
-
+  <script src="contact-drawer.js" defer></script>
 </body>
 </html>
