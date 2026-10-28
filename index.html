@@ -1448,6 +1448,325 @@
   </footer>
   </div> <!-- /.site-wrap -->
 
+  <!-- Floating 1-Click Switch Toggle for Motion & Parallax Effects -->
+  <style>
+    .fx-toggle-pill {
+      position: fixed;
+      bottom: 22px;
+      left: 22px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 8px 14px 8px 12px;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .fx-toggle-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.36);
+    }
+    .fx-switch-track {
+      width: 34px;
+      height: 19px;
+      background: #334155;
+      border-radius: 999px;
+      position: relative;
+      transition: background 0.25s ease;
+    }
+    body.fx-enabled .fx-switch-track {
+      background: linear-gradient(135deg, #F00658 0%, #38BDF8 100%);
+    }
+    .fx-switch-thumb {
+      width: 15px;
+      height: 15px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    body.fx-enabled .fx-switch-thumb {
+      transform: translateX(15px);
+    }
+    .fx-status-tag {
+      font-family: var(--font-code);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #94A3B8;
+      min-width: 24px;
+    }
+    body.fx-enabled .fx-status-tag {
+      color: #38BDF8;
+    }
+
+    /* Top Reading Progress Hairline (Active when FX Enabled) */
+    .fx-scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      width: 100%;
+      background: linear-gradient(90deg, #F00658 0%, #38BDF8 100%);
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    body.fx-enabled .fx-scroll-progress {
+      opacity: 1;
+    }
+
+    /* 1. Masthead Curtain Depth Overlay */
+    .masthead::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #020617;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 4;
+      transition: opacity 0.1s linear;
+    }
+    body.fx-enabled .masthead::after {
+      opacity: var(--masthead-dim, 0);
+    }
+
+    /* 3. Scroll-Reveal Choreography */
+    body.fx-enabled .fx-reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(0.985);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--fx-delay, 0ms);
+      will-change: opacity, transform;
+    }
+    body.fx-enabled .fx-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* 4. Cursor-Tracked Spotlight Glow & 3D Micro-Tilt on Case Cards */
+    body.fx-enabled .case-card-flagship,
+    body.fx-enabled .case-card,
+    body.fx-enabled .exec-brand-card {
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+    body.fx-enabled .case-card-flagship::before,
+    body.fx-enabled .case-card::before,
+    body.fx-enabled .exec-brand-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        560px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(240, 6, 88, 0.075),
+        rgba(56, 189, 248, 0.055) 35%,
+        transparent 68%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+    body.fx-enabled .case-card-flagship:hover::before,
+    body.fx-enabled .case-card:hover::before,
+    body.fx-enabled .exec-brand-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Window-Frame Parallax inside Case Study Stage */
+    body.fx-enabled .case-stage-flagship img,
+    body.fx-enabled .case-stage img {
+      transform: translateY(var(--parallax-y, 0px)) scale(1.03);
+      transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    body.fx-enabled .case-card-flagship:hover .case-stage-flagship img,
+    body.fx-enabled .case-card:hover .case-stage img {
+      transform: translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.045);
+    }
+  </style>
+
+  <div class="fx-scroll-progress" id="fxScrollProgress" aria-hidden="true"></div>
+
+  <button type="button" class="fx-toggle-pill" id="fxToggleBtn" aria-pressed="true" title="Toggle Parallax & Sophisticated Motion Effects">
+    <span>✨ Motion &amp; Parallax FX</span>
+    <span class="fx-switch-track"><span class="fx-switch-thumb"></span></span>
+    <span class="fx-status-tag" id="fxStatusTag">ON</span>
+  </button>
+
+  <script>
+    (function() {
+      const body = document.body;
+      const toggleBtn = document.getElementById('fxToggleBtn');
+      const statusTag = document.getElementById('fxStatusTag');
+      const progressBar = document.getElementById('fxScrollProgress');
+      const masthead = document.querySelector('.masthead');
+      const mastheadText = document.querySelector('.masthead-text');
+      const mastheadPhoto = document.querySelector('.masthead-photo');
+      const stageCards = document.querySelectorAll('.case-card-flagship, .case-card');
+      const interactiveCards = document.querySelectorAll('.case-card-flagship, .case-card, .exec-brand-card');
+
+      // Tag elements for scroll-reveal choreography
+      const revealGroups = [
+        { selector: '.exec-banner-video-pill, .exec-banner-center, .exec-banner-brands', stagger: 90 },
+        { selector: '.sec-header-block', stagger: 0 },
+        { selector: '.case-card-flagship, .case-card', stagger: 80 }
+      ];
+      const revealEls = [];
+      revealGroups.forEach(group => {
+        document.querySelectorAll(group.selector).forEach((el, idx) => {
+          el.classList.add('fx-reveal');
+          el.style.setProperty('--fx-delay', (idx * group.stagger) + 'ms');
+          revealEls.push(el);
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else if (entry.boundingClientRect.top > 0) {
+            // Reset when scrolled back above so user can re-experience reveal on scroll down
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealEls.forEach(el => observer.observe(el));
+
+      function updateScrollFX() {
+        if (!body.classList.contains('fx-enabled')) return;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        // Top progress hairline
+        if (progressBar && docHeight > 0) {
+          const progress = Math.min(1, Math.max(0, scrollY / docHeight));
+          progressBar.style.transform = 'scaleX(' + progress.toFixed(4) + ')';
+        }
+
+        // 1. Multi-layer depth parallax on fixed top masthead banner
+        if (masthead && scrollY < 500) {
+          const ratio = Math.min(1, scrollY / 360);
+          if (mastheadText) {
+            mastheadText.style.transform = 'translate3d(0, ' + (scrollY * -0.32).toFixed(1) + 'px, 0) scale(' + (1 - ratio * 0.05).toFixed(3) + ')';
+            mastheadText.style.opacity = (1 - ratio * 0.65).toFixed(3);
+          }
+          if (mastheadPhoto) {
+            mastheadPhoto.style.transform = 'translate3d(0, ' + (scrollY * -0.14).toFixed(1) + 'px, 0) scale(' + (1 + ratio * 0.045).toFixed(3) + ')';
+          }
+          masthead.style.setProperty('--masthead-dim', (ratio * 0.45).toFixed(3));
+        }
+
+        // 2. Window-frame parallax inside the 5 case study preview stages
+        const vh = window.innerHeight;
+        stageCards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          if (rect.bottom > -50 && rect.top < vh + 50) {
+            const centerOffset = ((rect.top + rect.height / 2) - vh / 2) / (vh / 2);
+            const shiftY = Math.max(-18, Math.min(18, centerOffset * -16));
+            card.style.setProperty('--parallax-y', shiftY.toFixed(1) + 'px');
+          }
+        });
+      }
+
+      function resetTransforms() {
+        if (mastheadText) {
+          mastheadText.style.transform = '';
+          mastheadText.style.opacity = '';
+        }
+        if (mastheadPhoto) {
+          mastheadPhoto.style.transform = '';
+        }
+        if (masthead) {
+          masthead.style.setProperty('--masthead-dim', '0');
+        }
+        stageCards.forEach(card => {
+          card.style.setProperty('--parallax-y', '0px');
+        });
+        interactiveCards.forEach(card => {
+          card.style.transform = '';
+        });
+      }
+
+      // 4. Cursor-tracked spotlight & subtle 3D perspective tilt
+      interactiveCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          if (!body.classList.contains('fx-enabled')) return;
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mx', x.toFixed(0) + 'px');
+          card.style.setProperty('--my', y.toFixed(0) + 'px');
+
+          const isBrand = card.classList.contains('exec-brand-card');
+          const maxTilt = isBrand ? 3.5 : 2.0;
+          const rotY = ((x / rect.width) - 0.5) * (maxTilt * 2);
+          const rotX = (0.5 - (y / rect.height)) * (maxTilt * 2);
+          card.style.transform = 'perspective(1100px) translateY(-4px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      function setFX(enabled) {
+        if (enabled) {
+          body.classList.add('fx-enabled');
+          statusTag.textContent = 'ON';
+          toggleBtn.setAttribute('aria-pressed', 'true');
+          // Replay visible reveal animation cleanly
+          revealEls.forEach(el => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              el.classList.remove('is-visible');
+              requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('is-visible')));
+            }
+          });
+          updateScrollFX();
+        } else {
+          body.classList.remove('fx-enabled');
+          statusTag.textContent = 'OFF';
+          toggleBtn.setAttribute('aria-pressed', 'false');
+          resetTransforms();
+        }
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        setFX(!body.classList.contains('fx-enabled'));
+      });
+
+      window.addEventListener('scroll', () => {
+        requestAnimationFrame(updateScrollFX);
+      }, { passive: true });
+
+      // Enable by default
+      setFX(true);
+    })();
+  </script>
+
   <script src="contact-drawer.js" defer></script>
 </body>
 </html>
