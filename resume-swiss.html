@@ -461,11 +461,16 @@
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 18px;
     }
 
     .experience-card {
       position: relative;
+    }
+
+    .experience-card:not(:last-child) {
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--swiss-border);
     }
 
     .exp-header {
@@ -534,16 +539,17 @@
 
     .exp-bullets li {
       position: relative;
-      padding-left: 14px;
+      padding-left: 10px;
     }
 
     .exp-bullets li::before {
-      content: "▪";
+      content: "•";
       position: absolute;
       left: 0;
-      color: var(--text-muted);
-      font-size: 11px;
-      top: -1px;
+      color: var(--text-black);
+      font-weight: 800;
+      font-size: 12px;
+      top: 0;
     }
 
     .exp-bullets li strong {
@@ -765,7 +771,10 @@
         gap: 26px !important;
       }
       .experience-list {
-        gap: 12px !important;
+        gap: 9px !important;
+      }
+      .experience-card:not(:last-child) {
+        padding-bottom: 9px !important;
       }
       .exp-bullets {
         line-height: 1.42 !important;
