@@ -40,6 +40,8 @@ const server = http.createServer((req, res) => {
   else if (ext === '.pdf') contentType = 'application/pdf';
   else if (ext === '.svg') contentType = 'image/svg+xml';
   else if (ext === '.mp4') contentType = 'video/mp4';
+  else if (ext === '.mp3') contentType = 'audio/mpeg';
+  else if (ext === '.m4a') contentType = 'audio/mp4';
   else if (ext === '.webm') contentType = 'video/webm';
 
   fs.readFile(filePath, (err, content) => {
@@ -52,8 +54,13 @@ const server = http.createServer((req, res) => {
         res.end(`Server error: ${err.code}`);
       }
     } else {
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf-8');
+      res.writeHead(200, {
+        'Content-Type': contentType,
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      });
+      res.end(content);
     }
   });
 });

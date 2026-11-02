@@ -439,10 +439,10 @@
         <div class="btn-row">
           <button id="playBtn" class="btn btn-primary">▶ Start Rehearsal</button>
           <button id="resetBtn" class="btn btn-secondary">↺ Reset</button>
-          <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ Audio Voice Guide: ON</button>
-          <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play 60s Executive Audio Guide</button>
+          <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ ElevenLabs Voice Guide: ON</button>
+          <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play ElevenLabs Audio Guide</button>
         </div>
-        <audio id="refAudioPlayer" src="assets/audio_guide_daniel.m4a" preload="auto" onended="onRefAudioEnded()"></audio>
+        <audio id="refAudioPlayer" src="assets/elevenlabs_executive_guide.mp3?v=elevenlabs" preload="auto" onended="onRefAudioEnded()"></audio>
       </div>
     </div>
 
@@ -530,40 +530,40 @@
         `
       },
       welcome: {
-        title: "Executive Video Briefing (Natural & Evergreen • ~55s)",
+        title: "Executive Video Briefing (ElevenLabs Master • 55s)",
         duration: 55,
         durationFormatted: "00:55",
-        headerDuration: "50–55s",
-        fullText: "Hello and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. Starting my career in software engineering gave me a foundational advantage: bridging design vision with engineering reality, protecting delivery timelines, and scaling enterprise design systems. Today, my focus is driving the AI transformation in UX: crafting explainable, agentic AI experiences for enterprise software, while modernizing our design workflows with AI-accelerated research, prototyping, and governance. My squads turn complex technical ecosystems into high-adoption software. Take a look at my flagship case studies below, and let’s connect to build what’s next.",
+        headerDuration: "55s",
+        fullText: "Hello, and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders, including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. Starting my career in software engineering gave me a foundational advantage: bridging design vision with engineering reality, protecting delivery timelines, and scaling enterprise design systems. Today, my focus is driving the AI transformation in UX: crafting trusted, agentic AI experiences for enterprise software, while modernizing our design workflows with AI-accelerated research, prototyping, and governance. My squads turn complex technical ecosystems into high-adoption software. Take a look at my flagship case studies below, and let’s connect to build what’s next.",
         timeline: [
-          { start: 0, end: 12, lineId: 'line1', frame: 'frame1', cue: 'Act 1: Identity & Enterprise Scale (Warm Smile & Direct Eye Contact)' },
-          { start: 12, end: 25, lineId: 'line2', frame: 'frame2', cue: 'Act 2: The Core Differentiator (Software Engineer to Design Leader)' },
-          { start: 25, end: 42, lineId: 'line3', frame: 'frame2', cue: 'Act 3: 2026 AI Transformation & Systems (Forward Lean • Thoughtful)' },
-          { start: 42, end: 55, lineId: 'line4', frame: 'frame3', cue: 'Act 4: High-Adoption Impact & Closing (Warm Eye Contact • Hold 2s)' }
+          { start: 0, end: 16.2, lineId: 'line1', frame: 'frame1', cue: 'Act 1 (0:00–0:16): Identity & Enterprise Scale (Warm Smile & Eye Contact)' },
+          { start: 16.2, end: 28.8, lineId: 'line2', frame: 'frame2', cue: 'Act 2 (0:16–0:29): The Differentiator (Software Engineer to Design Leader)' },
+          { start: 28.8, end: 44.5, lineId: 'line3', frame: 'frame2', cue: 'Act 3 (0:29–0:45): 2026 AI Transformation & Governance (Thoughtful & Steady)' },
+          { start: 44.5, end: 55, lineId: 'line4', frame: 'frame3', cue: 'Act 4 (0:45–0:55): High-Adoption Impact & Closing (Warm Smile • Hold 2s)' }
         ],
         html: `
           <p id="line1" class="active-sentence">
-            <span class="coach-pill cue-smile">Warm Smile & Direct Eye Contact</span>
-            “Hello and welcome. I’m <strong>Balaajee</strong>. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Zebra Technologies</strong>, <strong>Ericsson</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
+            <span class="coach-pill cue-smile">Warm Smile & Direct Eye Contact (0:00 – 0:16)</span>
+            “Hello, and welcome. I’m <strong>Balaajee</strong>. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Zebra Technologies</strong>, <strong>Ericsson</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line2">
-            <span class="coach-pill cue-framework">The Differentiator</span>
+            <span class="coach-pill cue-framework">The Differentiator (0:16 – 0:29)</span>
             <span class="coach-pill cue-gesture">Open Palm Gesture</span>
             “Starting my career in software engineering gave me a foundational advantage: <strong>bridging design vision with engineering reality</strong>, protecting delivery timelines, and scaling enterprise design systems.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line3">
-            <span class="coach-pill cue-framework">2026 AI Transformation</span>
+            <span class="coach-pill cue-framework">2026 AI Transformation (0:29 – 0:45)</span>
             <span class="coach-pill cue-gesture">Thoughtful & Forward-Looking</span>
-            “Today, my focus is driving the <strong>AI transformation in UX</strong>: crafting explainable, agentic AI experiences for enterprise software, while modernizing our design workflows with <strong>AI-accelerated research, prototyping, and governance</strong>.”
+            “Today, my focus is driving the <strong>AI transformation in UX</strong>: crafting <strong>trusted, agentic AI experiences</strong> for enterprise software, while modernizing our design workflows with <strong>AI-accelerated research, prototyping, and governance</strong>.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line4">
-            <span class="coach-pill cue-smile">High-Adoption Impact & Call to Action</span>
+            <span class="coach-pill cue-smile">High-Adoption Impact & Call to Action (0:45 – 0:55)</span>
             “My squads turn complex technical ecosystems into high-adoption software. <strong>Take a look at my flagship case studies below, and let’s connect to build what’s next.</strong>”
           </p>
         `,
@@ -657,18 +657,28 @@
       }
     }
 
+    let pausedElapsed = 0;
+
     function updateTick() {
       if (!isRunning) return;
       const config = modes[currentModeKey];
-      const now = performance.now();
-      const elapsed = (now - startTime) / 1000;
+      let elapsed;
+      if (currentModeKey === 'welcome' && voiceGuideEnabled && refAudioPlayer && !refAudioPlayer.paused) {
+        elapsed = refAudioPlayer.currentTime;
+      } else {
+        const now = performance.now();
+        elapsed = pausedElapsed + (now - startTime) / 1000;
+      }
 
       if (elapsed >= config.duration) {
         progressFill.style.width = '100%';
         timeElapsed.textContent = config.durationFormatted;
         cueText.textContent = "Finished! Hold confident executive smile for 2 seconds.";
         isRunning = false;
+        pausedElapsed = 0;
         playBtn.textContent = '▶ Replay';
+        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.classList.remove('active');
         return;
       }
 
@@ -687,7 +697,15 @@
     }
 
     function speakScript() {
-      if (!('speechSynthesis' in window) || !voiceGuideEnabled) return;
+      if (!voiceGuideEnabled) return;
+      if (currentModeKey === 'welcome' && refAudioPlayer) {
+        if (synth) synth.cancel();
+        refAudioPlayer.play();
+        playRefAudioBtn.textContent = '⏸ Pause Audio Guide';
+        playRefAudioBtn.classList.add('active');
+        return;
+      }
+      if (!('speechSynthesis' in window)) return;
       synth.cancel();
 
       const textToSpeak = modes[currentModeKey].fullText;
@@ -704,8 +722,17 @@
 
     function resetRehearsal() {
       isRunning = false;
+      pausedElapsed = 0;
       cancelAnimationFrame(animFrame);
       if (synth) synth.cancel();
+      if (refAudioPlayer) {
+        refAudioPlayer.pause();
+        refAudioPlayer.currentTime = 0;
+      }
+      if (playRefAudioBtn) {
+        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.classList.remove('active');
+      }
       progressFill.style.width = '0%';
       timeElapsed.textContent = '00:00';
       setFrame('frame1');
@@ -719,8 +746,16 @@
     playBtn.addEventListener('click', () => {
       if (isRunning) {
         isRunning = false;
+        if (currentModeKey === 'welcome' && voiceGuideEnabled && refAudioPlayer && !refAudioPlayer.paused) {
+          pausedElapsed = refAudioPlayer.currentTime;
+          refAudioPlayer.pause();
+          playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+          playRefAudioBtn.classList.remove('active');
+        } else {
+          pausedElapsed += (performance.now() - startTime) / 1000;
+          if (synth) synth.cancel();
+        }
         cancelAnimationFrame(animFrame);
-        if (synth) synth.cancel();
         playBtn.textContent = '▶ Resume';
       } else {
         isRunning = true;
@@ -737,11 +772,14 @@
       voiceGuideEnabled = !voiceGuideEnabled;
       if (voiceGuideEnabled) {
         voiceGuideBtn.classList.remove('active');
-        voiceGuideBtn.textContent = '🎙️ Audio Voice Guide: ON';
+        voiceGuideBtn.textContent = '🎙️ ElevenLabs Voice Guide: ON';
       } else {
         voiceGuideBtn.classList.add('active');
-        voiceGuideBtn.textContent = '🔇 Audio Voice Guide: MUTED';
+        voiceGuideBtn.textContent = '🔇 ElevenLabs Voice Guide: MUTED';
         if (synth) synth.cancel();
+        if (refAudioPlayer) refAudioPlayer.pause();
+        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.classList.remove('active');
       }
     });
 
@@ -771,20 +809,37 @@
     function toggleRefAudio() {
       if (!refAudioPlayer) return;
       if (refAudioPlayer.paused) {
-        if (isRunning) resetRehearsal();
-        if (synth) synth.cancel();
+        if (currentModeKey !== 'welcome') switchMode('welcome');
+        voiceGuideEnabled = true;
+        voiceGuideBtn.classList.remove('active');
+        voiceGuideBtn.textContent = '🎙️ ElevenLabs Voice Guide: ON';
+        isRunning = true;
+        startTime = performance.now();
+        playBtn.textContent = '⏸ Pause';
         refAudioPlayer.play();
         playRefAudioBtn.textContent = '⏸ Pause Audio Guide';
         playRefAudioBtn.classList.add('active');
+        animFrame = requestAnimationFrame(updateTick);
       } else {
+        isRunning = false;
+        pausedElapsed = refAudioPlayer.currentTime;
+        cancelAnimationFrame(animFrame);
         refAudioPlayer.pause();
-        playRefAudioBtn.textContent = '🎧 Play 60s Executive Audio Guide';
+        playBtn.textContent = '▶ Resume';
+        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
         playRefAudioBtn.classList.remove('active');
       }
     }
 
     function onRefAudioEnded() {
-      playRefAudioBtn.textContent = '🎧 Play 60s Executive Audio Guide';
+      isRunning = false;
+      pausedElapsed = 0;
+      cancelAnimationFrame(animFrame);
+      progressFill.style.width = '100%';
+      timeElapsed.textContent = modes.welcome.durationFormatted;
+      cueText.textContent = "Finished! Hold confident executive smile for 2 seconds.";
+      playBtn.textContent = '▶ Replay';
+      playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
       playRefAudioBtn.classList.remove('active');
     }
 
