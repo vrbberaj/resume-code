@@ -530,8 +530,8 @@
 
   .cs-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
   .cs-step { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px; }
-  .cs-step small { font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--text-light); }
-  .cs-step h3 { font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: var(--text-main); margin: 4px 0 6px; }
+  .cs-step small { font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  .cs-step h3 { font-family: var(--font-heading); font-size: 16.5px; font-weight: 800; line-height: 1.3; color: var(--text-main); margin: 6px 0 6px; }
   .cs-step p { font-size: 14px; line-height: 1.55; color: var(--text-body); }
 
   .cs-figs { display: grid; gap: 40px; margin-top: 40px; }
@@ -655,7 +655,7 @@
 
     <section class="g-wrap cs-sec" id="process">
       <header class="cs-sec-head"><div class="cs-num">03</div><h2>Process</h2><p>From research to measured outcome</p></header>
-      <div class="cs-body"><div class="cs-steps"><div class="cs-step"><small>01</small><h3>Research</h3><p>Shadowed 24 engineers and admins. Key insight: “verification fatigue”. Checking AI output took longer than writing it.</p></div><div class="cs-step"><small>02</small><h3>Align</h3><p>14 workshops turned a research-vs-compliance stand-off into written AI trust rules.</p></div><div class="cs-step"><small>03</small><h3>Wireframe</h3><p>Low-fi confidence states. Round 1 tested raw scores: SUS 61. Users asked “why 92%?”</p></div><div class="cs-step"><small>04</small><h3>Prototype</h3><p>Mid-fi reasoning trace showing each agent step. Round 2: SUS 78.</p></div><div class="cs-step"><small>05</small><h3>Test</h3><p>Hi-fi side-by-side diff and one-click approval with 32 users. Round 3: SUS 89, 97% task success.</p></div><div class="cs-step"><small>06</small><h3>Measure</h3><p>Tracked OKRs with product directors: tracing time, triage time, SUS and token sync speed.</p></div></div>
+      <div class="cs-body"><div class="cs-steps"><div class="cs-step"><small>01 · Research</small><h3>Spotted “verification fatigue” across 24 users</h3><p>Shadowed engineers and SOC admins: checking black-box AI output took longer than doing the work manually.</p></div><div class="cs-step"><small>02 · Align</small><h3>Turned compliance veto into 3 autonomy rules</h3><p>Ran 14 cross-functional workshops to resolve the stand-off between AI researchers and CISO reviewers.</p></div><div class="cs-step"><small>03 · Wireframe</small><h3>Raw confidence scores failed at SUS 61</h3><p>Round 1 showed bare percentages (“92% confident”). Engineers didn’t trust numbers without seeing why.</p></div><div class="cs-step"><small>04 · Prototype</small><h3>Visible reasoning traces lifted SUS to 78</h3><p>Added step-by-step agent logic linked to source clauses so users could verify decisions in seconds.</p></div><div class="cs-step"><small>05 · Test</small><h3>Side-by-side diffs hit SUS 89 with 32 users</h3><p>Tested before/after diffs and one-click staged approval in Round 3—reaching 97% task completion.</p></div><div class="cs-step"><small>06 · Measure</small><h3>Tracked live speed &amp; zero compliance breaches</h3><p>Co-owned quarterly OKRs with product directors across drafting speed, triage time, and audit pass rates.</p></div></div>
       </div>
     </section>
 

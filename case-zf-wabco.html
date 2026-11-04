@@ -530,8 +530,8 @@
 
   .cs-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
   .cs-step { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px; }
-  .cs-step small { font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--text-light); }
-  .cs-step h3 { font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: var(--text-main); margin: 4px 0 6px; }
+  .cs-step small { font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  .cs-step h3 { font-family: var(--font-heading); font-size: 16.5px; font-weight: 800; line-height: 1.3; color: var(--text-main); margin: 6px 0 6px; }
   .cs-step p { font-size: 14px; line-height: 1.55; color: var(--text-body); }
 
   .cs-figs { display: grid; gap: 40px; margin-top: 40px; }
@@ -655,7 +655,7 @@
 
     <section class="g-wrap cs-sec" id="process">
       <header class="cs-sec-head"><div class="cs-num">03</div><h2>Process</h2><p>From research to measured outcome</p></header>
-      <div class="cs-body"><div class="cs-steps"><div class="cs-step"><small>01</small><h3>Research</h3><p>Ride-alongs on night freight routes. Mapped every glance and every alarm.</p></div><div class="cs-step"><small>02</small><h3>Define</h3><p>Set a glance budget: critical info under 0.8s, navigation under 1.2s.</p></div><div class="cs-step"><small>03</small><h3>Wireframe</h3><p>Three zones: safety and speed, turn guidance, peripheral eco-coaching.</p></div><div class="cs-step"><small>04</small><h3>Prototype</h3><p>Simulator builds with day and anti-glare night modes.</p></div><div class="cs-step"><small>05</small><h3>Test</h3><p>Glance-time and heatmap tests in simulated rain, fog and tunnels.</p></div><div class="cs-step"><small>06</small><h3>Measure</h3><p>Route errors and driver feedback tracked across the fleet rollout.</p></div></div>
+      <div class="cs-body"><div class="cs-steps"><div class="cs-step"><small>01 · Research</small><h3>Measured 2.8s eyes-off-road on night freight runs</h3><p>Rode along in 40-tonne cabs and mapped how cluttered tablets and competing beepers distracted drivers.</p></div><div class="cs-step"><small>02 · Define</small><h3>Locked a strict sub-1.2s highway glance budget</h3><p>Set hard human-factors limits: critical speed and hazards under 0.8s, turn guidance under 1.2s.</p></div><div class="cs-step"><small>03 · Wireframe</small><h3>Split the cluster into 3 priority zones</h3><p>Gave safety alerts top priority while demoting commercial Eco-coaching to a quiet peripheral pulse.</p></div><div class="cs-step"><small>04 · Prototype</small><h3>Built cab-simulator day &amp; anti-glare night modes</h3><p>Removed driving touch targets and designed low-luminance night palettes so drivers stopped dimming screens to black.</p></div><div class="cs-step"><small>05 · Test</small><h3>Verified 0.94s glances in rain, fog &amp; tunnels</h3><p>Ran eye-glance and heatmap trials with drivers and human-factors engineers under harsh simulator conditions.</p></div><div class="cs-step"><small>06 · Measure</small><h3>Cut route errors 18% across 80,000+ trucks</h3><p>Tracked critical navigation errors, safety homologation sign-off, and driver feedback across fleet rollout.</p></div></div>
       </div>
     </section>
 

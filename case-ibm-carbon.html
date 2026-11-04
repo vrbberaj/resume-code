@@ -530,8 +530,8 @@
 
   .cs-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: step; }
   .cs-step { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px; }
-  .cs-step small { font-family: var(--font-code); font-size: 12px; font-weight: 700; color: var(--text-light); }
-  .cs-step h3 { font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: var(--text-main); margin: 4px 0 6px; }
+  .cs-step small { font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  .cs-step h3 { font-family: var(--font-heading); font-size: 16.5px; font-weight: 800; line-height: 1.3; color: var(--text-main); margin: 6px 0 6px; }
   .cs-step p { font-size: 14px; line-height: 1.55; color: var(--text-body); }
 
   .cs-figs { display: grid; gap: 40px; margin-top: 40px; }
@@ -655,7 +655,7 @@
 
     <section class="g-wrap cs-sec" id="process">
       <header class="cs-sec-head"><div class="cs-num">03</div><h2>Process</h2><p>From research to measured outcome</p></header>
-      <div class="cs-body"><div class="cs-steps"><div class="cs-step"><small>01</small><h3>Audit</h3><p>Inventoried colours, spacing and components across 14 squads.</p></div><div class="cs-step"><small>02</small><h3>Define</h3><p>Three token tiers: global → semantic → component.</p></div><div class="cs-step"><small>03</small><h3>Design</h3><p>Figma variables with light and dark modes from day one.</p></div><div class="cs-step"><small>04</small><h3>Build</h3><p>Publishing a token opens pull requests in every squad repo automatically.</p></div><div class="cs-step"><small>05</small><h3>Govern</h3><p>Squads propose changes with a one-page RFC; council reviews weekly.</p></div><div class="cs-step"><small>06</small><h3>Measure</h3><p>Visual QA bugs, handoff time and front-end velocity per sprint.</p></div></div>
+      <div class="cs-body"><div class="cs-steps"><div class="cs-step"><small>01 · Audit</small><h3>Uncovered 320+ hard-coded color overrides</h3><p>Inventoried colors, spacing, and duplicate buttons across 14 drifted squads to prove the cost to leadership.</p></div><div class="cs-step"><small>02 · Define</small><h3>Built a 3-tier semantic token hierarchy</h3><p>Separated global brand hex codes from semantic intent (“interactive-primary”) and component tokens.</p></div><div class="cs-step"><small>03 · Design</small><h3>Synced light &amp; dark modes from Day 1</h3><p>Structured Figma variables so squads stopped writing custom dark-mode CSS overrides by hand.</p></div><div class="cs-step"><small>04 · Build</small><h3>Automated pull requests into squad repos</h3><p>Paired with front-end engineers so publishing a token opened clean batched PRs automatically.</p></div><div class="cs-step"><small>05 · Govern</small><h3>Replaced gatekeeping with a weekly RFC council</h3><p>Squad reps reviewed one-page token proposals together—keeping 14 teams moving without bottlenecks.</p></div><div class="cs-step"><small>06 · Measure</small><h3>Cut visual QA bugs 70% &amp; handoff to 1 day</h3><p>Tracked defect tickets, sync speed, and front-end velocity per sprint across all participating squads.</p></div></div>
       </div>
     </section>
 
