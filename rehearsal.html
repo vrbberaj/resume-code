@@ -386,7 +386,10 @@
     <!-- Mode Switcher -->
     <div class="mode-switcher">
       <button id="tabWelcome" class="mode-tab active" onclick="switchMode('welcome')">
-        🎬 Executive Video Briefing (~55s)
+        🎬 Homepage Intro (~58s)
+      </button>
+      <button id="tabAiWorkflow" class="mode-tab" onclick="switchMode('aiworkflow')">
+        ⚡ AI Workflow Demo (~75s)
       </button>
       <button id="tabBeat" class="mode-tab" onclick="switchMode('beat')">
         🎯 BEAT Interview Intro (75s)
@@ -394,7 +397,7 @@
     </div>
 
     <div style="font-size: 0.85rem; color: var(--text-muted);">
-      Target Duration: <strong id="headerDuration" style="color: #fff;">50–55s</strong> &bull; Pace: <strong style="color: #38bdf8;">125 WPM</strong>
+      Target Duration: <strong id="headerDuration" style="color: #fff;">55–58s</strong> &bull; Pace: <strong style="color: #38bdf8;">125 WPM</strong>
     </div>
   </header>
 
@@ -439,10 +442,10 @@
         <div class="btn-row">
           <button id="playBtn" class="btn btn-primary">▶ Start Rehearsal</button>
           <button id="resetBtn" class="btn btn-secondary">↺ Reset</button>
-          <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ ElevenLabs Voice Guide: ON</button>
-          <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play ElevenLabs Audio Guide</button>
+          <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ Audio Voice Guide: ON</button>
+          <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play 58s Audio Guide</button>
         </div>
-        <audio id="refAudioPlayer" src="assets/elevenlabs_executive_guide.mp3?v=elevenlabs" preload="auto" onended="onRefAudioEnded()"></audio>
+        <audio id="refAudioPlayer" src="assets/homepage_intro_final.m4a?v=final58" preload="auto" onended="onRefAudioEnded()"></audio>
       </div>
     </div>
 
@@ -530,55 +533,97 @@
         `
       },
       welcome: {
-        title: "Executive Video Briefing (ElevenLabs Master • 55s)",
-        duration: 55,
-        durationFormatted: "00:55",
-        headerDuration: "55s",
-        fullText: "Hello, and welcome. I’m Balaajee. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders, including IBM, Zebra Technologies, Ericsson, ZF Wabco, and Infosys. Starting my career in software engineering gave me a foundational advantage: bridging design vision with engineering reality, protecting delivery timelines, and scaling enterprise design systems. Today, my focus is driving the AI transformation in UX: crafting trusted, agentic AI experiences for enterprise software, while modernizing our design workflows with AI-accelerated research, prototyping, and governance. My squads turn complex technical ecosystems into high-adoption software. Take a look at my flagship case studies below, and let’s connect to build what’s next.",
+        title: "Homepage Executive Intro (Universal • ~58s)",
+        duration: 58,
+        durationFormatted: "00:58",
+        headerDuration: "55–58s",
+        fullText: "Hi, I'm Balaajee. I'm a product design leader with 18 years across enterprise software — from Infosys, Ericsson, ZF Wabco, and Zebra Technologies, to most recently managing a 14-person team across design, research, and content at IBM. Across my career, I've mentored over 50 designers and built shared design systems with engineering. At IBM, uniting three siloed teams into one shared model cut feature cycles from six weeks to under two. Today I focus on AI products people can actually trust: designing how humans review, approve, and override what AI agents do — in systems where mistakes are expensive. I'm open to design leadership roles — in India or relocating globally. Explore my case studies below — I'd love to talk.",
         timeline: [
-          { start: 0, end: 16.2, lineId: 'line1', frame: 'frame1', cue: 'Act 1 (0:00–0:16): Identity & Enterprise Scale (Warm Smile & Eye Contact)' },
-          { start: 16.2, end: 28.8, lineId: 'line2', frame: 'frame2', cue: 'Act 2 (0:16–0:29): The Differentiator (Software Engineer to Design Leader)' },
-          { start: 28.8, end: 44.5, lineId: 'line3', frame: 'frame2', cue: 'Act 3 (0:29–0:45): 2026 AI Transformation & Governance (Thoughtful & Steady)' },
-          { start: 44.5, end: 55, lineId: 'line4', frame: 'frame3', cue: 'Act 4 (0:45–0:55): High-Adoption Impact & Closing (Warm Smile • Hold 2s)' }
+          { start: 0, end: 16, lineId: 'line1', frame: 'frame1', cue: 'Act 1 (0:00–0:16): Chronological Pedigree & 14-Person Multi-Discipline Scope' },
+          { start: 16, end: 32, lineId: 'line2', frame: 'frame2', cue: 'Act 2 (0:16–0:32): Mentorship Scale (50+) & IBM Cycle Time Proof (6w → <2w)' },
+          { start: 32, end: 47, lineId: 'line3', frame: 'frame2', cue: 'Act 3 (0:32–0:47): Trusted Agentic AI & Human-in-the-Loop Governance' },
+          { start: 47, end: 58, lineId: 'line4', frame: 'frame3', cue: 'Act 4 (0:47–0:58): Universal Global Close (Warm Smile • Hold 2s)' }
         ],
         html: `
           <p id="line1" class="active-sentence">
-            <span class="coach-pill cue-smile">Warm Smile & Direct Eye Contact (0:00 – 0:16)</span>
-            “Hello, and welcome. I’m <strong>Balaajee</strong>. Over the past 18 years, I’ve built and scaled product design organizations across global technology leaders—including <strong>IBM</strong>, <strong>Zebra Technologies</strong>, <strong>Ericsson</strong>, <strong>ZF Wabco</strong>, and <strong>Infosys</strong>.”
+            <span class="coach-pill cue-smile">Warm Smile &amp; Direct Eye Contact (0:00 – 0:16)</span>
+            “Hi, I’m <strong>Balaajee</strong>. I’m a product design leader with 18 years across enterprise software — from <strong>Infosys</strong>, <strong>Ericsson</strong>, <strong>ZF Wabco</strong>, and <strong>Zebra Technologies</strong>, to most recently <strong>managing a 14-person team across design, research, and content at IBM</strong>.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line2">
-            <span class="coach-pill cue-framework">The Differentiator (0:16 – 0:29)</span>
+            <span class="coach-pill cue-framework">Scale &amp; Speed Proof (0:16 – 0:32)</span>
             <span class="coach-pill cue-gesture">Open Palm Gesture</span>
-            “Starting my career in software engineering gave me a foundational advantage: <strong>bridging design vision with engineering reality</strong>, protecting delivery timelines, and scaling enterprise design systems.”
+            “Across my career, I’ve <strong>mentored over 50 designers</strong> and built shared design systems with engineering. At IBM, uniting three siloed teams into one shared model cut feature cycles from <strong>six weeks to under two</strong>.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line3">
-            <span class="coach-pill cue-framework">2026 AI Transformation (0:29 – 0:45)</span>
-            <span class="coach-pill cue-gesture">Thoughtful & Forward-Looking</span>
-            “Today, my focus is driving the <strong>AI transformation in UX</strong>: crafting <strong>trusted, agentic AI experiences</strong> for enterprise software, while modernizing our design workflows with <strong>AI-accelerated research, prototyping, and governance</strong>.”
+            <span class="coach-pill cue-framework">Trusted AI Focus (0:32 – 0:47)</span>
+            <span class="coach-pill cue-gesture">Thoughtful &amp; Leaning In Slightly</span>
+            “Today I focus on <strong>AI products people can actually trust</strong>: designing how humans review, approve, and override what AI agents do — <strong>in systems where mistakes are expensive</strong>.”
             <span class="coach-pill cue-pause">1s Breath</span>
           </p>
 
           <p id="line4">
-            <span class="coach-pill cue-smile">High-Adoption Impact & Call to Action (0:45 – 0:55)</span>
-            “My squads turn complex technical ecosystems into high-adoption software. <strong>Take a look at my flagship case studies below, and let’s connect to build what’s next.</strong>”
+            <span class="coach-pill cue-smile">Universal Executive Close (0:47 – 0:58)</span>
+            “I’m open to <strong>design leadership roles — in India or relocating globally</strong>. Explore my case studies below — I’d love to talk.”
           </p>
         `,
         tips: `
           <div class="tip-box">
-            <div class="tip-title">🎯 Natural Executive Flow</div>
-            <div>The thumbnail already sets the "18 Years of UX Leadership in 60 Seconds" promise. Jumping straight into "Hello and welcome. I’m Balaajee..." feels authentic, confident, and respects the viewer's time.</div>
+            <div class="tip-title">🎯 Multi-Discipline Stature</div>
+            <div>Saying "managing a 14-person team across design, research, and content" immediately proves Head of Design / Director breadth and real people-management authority.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">🚀 No Title Ceiling</div>
-            <div>Leaving out a specific job title keeps your profile completely open for both Director / Head of UX and Senior Manager roles—your 18-year track record and global tier-1 brands establish senior stature instantly.</div>
+            <div class="tip-title">🎬 Optional B-Roll Cutaways</div>
+            <div>You can cut to your IBM workshop &amp; system visual during 0:18–0:30, and your Human-in-the-Loop AI review screen during 0:34–0:44 while your real voice plays underneath.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">👀 The Final 2-Second Hold</div>
-            <div>After saying "let's connect to build what's next", maintain warm eye contact with the camera lens for 2 full seconds before reaching to stop recording.</div>
+            <div class="tip-title">🌍 100% Universal</div>
+            <div>Works across India, Europe, UK, US, and APAC—and keeps Senior Manager, Group Manager, Head of Design, and Director loops wide open.</div>
+          </div>
+        `
+      },
+      aiworkflow: {
+        title: "AI Workflow Walkthrough (For Leadership Page • ~75s Loom)",
+        duration: 75,
+        durationFormatted: "01:15",
+        headerDuration: "70–75s",
+        fullText: "Here is a quick look inside how I use AI in day-to-day design delivery—and how I scaled this workflow across my 14-person team at IBM. First, during discovery, we never paste raw customer PII into external models. Using redacted enterprise transcripts and SLA rules, I stress-test workflows with AI to surface rare failure states, permission conflicts, and rollback scenarios in hours instead of weeks. Second, instead of debating flat static screens, I generate interactive code prototypes strictly bound to our existing Design System tokens. That means engineers and operators can test real keyboard density, latency states, and human-in-the-loop override diffs on Day Two. Finally, as a manager, individual speed only matters if it scales. Standardizing these prompt playbooks, redaction guardrails, and a 10-point AI UX quality rubric across design, research, and content helped us cut feature cycles from six weeks to under two—without sacrificing enterprise trust.",
+        timeline: [
+          { start: 0, end: 25, lineId: 'wf_1', frame: 'frame1', cue: 'Screen Beat 1 (0:00–0:25): Show Redacted Spec → Edge-Case Matrix' },
+          { start: 25, end: 52, lineId: 'wf_2', frame: 'frame2', cue: 'Screen Beat 2 (0:25–0:52): Click Live Token-Bound HTML/React Prototype' },
+          { start: 52, end: 75, lineId: 'wf_3', frame: 'frame3', cue: 'Screen Beat 3 (0:52–1:15): Show 10-Point AI Rubric & 14-Person Team Impact' }
+        ],
+        html: `
+          <p id="wf_1" class="active-sentence">
+            <span class="coach-pill cue-framework">0:00–0:25 · Sanitized Edge-Case Synthesis</span>
+            “Here is a quick look inside how I use AI in day-to-day design delivery—and how I scaled this workflow across my 14-person team at IBM. First, during discovery, we never paste raw customer PII into external models. Using <strong>redacted enterprise transcripts and SLA rules</strong>, I stress-test workflows with AI to surface rare failure states, permission conflicts, and rollback scenarios in hours instead of weeks.”
+          </p>
+
+          <p id="wf_2">
+            <span class="coach-pill cue-framework">0:25–0:52 · Token-Bound Live Prototyping</span>
+            “Second, instead of debating flat static screens, I generate <strong>interactive code prototypes strictly bound to our existing Design System tokens</strong>. That means engineers and operators can test real keyboard density, latency states, and human-in-the-loop override diffs on Day Two.”
+          </p>
+
+          <p id="wf_3">
+            <span class="coach-pill cue-framework">0:52–1:15 · Scaling Across Design, Research &amp; Content</span>
+            “Finally, as a manager, individual speed only matters if it scales. Standardizing these prompt playbooks, redaction guardrails, and a <strong>10-point AI UX quality rubric across design, research, and content</strong> helped us cut feature cycles from six weeks to under two—without sacrificing enterprise trust.”
+          </p>
+        `,
+        tips: `
+          <div class="tip-box">
+            <div class="tip-title">🎥 Loom Recording Setup</div>
+            <div>Record your screen with a small circular camera bubble in the bottom-left corner. Save the finished file as <code>ai-workflow.mp4</code> in the project root—<code>leadership.html</code> will auto-detect and display it!</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">🛡️ Privacy Mention = Instant Seniority</div>
+            <div>Calling out PII redaction in the first 15 seconds immediately signals enterprise CISO awareness to European and US hiring VPs.</div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-title">📈 End on Org Multiplier</div>
+            <div>Closing on how all 14 team members adopted the playbook frames you as a Design Leader, not just a solo tool power-user.</div>
           </div>
         `
       }
@@ -606,6 +651,8 @@
     const prompterBox = document.getElementById('prompterBox');
     const prompterTitle = document.getElementById('prompterTitle');
     const coachingTips = document.getElementById('coachingTips');
+    const refAudioPlayer = document.getElementById('refAudioPlayer');
+    const playRefAudioBtn = document.getElementById('playRefAudioBtn');
 
     const frames = {
       frame1: document.getElementById('frame1'),
@@ -620,6 +667,9 @@
       // Update Tab Styles
       document.getElementById('tabBeat').classList.toggle('active', modeKey === 'beat');
       document.getElementById('tabWelcome').classList.toggle('active', modeKey === 'welcome');
+      const wfTab = document.getElementById('tabAiWorkflow');
+      if (wfTab) wfTab.classList.toggle('active', modeKey === 'aiworkflow');
+      if (playRefAudioBtn) playRefAudioBtn.style.display = modeKey === 'welcome' ? 'inline-flex' : 'none';
 
       const config = modes[modeKey];
       prompterTitle.textContent = config.title;
@@ -677,7 +727,7 @@
         isRunning = false;
         pausedElapsed = 0;
         playBtn.textContent = '▶ Replay';
-        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.textContent = '🎧 Play 58s Audio Guide';
         playRefAudioBtn.classList.remove('active');
         return;
       }
@@ -730,7 +780,7 @@
         refAudioPlayer.currentTime = 0;
       }
       if (playRefAudioBtn) {
-        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.textContent = '🎧 Play 58s Audio Guide';
         playRefAudioBtn.classList.remove('active');
       }
       progressFill.style.width = '0%';
@@ -749,7 +799,7 @@
         if (currentModeKey === 'welcome' && voiceGuideEnabled && refAudioPlayer && !refAudioPlayer.paused) {
           pausedElapsed = refAudioPlayer.currentTime;
           refAudioPlayer.pause();
-          playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+          playRefAudioBtn.textContent = '🎧 Play 58s Audio Guide';
           playRefAudioBtn.classList.remove('active');
         } else {
           pausedElapsed += (performance.now() - startTime) / 1000;
@@ -772,13 +822,13 @@
       voiceGuideEnabled = !voiceGuideEnabled;
       if (voiceGuideEnabled) {
         voiceGuideBtn.classList.remove('active');
-        voiceGuideBtn.textContent = '🎙️ ElevenLabs Voice Guide: ON';
+        voiceGuideBtn.textContent = '🎙️ Audio Voice Guide: ON';
       } else {
         voiceGuideBtn.classList.add('active');
-        voiceGuideBtn.textContent = '🔇 ElevenLabs Voice Guide: MUTED';
+        voiceGuideBtn.textContent = '🔇 Audio Voice Guide: MUTED';
         if (synth) synth.cancel();
         if (refAudioPlayer) refAudioPlayer.pause();
-        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.textContent = '🎧 Play 58s Audio Guide';
         playRefAudioBtn.classList.remove('active');
       }
     });
@@ -803,16 +853,13 @@
       }
     });
 
-    const refAudioPlayer = document.getElementById('refAudioPlayer');
-    const playRefAudioBtn = document.getElementById('playRefAudioBtn');
-
     function toggleRefAudio() {
       if (!refAudioPlayer) return;
       if (refAudioPlayer.paused) {
         if (currentModeKey !== 'welcome') switchMode('welcome');
         voiceGuideEnabled = true;
         voiceGuideBtn.classList.remove('active');
-        voiceGuideBtn.textContent = '🎙️ ElevenLabs Voice Guide: ON';
+        voiceGuideBtn.textContent = '🎙️ Audio Voice Guide: ON';
         isRunning = true;
         startTime = performance.now();
         playBtn.textContent = '⏸ Pause';
@@ -826,7 +873,7 @@
         cancelAnimationFrame(animFrame);
         refAudioPlayer.pause();
         playBtn.textContent = '▶ Resume';
-        playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+        playRefAudioBtn.textContent = '🎧 Play 58s Audio Guide';
         playRefAudioBtn.classList.remove('active');
       }
     }
@@ -839,7 +886,7 @@
       timeElapsed.textContent = modes.welcome.durationFormatted;
       cueText.textContent = "Finished! Hold confident executive smile for 2 seconds.";
       playBtn.textContent = '▶ Replay';
-      playRefAudioBtn.textContent = '🎧 Play ElevenLabs Audio Guide';
+      playRefAudioBtn.textContent = '🎧 Play 58s Audio Guide';
       playRefAudioBtn.classList.remove('active');
     }
 
