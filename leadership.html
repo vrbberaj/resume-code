@@ -1142,6 +1142,7 @@
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="nav-item">Selected Work</a>
+        <a href="ai.html" class="nav-item">AI &amp; UX</a>
         <a href="leadership.html" class="nav-item active">Leadership</a>
         <a href="archive.html" class="nav-item">Design Artifacts</a>
         <a href="gallery.html" class="nav-item">Career Gallery</a>
@@ -1388,241 +1389,19 @@
       </div>
     </section>
 
-    <!-- AI-Accelerated Design Workflow Spotlight -->
+    <!-- AI & UX Dedicated Practice Bridge (Deduplicated -> ai.html) -->
     <section class="g-wrap ld-sec" id="ai-workflow">
-      <style>
-        .ld-ai-wf-grid {
-          display: grid;
-          grid-template-columns: 1.18fr 0.82fr;
-          gap: 32px;
-          align-items: stretch;
-          background: #FFFFFF;
-          border: 1px solid var(--border-subtle);
-          border-radius: 22px;
-          padding: 26px;
-          box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
-        }
-        .ld-ai-stage {
-          background: #0F172A;
-          border-radius: 16px;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          min-height: 360px;
-        }
-        .ld-ai-video-wrap {
-          display: none;
-          width: 100%;
-          height: 100%;
-          background: #000;
-        }
-        .ld-ai-video-wrap.has-video {
-          display: block;
-        }
-        .ld-ai-video-wrap video {
-          width: 100%;
-          height: 100%;
-          aspect-ratio: 16 / 9;
-          display: block;
-          object-fit: cover;
-        }
-        .ld-ai-interactive-preview.hidden {
-          display: none;
-        }
-        .ld-ai-interactive-preview {
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        }
-        .ld-ai-bar {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 12px 16px;
-          background: #090E1A;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          gap: 10px;
-          flex-wrap: wrap;
-        }
-        .ld-ai-tabs {
-          display: flex;
-          gap: 6px;
-          flex-wrap: wrap;
-        }
-        .ld-ai-tab {
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          color: #CBD5E1;
-          font-family: var(--font-body);
-          font-size: 11.5px;
-          font-weight: 600;
-          padding: 6px 11px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.18s ease;
-        }
-        .ld-ai-tab:hover {
-          background: rgba(255, 255, 255, 0.12);
-          color: #FFFFFF;
-        }
-        .ld-ai-tab.active {
-          background: var(--primary-accent);
-          border-color: var(--primary-accent);
-          color: #FFFFFF;
-        }
-        .ld-ai-screen {
-          padding: 22px 24px;
-          color: #E2E8F0;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          flex: 1;
-          gap: 16px;
-        }
-        .ld-ai-pane { display: none; }
-        .ld-ai-pane.active { display: block; }
-        .ld-ai-codebox {
-          background: rgba(15, 23, 42, 0.85);
-          border: 1px solid rgba(148, 163, 184, 0.2);
-          border-radius: 10px;
-          padding: 14px 16px;
-          font-family: var(--font-code);
-          font-size: 12px;
-          line-height: 1.6;
-          color: #BAE6FD;
-          margin-top: 12px;
-        }
-        .ld-ai-pillars {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          gap: 16px;
-        }
-        .ld-ai-pillar {
-          padding: 15px 18px;
-          border-radius: 14px;
-          background: var(--bg-subtle);
-          border: 1px solid var(--border-subtle);
-        }
-        .ld-ai-pillar h3 {
-          font-family: var(--font-heading);
-          font-size: 15.5px;
-          font-weight: 800;
-          color: var(--text-main);
-          margin-bottom: 5px;
-        }
-        .ld-ai-pillar p {
-          font-size: 13.5px;
-          line-height: 1.55;
-          color: var(--text-body);
-          margin: 0;
-        }
-        @media (max-width: 960px) {
-          .ld-ai-wf-grid { grid-template-columns: 1fr; padding: 18px; }
-        }
-      </style>
-
-      <div class="ld-head">
-        <div class="sec-label">AI-Native DesignOps</div>
-        <h2 class="sec-title">How I use AI in day-to-day design &amp; team delivery</h2>
-        <p class="sec-intro">Beyond designing AI products, I modernized how our 14-person team across design, research, and content synthesizes research, stress-tests edge cases, and ships token-compliant prototypes in days instead of weeks.</p>
-      </div>
-
-      <div class="ld-ai-wf-grid">
-        <!-- Left: Video Walkthrough (auto-activates when ai-workflow.mp4 is present) + Interactive 3-Step Simulator -->
-        <div class="ld-ai-stage">
-          <div class="ld-ai-video-wrap" id="aiWorkflowVideoWrap">
-            <video id="aiWorkflowVideo" controls preload="metadata" poster="screenshots/transformation-ibm-carbon.png">
-              <source src="ai-workflow.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <div class="ld-ai-interactive-preview" id="aiWorkflowInteractive">
-            <div class="ld-ai-bar">
-              <span style="font-family:var(--font-code); font-size:11px; color:#94A3B8; font-weight:700;">LIVE WORKFLOW WALKTHROUGH</span>
-              <div class="ld-ai-tabs" role="tablist">
-                <button type="button" class="ld-ai-tab active" onclick="switchAiWfTab(0, this)">01 · Edge-Case Synthesis</button>
-                <button type="button" class="ld-ai-tab" onclick="switchAiWfTab(1, this)">02 · Token-Bound Prototyping</button>
-                <button type="button" class="ld-ai-tab" onclick="switchAiWfTab(2, this)">03 · Squad Governance</button>
-              </div>
-            </div>
-
-            <div class="ld-ai-screen">
-              <div class="ld-ai-pane active" id="aiWfPane0">
-                <div style="font-size:11.5px; font-weight:700; color:#38BDF8; text-transform:uppercase; letter-spacing:0.05em;">Phase 1 · Privacy-Safe Discovery Synthesis</div>
-                <h4 style="font-size:18px; font-weight:800; color:#FFFFFF; margin-top:4px;">Redacted Enterprise Logs &rarr; Exhaustive Failure Matrix</h4>
-                <p style="font-size:13.5px; color:#CBD5E1; line-height:1.55; margin-top:6px;">We feed PII-redacted field transcripts and domain rules into enterprise-governed LLMs (IBM watsonx / NotebookLM) to map non-happy-path states before touching Figma.</p>
-                <div class="ld-ai-codebox">
-                  [Input] 18 anonymized SOC operator transcripts + SLA compliance rules<br>
-                  [Output] 14 edge-case states mapped (stale telemetry, partial rollback, confidence &lt; 65% override)<br>
-                  [Impact] Discovery synthesis compressed from 8 days &rarr; 3 hours
-                </div>
-              </div>
-
-              <div class="ld-ai-pane" id="aiWfPane1">
-                <div style="font-size:11.5px; font-weight:700; color:#34D399; text-transform:uppercase; letter-spacing:0.05em;">Phase 2 · Interactive Code Prototyping</div>
-                <h4 style="font-size:18px; font-weight:800; color:#FFFFFF; margin-top:4px;">Static Flows &rarr; Live Carbon-Token HTML/React Sandbox</h4>
-                <p style="font-size:13.5px; color:#CBD5E1; line-height:1.55; margin-top:6px;">Instead of debating flat wireframes, we generate interactive code prototypes strictly constrained to IBM Carbon tokens—testing real keyboard density, latency skeletons, and human override diffs on Day 2.</p>
-                <div class="ld-ai-codebox" style="color:#A7F3D0;">
-                  [Constraint] Carbon v11 semantic tokens + WCAG 2.2 AA contrast locked<br>
-                  [Prototype] Live interactive blast-radius diff &amp; bulk keyboard triage<br>
-                  [Impact] Validated with Principal Engineers in Sprint Zero; rework cut by 70%
-                </div>
-              </div>
-
-              <div class="ld-ai-pane" id="aiWfPane2">
-                <div style="font-size:11.5px; font-weight:700; color:#FBBF24; text-transform:uppercase; letter-spacing:0.05em;">Phase 3 · 14-Person Team Multiplier</div>
-                <h4 style="font-size:18px; font-weight:800; color:#FFFFFF; margin-top:4px;">Personal Workflow &rarr; Repeatable Org Playbook</h4>
-                <p style="font-size:13.5px; color:#CBD5E1; line-height:1.55; margin-top:6px;">Codified prompt libraries, redaction guardrails, and the 10-point AI UX heuristic gate across UI/UX designers, UX researchers, and content specialists.</p>
-                <div class="ld-ai-codebox" style="color:#FDE68A;">
-                  [Governance] Zero raw customer PII in external models &bull; Mandatory human review<br>
-                  [Adoption] 14 practitioners upskilled via weekly AI-UX studio pairing<br>
-                  [Outcome] End-to-end feature cycle time cut from 6 weeks &rarr; under 2 weeks
-                </div>
-              </div>
-
-              <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#94A3B8; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
-                <span>Tools: IBM watsonx &bull; Claude / Copilot &bull; NotebookLM &bull; Figma Tokens</span>
-                <span style="color:#FFFFFF; font-weight:700;">6 wks &rarr; &lt;2 wks cycle</span>
-              </div>
-            </div>
-          </div>
+      <div style="background: #0F172A; color: #FFFFFF; border-radius: 22px; padding: 36px 40px; display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; border: 1px solid rgba(255, 255, 255, 0.08);">
+        <div style="max-width: 680px;">
+          <div style="font-family: var(--font-code); font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #38BDF8; margin-bottom: 8px;">Dedicated Practice &bull; UX for AI &amp; AI for UX</div>
+          <h2 style="font-family: var(--font-heading); font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; line-height: 1.18; margin-bottom: 10px;">How my teams design trusted AI &amp; ship with governed AI workflows</h2>
+          <p style="font-size: 15px; line-height: 1.6; color: #CBD5E1; margin: 0;">To keep this leadership playbook focused on team operations, the interactive 3-tier confidence simulator, full 10-point AI UX rubric, and 3-phase AI workflow walkthrough now live on their own dedicated page.</p>
         </div>
-
-        <!-- Right: 3 Executive AI Workflow Takeaways -->
-        <div class="ld-ai-pillars">
-          <div class="ld-ai-pillar">
-            <h3>1. Governed Research &amp; Edge-Case Coverage</h3>
-            <p>Strict PII redaction first—then AI stress-testing to surface rare enterprise failure states, role permissions, and compliance blockers before design reviews.</p>
-          </div>
-          <div class="ld-ai-pillar">
-            <h3>2. Token-Constrained Live Prototypes</h3>
-            <p>Generating working HTML/React prototypes locked to design-system tokens so engineers and users test real Human-in-the-Loop interactions, not static slides.</p>
-          </div>
-          <div class="ld-ai-pillar">
-            <h3>3. Scaled Across Design, Research &amp; Content</h3>
-            <p>Turned individual AI experiments into shared team playbooks, content-linting checks, and critique rubrics—accelerating delivery without lowering craft quality.</p>
-          </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="ai.html#ai-for-ux" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; background: var(--primary-accent); color: #FFFFFF; font-size: 13.5px; font-weight: 700; text-decoration: none;">Open AI Workflow Walkthrough &rarr;</a>
+          <a href="ai.html#ai-rubric" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 100px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #FFFFFF; font-size: 13.5px; font-weight: 700; text-decoration: none;">10-Point AI Rubric</a>
         </div>
       </div>
-
-      <script>
-        function switchAiWfTab(idx, btn) {
-          document.querySelectorAll('.ld-ai-tab').forEach(b => b.classList.remove('active'));
-          document.querySelectorAll('.ld-ai-pane').forEach(p => p.classList.remove('active'));
-          if (btn) btn.classList.add('active');
-          const pane = document.getElementById('aiWfPane' + idx);
-          if (pane) pane.classList.add('active');
-        }
-        // Automatically switch to the native MP4 walkthrough player as soon as ai-workflow.mp4 is uploaded
-        fetch('ai-workflow.mp4', { method: 'HEAD' }).then(res => {
-          if (res.ok) {
-            document.getElementById('aiWorkflowVideoWrap').classList.add('has-video');
-            document.getElementById('aiWorkflowInteractive').classList.add('hidden');
-          }
-        }).catch(() => {});
-      </script>
     </section>
 
     <section class="g-wrap ld-sec" id="tools">

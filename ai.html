@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI &amp; UX: Designing Trusted AI &amp; AI-Accelerated Teams | Balaajee V.R.</title>
+  <meta name="description" content="UX for AI and AI for UX practice by Design Leader Balaajee V.R. — 3-tier confidence gating, 10-point enterprise AI UX rubric, and governed AI workflows across multidisciplinary teams.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+
+  <style>
+  :root {
+    --primary-accent: #F00658;
+    --primary-hover: #D0054B;
+    --accent-subtle: rgba(240, 6, 88, 0.08);
+    --accent-border: rgba(240, 6, 88, 0.25);
+
+    --font-heading: 'Overpass', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+
+    --bg-base: #FAFAF9;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F1F3F6;
+
+    --text-main: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --text-light: #94A3B8;
+
+    --border-subtle: #E2E8F0;
+    --border-medium: #CBD5E1;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; height: auto; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100vw;
+    width: 100%;
+  }
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  /* Global Header */
+  .global-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-main);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .brand-monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 14.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 6px;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
+  }
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent);
+    transform: scale(1.04);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: 100px;
+    padding: 4px;
+    gap: 2px;
+  }
+  .nav-item {
+    padding: 7px 15px;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .nav-item:hover { color: var(--text-main); }
+  .nav-item.active { background: var(--text-main); color: #FFFFFF; }
+  .header-actions { display: flex; align-items: center; gap: 10px; }
+  .btn-contact {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    background: var(--primary-accent);
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn-contact:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(240, 6, 88, 0.3);
+  }
+
+  @media (max-width: 1200px) {
+    .nav-item { padding: 6px 12px; font-size: 12.5px; }
+  }
+  @media (max-width: 1040px) {
+    .header-container { padding: 0 16px; gap: 10px; }
+    .header-actions { display: none; }
+    .nav-links {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 100%;
+      padding: 3px 4px;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-item { padding: 6px 12px; font-size: 12px; flex-shrink: 0; }
+  }
+  @media (max-width: 600px) {
+    .global-header { padding: 8px 0; }
+    .header-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      padding: 0 12px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .nav-links {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: auto;
+      border-radius: 12px;
+    }
+  }
+
+  /* Layout & Shared Section Tokens */
+  .g-wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 640px) { .g-wrap { padding: 0 16px; } }
+
+  .g-overline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary-accent);
+    background: rgba(240, 6, 88, 0.08);
+    border: 1px solid rgba(240, 6, 88, 0.2);
+    border-radius: 100px;
+    padding: 4px 12px;
+    margin-bottom: 14px;
+  }
+
+  .sec-label {
+    font-family: var(--font-code);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary-accent);
+    margin-bottom: 10px;
+  }
+  .sec-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .sec-intro {
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--text-body);
+    max-width: 720px;
+    margin-top: 12px;
+  }
+
+  /* Hero */
+  .ai-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 48px;
+    align-items: center;
+    padding-top: 56px;
+  }
+  .ai-hero h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: clamp(34px, 4.4vw, 54px);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+  .ai-hero p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-body);
+    margin-top: 18px;
+    max-width: 610px;
+  }
+  .ai-jump-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 26px;
+  }
+  .ai-jump-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 100px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .ai-jump-btn.primary {
+    background: var(--text-main);
+    color: #FFFFFF;
+  }
+  .ai-jump-btn.primary:hover {
+    background: var(--primary-accent);
+    transform: translateY(-1px);
+  }
+  .ai-jump-btn.secondary {
+    background: #FFFFFF;
+    color: var(--text-main);
+    border: 1px solid var(--border-medium);
+  }
+  .ai-jump-btn.secondary:hover {
+    border-color: var(--text-main);
+  }
+
+  .ai-hero-card {
+    background: #0F172A;
+    border-radius: 22px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
+  }
+  .ai-hero-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: #94A3B8;
+  }
+  .ai-hero-card-top span.badge {
+    background: rgba(56, 189, 248, 0.14);
+    color: #38BDF8;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+  }
+  .ai-hero-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #1E293B;
+  }
+  .ai-hero-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    display: block;
+  }
+  .ai-hero-caption {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 12.5px;
+    color: #CBD5E1;
+  }
+  .ai-hero-caption a {
+    color: #38BDF8;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .ai-hero-caption a:hover { text-decoration: underline; }
+
+  /* Metrics Band */
+  .ld-nums {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    background: var(--text-main);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 52px;
+  }
+  .ld-nums div {
+    padding: 24px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .ld-nums div:last-child { border-right: 0; }
+  .ld-nums strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .ld-nums span { font-size: 12.5px; color: #CBD5E1; line-height: 1.4; display: block; }
+
+  /* Sticky Sub-Nav */
+  .ld-nav {
+    position: sticky;
+    top: 58px;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-top: 52px;
+  }
+  .ld-nav .g-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ld-nav .g-wrap::-webkit-scrollbar { display: none; }
+  .ld-nav-label {
+    flex: 0 0 auto;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-right: 14px;
+    border-right: 1px solid var(--border-subtle);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ld-nav-label svg { color: var(--primary-accent); }
+  .ld-nav a {
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 14px 4px 12px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  .ld-nav a:hover { color: var(--text-main); border-bottom-color: var(--border-medium); }
+  .ld-nav a.active { color: var(--primary-accent); font-weight: 700; border-bottom-color: var(--primary-accent); }
+
+  .ld-sec { padding-top: 88px; scroll-margin-top: 118px; }
+  .ld-head { margin-bottom: 32px; }
+
+  /* Contrast Split: Why Black-Box AI Fails vs Auditable AI */
+  .ai-contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ai-contrast-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 28px;
+  }
+  .ai-contrast-card.good {
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
+  }
+  .ai-pill-tag {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .ai-pill-tag.bad { background: #FEF2F2; color: #B91C1C; }
+  .ai-pill-tag.good { background: #ECFDF5; color: #047857; }
+  .ai-contrast-card h3 {
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 10px;
+  }
+  .ai-contrast-card ul {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .ai-contrast-card li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--text-body);
+    padding-left: 22px;
+    position: relative;
+  }
+  .ai-contrast-card.bad li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: #DC2626;
+    font-weight: 700;
+  }
+  .ai-contrast-card.good li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #059669;
+    font-weight: 800;
+  }
+
+  /* Interactive 3-Tier Confidence Simulator */
+  .conf-sim-box {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
+  }
+  .conf-tier-Selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .conf-btn {
+    text-align: left;
+    border-radius: 14px;
+    padding: 18px;
+    border: 2px solid var(--border-subtle);
+    background: var(--bg-base);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .conf-btn:hover { border-color: var(--border-medium); }
+  .conf-btn strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .conf-btn b {
+    display: block;
+    font-size: 14.5px;
+    color: var(--text-main);
+    margin-bottom: 4px;
+  }
+  .conf-btn span {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  .conf-btn.t-hi strong { color: #047857; }
+  .conf-btn.t-mid strong { color: #B45309; }
+  .conf-btn.t-lo strong { color: #B91C1C; }
+  .conf-btn.active.t-hi { background: #ECFDF5; border-color: #059669; }
+  .conf-btn.active.t-mid { background: #FFFBEB; border-color: #D97706; }
+  .conf-btn.active.t-lo { background: #FEF2F2; border-color: #DC2626; }
+
+  .conf-sim-stage {
+    background: #0F172A;
+    color: #E2E8F0;
+    border-radius: 16px;
+    padding: 24px 26px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .conf-pane { display: none; }
+  .conf-pane.active { display: contents; }
+  .conf-ui-mock {
+    background: #1E293B;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 12px;
+    padding: 18px;
+    font-size: 13.5px;
+  }
+  .conf-ui-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: var(--font-code);
+    font-size: 11.5px;
+  }
+  .conf-meta-list {
+    display: grid;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #CBD5E1;
+  }
+  .conf-meta-list div {
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 3px solid #38BDF8;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+  }
+  .conf-meta-list b { color: #FFFFFF; display: block; font-size: 12.5px; margin-bottom: 2px; }
+
+  /* 10-Point Enterprise AI UX Rubric */
+  .rubric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .rubric-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .rubric-num {
+    flex-shrink: 0;
+    font-family: var(--font-code);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-accent);
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-border);
+    border-radius: 8px;
+    padding: 5px 9px;
+  }
+  .rubric-card h3 {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 4px;
+  }
+  .rubric-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-body);
+  }
+
+  /* AI for UX Interactive Workflow Stage */
+  .ld-ai-wf-grid {
+    display: grid;
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: 32px;
+    align-items: stretch;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
+  }
+  .ld-ai-stage {
+    background: #0F172A;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 360px;
+  }
+  .ld-ai-video-wrap { display: none; width: 100%; height: 100%; background: #000; }
+  .ld-ai-video-wrap.has-video { display: block; }
+  .ld-ai-video-wrap video { width: 100%; height: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; }
+  .ld-ai-interactive-preview.hidden { display: none; }
+  .ld-ai-interactive-preview { display: flex; flex-direction: column; height: 100%; }
+  .ld-ai-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #090E1A;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ld-ai-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .ld-ai-tab {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #CBD5E1;
+    font-family: var(--font-body);
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 6px 11px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .ld-ai-tab:hover { background: rgba(255, 255, 255, 0.12); color: #FFFFFF; }
+  .ld-ai-tab.active { background: var(--primary-accent); border-color: var(--primary-accent); color: #FFFFFF; }
+  .ld-ai-screen {
+    padding: 22px 24px;
+    color: #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 16px;
+  }
+  .ld-ai-pane { display: none; }
+  .ld-ai-pane.active { display: block; }
+  .ld-ai-codebox {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: var(--font-code);
+    font-size: 12px;
+    line-height: 1.6;
+    color: #BAE6FD;
+    margin-top: 12px;
+  }
+  .ld-ai-pillars { display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+  .ld-ai-pillar {
+    padding: 15px 18px;
+    border-radius: 14px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+  }
+  .ld-ai-pillar h3 {
+    font-family: var(--font-heading);
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 5px;
+  }
+  .ld-ai-pillar p { font-size: 13.5px; line-height: 1.55; color: var(--text-body); margin: 0; }
+
+  /* Governance & Tooling Grid */
+  .gov-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .gov-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 22px;
+  }
+  .gov-card h3 {
+    font-family: var(--font-heading);
+    font-size: 16.5px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 10px;
+  }
+  .gov-card ul { list-style: none; display: grid; gap: 7px; }
+  .gov-card li {
+    font-size: 13.5px;
+    color: var(--text-body);
+    padding-left: 14px;
+    position: relative;
+  }
+  .gov-card li::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--primary-accent);
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+
+  /* Bottom CTA */
+  .ld-cta {
+    margin-top: 88px;
+    background: var(--text-main);
+    color: #FFFFFF;
+    border-radius: 24px;
+    padding: 44px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .ld-cta h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .ld-cta p { font-size: 15.5px; color: #CBD5E1; max-width: 560px; }
+  .ld-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .ld-btn {
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .ld-btn-p { background: var(--primary-accent); color: #FFFFFF; }
+  .ld-btn-p:hover { background: var(--primary-hover); }
+  .ld-btn-s { background: rgba(255, 255, 255, 0.1); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.2); }
+  .ld-btn-s:hover { background: rgba(255, 255, 255, 0.18); }
+
+  /* Footer */
+  .g-footer { border-top: 1px solid var(--border-subtle); background: #FFFFFF; margin-top: 88px; padding: 36px 0; }
+  .g-footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .g-footer-row strong { display: block; font-family: var(--font-heading); font-size: 15px; color: var(--text-main); }
+  .g-footer-row span { font-size: 13px; color: var(--text-muted); }
+  .g-footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  .g-footer-links a { font-size: 13px; font-weight: 600; color: var(--text-muted); text-decoration: none; }
+  .g-footer-links a:hover { color: var(--primary-accent); }
+
+  @media (max-width: 980px) {
+    .ai-hero, .ai-contrast-grid, .conf-sim-stage, .ld-ai-wf-grid { grid-template-columns: 1fr; }
+    .ld-nums { grid-template-columns: repeat(3, 1fr); }
+    .conf-tier-Selector { grid-template-columns: 1fr; }
+    .rubric-grid { grid-template-columns: 1fr; }
+    .gov-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .ld-nums { grid-template-columns: repeat(2, 1fr); }
+    .gov-grid { grid-template-columns: 1fr; }
+    .ld-cta { padding: 30px 22px; }
+  }
+  </style>
+</head>
+<body>
+
+  <header class="global-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
+        <span class="brand-monogram" aria-hidden="true">B</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-item">Selected Work</a>
+        <a href="ai.html" class="nav-item active">AI &amp; UX</a>
+        <a href="leadership.html" class="nav-item">Leadership</a>
+        <a href="archive.html" class="nav-item">Design Artifacts</a>
+        <a href="gallery.html" class="nav-item">Career Gallery</a>
+        <a href="resume-swiss.html" class="nav-item">My Resume</a>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn-contact">Get In Touch &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="g-wrap ai-hero">
+      <div>
+        <div class="g-overline">UX for AI &bull; AI for UX</div>
+        <h1>AI products people trust. Teams that ship faster.</h1>
+        <p>With AI, I focus on two connected sides: designing enterprise AI products where users can see why the AI made a decision and stay in control, and bringing governed AI into the team’s own workflow to speed up research synthesis and live prototyping.</p>
+        <div class="ai-jump-pills">
+          <a href="#ux-for-ai" class="ai-jump-btn primary">Part 01 &middot; UX for AI &darr;</a>
+          <a href="#ai-for-ux" class="ai-jump-btn secondary">Part 02 &middot; AI for UX Workflow &darr;</a>
+        </div>
+      </div>
+
+      <div class="ai-hero-card">
+        <div class="ai-hero-card-top">
+          <span>SHIPPED ENTERPRISE AGENTIC UX &bull; IBM</span>
+          <span class="badge">Human-in-the-Loop</span>
+        </div>
+        <div class="ai-hero-frame">
+          <img src="screenshots/ibm_maas360_ai_endpoint.png" alt="IBM MaaS360 supervised agentic AI remediation workflow" loading="eager">
+        </div>
+        <div class="ai-hero-caption">
+          <span>Supervised AI remediation with reasoning trace &amp; staged approval</span>
+          <a href="case-ibm-watson.html">Read full case study &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Numbers -->
+    <section class="g-wrap">
+      <div class="ld-nums" aria-label="AI practice outcomes">
+        <div><strong>74%</strong><span>faster SysML model drafting</span></div>
+        <div><strong>82%</strong><span>faster security threat triage</span></div>
+        <div><strong>61 &rarr; 89</strong><span>SUS jump after reasoning traces</span></div>
+        <div><strong>0</strong><span>compliance violations in production</span></div>
+        <div><strong>6w &rarr; &lt;2w</strong><span>feature cycle time across squads</span></div>
+        <div><strong>14</strong><span>specialists upskilled in AI workflows</span></div>
+      </div>
+    </section>
+
+    <!-- Sticky Jump Bar -->
+    <nav class="ld-nav" aria-label="On this page">
+      <div class="g-wrap">
+        <span class="ld-nav-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="7 13 12 18 17 13"/><polyline points="7 6 12 11 17 6"/></svg>
+          On This Page:
+        </span>
+        <a href="#ux-for-ai" class="active">01 · UX for AI</a>
+        <a href="#confidence-model">3-Tier Confidence Model</a>
+        <a href="#ai-rubric">10-Point AI Rubric</a>
+        <a href="#ai-for-ux">02 · AI for UX Workflow</a>
+        <a href="#governance">Stack &amp; Governance</a>
+      </div>
+    </nav>
+
+    <!-- Section 1: UX for AI -->
+    <section class="g-wrap ld-sec" id="ux-for-ai">
+      <div class="ld-head">
+        <div class="sec-label">Part 01 &bull; UX for AI (Product Architecture)</div>
+        <h2 class="sec-title">Eliminating “verification fatigue” in mission-critical software</h2>
+        <p class="sec-intro">In systems engineering, cybersecurity, banking, and fleet operations, mistakes are expensive. When AI acts like a black box, checking its output takes longer than doing the work manually—so operators turn it off and compliance blocks it.</p>
+      </div>
+
+      <div class="ai-contrast-grid">
+        <div class="ai-contrast-card bad">
+          <span class="ai-pill-tag bad">Why Generic AI Fails</span>
+          <h3>Black-Box Chat &amp; Silent Mutations</h3>
+          <ul>
+            <li>Applies changes to models, policies, or fleets without showing what changed or why.</li>
+            <li>Displays raw percentages (“92% confident”) without explaining what evidence is missing.</li>
+            <li>Forces operators to audit every single line manually—creating severe verification fatigue.</li>
+            <li>Blocked by enterprise CISO and compliance teams due to zero auditability or rollback.</li>
+          </ul>
+        </div>
+
+        <div class="ai-contrast-card good">
+          <span class="ai-pill-tag good">How My Teams Design AI</span>
+          <h3>Visible Reasoning, Calibrated Control &amp; Diffs</h3>
+          <ul>
+            <li>Shows a clear step-by-step reasoning trace linked directly to source requirements or telemetry.</li>
+            <li>Translates model confidence into explicit interaction tiers—automating routine work while gating risk.</li>
+            <li>Presents side-by-side before/after diffs with blast-radius previews and one-click human approval.</li>
+            <li>Logs every AI suggestion and human sign-off for zero-violation enterprise compliance.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Interactive 3-Tier Confidence Simulator -->
+    <section class="g-wrap ld-sec" id="confidence-model">
+      <div class="ld-head">
+        <div class="sec-label">Interaction Pattern &bull; Shipped at IBM</div>
+        <h2 class="sec-title">The 3-tier confidence &amp; human-control model</h2>
+        <p class="sec-intro">When AI researchers pushed for full autonomy and compliance pushed to ban it, I aligned both groups around earned autonomy—mapping model confidence directly to who holds the wheel. Click each tier to inspect the operator pattern:</p>
+      </div>
+
+      <div class="conf-sim-box">
+        <div class="conf-tier-Selector" role="tablist">
+          <button type="button" class="conf-btn t-hi active" onclick="selectConfTier(0, this)">
+            <strong>&ge; 95% Confidence</strong>
+            <b>Tier 1 · Runs Automatically</b>
+            <span>Low blast radius &amp; high certainty. Executes immediately with an immutable reasoning log and 1-click undo.</span>
+          </button>
+          <button type="button" class="conf-btn t-mid" onclick="selectConfTier(1, this)">
+            <strong>80–94% Confidence</strong>
+            <b>Tier 2 · Human Reviews Diff</b>
+            <span>Medium risk. Opens a side-by-side before/after diff showing affected endpoints; one click to approve or edit.</span>
+          </button>
+          <button type="button" class="conf-btn t-lo" onclick="selectConfTier(2, this)">
+            <strong>&lt; 80% Confidence</strong>
+            <b>Tier 3 · Human Takes the Wheel</b>
+            <span>Ambiguous input or high blast radius. AI hands back control with a partial draft and flags what it is unsure about.</span>
+          </button>
+        </div>
+
+        <div class="conf-sim-stage">
+          <!-- Tier 1 -->
+          <div class="conf-pane active" id="confPane0">
+            <div class="conf-ui-mock">
+              <div class="conf-ui-top">
+                <span style="color:#34D399; font-weight:700;">● TIER 1 · AUTO-APPLIED (97% CONFIDENCE)</span>
+                <span style="color:#94A3B8;">Audit ID #A-8492</span>
+              </div>
+              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;"> Quarantined 14 stale sandbox tokens matching CVE-2026-114 policy</p>
+              <p style="color:#CBD5E1; font-size:13px;">Reasoning: Exact signature match across 14 non-production nodes; zero active user sessions impacted.</p>
+              <div style="margin-top:12px; display:flex; gap:10px; font-size:12px;">
+                <span style="background:rgba(52,211,153,0.15); color:#34D399; padding:4px 10px; border-radius:6px; font-weight:600;">✓ Logged to Compliance Trail</span>
+                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">↺ Undo Action (30m window)</span>
+              </div>
+            </div>
+            <div class="conf-meta-list">
+              <div><b>UX Rule</b>Never interrupt operators for routine, reversible actions with high certainty.</div>
+              <div><b>Safety Net</b>Every automated action stays 1-click reversible and writes its reasoning chain to the audit log.</div>
+            </div>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="conf-pane" id="confPane1">
+            <div class="conf-ui-mock">
+              <div class="conf-ui-top">
+                <span style="color:#FBBF24; font-weight:700;">● TIER 2 · SUPERVISED DIFF REVIEW (88% CONFIDENCE)</span>
+                <span style="color:#94A3B8;">Blast Radius: 420 Laptops</span>
+              </div>
+              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Proposed VPN certificate patch across EMEA Finance group</p>
+              <p style="color:#CBD5E1; font-size:13px;">Diff Preview: Staged 10% canary first (42 devices) &rarr; full rollout after 0 drops over 15 mins.</p>
+              <div style="margin-top:12px; display:flex; gap:10px; font-size:12px;">
+                <span style="background:#F00658; color:#FFFFFF; padding:4px 12px; border-radius:6px; font-weight:700;">Approve Staged Rollout</span>
+                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">Inspect 3 Flagged Exceptions</span>
+              </div>
+            </div>
+            <div class="conf-meta-list">
+              <div><b>UX Rule</b>Make reviewing a diff 5x faster than writing the remediation or SysML model from scratch.</div>
+              <div><b>Measured Impact</b>Raised System Usability Scale (SUS) from 61 to 89 across 32 enterprise engineers and admins.</div>
+            </div>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="conf-pane" id="confPane2">
+            <div class="conf-ui-mock">
+              <div class="conf-ui-top">
+                <span style="color:#F87171; font-weight:700;">● TIER 3 · MANUAL CONTROL REQUIRED (64% CONFIDENCE)</span>
+                <span style="color:#94A3B8;">Auto-Execution Blocked</span>
+              </div>
+              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Conflicting braking telemetry requirements detected in Section 4.2</p>
+              <p style="color:#CBD5E1; font-size:13px;">Why AI stopped: Spec clauses REQ-204 and REQ-219 specify different latency thresholds (120ms vs 50ms).</p>
+              <div style="margin-top:12px; display:flex; gap:10px; font-size:12px;">
+                <span style="background:rgba(248,113,113,0.18); color:#FCA5A5; padding:4px 10px; border-radius:6px; font-weight:600;">Open Draft in Manual Editor</span>
+                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">Compare Source Clauses</span>
+              </div>
+            </div>
+            <div class="conf-meta-list">
+              <div><b>UX Rule</b>Honest uncertainty builds more trust than fake confidence. Never guess on high-stakes conflicts.</div>
+              <div><b>Graceful Handoff</b>Hands over everything AI already parsed so the human never starts from a blank screen.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 10-Point AI Heuristic Rubric -->
+    <section class="g-wrap ld-sec" id="ai-rubric">
+      <div class="ld-head">
+        <div class="sec-label">Quality Gate &bull; Design Governance</div>
+        <h2 class="sec-title">My 10-point enterprise AI UX rubric</h2>
+        <p class="sec-intro">Before any AI feature moved from design into engineering sprints at IBM, squads scored the flow against these ten checks so every product shared one consistent trust bar:</p>
+      </div>
+
+      <div class="rubric-grid">
+        <div class="rubric-card"><span class="rubric-num">01</span><div><h3>Source Provenance</h3><p>Every AI output links directly to the exact requirement, log, or policy clause that produced it.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">02</span><div><h3>Visible Reasoning Trace</h3><p>Users can inspect why the AI chose an action in plain domain language—never opaque model jargon.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">03</span><div><h3>Blast-Radius Preview</h3><p>Before an agent acts, the UI shows exactly how many devices, users, or downstream nodes are affected.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">04</span><div><h3>Actionable Confidence</h3><p>Confidence scores map to clear next actions (auto, review diff, or manual), never standalone numbers.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">05</span><div><h3>One-Click Reversibility</h3><p>Automated and approved agent actions include a clear undo or staged-canary rollback path.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">06</span><div><h3>Graceful Manual Fallback</h3><p>When AI fails or confidence drops, the user lands in a pre-populated manual flow—never a dead end.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">07</span><div><h3>Faster Than Manual Work</h3><p>Reviewing and approving an AI diff must measurably beat doing the task by hand (zero verification fatigue).</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">08</span><div><h3>Honest Multi-Step Latency</h3><p>Long-running agent workflows show live step progress and allow safe cancellation mid-run.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">09</span><div><h3>Immutable Compliance Log</h3><p>Distinguishes AI-generated drafts from human-approved changes for regulatory and CISO audits.</p></div></div>
+        <div class="rubric-card"><span class="rubric-num">10</span><div><h3>In-Flow Signal Capture</h3><p>Captures operator edits and rejections naturally in the workflow—replacing noisy thumbs-up/down popups.</p></div></div>
+      </div>
+    </section>
+
+    <!-- Section 4: AI for UX (Team Workflow) -->
+    <section class="g-wrap ld-sec" id="ai-for-ux">
+      <div class="ld-head">
+        <div class="sec-label">Part 02 &bull; AI for UX (Team Velocity &amp; DesignOps)</div>
+        <h2 class="sec-title">How I bring AI into the team’s own design workflow</h2>
+        <p class="sec-intro">Individual AI speed only matters if an entire team can use it safely. Across a 14-person group spanning UI/UX design, UX research, and content, I standardized how we synthesize research, stress-test edge cases, and prototype in live code.</p>
+      </div>
+
+      <div class="ld-ai-wf-grid">
+        <div class="ld-ai-stage">
+          <div class="ld-ai-video-wrap" id="aiWorkflowVideoWrap">
+            <video id="aiWorkflowVideo" controls preload="metadata" poster="screenshots/transformation-ibm-carbon.png">
+              <source src="ai-workflow.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="ld-ai-interactive-preview" id="aiWorkflowInteractive">
+            <div class="ld-ai-bar">
+              <span style="font-family:var(--font-code); font-size:11px; color:#94A3B8; font-weight:700;">LIVE WORKFLOW WALKTHROUGH</span>
+              <div class="ld-ai-tabs" role="tablist">
+                <button type="button" class="ld-ai-tab active" onclick="switchAiWfTab(0, this)">01 · Edge-Case Synthesis</button>
+                <button type="button" class="ld-ai-tab" onclick="switchAiWfTab(1, this)">02 · Token-Bound Prototyping</button>
+                <button type="button" class="ld-ai-tab" onclick="switchAiWfTab(2, this)">03 · Squad Governance</button>
+              </div>
+            </div>
+
+            <div class="ld-ai-screen">
+              <div class="ld-ai-pane active" id="aiWfPane0">
+                <div style="font-size:11.5px; font-weight:700; color:#38BDF8; text-transform:uppercase; letter-spacing:0.05em;">Phase 1 · Privacy-Safe Discovery Synthesis</div>
+                <h4 style="font-size:18px; font-weight:800; color:#FFFFFF; margin-top:4px;">Redacted Enterprise Logs &rarr; Exhaustive Failure Matrix</h4>
+                <p style="font-size:13.5px; color:#CBD5E1; line-height:1.55; margin-top:6px;">We never paste raw customer PII into external models. Using redacted field transcripts and domain SLA rules inside enterprise-governed LLMs, we surface rare failure states before touching Figma.</p>
+                <div class="ld-ai-codebox">
+                  [Input] 18 anonymized operator transcripts + SLA compliance rules<br>
+                  [Output] 14 non-happy-path states mapped (stale telemetry, partial rollback, permission conflict)<br>
+                  [Impact] Discovery synthesis compressed from 8 days &rarr; 3 hours
+                </div>
+              </div>
+
+              <div class="ld-ai-pane" id="aiWfPane1">
+                <div style="font-size:11.5px; font-weight:700; color:#34D399; text-transform:uppercase; letter-spacing:0.05em;">Phase 2 · Interactive Code Prototyping</div>
+                <h4 style="font-size:18px; font-weight:800; color:#FFFFFF; margin-top:4px;">Static Flows &rarr; Live Token-Constrained HTML/React Sandbox</h4>
+                <p style="font-size:13.5px; color:#CBD5E1; line-height:1.55; margin-top:6px;">Instead of debating flat wireframes, we generate interactive code prototypes strictly bound to existing Design System tokens—testing real keyboard density, latency skeletons, and human override diffs on Day 2.</p>
+                <div class="ld-ai-codebox" style="color:#A7F3D0;">
+                  [Constraint] Carbon v11 semantic tokens + WCAG 2.2 AA contrast locked<br>
+                  [Prototype] Live interactive blast-radius diff &amp; bulk keyboard triage<br>
+                  [Impact] Validated with Principal Engineers in Sprint Zero; UI rework cut by 70%
+                </div>
+              </div>
+
+              <div class="ld-ai-pane" id="aiWfPane2">
+                <div style="font-size:11.5px; font-weight:700; color:#FBBF24; text-transform:uppercase; letter-spacing:0.05em;">Phase 3 · 14-Person Team Multiplier</div>
+                <h4 style="font-size:18px; font-weight:800; color:#FFFFFF; margin-top:4px;">Personal Workflow &rarr; Repeatable Team Playbook</h4>
+                <p style="font-size:13.5px; color:#CBD5E1; line-height:1.55; margin-top:6px;">Codified shared prompt libraries, PII redaction rules, content-linting checks, and our 10-point AI UX rubric across UI/UX designers, UX researchers, and content specialists.</p>
+                <div class="ld-ai-codebox" style="color:#FDE68A;">
+                  [Governance] Zero raw customer PII in external models &bull; Mandatory human critique<br>
+                  [Adoption] 14 specialists upskilled via weekly AI-UX studio pairing<br>
+                  [Outcome] End-to-end feature cycle time cut from 6 weeks &rarr; under 2 weeks
+                </div>
+              </div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#94A3B8; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
+                <span>Stack: IBM watsonx &bull; Copilot &bull; ChatGPT Enterprise &bull; NotebookLM</span>
+                <span style="color:#FFFFFF; font-weight:700;">6 wks &rarr; &lt;2 wks cycle</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ld-ai-pillars">
+          <div class="ld-ai-pillar">
+            <h3>1. Faster Research Without Privacy Risk</h3>
+            <p>Strict PII redaction first—then AI synthesis across interview transcripts and support tickets to uncover edge cases early.</p>
+          </div>
+          <div class="ld-ai-pillar">
+            <h3>2. Live Prototypes Over Static Deck Debates</h3>
+            <p>Putting working, token-compliant interactions in front of users and engineers in days so we agree on behavior before sprint commitment.</p>
+          </div>
+          <div class="ld-ai-pillar">
+            <h3>3. AI Assists Craft — Humans Own Decisions</h3>
+            <p>AI accelerates first-pass synthesis, microcopy checks, and state coverage, while designers and researchers own problem framing and user judgment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Stack & Governance -->
+    <section class="g-wrap ld-sec" id="governance">
+      <div class="ld-head">
+        <div class="sec-label">Enterprise Readiness</div>
+        <h2 class="sec-title">Tools, standards &amp; governance guardrails</h2>
+      </div>
+
+      <div class="gov-grid">
+        <div class="gov-card">
+          <h3>AI Models &amp; Research</h3>
+          <ul>
+            <li>IBM watsonx</li>
+            <li>ChatGPT Enterprise &amp; Claude</li>
+            <li>Microsoft Copilot</li>
+            <li>NotebookLM (Redacted Synthesis)</li>
+            <li>Gemini</li>
+          </ul>
+        </div>
+        <div class="gov-card">
+          <h3>Prototyping &amp; Systems</h3>
+          <ul>
+            <li>Figma &amp; Design Token Pipelines</li>
+            <li>Google Stitch</li>
+            <li>HTML / React Live Sandboxes</li>
+            <li>IBM Carbon Design System</li>
+            <li>Automated Microcopy Linting</li>
+          </ul>
+        </div>
+        <div class="gov-card">
+          <h3>Enterprise Guardrails</h3>
+          <ul>
+            <li>Zero Raw PII in External LLMs</li>
+            <li>Mandatory Human Critique Gate</li>
+            <li>3-Tier Confidence Gating</li>
+            <li>CISO &amp; Audit-Log Sign-Off</li>
+            <li>Staged Canary Rollouts</li>
+          </ul>
+        </div>
+        <div class="gov-card">
+          <h3>Global Compliance</h3>
+          <ul>
+            <li>GDPR Privacy-by-Design</li>
+            <li>EU AI Act Transparency Principles</li>
+            <li>European Accessibility Act (EAA)</li>
+            <li>WCAG 2.2 AA Contrast &amp; Keyboard</li>
+            <li>ISO Safety-Critical Ergonomics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="g-wrap">
+      <div class="ld-cta">
+        <div>
+          <h2>Building enterprise AI products or scaling an AI-ready design team?</h2>
+          <p>Explore the full IBM Agentic AI case study or reach out directly to discuss your product and team roadmap.</p>
+        </div>
+        <div class="ld-cta-btns">
+          <a href="case-ibm-watson.html" class="ld-btn ld-btn-p">Read IBM AI Case Study &rarr;</a>
+          <a href="contact.html" class="ld-btn ld-btn-s">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="g-footer">
+    <div class="g-wrap g-footer-row">
+      <div>
+        <strong>Balaajee V.R. &bull; Design Leader</strong>
+        <span style="display:block; font-weight:600; color:#475569; margin:2px 0;">Ex-IBM &bull; Zebra &bull; ZF Wabco &bull; Ericsson &bull; Infosys</span>
+        <span>Chennai / Bengaluru, India &bull; Open to Relocation &bull; Immediate Availability</span>
+      </div>
+      <div class="g-footer-links">
+        <a href="mailto:vrbberaj@gmail.com">vrbberaj@gmail.com</a>
+        <a href="https://www.linkedin.com/in/balaajee-vr-21647967/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/balaajeeVR" target="_blank" rel="noopener">Behance</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function selectConfTier(idx, btn) {
+      document.querySelectorAll('.conf-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.conf-pane').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      var pane = document.getElementById('confPane' + idx);
+      if (pane) pane.classList.add('active');
+    }
+
+    function switchAiWfTab(idx, btn) {
+      document.querySelectorAll('.ld-ai-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.ld-ai-pane').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      var pane = document.getElementById('aiWfPane' + idx);
+      if (pane) pane.classList.add('active');
+    }
+
+    fetch('ai-workflow.mp4', { method: 'HEAD' }).then(function(res) {
+      if (res.ok) {
+        document.getElementById('aiWorkflowVideoWrap').classList.add('has-video');
+        document.getElementById('aiWorkflowInteractive').classList.add('hidden');
+      }
+    }).catch(function() {});
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var navLinks = document.querySelectorAll('.ld-nav a');
+      var sections = Array.from(navLinks).map(function(link) {
+        var id = link.getAttribute('href').replace('#', '');
+        return document.getElementById(id);
+      }).filter(Boolean);
+
+      function onScroll() {
+        var scrollPos = window.scrollY + 150;
+        var currentSection = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].offsetTop <= scrollPos) {
+            currentSection = sections[i];
+          }
+        }
+        if (currentSection) {
+          var id = currentSection.getAttribute('id');
+          navLinks.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    });
+  </script>
+  <script src="contact-drawer.js" defer></script>
+</body>
+</html>
