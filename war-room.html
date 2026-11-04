@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3-in-a-Box Live Interactive Call & Vision Whiteboard | Balaajee V.R.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-app: #0b0f19;
+      --bg-panel: #111827;
+      --bg-card: #1a2234;
+      --bg-elevated: #232e45;
+      --border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-amber: #fbbf24;
+      --accent-emerald: #34d399;
+      --accent-rose: #fb7185;
+      --accent-purple: #a78bfa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-app);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Top Meeting Bar */
+    .topbar {
+      height: 58px;
+      background: #070a12;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      flex-shrink: 0;
+      gap: 12px;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      color: #fda4af;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f43f5e;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.86); }
+    }
+
+    .scenario-select {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .round-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 4px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover:not(:disabled) { background: var(--bg-elevated); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border-color: rgba(56, 189, 248, 0.45);
+      color: #fff;
+    }
+    .btn-primary:hover:not(:disabled) { filter: brightness(1.1); }
+
+    .btn-send {
+      background: linear-gradient(135deg, #059669, #10b981);
+      border-color: rgba(52, 211, 153, 0.5);
+      color: #fff;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .btn-send:hover:not(:disabled) { filter: brightness(1.08); }
+
+    .btn-scorecard {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      border-color: rgba(167, 139, 250, 0.45);
+      color: #fff;
+    }
+
+    .btn-mic {
+      padding: 10px 14px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .btn-mic.recording {
+      background: rgba(244, 63, 94, 0.25);
+      border-color: #f43f5e;
+      color: #fecdd3;
+      box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.2);
+    }
+
+    .btn-handsfree.active {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-blue);
+      color: #bae6fd;
+    }
+
+    /* Join Call Audio Unlock Banner */
+    .join-banner {
+      background: linear-gradient(90deg, #1e3a8a, #0f766e);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 9px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      flex-shrink: 0;
+    }
+    .join-banner.hidden { display: none; }
+
+    /* Main Workspace Split */
+    .workspace {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 54% 46%;
+      min-height: 0;
+    }
+
+    /* Left: Zoom Grid + Transcript + Interactive Call Input */
+    .call-pane {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      padding: 12px 14px;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      flex-shrink: 0;
+    }
+
+    .speaker-tile {
+      position: relative;
+      background: linear-gradient(160deg, #161f30 0%, #0f1624 100%);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 112px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .speaker-tile.speaking {
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.3), 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .speaker-tile.user-mic-live {
+      border-color: #f43f5e;
+      box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.3);
+    }
+
+    .tile-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .av-sarah { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; }
+    .av-marcus { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: #fff; }
+    .av-elena { background: linear-gradient(135deg, #ec4899, #be123c); color: #fff; }
+
+    .speaker-meta h3 { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .speaker-meta p { font-size: 10.5px; color: var(--text-muted); margin-top: 1px; }
+
+    .agenda-chip {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text-secondary);
+    }
+
+    .alignment-bar-wrap { margin-top: 8px; }
+    .alignment-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      font-weight: 600;
+    }
+    .alignment-track {
+      height: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .alignment-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.5s ease, background-color 0.4s ease;
+    }
+
+    /* Transcript Stream */
+    .transcript-card {
+      flex: 1;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .card-header {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .transcript-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .msg {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 12.8px;
+      line-height: 1.48;
+    }
+
+    .msg.sarah { border-left-color: var(--accent-amber); }
+    .msg.marcus { border-left-color: var(--accent-blue); }
+    .msg.elena { border-left-color: var(--accent-rose); }
+    .msg.balaajee { border-left-color: var(--accent-emerald); background: rgba(16, 185, 129, 0.1); }
+
+    .msg-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .msg-play {
+      background: none;
+      border: none;
+      color: var(--accent-blue);
+      font-size: 11px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Thinking Status Banner */
+    .thinking-banner {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      font-size: 12px;
+      color: #bae6fd;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .thinking-banner.visible { display: flex; }
+
+    /* Interactive Call Dock (Mic + Input + Send) */
+    .composer-dock {
+      background: #131c2e;
+      border: 1.5px solid rgba(56, 189, 248, 0.32);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .composer-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .composer-input {
+      flex: 1;
+      background: rgba(11, 15, 25, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--text-main);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+    .composer-input:focus { border-color: var(--accent-blue); }
+    .composer-input::placeholder { color: #64748b; }
+
+    .composer-subrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Right: Shared Vision & Trade-off Whiteboard */
+    .whiteboard-pane {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 14px;
+      gap: 10px;
+      background: radial-gradient(circle at 20% 20%, #131c2e 0%, #0b0f19 100%);
+      min-height: 0;
+    }
+
+    .constraints-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .constraint-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+
+    .constraint-box .kicker {
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .constraint-box .val {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    .board-columns {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      min-height: 0;
+    }
+
+    .board-col {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .board-col-head {
+      padding: 9px 11px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .sticky-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sticky {
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      line-height: 1.4;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sticky.tension { background: rgba(244, 63, 94, 0.12); color: #fecdd3; border-color: rgba(244, 63, 94, 0.25); }
+    .sticky.phase1 { background: rgba(16, 185, 129, 0.12); color: #d1fae5; border-color: rgba(16, 185, 129, 0.25); }
+    .sticky.phase2 { background: rgba(251, 191, 36, 0.12); color: #fef3c7; border-color: rgba(251, 191, 36, 0.25); }
+
+    /* Coach Whisper Footer */
+    .coach-bar {
+      background: linear-gradient(90deg, rgba(139, 92, 246, 0.16), rgba(37, 99, 235, 0.12));
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      border-radius: 10px;
+      padding: 9px 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .coach-text { font-size: 12px; color: #ede9fe; line-height: 1.4; }
+    .coach-text.blurred { filter: blur(5px); user-select: none; }
+
+    /* Scorecard Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 7, 15, 0.82);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 24px;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal-card {
+      background: #111827;
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      border-radius: 16px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.65);
+    }
+
+    .modal-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="live-pill"><span class="live-dot"></span> LIVE CALL</span>
+      <select id="scenarioSelect" class="scenario-select" onchange="requestScenarioSwitch(this.value)">
+        <option value="ai-scope-clash">Scenario 1: 3-in-a-Box AI Scope &amp; Velocity Clash</option>
+        <option value="vision-facilitation">Scenario 2: Executive 2027 Vision Facilitation Workshop</option>
+        <option value="design-system-fork">Scenario 3: Design System Governance vs. Urgent Demo Fork</option>
+      </select>
+      <span class="round-badge" id="roundBadge">Round 1</span>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-primary" onclick="joinAndPlayRound()">🔊 Play Current Round Voices</button>
+      <button class="btn btn-scorecard" onclick="requestCoachDebrief()">🏆 End Call &amp; Coach Scorecard</button>
+    </div>
+  </header>
+
+  <!-- One-Click Join Audio Call Strip -->
+  <div class="join-banner" id="joinBanner">
+    <div>
+      <strong>🎧 Ready to join the live audio call?</strong> Click <strong>Join Audio &amp; Hear Stakeholders</strong> so Sarah, Marcus &amp; Elena speak out loud automatically each round.
+    </div>
+    <button class="btn btn-send" style="padding:6px 14px; font-size:12px;" onclick="joinAndPlayRound()">▶ Join Audio &amp; Hear Stakeholders</button>
+  </div>
+
+  <main class="workspace">
+    <!-- Left Column: Video Tiles + Transcript + Live Interactive Call Controls -->
+    <section class="call-pane">
+      <div class="speaker-grid">
+        <!-- Tile 1: Balaajee -->
+        <div class="speaker-tile" id="tile-balaajee">
+          <div class="tile-top">
+            <div class="avatar"><img src="profile-smile-box.jpg" alt="Balaajee V.R."></div>
+            <div class="speaker-meta">
+              <h3>Balaajee V.R. (You)</h3>
+              <p>Director / Sr. Manager, Product Design</p>
+              <span class="agenda-chip" style="color:#6ee7b7;">🎯 Room Facilitator &amp; UX Chair</span>
+            </div>
+          </div>
+          <div id="micLiveLabel" style="font-size:11px; color:var(--text-muted); margin-top:6px;">
+            Mic Standby — Click <strong>🎙️ Speak</strong> below or type &amp; hit <strong>Send to Room</strong>.
+          </div>
+        </div>
+
+        <!-- Tile 2: Sarah -->
+        <div class="speaker-tile" id="tile-sarah">
+          <div class="tile-top">
+            <div class="avatar av-sarah">SJ</div>
+            <div class="speaker-meta">
+              <h3>Sarah Jenkins</h3>
+              <p>VP of Product Management</p>
+              <span class="agenda-chip" style="color:#fde68a;">💰 $6M Renewals • Ship in 4 Wks</span>
+            </div>
+          </div>
+          <div class="alignment-bar-wrap">
+            <div class="alignment-label"><span>Alignment Confidence</span><span id="score-sarah">35%</span></div>
+            <div class="alignment-track"><div class="alignment-fill" id="bar-sarah" style="width:35%; background:#f59e0b;"></div></div>
+          </div>
+        </div>
+
+        <!-- Tile 3: Marcus -->
+        <div class="speaker-tile" id="tile-marcus">
+          <div class="tile-top">
+            <div class="avatar av-marcus">MT</div>
+            <div class="speaker-meta">
+              <h3>Marcus Thorne</h3>
+              <p>Principal Engineering Architect</p>
+              <span class="agenda-chip" style="color:#7dd3fc;">⚙️ 90% Load • &lt;250ms API SLA</span>
+            </div>
+          </div>
+          <div class="alignment-bar-wrap">
+            <div class="alignment-label"><span>Feasibility Confidence</span><span id="score-marcus">25%</span></div>
+            <div class="alignment-track"><div class="alignment-fill" id="bar-marcus" style="width:25%; background:#38bdf8;"></div></div>
+          </div>
+        </div>
+
+        <!-- Tile 4: Elena -->
+        <div class="speaker-tile" id="tile-elena">
+          <div class="tile-top">
+            <div class="avatar av-elena">ER</div>
+            <div class="speaker-meta">
+              <h3>Elena Rostova</h3>
+              <p>VP of Enterprise Risk &amp; Trust</p>
+              <span class="agenda-chip" style="color:#fda4af;">🛡️ Zero Rubber-Stamping • $2M SLA</span>
+            </div>
+          </div>
+          <div class="alignment-bar-wrap">
+            <div class="alignment-label"><span>Governance Trust</span><span id="score-elena">20%</span></div>
+            <div class="alignment-track"><div class="alignment-fill" id="bar-elena" style="width:20%; background:#fb7185;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transcript Stream -->
+      <div class="transcript-card">
+        <div class="card-header">
+          <span>Live Call Transcript</span>
+          <span id="syncStatus" style="color:#34d399;">● Interactive Call Connected</span>
+        </div>
+        <div class="transcript-list" id="transcriptList"></div>
+      </div>
+
+      <!-- Live Thinking Banner -->
+      <div class="thinking-banner" id="thinkingBanner">
+        <span class="live-dot" style="background:#38bdf8;"></span>
+        <span id="thinkingText">Sarah, Marcus &amp; Elena are listening and formulating their response...</span>
+      </div>
+
+      <!-- Interactive Voice + Text Call Composer -->
+      <div class="composer-dock">
+        <div class="composer-row">
+          <button class="btn btn-mic" id="micBtn" onclick="toggleMic()">🎙️ Speak</button>
+          <input
+            id="composerInput"
+            class="composer-input"
+            type="text"
+            placeholder="Speak with 🎙️ or type your facilitation response here, then press Enter or Send to Room..."
+            onkeydown="if(event.key==='Enter'){ event.preventDefault(); sendTurnToRoom(); }"
+          />
+          <button class="btn btn-send" id="sendBtn" onclick="sendTurnToRoom()">➤ Send to Room</button>
+        </div>
+        <div class="composer-subrow">
+          <div>
+            <button class="btn btn-handsfree active" id="handsFreeBtn" style="padding:4px 9px; font-size:11px;" onclick="toggleHandsFree()">
+              ⚡ Hands-Free Auto-Send (2.5s pause): ON
+            </button>
+          </div>
+          <span id="composerHint">Tip: Address Sarah, Marcus, or Elena directly by name—they react to your trade-offs live!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Shared Vision & Trade-off Whiteboard -->
+    <section class="whiteboard-pane">
+      <div class="constraints-strip" id="constraintsStrip">
+        <div class="constraint-box">
+          <div class="kicker">Hard Deadline</div>
+          <div class="val" style="color:#fbbf24;" id="c1">4 Weeks (Q3 GA)</div>
+        </div>
+        <div class="constraint-box">
+          <div class="kicker">Commercial Stake</div>
+          <div class="val" style="color:#34d399;" id="c2">$6M ARR Renewals</div>
+        </div>
+        <div class="constraint-box">
+          <div class="kicker">Eng Capacity</div>
+          <div class="val" style="color:#38bdf8;" id="c3">90% Full • &lt;250ms</div>
+        </div>
+        <div class="constraint-box">
+          <div class="kicker">Compliance Gate</div>
+          <div class="val" style="color:#fb7185;" id="c4">$2M Bank SLA Veto</div>
+        </div>
+      </div>
+
+      <div class="board-columns">
+        <div class="board-col">
+          <div class="board-col-head" style="color:#fda4af;">⚠️ Open Tensions &amp; Risks</div>
+          <div class="sticky-list" id="col-tensions"></div>
+        </div>
+        <div class="board-col">
+          <div class="board-col-head" style="color:#6ee7b7;">✅ Agreed Phase 1 Scope</div>
+          <div class="sticky-list" id="col-phase1"></div>
+        </div>
+        <div class="board-col">
+          <div class="board-col-head" style="color:#fde68a;">🅿️ Parked to Phase 2</div>
+          <div class="sticky-list" id="col-phase2"></div>
+        </div>
+      </div>
+
+      <div class="coach-bar">
+        <div>
+          <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#c4b5fd; margin-bottom:2px;">
+            🕵️ Silent Bar-Raiser Coach Whisper
+          </div>
+          <div class="coach-text" id="coachWhisper">Loading live coaching cue...</div>
+        </div>
+        <button class="btn" onclick="toggleCoachBlur()" id="coachToggleBtn">Hide Hint</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Coach Scorecard Debrief Modal -->
+  <div class="modal-backdrop" id="debriefModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 style="font-size:16px; font-weight:800; color:#f8fafc;">🏆 Executive Bar-Raiser Coach Scorecard &amp; Debrief</h3>
+        <button class="btn" onclick="closeDebriefModal()">✕ Close</button>
+      </div>
+      <div class="modal-body" id="debriefContent"></div>
+    </div>
+  </div>
+
+  <script>
+    let lastUpdated = null;
+    let currentState = null;
+    let coachHidden = false;
+    let activeAudio = new Audio();
+    let autoPlayUnlocked = false;
+    let handsFreeAutoSend = true;
+    let recognition = null;
+    let isRecording = false;
+    let silenceTimer = null;
+    let lastShownDebriefAt = null;
+
+    function colorForScore(score) {
+      if (score >= 70) return '#34d399';
+      if (score >= 45) return '#fbbf24';
+      return '#fb7185';
+    }
+
+    function updateAlignment(role, score) {
+      const scoreEl = document.getElementById(`score-${role}`);
+      const barEl = document.getElementById(`bar-${role}`);
+      if (scoreEl && barEl && typeof score === 'number') {
+        scoreEl.textContent = `${score}%`;
+        barEl.style.width = `${score}%`;
+        barEl.style.background = colorForScore(score);
+      }
+    }
+
+    function renderStickies(containerId, items, cls) {
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      if (!items || !items.length) {
+        el.innerHTML = `<div style="font-size:11.5px; color:#64748b; font-style:italic; padding:4px;">None locked yet...</div>`;
+        return;
+      }
+      el.innerHTML = items.map(t => `<div class="sticky ${cls}">${t}</div>`).join('');
+    }
+
+    function playClip(speakerKey, audioUrl, fallbackText, onDone) {
+      document.querySelectorAll('.speaker-tile').forEach(t => t.classList.remove('speaking'));
+      const tile = document.getElementById(`tile-${speakerKey}`);
+      if (tile) tile.classList.add('speaking');
+
+      if (audioUrl) {
+        activeAudio.pause();
+        activeAudio = new Audio(audioUrl + '?t=' + Date.now());
+        activeAudio.onended = () => {
+          if (tile) tile.classList.remove('speaking');
+          if (onDone) onDone();
+        };
+        activeAudio.onerror = () => {
+          if (tile) tile.classList.remove('speaking');
+          if (onDone) onDone();
+        };
+        activeAudio.play().then(() => {
+          autoPlayUnlocked = true;
+          document.getElementById('joinBanner').classList.add('hidden');
+        }).catch(() => {
+          if (tile) tile.classList.remove('speaking');
+          if (onDone) onDone();
+        });
+        return;
+      }
+
+      if (!('speechSynthesis' in window)) {
+        if (tile) tile.classList.remove('speaking');
+        if (onDone) onDone();
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(fallbackText);
+      u.onend = () => {
+        if (tile) tile.classList.remove('speaking');
+        if (onDone) onDone();
+      };
+      window.speechSynthesis.speak(u);
+    }
+
+    function joinAndPlayRound() {
+      autoPlayUnlocked = true;
+      document.getElementById('joinBanner').classList.add('hidden');
+      replayLatestRound();
+    }
+
+    function replayLatestRound() {
+      if (!currentState || !currentState.transcript) return;
+      if (isRecording) stopMic(false);
+      const latestRound = currentState.round;
+      const items = currentState.transcript.filter(m => m.round === latestRound && m.speakerKey !== 'balaajee');
+      if (!items.length) return;
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      activeAudio.pause();
+      let idx = 0;
+      function next() {
+        document.querySelectorAll('.speaker-tile').forEach(t => t.classList.remove('speaking'));
+        if (idx >= items.length) {
+          // If hands-free mode is ON, automatically open Balaajee's mic after stakeholders finish talking!
+          if (handsFreeAutoSend && (!currentState || currentState.status === 'ready')) {
+            startMic();
+          }
+          return;
+        }
+        const item = items[idx++];
+        playClip(item.speakerKey, item.audioUrl, item.text, () => setTimeout(next, 320));
+      }
+      next();
+    }
+
+    async function sendTurnToRoom() {
+      const input = document.getElementById('composerInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      if (isRecording) stopMic(false);
+      activeAudio.pause();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+      input.value = '';
+      document.getElementById('sendBtn').disabled = true;
+      document.getElementById('thinkingBanner').classList.add('visible');
+      document.getElementById('thinkingText').textContent = 'Sarah, Marcus & Elena are listening and formulating their response...';
+
+      try {
+        await fetch('/api/war-room/speak', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'speak', text })
+        });
+        await pollState();
+      } catch (e) {
+        alert('Connection error sending turn. Make sure localhost:8080 server is running.');
+      } finally {
+        document.getElementById('sendBtn').disabled = false;
+      }
+    }
+
+    async function requestCoachDebrief() {
+      if (isRecording) stopMic(false);
+      activeAudio.pause();
+      document.getElementById('thinkingBanner').classList.add('visible');
+      document.getElementById('thinkingText').textContent = '🏆 Silent Bar-Raiser Coach is scoring your facilitation across 5 Director dimensions...';
+      await fetch('/api/war-room/speak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'debrief', text: 'End call and provide full executive debrief scorecard.' })
+      });
+    }
+
+    async function requestScenarioSwitch(scenarioId) {
+      if (isRecording) stopMic(false);
+      activeAudio.pause();
+      document.getElementById('thinkingBanner').classList.add('visible');
+      document.getElementById('thinkingText').textContent = 'Setting up new executive scenario & stakeholder agendas...';
+      await fetch('/api/war-room/speak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'switch_scenario', scenarioId })
+      });
+    }
+
+    function closeDebriefModal() {
+      document.getElementById('debriefModal').classList.remove('open');
+    }
+
+    function toggleHandsFree() {
+      handsFreeAutoSend = !handsFreeAutoSend;
+      const btn = document.getElementById('handsFreeBtn');
+      btn.classList.toggle('active', handsFreeAutoSend);
+      btn.textContent = handsFreeAutoSend
+        ? '⚡ Hands-Free Auto-Send (2.5s pause): ON'
+        : '⚡ Hands-Free Auto-Send: OFF (Manual Send)';
+    }
+
+    function toggleMic() {
+      if (isRecording) {
+        stopMic(false);
+      } else {
+        startMic();
+      }
+    }
+
+    function startMic() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) {
+        alert('Browser speech recognition requires Chrome or Edge, or use macOS Fn Dictation directly in the text box.');
+        return;
+      }
+      if (isRecording) return;
+      activeAudio.pause();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+      const input = document.getElementById('composerInput');
+      const btn = document.getElementById('micBtn');
+      const tile = document.getElementById('tile-balaajee');
+      const label = document.getElementById('micLiveLabel');
+
+      recognition = new SR();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+
+      let committedText = input.value ? input.value + ' ' : '';
+
+      recognition.onstart = () => {
+        isRecording = true;
+        btn.classList.add('recording');
+        btn.textContent = '⏹ Listening...';
+        tile.classList.add('user-mic-live');
+        label.innerHTML = `<strong style="color:#fda4af;">🔴 Mic Live:</strong> Speak naturally to the room...`;
+      };
+
+      recognition.onresult = (event) => {
+        clearTimeout(silenceTimer);
+        let interim = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            committedText += event.results[i][0].transcript + ' ';
+          } else {
+            interim += event.results[i][0].transcript;
+          }
+        }
+        input.value = (committedText + interim).trim();
+
+        if (handsFreeAutoSend && input.value.split(/\s+/).length >= 4) {
+          silenceTimer = setTimeout(() => {
+            if (isRecording && input.value.trim()) {
+              sendTurnToRoom();
+            }
+          }, 2600);
+        }
+      };
+
+      recognition.onend = () => {
+        isRecording = false;
+        clearTimeout(silenceTimer);
+        btn.classList.remove('recording');
+        btn.textContent = '🎙️ Speak';
+        tile.classList.remove('user-mic-live');
+        label.innerHTML = `Mic Standby — Click <strong>🎙️ Speak</strong> below or hit <strong>Send to Room</strong>.`;
+      };
+
+      try {
+        recognition.start();
+      } catch (e) {}
+    }
+
+    function stopMic(shouldSend) {
+      clearTimeout(silenceTimer);
+      if (recognition && isRecording) {
+        try { recognition.stop(); } catch (e) {}
+      }
+      isRecording = false;
+      document.getElementById('micBtn').classList.remove('recording');
+      document.getElementById('micBtn').textContent = '🎙️ Speak';
+      document.getElementById('tile-balaajee').classList.remove('user-mic-live');
+      if (shouldSend) sendTurnToRoom();
+    }
+
+    async function pollState() {
+      try {
+        const res = await fetch('/war-room-state.json?t=' + Date.now());
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.updatedAt === lastUpdated) return;
+
+        const prevRound = currentState ? currentState.round : null;
+        lastUpdated = data.updatedAt;
+        currentState = data;
+
+        document.getElementById('roundBadge').textContent = `Round ${data.round || 1}`;
+        if (data.scenarioId) {
+          document.getElementById('scenarioSelect').value = data.scenarioId;
+        }
+
+        // Thinking vs Ready banner
+        const thinkingBanner = document.getElementById('thinkingBanner');
+        if (data.status === 'thinking' || data.status === 'debriefing') {
+          thinkingBanner.classList.add('visible');
+          document.getElementById('thinkingText').textContent = data.statusText || 'Stakeholders are responding...';
+        } else {
+          thinkingBanner.classList.remove('visible');
+        }
+
+        if (data.alignment) {
+          updateAlignment('sarah', data.alignment.sarah);
+          updateAlignment('marcus', data.alignment.marcus);
+          updateAlignment('elena', data.alignment.elena);
+        }
+
+        if (data.constraints) {
+          if (data.constraints[0]) document.getElementById('c1').textContent = data.constraints[0];
+          if (data.constraints[1]) document.getElementById('c2').textContent = data.constraints[1];
+          if (data.constraints[2]) document.getElementById('c3').textContent = data.constraints[2];
+          if (data.constraints[3]) document.getElementById('c4').textContent = data.constraints[3];
+        }
+
+        if (data.whiteboard) {
+          renderStickies('col-tensions', data.whiteboard.tensions, 'tension');
+          renderStickies('col-phase1', data.whiteboard.phase1, 'phase1');
+          renderStickies('col-phase2', data.whiteboard.phase2, 'phase2');
+        }
+
+        if (data.coachWhisper) {
+          document.getElementById('coachWhisper').textContent = data.coachWhisper;
+        }
+
+        if (data.debriefReport && data.debriefUpdatedAt && data.debriefUpdatedAt !== lastShownDebriefAt) {
+          lastShownDebriefAt = data.debriefUpdatedAt;
+          document.getElementById('debriefContent').textContent = data.debriefReport;
+          document.getElementById('debriefModal').classList.add('open');
+        }
+
+        const list = document.getElementById('transcriptList');
+        list.innerHTML = (data.transcript || []).map((m) => `
+          <div class="msg ${m.speakerKey}">
+            <div class="msg-head">
+              <span>${m.speakerName} <span style="font-weight:500; color:#94a3b8;">• ${m.role}</span></span>
+              ${m.speakerKey !== 'balaajee'
+                ? `<button class="msg-play" onclick="playClip('${m.speakerKey}', '${m.audioUrl || ''}', ${JSON.stringify(m.text).replace(/"/g, '&quot;')})">🔊 Listen</button>`
+                : `<span style="color:#6ee7b7;">You (Live Turn)</span>`}
+            </div>
+            <div>${m.text}</div>
+          </div>
+        `).join('');
+        list.scrollTop = list.scrollHeight;
+
+        if (prevRound !== null && data.round > prevRound && autoPlayUnlocked && data.status === 'ready') {
+          replayLatestRound();
+        }
+      } catch (e) {}
+    }
+
+    function toggleCoachBlur() {
+      coachHidden = !coachHidden;
+      document.getElementById('coachWhisper').classList.toggle('blurred', coachHidden);
+      document.getElementById('coachToggleBtn').textContent = coachHidden ? 'Show Hint' : 'Hide Hint';
+    }
+
+    setInterval(pollState, 1000);
+    pollState();
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "updatedAt": "2026-11-03T05:33:45+05:30",
+  "scenarioId": "ai-scope-clash",
+  "scenarioTitle": "Q3 Autonomous Incident Remediation Copilot",
+  "status": "ready",
+  "round": 1,
+  "constraints": [
+    "4 Weeks (Q3 GA)",
+    "$6M ARR Renewals",
+    "90% Full • <250ms",
+    "$2M Bank SLA Veto"
+  ],
+  "alignment": {
+    "sarah": 35,
+    "marcus": 25,
+    "elena": 20
+  },
+  "whiteboard": {
+    "tensions": [
+      "Sarah (PM): Demands 1-click Auto-Remediate chat sidebar in 4 wks for $6M renewals.",
+      "Marcus (Eng): 1-click blind execution = P0 outage; custom streaming AI UI = 7–8 wks at 90% load.",
+      "Elena (Risk): Threatens Q3 GA veto if 3 AM operators can rubber-stamp changes ($2M SLA risk)."
+    ],
+    "phase1": [],
+    "phase2": []
+  },
+  "coachWhisper": "Positional deadlock over binary automation. Unite revenue and SLA stakes, then probe constraints to isolate safe 4-week scope.",
+  "transcript": [
+    {
+      "round": 1,
+      "speakerKey": "sarah",
+      "speakerName": "Sarah Jenkins",
+      "role": "VP of Product",
+      "audioUrl": "/assets/warroom/r1-sarah.m4a",
+      "text": "Thanks for jumping on, Balaajee, Marcus, and Elena. We have a hard four-week deadline to ship our Autonomous Incident Remediation Copilot for Q3 GA and protect $6 million in at-risk enterprise renewals. Let's launch a lean chat sidebar with a one-click Auto-Remediate button now, and defer complex explainability and diff UI to Q4."
+    },
+    {
+      "round": 1,
+      "speakerKey": "marcus",
+      "speakerName": "Marcus Thorne",
+      "role": "Principal Eng Architect",
+      "audioUrl": "/assets/warroom/r1-marcus.m4a",
+      "text": "Hold on, Sarah, letting an LLM blindly run one-click changes on live production firewall and cluster configs is a guaranteed P0 outage. And Balaajee, my platform team is already at 90% capacity protecting our 250-millisecond API SLA. If Design scopes a custom streaming AI interface, we are looking at seven to eight weeks, not four."
+    },
+    {
+      "round": 1,
+      "speakerKey": "elena",
+      "speakerName": "Elena Rostova",
+      "role": "VP of Enterprise Risk",
+      "audioUrl": "/assets/warroom/r1-elena.m4a",
+      "text": "Hold on, Sarah, two Tier-1 banks threatened two million dollars in SLA penalties last quarter over opaque scripts. I will veto Q3 GA if tired operators can rubber-stamp destructive actions at 3 AM without seeing the blast radius. Balaajee, how does Design plan to resolve this deadlock?"
+    }
+  ]
+}
