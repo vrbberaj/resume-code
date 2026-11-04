@@ -551,6 +551,21 @@
   .cs-dec p b { color: var(--text-main); }
 
 
+  .cs-wrong { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-wrong-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 24px 26px; }
+  .cs-wrong-card.broke { border-top: 3px solid #D97706; }
+  .cs-wrong-card.pivot { border-top: 3px solid #059669; }
+  .cs-wrong-tag { display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+  .cs-wrong-card.broke .cs-wrong-tag { background: #FFFBEB; color: #B45309; }
+  .cs-wrong-card.pivot .cs-wrong-tag { background: #ECFDF5; color: #047857; }
+  .cs-wrong-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+  .cs-wrong-card p { font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  .cs-impact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .cs-impact-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px 22px; }
+  .cs-impact-card small { display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--primary-accent); margin-bottom: 6px; }
+  .cs-impact-card p { font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+
   .cs-result-text p { font-size: 22px; line-height: 1.6; color: var(--text-main); }
   .cs-learn { border-left: 3px solid var(--primary-accent); padding: 6px 0 6px 24px; font-family: var(--font-heading); font-size: 24px; line-height: 1.45; color: var(--text-main); font-weight: 600; max-width: 760px; }
 
@@ -575,7 +590,7 @@
   @media (max-width: 640px) {
     .cs-lead { font-size: 17px; }
     .cs-cover { aspect-ratio: 4 / 3; }
-    .cs-facts, .cs-own, .cs-steps, .cs-pager { grid-template-columns: 1fr; }
+    .cs-facts, .cs-own, .cs-steps, .cs-pager, .cs-wrong, .cs-impact-grid { grid-template-columns: 1fr; }
     .cs-fact { border-right: 0 !important; }
     .cs-prose p { font-size: 16px; }
     .cs-result-text p { font-size: 18px; }
@@ -648,12 +663,6 @@
       <header class="cs-sec-head"><div class="cs-num">04</div><h2>Design Deliverables</h2><p>Core workflows, interface architecture, and shipped designs</p></header>
       <div class="cs-body"><div class="cs-figs" style="margin-top:0">
         <figure class="cs-fig">
-          <a href="assets/photos/candid_deep_thinking_coffee.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Glance-time analysis &amp; HUD ergonomics: structuring the three-zone cluster information architecture for safety-critical highway driving.">
-            <img src="assets/photos/candid_deep_thinking_coffee.jpg" alt="Glance-time analysis &amp; HUD ergonomics: structuring the three-zone cluster information architecture for safety-critical highway driving." width="1200" height="896" loading="lazy">
-            
-          </a>
-          <figcaption><span class="tag tag-photo">In action</span><span>Glance-time analysis &amp; HUD ergonomics: structuring the three-zone cluster information architecture for safety-critical highway driving.</span></figcaption>
-        </figure><figure class="cs-fig">
       <div class="dg"><div class="dg-cluster">
         <div class="dg-zone dg-z3"><small>ZONE 3 · PERIPHERAL</small><strong>Eco-coaching</strong><span>Soft green pulse only</span></div>
         <div class="dg-zone dg-z1"><small>ZONE 1 · &lt; 0.8 s</small><strong>88</strong><span>km/h · radar distance 85 m</span></div>
@@ -675,15 +684,39 @@
       </div>
     </section>
 
+    <section class="g-wrap cs-sec" id="wrong">
+      <header class="cs-sec-head"><div class="cs-num">06</div><h2>What went wrong</h2><p>Early setbacks and how we adjusted</p></header>
+      <div class="cs-body">
+        <div class="cs-wrong">
+          <div class="cs-wrong-card broke">
+            <span class="cs-wrong-tag">What Failed First</span>
+            <h3>Sales pushback on Eco-coaching &amp; highway mis-taps</h3>
+            <p>Product and sales wanted fuel-saving Eco-coaching gauges front and center because fleet buyers paid extra for them—pushing driver eyes-off-road time past 2.4 seconds in simulator runs. Meanwhile, touch controls that worked at a desk caused repeated mis-taps on a vibrating rig at 90 km/h.</p>
+          </div>
+          <div class="cs-wrong-card pivot">
+            <span class="cs-wrong-tag">How I Steered the Pivot</span>
+            <h3>Put stakeholders in the cab simulator &amp; cut driving touch</h3>
+            <p>Rather than debating in slide decks, I brought product leaders into cab simulator runs so they watched missed hazards firsthand. Backed by glance-time data, we moved settings to the parked state, demoted Eco-coaching to a peripheral green pulse, and certified an anti-glare night mode.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="g-wrap cs-sec" id="results">
-      <header class="cs-sec-head"><div class="cs-num">06</div><h2>Results</h2><p>Business and user impact</p></header>
-      <div class="cs-body"><div class="cs-prose cs-result-text"><p>Average glance time dropped from 2.8 seconds to 0.94, well inside the 1.2-second guideline. Critical route errors fell 18% across 80,000+ trucks.</p></div>
+      <header class="cs-sec-head"><div class="cs-num">07</div><h2>Results &amp; what happened next</h2><p>User, business, and team impact</p></header>
+      <div class="cs-body">
+        <div class="cs-prose cs-result-text"><p>Average glance time dropped from 2.8 seconds to 0.94—safely inside the 1.2-second EU distraction guideline—and critical route errors fell 18% across 80,000+ deployed commercial trucks.</p></div>
+        <div class="cs-impact-grid">
+          <div class="cs-impact-card"><small>User &amp; Business Impact</small><p>Protected highway reaction times and night vision for 40-tonne freight drivers while preserving fleet fuel-coaching ROI.</p></div>
+          <div class="cs-impact-card"><small>Team Impact</small><p>Built a repeatable simulator and glance-testing rhythm across our 3 UX designers, embedded engineers, and safety homologation reviewers.</p></div>
+          <div class="cs-impact-card"><small>What Happened Next</small><p>Our three-zone glance budget (&lt;0.8s critical, &lt;1.2s navigation, peripheral coaching) became the mandatory safety gate for subsequent in-cab features.</p></div>
+        </div>
       </div>
     </section>
 
     <section class="g-wrap cs-sec" id="learned">
-      <header class="cs-sec-head"><div class="cs-num">07</div><h2>What I learned</h2></header>
-      <div class="cs-body"><p class="cs-learn">In safety-critical UI, what you remove matters more than what you add. The hardest conversations were about what to leave out.</p>
+      <header class="cs-sec-head"><div class="cs-num">08</div><h2>What I learned</h2></header>
+      <div class="cs-body"><p class="cs-learn">In safety-critical UI, what you remove matters more than what you add. Simulator evidence settled commercial debates that slide decks never could.</p>
       </div>
     </section>
     <nav class="g-wrap cs-pager" aria-label="Case study navigation">

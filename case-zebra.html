@@ -551,6 +551,21 @@
   .cs-dec p b { color: var(--text-main); }
 
 
+  .cs-wrong { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-wrong-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 24px 26px; }
+  .cs-wrong-card.broke { border-top: 3px solid #D97706; }
+  .cs-wrong-card.pivot { border-top: 3px solid #059669; }
+  .cs-wrong-tag { display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+  .cs-wrong-card.broke .cs-wrong-tag { background: #FFFBEB; color: #B45309; }
+  .cs-wrong-card.pivot .cs-wrong-tag { background: #ECFDF5; color: #047857; }
+  .cs-wrong-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+  .cs-wrong-card p { font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  .cs-impact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .cs-impact-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px 22px; }
+  .cs-impact-card small { display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--primary-accent); margin-bottom: 6px; }
+  .cs-impact-card p { font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+
   .cs-result-text p { font-size: 22px; line-height: 1.6; color: var(--text-main); }
   .cs-learn { border-left: 3px solid var(--primary-accent); padding: 6px 0 6px 24px; font-family: var(--font-heading); font-size: 24px; line-height: 1.45; color: var(--text-main); font-weight: 600; max-width: 760px; }
 
@@ -575,7 +590,7 @@
   @media (max-width: 640px) {
     .cs-lead { font-size: 17px; }
     .cs-cover { aspect-ratio: 4 / 3; }
-    .cs-facts, .cs-own, .cs-steps, .cs-pager { grid-template-columns: 1fr; }
+    .cs-facts, .cs-own, .cs-steps, .cs-pager, .cs-wrong, .cs-impact-grid { grid-template-columns: 1fr; }
     .cs-fact { border-right: 0 !important; }
     .cs-prose p { font-size: 16px; }
     .cs-result-text p { font-size: 18px; }
@@ -669,11 +684,11 @@
           <figcaption><span class="tag tag-photo">In action</span><span>Facilitating hands-on affinity mapping and card sorting on an easel flipchart with squad designers.</span></figcaption>
         </figure>
         <figure class="cs-fig">
-          <a href="assets/photos/candid_deep_thinking_coffee.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Deep work &amp; sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations over coffee.">
-            <img src="assets/photos/candid_deep_thinking_coffee.jpg" alt="Deep work &amp; sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations over coffee." width="1200" height="896" loading="lazy">
+          <a href="assets/gallery/gallery_real_zebra_office_team.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Zebra Technologies Bengaluru studio floor: syncing with visiting global counterparts on design system alignment and squad milestones.">
+            <img src="assets/gallery/gallery_real_zebra_office_team.jpg" alt="Zebra Technologies Bengaluru studio floor: syncing with visiting global counterparts on design system alignment and squad milestones." width="1024" height="768" loading="lazy">
             
           </a>
-          <figcaption><span class="tag tag-photo">In action</span><span>Deep work &amp; sprint mapping: reviewing VisibilityIQ telemetry data models and wireframe iterations over coffee.</span></figcaption>
+          <figcaption><span class="tag tag-photo">In action</span><span>Zebra Technologies Bengaluru studio floor: syncing with visiting global counterparts on design system alignment and squad milestones.</span></figcaption>
         </figure>
         <figure class="cs-fig">
           <a href="assets/behance/enterprise/enterprise_1_1400x889.png" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Persona: Jamie, IT manager. Goals, frustrations and device usage.">
@@ -733,15 +748,39 @@
       </div>
     </section>
 
+    <section class="g-wrap cs-sec" id="wrong">
+      <header class="cs-sec-head"><div class="cs-num">06</div><h2>What went wrong</h2><p>Early setbacks and how we adjusted</p></header>
+      <div class="cs-body">
+        <div class="cs-wrong">
+          <div class="cs-wrong-card broke">
+            <span class="cs-wrong-tag">What Failed First</span>
+            <h3>V1 metric overload &amp; 3 disconnected backends</h3>
+            <p>Our early concept put 100+ battery, memory, and app metrics on one screen—customers called it cluttered because it showed charts with no next step. Worse, when we designed direct actions (“Request repair”, “Update OS”), engineering warned that data sat in three separate backends that couldn’t all connect for v1.</p>
+          </div>
+          <div class="cs-wrong-card pivot">
+            <span class="cs-wrong-tag">How I Steered the Pivot</span>
+            <h3>Card-sorted into 4 pillars &amp; phased the action rollout</h3>
+            <p>While hiring 6 new team members, I ran a stakeholder card sort to trim the summary down to four clear pillars, negotiated a phased engineering scope—shipping the four highest-value actions in v1 instead of delaying launch—and coached a senior designer to lead customer validation rounds directly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="g-wrap cs-sec" id="results">
-      <header class="cs-sec-head"><div class="cs-num">06</div><h2>Results</h2><p>Business and user impact</p></header>
-      <div class="cs-body"><div class="cs-prose cs-result-text"><p>Customers called the new dashboards “clearer, much less crowded”. Pairing failures dropped 84%, staging throughput rose 3.2×, and tier-1 tickets fell by a third across 38,000+ managed handhelds.</p></div>
+      <header class="cs-sec-head"><div class="cs-num">07</div><h2>Results &amp; what happened next</h2><p>User, business, and team impact</p></header>
+      <div class="cs-body">
+        <div class="cs-prose cs-result-text"><p>Customers called the new dashboards “clearer, much less crowded”. Pairing failures dropped 84%, staging throughput rose 3.2×, and tier-1 tickets fell by a third across 38,000+ managed handhelds.</p></div>
+        <div class="cs-impact-grid">
+          <div class="cs-impact-card"><small>User &amp; Business Impact</small><p>Gave global fleets such as Australia Post shift-readiness visibility while 72px high-contrast targets worked reliably with thermal freezer gloves.</p></div>
+          <div class="cs-impact-card"><small>Team Impact</small><p>Grew the UX group from 3 to 9 (7 designers, 1 researcher, 1 design-system lead) with structured hiring scorecards, weekly critiques, and career growth plans.</p></div>
+          <div class="cs-impact-card"><small>What Happened Next</small><p>Our action-card dashboard pattern and rugged touch tokens became the standard across Zebra’s cloud and Android tools, and two designers I hired stepped up to lead new product tracks.</p></div>
+        </div>
       </div>
     </section>
 
     <section class="g-wrap cs-sec" id="learned">
-      <header class="cs-sec-head"><div class="cs-num">07</div><h2>What I learned</h2></header>
-      <div class="cs-body"><p class="cs-learn">Customer quotes moved the roadmap more than any deck I made. I now put a customer voice in every roadmap review.</p>
+      <header class="cs-sec-head"><div class="cs-num">08</div><h2>What I learned</h2></header>
+      <div class="cs-body"><p class="cs-learn">Customer quotes moved the roadmap faster than any executive deck I made. I now bring a direct customer voice into every roadmap and engineering scope review.</p>
       </div>
     </section>
     <nav class="g-wrap cs-pager" aria-label="Case study navigation">

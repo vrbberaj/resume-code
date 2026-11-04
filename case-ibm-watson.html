@@ -551,6 +551,21 @@
   .cs-dec p b { color: var(--text-main); }
 
 
+  .cs-wrong { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-wrong-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 24px 26px; }
+  .cs-wrong-card.broke { border-top: 3px solid #D97706; }
+  .cs-wrong-card.pivot { border-top: 3px solid #059669; }
+  .cs-wrong-tag { display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+  .cs-wrong-card.broke .cs-wrong-tag { background: #FFFBEB; color: #B45309; }
+  .cs-wrong-card.pivot .cs-wrong-tag { background: #ECFDF5; color: #047857; }
+  .cs-wrong-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+  .cs-wrong-card p { font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  .cs-impact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .cs-impact-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px 22px; }
+  .cs-impact-card small { display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--primary-accent); margin-bottom: 6px; }
+  .cs-impact-card p { font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+
   .cs-result-text p { font-size: 22px; line-height: 1.6; color: var(--text-main); }
   .cs-learn { border-left: 3px solid var(--primary-accent); padding: 6px 0 6px 24px; font-family: var(--font-heading); font-size: 24px; line-height: 1.45; color: var(--text-main); font-weight: 600; max-width: 760px; }
 
@@ -575,7 +590,7 @@
   @media (max-width: 640px) {
     .cs-lead { font-size: 17px; }
     .cs-cover { aspect-ratio: 4 / 3; }
-    .cs-facts, .cs-own, .cs-steps, .cs-pager { grid-template-columns: 1fr; }
+    .cs-facts, .cs-own, .cs-steps, .cs-pager, .cs-wrong, .cs-impact-grid { grid-template-columns: 1fr; }
     .cs-fact { border-right: 0 !important; }
     .cs-prose p { font-size: 16px; }
     .cs-result-text p { font-size: 18px; }
@@ -703,15 +718,39 @@
       </div>
     </section>
 
+    <section class="g-wrap cs-sec" id="wrong">
+      <header class="cs-sec-head"><div class="cs-num">06</div><h2>What went wrong</h2><p>Early setbacks and how we adjusted</p></header>
+      <div class="cs-body">
+        <div class="cs-wrong">
+          <div class="cs-wrong-card broke">
+            <span class="cs-wrong-tag">What Failed First</span>
+            <h3>Round 1 scored SUS 61 &amp; compliance blocked launch</h3>
+            <p>Our first prototype used a chat window with raw percentages (“92% confident”). Engineers ignored the score and asked “why 92%?”, while Product pushed to keep the chat box for marketing demos—and Compliance threatened to block release because I waited until Workshop #3 to bring them in.</p>
+          </div>
+          <div class="cs-wrong-card pivot">
+            <span class="cs-wrong-tag">How I Steered the Pivot</span>
+            <h3>Killed the chatbot &amp; brought CISO into weekly critiques</h3>
+            <p>I paused visual polish for two sprints, invited compliance reviewers directly into weekly design critiques, dropped the marketing chat sidebar, and shifted the pods to inline canvas actions and side-by-side diffs linked to source requirements—lifting SUS from 61 to 89.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="g-wrap cs-sec" id="results">
-      <header class="cs-sec-head"><div class="cs-num">06</div><h2>Results</h2><p>Business and user impact</p></header>
-      <div class="cs-body"><div class="cs-prose cs-result-text"><p>AI moved from banned to adopted. Model drafting went from 14.2 hours to 3.6, threat triage from 4.1 hours to 43 minutes, with zero compliance violations across 140,000+ AI-assisted tasks. The team kept 100% retention over 16 months and five designers were promoted.</p></div>
+      <header class="cs-sec-head"><div class="cs-num">07</div><h2>Results &amp; what happened next</h2><p>User, business, and team impact</p></header>
+      <div class="cs-body">
+        <div class="cs-prose cs-result-text"><p>AI moved from banned to adopted. Model drafting fell from 14.2 hours to 3.6, and security threat triage dropped from 4.1 hours to 43 minutes, with zero compliance violations across 140,000+ AI-assisted tasks.</p></div>
+        <div class="cs-impact-grid">
+          <div class="cs-impact-card"><small>User &amp; Business Impact</small><p>74% faster SysML drafting, 82% faster threat triage, and 97% task completion across 32 enterprise engineers and SOC admins.</p></div>
+          <div class="cs-impact-card"><small>Team Impact</small><p>Moved 14 specialists out of product silos into shared chapters and embedded squad pairs—keeping 100% retention over 16 months with 5 promotions.</p></div>
+          <div class="cs-impact-card"><small>What Happened Next</small><p>Our 3-tier autonomy model and 10-point AI UX checklist were adopted across sister IBM squads, consolidating 6 duplicate feedback widgets into 1.</p></div>
+        </div>
       </div>
     </section>
 
     <section class="g-wrap cs-sec" id="learned">
-      <header class="cs-sec-head"><div class="cs-num">07</div><h2>What I learned</h2></header>
-      <div class="cs-body"><p class="cs-learn">Trust is a design deliverable. Next time I would bring compliance into the first research round, not the third workshop. It would have saved us a month of debate.</p>
+      <header class="cs-sec-head"><div class="cs-num">08</div><h2>What I learned</h2></header>
+      <div class="cs-body"><p class="cs-learn">Trust is a design deliverable. Next time I would bring compliance into the first research round, not the third workshop—it would have saved us a full month of debate.</p>
       </div>
     </section>
     <nav class="g-wrap cs-pager" aria-label="Case study navigation">

@@ -551,6 +551,21 @@
   .cs-dec p b { color: var(--text-main); }
 
 
+  .cs-wrong { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-wrong-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 24px 26px; }
+  .cs-wrong-card.broke { border-top: 3px solid #D97706; }
+  .cs-wrong-card.pivot { border-top: 3px solid #059669; }
+  .cs-wrong-tag { display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+  .cs-wrong-card.broke .cs-wrong-tag { background: #FFFBEB; color: #B45309; }
+  .cs-wrong-card.pivot .cs-wrong-tag { background: #ECFDF5; color: #047857; }
+  .cs-wrong-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+  .cs-wrong-card p { font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  .cs-impact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .cs-impact-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px 22px; }
+  .cs-impact-card small { display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--primary-accent); margin-bottom: 6px; }
+  .cs-impact-card p { font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+
   .cs-result-text p { font-size: 22px; line-height: 1.6; color: var(--text-main); }
   .cs-learn { border-left: 3px solid var(--primary-accent); padding: 6px 0 6px 24px; font-family: var(--font-heading); font-size: 24px; line-height: 1.45; color: var(--text-main); font-weight: 600; max-width: 760px; }
 
@@ -575,7 +590,7 @@
   @media (max-width: 640px) {
     .cs-lead { font-size: 17px; }
     .cs-cover { aspect-ratio: 4 / 3; }
-    .cs-facts, .cs-own, .cs-steps, .cs-pager { grid-template-columns: 1fr; }
+    .cs-facts, .cs-own, .cs-steps, .cs-pager, .cs-wrong, .cs-impact-grid { grid-template-columns: 1fr; }
     .cs-fact { border-right: 0 !important; }
     .cs-prose p { font-size: 16px; }
     .cs-result-text p { font-size: 18px; }
@@ -648,11 +663,11 @@
       <header class="cs-sec-head"><div class="cs-num">04</div><h2>Design Deliverables</h2><p>Core workflows, interface architecture, and shipped designs</p></header>
       <div class="cs-body"><div class="cs-figs" style="margin-top:0">
         <figure class="cs-fig">
-          <a href="assets/photos/candid_deep_thinking_coffee.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow.">
-            <img src="assets/photos/candid_deep_thinking_coffee.jpg" alt="Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow." width="1200" height="896" loading="lazy">
+          <a href="assets/gallery/gallery_ericsson_selfie.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Ericsson team celebration after securing 1st place in the Global Hack-fest Optimization Contest.">
+            <img src="assets/gallery/gallery_ericsson_selfie.jpg" alt="Ericsson team celebration after securing 1st place in the Global Hack-fest Optimization Contest." width="1200" height="896" loading="lazy">
             
           </a>
-          <figcaption><span class="tag tag-photo">In action</span><span>Deep-work modelling session: translating 14 legacy Excel formula sheets into a single-screen scenario workflow.</span></figcaption>
+          <figcaption><span class="tag tag-photo">In action</span><span>Ericsson team celebration after securing 1st place in the Global Hack-fest Optimization Contest.</span></figcaption>
         </figure>
         <figure class="cs-fig">
           <a href="assets/behance/sales/sales_2_1200x1196.png" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: Business case summary: profit and loss, cost of sales and cash flow per scenario.">
@@ -691,15 +706,39 @@
       </div>
     </section>
 
+    <section class="g-wrap cs-sec" id="wrong">
+      <header class="cs-sec-head"><div class="cs-num">06</div><h2>What went wrong</h2><p>Early setbacks and how we adjusted</p></header>
+      <div class="cs-body">
+        <div class="cs-wrong">
+          <div class="cs-wrong-card broke">
+            <span class="cs-wrong-tag">What Failed First</span>
+            <h3>Power users hated step-by-step forms &amp; the grid froze</h3>
+            <p>Stakeholders initially asked for a clean multi-step form wizard—the exact pattern that killed two earlier web tools below 15% adoption. In early tests, sales engineers refused to click through screens, and when we built our first browser grid, pasting hundreds of Excel rows froze the screen for four seconds.</p>
+          </div>
+          <div class="cs-wrong-card pivot">
+            <span class="cs-wrong-tag">How I Steered the Pivot</span>
+            <h3>Scrapped the wizard &amp; ran a dedicated grid-speed sprint</h3>
+            <p>I dropped the wizard completely, paired daily with front-end engineers to ship virtualized row rendering and native Excel clipboard paste, and ran a two-market pilot first to prove to sceptical pricing directors that automated 35%+ margin rules were safe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="g-wrap cs-sec" id="results">
-      <header class="cs-sec-head"><div class="cs-num">06</div><h2>Results</h2><p>Business and user impact</p></header>
-      <div class="cs-body"><div class="cs-prose cs-result-text"><p>Quote turnaround fell from six days to 42 minutes, formula errors went to zero, and 94% of engineers were using the tool within 30 days, without a mandate.</p></div>
+      <header class="cs-sec-head"><div class="cs-num">07</div><h2>Results &amp; what happened next</h2><p>User, business, and team impact</p></header>
+      <div class="cs-body">
+        <div class="cs-prose cs-result-text"><p>Quote turnaround fell from six days to 42 minutes, formula errors went to zero, usability jumped from SUS 34 to 87, and 94% of engineers adopted the tool within 30 days—without a top-down mandate.</p></div>
+        <div class="cs-impact-grid">
+          <div class="cs-impact-card"><small>User &amp; Business Impact</small><p>Replaced fragile 50 MB workbooks across 45 countries with instant Scenario A vs. B margin comparisons and automated deal sign-offs.</p></div>
+          <div class="cs-impact-card"><small>Team Impact</small><p>Shifted how product and SAP engineering partnered with UX—bringing designers into sprint zero to co-write performance acceptance criteria.</p></div>
+          <div class="cs-impact-card"><small>What Happened Next</small><p>Pricing governance rolled out auto-approvals globally after the two-market pilot, and our workflow-optimization momentum sparked our 1st-place Global Hackfest win.</p></div>
+        </div>
       </div>
     </section>
 
     <section class="g-wrap cs-sec" id="learned">
-      <header class="cs-sec-head"><div class="cs-num">07</div><h2>What I learned</h2></header>
-      <div class="cs-body"><p class="cs-learn">Adoption is earned in the first week. Shadowing users before designing anything is what saved this project.</p>
+      <header class="cs-sec-head"><div class="cs-num">08</div><h2>What I learned</h2></header>
+      <div class="cs-body"><p class="cs-learn">Adoption is earned in the first week. Shadowing power users on live bids—and respecting why they loved Excel’s speed—is what saved this project.</p>
       </div>
     </section>
     <nav class="g-wrap cs-pager" aria-label="Case study navigation">

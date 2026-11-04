@@ -551,6 +551,21 @@
   .cs-dec p b { color: var(--text-main); }
 
 
+  .cs-wrong { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cs-wrong-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 18px; padding: 24px 26px; }
+  .cs-wrong-card.broke { border-top: 3px solid #D97706; }
+  .cs-wrong-card.pivot { border-top: 3px solid #059669; }
+  .cs-wrong-tag { display: inline-block; font-family: var(--font-code); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+  .cs-wrong-card.broke .cs-wrong-tag { background: #FFFBEB; color: #B45309; }
+  .cs-wrong-card.pivot .cs-wrong-tag { background: #ECFDF5; color: #047857; }
+  .cs-wrong-card h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; }
+  .cs-wrong-card p { font-size: 15px; line-height: 1.6; color: var(--text-body); }
+
+  .cs-impact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+  .cs-impact-card { background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 16px; padding: 20px 22px; }
+  .cs-impact-card small { display: block; font-family: var(--font-code); font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--primary-accent); margin-bottom: 6px; }
+  .cs-impact-card p { font-size: 14.5px; line-height: 1.55; color: var(--text-body); }
+
   .cs-result-text p { font-size: 22px; line-height: 1.6; color: var(--text-main); }
   .cs-learn { border-left: 3px solid var(--primary-accent); padding: 6px 0 6px 24px; font-family: var(--font-heading); font-size: 24px; line-height: 1.45; color: var(--text-main); font-weight: 600; max-width: 760px; }
 
@@ -575,7 +590,7 @@
   @media (max-width: 640px) {
     .cs-lead { font-size: 17px; }
     .cs-cover { aspect-ratio: 4 / 3; }
-    .cs-facts, .cs-own, .cs-steps, .cs-pager { grid-template-columns: 1fr; }
+    .cs-facts, .cs-own, .cs-steps, .cs-pager, .cs-wrong, .cs-impact-grid { grid-template-columns: 1fr; }
     .cs-fact { border-right: 0 !important; }
     .cs-prose p { font-size: 16px; }
     .cs-result-text p { font-size: 18px; }
@@ -648,11 +663,11 @@
       <header class="cs-sec-head"><div class="cs-num">04</div><h2>Design Deliverables</h2><p>Core workflows, interface architecture, and shipped designs</p></header>
       <div class="cs-body"><div class="cs-figs" style="margin-top:0">
         <figure class="cs-fig">
-          <a href="assets/photos/candid_desk_review.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: DesignOps chapter review: auditing hard-coded color values and aligning token hierarchies across squads.">
-            <img src="assets/photos/candid_desk_review.jpg" alt="DesignOps chapter review: auditing hard-coded color values and aligning token hierarchies across squads." width="1200" height="896" loading="lazy">
+          <a href="assets/gallery/gallery_townhall_review.jpg" target="_blank" rel="noopener" class="cs-frame" aria-label="Open full image: DesignOps chapter townhall: presenting token adoption metrics, semantic architecture, and sprint velocity across squads.">
+            <img src="assets/gallery/gallery_townhall_review.jpg" alt="DesignOps chapter townhall: presenting token adoption metrics, semantic architecture, and sprint velocity across squads." width="1376" height="768" loading="lazy">
             
           </a>
-          <figcaption><span class="tag tag-photo">In action</span><span>DesignOps chapter review: auditing hard-coded color values and aligning token hierarchies across squads.</span></figcaption>
+          <figcaption><span class="tag tag-photo">In action</span><span>DesignOps chapter townhall: presenting token adoption metrics, semantic architecture, and sprint velocity across squads.</span></figcaption>
         </figure><figure class="cs-fig">
       <div class="dg"><div class="dg-tiers">
         <div class="dg-tier"><small>1 · Global</small><code><span class="dg-swatch"></span>blue-60 · #0F62FE</code><span>Raw brand values. Rarely change.</span></div>
@@ -677,15 +692,39 @@
       </div>
     </section>
 
+    <section class="g-wrap cs-sec" id="wrong">
+      <header class="cs-sec-head"><div class="cs-num">06</div><h2>What went wrong</h2><p>Early setbacks and how we adjusted</p></header>
+      <div class="cs-body">
+        <div class="cs-wrong">
+          <div class="cs-wrong-card broke">
+            <span class="cs-wrong-tag">What Failed First</span>
+            <h3>Squad pushback &amp; noisy 80-file pull requests</h3>
+            <p>Two squads under tight quarterly deadlines refused to migrate off hard-coded hex values, worried token swaps would break production screens. Worse, our first automated sync script opened massive 80-file pull requests that engineers closed without reviewing.</p>
+          </div>
+          <div class="cs-wrong-card pivot">
+            <span class="cs-wrong-tag">How I Steered the Pivot</span>
+            <h3>Small batched PRs, visual diffs &amp; squad co-ownership</h3>
+            <p>Instead of forcing a top-down mandate, we piloted with two volunteer squads first, split automated PRs into small component batches with visual regression previews, and rotated squad engineers into the weekly RFC council so they co-owned every token change.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="g-wrap cs-sec" id="results">
-      <header class="cs-sec-head"><div class="cs-num">06</div><h2>Results</h2><p>Business and user impact</p></header>
-      <div class="cs-body"><div class="cs-prose cs-result-text"><p>Design-to-code handoff dropped from about four weeks to a day, visual QA bugs fell 70%, and front-end velocity rose 28%. Light and dark themes now stay in sync automatically.</p></div>
+      <header class="cs-sec-head"><div class="cs-num">07</div><h2>Results &amp; what happened next</h2><p>User, business, and team impact</p></header>
+      <div class="cs-body">
+        <div class="cs-prose cs-result-text"><p>Design-to-code handoff dropped from about four weeks to a single day, visual QA bugs fell 70%, and front-end velocity rose 28%. Light and dark themes now stay in sync automatically.</p></div>
+        <div class="cs-impact-grid">
+          <div class="cs-impact-card"><small>User &amp; Business Impact</small><p>Eliminated 320+ hard-coded color overrides and unified accessible light/dark modes across web consoles and desktop tools.</p></div>
+          <div class="cs-impact-card"><small>Team Impact</small><p>Freed 4 DesignOps designers and front-end engineers from manual redline policing so critiques focused on workflows instead of hex codes.</p></div>
+          <div class="cs-impact-card"><small>What Happened Next</small><p>Every new AI component in Rhapsody and MaaS360 inherited semantic tokens from Day 1, and the weekly RFC council ran self-sufficiently under rotating squad reps.</p></div>
+        </div>
       </div>
     </section>
 
     <section class="g-wrap cs-sec" id="learned">
-      <header class="cs-sec-head"><div class="cs-num">07</div><h2>What I learned</h2></header>
-      <div class="cs-body"><p class="cs-learn">A design system is a product, and its customers are engineers. Treating squads as users, with research and release notes, is what got adoption.</p>
+      <header class="cs-sec-head"><div class="cs-num">08</div><h2>What I learned</h2></header>
+      <div class="cs-body"><p class="cs-learn">A design system is a product, and its customers are engineers. Treating squads as users—with small pilots, visual diffs, and shared governance—is what got adoption.</p>
       </div>
     </section>
     <nav class="g-wrap cs-pager" aria-label="Case study navigation">
