@@ -97,6 +97,18 @@
       border-radius: 9px;
       letter-spacing: -0.5px;
     }
+    .brand-name {
+      font-family: var(--font-heading, var(--font-swiss, sans-serif));
+      font-weight: 800;
+      font-size: 14.5px;
+      color: var(--text-main, #0F172A);
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+    .brand-link:hover .brand-name {
+      color: var(--primary-accent, #F00658);
+    }
+
 
     .nav-links {
       display: flex;
@@ -853,15 +865,16 @@
     <div class="header-container">
       <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
         <span class="brand-monogram" aria-hidden="true">B</span>
+        <span class="brand-name">Balaajee V.R.</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="nav-item">Selected Work</a>
         <a href="ai.html" class="nav-item">AI &amp; UX</a>
         <a href="leadership.html" class="nav-item">Leadership</a>
-        <a href="archive.html" class="nav-item">Design Artifacts</a>
-        <a href="gallery.html" class="nav-item">Career Gallery</a>
-        <a href="resume-swiss.html" class="nav-item active">My Resume</a>
+        <a href="archive.html" class="nav-item">Artifacts</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="resume-swiss.html" class="nav-item active">Resume</a>
       </nav>
 
       <div class="header-actions">
