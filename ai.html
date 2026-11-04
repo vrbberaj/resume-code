@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI &amp; UX: Designing Trusted AI &amp; AI-Accelerated Teams | Balaajee V.R.</title>
-  <meta name="description" content="UX for AI and AI for UX practice by Design Leader Balaajee V.R. — 3-tier confidence gating, 10-point enterprise AI UX rubric, and governed AI workflows across multidisciplinary teams.">
+  <title>AI &amp; UX: Designing Useful, Trusted AI &amp; Faster Design Teams | Balaajee V.R.</title>
+  <meta name="description" content="UX for AI and AI for UX practice by Design Leader Balaajee V.R. — 10 plain-English fundamentals for designing AI products, interactive autonomy tiers, and governed AI team workflows.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -608,6 +608,22 @@
     line-height: 1.55;
     color: var(--text-body);
   }
+  .rubric-proof {
+    margin-top: 9px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border-subtle);
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--text-muted);
+  }
+  .rubric-proof b {
+    font-family: var(--font-code);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-main);
+    margin-right: 4px;
+  }
 
   /* AI for UX Interactive Workflow Stage */
   .ld-ai-wf-grid {
@@ -818,8 +834,8 @@
     <section class="g-wrap ai-hero">
       <div>
         <div class="g-overline">UX for AI &bull; AI for UX</div>
-        <h1>AI products people trust. Teams that ship faster.</h1>
-        <p>Today, I focus on two connected sides of AI: designing enterprise AI products where users can see why the AI made a decision and stay in control, and bringing governed AI into the team’s own workflow to speed up research synthesis and live prototyping.</p>
+        <h1>Useful, trusted AI products. Teams that ship faster.</h1>
+        <p>Today, I focus on two connected sides of AI: designing AI products that fit naturally into how people work—moving beyond empty chat boxes, setting clear expectations, and keeping humans in control—and bringing AI into the team’s own workflow to speed up research and prototyping.</p>
         <div class="ai-jump-pills">
           <a href="#ux-for-ai" class="ai-jump-btn primary">Part 01 &middot; UX for AI &darr;</a>
           <a href="#ai-for-ux" class="ai-jump-btn secondary">Part 02 &middot; AI for UX Workflow &darr;</a>
@@ -861,8 +877,8 @@
           On This Page:
         </span>
         <a href="#ux-for-ai" class="active">01 · UX for AI</a>
-        <a href="#confidence-model">3-Tier Confidence Model</a>
-        <a href="#ai-rubric">10-Point AI Rubric</a>
+        <a href="#ai-rubric">10 UX-for-AI Fundamentals</a>
+        <a href="#confidence-model">Autonomy Deep Dive</a>
         <a href="#ai-for-ux">02 · AI for UX Workflow</a>
         <a href="#governance">Stack &amp; Governance</a>
       </div>
@@ -871,60 +887,161 @@
     <!-- Section 1: UX for AI -->
     <section class="g-wrap ld-sec" id="ux-for-ai">
       <div class="ld-head">
-        <div class="sec-label">Part 01 &bull; UX for AI (Product Architecture)</div>
-        <h2 class="sec-title">Eliminating “verification fatigue” in mission-critical software</h2>
-        <p class="sec-intro">In systems engineering, cybersecurity, banking, and fleet operations, mistakes are expensive. When AI acts like a black box, checking its output takes longer than doing the work manually—so operators turn it off and compliance blocks it.</p>
+        <div class="sec-label">Part 01 &bull; UX for AI (Designing AI Products)</div>
+        <h2 class="sec-title">Designing AI is much bigger than putting a chat box on a screen</h2>
+        <p class="sec-intro">Good AI UX starts before anyone writes a prompt. As a design leader, my job is first to stop teams from adding AI where a simple rule or filter works better—and then to design every part of the AI experience around real human habits, speed, clarity, and control.</p>
       </div>
 
       <div class="ai-contrast-grid">
         <div class="ai-contrast-card bad">
-          <span class="ai-pill-tag bad">Why Generic AI Fails</span>
-          <h3>Black-Box Chat &amp; Silent Mutations</h3>
+          <span class="ai-pill-tag bad">Why Most AI Features Get Ignored</span>
+          <h3>Empty Chat Boxes &amp; Guesswork</h3>
           <ul>
-            <li>Applies changes to models, policies, or fleets without showing what changed or why.</li>
-            <li>Displays raw percentages (“92% confident”) without explaining what evidence is missing.</li>
-            <li>Forces operators to audit every single line manually—creating severe verification fatigue.</li>
-            <li>Blocked by enterprise CISO and compliance teams due to zero auditability or rollback.</li>
+            <li>Using slow, unpredictable AI where a simple button, search filter, or rule is faster and 100% reliable.</li>
+            <li>Dropping people in front of an empty prompt box when they don’t know what or how to ask.</li>
+            <li>Forcing users to regenerate an entire answer from scratch just to fix one wrong sentence.</li>
+            <li>Acting overconfident without showing sources—so checking the AI takes longer than doing the work by hand.</li>
           </ul>
         </div>
 
         <div class="ai-contrast-card good">
           <span class="ai-pill-tag good">How My Teams Design AI</span>
-          <h3>Visible Reasoning, Calibrated Control &amp; Diffs</h3>
+          <h3>Embedded, Steerable &amp; Easy to Check</h3>
           <ul>
-            <li>Shows a clear step-by-step reasoning trace linked directly to source requirements or telemetry.</li>
-            <li>Translates model confidence into explicit interaction tiers—automating routine work while gating risk.</li>
-            <li>Presents side-by-side before/after diffs with blast-radius previews and one-click human approval.</li>
-            <li>Logs every AI suggestion and human sign-off for zero-violation enterprise compliance.</li>
+            <li>Save AI for messy work—summarizing, spotting patterns, and first drafts—while keeping exact workflows deterministic.</li>
+            <li>Move beyond chat with inline canvas actions, smart templates, or voice and scan input when hands are busy.</li>
+            <li>Make output easy to check and edit inline, with clear sources, honest progress, and one-click undo.</li>
+            <li>Partner with PM and data teams early to define what a “good” AI answer looks like and how to test it.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Interactive 3-Tier Confidence Simulator -->
+    <!-- Section 2: 10 Fundamentals of UX for AI -->
+    <section class="g-wrap ld-sec" id="ai-rubric">
+      <div class="ld-head">
+        <div class="sec-label">Complete Product Lens &bull; Beyond Just Trust</div>
+        <h2 class="sec-title">10 things I focus on when designing AI products</h2>
+        <p class="sec-intro">Trust matters, but it is only one piece of the job. Here is the full 10-part playbook I use with designers, product managers, and engineers when taking an AI feature from idea to production:</p>
+      </div>
+
+      <div class="rubric-grid">
+        <div class="rubric-card">
+          <span class="rubric-num">01</span>
+          <div>
+            <h3>Deciding if it even needs AI</h3>
+            <p>Know when not to use AI. Save AI for unstructured synthesis, pattern spotting, and drafting—never replace a fast, reliable rule or filter with a slow model.</p>
+            <div class="rubric-proof"><b>In my work:</b> Kept deterministic safety rules in fleet &amp; telecom flows; reserved AI for complex SysML drafting and threat triage.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">02</span>
+          <div>
+            <h3>Setting clear expectations</h3>
+            <p>Help people understand upfront what the AI can and can’t do, so they neither over-rely on it blindly nor give up on it after one imperfect answer.</p>
+            <div class="rubric-proof"><b>In my work:</b> Framed IBM Rhapsody AI clearly as a first-pass model drafter for engineers to review, not an auto-publish black box.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">03</span>
+          <div>
+            <h3>Better ways to ask (beyond the prompt box)</h3>
+            <p>Move past empty text boxes using smart suggestions, structured inputs, direct canvas actions, and voice or camera scan when a user’s hands are busy.</p>
+            <div class="rubric-proof"><b>In my work:</b> Direct diagram generation on the Rhapsody canvas, and voice/barcode workflows on Zebra warehouse devices.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">04</span>
+          <div>
+            <h3>Deciding how much the AI does on its own</h3>
+            <p>Define clear boundaries for when the AI only suggests, when it prepares a draft for approval, and when it acts by itself—especially as agents take on multi-step tasks.</p>
+            <div class="rubric-proof"><b>In my work:</b> Shipped a 3-tier autonomy model across IBM security and engineering products (see interactive example below).</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">05</span>
+          <div>
+            <h3>Making output easy to check &amp; edit</h3>
+            <p>Show clear sources and confidence, and let people edit one section inline so verifying a draft is five times faster than redoing the work from scratch.</p>
+            <div class="rubric-proof"><b>In my work:</b> Clickable source links and side-by-side diffs cut SysML drafting time by 74% and raised SUS from 61 to 89.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">06</span>
+          <div>
+            <h3>Handling mistakes gracefully</h3>
+            <p>Design for the moments AI gets it wrong—with one-click undo, easy correction, staged rollbacks, and failing gracefully into a manual screen instead of failing silently.</p>
+            <div class="rubric-proof"><b>In my work:</b> When confidence drops in MaaS360, AI hands over everything it already parsed so admins never start from a blank page.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">07</span>
+          <div>
+            <h3>Waiting, speed &amp; responsiveness</h3>
+            <p>Stream useful answers progressively, show honest step-by-step progress on multi-step agent tasks, and let people keep working instead of staring at a spinner.</p>
+            <div class="rubric-proof"><b>In my work:</b> Live agent step trackers and safe mid-run cancel controls for long security and compliance scans.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">08</span>
+          <div>
+            <h3>Learning from natural feedback</h3>
+            <p>Use people’s real corrections, approvals, and edits to improve the AI over time—without interrupting their flow with constant rating popups.</p>
+            <div class="rubric-proof"><b>In my work:</b> Replaced 6 separate feedback popups at IBM with one quiet signal captured naturally when operators edit a draft.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">09</span>
+          <div>
+            <h3>Memory, privacy, fairness &amp; regulation</h3>
+            <p>Let people see and control what context the AI remembers about them, while designing directly for accessibility, bias checks, GDPR, and EU AI Act transparency rules.</p>
+            <div class="rubric-proof"><b>In my work:</b> Enforced GDPR privacy-by-design, WCAG 2.2 AA, and EU AI Act transparency checks across global enterprise releases.</div>
+          </div>
+        </div>
+
+        <div class="rubric-card">
+          <span class="rubric-num">10</span>
+          <div>
+            <h3>Measuring AI quality alongside PM &amp; data</h3>
+            <p>Designers help define what a “good” AI answer actually looks like and how to test it—measuring real task completion and how much editing users had to do, not just clicks.</p>
+            <div class="rubric-proof"><b>In my work:</b> Partnered with PM and AI engineers on quality rubrics, acceptance rates, and time-to-verified-outcome before GA launch.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Interactive 3-Tier Confidence Simulator (Deep Dive into Principle 04) -->
     <section class="g-wrap ld-sec" id="confidence-model">
       <div class="ld-head">
-        <div class="sec-label">Interaction Pattern &bull; Shipped at IBM</div>
-        <h2 class="sec-title">The 3-tier confidence &amp; human-control model</h2>
-        <p class="sec-intro">When AI researchers pushed for full autonomy and compliance pushed to ban it, I aligned both groups around earned autonomy—mapping model confidence directly to who holds the wheel. Click each tier to inspect the operator pattern:</p>
+        <div class="sec-label">Deep Dive &bull; Principle #04 Shipped at IBM</div>
+        <h2 class="sec-title">Example in action: deciding how much the AI does on its own</h2>
+        <p class="sec-intro">When AI researchers pushed for full automation and compliance pushed to block it, I aligned both teams around three clear levels of autonomy. Click each tier to see how the interface changes based on confidence and risk:</p>
       </div>
 
       <div class="conf-sim-box">
         <div class="conf-tier-Selector" role="tablist">
           <button type="button" class="conf-btn t-hi active" onclick="selectConfTier(0, this)">
             <strong>&ge; 95% Confidence</strong>
-            <b>Tier 1 · Runs Automatically</b>
-            <span>Low blast radius &amp; high certainty. Executes immediately with an immutable reasoning log and 1-click undo.</span>
+            <b>Tier 1 · Acts on Its Own</b>
+            <span>Routine, low-risk tasks. AI completes the step automatically, logs why, and gives a 1-click undo.</span>
           </button>
           <button type="button" class="conf-btn t-mid" onclick="selectConfTier(1, this)">
             <strong>80–94% Confidence</strong>
-            <b>Tier 2 · Human Reviews Diff</b>
-            <span>Medium risk. Opens a side-by-side before/after diff showing affected endpoints; one click to approve or edit.</span>
+            <b>Tier 2 · Drafts for Approval</b>
+            <span>Medium risk. AI prepares a side-by-side before/after diff showing affected devices; human approves in one click.</span>
           </button>
           <button type="button" class="conf-btn t-lo" onclick="selectConfTier(2, this)">
             <strong>&lt; 80% Confidence</strong>
-            <b>Tier 3 · Human Takes the Wheel</b>
-            <span>Ambiguous input or high blast radius. AI hands back control with a partial draft and flags what it is unsure about.</span>
+            <b>Tier 3 · Suggests &amp; Hands Back</b>
+            <span>Unclear input or high risk. AI stops, flags the conflict in plain language, and opens a pre-filled manual editor.</span>
           </button>
         </div>
 
@@ -933,19 +1050,19 @@
           <div class="conf-pane active" id="confPane0">
             <div class="conf-ui-mock">
               <div class="conf-ui-top">
-                <span style="color:#34D399; font-weight:700;">● TIER 1 · AUTO-APPLIED (97% CONFIDENCE)</span>
+                <span style="color:#34D399; font-weight:700;">● TIER 1 · ACTED AUTOMATICALLY (97% CONFIDENCE)</span>
                 <span style="color:#94A3B8;">Audit ID #A-8492</span>
               </div>
-              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;"> Quarantined 14 stale sandbox tokens matching CVE-2026-114 policy</p>
-              <p style="color:#CBD5E1; font-size:13px;">Reasoning: Exact signature match across 14 non-production nodes; zero active user sessions impacted.</p>
+              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Quarantined 14 stale sandbox tokens matching CVE-2026-114 policy</p>
+              <p style="color:#CBD5E1; font-size:13px;">Why: Exact signature match across 14 non-production test nodes; zero active users affected.</p>
               <div style="margin-top:12px; display:flex; gap:10px; font-size:12px;">
-                <span style="background:rgba(52,211,153,0.15); color:#34D399; padding:4px 10px; border-radius:6px; font-weight:600;">✓ Logged to Compliance Trail</span>
-                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">↺ Undo Action (30m window)</span>
+                <span style="background:rgba(52,211,153,0.15); color:#34D399; padding:4px 10px; border-radius:6px; font-weight:600;">✓ Saved to Audit Log</span>
+                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">↺ Undo (30m window)</span>
               </div>
             </div>
             <div class="conf-meta-list">
-              <div><b>UX Rule</b>Never interrupt operators for routine, reversible actions with high certainty.</div>
-              <div><b>Safety Net</b>Every automated action stays 1-click reversible and writes its reasoning chain to the audit log.</div>
+              <div><b>When to use</b>Routine, reversible tasks where interrupting a busy operator only creates noise.</div>
+              <div><b>Safety net</b>Always keeps a visible record and a clear undo window if someone wants to reverse it.</div>
             </div>
           </div>
 
@@ -953,19 +1070,19 @@
           <div class="conf-pane" id="confPane1">
             <div class="conf-ui-mock">
               <div class="conf-ui-top">
-                <span style="color:#FBBF24; font-weight:700;">● TIER 2 · SUPERVISED DIFF REVIEW (88% CONFIDENCE)</span>
-                <span style="color:#94A3B8;">Blast Radius: 420 Laptops</span>
+                <span style="color:#FBBF24; font-weight:700;">● TIER 2 · DRAFT READY FOR APPROVAL (88% CONFIDENCE)</span>
+                <span style="color:#94A3B8;">Scope: 420 Laptops</span>
               </div>
-              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Proposed VPN certificate patch across EMEA Finance group</p>
-              <p style="color:#CBD5E1; font-size:13px;">Diff Preview: Staged 10% canary first (42 devices) &rarr; full rollout after 0 drops over 15 mins.</p>
+              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Proposed VPN certificate fix across EMEA Finance group</p>
+              <p style="color:#CBD5E1; font-size:13px;">Rollout plan: Test on 10% first (42 laptops) &rarr; roll out to remaining 378 after 15 mins with zero drops.</p>
               <div style="margin-top:12px; display:flex; gap:10px; font-size:12px;">
-                <span style="background:#F00658; color:#FFFFFF; padding:4px 12px; border-radius:6px; font-weight:700;">Approve Staged Rollout</span>
-                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">Inspect 3 Flagged Exceptions</span>
+                <span style="background:#F00658; color:#FFFFFF; padding:4px 12px; border-radius:6px; font-weight:700;">Approve Rollout</span>
+                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">Edit 3 Exceptions</span>
               </div>
             </div>
             <div class="conf-meta-list">
-              <div><b>UX Rule</b>Make reviewing a diff 5x faster than writing the remediation or SysML model from scratch.</div>
-              <div><b>Measured Impact</b>Raised System Usability Scale (SUS) from 61 to 89 across 32 enterprise engineers and admins.</div>
+              <div><b>When to use</b>Multi-step agent actions affecting real users where a quick human check prevents costly mistakes.</div>
+              <div><b>Measured result</b>Checking the diff took seconds instead of minutes—raising SUS from 61 to 89 across 32 admins and engineers.</div>
             </div>
           </div>
 
@@ -973,44 +1090,22 @@
           <div class="conf-pane" id="confPane2">
             <div class="conf-ui-mock">
               <div class="conf-ui-top">
-                <span style="color:#F87171; font-weight:700;">● TIER 3 · MANUAL CONTROL REQUIRED (64% CONFIDENCE)</span>
-                <span style="color:#94A3B8;">Auto-Execution Blocked</span>
+                <span style="color:#F87171; font-weight:700;">● TIER 3 · HUMAN DECISION NEEDED (64% CONFIDENCE)</span>
+                <span style="color:#94A3B8;">Paused Safely</span>
               </div>
-              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Conflicting braking telemetry requirements detected in Section 4.2</p>
-              <p style="color:#CBD5E1; font-size:13px;">Why AI stopped: Spec clauses REQ-204 and REQ-219 specify different latency thresholds (120ms vs 50ms).</p>
+              <p style="color:#FFFFFF; font-weight:700; margin-bottom:6px;">Conflicting braking requirements found in Section 4.2</p>
+              <p style="color:#CBD5E1; font-size:13px;">Why AI paused: Clauses REQ-204 and REQ-219 list two different response limits (120ms vs 50ms).</p>
               <div style="margin-top:12px; display:flex; gap:10px; font-size:12px;">
-                <span style="background:rgba(248,113,113,0.18); color:#FCA5A5; padding:4px 10px; border-radius:6px; font-weight:600;">Open Draft in Manual Editor</span>
-                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">Compare Source Clauses</span>
+                <span style="background:rgba(248,113,113,0.18); color:#FCA5A5; padding:4px 10px; border-radius:6px; font-weight:600;">Open Pre-Filled Editor</span>
+                <span style="background:rgba(255,255,255,0.08); color:#E2E8F0; padding:4px 10px; border-radius:6px;">Compare Both Clauses</span>
               </div>
             </div>
             <div class="conf-meta-list">
-              <div><b>UX Rule</b>Honest uncertainty builds more trust than fake confidence. Never guess on high-stakes conflicts.</div>
-              <div><b>Graceful Handoff</b>Hands over everything AI already parsed so the human never starts from a blank screen.</div>
+              <div><b>When to use</b>Whenever requirements conflict or the model is guessing on a high-stakes decision.</div>
+              <div><b>Graceful fallback</b>Hands over everything AI already organized so the engineer solves the conflict without starting over.</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Section 3: 10-Point AI Heuristic Rubric -->
-    <section class="g-wrap ld-sec" id="ai-rubric">
-      <div class="ld-head">
-        <div class="sec-label">Quality Gate &bull; Design Governance</div>
-        <h2 class="sec-title">My 10-point enterprise AI UX rubric</h2>
-        <p class="sec-intro">Before any AI feature moved from design into engineering sprints at IBM, squads scored the flow against these ten checks so every product shared one consistent trust bar:</p>
-      </div>
-
-      <div class="rubric-grid">
-        <div class="rubric-card"><span class="rubric-num">01</span><div><h3>Source Provenance</h3><p>Every AI output links directly to the exact requirement, log, or policy clause that produced it.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">02</span><div><h3>Visible Reasoning Trace</h3><p>Users can inspect why the AI chose an action in plain domain language—never opaque model jargon.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">03</span><div><h3>Blast-Radius Preview</h3><p>Before an agent acts, the UI shows exactly how many devices, users, or downstream nodes are affected.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">04</span><div><h3>Actionable Confidence</h3><p>Confidence scores map to clear next actions (auto, review diff, or manual), never standalone numbers.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">05</span><div><h3>One-Click Reversibility</h3><p>Automated and approved agent actions include a clear undo or staged-canary rollback path.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">06</span><div><h3>Graceful Manual Fallback</h3><p>When AI fails or confidence drops, the user lands in a pre-populated manual flow—never a dead end.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">07</span><div><h3>Faster Than Manual Work</h3><p>Reviewing and approving an AI diff must measurably beat doing the task by hand (zero verification fatigue).</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">08</span><div><h3>Honest Multi-Step Latency</h3><p>Long-running agent workflows show live step progress and allow safe cancellation mid-run.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">09</span><div><h3>Immutable Compliance Log</h3><p>Distinguishes AI-generated drafts from human-approved changes for regulatory and CISO audits.</p></div></div>
-        <div class="rubric-card"><span class="rubric-num">10</span><div><h3>In-Flow Signal Capture</h3><p>Captures operator edits and rejections naturally in the workflow—replacing noisy thumbs-up/down popups.</p></div></div>
       </div>
     </section>
 
@@ -1128,13 +1223,13 @@
           </ul>
         </div>
         <div class="gov-card">
-          <h3>Enterprise Guardrails</h3>
+          <h3>Quality &amp; Guardrails</h3>
           <ul>
+            <li>AI Quality Evals &amp; Edit-Distance Metrics</li>
             <li>Zero Raw PII in External LLMs</li>
             <li>Mandatory Human Critique Gate</li>
-            <li>3-Tier Confidence Gating</li>
+            <li>3-Tier Autonomy &amp; Rollbacks</li>
             <li>CISO &amp; Audit-Log Sign-Off</li>
-            <li>Staged Canary Rollouts</li>
           </ul>
         </div>
         <div class="gov-card">
