@@ -84,19 +84,28 @@
     }
 
     .brand-monogram {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      font-family: var(--font-swiss);
-      font-weight: 900;
-      font-size: 19px;
-      background: #0F172A;
-      color: #FFFFFF;
-      border-radius: 9px;
-      letter-spacing: -0.5px;
-    }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 34px;
+    padding: 0 13px;
+    font-family: var(--font-heading, var(--font-swiss, sans-serif));
+    font-weight: 800;
+    font-size: 13.5px;
+    letter-spacing: 0.01em;
+    background: var(--text-main, #0F172A);
+    color: #FFFFFF;
+    border-radius: 8px;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    transition: all 0.2s ease;
+  }
+  .brand-link:hover .brand-monogram {
+    background: var(--primary-accent, #F00658);
+    transform: translateY(-1px);
+  }
     .brand-name {
       font-family: var(--font-heading, var(--font-swiss, sans-serif));
       font-weight: 800;
@@ -864,8 +873,7 @@
   <header class="global-header">
     <div class="header-container">
       <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <span class="brand-monogram" aria-hidden="true">B</span>
-        <span class="brand-name">Balaajee V.R.</span>
+        <span class="brand-monogram">Balaajee V.R.</span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
