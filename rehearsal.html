@@ -386,7 +386,7 @@
     <!-- Mode Switcher -->
     <div class="mode-switcher">
       <button id="tabWelcome" class="mode-tab active" onclick="switchMode('welcome')">
-        🎬 Homepage Intro (~70s)
+        🎬 Homepage Intro (60s)
       </button>
       <button id="tabAiWorkflow" class="mode-tab" onclick="switchMode('aiworkflow')">
         ⚡ AI Workflow Demo (~75s)
@@ -397,7 +397,7 @@
     </div>
 
     <div style="font-size: 0.85rem; color: var(--text-muted);">
-      Target Duration: <strong id="headerDuration" style="color: #fff;">68–72s</strong> &bull; Pace: <strong style="color: #38bdf8;">130 WPM</strong>
+      Target Duration: <strong id="headerDuration" style="color: #fff;">58–60s</strong> &bull; Pace: <strong style="color: #38bdf8;">150 WPM</strong>
     </div>
   </header>
 
@@ -445,7 +445,7 @@
           <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ Audio Voice Guide: ON</button>
           <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play Audio Guide</button>
         </div>
-        <audio id="refAudioPlayer" src="assets/homepage_intro_final.m4a?v=final71" preload="auto" onended="onRefAudioEnded()"></audio>
+        <audio id="refAudioPlayer" src="assets/homepage_intro_final.m4a?v=final60" preload="auto" onended="onRefAudioEnded()"></audio>
       </div>
     </div>
 
@@ -533,55 +533,63 @@
         `
       },
       welcome: {
-        title: "Homepage Executive Intro (Universal • ~70s)",
-        duration: 71.4,
-        durationFormatted: "01:11",
-        headerDuration: "68–72s",
-        fullText: "Hi, I'm Balaajee. I'm a design leader with 18 years in enterprise technology — most recently managing a 14-person team across design, research, and content at IBM. Starting in engineering at Infosys, I've designed for telecom teams in 45 countries at Ericsson, safety-critical vehicle systems at ZF Wabco, and 38,000 frontline devices at Zebra. At IBM, I united three siloed teams into one shared model — cutting feature cycles from six weeks to under two. Across my career, I've hired and mentored over 50 designers. Today I focus on AI products people can trust — designing how humans review, approve, and override AI agents when mistakes are expensive, while using AI-assisted research and live prototyping to help my teams ship faster. I'm open to design leadership roles — in India, Europe, or globally, and ready to relocate. Explore my case studies and AI workflow below — I'd love to talk.",
+        title: "Homepage Executive Intro (Conversational • 60s)",
+        duration: 60,
+        durationFormatted: "01:00",
+        headerDuration: "58–60s",
+        fullText: "Hi, I'm Balaajee — a design leader with over 18 years' experience. My work comes down to two things: making complex software simple, and building strong teams to ship it. Across Infosys, Ericsson, ZF Wabco, Zebra, and IBM, I've shipped over 25 products in eight-plus industries — from banking and cloud software to warehouse devices and truck cockpits. I've hired and mentored over 50 designers, and managed 14 across design, research, and content at IBM. We agree on the problem and how to measure success before anyone designs — and I coach people to own outcomes, not tasks. With AI, I focus on two things: building AI products people trust — where users see why it made a decision and stay in control — and using AI to speed up research and prototyping. Have a look at my work below. If you're growing a design team or tackling a complex product, I'd love to talk.",
         timeline: [
-          { start: 0, end: 14, lineId: 'line1', frame: 'frame1', cue: 'Act 1 (0:00–0:14): Warm Hook & 14-Person Multi-Discipline Scope at IBM' },
-          { start: 14, end: 43, lineId: 'line2', frame: 'frame2', cue: 'Act 2 (0:14–0:43): 18-Year Arc (Infosys → Ericsson → ZF Wabco → Zebra → IBM + 50+ Mentored)' },
-          { start: 43, end: 59.5, lineId: 'line3', frame: 'frame2', cue: 'Act 3 (0:43–1:00): Trusted Agentic AI + AI-Accelerated Team Workflow' },
-          { start: 59.5, end: 71.4, lineId: 'line4', frame: 'frame3', cue: 'Act 4 (1:00–1:11): India, Europe & Global Relocation Close (Warm Smile • Hold 2s)' }
+          { start: 0, end: 12.1, lineId: 'line1', frame: 'frame1', cue: '1. Opening (0:00–0:12): Warm Smile & Eye Contact — Who I Am & 2 Core Problems' },
+          { start: 12.1, end: 25.6, lineId: 'line2', frame: 'frame2', cue: '2. Companies & Range (0:12–0:26): Open Palm — 5 Giants, 25+ Products, 8+ Industries' },
+          { start: 25.6, end: 41.4, lineId: 'line3', frame: 'frame2', cue: '3. How I Manage (0:26–0:41): Confident & Steady — 50+ Mentored, 14 at IBM, Outcomes Over Tasks' },
+          { start: 41.4, end: 53.3, lineId: 'line4', frame: 'frame2', cue: '4. AI Focus (0:41–0:53): Lean In Slightly — Trusted AI Products + AI Workflow' },
+          { start: 53.3, end: 60, lineId: 'line5', frame: 'frame3', cue: '5. Close (0:53–1:00): Warm Smile — Peer-to-Peer Evergreen Invitation (Hold 2s)' }
         ],
         html: `
           <p id="line1" class="active-sentence">
-            <span class="coach-pill cue-smile">Warm Smile &amp; Direct Eye Contact (0:00 – 0:14)</span>
-            “Hi, I’m <strong>Balaajee</strong>. I’m a design leader with 18 years in enterprise technology — most recently <strong>managing a 14-person team across design, research, and content at IBM</strong>.”
-            <span class="coach-pill cue-pause">1s Breath</span>
+            <span class="coach-pill cue-smile">1. Opening &bull; Warm Smile, Eye Contact (0:00 – 0:12)</span>
+            “Hi, I’m <strong>Balaajee</strong> — a design leader with over 18 years’ experience. My work comes down to two things: <strong>making complex software simple</strong>, and <strong>building strong teams to ship it</strong>.”
+            <span class="coach-pill cue-pause">Pause</span>
           </p>
 
           <p id="line2">
-            <span class="coach-pill cue-framework">18-Year Breadth + IBM Org Impact (0:14 – 0:43)</span>
-            <span class="coach-pill cue-gesture">Open Palm Gesture</span>
-            “Starting in engineering at <strong>Infosys</strong>, I’ve designed for telecom teams in <strong>45 countries at Ericsson</strong>, safety-critical vehicle systems at <strong>ZF Wabco</strong>, and <strong>38,000 frontline devices at Zebra</strong>. At <strong>IBM</strong>, I united three siloed teams into one shared model — cutting feature cycles from <strong>six weeks to under two</strong>. Across my career, I’ve <strong>hired and mentored over 50 designers</strong>.”
-            <span class="coach-pill cue-pause">1s Breath</span>
+            <span class="coach-pill cue-framework">2. Companies &amp; Range (0:12 – 0:26)</span>
+            <span class="coach-pill cue-gesture">Open Palm</span>
+            “Across <strong>Infosys, Ericsson, ZF Wabco, Zebra, and IBM</strong>, I’ve shipped over <strong>25 products in eight-plus industries</strong> — from banking and cloud software to warehouse devices and truck cockpits.”
+            <span class="coach-pill cue-pause">Pause</span>
           </p>
 
           <p id="line3">
-            <span class="coach-pill cue-framework">Trusted AI + AI Workflow (0:43 – 1:00)</span>
-            <span class="coach-pill cue-gesture">Thoughtful &amp; Leaning In Slightly</span>
-            “Today I focus on <strong>AI products people can trust</strong> — designing how humans review, approve, and override AI agents when mistakes are expensive, while using <strong>AI-assisted research and live prototyping</strong> to help my teams ship faster.”
-            <span class="coach-pill cue-pause">1s Breath</span>
+            <span class="coach-pill cue-framework">3. How I Manage (0:26 – 0:41)</span>
+            <span class="coach-pill cue-gesture">Confident, Steady</span>
+            “I’ve hired and mentored over <strong>50 designers</strong>, and <strong>managed 14 across design, research, and content at IBM</strong>. We agree on the problem and how to measure success before anyone designs — and I coach people to <strong>own outcomes, not tasks</strong>.”
+            <span class="coach-pill cue-pause">Pause</span>
           </p>
 
           <p id="line4">
-            <span class="coach-pill cue-smile">India, Europe &amp; Global Close (1:00 – 1:11)</span>
-            “I’m open to <strong>design leadership roles — in India, Europe, or globally, and ready to relocate</strong>. Explore my case studies and AI workflow below — I’d love to talk.”
+            <span class="coach-pill cue-framework">4. AI Focus (0:41 – 0:53)</span>
+            <span class="coach-pill cue-gesture">Leaning In Slightly</span>
+            “With AI, I focus on two things: <strong>building AI products people trust</strong> — where users see why it made a decision and stay in control — and <strong>using AI to speed up research and prototyping</strong>.”
+            <span class="coach-pill cue-pause">Pause</span>
+          </p>
+
+          <p id="line5">
+            <span class="coach-pill cue-smile">5. Close &bull; Warm Smile (0:53 – 1:00)</span>
+            “Have a look at my work below. If you’re growing a design team or tackling a complex product, <strong>I’d love to talk</strong>.”
           </p>
         `,
         tips: `
           <div class="tip-box">
-            <div class="tip-title">🎯 Full 18-Year Weight</div>
-            <div>Every company carries a vivid proof point—45 countries (Ericsson), safety-critical cockpits (ZF Wabco), 38,000 devices (Zebra), and 6w &rarr; &lt;2w velocity (IBM).</div>
+            <div class="tip-title">🗣️ 100% Spoken Voice</div>
+            <div>Short, natural sentences ("warehouse devices and truck cockpits", "agree on the problem and how to measure success") keep you sounding human, never scripted.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">🤖 Product AI + Workflow AI</div>
-            <div>Act 3 pairs external Human-in-the-Loop AI governance with internal AI-assisted research and live prototyping—setting up your AI workflow section below.</div>
+            <div class="tip-title">🎯 Director Ceiling + Manager Proof</div>
+            <div>"Design leader" opens Director/Head loops, while "managed 14 across design, research, and content" proves formal multidisciplinary people management.</div>
           </div>
           <div class="tip-box">
-            <div class="tip-title">🌍 Explicit India + Europe + Global</div>
-            <div>Naming India, Europe, and global relocation in one sentence works universally without needing separate regional edits.</div>
+            <div class="tip-title">♾️ Zero Expiration Date</div>
+            <div>Region-free and timestamp-free—works across India, Europe, and global loops today, and never needs to be taken down once you're hired.</div>
           </div>
         `
       },
