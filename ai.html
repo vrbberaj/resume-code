@@ -86,28 +86,42 @@
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .brand-monogram {
+  .brand-wordmark {
+    position: relative;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: 34px;
-    padding: 0 13px;
-    font-family: var(--font-heading, var(--font-swiss, sans-serif));
+    align-items: baseline;
+    font-family: var(--font-heading, var(--font-swiss, 'Plus Jakarta Sans', sans-serif));
     font-weight: 800;
-    font-size: 13.5px;
-    letter-spacing: 0.01em;
-    background: var(--text-main, #0F172A);
-    color: #FFFFFF;
-    border-radius: 8px;
-    line-height: 1;
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    color: var(--text-main, #0F172A);
+    line-height: 1.1;
+    padding-bottom: 2px;
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
-    transition: all 0.2s ease;
   }
-  .brand-link:hover .brand-monogram {
-    background: var(--primary-accent);
-    transform: scale(1.04);
+
+  .brand-wordmark::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--primary-accent, #F00658);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .brand-dot {
+    color: var(--primary-accent, #F00658);
+    font-weight: 900;
+    margin-left: 0.5px;
+  }
+
+  .brand-link:hover .brand-wordmark::after {
+    transform: scaleX(1);
   }
   .brand-name {
     font-family: var(--font-heading);
@@ -828,7 +842,7 @@
   <header class="global-header">
     <div class="header-container">
       <a href="index.html" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <span class="brand-monogram">Balaajee V.R.</span>
+        <span class="brand-wordmark">Balaajee V.R<span class="brand-dot">.</span></span>
       </a>
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="index.html" class="nav-item">Selected Work</a>
@@ -849,8 +863,8 @@
     <section class="g-wrap ai-hero">
       <div>
         <div class="g-overline">UX for AI &bull; AI for UX</div>
-        <h1>Useful, trusted AI products. Teams that ship faster.</h1>
-        <p>Today, I focus on two connected sides of AI: designing AI products that fit naturally into how people work—moving beyond empty chat boxes, setting clear expectations, and keeping humans in control—and bringing AI into the team’s own workflow to speed up research and prototyping.</p>
+        <h1>Useful, human-centered AI products. Teams that ship faster.</h1>
+        <p>Today, much of my focus is designing AI into enterprise products—looking past the chat box to decide how much an AI agent does on its own, how people check its work, and how we know it’s actually working—while using AI every day in our own process to speed up research and build working prototypes.</p>
         <div class="ai-jump-pills">
           <a href="#ux-for-ai" class="ai-jump-btn primary">Part 01 &middot; UX for AI &darr;</a>
           <a href="#ai-for-ux" class="ai-jump-btn secondary">Part 02 &middot; AI for UX Workflow &darr;</a>
