@@ -91,42 +91,52 @@
     flex-shrink: 0;
   }
 
-  .brand-wordmark {
-    position: relative;
+  .brand-masthead {
     display: inline-flex;
-    align-items: baseline;
-    font-family: var(--font-heading, var(--font-swiss, 'Plus Jakarta Sans', sans-serif));
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: -0.03em;
-    color: var(--text-main, #0F172A);
-    line-height: 1.1;
-    padding-bottom: 2px;
+    align-items: center;
+    gap: 10px;
     white-space: nowrap;
   }
 
-  .brand-wordmark::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
+  .brand-bar {
+    width: 3px;
+    height: 28px;
     background: var(--primary-accent, #F00658);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 2px;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .brand-dot {
+  .brand-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .brand-title {
+    font-family: var(--font-heading, var(--font-swiss, 'Plus Jakarta Sans', sans-serif));
+    font-size: 14.5px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    color: var(--text-main, #0F172A);
+    transition: color 0.2s ease;
+  }
+
+  .brand-sub {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--text-muted, #64748B);
+  }
+
+  .brand-link:hover .brand-bar {
+    transform: scaleY(1.12);
+  }
+
+  .brand-link:hover .brand-title {
     color: var(--primary-accent, #F00658);
-    font-weight: 900;
-    margin-left: 0.5px;
-  }
-
-  .brand-link:hover .brand-wordmark::after {
-    transform: scaleX(1);
   }
 
   .brand-name {
@@ -871,7 +881,7 @@
   <header class="global-header">
     <div class="header-container">
       <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
-        <span class="brand-wordmark">Balaajee V.R<span class="brand-dot">.</span></span>
+        <span class="brand-masthead"><span class="brand-bar" aria-hidden="true"></span><span class="brand-stack"><span class="brand-title">BALAAJEE V.R.</span><span class="brand-sub">Design Leader</span></span></span>
       </a>
 
       <nav class="nav-links" aria-label="Main Navigation">
