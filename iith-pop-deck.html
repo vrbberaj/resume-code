@@ -3,53 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balaajee V.R. | Professor of Practice Presentation — Dept. of Design, IIT Hyderabad</title>
-  <meta name="description" content="Body of Work & 3-Year Action Plan for Full-Time Professor of Practice, Department of Design, IIT Hyderabad (Aligned to BoG Agenda 40.6.1).">
+  <title>Bringing the studio into the classroom — Balaajee V.R. | IIT Hyderabad PoP</title>
+  <meta name="description" content="Body of Work & Plan of Action for Full-Time Professor of Practice, Department of Design, IIT Hyderabad — Balaajee V.R.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 
   <style>
     :root {
-      --navy: #0F172A;
-      --navy-mid: #1E293B;
-      --accent: #D9381E;      /* Warm Academic Terracotta / IITH Accent */
-      --accent-soft: #FEF2F0;
-      --accent-border: #FBC9C0;
-      --gold: #B45309;
-      --gold-soft: #FEF3C7;
-      --blue-accent: #0284C7;
-      --bg-page: #EEF2F6;
+      --bg-page: #EBEBEB;
       --slide-bg: #FFFFFF;
-      --surface: #F8FAFC;
-      --border: #E2E8F0;
-      --text-main: #0F172A;
-      --text-body: #334155;
-      --text-muted: #64748B;
-      --font-head: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --ink: #111111;
+      --ink-mid: #4B5563;
+      --ink-muted: #6B7280;
+      --card-bg: #F5F5F4;
+      --rule: #E5E7EB;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background: var(--bg-page);
-      color: var(--text-body);
-      font-family: var(--font-body);
+      color: var(--ink);
+      font-family: var(--font);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       padding-bottom: 80px;
     }
 
-    /* Top Presenter Bar (Web Only) */
+    /* Web-Only Presenter Toolbar */
     .deck-topbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(17, 17, 17, 0.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding: 10px 24px;
       color: #FFFFFF;
     }
@@ -67,25 +62,24 @@
       align-items: center;
       gap: 12px;
     }
-    .topbar-badge {
-      background: var(--accent);
-      color: #FFFFFF;
-      font-family: var(--font-mono);
+    .topbar-pill {
+      background: #FFFFFF;
+      color: #111111;
       font-size: 11px;
       font-weight: 700;
+      letter-spacing: 0.06em;
       padding: 4px 8px;
       border-radius: 4px;
-      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
     .topbar-title {
-      font-family: var(--font-head);
-      font-size: 14px;
-      font-weight: 700;
-      color: #F8FAFC;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #F9FAFB;
     }
     .topbar-sub {
       font-size: 12px;
-      color: #94A3B8;
+      color: #9CA3AF;
     }
     .topbar-controls {
       display: flex;
@@ -95,116 +89,91 @@
     }
     .ctrl-btn {
       appearance: none;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: rgba(255, 255, 255, 0.08);
       color: #FFFFFF;
-      font-family: var(--font-body);
+      font-family: var(--font);
       font-size: 12.5px;
-      font-weight: 600;
+      font-weight: 500;
       padding: 7px 13px;
-      border-radius: 8px;
+      border-radius: 7px;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.18s ease;
+      transition: background 0.15s ease;
     }
     .ctrl-btn:hover {
       background: rgba(255, 255, 255, 0.16);
     }
     .ctrl-btn.active {
-      background: #F59E0B;
-      border-color: #F59E0B;
-      color: #0F172A;
+      background: #FBBF24;
+      border-color: #FBBF24;
+      color: #111111;
+      font-weight: 600;
     }
     .ctrl-btn.primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #FFFFFF;
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #111111;
+      font-weight: 600;
     }
     .ctrl-btn.primary:hover {
-      background: #B92B14;
+      background: #E5E7EB;
     }
 
-    /* Deck Container */
+    /* Slide Stack */
     .deck-wrap {
       max-width: 1280px;
       margin: 28px auto 0;
       padding: 0 20px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 28px;
     }
 
-    /* Slide Wrapper (Slide + Optional Rehearsal Script Drawer) */
     .slide-unit {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
-    /* Fixed 16:9 Slide Canvas */
+    /* Minimalist 16:9 Swiss Slide Canvas */
     .slide {
       width: 100%;
       aspect-ratio: 16 / 9;
       background: var(--slide-bg);
-      border-radius: 14px;
-      border: 1px solid #CBD5E1;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-      padding: 34px 48px 28px;
+      border-radius: 8px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+      padding: 56px 96px 60px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       position: relative;
       overflow: hidden;
     }
 
-    .slide.dark {
-      background: linear-gradient(135deg, #0B1120 0%, #162238 100%);
-      color: #F8FAFC;
-      border-color: #1E293B;
-    }
-
-    /* Slide Running Header & Footer */
-    .s-top {
-      display: flex;
-      justify-content: space-between;
+    /* Three-column quiet running header (Dia style) */
+    .s-meta {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 18px;
-      flex-shrink: 0;
-    }
-    .slide.dark .s-top {
-      border-bottom-color: rgba(255, 255, 255, 0.12);
-    }
-    .s-kicker {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: #4B5563;
+      flex-shrink: 0;
+      margin-bottom: 44px;
     }
-    .slide.dark .s-kicker {
-      color: #FBBF24;
+    .s-meta span:nth-child(2) {
+      text-align: center;
     }
-    .s-num {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-    }
-    .slide.dark .s-num {
-      color: #94A3B8;
+    .s-meta span:nth-child(3) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
     }
 
-    .s-body {
+    .s-content {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -212,274 +181,552 @@
       min-height: 0;
     }
 
-    .s-foot {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-    .slide.dark .s-foot {
-      border-top-color: rgba(255, 255, 255, 0.12);
-      color: #94A3B8;
+    .s-content.top-aligned {
+      justify-content: flex-start;
+      padding-top: 8px;
     }
 
-    /* Slide Typography */
-    .s-title {
-      font-family: var(--font-head);
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.18;
-      color: var(--text-main);
-      margin-bottom: 6px;
+    /* Editorial Typography */
+    .hero-title {
+      font-size: 86px;
+      font-weight: 500;
+      letter-spacing: -0.038em;
+      line-height: 1.03;
+      color: var(--ink);
+      max-width: 980px;
     }
-    .slide.dark .s-title {
-      color: #FFFFFF;
+    .hero-sub {
+      margin-top: 48px;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.32;
+      color: #6B7280;
+      max-width: 720px;
+    }
+
+    .s-h2 {
+      font-size: 44px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--ink);
+      max-width: 980px;
     }
     .s-lead {
-      font-size: 14.5px;
-      line-height: 1.5;
-      color: var(--text-body);
-      max-width: 980px;
-      margin-bottom: 18px;
+      margin-top: 12px;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--ink-muted);
+      max-width: 860px;
     }
-    .slide.dark .s-lead {
-      color: #CBD5E1;
-    }
-
-    /* Reusable Grid & Card Helpers */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .grid-2-wide { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 24px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 18px;
-    }
-    .card-white {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 18px;
-    }
-    .slide.dark .card {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    .tag-pill {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
+    .s-kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-      margin-bottom: 8px;
-    }
-    .tag-pill.navy {
-      background: #E0F2FE;
-      color: #0369A1;
-      border-color: #BAE6FD;
-    }
-    .tag-pill.gold {
-      background: var(--gold-soft);
-      color: var(--gold);
-      border-color: #FDE68A;
+      color: var(--ink-muted);
+      margin-bottom: 10px;
     }
 
-    .card h3 {
-      font-family: var(--font-head);
-      font-size: 15.5px;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 6px;
-      line-height: 1.25;
+    /* Big Numbers Grid (Slide 2 & Slide 14) */
+    .stats-row-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      margin-top: 52px;
+      margin-bottom: 52px;
     }
-    .slide.dark .card h3 { color: #FFFFFF; }
-
-    .card p, .card li {
-      font-size: 12.8px;
-      line-height: 1.48;
-      color: var(--text-body);
+    .big-num {
+      font-size: 68px;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 12px;
     }
-    .slide.dark .card p, .slide.dark .card li { color: #CBD5E1; }
-
-    .clean-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .big-num-label {
+      font-size: 16px;
+      color: var(--ink-muted);
+      line-height: 1.4;
     }
-    .clean-list li {
-      padding-left: 14px;
-      position: relative;
-    }
-    .clean-list li::before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-      position: absolute;
-      left: 0;
-      top: 7px;
-    }
-    .slide.dark .clean-list li::before {
-      background: #FBBF24;
+    .org-line {
+      font-size: 17px;
+      color: #4B5563;
+      line-height: 1.5;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
     }
 
-    /* Case Study Visual Frame */
-    .case-frame {
-      background: #0F172A;
+    /* Soft Minimalist Cards (Slides 3, 7, 11, 15) */
+    .cards-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 44px;
+    }
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .soft-card {
+      background: var(--card-bg);
       border-radius: 12px;
-      padding: 10px;
-      border: 1px solid #CBD5E1;
+      padding: 28px 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100%;
+      min-height: 270px;
     }
-    .case-frame img {
+    .soft-card.tall {
+      min-height: 330px;
+      justify-content: flex-start;
+      padding: 34px 30px;
+    }
+    .soft-card.dark-card {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+    .soft-card h3 {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .soft-card.dark-card h3 {
+      color: #FFFFFF;
+    }
+    .soft-card p {
+      font-size: 16px;
+      line-height: 1.52;
+      color: var(--ink-muted);
+    }
+    .soft-card .card-metric {
+      margin-top: 26px;
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .card-year {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .soft-card.dark-card .card-year {
+      color: #9CA3AF;
+    }
+    .card-bullets {
+      list-style: none;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-bullets li {
+      font-size: 16px;
+      line-height: 1.45;
+      color: #4B5563;
+      padding-left: 16px;
+      position: relative;
+    }
+    .card-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #6B7280;
+    }
+    .soft-card.dark-card .card-bullets li {
+      color: #E5E7EB;
+    }
+    .soft-card.dark-card .card-bullets li::before {
+      color: #9CA3AF;
+    }
+
+    /* Body of Work Visual Showcase Layout (Slides 4, 5, 6, 7) */
+    .work-split {
+      display: grid;
+      grid-template-columns: 1.28fr 0.92fr;
+      gap: 40px;
+      margin-top: 28px;
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+    }
+    .work-visual-mat {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .work-visual-mat.dark-mat {
+      background: #141923;
+      padding: 14px;
+    }
+    .work-visual-mat img {
       width: 100%;
-      height: 270px;
-      object-fit: cover;
-      object-position: top center;
-      border-radius: 7px;
-      background: #1E293B;
+      height: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 6px;
       display: block;
     }
-    .case-metrics-row {
+    .work-notes {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+    .work-note-item + .work-note-item {
+      margin-top: 18px;
+    }
+    .work-note-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .work-note-text {
+      font-size: 15.5px;
+      line-height: 1.48;
+      color: var(--ink-muted);
+    }
+    .work-outcome-bar {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* Two-Up Visual Work Grid (Slide 7) */
+    .work-two-up {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 26px;
+      flex: 1;
+      min-height: 0;
+    }
+    .work-pair-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 0;
+    }
+    .work-pair-img {
+      background: #FFFFFF;
+      border-radius: 8px;
+      height: 210px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .work-pair-img.dark-bg {
+      background: #0B111E;
+    }
+    .work-pair-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .work-pair-card h3 {
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .work-pair-card p {
+      font-size: 14.5px;
+      line-height: 1.48;
+      color: var(--ink-muted);
+    }
+    .work-pair-metric {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* Quote Slide (Slide 8) */
+    .quote-center {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .quote-text {
+      font-size: 46px;
+      font-weight: 400;
+      letter-spacing: -0.028em;
+      line-height: 1.2;
+      color: #262626;
+    }
+    .quote-caption {
+      margin-top: 44px;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    /* 5-Step Flywheel (Slide 9) */
+    .loop-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .loop-step-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .circle-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .circle-badge.outline {
+      background: #FFFFFF;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+    .loop-arrow {
+      color: var(--ink);
+      font-size: 18px;
+      padding-right: 4px;
+    }
+    .loop-step h3 {
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .loop-step p {
+      font-size: 15px;
+      line-height: 1.48;
+      color: var(--ink-muted);
+    }
+
+    /* 6-Row Alignment Table (Slide 10) */
+    .obj-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 34px;
+    }
+    .obj-table th {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .obj-table td {
+      padding: 15px 12px 15px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 16.5px;
+      vertical-align: middle;
+    }
+    .obj-table td:first-child {
+      width: 44%;
+      color: #4B5563;
+    }
+    .obj-table td:last-child {
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .mini-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #FFFFFF;
+      font-size: 11.5px;
+      font-weight: 500;
+      margin-right: 12px;
+    }
+
+    /* Research 2x2 Grid (Slide 12) */
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 56px;
+      row-gap: 38px;
+      margin-top: 48px;
+    }
+    .research-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+    .research-item h3 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .research-item p {
+      font-size: 16px;
+      line-height: 1.48;
+      color: var(--ink-muted);
+    }
+
+    /* Step-by-Step Numbered List (Slide 13) */
+    .steps-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      margin-top: 38px;
+      max-width: 880px;
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      align-items: baseline;
+    }
+    .step-idx {
+      font-size: 17px;
+      font-weight: 500;
+      color: #4B5563;
+    }
+    .step-row h3 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .step-row p {
+      font-size: 16.5px;
+      line-height: 1.45;
+      color: var(--ink-muted);
+    }
+
+    /* Annual Review Ruled Grid (Slide 14) */
+    .review-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 10px;
+      column-gap: 40px;
+      row-gap: 36px;
+      margin-top: 46px;
     }
-    .m-stat {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      padding: 7px 10px;
-      text-align: center;
+    .review-cell {
+      border-top: 1.5px solid var(--ink);
+      padding-top: 18px;
     }
-    .m-stat strong {
-      display: block;
-      font-family: var(--font-head);
-      font-size: 16px;
-      font-weight: 800;
-      color: #FBBF24;
-      line-height: 1.1;
-    }
-    .m-stat span {
-      font-size: 10.5px;
-      color: #CBD5E1;
-    }
-
-    /* Studio Translation Callout */
-    .studio-box {
-      background: linear-gradient(90deg, #FEF2F0 0%, #FFFBEB 100%);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 10px 10px 0;
-      padding: 11px 14px;
-      margin-top: 10px;
-    }
-    .studio-box > strong {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      margin-bottom: 3px;
-    }
-    .studio-box p {
-      font-size: 12.5px;
-      line-height: 1.42;
-      color: #1E293B;
+    .review-num {
+      font-size: 56px;
       font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .review-label {
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--ink-muted);
     }
 
-    /* Speaker Notes Drawer (Hidden by Default & Always Hidden in Print) */
+    /* Speaker Notes Drawer (Hidden by Default & in Print) */
     .speaker-drawer {
       display: none;
-      background: #0F172A;
-      color: #E2E8F0;
-      border: 1px solid #334155;
-      border-top: none;
-      border-radius: 0 0 12px 12px;
-      padding: 16px 24px;
-      margin: -8px 12px 0;
-      font-size: 13.5px;
-      line-height: 1.6;
+      background: #141414;
+      color: #E5E7EB;
+      border-radius: 0 0 10px 10px;
+      margin-top: -4px;
+      padding: 18px 28px;
+      border-top: 2px solid #FBBF24;
+      font-size: 14.5px;
+      line-height: 1.65;
     }
     body.show-notes .speaker-drawer {
       display: block;
     }
     .speaker-drawer-label {
-      font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #FBBF24;
+      font-weight: 600;
       margin-bottom: 6px;
       display: flex;
       justify-content: space-between;
     }
 
-    /* Q&A Prep Section (Shown when Show Notes is active) */
+    /* Faculty Q&A Prep Panel */
     .qa-prep-panel {
       display: none;
       max-width: 1280px;
-      margin: 36px auto 0;
+      margin: 28px auto 0;
       padding: 0 20px;
     }
     body.show-notes .qa-prep-panel {
       display: block;
     }
     .qa-card {
-      background: #0F172A;
-      color: #F8FAFC;
-      border-radius: 16px;
-      padding: 28px 34px;
-      border: 1px solid #334155;
+      background: #141414;
+      color: #F9FAFB;
+      border-radius: 12px;
+      padding: 32px 40px;
     }
 
-    /* Presentation Single-Slide Mode */
+    /* Fullscreen Single-Slide Mode for Zoom / Google Meet */
     body.present-mode {
-      background: #090D16;
-      padding-bottom: 0;
       overflow: hidden;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
+      padding-bottom: 0;
+      background: #111111;
     }
     body.present-mode .deck-wrap {
-      flex: 1;
-      margin: 0 auto;
-      padding: 14px 24px;
-      width: 100%;
-      max-width: 1400px;
-      justify-content: center;
+      max-width: 100vw;
+      height: calc(100vh - 54px);
+      margin: 0;
+      padding: 16px 24px;
       align-items: center;
-      overflow: hidden;
+      justify-content: center;
     }
     body.present-mode .slide-unit {
       display: none;
-      width: 100%;
-      max-width: 1320px;
+      width: min(100%, calc((100vh - 86px) * 16 / 9));
     }
     body.present-mode .slide-unit.active-slide {
       display: flex;
@@ -497,7 +744,7 @@
       gap: 8px;
     }
 
-    /* Print / 16:9 Landscape PDF Rules */
+    /* Print / 16:9 Landscape PDF Export */
     @page {
       size: 1280px 720px;
       margin: 0;
@@ -536,7 +783,6 @@
         height: 720px !important;
         aspect-ratio: auto !important;
         border-radius: 0 !important;
-        border: none !important;
         box-shadow: none !important;
       }
     }
@@ -544,756 +790,746 @@
 </head>
 <body>
 
-  <!-- Presenter Controls Bar (Hidden in PDF Print) -->
+  <!-- Web Presenter Controls (Hidden in PDF Print) -->
   <header class="deck-topbar">
     <div class="deck-topbar-inner">
       <div class="topbar-brand">
-        <span class="topbar-badge">IIT HYDERABAD • DoD</span>
+        <span class="topbar-pill">IIT HYDERABAD &bull; PoP</span>
         <div>
-          <div class="topbar-title">Full-Time Professor of Practice — Body of Work &amp; Action Plan</div>
-          <div class="topbar-sub">12 Widescreen Slides (~22–24 min) • Aligned to IITH BoG Agenda 40.6.1</div>
+          <div class="topbar-title">Bringing the studio into the classroom &mdash; Balaajee V.R.</div>
+          <div class="topbar-sub">16-Slide Minimalist Deck (Body of Work + Industry Studio Plan of Action)</div>
         </div>
       </div>
 
       <div class="topbar-controls">
         <div class="present-nav-hud">
-          <button type="button" class="ctrl-btn" onclick="stepSlide(-1)">&larr; Prev</button>
-          <span id="slideCounterHud" style="font-family:var(--font-mono);font-size:12px;padding:0 6px;">01 / 12</span>
-          <button type="button" class="ctrl-btn" onclick="stepSlide(1)">Next &rarr;</button>
+          <button class="ctrl-btn" onclick="stepSlide(-1)" title="Previous Slide">&larr; Prev</button>
+          <span id="slideCounterHud" style="font-size:12px;color:#FBBF24;padding:0 6px;font-variant-numeric:tabular-nums;">01 / 16</span>
+          <button class="ctrl-btn" onclick="stepSlide(1)" title="Next Slide">Next &rarr;</button>
         </div>
-        <button type="button" id="btnPresent" class="ctrl-btn" onclick="togglePresentMode()">&#9654; Slide Mode (&larr;/&rarr;)</button>
-        <button type="button" id="btnNotes" class="ctrl-btn" onclick="toggleNotes()">&#127897; Show Speaker Script &amp; Q&amp;A</button>
-        <a href="IIT_Hyderabad_PoP_Presentation_Balaajee_VR.pdf" download class="ctrl-btn primary">&darr; Download 16:9 PDF</a>
+        <button id="btnPresent" class="ctrl-btn" onclick="togglePresentMode()">&#9654; Slide Mode (&larr;/&rarr;)</button>
+        <button id="btnNotes" class="ctrl-btn" onclick="toggleNotes()">&#127897; Show Speaker Script &amp; Q&amp;A</button>
+        <a class="ctrl-btn primary" href="IIT_Hyderabad_PoP_Presentation_Balaajee_VR.pdf" download>&#11015; Download 16:9 PDF</a>
       </div>
     </div>
   </header>
 
-  <main class="deck-wrap" id="deckWrap">
+  <main class="deck-wrap">
 
-    <!-- ===================================================================
-         SLIDE 01: COVER SLIDE
-         =================================================================== -->
+    <!-- ==================== SLIDE 01: TITLE ==================== -->
     <section class="slide-unit active-slide">
-      <div class="slide dark">
-        <div class="s-top">
-          <div class="s-kicker">INDIAN INSTITUTE OF TECHNOLOGY HYDERABAD &bull; DEPARTMENT OF DESIGN</div>
-          <div class="s-num">CANDIDATURE PRESENTATION &bull; 01 / 12</div>
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>1 / 16</span>
         </div>
 
-        <div class="s-body">
-          <div style="display:grid;grid-template-columns:1.35fr 0.65fr;gap:36px;align-items:center;">
+        <div class="s-content">
+          <h1 class="hero-title">Bringing the studio<br>into the classroom</h1>
+          <div class="hero-sub" style="max-width:860px;">
+            Body of work and plan of action for Professor of Practice,<br>
+            Department of Design, IIT Hyderabad.<br>
+            <span style="color:#111111;font-weight:500;">Balaajee V.R.</span>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 1</span><span>~45 sec</span></div>
+        "Good morning / afternoon Dr. Shiva Ji, Prof. Delwyn, and faculty members of the Department of Design. Thank you for inviting me to interact with you today. Over the next 18 minutes, I’ll briefly walk through my body of work across 18 years in enterprise software and industrial UX, and share a practical plan for bringing a live Industry Studio model into the classroom at IIT Hyderabad."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 02: CREDENTIALS ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>2 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">18 years building enterprise products, and the teams behind them</h2>
+
+          <div class="stats-row-4">
             <div>
-              <div style="display:inline-block;background:rgba(251,191,36,0.14);border:1px solid rgba(251,191,36,0.38);color:#FBBF24;font-family:var(--font-mono);font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:6px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;">
-                Full-Time Professor of Practice &bull; Interaction &amp; Enterprise Systems
-              </div>
-              <h1 style="font-family:var(--font-head);font-size:40px;font-weight:800;line-height:1.12;letter-spacing:-0.03em;color:#FFFFFF;margin-bottom:16px;">
-                Bridging Enterprise HCI, Agentic AI &amp; Design Systems with Studio Pedagogy
-              </h1>
-              <p style="font-size:16px;line-height:1.55;color:#CBD5E1;margin-bottom:26px;max-width:690px;">
-                Body of Work, Practice-Led Curriculum Proposals, and 3-Year Departmental Growth Plan aligned with IIT Hyderabad’s Fractal Academics &amp; Agenda 40.6.1 Framework.
-              </p>
-
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
-                <div class="card" style="padding:12px 14px;">
-                  <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:#FBBF24;">18+ Yrs</div>
-                  <div style="font-size:11.5px;color:#CBD5E1;">Industry Practice</div>
-                </div>
-                <div class="card" style="padding:12px 14px;">
-                  <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:#FFFFFF;">25+</div>
-                  <div style="font-size:11.5px;color:#CBD5E1;">Products Shipped</div>
-                </div>
-                <div class="card" style="padding:12px 14px;">
-                  <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:#FFFFFF;">50+</div>
-                  <div style="font-size:11.5px;color:#CBD5E1;">Designers Mentored</div>
-                </div>
-                <div class="card" style="padding:12px 14px;">
-                  <div style="font-family:var(--font-head);font-size:22px;font-weight:800;color:#FBBF24;">1.5 Yrs</div>
-                  <div style="font-size:11.5px;color:#CBD5E1;">Engg. Faculty Roots</div>
-                </div>
-              </div>
+              <div class="big-num">18+</div>
+              <div class="big-num-label">Years in software &amp; design</div>
             </div>
-
-            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:18px;padding:22px;text-align:center;">
-              <img src="profile-smile-box.jpg" alt="Balaajee V.R." style="width:148px;height:148px;border-radius:16px;object-fit:cover;border:2px solid rgba(251,191,36,0.6);margin:0 auto 14px;display:block;">
-              <div style="font-family:var(--font-head);font-size:21px;font-weight:800;color:#FFFFFF;">Balaajee V.R.</div>
-              <div style="font-size:13px;color:#FBBF24;font-weight:600;margin-top:2px;">Senior UI/UX Design Manager (Ex-IBM)</div>
-              <div style="font-size:12px;color:#CBD5E1;margin-top:6px;">B.E. in Information Technology &bull; MS University</div>
-              <div style="height:1px;background:rgba(255,255,255,0.12);margin:14px 0;"></div>
-              <div style="font-size:11.5px;color:#94A3B8;line-height:1.5;">
-                IBM Software Labs &bull; Zebra Technologies<br>
-                ZF Wabco &bull; Ericsson &bull; Infosys<br>
-                Former Lecturer (Anna Univ. Affiliated)
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Balaajee V.R. &bull; vrbberaj@gmail.com &bull; +91 9994761293</span>
-          <span>Full-Time On-Campus Commitment &bull; Kandi, Sangareddy</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 01</span><span>~1.5 min</span></div>
-        "Good morning/afternoon Dr. Shiva Ji, Prof. Delwyn, and respected faculty members of the Department of Design. Thank you for inviting me today. Over the next 20 minutes, I’ll walk through two things: first, selected enterprise systems I’ve shipped across 18 years at IBM, Zebra, ZF Wabco, Ericsson, and Infosys — and second, a concrete 3-year Plan of Action aligned with IIT Hyderabad’s Professor of Practice guidelines, showing how I can contribute full-time to your students, labs, industry consultancy, and placements."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 02: WHY ACADEMIA NOW & STRATEGIC FIT WITH DoD IITH
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT I &bull; MOTIVATION &amp; DEPARTMENTAL ALIGNMENT</div>
-          <div class="s-num">02 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">A Full-Circle Return to Teaching — Plugging a High-Demand Industry Gap</h2>
-          <p class="s-lead">I began my career in the engineering classroom before spending 18+ years building complex global software. Returning full-time to IIT Hyderabad lets me bring live enterprise practice directly into B.Des, M.Des, and PhD studios.</p>
-
-          <div class="grid-2">
-            <div class="card">
-              <span class="tag-pill gold">1. Full-Circle Academic Foundation</span>
-              <h3>From Engineering Lecturer to Global Design Leader</h3>
-              <ul class="clean-list" style="margin-top:10px;">
-                <li><strong>Classroom Roots (2004–2006):</strong> Served 1.5 years as Lecturer (IT) &amp; Teaching Faculty at an Anna University affiliated engineering college — already grounded in syllabus design, grading rubrics, and student mentoring.</li>
-                <li><strong>Engineering + Design Fluency:</strong> Hold a <strong>B.E. in Information Technology</strong> plus 4+ years in software engineering at Infosys before 14+ years leading global UX — allowing effortless collaboration across Design and CSE/AI departments.</li>
-                <li><strong>Mentorship at Scale:</strong> Hired, coached, and reviewed portfolios for <strong>50+ product designers</strong>, most recently managing a 14-person multidisciplinary UX studio at IBM Software Labs.</li>
-                <li><strong>Full-Time Kandi Commitment:</strong> Ready to relocate and dedicate 100% of my professional focus on-campus at IIT Hyderabad.</li>
-              </ul>
-            </div>
-
-            <div class="card-white" style="border-color:#FBC9C0;background:#FFFDFD;">
-              <span class="tag-pill">2. Complementing DoD IITH’s Strengths</span>
-              <h3>Adding Enterprise Systems, Agentic AI &amp; DesignOps Depth</h3>
-              <p style="margin-bottom:10px;">DoD IITH already excels in Visual Communication, Film &amp; Animation, Cultural Heritage, Ergonomics, and Industrial Design. My practice adds complementary depth where top tech employers hire heavily:</p>
-              <div class="grid-2" style="gap:10px;">
-                <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;">
-                  <strong style="font-size:12.5px;color:var(--navy);display:block;">Agentic &amp; Human-in-the-Loop AI</strong>
-                  <span style="font-size:11.5px;color:var(--text-muted);">Autonomy calibration, reasoning traces, error recovery &amp; AI quality evals.</span>
-                </div>
-                <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;">
-                  <strong style="font-size:12.5px;color:var(--navy);display:block;">Design Systems &amp; Token CI/CD</strong>
-                  <span style="font-size:11.5px;color:var(--text-muted);">Multi-brand Figma-to-React/Web-Component pipelines at 45-squad scale.</span>
-                </div>
-                <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;">
-                  <strong style="font-size:12.5px;color:var(--navy);display:block;">Safety-Critical IoT &amp; Mobility HMI</strong>
-                  <span style="font-size:11.5px;color:var(--text-muted);">Sub-second truck cockpit glance budgets &amp; rugged industrial handhelds.</span>
-                </div>
-                <div style="background:#F8FAFC;border:1px solid var(--border);border-radius:8px;padding:10px;">
-                  <strong style="font-size:12.5px;color:var(--navy);display:block;">Enterprise SaaS &amp; GCC Network</strong>
-                  <span style="font-size:11.5px;color:var(--text-muted);">Direct bridges to Hyderabad, Bengaluru &amp; global product design orgs.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Balaajee V.R. &bull; Full-Time Professor of Practice Candidature</span>
-          <span>Department of Design &bull; IIT Hyderabad</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 02</span><span>~2 min</span></div>
-        "Why full-time academia now? Teaching isn't a side interest for me — I actually started my career teaching Information Technology for a year and a half in an Anna University affiliated engineering college before joining Infosys. After 18 years shipping enterprise products and mentoring over 50 designers, I want to bring that real-world studio rigor back into the classroom full-time. Looking at DoD IITH’s current faculty strengths across visual design, animation, heritage, and product design, my goal is not to duplicate what you already do well, but to add complementary depth in complex enterprise software, agentic AI UX, design systems engineering, and connected mobility HMI."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 03: 18-YEAR INDUSTRY & STUDIO LEADERSHIP SNAPSHOT
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT I &bull; CREDENTIALS &amp; STUDIO LEADERSHIP CULTURE</div>
-          <div class="s-num">03 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">18+ Years Across Global R&amp;D Labs — Practicing Studio Critique Every Week</h2>
-          <p class="s-lead">Exceeding IITH’s 15-year practitioner benchmark across cloud software, cybersecurity, telecom, industrial IoT, automotive cockpits, and healthcare UX research.</p>
-
-          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;">
-            <div class="card-white" style="padding:12px;">
-              <img src="logos/ibm.svg" alt="IBM" style="height:20px;margin-bottom:8px;">
-              <div style="font-size:12.5px;font-weight:800;color:var(--navy);">IBM Software Labs</div>
-              <div style="font-size:11px;color:var(--accent);font-weight:600;">Sr. Design Manager • 2024–26</div>
-              <p style="font-size:11.2px;margin-top:5px;">Directed 14-designer studio; Watsonx Agentic AI UX &amp; Carbon token governance.</p>
-            </div>
-            <div class="card-white" style="padding:12px;">
-              <img src="logos/zebra.svg" alt="Zebra" style="height:20px;margin-bottom:8px;">
-              <div style="font-size:12.5px;font-weight:800;color:var(--navy);">Zebra Technologies</div>
-              <div style="font-size:11px;color:var(--accent);font-weight:600;">Product Design Mgr • 2021–24</div>
-              <p style="font-size:11.2px;margin-top:5px;">38,000+ rugged IoT handhelds, VisibilityIQ fleet UX &amp; Lean UX sprints.</p>
-            </div>
-            <div class="card-white" style="padding:12px;">
-              <img src="logos/zf.svg" alt="ZF Wabco" style="height:20px;margin-bottom:8px;">
-              <div style="font-size:12.5px;font-weight:800;color:var(--navy);">ZF Wabco</div>
-              <div style="font-size:11px;color:var(--accent);font-weight:600;">UI/UX Sr. Specialist • 2020–21</div>
-              <p style="font-size:11.2px;margin-top:5px;">Commercial truck cockpit HMI &amp; telematics under &lt;1.2s safety glance budgets.</p>
-            </div>
-            <div class="card-white" style="padding:12px;">
-              <img src="logos/ericsson.svg" alt="Ericsson" style="height:20px;margin-bottom:8px;">
-              <div style="font-size:12.5px;font-weight:800;color:var(--navy);">Ericsson Global</div>
-              <div style="font-size:11px;color:var(--accent);font-weight:600;">UI/UX Designer • 2019–20</div>
-              <p style="font-size:11.2px;margin-top:5px;">45-country Telecom CPQ &amp; Design System; 1st Place Global Hack-fest.</p>
-            </div>
-            <div class="card-white" style="padding:12px;">
-              <img src="logos/infosys.svg" alt="Infosys" style="height:20px;margin-bottom:8px;">
-              <div style="font-size:12.5px;font-weight:800;color:var(--navy);">Infosys + Early R&amp;D</div>
-              <div style="font-size:11px;color:var(--accent);font-weight:600;">2004–19 • + Anna Univ.</div>
-              <p style="font-size:11.2px;margin-top:5px;">Sr. Software Engineer (Infosys), Samsung US Healthcare UX, Creative Head &amp; Lecturer.</p>
-            </div>
-          </div>
-
-          <div class="grid-3">
-            <div style="position:relative;border-radius:10px;overflow:hidden;height:168px;border:1px solid var(--border);">
-              <img src="assets/gallery/gallery_real_zebra_stage_solo.jpg" alt="Keynote & Townhall Teaching" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;">
-              <div style="position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(15,23,42,0.9));color:#FFF;padding:8px 12px;font-size:11.5px;font-weight:600;">
-                Design Townhalls &amp; Practice Lectures
-              </div>
-            </div>
-            <div style="position:relative;border-radius:10px;overflow:hidden;height:168px;border:1px solid var(--border);">
-              <img src="assets/gallery/gallery_whiteboard_sprint.jpg" alt="Whiteboard Studio Sprint" style="width:100%;height:100%;object-fit:cover;">
-              <div style="position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(15,23,42,0.9));color:#FFF;padding:8px 12px;font-size:11.5px;font-weight:600;">
-                Hands-On Whiteboard Architecture Sprints
-              </div>
-            </div>
-            <div style="position:relative;border-radius:10px;overflow:hidden;height:168px;border:1px solid var(--border);">
-              <img src="assets/gallery/gallery_townhall_review.jpg" alt="Multidisciplinary Critique" style="width:100%;height:100%;object-fit:cover;">
-              <div style="position:absolute;inset:auto 0 0 0;background:linear-gradient(transparent,rgba(15,23,42,0.9));color:#FFF;padding:8px 12px;font-size:11.5px;font-weight:600;">
-                Cross-Functional Design &amp; Engineering Critiques
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Balaajee V.R. &bull; 18+ Years Industry &amp; Teaching Trajectory</span>
-          <span>Exceeds 15-Year PoP Criterion (Agenda 40.6.1)</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 03</span><span>~1.5 min</span></div>
-        "Here is my 18-year arc at a glance. Across Infosys, Ericsson, ZF Wabco, Zebra Technologies, and IBM Software Labs, I’ve worked across banking, telecom, commercial vehicles, warehouse hardware, cybersecurity, and enterprise AI. Just as important for a studio department like yours: running whiteboard sprints, live design critiques, and cross-functional reviews with engineers has been my weekly craft for over a decade. Next, let me show four concrete systems from my body of work — and how each one translates into studio teaching at IIT Hyderabad."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 04: BODY OF WORK 01 — IBM AGENTIC AI UX
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT II &bull; BODY OF WORK (01 / 04) &bull; IBM SOFTWARE LABS</div>
-          <div class="s-num">04 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Designing Supervised Agentic AI — Beyond the Empty Prompt Box</h2>
-          <p class="s-lead">IBM Watsonx in Rhapsody Systems Engineering &amp; MaaS360 Security — turning opaque AI automation into verifiable, human-in-the-loop enterprise workflows.</p>
-
-          <div class="grid-2-wide" style="align-items:stretch;">
-            <div class="case-frame">
-              <img src="screenshots/ibm_maas360_ai_endpoint.png" alt="IBM MaaS360 Agentic AI UI">
-              <div class="case-metrics-row">
-                <div class="m-stat"><strong>61 &rarr; 89</strong><span>SUS Usability Score</span></div>
-                <div class="m-stat"><strong>82%</strong><span>Faster Threat Triage</span></div>
-                <div class="m-stat"><strong>74%</strong><span>Faster SysML Drafting</span></div>
-              </div>
-            </div>
-
-            <div style="display:flex;flex-direction:column;justify-content:space-between;">
-              <div class="card" style="padding:14px 16px;">
-                <span class="tag-pill">What Failed First &rarr; How We Redesigned It</span>
-                <ul class="clean-list">
-                  <li><strong>Initial Failure:</strong> Our early 94%-accurate autonomous AI remediation prototype scored <strong>61 SUS</strong> — aerospace &amp; security engineers refused to approve black-box actions that could lock 10,000+ endpoints.</li>
-                  <li><strong>3-Tier Calibrated Autonomy:</strong> Replaced binary auto-execute with confidence-tiered agency (<strong>&ge;90%</strong> staged 1-click approve &bull; <strong>70–89%</strong> side-by-side diff &bull; <strong>&lt;70%</strong> guided manual fallback).</li>
-                  <li><strong>Verifiable Output &amp; Evals:</strong> Added source-linked reasoning traces, blast-radius previews, 1-click undo, and edit-distance quality evals co-defined with data science.</li>
-                </ul>
-              </div>
-
-              <div class="studio-box">
-                <strong>&rarr; Translation to DoD IITH Studio Brief (M.Des / B.Des Level 4)</strong>
-                <p>Students move past designing generic "chatbots" — learning to prototype expectation-setting, agent autonomy boundaries, latency states, graceful error recovery, and AI quality evaluation rubrics in live code.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Body of Work 01 &bull; Enterprise Agentic AI &amp; Human-in-the-Loop Control</span>
-          <span>Directly informs proposed AI-UX Studio &amp; ExD Lab Research</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 04</span><span>~2 min</span></div>
-        "First, at IBM Software Labs, my team led the UX for agentic AI across Rhapsody Systems Engineering and MaaS360 cybersecurity. Interestingly, our first prototype failed in testing — even though the model was 94% accurate, security admins refused to click 'Apply' because they couldn't see why the AI chose an action or what would break if it was wrong. We redesigned the interaction around three confidence tiers, inline blast-radius diffs, and one-click rollback, jumping our usability score from 61 to 89 and cutting threat triage time by 82%. In an IITH studio, this teaches students that AI UX isn't about chat boxes — it's about calibrating autonomy, verification, and failure recovery."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 05: BODY OF WORK 02 — IBM CARBON DESIGN TOKENS
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT II &bull; BODY OF WORK (02 / 04) &bull; DESIGN SYSTEMS ENGINEERING</div>
-          <div class="s-num">05 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Multi-Brand Design Token Architecture Across 45+ Engineering Squads</h2>
-          <p class="s-lead">Bridging Figma specifications and production code (React, Angular &amp; Web Components) via automated CI/CD token pipelines at IBM Software Labs.</p>
-
-          <div class="grid-2-wide" style="align-items:stretch;">
-            <div class="case-frame">
-              <img src="screenshots/transformation-ibm-carbon.png" alt="IBM Carbon Multi-Brand Token Architecture" style="object-fit:contain;background:#FFFFFF;padding:6px;">
-              <div class="case-metrics-row">
-                <div class="m-stat"><strong>4w &rarr; 1d</strong><span>Design-to-Code Handoff</span></div>
-                <div class="m-stat"><strong>320+</strong><span>Hardcoded Overrides Cut</span></div>
-                <div class="m-stat"><strong>94%</strong><span>Squad Adoption</span></div>
-              </div>
-            </div>
-
-            <div style="display:flex;flex-direction:column;justify-content:space-between;">
-              <div class="card" style="padding:14px 16px;">
-                <span class="tag-pill navy">Systems Architecture &amp; Org Governance</span>
-                <ul class="clean-list">
-                  <li><strong>The Bottleneck:</strong> Acquired software products ran conflicting UI frameworks, causing 4-week handoff delays and WCAG contrast regressions across dark/light themes.</li>
-                  <li><strong>3-Layer Token Pipeline:</strong> Architected <em>Global &rarr; Semantic &rarr; Component</em> W3C JSON tokens syncing Figma directly to GitHub PRs across React, Angular, and Web Components.</li>
-                  <li><strong>What Went Wrong &amp; Pivot:</strong> Top-down governance mandates stalled initially; shifting to automated CI lint checks and co-owned guild clinics drove 94% voluntary squad adoption.</li>
-                </ul>
-              </div>
-
-              <div class="studio-box">
-                <strong>&rarr; Translation to DoD IITH Studio Brief (Interdisciplinary Design + CSE)</strong>
-                <p>Most design graduates hand off static Figma frames that break in engineering. I will train IITH students in production token architecture, accessibility engineering (WCAG 2.2 AA), and live code handoffs.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Body of Work 02 &bull; Scalable Design Systems &amp; Front-End Token Engineering</span>
-          <span>Bridges DoD Interaction Design &amp; IITH Computer Science</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 05</span><span>~2 min</span></div>
-        "Second is systems engineering for design. Across 45 engineering squads at IBM, static Figma handoffs were taking four weeks and creating hundreds of accessibility bugs across React and Angular apps. Because of my IT engineering background, I worked directly with principal front-end architects to build a three-layer JSON design token pipeline wired straight into GitHub CI — cutting handoff from four weeks to one day. For IITH students, this bridges a massive industry gap: teaching designers how software is actually architected in production."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 06: BODY OF WORK 03 — ZEBRA INDUSTRIAL IoT
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT II &bull; BODY OF WORK (03 / 04) &bull; ZEBRA TECHNOLOGIES</div>
-          <div class="s-num">06 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Physical-Digital Ergonomics for 38,000+ Rugged Industrial Handhelds</h2>
-          <p class="s-lead">Designing VisibilityIQ fleet intelligence and sub-second barcode/RFID workflows for gloved workers in noisy warehouses, loading docks, and -20&deg;C cold storage.</p>
-
-          <div class="grid-2-wide" style="align-items:stretch;">
-            <div class="case-frame">
-              <img src="screenshots/behance/zebra_iot_dashboard.png" alt="Zebra VisibilityIQ Industrial IoT UX">
-              <div class="case-metrics-row">
-                <div class="m-stat"><strong>38,000+</strong><span>Rugged Devices Live</span></div>
-                <div class="m-stat"><strong>84%</strong><span>Fewer Pairing Failures</span></div>
-                <div class="m-stat"><strong>&lt;1 Sec</strong><span>Scan Feedback Loop</span></div>
-              </div>
-            </div>
-
-            <div style="display:flex;flex-direction:column;justify-content:space-between;">
-              <div class="card" style="padding:14px 16px;">
-                <span class="tag-pill gold">Hardware-Software Co-Design &amp; Field Ethnography</span>
-                <ul class="clean-list">
-                  <li><strong>When Clean Lab UI Failed:</strong> Minimalist consumer-style touch targets failed completely on wet loading docks where workers wore 4mm protective freezer gloves under harsh glare.</li>
-                  <li><strong>Multimodal Ergonomic Redesign:</strong> Shifted to high-contrast thumb-zone triggers, hardware scan-key mapping, haptic + audio confirmation, and NFC tap-to-pair recovery.</li>
-                  <li><strong>Fleet Scale:</strong> Paired frontline Android handheld UX with cloud telemetry dashboards managing battery health and device loss across global logistics hubs.</li>
-                </ul>
-              </div>
-
-              <div class="studio-box">
-                <strong>&rarr; Translation to DoD IITH Labs (Product Design + Interaction + Ergonomics)</strong>
-                <p>Creates natural co-teaching projects between DoD’s Industrial/Product Design faculty and Interaction Design — testing physical-digital hardware ergonomics under real environmental stressors.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Body of Work 03 &bull; Embodied Interaction, Multimodal Feedback &amp; Industrial IoT</span>
-          <span>Synergy with DoD Product Design &amp; Usability/Ergonomics Lab</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 06</span><span>~2 min</span></div>
-        "Third, at Zebra Technologies, I managed product design across rugged handheld hardware and cloud IoT dashboards used on 38,000 warehouse devices. Early on, a clean desktop-style UI failed completely in field testing because workers in minus-20-degree freezers wear thick protective gloves and rely on physical triggers, haptics, and peripheral sound rather than delicate touchscreens. Redesigning around physical-digital ergonomics cut Bluetooth pairing failures by 84%. At DoD IITH, this connects Interaction Design directly with your Product Design and Ergonomics labs."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 07: BODY OF WORK 04 — ZF WABCO & ERICSSON
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT II &bull; BODY OF WORK (04 / 04) &bull; SAFETY-CRITICAL HMI &amp; ENTERPRISE LOGIC</div>
-          <div class="s-num">07 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Cognitive Glance Budgets &amp; High-Density Decision Workflows</h2>
-          <p class="s-lead">From highway commercial vehicle instrument clusters (ZF Wabco) to 45-country telecom configuration engines (Ericsson).</p>
-
-          <div class="grid-2" style="align-items:stretch;">
-            <div class="card-white" style="display:flex;flex-direction:column;justify-content:space-between;padding:14px;">
-              <div>
-                <img src="screenshots/transformation-zf-wabco.png" alt="ZF Wabco Commercial Vehicle Cluster" style="width:100%;height:175px;object-fit:contain;background:#0B1120;padding:4px;border-radius:8px;border:1px solid var(--border);margin-bottom:10px;">
-                <span class="tag-pill">ZF Wabco &bull; Automotive Cockpit HMI</span>
-                <h3>Sub-Second Driver Glance Architecture (2.8s &rarr; 0.94s)</h3>
-                <p style="margin-top:4px;">Synthesized ADAS, air-brake pressure, and telematics alerts strictly under NHTSA’s <strong>&lt;1.2-second eyes-off-road</strong> safety threshold — suppressing non-critical telemetry during active highway braking.</p>
-              </div>
-              <div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);font-weight:700;margin-top:8px;">
-                Pedagogy: Empirical human-factors &amp; eye-glance testing in mobility UX
-              </div>
-            </div>
-
-            <div class="card-white" style="display:flex;flex-direction:column;justify-content:space-between;padding:14px;">
-              <div>
-                <img src="assets/covers/ericsson_dashboard.png" alt="Ericsson Enterprise CPQ" style="width:100%;height:175px;object-fit:contain;background:#F8FAFC;padding:4px;border-radius:8px;border:1px solid var(--border);margin-bottom:10px;">
-                <span class="tag-pill navy">Ericsson Global &bull; 45-Country Telecom CPQ</span>
-                <h3>Replacing 14-Tab Spreadsheets (6 Days &rarr; 42 Min)</h3>
-                <p style="margin-top:4px;">Re-architected fragile 5G carrier quoting workbooks into a keyboard-first, real-time validation engine across 45 countries — eliminating pricing formula errors (1st Place, Ericsson Global Hack-fest).</p>
-              </div>
-              <div style="font-family:var(--font-mono);font-size:11px;color:#0369A1;font-weight:700;margin-top:8px;">
-                Pedagogy: Information architecture for high-density expert workflows
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Body of Work 04 &bull; Mobility Human Factors &amp; Complex Systems Architecture</span>
-          <span>Transitioning from Shipped Practice &rarr; 3-Year IITH Plan of Action</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 07</span><span>~1.5 min</span></div>
-        "Finally, two quick examples of extreme constraints: at ZF Wabco, we designed commercial truck instrument clusters where every alert had to be read in under 1.2 seconds so drivers kept their eyes on the highway — cutting glance time from 2.8 seconds down to 0.94 seconds. And at Ericsson, we turned a fragile 14-tab 5G pricing spreadsheet into a keyboard-first web engine across 45 countries, cutting quote turnaround from six days to 42 minutes. Now, let me show how all of this translates into my concrete Plan of Action for IIT Hyderabad across your 40.6.1 pillars."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 08: ACTION PLAN PILLAR 1 — COURSES & FRACTAL ACADEMICS
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT III &bull; PLAN OF ACTION (PILLAR 1) &bull; CURRICULUM &amp; FRACTAL ACADEMICS</div>
-          <div class="s-num">08 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Practice-Led Studios &amp; Agile 1–2 Credit "Fractal" Modules</h2>
-          <p class="s-lead">Addressing Agenda 40.6.1 (Objective a &amp; Role 1): Ready-to-launch studios and modular fractal electives for B.Des, M.Des (Interaction / Practice), PhD, and B.Tech Design Minors.</p>
-
-          <div class="grid-2" style="margin-bottom:12px;">
-            <div class="card-white" style="border-left:4px solid var(--accent);">
-              <span class="tag-pill">3-Credit Core / Elective Studio I</span>
-              <h3>Designing Human-Centered &amp; Agentic AI Systems</h3>
-              <p style="margin-bottom:6px;"><strong>Target:</strong> M.Des (Interaction / Practice) &amp; B.Des Sem 6–7</p>
-              <ul class="clean-list">
-                <li>Moving beyond prompt boxes: structured intent, autonomy tiers (suggest vs. draft vs. act), streaming latency &amp; confidence cues.</li>
-                <li>Designing graceful failure recovery, privacy/memory controls, EU AI Act fairness, and co-defining AI eval rubrics on live LLM prototypes.</li>
-              </ul>
-            </div>
-
-            <div class="card-white" style="border-left:4px solid #0284C7;">
-              <span class="tag-pill navy">3-Credit Core / Elective Studio II</span>
-              <h3>Enterprise HCI, Design Systems &amp; Token Engineering</h3>
-              <p style="margin-bottom:6px;"><strong>Target:</strong> B.Des Sem 5–7, M.Des &amp; B.Tech Design Minors</p>
-              <ul class="clean-list">
-                <li>Information architecture for complex data-dense workflows (fintech, healthcare, telecom, SaaS) &amp; empirical usability testing.</li>
-                <li>Building W3C multi-brand JSON token pipelines from Figma to accessible (WCAG 2.2 AA) React/Web Component codebases.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="grid-3">
-            <div class="card" style="padding:12px 14px;">
-              <span class="tag-pill gold">1-Credit Fractal Module</span>
-              <h3 style="font-size:14px;">Safety-Critical Mobility &amp; IoT HMI</h3>
-              <p style="font-size:12px;">Glance budgets (&lt;1.2s), multimodal haptic/audio cues, and rugged field ergonomics for automotive &amp; industrial devices.</p>
-            </div>
-            <div class="card" style="padding:12px 14px;">
-              <span class="tag-pill gold">1-Credit Fractal Module</span>
-              <h3 style="font-size:14px;">AI-Native UX Research &amp; Code Prototyping</h3>
-              <p style="font-size:12px;">PII-safe research synthesis, stress-testing edge cases, and building functional browser prototypes in days instead of static screens.</p>
-            </div>
-            <div class="card" style="padding:12px 14px;">
-              <span class="tag-pill gold">2-Credit Fractal Module</span>
-              <h3 style="font-size:14px;">DesignOps, Product Metrics &amp; Case Storytelling</h3>
-              <p style="font-size:12px;">Agile/PI rituals, measuring SUS/task-time/business ROI, and framing industry-grade product portfolios.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Agenda 40.6.1 Alignment &bull; Practice-Based Pedagogical Modules &amp; Courses</span>
-          <span>Co-taught or standalone per Departmental timetable needs</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 08</span><span>~2.5 min</span></div>
-        "Moving into my Plan of Action against the 40.6.1 guidelines: first is curriculum. One thing I deeply admire about IIT Hyderabad is your Fractal Academics model — breaking emerging topics into agile 1- and 2-credit modules alongside deep studios. I’ve prepared two full 3-credit studios — one on Designing Agentic AI Systems and one on Enterprise HCI & Design Token Engineering — plus three compact 1-to-2 credit Fractal electives on Safety-Critical Mobility HMI, AI-Native Code Prototyping, and DesignOps. These can also welcome B.Tech students taking a Design Minor, creating true cross-pollination on campus."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 09: ACTION PLAN PILLAR 2 — CO-SUPERVISION, R&D & LAB SYNERGY
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT III &bull; PLAN OF ACTION (PILLAR 2) &bull; RESEARCH, LABS &amp; JOINT PhDs</div>
-          <div class="s-num">09 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Co-Supervising Scholars &amp; Scaling Translational R&amp;D Inside DoD Labs</h2>
-          <p class="s-lead">Addressing Agenda 40.6.1 (Objectives b, c, d &amp; Roles 2–3): Plugging directly into DoD’s existing labs as a collaborative Co-Investigator and practice co-supervisor.</p>
-
-          <div class="grid-3">
-            <div class="card-white">
-              <span class="tag-pill">UG / PG &amp; Practice Tracks</span>
-              <h3>B.Des &amp; M.Des Studio Capstones</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Supervise B.Des Level-4 graduation projects &amp; M.Des Interaction theses grounded in real enterprise problem statements.</li>
-                <li>Mentor <strong>M.Des by Practice / Project</strong> cohorts on shipping testable, production-grade systems rather than speculative mockups.</li>
-                <li>Establish bi-weekly cross-cohort design critique rituals modeled on IBM &amp; Zebra studio reviews.</li>
-              </ul>
-            </div>
-
-            <div class="card-white">
-              <span class="tag-pill navy">Objective (d) &bull; Doctoral Growth</span>
-              <h3>Industry-Sponsored Joint PhDs</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li><strong>Co-supervise PhD scholars</strong> alongside regular DoD faculty — pairing academic methodology with enterprise deployment testbeds.</li>
-                <li>Actively recruit <strong>industry-sponsored PhD candidates</strong> from Hyderabad &amp; Bengaluru R&amp;D centers (staff UX researchers &amp; architects upgrading to doctoral research at IITH).</li>
-                <li>Target domains: Human-AI calibration, accessible public digital infrastructure (DPI), and cognitive driver safety.</li>
-              </ul>
-            </div>
-
-            <div class="card-white">
-              <span class="tag-pill gold">Co-PI Synergy Across DoD Labs</span>
-              <h3>Translational Grants with Faculty</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li><strong>ExD Lab &amp; INDReA:</strong> Empirical studies on trust, cognitive load &amp; multimodal spatial/cockpit interfaces.</li>
-                <li><strong>CoDE &amp; DIC:</strong> Grassroots multilingual AI interfaces, healthcare diagnostics UX &amp; MSME digital tooling.</li>
-                <li><strong>Joint Grant Proposals (Co-PI):</strong> Co-author applied proposals for <em>IndiaAI Mission</em>, <em>MeitY</em>, <em>DST</em>, and defense/mobility PSUs.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Agenda 40.6.1 Alignment &bull; UG/PG Supervision, Joint PhD Enrolment &amp; Co-PI R&amp;D</span>
-          <span>100% Collaborative with Regular DoD Faculty</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 09</span><span>~2 min</span></div>
-        "Second, research and supervision. I view a Professor of Practice as a force multiplier for regular faculty, never a silo. I’m excited to plug directly into your existing labs — ExD Lab, INDReA, CoDE, and DIC — as a Co-Investigator on applied grants under IndiaAI and MeitY, and to co-supervise B.Des, M.Des, and PhD scholars. Specifically on Objective D in your document — enrolling industry-sponsored joint doctoral students — many senior designers and researchers in Hyderabad and Bengaluru GCCs want to pursue a sponsored PhD while solving an industry problem, and my network lets us attract those candidates directly to IITH."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 10: ACTION PLAN PILLAR 3 — INDUSTRY, CONSULTANCY, CSR & CoE
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT III &bull; PLAN OF ACTION (PILLAR 3) &bull; INDUSTRY, CONSULTANCY &amp; CoE</div>
-          <div class="s-num">10 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Unlocking the Hyderabad–Bengaluru Corridor for Consultancy &amp; Sponsored Studios</h2>
-          <p class="s-lead">Addressing Agenda 40.6.1 (Objectives e, f &amp; Roles 4, 5, 7): Turning IIT Hyderabad’s proximity to HITEC City/Gachibowli GCCs into live projects, consulting revenue, and CSR partnerships.</p>
-
-          <div class="grid-3">
-            <div class="card">
-              <span class="tag-pill">Role 4 &amp; Obj (e, f)</span>
-              <h3>Live Industry Capstones &amp; 6-Month Internships</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Bring <strong>real, redacted enterprise problem briefs</strong> from SaaS, GCC, automotive, and IoT partners into semester studio courses.</li>
-                <li>Build structured pathways for <strong>semester-long B.Des / M.Des internships</strong> and industry-sponsored thesis fellowships across Hyderabad, Bengaluru, and Chennai R&amp;D labs.</li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <span class="tag-pill navy">Role 5 &bull; Revenue Generation</span>
-              <h3>Industrial UX &amp; AI Consultancy</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Attract paid <strong>institutional consulting assignments</strong> channeled through IITH / CoDE:
-                  <br>&bull; Enterprise AI Copilot UX &amp; Trust Audits
-                  <br>&bull; Multi-Brand Design System Architecture
-                  <br>&bull; Usability &amp; Ergonomic Certification for PSUs, MedTech &amp; Mobility startups.</li>
-                <li>Mentor IITH student founders (i-TIC / DIC) on product-market UX validation.</li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <span class="tag-pill gold">Role 7 &bull; CSR &amp; CoE Seed Vision</span>
-              <h3>Applied Human-AI Systems Cell</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Partner with HoD &amp; regular faculty to pitch <strong>corporate CSR funding</strong> for an <em>Applied AI-UX &amp; Accessible Public Systems Initiative</em> within DoD.</li>
-                <li>Focus CSR pitches on high-impact national priorities: <strong>Accessible Digital Public Infrastructure, Elder/Healthcare UX, and Safe Industrial Automation</strong>.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Agenda 40.6.1 Alignment &bull; Industry Linkages, Consulting Assignments, Entrepreneurship &amp; CSR/CoE</span>
-          <span>Leveraging 18+ Years of Fortune 500 &amp; GCC Relationships</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 10</span><span>~2 min</span></div>
-        "Third is bridging industry, consultancy, and CSR funding. IIT Hyderabad sits 45 minutes from one of the largest GCC ecosystems in the world in Gachibowli and HITEC City, right alongside my networks in Bengaluru and Chennai. I want to help DoD activate three concrete streams: first, bringing live corporate problem briefs and six-month semester internships into our studios; second, attracting paid industrial consultancy assignments — such as AI workflow audits, usability validation, and design-system architecture — alongside regular faculty; and third, pitching corporate CSR grants around accessible Indian digital public infrastructure and healthcare UX."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 11: ACTION PLAN PILLAR 4 — PLACEMENTS & PORTFOLIO BAR-RAISING
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide">
-        <div class="s-top">
-          <div class="s-kicker">ACT III &bull; PLAN OF ACTION (PILLAR 4) &bull; STUDENT PLACEMENTS &amp; INDUSTRY READINESS</div>
-          <div class="s-num">11 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Closing the "Academic Project &rarr; Industry Hiring Bar" Gap</h2>
-          <p class="s-lead">Addressing Agenda 40.6.1 (Role 6): Having interviewed 200+ candidates and hired/mentored 50+ designers at IBM and Zebra, I know exactly why portfolios pass or fail hiring loops.</p>
-
-          <div class="grid-2" style="margin-bottom:14px;">
-            <div class="card-white">
-              <span class="tag-pill">What Industry Hiring Managers Reject</span>
-              <h3>Common Student Portfolio Gaps</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Linear textbook checklists (<em>"Persona &rarr; Wireframe &rarr; Final UI"</em>) that only show <em>what</em> was drawn, not <em>why</em> decisions were made.</li>
-                <li>Ignoring technical constraints, latency, edge cases, accessibility, and engineering handoff realities.</li>
-                <li>Zero discussion of trade-offs, what failed in usability testing, or how product success is measured.</li>
-              </ul>
-            </div>
-
-            <div class="card-white" style="border-color:#BAE6FD;background:#F8FDFF;">
-              <span class="tag-pill navy">My Placement Readiness Clinic at DoD</span>
-              <h3>Day-One Industry-Ready Graduates</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li><strong>Outcome-Driven Case Study Coaching:</strong> Coach B.Des &amp; M.Des cohorts to frame engineering constraints, pivots, and measurable UX outcomes.</li>
-                <li><strong>Live Mock Hiring Loops:</strong> Run realistic whiteboard system challenges, portfolio defenses, and PM/Engineering cross-examinations.</li>
-                <li><strong>Direct Hiring-Leader Outreach:</strong> Invite Design Directors &amp; VPs from GCCs and product companies to annual DoD Jury &amp; Placement Showcases.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="studio-box" style="margin-top:0;">
-            <strong>Target Placement Upgrade for DoD Cohorts</strong>
-            <p>Positioning IIT Hyderabad B.Des &amp; M.Des graduates not merely as "screen designers," but as high-comp <strong>Product Designers, AI Interaction Architects, Design Technologists, and UX Researchers</strong> for Tier-1 global R&amp;D centers.</p>
-          </div>
-        </div>
-
-        <div class="s-foot">
-          <span>Agenda 40.6.1 Alignment &bull; Placement-Related Activities &amp; Graduate Readiness</span>
-          <span>Perspective of an Active Enterprise Hiring Manager (IBM &amp; Zebra)</span>
-        </div>
-      </div>
-      <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 11</span><span>~1.5 min</span></div>
-        "Fourth is student placements. Having sat on the hiring manager side of the table at IBM and Zebra — reviewing hundreds of portfolios — I see firsthand why talented students sometimes struggle in final rounds: their portfolios show pretty screens, but leave out technical constraints, edge cases, what failed first, and how they worked with engineers. I will run structured portfolio clinics, mock whiteboard loops, and bring industry design leaders directly to DoD’s graduation showcases so our B.Des and M.Des graduates command top-tier product and AI-UX roles."
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SLIDE 12: 3-YEAR ROADMAP & ANNUAL APPRAISAL SCORECARD
-         =================================================================== -->
-    <section class="slide-unit">
-      <div class="slide dark">
-        <div class="s-top">
-          <div class="s-kicker">ACT III &bull; 3-YEAR EXECUTION ROADMAP &amp; ANNUAL APPRAISAL SCORECARD</div>
-          <div class="s-num">12 / 12</div>
-        </div>
-
-        <div class="s-body">
-          <h2 class="s-title">Measurable Year-by-Year Deliverables for Annual Institute Review</h2>
-          <p class="s-lead">Designed directly around Agenda 40.6.1’s annual HoD, Dean &amp; Director appraisal model — clear, auditable outcomes every 12 months.</p>
-
-          <div class="grid-3" style="margin-bottom:18px;">
-            <div class="card" style="border-top:3px solid #FBBF24;">
-              <div style="font-family:var(--font-mono);font-size:11px;color:#FBBF24;font-weight:700;margin-bottom:4px;">YEAR 01 &bull; FOUNDATION &amp; LAUNCH</div>
-              <h3>Courses, Studio Critiques &amp; Industry Pipeline</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Launch <strong>1 Core/Elective 3-Cr Studio + 2 Fractal Modules</strong> (AI-UX &amp; Design Systems).</li>
-                <li>Supervise <strong>4–6 B.Des/M.Des projects</strong> &amp; run placement portfolio clinics for graduating batch.</li>
-                <li>Onboard <strong>3+ corporate partners</strong> for live studio briefs &amp; semester internships; submit 1st joint R&amp;D/consultancy proposal with DoD faculty.</li>
-              </ul>
-            </div>
-
-            <div class="card" style="border-top:3px solid #38BDF8;">
-              <div style="font-family:var(--font-mono);font-size:11px;color:#38BDF8;font-weight:700;margin-bottom:4px;">YEAR 02 &bull; SCALE &amp; REVENUE</div>
-              <h3>Consultancy, Joint PhDs &amp; Funded R&amp;D</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Deliver <strong>active paid consultancy projects</strong> via CoDE / IITH with enterprise &amp; PSU clients.</li>
-                <li>Enrol <strong>1–2 industry-sponsored joint PhD scholars</strong> co-supervised with regular DoD faculty.</li>
-                <li>Co-host an <strong>IITH Industry-Academia Symposium on Human-Centered AI &amp; Complex Systems</strong> with GCC Design Leaders.</li>
-              </ul>
-            </div>
-
-            <div class="card" style="border-top:3px solid #F87171;">
-              <div style="font-family:var(--font-mono);font-size:11px;color:#FCA5A5;font-weight:700;margin-bottom:4px;">YEAR 03 &bull; INSTITUTIONAL LEGACY</div>
-              <h3>Self-Sustaining Lab Cell &amp; Benchmark Placements</h3>
-              <ul class="clean-list" style="margin-top:8px;">
-                <li>Establish a CSR/industry-backed <strong>Applied AI-UX &amp; Design Systems Practice Cell</strong> inside DoD.</li>
-                <li>Publish joint translational case studies / toolkits &amp; handover reusable studio playbooks to in-house cohorts.</li>
-                <li>Sustained multi-company internship &amp; Tier-1 placement pipeline for B.Des &amp; M.Des graduates.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
             <div>
-              <div style="font-family:var(--font-head);font-size:16px;font-weight:800;color:#FFFFFF;">Thank You &bull; Open for Faculty Discussion &amp; Questions</div>
-              <div style="font-size:12.5px;color:#CBD5E1;margin-top:2px;">Full-time on-campus availability at IIT Hyderabad &bull; Ready to tailor Semester 1 courses to immediate departmental priorities.</div>
+              <div class="big-num">25+</div>
+              <div class="big-num-label">Products shipped globally</div>
             </div>
-            <div style="font-family:var(--font-mono);font-size:12px;color:#FBBF24;text-align:right;">
-              Balaajee V.R.<br>
-              vrbberaj@gmail.com &bull; +91 9994761293
+            <div>
+              <div class="big-num">50+</div>
+              <div class="big-num-label">Designers hired and mentored</div>
+            </div>
+            <div>
+              <div class="big-num">1.5</div>
+              <div class="big-num-label">Years formal engineering teaching</div>
             </div>
           </div>
-        </div>
 
-        <div class="s-foot">
-          <span>Balaajee V.R. &bull; Full-Time Professor of Practice Candidature</span>
-          <span>Department of Design &bull; Indian Institute of Technology Hyderabad</span>
+          <div class="org-line">
+            B.E. Information Technology (MS University) &middot; IBM Software Labs &middot; Zebra Technologies &middot; ZF Wabco &middot; Ericsson &middot; Infosys &middot; SKR Engineering College (Anna University)
+          </div>
         </div>
       </div>
       <div class="speaker-drawer">
-        <div class="speaker-drawer-label"><span>🎙️ Spoken Script • Slide 12</span><span>~1.5 min</span></div>
-        "To wrap up: Prof. Delwyn noted that this appointment is reviewed annually for renewal, so I wanted to make my accountability transparent from Day One. In Year 1, my focus is launching the AI-UX and Design Systems studios, coaching the graduating cohort’s portfolios, and onboarding our first corporate studio and internship partners. In Year 2, scaling into paid industrial consultancy, enrolling industry-sponsored joint PhD scholars alongside regular faculty, and submitting joint grants. And by Year 3, leaving a self-sustaining practice cell and placement pipeline inside the department. Thank you all for your time — I’d love to hear your thoughts and answer any questions."
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 2</span><span>~1 min</span></div>
+        "For me, applying for a full-time Professor of Practice role is a full-circle decision. I actually began my career in the classroom — teaching engineering undergraduates for a year and a half at an Anna University affiliated college — before spending four years writing enterprise code at Infosys and the next 14 years leading global UX teams at Ericsson, ZF Wabco, Zebra Technologies, and most recently managing a 14-designer studio at IBM Software Labs."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 03: FOUR INDUSTRIES ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>3 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">Work across four industries students rarely see up close</h2>
+
+          <div class="cards-4">
+            <div class="soft-card">
+              <div>
+                <h3>IBM</h3>
+                <p>Supervised agentic AI workflows and multi-brand Carbon design tokens across 45+ squads.</p>
+              </div>
+              <div class="card-metric">Team of 14 &middot; 61 to 89 SUS</div>
+            </div>
+
+            <div class="soft-card">
+              <div>
+                <h3>Zebra</h3>
+                <p>Frontline mobile UX and device health intelligence for rugged warehouse handhelds.</p>
+              </div>
+              <div class="card-metric">38,000+ devices in field</div>
+            </div>
+
+            <div class="soft-card">
+              <div>
+                <h3>ZF Wabco</h3>
+                <p>Commercial vehicle cockpit clusters engineered to strict highway driver glance limits.</p>
+              </div>
+              <div class="card-metric">2.8s to 0.94s eyes off road</div>
+            </div>
+
+            <div class="soft-card">
+              <div>
+                <h3>Ericsson</h3>
+                <p>Global 5G quoting platform replacing fragile 14-tab Excel workbooks across 45 countries.</p>
+              </div>
+              <div class="card-metric">6 days to 42 min turnaround</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 3</span><span>~1 min</span></div>
+        "Most design students get plenty of practice designing consumer apps — food delivery, booking, social feeds. Where they rarely get exposure is complex, high-stakes systems: enterprise AI, industrial warehouse hardware, commercial vehicle cockpits, and global telecom tools. Let me quickly show you four real pieces of work from those domains and what went wrong before we got them right."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 04: WORK 01 (IBM AGENTIC AI) ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>BODY OF WORK &middot; 01</span>
+          <span>IBM SOFTWARE LABS</span>
+          <span>4 / 16</span>
+        </div>
+
+        <div class="s-content top-aligned">
+          <h2 class="s-h2">Designing how engineers supervise AI in high-stakes systems</h2>
+
+          <div class="work-split">
+            <div class="work-visual-mat dark-mat">
+              <img src="screenshots/ibm_rhapsody_ai_modeling.png" alt="IBM Rhapsody Watsonx Supervised AI Modeling Diff">
+            </div>
+
+            <div class="work-notes">
+              <div>
+                <div class="work-note-item">
+                  <div class="work-note-label">What failed first</div>
+                  <div class="work-note-text">Our early 94%-accurate autonomous AI prototype scored just 61 SUS. Systems and security engineers refused to approve black-box changes they couldn't verify.</div>
+                </div>
+                <div class="work-note-item">
+                  <div class="work-note-label">How we redesigned it</div>
+                  <div class="work-note-text">Replaced one-click automation with confidence tiers, side-by-side model diffs, source-linked reasoning traces, and instant rollback.</div>
+                </div>
+                <div class="work-note-item">
+                  <div class="work-note-label">What this brings to DoD studios</div>
+                  <div class="work-note-text">Teaching students to design beyond chat prompts &mdash; prototyping autonomy boundaries, error recovery, and AI quality evaluations.</div>
+                </div>
+              </div>
+
+              <div class="work-outcome-bar">
+                61 &rarr; 89 SUS usability score &middot; 74% faster SysML model drafting
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 4</span><span>~1.2 min</span></div>
+        "First, at IBM Software Labs, my team embedded Watsonx AI into Rhapsody systems engineering and MaaS360 security. Our first prototype was 94% accurate — and failed usability testing with a 61 SUS because aerospace and security engineers don’t trust black-box automation. When we redesigned around human supervision — showing confidence tiers, side-by-side model diffs, and one-click rollback — SUS jumped to 89. That is the exact shift from 'chatbots' to human-centered AI I want to teach in studio."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 05: WORK 02 (IBM CARBON TOKENS) ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>BODY OF WORK &middot; 02</span>
+          <span>DESIGN SYSTEMS AT SCALE</span>
+          <span>5 / 16</span>
+        </div>
+
+        <div class="s-content top-aligned">
+          <h2 class="s-h2">Connecting Figma decisions directly to code across 45+ squads</h2>
+
+          <div class="work-split">
+            <div class="work-visual-mat dark-mat">
+              <img src="screenshots/transformation-ibm-carbon.png" alt="IBM Carbon Multi-Brand Design Token Synchronizer">
+            </div>
+
+            <div class="work-notes">
+              <div>
+                <div class="work-note-item">
+                  <div class="work-note-label">The bottleneck</div>
+                  <div class="work-note-text">Acquired software products ran conflicting UI frameworks, causing 4-week design-to-code delays and WCAG contrast regressions across dark and light modes.</div>
+                </div>
+                <div class="work-note-item">
+                  <div class="work-note-label">How we solved it</div>
+                  <div class="work-note-text">Built a 3-layer W3C design token pipeline syncing Figma variables directly into GitHub pull requests for React, Angular, and Web Components.</div>
+                </div>
+                <div class="work-note-item">
+                  <div class="work-note-label">What this brings to DoD studios</div>
+                  <div class="work-note-text">Bridging DoD Interaction Design and CSE &mdash; training students in accessible (WCAG 2.2 AA), production-ready component architecture.</div>
+                </div>
+              </div>
+
+              <div class="work-outcome-bar">
+                4 weeks &rarr; 1 day handoff &middot; 94% adoption across 45+ squads
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 5</span><span>~1 min</span></div>
+        "Second, design systems at enterprise scale. Across IBM’s acquired products, static Figma handoffs were taking four weeks and breaking accessibility in code. We architected a multi-brand W3C token pipeline connecting Figma directly to React and Web Component repositories — cutting handoff to one day across 45 squads. Because I come from both software engineering and UX, I can train students to build systems that survive real engineering handoffs."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 06: WORK 03 (ZEBRA RUGGED IOT) ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>BODY OF WORK &middot; 03</span>
+          <span>ZEBRA TECHNOLOGIES</span>
+          <span>6 / 16</span>
+        </div>
+
+        <div class="s-content top-aligned">
+          <h2 class="s-h2">Physical-digital ergonomics for gloved warehouse workers</h2>
+
+          <div class="work-split">
+            <div class="work-visual-mat dark-mat">
+              <img src="screenshots/transformation-zebra.png" alt="Zebra VisibilityIQ Rugged Fleet Health Dashboard">
+            </div>
+
+            <div class="work-notes">
+              <div>
+                <div class="work-note-item">
+                  <div class="work-note-label">When lab UI failed in the field</div>
+                  <div class="work-note-text">Clean consumer-style touch screens failed on wet loading docks and &minus;20&deg;C cold storage where workers wore 4mm protective gloves.</div>
+                </div>
+                <div class="work-note-item">
+                  <div class="work-note-label">How we redesigned it</div>
+                  <div class="work-note-text">Moved to high-contrast thumb-zone triggers, physical scan-key mapping, haptic + audio confirmation, and VisibilityIQ battery telemetry.</div>
+                </div>
+                <div class="work-note-item">
+                  <div class="work-note-label">What this brings to DoD studios</div>
+                  <div class="work-note-text">Natural co-teaching with DoD's Product Design and Ergonomics faculty on embodied, hardware-software interaction in real field conditions.</div>
+                </div>
+              </div>
+
+              <div class="work-outcome-bar">
+                38,000+ rugged handhelds live &middot; 84% fewer pairing failures
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 6</span><span>~1 min</span></div>
+        "Third, at Zebra Technologies, I led UX for rugged Android handhelds and our VisibilityIQ fleet dashboard across 38,000 devices. Screens that looked clean in an office failed completely when workers wore thick freezer gloves on noisy loading docks. Pairing hardware buttons, haptics, and thumb-zone ergonomics cut pairing failures by 84% — and creates a great bridge with DoD’s Industrial Design and Ergonomics faculty."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 07: WORK 04 (ZF WABCO + ERICSSON) ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>BODY OF WORK &middot; 04</span>
+          <span>ZF WABCO &amp; ERICSSON</span>
+          <span>7 / 16</span>
+        </div>
+
+        <div class="s-content top-aligned">
+          <h2 class="s-h2">Sub-second driver glance limits and high-density expert workflows</h2>
+
+          <div class="work-two-up">
+            <div class="work-pair-card">
+              <div>
+                <div class="work-pair-img dark-bg">
+                  <img src="screenshots/transformation-zf-wabco.png" alt="ZF Wabco Commercial Truck Cockpit HMI">
+                </div>
+                <h3>ZF Wabco &middot; Commercial vehicle cockpit HMI</h3>
+                <p>Synthesized air-brake, ADAS, and telematics alerts strictly beneath NHTSA's 1.2-second eyes-off-road safety limit &mdash; suppressing non-critical data during braking.</p>
+              </div>
+              <div class="work-pair-metric">2.8s &rarr; 0.94s average highway glance time</div>
+            </div>
+
+            <div class="work-pair-card">
+              <div>
+                <div class="work-pair-img">
+                  <img src="screenshots/transformation-ericsson.png" alt="Ericsson Global 5G BOM Configuration Engine">
+                </div>
+                <h3>Ericsson &middot; 45-country telecom configuration</h3>
+                <p>Replaced fragile 14-tab Excel quoting workbooks with a keyboard-first, real-time margin validation web engine (1st Place, Ericsson Global Hack-fest).</p>
+              </div>
+              <div class="work-pair-metric">6 days &rarr; 42 min deal turnaround</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 7</span><span>~1 min</span></div>
+        "And fourth, two contrasting cognitive-load challenges: at ZF Wabco, designing commercial truck instrument clusters where every millisecond eyes-off-road is a highway safety risk — bringing glance times down from 2.8 seconds to 0.94 seconds. And at Ericsson, turning a 14-tab spreadsheet nightmare across 45 countries into a 42-minute keyboard-first web workflow."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 08: CORE QUOTE ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>8 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <div class="quote-center">
+            <div class="quote-text">
+              &ldquo;Students should graduate having already worked on a real industry problem, with real constraints and real reviewers.&rdquo;
+            </div>
+            <div class="quote-caption">
+              The core of my proposal: an Industry Studio model
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 8</span><span>~45 sec</span></div>
+        "That brings me to the core of my Plan of Action. Having interviewed over 200 design candidates at IBM and Zebra, the biggest gap I see isn't visual talent — it's that students rarely experience messy engineering constraints, legacy data, or tough stakeholder critiques before they graduate. My central proposal is an Industry Studio model inside the department."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 09: HOW THE INDUSTRY STUDIO WORKS ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>9 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">How the Industry Studio works</h2>
+          <p class="s-lead">One loop that feeds teaching, internships, placements, research, and funding at the same time.</p>
+
+          <div class="loop-grid">
+            <div class="loop-step">
+              <div class="loop-step-top">
+                <span class="circle-badge">1</span>
+                <span class="loop-arrow">&rarr;</span>
+              </div>
+              <h3>Live brief</h3>
+              <p>A company brings a real, de-identified problem with a named design reviewer.</p>
+            </div>
+
+            <div class="loop-step">
+              <div class="loop-step-top">
+                <span class="circle-badge">2</span>
+                <span class="loop-arrow">&rarr;</span>
+              </div>
+              <h3>Semester studio</h3>
+              <p>Students research, prototype in code, and test inside a credited studio.</p>
+            </div>
+
+            <div class="loop-step">
+              <div class="loop-step-top">
+                <span class="circle-badge">3</span>
+                <span class="loop-arrow">&rarr;</span>
+              </div>
+              <h3>Industry review</h3>
+              <p>Company design leads critique work alongside DoD faculty at midterm and final.</p>
+            </div>
+
+            <div class="loop-step">
+              <div class="loop-step-top">
+                <span class="circle-badge">4</span>
+                <span class="loop-arrow">&rarr;</span>
+              </div>
+              <h3>Internship or role</h3>
+              <p>Strong student teams continue into 6-month internships, theses, and placements.</p>
+            </div>
+
+            <div class="loop-step">
+              <div class="loop-step-top">
+                <span class="circle-badge">5</span>
+              </div>
+              <h3>Sponsored R&amp;D</h3>
+              <p>Proven studio problems grow into paid CoDE projects or joint PhD topics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 9</span><span>~1.2 min</span></div>
+        "Instead of treating teaching, internships, placements, and sponsored projects as seven separate tasks, the Industry Studio connects them into one single flywheel: a partner company brings a scoped, de-identified problem; students tackle it in a credited semester studio; industry reviewers join DoD faculty for midterm and final critiques; strong students flow directly into six-month internships and placements; and the deepest problems mature into paid consultancy or joint PhDs."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 10: MEETING INSTITUTE EXPECTATIONS (40.6.1) ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>10 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">How the studio meets IIT Hyderabad's role expectations</h2>
+
+          <table class="obj-table">
+            <thead>
+              <tr>
+                <th>Institute expectation (Agenda 40.6.1)</th>
+                <th>What I will do</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="mini-num">1</span>Industry skills in programmes</td>
+                <td>Teach practice electives, 1&ndash;2 credit Fractal modules, and the Industry Studio</td>
+              </tr>
+              <tr>
+                <td><span class="mini-num">2</span>In-house collaborative expertise</td>
+                <td>Co-teach studios with DoD faculty &amp; run open AI/DesignOps clinics for scholars</td>
+              </tr>
+              <tr>
+                <td><span class="mini-num">3</span>Faculty &amp; industry research links</td>
+                <td>Serve as Co-Investigator (Co-PI) pairing DoD labs with enterprise R&amp;D partners</td>
+              </tr>
+              <tr>
+                <td><span class="mini-num">4</span>Industry-sponsored joint PhDs</td>
+                <td>Co-supervise PhDs &amp; bring working R&amp;D practitioners into joint doctoral tracks</td>
+              </tr>
+              <tr>
+                <td><span class="mini-num">5</span>Consultancy &amp; sponsored projects</td>
+                <td>Route paid AI-UX audits and proven briefs through CoDE and DIC</td>
+              </tr>
+              <tr>
+                <td><span class="mini-num">6</span>Internships &amp; graduate placements</td>
+                <td>Build 6-month internship pipelines &amp; run hiring-bar portfolio and whiteboard loops</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 10</span><span>~1 min</span></div>
+        "Here is how that loop maps directly onto every expectation in IIT Hyderabad’s 40.6.1 framework: practice-based electives and Fractal modules, co-teaching studios alongside regular faculty and running hands-on prototyping clinics for research scholars, acting as a Co-PI to connect DoD labs with industry R&D, co-supervising industry-sponsored PhDs, channeling consultancy through CoDE and DIC, and driving semester internships and top-tier placements."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 11: COURSES FROM DAY ONE ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>11 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">Courses I can teach from day one</h2>
+          <p class="s-lead">Ready as full semester electives or modular 1&ndash;2 credit Fractal courses across B.Des, M.Des, and Design Minors.</p>
+
+          <div class="cards-3">
+            <div class="soft-card tall">
+              <h3>Designing AI-Enabled Products</h3>
+              <p>Moving past prompt boxes: when AI suggests, when it acts on its own, how people verify its work, and how designers evaluate AI quality. B.Des &amp; M.Des elective.</p>
+            </div>
+
+            <div class="soft-card tall">
+              <h3>Design Systems and Token Engineering</h3>
+              <p>Building shared component libraries, multi-brand W3C tokens, WCAG accessibility, and Figma-to-code pipelines that scale across engineering squads.</p>
+            </div>
+
+            <div class="soft-card tall">
+              <h3>Industry Studio &amp; Placement Readiness</h3>
+              <p>A semester studio on a live company brief with midterm industry critiques &mdash; paired with whiteboard system challenges and outcome-led portfolio defense.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 11</span><span>~1 min</span></div>
+        "Concretely, here are three courses I can launch or co-teach immediately in Semester 1 — either as full electives or agile 1-to-2 credit Fractal modules so we don't disrupt core timetables: Designing AI-Enabled Products, Design Systems and Token Engineering, and the live Industry Studio paired with placement readiness."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 12: RESEARCH THEMES ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>12 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">Research themes that build on what the department already has</h2>
+
+          <div class="research-grid">
+            <div class="research-item">
+              <span class="circle-badge">A</span>
+              <div>
+                <h3>Human and AI collaboration</h3>
+                <p>How people calibrate trust and supervise AI in high-stakes work. Complements ExD Lab and CoDE's emerging technology focus.</p>
+              </div>
+            </div>
+
+            <div class="research-item">
+              <span class="circle-badge">C</span>
+              <div>
+                <h3>Design at enterprise scale</h3>
+                <p>Accessible design systems, token governance, and cross-functional DesignOps across large software organisations.</p>
+              </div>
+            </div>
+
+            <div class="research-item">
+              <span class="circle-badge">B</span>
+              <div>
+                <h3>Interfaces for safety-critical systems</h3>
+                <p>Vehicle cockpits and rugged industrial interfaces under strict glance, glove, and attention limits.</p>
+              </div>
+            </div>
+
+            <div class="research-item">
+              <span class="circle-badge outline">+</span>
+              <div>
+                <h3>Supervision &amp; joint PhDs</h3>
+                <p>B.Des and M.Des capstones drawn from live briefs, and co-supervising PhD scholars alongside regular DoD faculty.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 12</span><span>~1 min</span></div>
+        "On the research side, my goal isn't to create a silo — it's to plug into the labs you have already built, including ExD Lab, INDReA, CoDE, and DIC. Regular faculty anchor the formal academic methodology, while I bring enterprise deployment testbeds and co-supervision across human-AI calibration, safety-critical interfaces, and large-scale design systems."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 13: PARTNERSHIPS & PLACEMENTS STEP BY STEP ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>13 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">Building industry partnerships and placements step by step</h2>
+
+          <div class="steps-stack">
+            <div class="step-row">
+              <div class="step-idx">1</div>
+              <div>
+                <h3>Start with what exists on campus</h3>
+                <p>Work through CoDE's MSME network, i-TIC startups, and the Design Innovation Centre for the first Semester 1 briefs.</p>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-idx">2</div>
+              <div>
+                <h3>Open doors across Hyderabad &amp; Bengaluru R&amp;D</h3>
+                <p>Invite Design Directors and VPs from enterprise product orgs and GCCs to brief studios and sit on graduation juries.</p>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-idx">3</div>
+              <div>
+                <h3>Coach students for the real product hiring bar</h3>
+                <p>Move student portfolios past linear textbook wireframes to show technical constraints, trade-offs, and measurable outcomes.</p>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-idx">4</div>
+              <div>
+                <h3>Earn the funding</h3>
+                <p>Ask companies for paid CoDE consultancy, sponsored R&amp;D, and CSR support once they have seen student work &mdash; not before.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 13</span><span>~1 min</span></div>
+        "How do we build those industry partnerships realistically without getting stuck in corporate red tape? Step one: start immediately with CoDE, i-TIC, and DIC on campus. Step two: bring design leaders from my network across Hyderabad and Bengaluru GCCs in as studio reviewers and jury guests. Step three: coach our graduating students to pass real enterprise hiring loops. And step four: ask companies for paid consultancy and sponsorship once they’ve seen the caliber of our students' work firsthand."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 14: FIRST ANNUAL REVIEW ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>14 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">What you can measure me on at the first annual review</h2>
+
+          <div class="review-grid">
+            <div class="review-cell">
+              <div class="review-num">2</div>
+              <div class="review-label">Practice courses / Fractal modules taught</div>
+            </div>
+
+            <div class="review-cell">
+              <div class="review-num">3</div>
+              <div class="review-label">Live industry briefs run in studio</div>
+            </div>
+
+            <div class="review-cell">
+              <div class="review-num">5+</div>
+              <div class="review-label">Semester internships or industry theses placed</div>
+            </div>
+
+            <div class="review-cell">
+              <div class="review-num">100%</div>
+              <div class="review-label">Graduating batch coached in mock hiring loops</div>
+            </div>
+
+            <div class="review-cell">
+              <div class="review-num">1</div>
+              <div class="review-label">Sponsored project / CoDE consultancy proposal</div>
+            </div>
+
+            <div class="review-cell">
+              <div class="review-num">1</div>
+              <div class="review-label">Joint PhD topic framed with industry &amp; DoD faculty</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 14</span><span>~1 min</span></div>
+        "Prof. Delwyn mentioned in his email that this position is reviewed annually by the institute for renewal, so I wanted to put clear, grounded Year-1 numbers on the table: two courses taught, three live studio briefs run, five or more semester internships or industry theses placed, every graduating student coached through mock hiring loops, and our first sponsored project and joint PhD proposal submitted alongside regular faculty."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 15: THREE-YEAR COMMITMENT ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>15 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h2 class="s-h2">A three-year commitment, full-time on campus</h2>
+
+          <div class="cards-3">
+            <div class="soft-card tall">
+              <div class="card-year">YEAR 1</div>
+              <h3>Prove it</h3>
+              <ul class="card-bullets">
+                <li>Teach two practice courses</li>
+                <li>Run the first live studio briefs</li>
+                <li>Place first internships &amp; coach graduating batch</li>
+              </ul>
+            </div>
+
+            <div class="soft-card tall">
+              <div class="card-year">YEAR 2</div>
+              <h3>Grow it</h3>
+              <ul class="card-bullets">
+                <li>Expand GCC &amp; product partners each semester</li>
+                <li>Deliver first paid CoDE consultancy / sponsored project</li>
+                <li>Enrol first industry-sponsored joint PhD scholar</li>
+              </ul>
+            </div>
+
+            <div class="soft-card tall dark-card">
+              <div class="card-year">YEAR 3</div>
+              <h3>Make it last</h3>
+              <ul class="card-bullets">
+                <li>Industry Studio becomes a self-sustaining course</li>
+                <li>Proposal for an Applied Human-AI Centre of Excellence</li>
+                <li>CSR and chair funding partnerships</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 15</span><span>~45 sec</span></div>
+        "Zooming out across the full three-year term on campus at Kandi: Year 1 is about proving the model in the classroom and placement outcomes. Year 2 is about scaling into active consultancy revenue and enrolling our first joint industry PhD scholar. And Year 3 is about institutionalizing the studio and pitching CSR and Centre of Excellence support so the capability stays inside the department long-term."
+      </div>
+    </section>
+
+    <!-- ==================== SLIDE 16: THANK YOU ==================== -->
+    <section class="slide-unit">
+      <div class="slide">
+        <div class="s-meta">
+          <span>NOV 2026</span>
+          <span>PROFESSOR OF PRACTICE PLAN OF ACTION</span>
+          <span>16 / 16</span>
+        </div>
+
+        <div class="s-content">
+          <h1 class="hero-title">Thank you</h1>
+          <div class="hero-sub" style="margin-top:36px;max-width:860px;">
+            <span style="color:#111111;font-weight:500;">Balaajee V.R.</span><br>
+            <span style="font-size:21px;line-height:1.5;display:inline-block;margin-top:8px;">Full-Time Professor of Practice Candidature &middot; Department of Design, IIT Hyderabad</span>
+          </div>
+          <div style="margin-top:56px;font-size:18px;color:#4B5563;">
+            vrbberaj@gmail.com &middot; +91 9994761293
+          </div>
+        </div>
+      </div>
+      <div class="speaker-drawer">
+        <div class="speaker-drawer-label"><span>🎙️ Spoken Script &bull; Slide 16</span><span>~20 sec</span></div>
+        "Thank you very much for your time and attention. I’d love to hear your thoughts, learn where the department sees its biggest teaching needs next semester, and answer any questions."
       </div>
     </section>
 
@@ -1302,40 +1538,40 @@
   <!-- Faculty Q&A Cheat Sheet (Visible only when Speaker Script mode is toggled ON) -->
   <section class="qa-prep-panel">
     <div class="qa-card">
-      <div style="font-family:var(--font-mono);font-size:11.5px;color:#FBBF24;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-bottom:6px;">
+      <div style="font-size:11.5px;color:#FBBF24;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:6px;">
         🎙️ Faculty Q&amp;A Preparation (6 Most Likely Questions from DoD IITH Panel)
       </div>
-      <h3 style="font-family:var(--font-head);font-size:22px;font-weight:800;margin-bottom:18px;">Spoken Answers for the Faculty Interaction</h3>
+      <h3 style="font-size:22px;font-weight:600;margin-bottom:18px;">Spoken Answers for the Faculty Interaction</h3>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;">
           <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q1. "Corporate teams are experienced professionals; B.Des students are 19–20 years old. How will you adapt?"</strong>
-          <p style="font-size:13px;color:#CBD5E1;line-height:1.55;">"Great question. Having started as an engineering lecturer teaching undergraduates, and having mentored fresh campus hires at Zebra and IBM, I never treat students like corporate employees. With students, you create psychological safety to experiment and fail early, while teaching structured ways to critique their own work rather than handing down top-down directives."</p>
+          <p style="font-size:13px;color:#D1D5DB;line-height:1.55;">"Having started as an engineering lecturer teaching undergraduates, and having mentored fresh campus hires at Zebra and IBM, I never treat students like corporate employees. In studio, you build psychological safety to experiment and fail early, while teaching structured ways to critique and defend design decisions."</p>
         </div>
 
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;">
           <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q2. "Which existing courses in our B.Des / M.Des syllabus could you teach immediately next semester?"</strong>
-          <p style="font-size:13px;color:#CBD5E1;line-height:1.55;">"Immediately in Semester 1, I can teach or co-teach Interaction Design studios, Programming/Prototyping for Designers, Usability &amp; Human Factors, or M.Des by Practice project studios — while launching a 1-credit Fractal elective on Designing Agentic AI Systems so students get immediate exposure without disrupting core timetables."</p>
+          <p style="font-size:13px;color:#D1D5DB;line-height:1.55;">"Immediately in Semester 1, I can teach or co-teach Interaction Design studios, Programming/Prototyping for Designers, Usability &amp; Human Factors, or M.Des by Practice project studios — while offering a 1-credit Fractal module on Designing AI-Enabled Products without disrupting core timetables."</p>
         </div>
 
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
-          <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q3. "How realistically can you bring industry projects or consultancy given corporate IP / NDA rules?"</strong>
-          <p style="font-size:13px;color:#CBD5E1;line-height:1.55;">"That’s a very real constraint in enterprise R&amp;D, which is why two models work cleanly: for classroom studios, companies sponsor de-identified 'horizon problem briefs' with synthetic datasets so students can publish their work freely; for NDA-bound problems, we structure them as formal paid institutional consultancy through IITH’s CoDE framework."</p>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;">
+          <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q3. "How realistically can you bring live company briefs given corporate IP and NDA rules?"</strong>
+          <p style="font-size:13px;color:#D1D5DB;line-height:1.55;">"Two models solve that cleanly in enterprise R&amp;D: for credited classroom studios, companies share de-identified 'horizon briefs' with synthetic data so students own and publish their portfolios freely; when a company has NDA-bound production work, we route it formally as paid consultancy through CoDE."</p>
         </div>
 
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;">
           <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q4. "You hold a B.E. rather than a PhD — how do you approach co-supervising M.Des theses and PhD scholars?"</strong>
-          <p style="font-size:13px;color:#CBD5E1;line-height:1.55;">"Agenda 40.6.1 captures that partnership really well: regular DoD faculty anchor the formal research methodology and theoretical framing, while I bring live deployment testbeds, empirical product evaluation metrics, and access to enterprise R&amp;D practitioners. Together, scholars get both academic rigor and real-world validation."</p>
+          <p style="font-size:13px;color:#D1D5DB;line-height:1.55;">"Agenda 40.6.1 frames that partnership really well: regular DoD faculty lead the formal research methodology and theoretical framing, while I bring live deployment testbeds, product evaluation metrics, and access to enterprise R&amp;D practitioners. Scholars get both academic rigor and field validation."</p>
         </div>
 
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;">
           <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q5. "How will your courses collaborate with Computer Science or AI departments at IIT Hyderabad?"</strong>
-          <p style="font-size:13px;color:#CBD5E1;line-height:1.55;">"Because I began with a B.E. in Information Technology and spent four years in software engineering at Infosys before 14 years leading UX, I speak both languages natively. My Agentic AI UX and Design Token studios are built so DoD students and B.Tech/M.Tech CSE students can pair up and ship working prototypes rather than static slides."</p>
+          <p style="font-size:13px;color:#D1D5DB;line-height:1.55;">"Because I began with a B.E. in Information Technology and spent four years writing software at Infosys before 14 years leading UX, I speak both languages natively. My AI-UX and Token Engineering studios are designed so DoD students and CSE/AI students can pair up and build working prototypes together."</p>
         </div>
 
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 18px;">
           <strong style="color:#FBBF24;font-size:13.5px;display:block;margin-bottom:6px;">Q6. "Are you comfortable with IITH’s consolidated PoP honorarium &amp; relocating full-time to Kandi?"</strong>
-          <p style="font-size:13px;color:#CBD5E1;line-height:1.55;">"Yes — I reviewed the 40.6.1 document carefully before confirming my willingness. At this point in my career after 18 years in industry, I am making a deliberate choice for full-time academic impact at IIT Hyderabad, and I am ready to relocate and work full-time on campus."</p>
+          <p style="font-size:13px;color:#D1D5DB;line-height:1.55;">"Yes — I reviewed the 40.6.1 document carefully before confirming my willingness. After 18 years in industry, I am making a deliberate choice for full-time academic impact at IIT Hyderabad, and I am ready to relocate and commit full-time on campus."</p>
         </div>
       </div>
     </div>
