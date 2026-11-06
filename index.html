@@ -647,126 +647,152 @@
     }
 
     /* -------------------------------------------------------------------------
-       Chris Gielow-Style Fixed Executive Masthead Banner & Scroll Reveal
+       Executive Yellow Masthead Banner (Below Top Nav Bar + Inline Video Morph)
        ------------------------------------------------------------------------- */
     :root {
-      --masthead-height: 360px;
+      --masthead-height: 390px;
+      --header-sticky-offset: 57px;
     }
-    @media (max-width: 1200px) {
+    @media (max-width: 1100px) {
       :root {
-        --masthead-height: 320px;
-      }
-    }
-    @media (max-width: 768px) {
-      :root {
-        --masthead-height: 260px;
-      }
-    }
-    @media (max-width: 480px) {
-      :root {
-        --masthead-height: 200px;
+        --masthead-height: auto;
       }
     }
 
     .masthead {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      position: sticky;
+      top: var(--header-sticky-offset);
       width: 100%;
       max-width: 100vw;
-      height: var(--masthead-height);
+      min-height: var(--masthead-height);
       z-index: 1;
       background-color: #F5B703;
       display: flex;
-      align-items: stretch;
+      align-items: center;
       box-sizing: border-box;
       overflow: hidden;
+      padding: 28px 0;
     }
 
     .masthead-contents {
       width: 100%;
-      max-width: 1560px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 24px;
       box-sizing: border-box;
       position: relative;
-      z-index: 2;
+      z-index: 3;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 100%;
+      gap: 32px;
+      min-height: calc(var(--masthead-height) - 56px);
     }
 
     .masthead-text {
-      max-width: 640px;
+      max-width: 650px;
       position: relative;
-      z-index: 3;
+      z-index: 4;
+      flex: 1 1 auto;
+    }
+
+    /* 1. Accent Line + 18+ Years of Experience */
+    .masthead-exp-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0D1B2E;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .masthead-exp-line {
+      width: 34px;
+      height: 2.5px;
+      border-radius: 2px;
+      background: #0D1B2E;
+      display: inline-block;
       flex-shrink: 0;
     }
 
-    .masthead-eyebrow {
-      font-family: var(--font-heading);
-      font-size: clamp(11.5px, 0.95vw, 13.5px);
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #0D1B2E;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    /* 2. Primary Display Headline */
     .masthead-title {
       font-family: var(--font-heading);
-      font-size: clamp(26px, 2.7vw, 42px);
+      font-size: clamp(34px, 3.6vw, 50px);
       font-weight: 900;
       color: #0D1B2E;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-      margin-bottom: 16px;
-      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin: 0 0 10px 0;
     }
 
-    .masthead-badges {
+    /* 3. Subtitle Role */
+    .masthead-role {
+      font-family: var(--font-heading);
+      font-size: clamp(17px, 1.5vw, 22px);
+      font-weight: 600;
+      color: #0D1B2E;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      opacity: 0.94;
+    }
+
+    /* 4. Four Capability Pills */
+    .masthead-pills {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 0;
-      flex-wrap: nowrap;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
     }
 
-    .masthead-badge {
+    .masthead-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: #0D1B2E;
-      color: #FFFFFF;
-      font-family: var(--font-code);
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 6px 14px;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(13, 27, 46, 0.14);
+      color: #0D1B2E;
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 13px;
       border-radius: 9999px;
-      box-shadow: 0 4px 14px rgba(13, 27, 46, 0.18);
-      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(13, 27, 46, 0.06);
       white-space: nowrap;
     }
 
-    .masthead-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #38BDF8;
-      box-shadow: 0 0 8px #38BDF8;
-      animation: mastheadPulseDot 2s infinite ease-in-out;
+    .masthead-pill svg {
+      width: 14px;
+      height: 14px;
+      color: #1D4ED8;
+      flex-shrink: 0;
     }
 
-    @keyframes mastheadPulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.55; transform: scale(0.85); }
+    /* 5. Globe + Global / European Relocation Line */
+    .masthead-reloc {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #0D1B2E;
+      opacity: 0.9;
     }
 
+    .masthead-reloc svg {
+      width: 16px;
+      height: 16px;
+      color: #0D1B2E;
+      flex-shrink: 0;
+    }
+
+    /* Background Right-Side Portrait Visual */
     .masthead-visual {
       position: absolute;
       right: 0;
@@ -777,76 +803,263 @@
       justify-content: flex-end;
       pointer-events: none;
       z-index: 1;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.45s ease;
+    }
+
+    /* Smooth yellow blend on left edge of portrait so left text stays crisp */
+    .masthead-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #F5B703 0%, rgba(245, 183, 3, 0.72) 14%, rgba(245, 183, 3, 0) 34%);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .masthead-photo {
-      height: 86%;
+      height: 84%;
       width: auto;
-      max-width: min(820px, 54vw);
-      max-height: var(--masthead-height);
+      max-width: min(760px, 50vw);
+      max-height: 335px;
       object-fit: contain;
       object-position: right bottom;
       display: block;
     }
 
+    .masthead.is-playing-video .masthead-visual {
+      opacity: 0.08;
+      filter: blur(6px);
+      transform: scale(1.03);
+    }
+
+    /* Right-Side Interactive Trigger & Morphing Video Stage */
+    .masthead-right-stage {
+      position: relative;
+      z-index: 5;
+      flex: 0 0 480px;
+      min-height: 270px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .masthead-play-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(13, 27, 46, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 8px 20px 8px 9px;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(13, 27, 46, 0.28);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.22s ease,
+                  background 0.22s ease,
+                  opacity 0.25s ease;
+      font-family: var(--font-body);
+      text-align: left;
+      margin-bottom: -6px;
+    }
+
+    .masthead-play-trigger:hover {
+      transform: translateY(-2px) scale(1.015);
+      background: #0D1B2E;
+      box-shadow: 0 16px 34px rgba(13, 27, 46, 0.36);
+    }
+
+    .masthead-play-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--primary-accent, #F00658);
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(240, 6, 88, 0.22);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .masthead-play-trigger:hover .masthead-play-icon {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 6px rgba(240, 6, 88, 0.32);
+    }
+
+    .masthead-play-label-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.22;
+    }
+
+    .masthead-play-kicker {
+      font-family: var(--font-code);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #FCD34D;
+    }
+
+    .masthead-play-text {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .masthead.is-playing-video .masthead-play-trigger {
+      display: none;
+    }
+
+    /* Inline 16:9 Cinema Frame (Hidden Until Play Clicked) */
+    .masthead-video-box {
+      display: none;
+      width: 480px;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: #0B0F19;
+      box-shadow: 0 20px 44px rgba(13, 27, 46, 0.36);
+      border: 2px solid rgba(13, 27, 46, 0.22);
+      animation: mastheadVideoReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .masthead.is-playing-video .masthead-video-box {
+      display: block;
+    }
+
+    @keyframes mastheadVideoReveal {
+      from { opacity: 0; transform: scale(0.95) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .masthead-video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .masthead-audio-fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: url('video-thumbnail.jpg') center center / cover no-repeat;
+    }
+
+    .masthead-audio-fallback.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 14px 16px;
+      background-color: #0B0F19;
+    }
+
+    .masthead-fallback-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(11, 15, 25, 0.88);
+      backdrop-filter: blur(8px);
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .masthead-video-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 6;
+      background: rgba(11, 15, 25, 0.82);
+      backdrop-filter: blur(6px);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+
+    .masthead-video-close:hover {
+      background: var(--primary-accent, #F00658);
+      border-color: var(--primary-accent, #F00658);
+    }
+
     @media (max-width: 1100px) {
+      .masthead {
+        position: relative;
+        top: 0;
+        padding: 28px 0 24px;
+      }
       .masthead-contents {
-        padding: 0 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        min-height: 0;
       }
       .masthead-text {
-        max-width: 420px;
-        background: transparent;
+        max-width: 100%;
       }
-      .masthead-eyebrow {
-        font-size: 11px;
-        letter-spacing: 0.10em;
-        margin-bottom: 8px;
+      .masthead-right-stage {
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: 0;
+        justify-content: flex-start;
       }
-      .masthead-title {
-        font-size: clamp(22px, 3.0vw, 34px);
-        margin-bottom: 14px;
+      .masthead-video-box {
+        width: 100%;
+        max-width: 480px;
       }
       .masthead-photo {
-        height: 80%;
-        max-width: 50vw;
-        opacity: 0.85;
+        height: 76%;
+        max-width: 48vw;
+        opacity: 0.35;
       }
     }
 
     @media (max-width: 640px) {
-      .masthead-eyebrow {
-        font-size: 10px;
-        letter-spacing: 0.08em;
-        margin-bottom: 6px;
-      }
       .masthead-title {
-        font-size: 22px;
-        margin-bottom: 10px;
+        font-size: 30px;
       }
-      .masthead-badge {
-        font-size: 10.5px;
-        padding: 4px 10px;
+      .masthead-role {
+        font-size: 16px;
+        margin-bottom: 14px;
+      }
+      .masthead-pill {
+        font-size: 11.5px;
+        padding: 5px 10px;
+      }
+      .masthead-play-text {
+        font-size: 12.5px;
+        white-space: normal;
       }
       .masthead-photo {
-        height: 72%;
-        max-width: 46vw;
-        opacity: 0.65;
+        display: none;
       }
-    }
-
-    .masthead-placeholder {
-      height: var(--masthead-height);
-      width: 100%;
-      max-width: 100vw;
-      visibility: hidden;
-      pointer-events: none;
     }
 
     .site-wrap {
       position: relative;
       z-index: 10;
       background-color: var(--bg-base);
-      box-shadow: 0 -14px 36px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 -14px 36px rgba(15, 23, 42, 0.10);
       width: 100%;
       max-width: 100vw;
       min-height: 100vh;
@@ -855,30 +1068,8 @@
 </head>
 <body>
 
-  <!-- Chris Gielow-Style Fixed Executive Masthead Banner -->
-  <aside class="masthead js-masthead-fixed" aria-label="Executive Design Leadership Masthead">
-    <div class="masthead-contents">
-      <div class="masthead-text">
-        <div class="masthead-eyebrow">Balaajee V.R. &nbsp;—&nbsp; Enterprise Product Design Leader</div>
-        <h1 class="masthead-title">Building Teams.<br>Shaping Products.</h1>
-        <div class="masthead-badges">
-          <span class="masthead-badge"><span class="masthead-dot"></span> Immediate Availability &bull; EU Blue Card Eligible</span>
-          <span class="masthead-badge">18+ Years in Product Design</span>
-        </div>
-      </div>
-    </div>
-    <div class="masthead-visual" aria-hidden="true">
-      <img src="masthead-banner.jpg" alt="Balaajee V.R. - Enterprise UX Leadership" class="masthead-photo">
-    </div>
-  </aside>
-
-  <!-- Masthead Placeholder: Preserves natural scroll offset so header starts directly below the banner -->
-  <div class="masthead-placeholder" aria-hidden="true"></div>
-
-  <!-- Page Surface / Site Wrap (slides up OVER the fixed masthead as user scrolls) -->
-  <div class="site-wrap">
-  
-  <header class="global-header">
+  <!-- 1. Top Global Navigation Bar (Pinned at Very Top of Page) -->
+  <header class="global-header" id="topGlobalHeader">
     <div class="header-container">
       <a href="index.html" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="brand-link" aria-label="Balaajee V.R. Portfolio Home">
         <span class="brand-masthead"><span class="brand-bar" aria-hidden="true"></span><span class="brand-stack"><span class="brand-title">BALAAJEE V.R.</span><span class="brand-sub">Design Leader</span></span></span>
@@ -900,26 +1091,88 @@
       </div>
     </div>
   </header>
-  
 
-  <!-- Executive Hero Stage -->
+  <!-- 2. Executive Yellow Masthead Banner (Directly Below Top Nav Bar) -->
+  <section class="masthead js-masthead-fixed" id="heroMasthead" aria-label="Executive Design Leadership Masthead">
+    <div class="masthead-contents">
+      <div class="masthead-text">
+        <div class="masthead-exp-row">
+          <span class="masthead-exp-line" aria-hidden="true"></span>
+          <span>18+ Years of Experience</span>
+        </div>
+
+        <h1 class="masthead-title">Building Teams.<br>Shaping Products.</h1>
+
+        <div class="masthead-role">Enterprise Product Design Leader</div>
+
+        <div class="masthead-pills" role="list" aria-label="Core Leadership Capabilities">
+          <span class="masthead-pill" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            Enterprise UX
+          </span>
+          <span class="masthead-pill" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Product Strategy
+          </span>
+          <span class="masthead-pill" role="listitem">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Design Leadership
+          </span>
+          <span class="masthead-pill" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            AI Transformation
+          </span>
+        </div>
+
+        <div class="masthead-reloc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Open to global opportunities &middot; European relocation</span>
+        </div>
+      </div>
+
+      <!-- Right-Side Play Trigger (Morphs Background Portrait into Inline Video on Click) -->
+      <div class="masthead-right-stage">
+        <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years of experience in 60 seconds">
+          <span class="masthead-play-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </span>
+          <span class="masthead-play-label-wrap">
+            <span class="masthead-play-kicker">Watch Intro &bull; 1:00</span>
+            <span class="masthead-play-text">18 years of experience in 60 seconds</span>
+          </span>
+        </button>
+
+        <div class="masthead-video-box" id="mastheadVideoBox">
+          <button type="button" class="masthead-video-close" id="mastheadCloseBtn" aria-label="Close video and return to image">&times; Close</button>
+          <video id="mastheadInlineVideo" controls playsinline preload="none" poster="video-thumbnail.jpg"></video>
+          <div class="masthead-audio-fallback" id="mastheadAudioFallback">
+            <div class="masthead-fallback-bar">
+              <span id="mastheadFallbackStatus">▶ Playing 60s Intro Preview</span>
+              <span id="mastheadFallbackTimer" style="font-family:var(--font-code); font-size:11px; color:#FCD34D;">0:00 / 1:00</span>
+            </div>
+            <audio id="mastheadFallbackAudio" src="assets/homepage_intro_final.m4a?v=exec60" preload="none"></audio>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="masthead-visual" aria-hidden="true">
+      <img src="masthead-banner.jpg" alt="Balaajee V.R. - Enterprise Product Design Leader" class="masthead-photo">
+    </div>
+  </section>
+
+  <!-- 3. Page Surface / Site Wrap (Slides smoothly up over the sticky masthead on scroll) -->
+  <div class="site-wrap">
+
+  <!-- Executive Summary & Brand Pedigree Strip -->
   <main class="welcome-hero-stage">
     <div class="hero-container">
       
       <div class="exec-banner-row">
-        
-        <!-- Zone 1: Mini 60s Video Briefing -->
-        <div class="exec-banner-video-pill">
-          <div class="exec-video-thumb-container">
-            <video id="welcomeVideo" controls poster="video-thumbnail.jpg" preload="metadata">
-              <source src="intro.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
 
-        <!-- Zone 2: Executive Pitch & Metrics (Better Description, No repeated companies, No 5-giants tag) -->
+        <!-- Zone 1: Executive Pitch & Metrics -->
         <div class="exec-banner-center">
-          <h1 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h1>
+          <h2 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h2>
           <p class="exec-sub-pitch">Directing cross-functional design squads, scaling design system governance, and designing enterprise AI products and agentic workflows for mission-critical software platforms.</p>
           <div class="exec-stats-ribbon">
             <span class="exec-stat-pill"><strong>14</strong> Squads Directed</span>
@@ -1814,6 +2067,102 @@
       window.addEventListener('scroll', () => {
         requestAnimationFrame(updateScrollFX);
       }, { passive: true });
+
+      // Sync exact sticky header height for masthead + inline video morph controller
+      const topHeader = document.getElementById('topGlobalHeader');
+      function syncHeaderOffset() {
+        if (topHeader) {
+          document.documentElement.style.setProperty('--header-sticky-offset', topHeader.offsetHeight + 'px');
+        }
+      }
+      syncHeaderOffset();
+      window.addEventListener('resize', syncHeaderOffset);
+
+      // Right-side Image -> Video Morph Interaction
+      const playTriggerBtn = document.getElementById('mastheadPlayBtn');
+      const closeVideoBtn = document.getElementById('mastheadCloseBtn');
+      const inlineVideo = document.getElementById('mastheadInlineVideo');
+      const fallbackBox = document.getElementById('mastheadAudioFallback');
+      const fallbackAudio = document.getElementById('mastheadFallbackAudio');
+      const fallbackTimer = document.getElementById('mastheadFallbackTimer');
+      const fallbackStatus = document.getElementById('mastheadFallbackStatus');
+
+      function formatTime(sec) {
+        const s = Math.max(0, Math.floor(sec || 0));
+        const m = Math.floor(s / 60);
+        const rem = s % 60;
+        return m + ':' + (rem < 10 ? '0' : '') + rem;
+      }
+
+      function activateFallbackPreview() {
+        if (!fallbackBox || !fallbackAudio) return;
+        inlineVideo.style.display = 'none';
+        fallbackBox.classList.add('active');
+        fallbackAudio.currentTime = 0;
+        fallbackAudio.play().catch(() => {});
+      }
+
+      function openMastheadVideo() {
+        if (!masthead) return;
+        masthead.classList.add('is-playing-video');
+        if (inlineVideo) {
+          inlineVideo.style.display = 'block';
+          fallbackBox.classList.remove('active');
+          inlineVideo.src = 'intro.mp4';
+          const playPromise = inlineVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              // If intro.mp4 is not uploaded yet, run clean 60s preview seamlessly
+              if (inlineVideo.error || inlineVideo.networkState === 3) {
+                activateFallbackPreview();
+              }
+            });
+          }
+        }
+      }
+
+      function closeMastheadVideo() {
+        if (!masthead) return;
+        masthead.classList.remove('is-playing-video');
+        if (inlineVideo) {
+          inlineVideo.pause();
+          inlineVideo.removeAttribute('src');
+          inlineVideo.load();
+        }
+        if (fallbackAudio) {
+          fallbackAudio.pause();
+          fallbackAudio.currentTime = 0;
+        }
+        if (fallbackBox) {
+          fallbackBox.classList.remove('active');
+        }
+      }
+
+      if (playTriggerBtn) playTriggerBtn.addEventListener('click', openMastheadVideo);
+      if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeMastheadVideo);
+      if (inlineVideo) {
+        inlineVideo.addEventListener('error', activateFallbackPreview);
+        inlineVideo.addEventListener('ended', closeMastheadVideo);
+      }
+      if (fallbackAudio) {
+        fallbackAudio.addEventListener('timeupdate', () => {
+          if (fallbackTimer) {
+            fallbackTimer.textContent = formatTime(fallbackAudio.currentTime) + ' / ' + formatTime(fallbackAudio.duration || 60);
+          }
+        });
+        fallbackAudio.addEventListener('ended', closeMastheadVideo);
+      }
+      if (fallbackBox && fallbackAudio) {
+        fallbackBox.addEventListener('click', () => {
+          if (fallbackAudio.paused) {
+            fallbackAudio.play();
+            if (fallbackStatus) fallbackStatus.textContent = '▶ Playing 60s Intro Preview';
+          } else {
+            fallbackAudio.pause();
+            if (fallbackStatus) fallbackStatus.textContent = '⏸ Paused (Click to Resume)';
+          }
+        });
+      }
 
       // Enable by default
       setFX(true);
