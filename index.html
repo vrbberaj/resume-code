@@ -668,10 +668,10 @@
       z-index: 1;
       background-color: #F5B703;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       box-sizing: border-box;
       overflow: hidden;
-      padding: 28px 0;
+      padding: 0;
     }
 
     .masthead-contents {
@@ -683,10 +683,10 @@
       position: relative;
       z-index: 3;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: space-between;
-      gap: 32px;
-      min-height: calc(var(--masthead-height) - 56px);
+      gap: 24px;
+      min-height: var(--masthead-height);
     }
 
     .masthead-text {
@@ -694,6 +694,10 @@
       position: relative;
       z-index: 4;
       flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 28px 0;
     }
 
     /* 1. Accent Line + 18+ Years of Experience */
@@ -773,7 +777,7 @@
       flex-shrink: 0;
     }
 
-    /* 5. Globe + Global / European Relocation Line */
+    /* 5. Globe + India / Global Relocation Line */
     .masthead-reloc {
       display: inline-flex;
       align-items: center;
@@ -792,15 +796,31 @@
       flex-shrink: 0;
     }
 
-    /* Background Right-Side Portrait Visual */
-    .masthead-visual {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      height: 100%;
+    /* Right-Side Full-Height Single Portrait & Chest-Level Interactive Video Stage */
+    .masthead-right-stage {
+      position: relative;
+      z-index: 5;
+      flex: 0 0 510px;
+      height: var(--masthead-height);
+      min-height: var(--masthead-height);
       display: flex;
       align-items: flex-end;
-      justify-content: flex-end;
+      justify-content: center;
+      padding-bottom: 34px;
+      box-sizing: border-box;
+    }
+
+    .masthead.is-playing-video .masthead-right-stage {
+      align-items: center;
+      padding-bottom: 0;
+    }
+
+    .masthead-visual {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
       pointer-events: none;
       z-index: 1;
       transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
@@ -808,23 +828,12 @@
                   filter 0.45s ease;
     }
 
-    /* Smooth yellow blend on left edge of portrait so left text stays crisp */
-    .masthead-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, #F5B703 0%, rgba(245, 183, 3, 0.72) 14%, rgba(245, 183, 3, 0) 34%);
-      z-index: 2;
-      pointer-events: none;
-    }
-
     .masthead-photo {
-      height: 84%;
+      height: 100%;
       width: auto;
-      max-width: min(760px, 50vw);
-      max-height: 335px;
+      max-width: none;
       object-fit: contain;
-      object-position: right bottom;
+      object-position: center bottom;
       display: block;
     }
 
@@ -834,28 +843,19 @@
       transform: scale(1.03);
     }
 
-    /* Right-Side Interactive Trigger & Morphing Video Stage */
-    .masthead-right-stage {
-      position: relative;
-      z-index: 5;
-      flex: 0 0 480px;
-      min-height: 270px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-    }
-
     .masthead-play-trigger {
+      position: relative;
+      z-index: 4;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
       background: rgba(13, 27, 46, 0.92);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       color: #FFFFFF;
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 999px;
-      padding: 8px 20px 8px 9px;
+      padding: 7px 20px 7px 8px;
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(13, 27, 46, 0.28);
       transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
@@ -864,7 +864,6 @@
                   opacity 0.25s ease;
       font-family: var(--font-body);
       text-align: left;
-      margin-bottom: -6px;
     }
 
     .masthead-play-trigger:hover {
@@ -874,8 +873,8 @@
     }
 
     .masthead-play-icon {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: var(--primary-accent, #F00658);
       color: #FFFFFF;
@@ -890,21 +889,6 @@
     .masthead-play-trigger:hover .masthead-play-icon {
       transform: scale(1.06);
       box-shadow: 0 0 0 6px rgba(240, 6, 88, 0.32);
-    }
-
-    .masthead-play-label-wrap {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.22;
-    }
-
-    .masthead-play-kicker {
-      font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #FCD34D;
     }
 
     .masthead-play-text {
@@ -927,6 +911,7 @@
       border-radius: 16px;
       overflow: hidden;
       position: relative;
+      z-index: 4;
       background: #0B0F19;
       box-shadow: 0 20px 44px rgba(13, 27, 46, 0.36);
       border: 2px solid rgba(13, 27, 46, 0.22);
@@ -1006,31 +991,36 @@
       .masthead {
         position: relative;
         top: 0;
-        padding: 28px 0 24px;
+        padding: 24px 0 0;
       }
       .masthead-contents {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 8px;
         min-height: 0;
       }
       .masthead-text {
+        width: 100%;
+        min-width: 0;
         max-width: 100%;
+        padding: 0;
       }
       .masthead-right-stage {
         flex: 0 0 auto;
         width: 100%;
+        height: 290px;
+        min-height: 290px;
+        justify-content: center;
+        padding-bottom: 24px;
+      }
+      .masthead.is-playing-video .masthead-right-stage {
+        height: auto;
         min-height: 0;
-        justify-content: flex-start;
+        padding: 12px 0 24px;
       }
       .masthead-video-box {
         width: 100%;
         max-width: 480px;
-      }
-      .masthead-photo {
-        height: 76%;
-        max-width: 48vw;
-        opacity: 0.35;
       }
     }
 
@@ -1046,12 +1036,13 @@
         font-size: 11.5px;
         padding: 5px 10px;
       }
+      .masthead-right-stage {
+        height: 250px;
+        min-height: 250px;
+        padding-bottom: 20px;
+      }
       .masthead-play-text {
         font-size: 12.5px;
-        white-space: normal;
-      }
-      .masthead-photo {
-        display: none;
       }
     }
 
@@ -1126,20 +1117,21 @@
 
         <div class="masthead-reloc">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span>Open to global opportunities &middot; European relocation</span>
+          <span>Open to relocation &middot; India / Global</span>
         </div>
       </div>
 
-      <!-- Right-Side Play Trigger (Morphs Background Portrait into Inline Video on Click) -->
+      <!-- Right-Side Full-Height Single Portrait & Chest-Level Play Trigger -->
       <div class="masthead-right-stage">
-        <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years of experience in 60 seconds">
+        <div class="masthead-visual" aria-hidden="true">
+          <img src="masthead-single.jpg" alt="Balaajee V.R. - Enterprise Product Design Leader" class="masthead-photo">
+        </div>
+
+        <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years in 60 seconds">
           <span class="masthead-play-icon" aria-hidden="true">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </span>
-          <span class="masthead-play-label-wrap">
-            <span class="masthead-play-kicker">Watch Intro &bull; 1:00</span>
-            <span class="masthead-play-text">18 years of experience in 60 seconds</span>
-          </span>
+          <span class="masthead-play-text">18 years in 60 seconds</span>
         </button>
 
         <div class="masthead-video-box" id="mastheadVideoBox">
@@ -1154,10 +1146,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="masthead-visual" aria-hidden="true">
-      <img src="masthead-banner.jpg" alt="Balaajee V.R. - Enterprise Product Design Leader" class="masthead-photo">
     </div>
   </section>
 
