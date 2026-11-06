@@ -350,10 +350,10 @@
 
 
     /* =========================================================================
-       Horizontal Global Brand Pedigree Strip
+       Horizontal Global Brand Pedigree Strip (Boxless, Larger Optical Scale)
        ========================================================================= */
     .welcome-hero-stage {
-      padding: 20px 0 22px;
+      padding: 24px 0 26px;
       background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -373,85 +373,84 @@
 
     .exec-brands-header {
       font-family: var(--font-code);
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 11px;
+      margin-bottom: 16px;
     }
 
     .exec-brands-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px 36px;
+      flex-wrap: wrap;
     }
 
     .exec-brand-card {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #F8FAFC;
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 11px 14px;
-      transition: all 0.2s ease;
-      min-width: 0;
+      gap: 11px;
+      background: transparent;
+      border: none;
+      padding: 4px 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     .exec-brand-card:hover {
-      background: #FFFFFF;
-      border-color: var(--border-medium);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
       transform: translateY(-1px);
     }
 
     .exec-brand-logo-img {
-      height: 22px;
-      max-width: 56px;
+      height: 30px;
       width: auto;
+      max-width: none;
       object-fit: contain;
       flex-shrink: 0;
+      display: block;
+    }
+
+    .exec-brand-logo-img.logo-wordmark-infosys {
+      height: 34px;
     }
 
     .exec-brand-name {
       font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 16.5px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
       color: var(--text-main);
-      line-height: 1.2;
+      line-height: 1.15;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 900px) {
       .exec-brands-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .exec-brand-card {
-        flex: 1 1 170px;
+        justify-content: flex-start;
+        gap: 18px 32px;
       }
     }
 
     @media (max-width: 560px) {
       .welcome-hero-stage {
-        padding: 16px 0 18px;
+        padding: 18px 0 20px;
+      }
+      .exec-brands-header {
+        margin-bottom: 12px;
       }
       .exec-brands-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
+        gap: 14px 24px;
       }
-      .exec-brand-card {
-        justify-content: flex-start;
-        padding: 9px 11px;
+      .exec-brand-logo-img {
+        height: 25px;
+      }
+      .exec-brand-logo-img.logo-wordmark-infosys {
+        height: 28px;
       }
       .exec-brand-name {
-        font-size: 12px;
+        font-size: 14.5px;
       }
     }
 
@@ -969,7 +968,6 @@
         <div class="exec-brands-grid">
           <div class="exec-brand-card">
             <img src="logos/ibm.svg" alt="IBM" class="exec-brand-logo-img">
-            <span class="exec-brand-name">IBM</span>
           </div>
 
           <div class="exec-brand-card">
@@ -988,8 +986,7 @@
           </div>
 
           <div class="exec-brand-card">
-            <img src="logos/infosys.svg" alt="Infosys" class="exec-brand-logo-img">
-            <span class="exec-brand-name">Infosys</span>
+            <img src="logos/infosys.svg" alt="Infosys" class="exec-brand-logo-img logo-wordmark-infosys">
           </div>
         </div>
       </div>
@@ -1631,15 +1628,13 @@
 
     /* 4. Cursor-Tracked Spotlight Glow & 3D Micro-Tilt on Case Cards */
     body.fx-enabled .case-card-flagship,
-    body.fx-enabled .case-card,
-    body.fx-enabled .exec-brand-card {
+    body.fx-enabled .case-card {
       position: relative;
       overflow: hidden;
       transform-style: preserve-3d;
     }
     body.fx-enabled .case-card-flagship::before,
-    body.fx-enabled .case-card::before,
-    body.fx-enabled .exec-brand-card::before {
+    body.fx-enabled .case-card::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -1656,8 +1651,7 @@
       z-index: 2;
     }
     body.fx-enabled .case-card-flagship:hover::before,
-    body.fx-enabled .case-card:hover::before,
-    body.fx-enabled .exec-brand-card:hover::before {
+    body.fx-enabled .case-card:hover::before {
       opacity: 1;
     }
 
@@ -1692,7 +1686,7 @@
       const mastheadText = document.querySelector('.masthead-text');
       const mastheadPhoto = document.querySelector('.masthead-photo');
       const stageCards = document.querySelectorAll('.case-card-flagship, .case-card');
-      const interactiveCards = document.querySelectorAll('.case-card-flagship, .case-card, .exec-brand-card');
+      const interactiveCards = document.querySelectorAll('.case-card-flagship, .case-card');
 
       // Tag elements for scroll-reveal choreography
       const revealGroups = [
