@@ -350,299 +350,108 @@
 
 
     /* =========================================================================
-       Unified Executive Banner Stage (165px Compact Power Strip)
+       Horizontal Global Brand Pedigree Strip
        ========================================================================= */
     .welcome-hero-stage {
-      padding: 14px 0 14px;
-      background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+      padding: 20px 0 22px;
+      background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .hero-container {
-      max-width: 1260px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 24px;
+      box-sizing: border-box;
     }
 
-    .exec-banner-row {
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      gap: 22px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 12px 18px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    /* Zone 1: Mini Video Briefing launcher (Slightly Bigger) */
-    .exec-banner-video-pill {
-      flex: 0 0 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .exec-video-thumb-container {
-      width: 260px;
-      height: 146px;
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      background: #000;
-      border: 1px solid rgba(0,0,0,0.1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    }
-    .exec-video-thumb-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .exec-video-badge {
-      position: absolute;
-      top: 7px;
-      left: 7px;
-      background: rgba(11, 14, 23, 0.85);
-      backdrop-filter: blur(4px);
-      color: #FFFFFF;
-      font-family: var(--font-code);
-      font-size: 9.5px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-    .exec-video-subbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 5px;
-      font-size: 10.5px;
-      color: var(--text-muted);
-    }
-    .btn-micro-transcript {
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      font-size: 10px;
-      padding: 1px 6px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .btn-micro-transcript:hover {
-      color: var(--primary-accent);
-      border-color: var(--primary-accent);
-    }
-
-    /* Zone 2: Executive Pitch & Metrics */
-    .exec-banner-center {
-      flex: 1 1 auto;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 4px;
-    }
-    .exec-tag-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 5px;
-    }
-    .exec-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 700;
-      color: #0284C7;
-      background: #E0F2FE;
-      padding: 2px 8px;
-      border-radius: 9999px;
-    }
-    .status-pulse-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #0284C7;
-      box-shadow: 0 0 6px #0284C7;
-    }
-    .exec-exp-badge {
-      font-family: var(--font-code);
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--primary-accent);
-      background: rgba(240,6,88,0.08);
-      padding: 2px 8px;
-      border-radius: 9999px;
-    }
-    .exec-headline {
-      font-family: var(--font-heading);
-      font-size: 19px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      line-height: 1.25;
-      margin: 0 0 5px 0;
-    }
-    .exec-sub-pitch {
-      font-size: 12.5px;
-      line-height: 1.45;
-      color: var(--text-body);
-      margin: 0 0 9px 0;
-    }
-    .exec-stats-ribbon {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: nowrap;
-    }
-    .exec-stat-pill {
-      font-size: 11px;
-      background: #F1F5F9;
-      border: 1px solid var(--border-subtle);
-      padding: 2px 8px;
-      border-radius: 6px;
-      color: var(--text-body);
-      white-space: nowrap;
-    }
-    .exec-stat-pill strong {
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    /* Zone 3: Enterprise Pedigree (Bigger Logos + Titles, No CTA) */
     .exec-banner-brands {
-      flex: 0 0 440px;
-      border-left: 1px solid var(--border-subtle);
-      padding-left: 18px;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
+
     .exec-brands-header {
       font-family: var(--font-code);
-      font-size: 9px;
+      font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 7px;
+      margin-bottom: 11px;
     }
+
     .exec-brands-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 7px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
     }
+
     .exec-brand-card {
       display: flex;
       align-items: center;
-      gap: 9px;
-      background: #FFFFFF;
+      justify-content: center;
+      gap: 10px;
+      background: #F8FAFC;
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 6px 9px;
+      border-radius: 10px;
+      padding: 11px 14px;
       transition: all 0.2s ease;
+      min-width: 0;
     }
+
     .exec-brand-card:hover {
+      background: #FFFFFF;
       border-color: var(--border-medium);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
       transform: translateY(-1px);
     }
+
     .exec-brand-logo-img {
       height: 22px;
-      max-width: 54px;
+      max-width: 56px;
       width: auto;
       object-fit: contain;
       flex-shrink: 0;
     }
-    .exec-brand-info {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
+
     .exec-brand-name {
       font-family: var(--font-heading);
-      font-size: 11px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 700;
       color: var(--text-main);
-      line-height: 1.15;
-    }
-    .exec-brand-role {
-      font-size: 9.5px;
-      font-weight: 500;
-      color: var(--text-muted);
       line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .exec-brand-card.wide {
-      grid-column: 1 / -1;
-      padding: 5px 10px;
-    }
-    .exec-brand-card.wide .exec-brand-role {
-      white-space: normal;
-    }
 
-    /* Transcript Drawer */
-    .transcript-drawer {
-      display: none;
-      background: #F8F9FA;
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-top: 12px;
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--text-body);
-      animation: fadeIn 0.3s ease;
-    }
-    .transcript-drawer.open {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 1100px) {
-      .exec-banner-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .exec-banner-video-pill {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 340px;
-        margin: 0 auto;
-      }
-      .exec-video-thumb-container {
-        width: 100%;
-        max-width: 340px;
-        height: 191px;
-      }
-      .exec-banner-center {
-        border-right: none;
-        border-bottom: 1px solid var(--border-subtle);
-        padding-bottom: 12px;
-        margin-bottom: 4px;
-      }
-      .exec-stats-ribbon {
+    @media (max-width: 1024px) {
+      .exec-brands-grid {
+        display: flex;
         flex-wrap: wrap;
+        gap: 10px;
       }
-      .exec-banner-brands {
-        border-left: none;
-        padding-left: 0;
+      .exec-brand-card {
+        flex: 1 1 170px;
       }
     }
 
     @media (max-width: 560px) {
+      .welcome-hero-stage {
+        padding: 16px 0 18px;
+      }
       .exec-brands-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .exec-brand-card {
+        justify-content: flex-start;
+        padding: 9px 11px;
+      }
+      .exec-brand-name {
+        font-size: 12px;
       }
     }
 
@@ -1152,75 +961,40 @@
   <!-- 3. Page Surface / Site Wrap (Slides smoothly up over the sticky masthead on scroll) -->
   <div class="site-wrap">
 
-  <!-- Executive Summary & Brand Pedigree Strip -->
-  <main class="welcome-hero-stage">
+  <!-- Horizontal Global Brand Pedigree Strip -->
+  <section class="welcome-hero-stage" aria-label="Worked with Global Tech Leaders">
     <div class="hero-container">
-      
-      <div class="exec-banner-row">
+      <div class="exec-banner-brands">
+        <div class="exec-brands-header">Worked with Global Tech Leaders</div>
+        <div class="exec-brands-grid">
+          <div class="exec-brand-card">
+            <img src="logos/ibm.svg" alt="IBM" class="exec-brand-logo-img">
+            <span class="exec-brand-name">IBM</span>
+          </div>
 
-        <!-- Zone 1: Executive Pitch & Metrics -->
-        <div class="exec-banner-center">
-          <h2 class="exec-headline">Enterprise Design Leadership &amp; AI Orchestration</h2>
-          <p class="exec-sub-pitch">Directing cross-functional design squads, scaling design system governance, and designing enterprise AI products and agentic workflows for mission-critical software platforms.</p>
-          <div class="exec-stats-ribbon">
-            <span class="exec-stat-pill"><strong>14</strong> Squads Directed</span>
-            <span class="exec-stat-pill"><strong>94%</strong> Carbon Adoption</span>
-            <span class="exec-stat-pill"><strong>$14M+</strong> Enterprise Impact</span>
+          <div class="exec-brand-card">
+            <img src="logos/ericsson.svg" alt="Ericsson" class="exec-brand-logo-img">
+            <span class="exec-brand-name">Ericsson</span>
+          </div>
+
+          <div class="exec-brand-card">
+            <img src="logos/zebra.svg" alt="Zebra Technologies" class="exec-brand-logo-img">
+            <span class="exec-brand-name">Zebra Technologies</span>
+          </div>
+
+          <div class="exec-brand-card">
+            <img src="logos/zf.svg" alt="ZF Wabco" class="exec-brand-logo-img">
+            <span class="exec-brand-name">ZF Wabco</span>
+          </div>
+
+          <div class="exec-brand-card">
+            <img src="logos/infosys.svg" alt="Infosys" class="exec-brand-logo-img">
+            <span class="exec-brand-name">Infosys</span>
           </div>
         </div>
-
-        <!-- Zone 3: Global Brand Logos & Roles (Bigger Logos, Job Titles, No CTA) -->
-        <div class="exec-banner-brands">
-          <div class="exec-brands-header">TRUSTED BY GLOBAL TECH LEADERS</div>
-          <div class="exec-brands-grid">
-            
-            <div class="exec-brand-card" title="IBM: Senior UI/UX Design Manager">
-              <img src="logos/ibm.svg" alt="IBM" class="exec-brand-logo-img">
-              <div class="exec-brand-info">
-                <span class="exec-brand-name">IBM</span>
-                <span class="exec-brand-role">Senior UI/UX Design Manager</span>
-              </div>
-            </div>
-
-            <div class="exec-brand-card" title="Ericsson: UI/UX Designer">
-              <img src="logos/ericsson.svg" alt="Ericsson" class="exec-brand-logo-img">
-              <div class="exec-brand-info">
-                <span class="exec-brand-name">Ericsson</span>
-                <span class="exec-brand-role">UI/UX Designer</span>
-              </div>
-            </div>
-
-            <div class="exec-brand-card" title="Zebra Technologies: UI/UX Product Design Manager">
-              <img src="logos/zebra.svg" alt="Zebra Technologies" class="exec-brand-logo-img">
-              <div class="exec-brand-info">
-                <span class="exec-brand-name">Zebra Technologies</span>
-                <span class="exec-brand-role">UI/UX Product Design Manager</span>
-              </div>
-            </div>
-
-            <div class="exec-brand-card" title="ZF Wabco: UI/UX Senior Specialist">
-              <img src="logos/zf.svg" alt="ZF Wabco" class="exec-brand-logo-img">
-              <div class="exec-brand-info">
-                <span class="exec-brand-name">ZF Wabco</span>
-                <span class="exec-brand-role">UI/UX Senior Specialist</span>
-              </div>
-            </div>
-
-            <div class="exec-brand-card wide" title="Infosys: Senior Software Engineer • Digital Experience">
-              <img src="logos/infosys.svg" alt="Infosys" class="exec-brand-logo-img">
-              <div class="exec-brand-info">
-                <span class="exec-brand-name">Infosys</span>
-                <span class="exec-brand-role">Senior Software Engineer &bull; Digital Experience</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
       </div>
-
     </div>
-  </main>
+  </section>
 <!-- BVR:HOME-EXTRA:START -->
   <style>
   /* -------------------------------------------------------------------------
@@ -1228,9 +1002,8 @@
      ------------------------------------------------------------------------- */
   .home-featured-work {
     scroll-margin-top: 72px;
-    padding: 72px 0 88px;
+    padding: 52px 0 88px;
     background: #FAFBFC;
-    border-top: 1px solid var(--border-subtle);
   }
   .home-featured-work .g-wrap {
     max-width: 1240px;
