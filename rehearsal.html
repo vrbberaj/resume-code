@@ -445,7 +445,7 @@
           <button id="voiceGuideBtn" class="btn btn-secondary">🎙️ Audio Voice Guide: ON</button>
           <button id="playRefAudioBtn" class="btn btn-secondary" onclick="toggleRefAudio()">🎧 Play Audio Guide</button>
         </div>
-        <audio id="refAudioPlayer" src="assets/homepage_intro_final.m4a?v=exec60" preload="auto" onended="onRefAudioEnded()"></audio>
+        <audio id="refAudioPlayer" src="assets/homepage_intro_final.m4a?v=exec60v2" preload="auto" onended="onRefAudioEnded()"></audio>
       </div>
     </div>
 
@@ -533,17 +533,17 @@
         `
       },
       welcome: {
-        title: "60-Second Portfolio & LinkedIn Intro (Executive • 60s)",
-        duration: 60,
+        title: "My Introduction — 60 Seconds (Portfolio & LinkedIn)",
+        duration: 60.5,
         durationFormatted: "01:00",
         headerDuration: "60s",
-        fullText: "Hi, I'm Balaajee. I'm a design leader with 18 years of experience shaping enterprise products, building high-performing teams, and turning complex challenges into simple, intuitive experiences. I've worked with organisations like Infosys, Ericsson, ZF Wabco, Zebra, and IBM — delivering over 25 products across industries, from enterprise platforms to industrial and automotive systems. Throughout my career, I've hired, mentored, and developed over 50 designers. Most recently, I led a team of 14 at IBM — creating an environment where designers take ownership, challenge assumptions, and drive outcomes. Today, I'm focused on how AI is changing the way people work with software — designing AI products people can understand, trust, and control, while using AI to make design teams faster and more effective. I believe great design leadership is about more than delivering products. It's about building the people, culture, and capabilities that make better products possible. I'd love to share more of that journey with you.",
+        fullText: "Hi, I'm Balaajee. I'm a design leader with 18 years of experience shaping enterprise products, building high-performing teams, and turning complex challenges into simple, intuitive experiences. I've worked with organisations like Infosys, Ericsson, ZF Wabco, Zebra, and IBM — delivering over 25 products across industries, from enterprise platforms to industrial and automotive systems. Throughout my career, I've hired, mentored, and developed over 50 designers. Most recently, I led a team of 14 at IBM — creating an environment where designers take ownership, challenge assumptions, and drive outcomes. Today, I'm focused on how AI is changing the way people work with software — designing AI products people can understand, trust, and control, while using AI to make design teams faster and more effective. I believe great design leadership is about more than delivering products. It's about building the people, culture, and capabilities that make better products possible. Thank you for your time. I look forward to connecting and exploring opportunities together.",
         timeline: [
-          { start: 0, end: 11.5, lineId: 'line1', frame: 'frame1', cue: '1. Opening (0:00–0:11): Warm Smile, Eye Contact' },
-          { start: 11.5, end: 23.9, lineId: 'line2', frame: 'frame2', cue: '2. Experience (0:11–0:24): Open Palm Gesture' },
-          { start: 23.9, end: 37.3, lineId: 'line3', frame: 'frame2', cue: '3. Leadership (0:24–0:37): Confident, Steady' },
-          { start: 37.3, end: 49.1, lineId: 'line4', frame: 'frame2', cue: '4. AI Products & Teams (0:37–0:49): Leaning In Slightly' },
-          { start: 49.1, end: 60.2, lineId: 'line5', frame: 'frame3', cue: '5. Closing (0:49–1:00): Warm Smile (Hold 2s)' }
+          { start: 0, end: 11.0, lineId: 'line1', frame: 'frame1', cue: '1. Opening (0:00–0:11): Warm Smile, Eye Contact' },
+          { start: 11.0, end: 23.5, lineId: 'line2', frame: 'frame2', cue: '2. Experience (0:11–0:24): Open Palm Gesture' },
+          { start: 23.5, end: 36.4, lineId: 'line3', frame: 'frame2', cue: '3. Leadership (0:24–0:37): Confident, Steady' },
+          { start: 36.4, end: 47.3, lineId: 'line4', frame: 'frame2', cue: '4. AI Products & Teams (0:37–0:49): Leaning In Slightly' },
+          { start: 47.3, end: 60.5, lineId: 'line5', frame: 'frame3', cue: '5. Closing (0:49–1:00): Warm Smile (Hold 2s)' }
         ],
         html: `
           <p id="line1" class="active-sentence">
@@ -575,13 +575,13 @@
 
           <p id="line5">
             <span class="coach-pill cue-smile">5. Closing &bull; Warm Smile (0:49 – 1:00)</span>
-            “I believe great design leadership is about more than delivering products. It’s about <strong>building the people, culture, and capabilities</strong> that make better products possible. <strong>I’d love to share more of that journey with you</strong>.”
+            “I believe great design leadership is about more than delivering products. It’s about <strong>building the people, culture, and capabilities</strong> that make better products possible.<br><br><strong>Thank you for your time. I look forward to connecting and exploring opportunities together.</strong>”
           </p>
         `,
         tips: `
           <div class="tip-box">
-            <div class="tip-title">🎯 Calm 155-Word Pace</div>
-            <div>At just 155 words, you never have to rush—speak warmly and pause naturally at every full stop to land right at 60 seconds.</div>
+            <div class="tip-title">🎯 Calm 161-Word Pace</div>
+            <div>At 161 words, speak warmly and pause naturally at every full stop to land cleanly at 60 seconds.</div>
           </div>
           <div class="tip-box">
             <div class="tip-title">🤖 Clear AI Dual Lens</div>
@@ -589,7 +589,7 @@
           </div>
           <div class="tip-box">
             <div class="tip-title">🌐 Website + LinkedIn Ready</div>
-            <div>Because the close doesn't say "look below", you can upload one single recording to both your portfolio homepage and your LinkedIn profile.</div>
+            <div>"Thank you for your time. I look forward to connecting and exploring opportunities together." works cleanly on your portfolio homepage, LinkedIn, and recruiter outreach.</div>
           </div>
         `
       },
