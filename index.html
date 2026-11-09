@@ -612,60 +612,68 @@
       flex-shrink: 0;
     }
 
-    /* Right-Side Full-Height Single Portrait & Chest-Level Interactive Video Stage */
+    /* Right-Side Permanently Embedded Debossed (Engraved) Video Stage */
     .masthead-right-stage {
       position: relative;
       z-index: 5;
-      flex: 0 0 510px;
+      flex: 0 0 530px;
       height: var(--masthead-height);
       min-height: var(--masthead-height);
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      padding-bottom: 34px;
+      padding: 18px 0;
       box-sizing: border-box;
     }
 
-    .masthead.is-playing-video .masthead-right-stage {
-      align-items: center;
-      padding-bottom: 0;
+    /* Debossed / Engraved 16:9 Video Frame (Flat into Website, No Outer Shadow or Border) */
+    .masthead-video-box {
+      display: block;
+      width: 520px;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      z-index: 4;
+      background: #1E2430;
+      border: none;
+      /* Subtle bottom rim highlight so the cutout looks recessed/debossed into the #F5B703 surface */
+      box-shadow: 0 1.5px 0 rgba(255, 236, 170, 0.65), 0 -1px 0 rgba(13, 27, 46, 0.22);
+      cursor: pointer;
     }
 
-    .masthead-visual {
+    /* Inner engraved recess shadow overlay above the video */
+    .masthead-video-box::after {
+      content: "";
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      border-radius: 14px;
       pointer-events: none;
-      z-index: 1;
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 0.45s ease;
+      z-index: 5;
+      box-shadow: inset 0 4px 10px rgba(13, 27, 46, 0.38),
+                  inset 0 1.5px 3px rgba(13, 27, 46, 0.45),
+                  inset 0 -1px 2px rgba(255, 255, 255, 0.16);
     }
 
-    .masthead-photo {
+    .masthead-video-box video {
+      width: 100%;
       height: 100%;
-      width: auto;
-      max-width: none;
-      object-fit: contain;
-      object-position: center bottom;
+      object-fit: cover;
+      background: #1E2430;
       display: block;
     }
 
-    .masthead.is-playing-video .masthead-visual {
-      opacity: 0.08;
-      filter: blur(6px);
-      transform: scale(1.03);
-    }
-
     .masthead-play-trigger {
-      position: relative;
-      z-index: 4;
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
       display: inline-flex;
       align-items: center;
       gap: 11px;
-      background: rgba(13, 27, 46, 0.92);
+      background: rgba(13, 27, 46, 0.90);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       color: #FFFFFF;
@@ -673,19 +681,17 @@
       border-radius: 999px;
       padding: 7px 20px 7px 8px;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(13, 27, 46, 0.28);
+      box-shadow: 0 8px 22px rgba(13, 27, 46, 0.32);
       transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.22s ease,
                   background 0.22s ease,
-                  opacity 0.25s ease;
+                  opacity 0.22s ease;
       font-family: var(--font-body);
       text-align: left;
     }
 
-    .masthead-play-trigger:hover {
-      transform: translateY(-2px) scale(1.015);
+    .masthead-video-box:hover .masthead-play-trigger {
+      transform: translateX(-50%) translateY(-2px) scale(1.02);
       background: #0D1B2E;
-      box-shadow: 0 16px 34px rgba(13, 27, 46, 0.36);
     }
 
     .masthead-play-icon {
@@ -702,7 +708,7 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .masthead-play-trigger:hover .masthead-play-icon {
+    .masthead-video-box:hover .masthead-play-icon {
       transform: scale(1.06);
       box-shadow: 0 0 0 6px rgba(240, 6, 88, 0.32);
     }
@@ -716,46 +722,43 @@
     }
 
     .masthead.is-playing-video .masthead-play-trigger {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .masthead-video-close {
       display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 7;
+      background: rgba(11, 15, 25, 0.78);
+      backdrop-filter: blur(6px);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-family: var(--font-body);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease;
     }
 
-    /* Inline 16:9 Cinema Frame (Hidden Until Play Clicked) */
-    .masthead-video-box {
-      display: none;
-      width: 500px;
-      aspect-ratio: 16 / 9;
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      z-index: 4;
-      background: #0B0F19;
-      box-shadow: 0 20px 44px rgba(13, 27, 46, 0.36);
-      border: 2px solid rgba(13, 27, 46, 0.22);
-      animation: mastheadVideoReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    .masthead.is-playing-video .masthead-video-close {
+      display: inline-block;
     }
 
-    .masthead.is-playing-video .masthead-video-box {
-      display: block;
-    }
-
-    @keyframes mastheadVideoReveal {
-      from { opacity: 0; transform: scale(0.95) translateY(8px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .masthead-video-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #0B0F19;
-      display: block;
+    .masthead-video-close:hover {
+      background: var(--primary-accent, #F00658);
+      border-color: var(--primary-accent, #F00658);
     }
 
     .masthead-audio-fallback {
       display: none;
       position: absolute;
       inset: 0;
-      background: url('video-thumbnail.jpg') center center / cover no-repeat;
+      background: url('video-thumbnail.jpg?v=debossed1') center center / cover no-repeat;
     }
 
     .masthead-audio-fallback.active {
@@ -781,29 +784,6 @@
       font-weight: 600;
     }
 
-    .masthead-video-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 6;
-      background: rgba(11, 15, 25, 0.82);
-      backdrop-filter: blur(6px);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 999px;
-      padding: 5px 11px;
-      font-family: var(--font-body);
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.18s ease;
-    }
-
-    .masthead-video-close:hover {
-      background: var(--primary-accent, #F00658);
-      border-color: var(--primary-accent, #F00658);
-    }
-
     @media (max-width: 1100px) {
       .masthead {
         position: relative;
@@ -822,22 +802,18 @@
         max-width: 100%;
         padding: 0;
       }
-      .masthead-right-stage {
+      .masthead-right-stage,
+      .masthead.is-playing-video .masthead-right-stage {
         flex: 0 0 auto;
         width: 100%;
-        height: 290px;
-        min-height: 290px;
-        justify-content: center;
-        padding-bottom: 24px;
-      }
-      .masthead.is-playing-video .masthead-right-stage {
         height: auto;
         min-height: 0;
+        justify-content: center;
         padding: 12px 0 24px;
       }
       .masthead-video-box {
         width: 100%;
-        max-width: 480px;
+        max-width: 520px;
       }
     }
 
@@ -938,22 +914,17 @@
         </div>
       </div>
 
-      <!-- Right-Side Full-Height Single Portrait & Chest-Level Play Trigger -->
+      <!-- Right-Side Permanently Embedded Debossed (Engraved) Video Stage -->
       <div class="masthead-right-stage">
-        <div class="masthead-visual" aria-hidden="true">
-          <img src="masthead-single.jpg" alt="Balaajee V.R. - Enterprise Product Design Leader" class="masthead-photo">
-        </div>
-
-        <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years in 60 seconds">
-          <span class="masthead-play-icon" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </span>
-          <span class="masthead-play-text">18 years in 60 seconds</span>
-        </button>
-
         <div class="masthead-video-box" id="mastheadVideoBox">
-          <button type="button" class="masthead-video-close" id="mastheadCloseBtn" aria-label="Close video and return to image">&times; Close</button>
-          <video id="mastheadInlineVideo" controls playsinline preload="none" poster="video-thumbnail.jpg"></video>
+          <button type="button" class="masthead-video-close" id="mastheadCloseBtn" aria-label="Reset video to thumbnail">&times; Reset</button>
+          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=debossed1"></video>
+          <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years in 60 seconds">
+            <span class="masthead-play-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </span>
+            <span class="masthead-play-text">18 years in 60 seconds</span>
+          </button>
           <div class="masthead-audio-fallback" id="mastheadAudioFallback">
             <div class="masthead-fallback-bar">
               <span id="mastheadFallbackStatus">▶ Playing 60s Intro Preview</span>
@@ -1874,17 +1845,20 @@
         fallbackAudio.play().catch(() => {});
       }
 
-      function openMastheadVideo() {
+      function openMastheadVideo(e) {
+        if (e) e.stopPropagation();
         if (!masthead) return;
         masthead.classList.add('is-playing-video');
         if (inlineVideo) {
           inlineVideo.style.display = 'block';
+          inlineVideo.controls = true;
           fallbackBox.classList.remove('active');
-          inlineVideo.src = 'intro.mp4?v=hybrid_wbw_v1';
+          if (!inlineVideo.getAttribute('src')) {
+            inlineVideo.src = 'intro.mp4?v=hybrid_wbw_v1';
+          }
           const playPromise = inlineVideo.play();
           if (playPromise !== undefined) {
             playPromise.catch(() => {
-              // If intro.mp4 is not uploaded yet, run clean 60s preview seamlessly
               if (inlineVideo.error || inlineVideo.networkState === 3) {
                 activateFallbackPreview();
               }
@@ -1893,11 +1867,13 @@
         }
       }
 
-      function closeMastheadVideo() {
+      function closeMastheadVideo(e) {
+        if (e) e.stopPropagation();
         if (!masthead) return;
         masthead.classList.remove('is-playing-video');
         if (inlineVideo) {
           inlineVideo.pause();
+          inlineVideo.controls = false;
           inlineVideo.removeAttribute('src');
           inlineVideo.load();
         }
@@ -1910,7 +1886,15 @@
         }
       }
 
+      const videoBoxEl = document.getElementById('mastheadVideoBox');
       if (playTriggerBtn) playTriggerBtn.addEventListener('click', openMastheadVideo);
+      if (videoBoxEl) {
+        videoBoxEl.addEventListener('click', (e) => {
+          if (!masthead.classList.contains('is-playing-video')) {
+            openMastheadVideo(e);
+          }
+        });
+      }
       if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeMastheadVideo);
       if (inlineVideo) {
         inlineVideo.addEventListener('error', activateFallbackPreview);
