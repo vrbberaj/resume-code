@@ -21,3 +21,4 @@
 “I believe great design leadership is about more than delivering products. It’s about building the people, culture, and capabilities that make better products possible.
 
 Thank you for your time. I look forward to connecting and exploring opportunities together.”
+
