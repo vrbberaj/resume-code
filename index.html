@@ -726,34 +726,6 @@
       pointer-events: none;
     }
 
-    .masthead-video-close {
-      display: none;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 7;
-      background: rgba(11, 15, 25, 0.78);
-      backdrop-filter: blur(6px);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 999px;
-      padding: 4px 11px;
-      font-family: var(--font-body);
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.18s ease;
-    }
-
-    .masthead.is-playing-video .masthead-video-close {
-      display: inline-block;
-    }
-
-    .masthead-video-close:hover {
-      background: var(--primary-accent, #F00658);
-      border-color: var(--primary-accent, #F00658);
-    }
-
     .masthead-audio-fallback {
       display: none;
       position: absolute;
@@ -947,11 +919,10 @@
         </div>
       </div>
 
-      <!-- Right-Side Permanently Embedded Debossed (Engraved) Video Stage -->
+      <!-- Right-Side Permanently Embedded Video Stage -->
       <div class="masthead-right-stage">
         <div class="masthead-video-box" id="mastheadVideoBox">
-          <button type="button" class="masthead-video-close" id="mastheadCloseBtn" aria-label="Reset video to thumbnail">&times; Reset</button>
-          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=yt_clean_v7"></video>
+          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=yt_clean_v8"></video>
           <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years in 60 seconds">
             <span class="masthead-play-icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -1886,7 +1857,7 @@
           inlineVideo.controls = true;
           fallbackBox.classList.remove('active');
           if (!inlineVideo.getAttribute('src')) {
-            inlineVideo.src = 'intro.mp4?v=yt_sub_v5';
+            inlineVideo.src = 'intro.mp4?v=studio_lit_v6';
           }
           const playPromise = inlineVideo.play();
           if (playPromise !== undefined) {
