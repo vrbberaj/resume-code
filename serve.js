@@ -8,6 +8,40 @@ const WAR_ROOM_STATE_FILE = path.join(__dirname, 'war-room-state.json');
 const server = http.createServer((req, res) => {
   const decodedUrl = decodeURIComponent(req.url.split('?')[0]);
 
+  // Live Interview Co-Pilot Keyless AI Endpoint
+  if (req.method === 'POST' && decodedUrl === '/api/copilot/ask') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', async () => {
+      try {
+        const payload = JSON.parse(body || '{}');
+        const question = (payload.question || '').trim();
+        if (!question) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ ok: false }));
+          return;
+        }
+        const aiRes = await fetch('https://text.pollinations.ai/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'openai-fast',
+            messages: payload.messages || [
+              { role: 'user', content: question }
+            ]
+          })
+        });
+        const data = await aiRes.json();
+        res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+        res.end(JSON.stringify(data));
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: false, error: err.message }));
+      }
+    });
+    return;
+  }
+
   // Interactive War Room Turn Endpoint
   if (req.method === 'POST' && decodedUrl === '/api/war-room/speak') {
     let body = '';
