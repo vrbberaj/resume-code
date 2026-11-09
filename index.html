@@ -1854,7 +1854,7 @@
           inlineVideo.controls = true;
           fallbackBox.classList.remove('active');
           if (!inlineVideo.getAttribute('src')) {
-            inlineVideo.src = 'intro.mp4?v=hybrid_wbw_v1';
+            inlineVideo.src = 'intro.mp4?v=split_v2';
           }
           const playPromise = inlineVideo.play();
           if (playPromise !== undefined) {
@@ -1898,7 +1898,7 @@
       if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeMastheadVideo);
       if (inlineVideo) {
         inlineVideo.addEventListener('error', activateFallbackPreview);
-        inlineVideo.addEventListener('ended', closeMastheadVideo);
+        // Do not auto-close or exit fullscreen when video ends; let the user close or replay it manually.
       }
       if (fallbackAudio) {
         fallbackAudio.addEventListener('timeupdate', () => {
@@ -1906,7 +1906,6 @@
             fallbackTimer.textContent = formatTime(fallbackAudio.currentTime) + ' / ' + formatTime(fallbackAudio.duration || 60);
           }
         });
-        fallbackAudio.addEventListener('ended', closeMastheadVideo);
       }
       if (fallbackBox && fallbackAudio) {
         fallbackBox.addEventListener('click', () => {
