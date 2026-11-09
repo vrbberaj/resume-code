@@ -482,13 +482,32 @@
       max-width: 100vw;
       min-height: var(--masthead-height);
       z-index: 1;
-      background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 52%, #F1F5F9 100%);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      background-color: #F4F6FA;
+      background-image:
+        radial-gradient(circle at 82% 48%, rgba(245, 183, 3, 0.16) 0%, rgba(245, 183, 3, 0) 42%),
+        radial-gradient(circle at 18% 22%, rgba(240, 6, 88, 0.08) 0%, rgba(240, 6, 88, 0) 38%),
+        radial-gradient(circle at 52% 85%, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0) 45%),
+        radial-gradient(rgba(15, 23, 42, 0.11) 1px, transparent 1px),
+        linear-gradient(to right, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 48%, #EEF2F7 100%);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px, 96px 96px, 96px 96px, 100% 100%;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.09);
       display: flex;
       align-items: stretch;
       box-sizing: border-box;
       overflow: hidden;
       padding: 0;
+    }
+
+    .masthead-bg-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.85;
     }
 
     .masthead-contents {
@@ -662,55 +681,44 @@
     }
 
     .masthead-play-trigger {
-      display: none;
-      align-items: center;
-      gap: 11px;
-      background: rgba(13, 27, 46, 0.90);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 999px;
-      padding: 7px 20px 7px 8px;
-      cursor: pointer;
-      box-shadow: 0 8px 22px rgba(13, 27, 46, 0.32);
-      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                  background 0.22s ease,
-                  opacity 0.22s ease;
-      font-family: var(--font-body);
-      text-align: left;
-    }
-
-    .masthead-video-box:hover .masthead-play-trigger {
-      transform: translateX(-50%) translateY(-2px) scale(1.02);
-      background: #0D1B2E;
-    }
-
-    .masthead-play-icon {
-      width: 34px;
-      height: 34px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background: var(--primary-accent, #F00658);
-      color: #FFFFFF;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 4px rgba(240, 6, 88, 0.22);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .masthead-video-box:hover .masthead-play-icon {
-      transform: scale(1.06);
-      box-shadow: 0 0 0 6px rgba(240, 6, 88, 0.32);
-    }
-
-    .masthead-play-text {
-      font-size: 13.5px;
-      font-weight: 700;
+      background: rgba(240, 6, 88, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #FFFFFF;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
+      border: 2px solid rgba(255, 255, 255, 0.88);
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(240, 6, 88, 0.42),
+                  0 0 0 8px rgba(240, 6, 88, 0.16);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  background 0.22s ease,
+                  box-shadow 0.22s ease,
+                  opacity 0.22s ease;
+    }
+
+    .masthead-video-box:hover .masthead-play-trigger {
+      transform: translate(-50%, -50%) scale(1.09);
+      background: #F00658;
+      box-shadow: 0 16px 36px rgba(240, 6, 88, 0.52),
+                  0 0 0 12px rgba(240, 6, 88, 0.22);
+    }
+
+    .masthead-play-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
     }
 
     .masthead.is-playing-video .masthead-play-trigger {
@@ -868,8 +876,41 @@
     </div>
   </header>
 
-  <!-- 2. Executive Yellow Masthead Banner (Directly Below Top Nav Bar) -->
+  <!-- 2. Executive Architectural Masthead Banner (Directly Below Top Nav Bar) -->
   <section class="masthead js-masthead-fixed" id="heroMasthead" aria-label="Executive Design Leadership Masthead">
+    <!-- Architectural Design-System & AI Topology Visual Backdrop -->
+    <svg class="masthead-bg-art" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="heroArcGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F00658" stop-opacity="0.16"/>
+          <stop offset="50%" stop-color="#2563EB" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#F5B703" stop-opacity="0.22"/>
+        </linearGradient>
+        <linearGradient id="heroArcGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0F172A" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#0F172A" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <!-- Subtle flowing architectural curves across the hero stage -->
+      <path d="M-80,340 C260,240 520,420 880,260 C1120,150 1300,220 1520,110" fill="none" stroke="url(#heroArcGrad1)" stroke-width="2"/>
+      <path d="M-60,390 C310,290 590,440 940,290 C1160,190 1330,260 1540,160" fill="none" stroke="url(#heroArcGrad1)" stroke-width="1.2" stroke-dasharray="6 6"/>
+      <!-- Concentric studio radar / token rings behind the right video stage -->
+      <circle cx="1050" cy="210" r="190" fill="none" stroke="url(#heroArcGrad2)" stroke-width="1.2"/>
+      <circle cx="1050" cy="210" r="265" fill="none" stroke="url(#heroArcGrad1)" stroke-width="1.2" stroke-dasharray="5 7"/>
+      <circle cx="1050" cy="210" r="345" fill="none" stroke="url(#heroArcGrad2)" stroke-width="1"/>
+      <!-- Architectural blueprint crosshairs & node markers -->
+      <g stroke="rgba(15,23,42,0.18)" stroke-width="1.2">
+        <path d="M96,88 L96,104 M88,96 L104,96"/>
+        <path d="M576,88 L576,104 M568,96 L584,96"/>
+        <path d="M480,280 L480,296 M472,288 L488,288"/>
+        <path d="M672,184 L672,200 M664,192 L680,192"/>
+        <path d="M1344,88 L1344,104 M1336,96 L1352,96"/>
+      </g>
+      <!-- Accent design-system nodes -->
+      <circle cx="672" cy="192" r="4" fill="#F00658" fill-opacity="0.35"/>
+      <circle cx="880" cy="260" r="4.5" fill="#F5B703" fill-opacity="0.55"/>
+      <circle cx="576" cy="96" r="3.5" fill="#2563EB" fill-opacity="0.35"/>
+    </svg>
     <div class="masthead-contents">
       <div class="masthead-text">
         <div class="masthead-exp-row">
@@ -910,12 +951,11 @@
       <div class="masthead-right-stage">
         <div class="masthead-video-box" id="mastheadVideoBox">
           <button type="button" class="masthead-video-close" id="mastheadCloseBtn" aria-label="Reset video to thumbnail">&times; Reset</button>
-          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=debossed1"></video>
+          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=yt_clean_v7"></video>
           <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years in 60 seconds">
             <span class="masthead-play-icon" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </span>
-            <span class="masthead-play-text">18 years in 60 seconds</span>
           </button>
           <div class="masthead-audio-fallback" id="mastheadAudioFallback">
             <div class="masthead-fallback-bar">
