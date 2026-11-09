@@ -342,6 +342,16 @@
         padding: 1rem;
       }
     }
+    @media print {
+      .bvr-drawer-overlay,
+      .bvr-contact-drawer,
+      #bvrDrawerOverlay,
+      #bvrContactDrawer {
+        display: none !important;
+        visibility: hidden !important;
+        box-shadow: none !important;
+      }
+    }
   `;
 
   // Drawer HTML template

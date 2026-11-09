@@ -823,6 +823,9 @@
       * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
       }
       @page {
         margin: 5mm 7mm;
@@ -836,9 +839,14 @@
       }
       header.global-header,
       .resume-page-toolbar,
+      .bvr-drawer-overlay,
+      .bvr-contact-drawer,
+      #bvrDrawerOverlay,
+      #bvrContactDrawer,
       #bvr-contact-drawer-backdrop,
       #bvr-contact-drawer {
         display: none !important;
+        box-shadow: none !important;
       }
       .resume-canvas-wrap {
         border: none !important;
@@ -906,7 +914,7 @@
         <a href="leadership.html" class="nav-item">Leadership</a>
         <a href="archive.html" class="nav-item">Artifacts</a>
         <a href="gallery.html" class="nav-item">Gallery</a>
-        <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Resume.pdf" class="nav-item" style="display:inline-flex;align-items:center;gap:5px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Resume</a>
+        <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf?v=clean_a4_v2" download="Balaajee_VR_Resume.pdf" class="nav-item" style="display:inline-flex;align-items:center;gap:5px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Resume</a>
       </nav>
 
       <div class="header-actions">
@@ -919,7 +927,7 @@
 
   <!-- On-Page Action Bar (Part of Page, Above Resume Sheet) -->
   <div class="resume-page-toolbar">
-    <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf" download="Balaajee_VR_Resume.pdf" class="btn-download-resume">
+    <a href="Balaajee_VR_Swiss_Modernist_Resume.pdf?v=clean_a4_v2" download="Balaajee_VR_Resume.pdf" class="btn-download-resume">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span>Download Resume</span>
       <span class="btn-download-badge">PDF</span>
