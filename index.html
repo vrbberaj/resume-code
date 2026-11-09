@@ -662,12 +662,7 @@
     }
 
     .masthead-play-trigger {
-      position: absolute;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 6;
-      display: inline-flex;
+      display: none;
       align-items: center;
       gap: 11px;
       background: rgba(13, 27, 46, 0.90);
@@ -1851,7 +1846,7 @@
           inlineVideo.controls = true;
           fallbackBox.classList.remove('active');
           if (!inlineVideo.getAttribute('src')) {
-            inlineVideo.src = 'intro.mp4?v=selective_v4';
+            inlineVideo.src = 'intro.mp4?v=yt_sub_v5';
           }
           const playPromise = inlineVideo.play();
           if (playPromise !== undefined) {
