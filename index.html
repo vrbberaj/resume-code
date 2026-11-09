@@ -585,7 +585,7 @@
     .masthead-pills {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
       margin-bottom: 16px;
     }
@@ -594,23 +594,24 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #FFFFFF;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-      color: #0D1B2E;
+      background: #0F172A;
+      border: 1px solid #1E293B;
+      box-shadow: none;
+      color: #FFFFFF;
       font-family: var(--font-body);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 6px 13px;
+      padding: 6px 12px;
       border-radius: 9999px;
       white-space: nowrap;
+      letter-spacing: 0.005em;
     }
 
     .masthead-pill svg {
-      width: 14px;
-      height: 14px;
-      color: #0D1B2E;
-      opacity: 0.88;
+      width: 13.5px;
+      height: 13.5px;
+      color: #FBBF24;
+      opacity: 1;
       flex-shrink: 0;
     }
 
@@ -621,9 +622,9 @@
       gap: 8px;
       font-family: var(--font-body);
       font-size: 13.5px;
-      font-weight: 500;
+      font-weight: 600;
       color: #0D1B2E;
-      opacity: 0.9;
+      opacity: 0.92;
     }
 
     .masthead-reloc svg {
@@ -633,11 +634,11 @@
       flex-shrink: 0;
     }
 
-    /* Right-Side Permanently Embedded Debossed (Engraved) Video Stage */
+    /* Right-Side Flush Embedded Video Stage */
     .masthead-right-stage {
       position: relative;
       z-index: 5;
-      flex: 0 0 530px;
+      flex: 0 0 536px;
       height: var(--masthead-height);
       min-height: var(--masthead-height);
       display: flex;
@@ -647,36 +648,36 @@
       box-sizing: border-box;
     }
 
-    /* Floating Studio Cinema Card Video Frame */
+    /* Flush Architectural Embedded Video Frame (No Floating Drop Shadow) */
     .masthead-video-box {
       display: block;
-      width: 520px;
+      width: 532px;
       max-width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: 18px;
+      border-radius: 14px;
+      padding: 0;
+      box-sizing: border-box;
       overflow: hidden;
       position: relative;
       z-index: 4;
-      background: #0F172A;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      box-shadow: 0 22px 48px -12px rgba(15, 23, 42, 0.18),
-                  0 4px 14px rgba(15, 23, 42, 0.08);
+      background: #F3F6FB;
+      border: 1.5px solid rgba(15, 23, 42, 0.12);
+      box-shadow: none;
       cursor: pointer;
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: border-color 0.22s ease;
     }
 
     .masthead-video-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 28px 56px -12px rgba(15, 23, 42, 0.24),
-                  0 6px 18px rgba(15, 23, 42, 0.10);
+      border-color: rgba(240, 6, 88, 0.35);
     }
 
     .masthead-video-box video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: #1E2430;
+      border-radius: 0;
+      border: none;
+      background: #F3F6FB;
       display: block;
     }
 
@@ -922,7 +923,7 @@
       <!-- Right-Side Permanently Embedded Video Stage -->
       <div class="masthead-right-stage">
         <div class="masthead-video-box" id="mastheadVideoBox">
-          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=yt_clean_v8"></video>
+          <video id="mastheadInlineVideo" playsinline preload="metadata" poster="video-thumbnail.jpg?v=yt_clean_v10"></video>
           <button type="button" class="masthead-play-trigger" id="mastheadPlayBtn" aria-label="Play 60-second video introduction: 18 years in 60 seconds">
             <span class="masthead-play-icon" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
