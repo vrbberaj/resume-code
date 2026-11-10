@@ -175,6 +175,26 @@
       transition: width 0.05s linear;
     }
 
+    .btn-pause-read {
+      background: rgba(56, 189, 248, 0.14);
+      color: #7DD3FC;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .btn-pause-read.locked {
+      background: var(--accent-emerald);
+      color: #04070E;
+      border-color: var(--accent-emerald);
+      font-weight: 800;
+    }
+
     .btn-force-answer {
       background: var(--accent-gold);
       color: #04070E;
@@ -518,9 +538,14 @@
               </div>
             </div>
 
-            <button type="button" class="btn-force-answer" id="btnForceAnswerNow" title="Transcribes the last 6 seconds of audio & answers immediately!">
-              ⚡ Answer Last 6s Now (Enter)
-            </button>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <button type="button" class="btn-pause-read" id="btnPauseWhileReading" title="Press Spacebar to lock/unlock the screen while you read your answer out loud">
+                ⏸️ Lock While Reading (Space)
+              </button>
+              <button type="button" class="btn-force-answer" id="btnForceAnswerNow" title="Transcribes the last 6 seconds of audio & answers immediately!">
+                ⚡ Answer Now (Enter)
+              </button>
+            </div>
           </div>
 
           <div class="heard-question-line" id="heardQuestionLine">
@@ -757,6 +782,8 @@
     let fontSizePx = 28;
     let lastProcessedQuestion = '';
     let liveRequestCounter = 0;
+    let currentDisplayedAnswerPlain = '';
+    let isReadingLockActive = false;
 
     const readingStage = document.getElementById('readingStage');
     const telemetryBar = document.getElementById('telemetryBar');
@@ -774,6 +801,89 @@
     const btnHeadphoneMode = document.getElementById('btnHeadphoneMode');
     const headphoneLabel = document.getElementById('headphoneLabel');
     const btnForceAnswerNow = document.getElementById('btnForceAnswerNow');
+    const btnPauseWhileReading = document.getElementById('btnPauseWhileReading');
+
+    function toggleReadingLock(forceState) {
+      isReadingLockActive = typeof forceState === 'boolean' ? forceState : !isReadingLockActive;
+      if (isReadingLockActive) {
+        btnPauseWhileReading.classList.add('locked');
+        btnPauseWhileReading.textContent = '🔒 Screen Locked (Press Space for Next Q)';
+        isSpeakingNow = false;
+        speechPcm16k = [];
+        pauseProgressFill.style.width = '0%';
+        setTelemetryState('ready', '🔒 Screen Locked While You Read • Press Spacebar when interviewer speaks');
+      } else {
+        btnPauseWhileReading.classList.remove('locked');
+        btnPauseWhileReading.textContent = '⏸️ Lock While Reading (Space)';
+        rollingPcm16k = new Float32Array(0);
+        speechPcm16k = [];
+        isSpeakingNow = false;
+        setTelemetryState('ready', isMicActive ? '🟢 Listening for interviewer question...' : 'READY');
+      }
+    }
+
+    btnPauseWhileReading.addEventListener('click', () => toggleReadingLock());
+
+    // Self-Voice & On-Screen Answer Echo Detector:
+    // Automatically detects when Balaajee is reading the displayed answer out loud (or speaking in first-person
+    // about his own experience) so the Co-Pilot NEVER overwrites the screen while he is speaking!
+    const STOP_WORDS = new Set([
+      'that','this','with','from','have','your','about','were','what','when','where','which','while',
+      'into','through','their','there','been','would','could','should','them','they','then','than',
+      'also','more','most','some','such','only','other','over','under','after','before','between'
+    ]);
+
+    function extractContentWords(str) {
+      return (str || '')
+        .toLowerCase()
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length >= 4 && !STOP_WORDS.has(w));
+    }
+
+    function isCandidateReadingOwnAnswer(spokenText) {
+      if (isReadingLockActive) return true;
+      const clean = (spokenText || '').trim();
+      if (!clean || clean.length < 6) return true;
+
+      // 1. If the utterance starts with first-person candidate pronouns ("I ...", "My ...", "We ...", "At IBM I...")
+      //    it is ALWAYS Balaajee speaking his answer!
+      if (/^(i\b|i'm\b|i’m\b|i've\b|i’ve\b|my\b|in my\b|we\b|our\b|at ibm,? i\b|at zebra,? i\b|at ericsson,? i\b)/i.test(clean)) {
+        return true;
+      }
+
+      // 2. Check word overlap against the answer currently displayed on the teleprompter screen
+      if (currentDisplayedAnswerPlain && currentDisplayedAnswerPlain.length > 20) {
+        const answerWordSet = new Set(extractContentWords(currentDisplayedAnswerPlain));
+        const spokenWords = extractContentWords(clean);
+        if (spokenWords.length >= 2 && answerWordSet.size > 0) {
+          let matchCount = 0;
+          for (const w of spokenWords) {
+            if (answerWordSet.has(w)) matchCount++;
+          }
+          const overlapRatio = matchCount / spokenWords.length;
+          // If >= 35% of the spoken words match the on-screen answer card, Balaajee is reading the teleprompter!
+          if ((matchCount >= 2 && overlapRatio >= 0.35) || matchCount >= 4) {
+            return true;
+          }
+        }
+      }
+
+      // 3. Once an answer is already displayed on screen, require the new speech to actually contain
+      //    an explicit INTERVIEWER QUESTION / PROMPT phrase (not just a random word mid-sentence).
+      if (currentDisplayedAnswerPlain && currentDisplayedAnswerPlain.length > 20) {
+        const hasExplicitQuestionPhrase =
+          clean.includes('?') ||
+          /\b(how|what|why|when|where|who|which|tell me|walk me|describe|explain|elaborate|share a|give me|talk about|suppose|imagine|can you|could you|would you|should you|do you|did you|have you|are you|will you|is there|what's|how's)\b/i.test(clean);
+
+        if (!hasExplicitQuestionPhrase) {
+          return true;
+        }
+      }
+
+      return false;
+    }
 
     function setTelemetryState(mode, text) {
       telemetryBar.classList.remove('state-hearing', 'state-thinking');
@@ -804,7 +914,7 @@
       });
     }
 
-    function renderBlocksToScreen(blocks) {
+    function renderBlocksToScreen(blocks, trackAsCurrentAnswer = true) {
       renderHotkeys();
       answerStream.classList.remove('fresh-update');
       void answerStream.offsetWidth;
@@ -819,6 +929,9 @@
         })
         .join('');
 
+      if (trackAsCurrentAnswer && blocks && blocks.length) {
+        currentDisplayedAnswerPlain = blocks.join(' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      }
       readingStage.scrollTop = 0;
     }
 
@@ -852,12 +965,20 @@
       return res.json();
     }
 
-    async function processLiveInterviewerQuestion(rawText) {
+    async function processLiveInterviewerQuestion(rawText, isManualInput = false) {
       const clean = (rawText || '').trim();
       if (!clean || clean.length < 3) return;
 
-      heardQuestionLine.textContent = `👂 Heard: “${clean}”`;
-      questionInput.value = clean;
+      // If this came from live voice (not manual typing/button) and matches Balaajee reading his own answer, ignore!
+      if (!isManualInput && isCandidateReadingOwnAnswer(clean)) {
+        setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice reading the answer • Waiting for interviewer...');
+        return;
+      }
+
+      if (isManualInput || !currentDisplayedAnswerPlain) {
+        heardQuestionLine.textContent = `👂 Heard: “${clean}”`;
+        questionInput.value = clean;
+      }
       pauseProgressFill.style.width = '0%';
       setTelemetryState('thinking', '🧠 Generating answer for your exact question...');
 
@@ -871,15 +992,19 @@ Write ONE concise, natural first-person ("I...") spoken answer that directly ans
 BALAAJEE'S BACKGROUND (use ONLY if directly relevant to this specific question; do NOT force unrelated company stories or metrics):
 ${targetJobContext ? `TARGET ROLE: ${targetJobContext}\n` : ''}${masterDossier}
 
+CURRENT ANSWER ALREADY DISPLAYED ON SCREEN:
+"${currentDisplayedAnswerPlain || 'None'}"
+
 STRICT RULES:
-1. Answer ONLY the exact question asked. NEVER append unrelated resume stories, extra paragraphs, or filler below the answer.
-2. Return a single-element "blocks" array containing ONE cohesive 2-to-3 sentence spoken answer (35 to 60 words maximum) so Balaajee sees ONLY one clean answer card on screen with zero clutter below it.
-3. Highlight 2 or 3 key phrases in <strong>...</strong> tags so they glow in gold.
-Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer directly addressing the question..."]}`;
+1. If the input text is actually the candidate (Balaajee) reading or paraphrasing his own answer rather than an interviewer asking a question, return {"is_candidate_reading": true, "blocks": []}.
+2. Answer ONLY the exact question asked. NEVER append unrelated resume stories, extra paragraphs, or filler below the answer.
+3. Return a single-element "blocks" array containing ONE cohesive 2-to-3 sentence spoken answer (35 to 60 words maximum) so Balaajee sees ONLY one clean answer card on screen with zero clutter below it.
+4. Highlight 2 or 3 key phrases in <strong>...</strong> tags so they glow in gold.
+Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single cohesive 2-to-3 sentence answer directly addressing the question..."]}`;
 
         const messages = [
           { role: 'system', content: sysPrompt },
-          { role: 'user', content: `Interviewer Question: "${clean}"` }
+          { role: 'user', content: `Spoken Input: "${clean}"` }
         ];
 
         const data = await callGroq(messages);
@@ -888,12 +1013,17 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
         const match = content.match(/\{[\s\S]*\}/);
         if (!match) return;
         const parsed = JSON.parse(match[0]);
+        if (!isManualInput && parsed.is_candidate_reading) {
+          setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice reading the answer • Waiting for interviewer...');
+          return;
+        }
         if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 1) {
           const ms = Math.round(performance.now() - t0);
-          // Join into ONE single clean answer card so nothing irrelevant ever appears below!
+          heardQuestionLine.textContent = `👂 Heard: “${clean}”`;
+          questionInput.value = clean;
           const unifiedAnswer = parsed.blocks.join(' ');
-          renderBlocksToScreen([unifiedAnswer]);
-          setTelemetryState('ready', isMicActive ? `🟢 Answer Ready (${ms}ms) • Listening for next question...` : `🟢 Answer Ready (${ms}ms)`);
+          renderBlocksToScreen([unifiedAnswer], true);
+          setTelemetryState('ready', isMicActive ? `🟢 Answer Ready (${ms}ms) • Read out loud freely (Self-Voice Filter Active)` : `🟢 Answer Ready (${ms}ms)`);
         }
       } catch (e) {
         setTelemetryState('ready', isMicActive ? '🟢 Listening for next question...' : '🟢 Ready');
@@ -1119,23 +1249,27 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
         webSpeechRec.interimResults = true;
         webSpeechRec.lang = 'en-US';
         webSpeechRec.onresult = (event) => {
+          if (isReadingLockActive) return;
           const latest = event.results[event.results.length - 1];
           const clean = (latest?.[0]?.transcript || '').trim();
           if (clean.length > 2) {
+            if (isCandidateReadingOwnAnswer(clean)) {
+              setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice reading the answer • Waiting for interviewer...');
+              return;
+            }
             heardQuestionLine.textContent = `🎙️ Hearing live: “${clean}”`;
             clearTimeout(webSpeechTimer);
             webSpeechTimer = setTimeout(() => {
               const now = performance.now();
               if (clean.length > 6 && (clean !== lastProcessedQuestion || now - lastTranscriptTime > 2500)) {
-                // If PCM recorder wasn't already flushing, trigger from WebSpeech
-                if (!isTranscribingWhisper) {
+                if (!isTranscribingWhisper && !isCandidateReadingOwnAnswer(clean)) {
                   lastProcessedQuestion = clean;
                   lastTranscriptTime = now;
                   isSpeakingNow = false;
                   speechPcm16k = [];
                   rollingPcm16k = new Float32Array(0);
                   pauseProgressFill.style.width = '0%';
-                  processLiveInterviewerQuestion(clean);
+                  processLiveInterviewerQuestion(clean, false);
                 }
               }
             }, 1050);
@@ -1170,7 +1304,7 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
       ambientRms = 0.002;
 
       micProcessor.onaudioprocess = (e) => {
-        if (!isMicActive) return;
+        if (!isMicActive || isReadingLockActive) return;
         const rawInput = e.inputBuffer.getChannelData(0);
         const chunk16k = downsampleTo16k(rawInput, micAudioCtx.sampleRate);
 
@@ -1377,7 +1511,7 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
 
     function speakAndAnswerMockQuestion(qText) {
       lastMockQuestion = qText;
-      processLiveInterviewerQuestion(qText);
+      processLiveInterviewerQuestion(qText, true);
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const utter = new SpeechSynthesisUtterance(qText);
@@ -1426,13 +1560,13 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
 
     document.getElementById('btnAskNow').addEventListener('click', () => {
       const v = questionInput.value.trim();
-      if (v) processLiveInterviewerQuestion(v);
+      if (v) processLiveInterviewerQuestion(v, true);
     });
     questionInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
         const v = questionInput.value.trim();
-        if (v) processLiveInterviewerQuestion(v);
+        if (v) processLiveInterviewerQuestion(v, true);
       }
     });
 
@@ -1459,11 +1593,14 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
     });
 
     window.addEventListener('keydown', (e) => {
-      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
         if (e.key === 'Escape') document.activeElement.blur();
         return;
       }
-      if (e.key === 'Enter') {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        toggleReadingLock();
+      } else if (e.key === 'Enter') {
         e.preventDefault();
         btnForceAnswerNow.click();
       } else {
@@ -1472,7 +1609,7 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
           e.preventDefault();
           activePlaybookId = pb.id;
           heardQuestionLine.textContent = `📌 Topic: ${pb.label}`;
-          renderBlocksToScreen(pb.blocks);
+          renderBlocksToScreen(pb.blocks, true);
         }
       }
     });
@@ -1480,7 +1617,7 @@ Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer
     // Boot with a single clean ready card (zero irrelevant pre-filled blocks)
     renderBlocksToScreen([
       'Click <strong>🎙️ Listen Live</strong> below and speak or play your phone interviewer — your direct answer will appear right here.'
-    ]);
+    ], false);
   </script>
 </body>
 </html>
