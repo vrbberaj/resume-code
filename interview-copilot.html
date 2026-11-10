@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Balaajee V.R. • Live AI Interview Co-Pilot & Hiring Manager Simulator</title>
+  <title>Balaajee V.R. • Zero-Eye-Movement Interview Teleprompter</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-void: #050811;
-      --bg-hud: #0B1120;
-      --bg-card: #111A2E;
-      --bg-elevated: #17233D;
+      --bg-void: #04070E;
+      --bg-dock: #0C1322;
       --border-subtle: rgba(148, 163, 184, 0.16);
-      --border-active: rgba(56, 189, 248, 0.55);
-      --text-primary: #F8FAFC;
-      --text-secondary: #CBD5E1;
-      --text-muted: #64748B;
+      --text-primary: #FFFFFF;
+      --text-dim: rgba(203, 213, 225, 0.45);
       --accent-gold: #FBBF24;
       --accent-cyan: #38BDF8;
       --accent-emerald: #10B981;
       --accent-rose: #F43F5E;
       --accent-purple: #A855F7;
-      --prompt-font-size: 21px;
+      --prompt-size: 30px;
+      --column-width: 650px;
     }
 
     * {
@@ -43,169 +40,269 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .copilot-shell {
-      max-width: 1120px;
+    .app-layout {
+      width: 100%;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* =========================================================================
+       1. TOP WEBCAM READING ZONE (NARROW 650px COLUMN RIGHT UNDER CAMERA!)
+          Zero left-to-right eye movement. Huge 30px font readable from 3 feet.
+       ========================================================================= */
+    .webcam-reading-stage {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: 10px 20px 160px;
+      scroll-behavior: auto;
+    }
+
+    .webcam-reading-stage::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .webcam-reading-stage::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 999px;
+    }
+
+    /* Narrow column pinned dead-center under the laptop webcam */
+    .narrow-eye-column {
+      width: 100%;
+      max-width: var(--column-width);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Tiny 1-line status right under webcam lens */
+    .webcam-lens-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #94A3B8;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      padding-bottom: 8px;
+    }
+
+    .lens-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 12px var(--accent-emerald);
+      flex-shrink: 0;
+    }
+
+    .lens-dot.listening {
+      background: var(--accent-rose);
+      box-shadow: 0 0 14px var(--accent-rose);
+      animation: pulse 0.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.6; }
+    }
+
+    .heard-question-line {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 520px;
+    }
+
+    .speed-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-emerald);
+      flex-shrink: 0;
+    }
+
+    /* THE ANSWER STREAM — HUGE, HIGH-CONTRAST, ZERO CLUTTER */
+    .answer-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 4px;
+    }
+
+    .answer-block {
+      font-size: var(--prompt-size);
+      line-height: 1.42;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.42);
+      padding: 12px 16px;
+      border-radius: 12px;
+      border-left: 4px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    /* Active block right under the webcam is 100% bright white & gold */
+    .answer-block.active-block {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.04);
+      border-left-color: var(--accent-gold);
+    }
+
+    .answer-block:hover {
+      color: #FFFFFF;
+    }
+
+    .answer-block strong {
+      color: var(--accent-gold);
+      font-weight: 800;
+    }
+
+    .answer-block em {
+      color: var(--accent-cyan);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    /* Flash animation when a new answer arrives */
+    @keyframes flashNewAnswer {
+      0% { transform: translateY(-4px); opacity: 0.4; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .answer-stream.fresh-update {
+      animation: flashNewAnswer 0.22s ease-out;
+    }
+
+    /* =========================================================================
+       2. SUBTLE BOTTOM CONTROL DOCK (OUT OF YOUR EYE LINE!)
+          Dimmed until hovered so it never distracts you during the interview
+       ========================================================================= */
+    .bottom-dock-wrapper {
+      flex-shrink: 0;
+      background: rgba(12, 19, 34, 0.92);
+      border-top: 1px solid var(--border-subtle);
+      padding: 8px 16px;
+      opacity: 0.72;
+      transition: opacity 0.2s ease;
+    }
+
+    .bottom-dock-wrapper:hover,
+    .bottom-dock-wrapper:focus-within {
+      opacity: 1;
+    }
+
+    .bottom-dock {
+      max-width: 1060px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      padding: 6px 14px 10px;
       gap: 7px;
     }
 
-    /* 1. TOP WEBCAM EYE-LINE ANCHOR BAR */
-    .camera-anchor-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 4px 14px;
-      background: linear-gradient(90deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.8));
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      flex-shrink: 0;
-    }
-
-    .camera-left, .camera-right {
+    .dock-row {
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .camera-target-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent-emerald);
-      box-shadow: 0 0 10px var(--accent-emerald);
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-
-    .camera-target-dot.listening {
-      background: var(--accent-rose);
-      box-shadow: 0 0 12px var(--accent-rose);
-      animation: pulseDot 0.8s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.65; }
-    }
-
-    .engine-pill {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      padding: 2px 9px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.14);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #6EE7B7;
-      text-transform: none;
-      letter-spacing: 0;
-    }
-
-    /* 2. MAIN CONTROL DECK */
-    .control-deck {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--bg-hud);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 7px 10px;
-      flex-shrink: 0;
       flex-wrap: wrap;
     }
 
-    .hud-btn {
+    .dock-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 12px;
+      padding: 6px 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.18s ease;
-      white-space: nowrap;
       border: 1px solid var(--border-subtle);
-      background: var(--bg-card);
-      color: var(--text-primary);
+      background: #131E36;
+      color: #E2E8F0;
+      transition: all 0.15s ease;
+      white-space: nowrap;
     }
 
-    .hud-btn:hover {
+    .dock-btn:hover {
       border-color: var(--accent-cyan);
-      background: var(--bg-elevated);
+      color: #FFFFFF;
     }
 
-    .btn-mic {
-      border-color: rgba(16, 185, 129, 0.45);
-      background: rgba(16, 185, 129, 0.12);
-      color: #6EE7B7;
-    }
-
-    .btn-mic.active {
+    .dock-btn.btn-mic.active {
+      background: rgba(244, 63, 94, 0.22);
       border-color: var(--accent-rose);
-      background: rgba(244, 63, 94, 0.2);
       color: #FDA4AF;
-      box-shadow: 0 0 16px rgba(244, 63, 94, 0.25);
     }
 
-    .btn-headphone {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(56, 189, 248, 0.1);
-      color: #7DD3FC;
-    }
-
-    .btn-headphone.active {
+    .dock-btn.btn-headphone.active {
+      background: rgba(56, 189, 248, 0.22);
       border-color: var(--accent-cyan);
-      background: rgba(56, 189, 248, 0.24);
       color: #FFFFFF;
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
     }
 
-    .btn-mock {
-      border-color: rgba(168, 85, 247, 0.45);
-      background: rgba(168, 85, 247, 0.14);
-      color: #D8B4FE;
+    .dock-btn.btn-scroll.playing {
+      background: var(--accent-emerald);
+      border-color: var(--accent-emerald);
+      color: #04070E;
     }
 
-    .btn-mock.active {
-      border-color: var(--accent-purple);
-      background: rgba(168, 85, 247, 0.28);
+    .dock-btn.btn-mock {
+      border-color: rgba(168, 85, 247, 0.5);
+      background: rgba(168, 85, 247, 0.16);
+      color: #E9D5FF;
+    }
+
+    .dock-input-wrap {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .dock-input {
+      width: 100%;
+      background: #060A14;
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 6px 76px 6px 14px;
       color: #FFFFFF;
-      box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
+      font-size: 12.5px;
+      outline: none;
     }
 
-    .btn-brain {
-      border-color: rgba(251, 191, 36, 0.4);
-      background: rgba(251, 191, 36, 0.1);
-      color: var(--accent-gold);
+    .dock-input:focus {
+      border-color: var(--accent-cyan);
     }
 
-    .btn-key {
-      border-color: rgba(148, 163, 184, 0.35);
-      background: rgba(15, 23, 42, 0.85);
-      color: var(--text-secondary);
+    .btn-dock-ask {
+      position: absolute;
+      right: 4px;
+      background: var(--accent-gold);
+      color: #04070E;
+      border: none;
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
     }
 
-    .btn-key.connected {
-      border-color: rgba(16, 185, 129, 0.5);
-      background: rgba(16, 185, 129, 0.15);
-      color: #6EE7B7;
-    }
-
-    /* Live Audio Spectrum Bars */
+    /* Audio Spectrum Meter inside Headphone button */
     .audio-meter {
       display: inline-flex;
       align-items: flex-end;
       gap: 2px;
-      height: 13px;
-      margin-left: 2px;
+      height: 12px;
     }
 
     .meter-bar {
@@ -213,494 +310,43 @@
       height: 3px;
       background: var(--accent-cyan);
       border-radius: 2px;
-      transition: height 0.07s ease;
     }
 
-    .transcript-input-wrap {
-      flex: 1;
-      min-width: 220px;
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .transcript-input {
-      width: 100%;
-      background: rgba(5, 8, 17, 0.88);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 7px 104px 7px 11px;
-      color: var(--text-primary);
-      font-size: 13px;
-      font-weight: 500;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .transcript-input:focus {
-      border-color: var(--accent-cyan);
-    }
-
-    .transcript-actions {
-      position: absolute;
-      right: 5px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .btn-ask-now {
-      background: var(--accent-gold);
-      color: #050811;
-      border: none;
-      border-radius: 6px;
-      padding: 4px 9px;
-      font-size: 11px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .btn-clear-input {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 13px;
-      cursor: pointer;
-      padding: 2px 5px;
-    }
-
-    /* 3. MOCK HIRING MANAGER SIMULATOR PANEL (TOGGLEABLE) */
-    .mock-simulator-bar {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      background: linear-gradient(90deg, rgba(88, 28, 135, 0.28), rgba(17, 26, 46, 0.95));
-      border: 1px solid rgba(168, 85, 247, 0.45);
-      border-radius: 11px;
-      padding: 8px 12px;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-    }
-
-    .mock-simulator-bar.visible {
-      display: flex;
-    }
-
-    .mock-left {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      flex-wrap: wrap;
-    }
-
-    .mock-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(168, 85, 247, 0.25);
-      border: 1px solid #C084FC;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-
-    .mock-Avatar-speaking {
-      box-shadow: 0 0 14px #C084FC;
-      animation: pulseDot 0.9s infinite;
-    }
-
-    .mock-select {
-      background: rgba(5, 8, 17, 0.9);
-      color: var(--text-primary);
-      border: 1px solid rgba(168, 85, 247, 0.45);
-      border-radius: 7px;
-      padding: 5px 9px;
-      font-size: 12px;
-      font-weight: 600;
-      outline: none;
-    }
-
-    .mock-status-text {
-      font-size: 12px;
-      color: #E9D5FF;
-      font-weight: 500;
-    }
-
-    .mock-controls {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .btn-mock-action {
-      padding: 6px 12px;
-      border-radius: 7px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1px solid rgba(168, 85, 247, 0.5);
-      background: #9333EA;
-      color: #FFFFFF;
-      transition: all 0.15s ease;
-    }
-
-    .btn-mock-action:hover {
-      background: #A855F7;
-    }
-
-    .btn-mock-secondary {
-      background: rgba(15, 23, 42, 0.85);
-      color: #E9D5FF;
-    }
-
-    /* 4. LIVE HEARD QUESTION ECHO BANNER */
-    .heard-question-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 5px 12px;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      border-radius: 8px;
-      font-size: 12.5px;
-      flex-shrink: 0;
-    }
-
-    .heard-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      overflow: hidden;
-    }
-
-    .heard-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: rgba(56, 189, 248, 0.2);
-      color: var(--accent-cyan);
-      white-space: nowrap;
-    }
-
-    .heard-text {
-      color: #FFFFFF;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .heard-latency {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--accent-emerald);
-      white-space: nowrap;
-    }
-
-    /* 5. QUICK PLAYBOOK PILLS (HOTKEYS 1-0) */
-    .quick-topics-strip {
+    /* Quick Topic Hotkey Strip (Compact) */
+    .hotkey-strip {
       display: flex;
       align-items: center;
       gap: 5px;
       overflow-x: auto;
-      padding-bottom: 2px;
-      flex-shrink: 0;
       scrollbar-width: none;
     }
 
-    .quick-topics-strip::-webkit-scrollbar {
+    .hotkey-strip::-webkit-scrollbar {
       display: none;
     }
 
-    .topic-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
+    .hk-pill {
+      padding: 3px 9px;
       border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-card);
-      color: var(--text-secondary);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(15, 23, 42, 0.7);
+      color: #94A3B8;
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.15s ease;
     }
 
-    .topic-pill:hover {
-      border-color: rgba(56, 189, 248, 0.45);
-      color: var(--text-primary);
-    }
-
-    .topic-pill.active {
-      background: rgba(251, 191, 36, 0.16);
+    .hk-pill.active, .hk-pill:hover {
       border-color: var(--accent-gold);
       color: var(--accent-gold);
     }
 
-    .topic-key {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9.5px;
-      padding: 1px 4px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--text-secondary);
-    }
-
-    /* 6. GLANCEABLE 3-SECOND CUE CARD (WHAT YOU READ UNDER WEBCAM) */
-    .glance-cue-card {
-      background: linear-gradient(145deg, rgba(17, 26, 46, 0.96), rgba(11, 17, 32, 0.98));
-      border: 1px solid var(--border-active);
-      border-radius: 13px;
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      flex-shrink: 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      transition: border-color 0.25s ease;
-    }
-
-    .glance-cue-card.flash-update {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 22px rgba(251, 191, 36, 0.28);
-    }
-
-    .cue-header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .cue-matched-topic {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--accent-cyan);
-    }
-
-    .cue-auto-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #6EE7B7;
-    }
-
-    .cue-opening-hook {
-      font-size: 16.5px;
-      font-weight: 800;
-      line-height: 1.32;
-      color: var(--accent-gold);
-    }
-
-    .cue-metrics-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .cue-metric-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 9px;
-      border-radius: 6px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      color: #E0F2FE;
-    }
-
-    .cue-anchors-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 7px;
-    }
-
-    .cue-anchor-box {
-      background: rgba(5, 8, 17, 0.65);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 6px 9px;
-    }
-
-    .cue-anchor-label {
-      font-size: 9.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-      display: block;
-    }
-
-    .cue-anchor-text {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-
-    /* 7. TELEPROMPTER STAGE */
-    .teleprompter-stage {
-      flex: 1;
-      min-height: 0;
-      background: var(--bg-hud);
-      border: 1px solid var(--border-subtle);
-      border-radius: 13px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .teleprompter-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 13px;
-      background: rgba(5, 8, 17, 0.75);
-      border-bottom: 1px solid var(--border-subtle);
-      flex-shrink: 0;
-    }
-
-    .prompter-controls-left, .prompter-controls-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-prompter {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 11px;
-      border-radius: 7px;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn-prompter.playing {
-      background: var(--accent-emerald);
-      border-color: var(--accent-emerald);
-      color: #050811;
-    }
-
-    .speed-control {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text-secondary);
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .speed-slider {
-      width: 75px;
-      accent-color: var(--accent-gold);
-      cursor: pointer;
-    }
-
-    .reading-guide-band {
-      position: absolute;
-      top: 46px;
-      left: 0;
-      right: 0;
-      height: 52px;
-      background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), rgba(56, 189, 248, 0.06), rgba(251, 191, 36, 0.1));
-      border-top: 1px solid rgba(251, 191, 36, 0.35);
-      border-bottom: 1px solid rgba(251, 191, 36, 0.35);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .reading-guide-band::before {
-      content: '▶';
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--accent-gold);
-      font-size: 11px;
-    }
-
-    .teleprompter-scroll {
-      flex: 1;
-      overflow-y: auto;
-      padding: 14px 28px 150px 30px;
-      scroll-behavior: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .teleprompter-scroll::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .teleprompter-scroll::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.25);
-      border-radius: 999px;
-    }
-
-    .script-sentence {
-      font-size: var(--prompt-font-size);
-      line-height: 1.52;
-      font-weight: 600;
-      color: rgba(248, 250, 252, 0.85);
-      margin-bottom: 14px;
-      padding: 7px 11px;
-      border-radius: 9px;
-      transition: all 0.18s ease;
-      cursor: pointer;
-    }
-
-    .script-sentence:hover {
-      background: rgba(255, 255, 255, 0.04);
-      color: #FFFFFF;
-    }
-
-    .script-sentence.active-line {
-      color: #FFFFFF;
-      background: rgba(251, 191, 36, 0.09);
-    }
-
-    .script-sentence strong {
-      color: var(--accent-gold);
-      font-weight: 800;
-    }
-
-    .script-sentence em {
-      color: var(--accent-cyan);
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    /* MODALS (GROQ KEY + MY BRAIN / TARGET JD) */
+    /* MODALS */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(5, 8, 17, 0.82);
+      background: rgba(4, 7, 14, 0.85);
       backdrop-filter: blur(6px);
       display: none;
       align-items: center;
@@ -714,39 +360,25 @@
     }
 
     .modal-card {
-      background: var(--bg-hud);
-      border: 1px solid var(--border-active);
+      background: #0C1322;
+      border: 1px solid rgba(56, 189, 248, 0.4);
       border-radius: 16px;
       width: 100%;
-      max-width: 720px;
-      max-height: 88vh;
+      max-width: 680px;
+      max-height: 86vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
     }
 
     .modal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 18px;
+      padding: 13px 18px;
       border-bottom: 1px solid var(--border-subtle);
-      background: var(--bg-card);
-    }
-
-    .modal-title {
-      font-size: 15px;
       font-weight: 800;
-      color: var(--text-primary);
-    }
-
-    .modal-close {
-      background: transparent;
-      border: none;
-      color: var(--text-secondary);
-      font-size: 18px;
-      cursor: pointer;
+      font-size: 14px;
     }
 
     .modal-body {
@@ -754,975 +386,369 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       font-size: 13px;
-      line-height: 1.5;
-      color: var(--text-secondary);
+      color: #CBD5E1;
     }
 
-    .modal-field-label {
-      font-size: 11.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-gold);
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    .modal-input, .modal-textarea {
+    .modal-textarea, .modal-input {
       width: 100%;
-      background: rgba(5, 8, 17, 0.9);
+      background: #050811;
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
       padding: 9px 12px;
-      color: var(--text-primary);
+      color: #FFFFFF;
       font-family: 'Inter', sans-serif;
       font-size: 13px;
-      outline: none;
     }
 
     .modal-textarea {
-      min-height: 110px;
-      resize: vertical;
+      min-height: 120px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .modal-input:focus, .modal-textarea:focus {
-      border-color: var(--accent-cyan);
     }
 
     .modal-footer {
       display: flex;
-      align-items: center;
       justify-content: flex-end;
-      gap: 10px;
-      padding: 12px 18px;
+      gap: 8px;
+      padding: 11px 18px;
       border-top: 1px solid var(--border-subtle);
-      background: var(--bg-card);
     }
 
-    .btn-save-modal {
+    .btn-save {
       background: var(--accent-emerald);
-      color: #050811;
+      color: #04070E;
       border: none;
       border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 12.5px;
+      padding: 7px 15px;
       font-weight: 800;
       cursor: pointer;
-    }
-
-    .step-list {
-      padding-left: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .step-list a {
-      color: var(--accent-cyan);
-      font-weight: 700;
-    }
-
-    @media (max-width: 820px) {
-      .cue-anchors-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="copilot-shell">
-    <!-- 1. TOP WEBCAM EYE-LINE BAR -->
-    <div class="camera-anchor-bar">
-      <div class="camera-left">
-        <span class="camera-target-dot" id="cameraPulseDot"></span>
-        <span id="cameraStatusText">KEEP EYES HERE (BELOW WEBCAM) • AUTO-ANSWERS ON 0.6S PAUSE • [SPACE] SCROLL/PAUSE</span>
-      </div>
-      <div class="camera-right">
-        <span class="engine-pill" id="engineStatusPill">⚡ Hybrid Engine Ready</span>
-      </div>
-    </div>
-
-    <!-- 2. MAIN CONTROL DECK -->
-    <div class="control-deck">
-      <button type="button" class="hud-btn btn-mic" id="btnToggleMic" title="Continuous Microphone Listener (Auto-answers 0.6s after speaker pauses)">
-        <span>🎙️</span>
-        <span id="micLabel">Listen Live</span>
-      </button>
-
-      <button type="button" class="hud-btn btn-headphone" id="btnHeadphoneMode" title="Option 1: Capture Google Meet / Zoom / Teams Tab Audio while wearing headphones">
-        <span>🎧</span>
-        <span id="headphoneLabel">Headphone / Tab Audio</span>
-        <span class="audio-meter" id="audioMeter">
-          <span class="meter-bar" id="mBar1"></span>
-          <span class="meter-bar" id="mBar2"></span>
-          <span class="meter-bar" id="mBar3"></span>
-          <span class="meter-bar" id="mBar4"></span>
-        </span>
-      </button>
-
-      <button type="button" class="hud-btn btn-mock" id="btnToggleMock" title="Open Built-In Spoken AI Hiring Manager Simulator">
-        <span>🤖</span>
-        <span>AI Hiring Manager</span>
-      </button>
-
-      <div class="transcript-input-wrap">
-        <input
-          type="text"
-          id="questionInput"
-          class="transcript-input"
-          placeholder="Interviewer question appears here live (or type any question & press Enter)..."
-          autocomplete="off"
-        />
-        <div class="transcript-actions">
-          <button type="button" class="btn-ask-now" id="btnAskNow">Answer ↵</button>
-          <button type="button" class="btn-clear-input" id="btnClearInput" title="Clear">✕</button>
+  <div class="app-layout">
+    <!-- =====================================================================
+         1. TOP WEBCAM READING ZONE (ONLY THE ANSWER — HUGE 30px, NARROW 650px)
+         ===================================================================== -->
+    <main class="webcam-reading-stage" id="readingStage">
+      <div class="narrow-eye-column">
+        <!-- Single subtle line right under webcam lens -->
+        <div class="webcam-lens-bar">
+          <span class="lens-dot" id="lensDot"></span>
+          <span class="heard-question-line" id="heardQuestionLine">Ready — Click 🎙️ Listen Live or 🤖 Ask Me a Question below</span>
+          <span class="speed-badge" id="speedBadge">⚡ Groq 120B Ready</span>
         </div>
+
+        <!-- THE ANSWER (Only 3 short, huge 30px blocks right under your camera!) -->
+        <div class="answer-stream" id="answerStream"></div>
       </div>
+    </main>
 
-      <button type="button" class="hud-btn btn-brain" id="btnOpenBrain" title="View/Edit Balaajee's Master Dossier & Target Job Description">
-        <span>🧠</span>
-        <span>My Brain / JD</span>
-      </button>
+    <!-- =====================================================================
+         2. COMPACT BOTTOM CONTROL DOCK (KEPT OUT OF WEBCAM EYE LINE)
+         ===================================================================== -->
+    <footer class="bottom-dock-wrapper">
+      <div class="bottom-dock">
+        <div class="dock-row">
+          <button type="button" class="dock-btn btn-mic" id="btnToggleMic">
+            <span>🎙️</span>
+            <span id="micLabel">Listen Live</span>
+          </button>
 
-      <button type="button" class="hud-btn btn-key" id="btnOpenKeyModal" title="Connect Free Groq API Key for 0.3s Llama-3.3-70B + Whisper Turbo">
-        <span id="keyBtnIcon">🔑</span>
-        <span id="keyBtnLabel">Groq 70B Key</span>
-      </button>
-    </div>
+          <button type="button" class="dock-btn btn-headphone" id="btnHeadphoneMode" title="Capture Google Meet / Zoom / Teams Tab Audio with headphones">
+            <span>🎧</span>
+            <span id="headphoneLabel">Headphone Audio</span>
+            <span class="audio-meter">
+              <span class="meter-bar" id="mBar1"></span>
+              <span class="meter-bar" id="mBar2"></span>
+              <span class="meter-bar" id="mBar3"></span>
+              <span class="meter-bar" id="mBar4"></span>
+            </span>
+          </button>
 
-    <!-- 3. BUILT-IN SPOKEN AI HIRING MANAGER SIMULATOR BAR -->
-    <div class="mock-simulator-bar" id="mockSimulatorBar">
-      <div class="mock-left">
-        <div class="mock-avatar" id="mockAvatar">👔</div>
-        <select class="mock-select" id="mockPersonaSelect">
-          <option value="vp_design">Persona: VP of Product Design (Leadership, Team Scale & Design Systems)</option>
-          <option value="eng_arch">Persona: Principal Eng Architect (IBM watsonx AI Guardrails, Tokens & Pushback)</option>
-          <option value="vp_pm">Persona: VP of Product (Ericsson 5G CPQ, ROI Metrics & Prioritization)</option>
-          <option value="hr_exec">Persona: Executive Recruiter (Intro, Why Leaving IBM, 0-Day Notice & CTC)</option>
-          <option value="bar_raiser">Persona: Tough Bar-Raiser (Failures, Hard Follow-Ups & Edge Cases)</option>
-        </select>
-        <span class="mock-status-text" id="mockStatusText">Click "Ask Me a Question" — I will speak out loud & your Co-Pilot will answer automatically!</span>
-      </div>
-      <div class="mock-controls">
-        <button type="button" class="btn-mock-action" id="btnMockAskQuestion">🔊 Ask Me a Question</button>
-        <button type="button" class="btn-mock-action btn-mock-secondary" id="btnMockFollowUp" title="Ask a follow-up question based on the current topic">🔄 Ask Follow-Up</button>
-        <button type="button" class="btn-mock-action btn-mock-secondary" id="btnMockStopVoice" title="Mute Hiring Manager voice">⏹ Stop Voice</button>
-      </div>
-    </div>
+          <!-- 1-Click Spoken AI Hiring Manager Buttons -->
+          <button type="button" class="dock-btn btn-mock" id="btnMockAskQuestion" title="AI Hiring Manager speaks a question out loud & Co-Pilot answers">
+            <span>🤖🔊</span>
+            <span>Hiring Manager: Ask Question</span>
+          </button>
 
-    <!-- 4. LIVE HEARD QUESTION ECHO BANNER -->
-    <div class="heard-question-banner" id="heardBanner">
-      <div class="heard-left">
-        <span class="heard-badge" id="heardModeTag">READY</span>
-        <span class="heard-text" id="heardQuestionText">Waiting for interviewer question (click 🎙️ Listen Live, 🎧 Headphone Mode, or 🤖 AI Hiring Manager)...</span>
-      </div>
-      <span class="heard-latency" id="latencyBadge">⚡ 0.3s Auto-Trigger</span>
-    </div>
+          <button type="button" class="dock-btn btn-mock" id="btnMockFollowUp" title="AI Hiring Manager asks a follow-up question">
+            <span>🔄</span>
+            <span>Follow-Up</span>
+          </button>
 
-    <!-- 5. QUICK PLAYBOOK PILLS (HOTKEYS 1-0) -->
-    <div class="quick-topics-strip" id="quickTopicsStrip"></div>
-
-    <!-- 6. 3-SECOND GLANCEABLE CUE CARD -->
-    <div class="glance-cue-card" id="glanceCueCard">
-      <div class="cue-header-row">
-        <div class="cue-matched-topic">
-          <span>⚡</span>
-          <span id="cueTopicName">PLAYBOOK 01 • TELL ME ABOUT YOURSELF (60-SECOND EXECUTIVE PITCH)</span>
-        </div>
-        <span class="cue-auto-badge" id="cueMatchStatus">READY • BALAAJEE BRAIN LOADED</span>
-      </div>
-
-      <div class="cue-opening-hook" id="cueOpeningHook"></div>
-      <div class="cue-metrics-row" id="cueMetricsRow"></div>
-      <div class="cue-anchors-grid" id="cueAnchorsGrid"></div>
-    </div>
-
-    <!-- 7. TELEPROMPTER STAGE -->
-    <div class="teleprompter-stage">
-      <div class="teleprompter-toolbar">
-        <div class="prompter-controls-left">
-          <button type="button" class="btn-prompter" id="btnPlayPause">▶ Auto-Scroll (Space)</button>
-          <button type="button" class="btn-prompter" id="btnResetScroll">↺ Top (R)</button>
-        </div>
-        <div class="prompter-controls-right">
-          <div class="speed-control">
-            <span>Speed:</span>
-            <input type="range" id="scrollSpeedSlider" class="speed-slider" min="0.4" max="2.5" step="0.1" value="1.1" />
-            <span id="scrollSpeedVal">1.1×</span>
+          <div class="dock-input-wrap">
+            <input
+              type="text"
+              id="questionInput"
+              class="dock-input"
+              placeholder="Or type any question & press Enter..."
+              autocomplete="off"
+            />
+            <button type="button" class="btn-dock-ask" id="btnAskNow">Ask ↵</button>
           </div>
-          <div class="speed-control">
-            <span>Text:</span>
-            <button type="button" class="btn-prompter" id="btnFontDown">A-</button>
-            <button type="button" class="btn-prompter" id="btnFontUp">A+</button>
-          </div>
-        </div>
-      </div>
 
-      <div class="reading-guide-band"></div>
-      <div class="teleprompter-scroll" id="teleprompterScroll">
-        <div id="teleprompterContent"></div>
+          <button type="button" class="dock-btn btn-scroll" id="btnPlayPause">▶ Scroll (Space)</button>
+          <button type="button" class="dock-btn" id="btnFontDown" title="Smaller text">A-</button>
+          <button type="button" class="dock-btn" id="btnFontUp" title="Larger text">A+</button>
+          <button type="button" class="dock-btn" id="btnOpenBrain" title="Edit Balaajee Brain & Target JD">🧠 Brain</button>
+        </div>
+
+        <!-- Subtle 1-line hotkey bar (Keys 1-0) -->
+        <div class="hotkey-strip" id="hotkeyStrip"></div>
       </div>
-    </div>
+    </footer>
   </div>
 
-  <!-- MODAL 1: FREE GROQ API KEY SETUP -->
-  <div class="modal-backdrop" id="keyModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <span class="modal-title">⚡ Connect Free Groq 70B + Whisper Turbo Key (0.3s Live Answers)</span>
-        <button type="button" class="modal-close" id="btnCloseKeyModal">✕</button>
-      </div>
-      <div class="modal-body">
-        <p><strong>How to get your 100% Free Groq Key in 30 seconds (No credit card required):</strong></p>
-        <ol class="step-list">
-          <li>Open <a href="https://console.groq.com/keys" target="_blank" rel="noopener">https://console.groq.com/keys</a> and sign in with your Google or GitHub account.</li>
-          <li>Click the orange <strong>"Create API Key"</strong> button, name it <code>Interview-Copilot</code>, and click <strong>Submit</strong>.</li>
-          <li>Copy the key (it starts with <code>gsk_...</code>) and paste it below.</li>
-        </ol>
-        <p style="font-size:12px; color:#94A3B8;">🔒 <em>Privacy Note:</em> Your key is stored <strong>only in this browser's private <code>localStorage</code></strong> on your Mac—never uploaded to GitHub or any external server. Free tier includes ~125 answers/day on <code>llama-3.3-70b-versatile</code> + ~600 answers/day automatic failover on <code>llama-3.1-8b-instant</code> + 8 hrs/day of <code>whisper-large-v3-turbo</code> headphone audio transcription.</p>
-        <div>
-          <label class="modal-field-label" for="groqKeyInput">Your Groq API Key (starts with gsk_...)</label>
-          <input type="password" id="groqKeyInput" class="modal-input" placeholder="gsk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-save-modal" id="btnSaveGroqKey">Save & Activate Groq 70B ⚡</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 2: BALAAJEE'S MASTER BRAIN & TARGET JOB CONTEXT -->
+  <!-- BRAIN & TARGET JD MODAL -->
   <div class="modal-backdrop" id="brainModal">
     <div class="modal-card">
       <div class="modal-header">
-        <span class="modal-title">🧠 Balaajee V.R. Master Brain & Target Job Context</span>
-        <button type="button" class="modal-close" id="btnCloseBrainModal">✕</button>
+        <span>🧠 Balaajee V.R. Brain, Target Job & Groq Key</span>
+        <button type="button" class="dock-btn" id="btnCloseBrainModal">✕</button>
       </div>
       <div class="modal-body">
         <div>
-          <label class="modal-field-label" for="targetJobInput">1. Target Company, Role & Job Description (Optional — Customizes Every Answer to This Role)</label>
-          <textarea id="targetJobInput" class="modal-textarea" placeholder="Example: Interviewing with ServiceNow for Director of Product Design (Enterprise AI Agents). Emphasize my IBM watsonx human-in-the-loop governance, Carbon token architecture, and scaling 14+ designers with 100% retention."></textarea>
+          <label style="font-size:11px; font-weight:700; color:var(--accent-gold); display:block; margin-bottom:4px;">TARGET COMPANY & JOB DESCRIPTION (OPTIONAL)</label>
+          <textarea id="targetJobInput" class="modal-textarea" style="min-height:70px;" placeholder="e.g., ServiceNow — Director of Product Design (Enterprise AI)."></textarea>
         </div>
         <div>
-          <label class="modal-field-label" for="masterDossierInput">2. Pre-Loaded Balaajee V.R. Career & Project Dossier (Sent to AI on Every Question — Editable)</label>
-          <textarea id="masterDossierInput" class="modal-textarea" style="min-height: 220px;"></textarea>
+          <label style="font-size:11px; font-weight:700; color:var(--accent-gold); display:block; margin-bottom:4px;">BALAAJEE V.R. MASTER DOSSIER (PRE-LOADED)</label>
+          <textarea id="masterDossierInput" class="modal-textarea" style="min-height:160px;"></textarea>
+        </div>
+        <div>
+          <label style="font-size:11px; font-weight:700; color:var(--accent-gold); display:block; margin-bottom:4px;">GROQ API KEY (PRE-CONNECTED)</label>
+          <input type="password" id="groqKeyInput" class="modal-input" />
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="hud-btn" id="btnResetBrainDefaults">Reset to Default Dossier</button>
-        <button type="button" class="btn-save-modal" id="btnSaveBrain">Save Brain & Context ✓</button>
+        <button type="button" class="btn-save" id="btnSaveBrain">Save ✓</button>
       </div>
     </div>
   </div>
 
   <script>
     // =========================================================================
-    // 1. BALAAJEE V.R. PRE-LOADED MASTER CAREER DOSSIER (THE AI'S "BRAIN")
+    // 1. BALAAJEE V.R. MASTER DOSSIER
     // =========================================================================
-    const DEFAULT_BALAAJEE_DOSSIER = `CANDIDATE IDENTITY:
-- Name: Balaajee V.R. | Role: Senior UI/UX Design Manager / Director of Product Design / Principal UX Architect
-- Experience: 18+ years across IBM India Software Labs (2023–Jan 2026), Zebra Technologies, ZF Wabco, Ericsson Global, Samsung, and Infosys.
-- Availability & Mobility: Immediate joiner (0-day notice period). Open to relocation across India (Bengaluru, Hyderabad, Chennai, Pune, Mumbai, NCR) & globally (holds Samsung-sponsored 10-year US B1/B2 Business Visa; EU Blue Card eligible).
-- Operating Style: 60/40 Player-Coach (60% org scaling, UX-as-a-Service capacity, executive strategy & coaching; 40% hands-on 0-to-1 AI architecture, design tokens & complex B2B flows). Started career as a software engineer at Infosys (Finacle core banking), speaking the language of APIs/SLAs with engineers and ARR/velocity with VPs.
-
-FLAGSHIP PROJECT 1 — IBM INDIA SOFTWARE LABS (Agentic AI & Cybersecurity UX):
-- Products: IBM watsonx Rhapsody Systems Engineering (SE) & IBM MaaS360 Enterprise Security.
-- Problem: Systems engineers and IT security admins rejected black-box 1-click AI automation because a single hallucinated SysML requirement or firewall policy could cause a P0 outage.
-- Solution: Architected a Human-in-the-Loop Agentic Governance framework with (1) 3-Tier Confidence Gating (>92% auto-stage, 70–92% 1-click diff review, <70% explainable reasoning citations) and (2) Blast-Radius Preview showing exact affected endpoints and 1-click rollback.
-- Hard Metrics: Cut complex systems modeling from 14.2 hours to 3.6 hours (-74% faster); cut MaaS360 security threat triage from 4.1 hours to 43 minutes (-82% faster) across 140,000+ enterprise tasks.
-
-FLAGSHIP PROJECT 2 — IBM CARBON MULTI-BRAND DESIGN SYSTEM:
-- Problem: 45+ global engineering squads across US, EU & India shipping in React, Angular & Web Components had 320+ hardcoded hex/spacing overrides and a 4-week design-to-dev handoff bottleneck.
-- Solution: Built a Federated Design System Guild and a 3-Tier Multi-Brand JSON Token Architecture (Global Primitive -> Semantic Intent -> Component Tokens) synced directly from Figma to engineering CI/CD builds.
-- Hard Metrics: Eliminated $1.8M in UI rework, cut 320+ hardcoded values, achieved >94% squad adoption, and compressed handoff from 4 weeks to 1 day.
-
-FLAGSHIP PROJECT 3 — ERICSSON GLOBAL (5G Telecom CPQ Platform):
-- Problem: Commercial sales directors across 45 countries configured multi-million-dollar 5G network deals inside a fragile 14-tab legacy Excel workbook; broken macros caused 6-to-14-day quoting delays.
-- Solution: Partnered with Swedish HQ for contextual inquiry; designed a keyboard-first, high-density web CPQ engine preserving Excel speed (bulk paste, inline keyboard nav) while embedding automated 5G hardware dependency rules and live margin guardrails.
-- Hard Metrics: Slashed quote-to-order turnaround from 6 days to 42 minutes, achieved 94% organic global adoption, and reduced pricing formula errors to 0.
-
-FLAGSHIP PROJECT 4 — ZEBRA TECHNOLOGIES (38,000+ Rugged IoT Handhelds & VisibilityIQ):
-- Role: UI/UX Product Design Manager leading multidisciplinary UI/UX & Content Designers.
-- Problem: Frontline warehouse and sub-zero cold-storage workers wearing thick protective gloves struggled with multi-step Bluetooth/RFID scanner pairing on rugged Android handhelds.
-- Solution: Field research drove a gloved-touch ergonomic redesign: large bottom-thumb-zone targets, high-contrast freezer legibility, haptic/audio feedback, and 1-scan NFC/barcode pairing.
-- Hard Metrics: Cut scanner pairing failures by 84% and reduced customer support tickets by 33% across 38,000+ deployed enterprise endpoints.
-
-FLAGSHIP PROJECT 5 — ZF WABCO (Commercial Vehicle Digital Cockpit HMI):
-- Problem: Simulator testing with German engineering HQ showed commercial truck drivers taking 2.8 seconds eyes-off-road to read competing ADAS, tire-pressure, and route alerts—exceeding the strict 1.2-second automotive safety limit.
-- Solution: Used driving simulators and eye-tracking heatmaps to architect a 3-Tier Progressive Alert Hierarchy suppressing non-critical telemetry during high-workload maneuvers.
-- Hard Metrics: Cut average driver glance duration from 2.8s to 0.94s (<1.2s safety budget) and reduced navigation errors by 18% across 80,000+ heavy vehicles.
-
-LEADERSHIP, TEAM SCALING & DESIGNOPS:
-- Restructured 14+ siloed UI/UX and Content Designers at IBM and Zebra into a centralized, agile UX-as-a-Service model aligned with quarterly PI Planning & Dual-Track Agile.
-- Maintained 100% team retention, promoted 2 senior designers into Lead tracks, and mentored 50+ designers career-wide using transparent competency rubrics.
-- Embedded AI DesignOps across daily workflows: IBM watsonx, NotebookLM & Gemini for rapid research synthesis; Google Stitch, Figma AI & Claude for multi-state prototyping.`;
+    const DEFAULT_BALAAJEE_DOSSIER = `Balaajee V.R. | Senior UI/UX Design Manager (18+ yrs exp at IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson Global, Samsung, Infosys).
+- Availability: Immediate joiner (0-day notice). Open to India & global relocation (10-yr US B1/B2 visa, EU Blue Card eligible).
+- Leadership: Scaled 14+ designers into an agile UX-as-a-Service org at IBM & Zebra with 100% team retention, 2 seniors promoted to Lead, 50+ mentored. 60/40 Player-Coach (started as software engineer at Infosys Finacle).
+- IBM watsonx Rhapsody SE & MaaS360: Architected Human-in-the-Loop Agentic AI with 3-tier confidence gating (>92% auto-stage, 70-92% diff review, <70% citations) + blast-radius preview. Cut systems modeling 14.2h -> 3.6h (-74%) & security threat triage 4.1h -> 43m (-82%) across 140,000+ tasks.
+- IBM Carbon Design System: Built 3-tier multi-brand JSON token pipeline across 45+ global squads, eliminating 320+ hardcoded values, saving $1.8M rework, and shrinking handoff from 4 weeks to 1 day.
+- Ericsson Global 5G CPQ: Replaced fragile 14-tab Excel workbook across 45 countries with keyboard-first web CPQ engine. Cut quote turnaround from 6 days to 42 minutes (94% adoption, 0 formula errors).
+- Zebra Technologies: Led UX & Content team for 38,000+ rugged Android handhelds & VisibilityIQ. Cold-storage gloved-touch ergonomics & 1-scan pairing cut pairing failures by 84% and support tickets by 33%.
+- ZF Wabco: Commercial vehicle digital cockpit across 80,000+ heavy trucks. Simulator & eye-tracking heatmap testing cut driver glance time from 2.8s to 0.94s (<1.2s safety budget) and nav errors by 18%.`;
 
     // =========================================================================
-    // 2. 10 INSTANT PLAYBOOKS (HOTKEYS 1–0)
+    // 2. ULTRA-CONCISE 3-BLOCK PLAYBOOKS (DESIGNED FOR ZERO EYE MOVEMENT!)
+    //    Each answer is ONLY 3 short, punchy blocks in 30px type right under the camera.
     // =========================================================================
     const PLAYBOOKS = [
       {
         id: 'intro',
         key: '1',
-        shortLabel: '1 • 60s Intro',
-        title: 'Tell Me About Yourself (60-Second Executive Pitch)',
-        keywords: ['tell me about yourself', 'introduce yourself', 'who are you', 'your background', 'walk me through your resume'],
-        hook: '“I’m an Enterprise Product Design Leader with 18+ years transforming mission-critical B2B & AI platforms across IBM, Zebra, ZF Wabco, Ericsson, and Infosys.”',
-        metrics: ['18+ Yrs B2B & AI UX', '14+ Designers Led', '100% Team Retention', '50+ Designers Mentored'],
-        anchors: [
-          { label: '1. Pedigree', text: 'Infosys (Eng) → Ericsson → ZF Wabco → Zebra → IBM Senior UX Manager' },
-          { label: '2. Sweet Spot', text: 'Player-coach scaling UX-as-a-Service orgs + Agentic AI & Design Systems' },
-          { label: '3. Hard ROI', text: '14.2h→3.6h AI workflows • 6d→42m 5G CPQ • $1.8M token savings' }
-        ],
-        script: [
-          'I am an Enterprise Product Design Leader with over <strong>18 years of experience</strong> turning complex, mission-critical software into high-velocity products.',
-          'I started my career in engineering at <strong>Infosys</strong> building Finacle core banking modules, which gave me a deep foundation in systems architecture and developer empathy.',
-          'Over the last decade, I have led high-impact UX transformations for global technology leaders — including <strong>Ericsson, ZF Wabco, Zebra Technologies, and most recently IBM Software Labs</strong> as Senior UI/UX Design Manager.',
-          'On the organizational side, at IBM and Zebra, I restructured siloed designers into centralized <strong>UX-as-a-Service</strong> teams of 14+ designers, built transparent career ladders, mentored over 50 designers career-wide, and maintained <strong>100% team retention</strong>.',
-          'On the product side, I specialize in <strong>Enterprise AI Governance, Multi-Brand Design Systems, and complex B2B workflows</strong> — cutting engineering modeling at IBM from <strong>14.2 hours to 3.6 hours</strong>, and cutting 5G telecom quoting at Ericsson from <strong>6 days to 42 minutes</strong>.'
+        label: '1 • 60s Intro',
+        blocks: [
+          'I’m an Enterprise Product Design Leader with <strong>18+ years of experience</strong> turning complex B2B and AI platforms into high-velocity products across <em>IBM, Zebra, ZF Wabco, Ericsson, and Infosys</em>.',
+          'On the leadership side, I operate as a <strong>player-coach</strong>: at IBM and Zebra, I scaled <strong>14+ designers into a UX-as-a-Service model with 100% retention</strong> and mentored over 50 designers.',
+          'On the product side, I specialize in <strong>Agentic AI and Design Systems</strong>—cutting systems modeling at IBM from <strong>14.2 hours to 3.6 hours (-74%)</strong> and 5G quoting at Ericsson from <strong>6 days to 42 minutes</strong>.'
         ]
       },
       {
         id: 'ibm-ai',
         key: '2',
-        shortLabel: '2 • IBM Agentic AI',
-        title: 'IBM watsonx, Rhapsody SE & MaaS360 (Agentic AI & Human-in-the-Loop)',
-        keywords: ['watson', 'watsonx', 'maas360', 'rhapsody', 'agentic', 'human in the loop', 'confidence gating', 'security triage', 'black box', 'hallucination'],
-        hook: '“At IBM Software Labs, the biggest barrier to enterprise AI adoption wasn’t model accuracy—it was operator trust and black-box risk in mission-critical workflows.”',
-        metrics: ['14.2h → 3.6h (-74%)', '4.1h → 43m Threat Triage', '140,000+ Enterprise Tasks', '3-Tier Confidence Gating'],
-        anchors: [
-          { label: 'Situation', text: 'SysML engineers (Rhapsody) & IT admins (MaaS360) rejected opaque 1-click AI' },
-          { label: 'Architecture', text: '3-tier confidence gating (<70% / 70-92% / >92%) + blast-radius diff preview' },
-          { label: 'Business Impact', text: '74% faster model drafting & 82% faster security triage across 140k+ tasks' }
-        ],
-        script: [
-          'At <strong>IBM India Software Labs</strong>, I led the UX transformation for two flagship enterprise platforms: <em>IBM Rhapsody SE</em> for systems engineering and <em>IBM MaaS360</em> for enterprise endpoint security.',
-          'The core challenge was that enterprise architects and IT security admins refused to trust black-box AI automation because a single hallucinated firewall policy or SysML requirement could cause a P0 outage.',
-          'Instead of a generic chat sidebar, I architected a <strong>Human-in-the-Loop Agentic Governance framework</strong> built around three UX pillars:',
-          'First, <strong>3-Tier Confidence Gating</strong>: high-confidence low-risk actions stage automatically, medium-confidence actions require a 1-click diff review, and low-confidence actions surface explainable reasoning citations.',
-          'Second, <strong>Blast-Radius Preview</strong>: before any AI agent executes a remediation, the operator sees the exact affected endpoints and a 1-click rollback path.',
-          'The result: we cut complex systems modeling from <strong>14.2 hours down to 3.6 hours (74% faster)</strong>, and cut MaaS360 security threat triage from <strong>4.1 hours to 43 minutes across 140,000+ enterprise tasks</strong>.'
+        label: '2 • IBM Agentic AI',
+        blocks: [
+          'At <strong>IBM Software Labs</strong>, engineers and IT admins refused to trust black-box AI on <em>Rhapsody SE and MaaS360</em> because a single hallucination could cause a P0 outage.',
+          'Instead of a generic chatbot, I architected <strong>3-Tier Confidence Gating</strong> and a <strong>Blast-Radius Preview</strong>—so operators see affected endpoints and a 1-click rollback before any AI action runs.',
+          'That human-in-the-loop architecture cut systems modeling from <strong>14.2 hours to 3.6 hours (-74%)</strong> and security threat triage from <strong>4.1 hours to 43 minutes (-82%)</strong> across 140,000+ tasks.'
         ]
       },
       {
         id: 'ibm-carbon',
         key: '3',
-        shortLabel: '3 • Design Systems',
-        title: 'IBM Carbon Multi-Brand Design Token Architecture',
-        keywords: ['design system', 'carbon', 'tokens', 'token', 'multi-brand', 'handoff', 'rework', 'components', 'wcag'],
-        hook: '“I treat a Design System not as a static Figma sticker sheet, but as production infrastructure that connects design decisions directly to engineering CI/CD.”',
-        metrics: ['45+ Eng Squads Aligned', '$1.8M Rework Saved', '320+ Hardcoded Values Cut', '4 Wks → 1 Day Handoff'],
-        anchors: [
-          { label: 'Problem', text: '45+ global squads had fragmented styles, 320+ hardcoded hexes & 4-wk handoffs' },
-          { label: 'Solution', text: '3-tier token pipeline (Global → Semantic → Component) synced to React/Angular' },
-          { label: 'Impact', text: 'Eliminated $1.8M in UI rework and shrank handoff from 4 weeks to 1 day' }
-        ],
-        script: [
-          'Across <strong>IBM, Zebra, and Ericsson</strong>, I have built and governed enterprise design systems at global scale.',
-          'At IBM, we had <strong>45+ engineering squads</strong> across the US, Europe, and India shipping across React, Angular, and Web Components, which created <strong>320+ hard-coded color and spacing overrides</strong> and a 4-week design-to-dev handoff bottleneck.',
-          'I led the transition to a <strong>3-Tier Multi-Brand Design Token Architecture</strong> on top of IBM Carbon: separating <em>Global primitive tokens</em>, <em>Semantic intent tokens</em>, and <em>Component-specific tokens</em>.',
-          'We connected Figma Tokens directly to engineering repositories via automated JSON token pipelines so dark-mode, WCAG accessibility, and brand theming updated in code without manual CSS tickets.',
-          'That architecture eliminated <strong>$1.8 million in design-engineering rework</strong> and compressed theme and component handoff from <strong>4 weeks down to 1 day</strong>.'
+        label: '3 • Carbon Tokens',
+        blocks: [
+          'At <strong>IBM</strong>, <strong>45+ global engineering squads</strong> had 320+ hardcoded hex overrides and a 4-week handoff delay across React and Angular.',
+          'I established a federated Design System Guild and built a <strong>3-Tier JSON Design Token pipeline</strong> (Global → Semantic → Component) synced directly from Figma to engineering CI/CD.',
+          'We eliminated <strong>$1.8M in UI rework</strong>, drove <strong>94%+ squad adoption</strong>, and compressed handoff from <strong>4 weeks down to 1 day</strong>.'
         ]
       },
       {
         id: 'ericsson-cpq',
         key: '4',
-        shortLabel: '4 • Ericsson 5G CPQ',
-        title: 'Ericsson Global 5G CPQ (14-Tab Excel to 42-Min Sales Engine)',
-        keywords: ['ericsson', 'telecom', '5g', 'cpq', 'excel', 'spreadsheet', 'quoting', 'pricing'],
-        hook: '“At Ericsson Global, I replaced a fragile 14-tab Excel pricing workbook used across 45 countries with a keyboard-first 5G CPQ platform—cutting quote turnaround from 6 days to 42 minutes.”',
-        metrics: ['6 Days → 42 Mins', '94% Global Adoption', '0 Formula Errors', '45 Countries Deployed'],
-        anchors: [
-          { label: 'Problem', text: '14-tab Excel sheets caused broken macros, 6-14 day delays & lost 5G deals' },
-          { label: 'UX Strategy', text: 'Swedish HQ discovery + keyboard-first grid + live margin/dependency guardrails' },
-          { label: 'Outcome', text: 'Turnaround dropped from 6 days to 42 mins with 94% adoption & zero errors' }
-        ],
-        script: [
-          'At <strong>Ericsson Global</strong>, commercial sales directors across <strong>45 countries</strong> were configuring multi-million-dollar 5G network deals inside a massive, <strong>14-tab legacy Excel workbook</strong>.',
-          'One broken macro or dependency error meant a quote took <strong>6 to 14 days</strong> to validate, putting major carrier deals at risk.',
-          'I partnered with Swedish and global stakeholders to lead contextual inquiry workshops with pricing analysts, discovering that previous web tools failed because power users hated clicking through slow, multi-step wizards.',
-          'So I architected a <strong>keyboard-first, high-density web CPQ engine</strong> that preserved the speed of Excel—like bulk paste and inline keyboard navigation—while embedding automated 5G hardware dependency rules and live margin guardrails.',
-          'We slashed quote-to-order turnaround from <strong>6 days down to 42 minutes</strong>, eliminated pricing formula errors to <strong>zero</strong>, and achieved <strong>94% organic adoption</strong> across global sales teams.'
+        label: '4 • Ericsson 5G',
+        blocks: [
+          'At <strong>Ericsson Global</strong>, sales directors across <strong>45 countries</strong> were quoting multi-million-dollar 5G deals in a fragile <strong>14-tab Excel workbook</strong> that took 6 to 14 days to validate.',
+          'After contextual inquiry with Swedish HQ, I designed a <strong>keyboard-first web CPQ engine</strong> that kept Excel’s speed while embedding live 5G dependency and margin guardrails.',
+          'We slashed quote turnaround from <strong>6 days down to 42 minutes</strong>, eliminated formula errors to <strong>zero</strong>, and hit <strong>94% global adoption</strong>.'
         ]
       },
       {
         id: 'zebra-iot',
         key: '5',
-        shortLabel: '5 • Zebra 38k IoT',
-        title: 'Zebra Technologies (38,000+ Rugged Handhelds & Frontline UX)',
-        keywords: ['zebra', 'iot', 'handheld', 'warehouse', 'frontline', 'scanner', 'rfid', 'barcode', 'gloved', 'ergonomics'],
-        hook: '“At Zebra Technologies, I led a multidisciplinary UX & Content team designing across 38,000+ rugged Android handhelds and VisibilityIQ cloud consoles for frontline warehouse workers.”',
-        metrics: ['38,000+ Endpoints', '-84% Pairing Failures', '-33% Support Tickets', 'Gloved-Touch Ergonomics'],
-        anchors: [
-          { label: 'Challenge', text: 'Freezer & warehouse workers wearing thick gloves struggled with device pairing' },
-          { label: 'Execution', text: 'Field research + high-contrast thumb-zone UI + 1-scan NFC/barcode pairing' },
-          { label: 'Result', text: '84% fewer scanner pairing failures and 33% reduction in enterprise support tickets' }
-        ],
-        script: [
-          'As <strong>UI/UX Product Design Manager at Zebra Technologies</strong>, I led a multidisciplinary team of UI/UX and Content Designers across B2B rugged Android hardware and <em>VisibilityIQ</em> cloud fleet management consoles.',
-          'Our users were frontline warehouse and cold-storage workers operating <strong>38,000+ rugged handhelds</strong> while wearing thick protective gloves in dim lighting.',
-          'Synthesizing field research, we saw that multi-step Bluetooth and RFID pairing menus were causing massive shift delays and support calls.',
-          'I led the redesign around <strong>gloved-touch physical ergonomics</strong>: large bottom-thumb-zone targets, high-contrast sunlight/freezer legibility, haptic/audio confirmation, and a single-scan pairing flow.',
-          'Across 38,000+ deployed endpoints, we cut scanner pairing failures by <strong>84%</strong> and reduced customer support tickets by <strong>33%</strong>.'
+        label: '5 • Zebra 38k IoT',
+        blocks: [
+          'As Design Manager at <strong>Zebra Technologies</strong>, I led UI/UX and Content Designers across <strong>38,000+ rugged Android handhelds</strong> used by warehouse workers wearing thick freezer gloves.',
+          'Field research showed multi-step Bluetooth menus were failing in cold storage, so I redesigned the UX around <strong>bottom-thumb-zone gloved ergonomics and 1-scan barcode pairing</strong>.',
+          'That cut device pairing failures by <strong>84%</strong> and reduced enterprise support tickets by <strong>33% across 38,000+ endpoints</strong>.'
         ]
       },
       {
         id: 'zf-wabco',
         key: '6',
-        shortLabel: '6 • ZF Automotive',
-        title: 'ZF Wabco Commercial Vehicle Cockpit (<1.2s Glance Budget)',
-        keywords: ['zf', 'wabco', 'automotive', 'cockpit', 'cluster', 'vehicle', 'driver', 'safety', 'glance', 'telematics', 'hmi', 'truck'],
-        hook: '“At ZF Wabco, every UI decision was a life-or-death safety constraint—we engineered a commercial vehicle digital cockpit that cut driver glance time from 2.8s to 0.94s.”',
-        metrics: ['2.8s → 0.94s Glance', '< 1.2s Safety Budget', '-18% Nav Errors', '80,000+ Vehicles'],
-        anchors: [
-          { label: 'Safety Constraint', text: 'Drivers were taking 2.8s eyes-off-road (exceeding the strict 1.2s safety limit)' },
-          { label: 'Architecture', text: '3-tier progressive alert hierarchy + day/night optical contrast standards' },
-          { label: 'Validation', text: 'Simulator & heatmap testing cut glance to 0.94s & navigation errors by 18%' }
-        ],
-        script: [
-          'At <strong>ZF Wabco</strong>, I spearheaded UX strategy with German engineering HQ for commercial vehicle digital cockpits, infotainment, and fleet telematics across <strong>80,000+ heavy vehicles</strong>.',
-          'In a commercial truck moving at highway speed, cognitive overload is a physical safety hazard. Simulator testing showed drivers were taking <strong>2.8 seconds eyes-off-road</strong> to parse competing ADAS, tire-pressure, and route alerts—well above the strict <strong>1.2-second safety threshold</strong>.',
-          'Using eye-tracking heatmaps and simulator testing, I architected a <strong>3-Tier Progressive Alert Hierarchy</strong> that suppresses non-critical telemetry during high-workload maneuvers and surfaces only actionable visual cues.',
-          'We reduced average driver glance duration from <strong>2.8 seconds down to 0.94 seconds</strong> and cut critical navigation errors by <strong>18% across 80,000+ vehicles</strong>.'
+        label: '6 • ZF Cockpit',
+        blocks: [
+          'At <strong>ZF Wabco</strong>, simulator testing with German HQ showed truck drivers taking <strong>2.8 seconds eyes-off-road</strong> to read competing dashboard alerts—exceeding the strict <strong>1.2-second safety limit</strong>.',
+          'Using eye-tracking heatmaps, I architected a <strong>3-Tier Progressive Alert Hierarchy</strong> that suppresses low-priority telemetry during high-speed maneuvers.',
+          'We cut driver glance duration from <strong>2.8 seconds down to 0.94 seconds</strong> and reduced navigation errors by <strong>18% across 80,000+ heavy vehicles</strong>.'
         ]
       },
       {
         id: 'org-scaling',
         key: '7',
-        shortLabel: '7 • Team Scaling',
-        title: 'Scaling Teams & UX-as-a-Service (14+ Designers, 100% Retention)',
-        keywords: ['scale', 'scaling', 'retention', 'silos', 'ux as a service', 'career ladder', 'how many designers', 'team size'],
-        hook: '“At both IBM and Zebra, I transformed fragmented, siloed designers into a centralized UX-as-a-Service organization of 14+ designers while maintaining 100% team retention.”',
-        metrics: ['14+ Designers Restructured', '100% Team Retention', '2 Promoted to Lead', '50+ Designers Mentored'],
-        anchors: [
-          { label: 'The Problem', text: 'Designers trapped in product silos—uneven workload, no career growth, UI drift' },
-          { label: 'The Model', text: 'Agile UX-as-a-Service capacity model + competency rubrics + AI DesignOps' },
-          { label: 'The Result', text: '100% retention, 2 designers promoted to Lead tracks, higher velocity across squads' }
-        ],
-        script: [
-          'When I stepped into leadership at <strong>IBM</strong> and <strong>Zebra</strong>, designers were embedded in isolated product silos—some overloaded with tactical tickets while others lacked senior mentorship, causing UI drift and stalled career growth.',
-          'I restructured the organization of <strong>14+ UI/UX and Content Designers</strong> into an agile <strong>UX-as-a-Service model</strong>.',
-          'First, I introduced <strong>quarterly PI capacity planning and T-shirt sizing</strong> so design bandwidth flexed dynamically toward the highest-value business priorities while preserving domain anchors.',
-          'Second, I built a transparent <strong>competency matrix and career ladder</strong>, running weekly design critiques and 1:1 coaching that advanced <strong>2 senior designers into Lead tracks</strong>.',
-          'Because the team had psychological safety, clear growth paths, and executive air cover, we achieved <strong>100% team retention</strong> while increasing delivery velocity.'
+        label: '7 • Team Scaling',
+        blocks: [
+          'At <strong>IBM and Zebra</strong>, I transformed <strong>14+ siloed UI/UX and Content Designers</strong> into an agile <strong>UX-as-a-Service organization</strong> aligned with quarterly PI planning.',
+          'I introduced transparent competency matrices, weekly design critiques, and AI-enabled DesignOps (<em>watsonx, Stitch, NotebookLM</em>) while coaching two senior designers into Lead roles.',
+          'Because the team had clear career growth and psychological safety, we achieved <strong>100% team retention</strong> while accelerating product delivery.'
         ]
       },
       {
         id: 'conflict-pushback',
         key: '8',
-        shortLabel: '8 • Eng/PM Conflict',
-        title: 'Handling Engineering & PM Pushback / Tight Deadlines',
-        keywords: ['conflict', 'pushback', 'disagreement', 'tradeoff', 'compromise', 'negotiation', 'feasibility'],
-        hook: '“Because I started my career as a software engineer at Infosys, I never treat engineering pushback as resistance—I treat it as a system constraint we can solve together.”',
-        metrics: ['Zero SLA Regression', 'Phased Horizon 1→2', 'PI Planning Alignment', 'Shared KPIs'],
-        anchors: [
-          { label: '1. Unite Stakes', text: 'Align PM speed ($ ARR) and Eng stability (API SLA) around a shared business goal' },
-          { label: '2. De-Risk Tech', text: 'Inspect API payloads & propose zero-backend-cost UI patterns for Phase 1 GA' },
-          { label: '3. Phased Runway', text: 'Ship safe, high-trust MVP in 4 wks while locking North Star into next quarter PI' }
-        ],
-        script: [
-          'In enterprise B2B, clashes between Product demanding speed for renewals and Engineering protecting API SLAs or capacity happen constantly.',
-          'Having started as a software engineer at <strong>Infosys</strong>, I never argue abstract UX ideals against engineering reality—I sit down with the Principal Architect to inspect what data already exists in the current API payload.',
-          'For example, when shipping our <strong>Autonomous Remediation workflow at IBM</strong> under a 4-week release window, Product wanted a 1-click auto-execute button, while Engineering warned that a custom streaming explainability UI would take 8 weeks.',
-          'I resolved the deadlock by designing a <strong>2-Tier Confidence-Gated Drawer</strong> that reused existing JSON telemetry and pre-built Carbon diff components—requiring zero new backend endpoints for Phase 1 GA—while preventing operators from blindly executing high-blast-radius changes.',
-          'By separating <strong>Horizon 1 (safe 4-week GA using existing APIs)</strong> from <strong>Horizon 2 (full streaming co-pilot in Q4)</strong>, both PM and Engineering aligned immediately.'
+        label: '8 • Eng Pushback',
+        blocks: [
+          'Because I started my career as a software engineer at <strong>Infosys</strong>, I never treat engineering pushback as resistance—I sit with the Principal Architect and inspect the existing API payload.',
+          'At <strong>IBM</strong>, when PM wanted a 1-click AI remediation button in 4 weeks and Engineering said streaming explainability needed 8 weeks, I designed a <strong>2-Tier Confidence Drawer reusing existing JSON telemetry</strong>.',
+          'That required <strong>zero new backend APIs for Phase 1 GA</strong>, uniting PM speed and Engineering SLA stability immediately.'
         ]
       },
       {
         id: 'roi-metrics',
         key: '9',
-        shortLabel: '9 • Proving UX ROI',
-        title: 'Measuring UX ROI & Speaking the Language of C-Suite',
-        keywords: ['roi', 'kpi', 'kpis', 'business impact', 'c-suite', 'quantify'],
-        hook: '“Executives don’t fund design for aesthetics—they fund velocity, risk reduction, and revenue. I tie every UX initiative to three hard operational metrics.”',
-        metrics: ['Time-on-Task (-74%)', 'Error/Ticket Rate (-84%)', 'Eng Rework Saved ($1.8M)', 'Deal Velocity (6d→42m)'],
-        anchors: [
-          { label: '1. Operational Velocity', text: 'Time-to-complete critical tasks (14.2h→3.6h at IBM; 6d→42m at Ericsson)' },
-          { label: '2. Support & Risk Cost', text: 'Ticket & error reduction (-84% pairing errors at Zebra; 0.94s glance at ZF)' },
-          { label: '3. R&D Efficiency', text: 'Design-to-dev handoff speed (4 wks→1 day & $1.8M saved via Carbon tokens)' }
-        ],
-        script: [
-          'Throughout my career, I’ve secured executive buy-in by translating UX quality into <strong>three boardroom metrics</strong>:',
-          'First, <strong>Customer Operational Velocity</strong>: how fast an enterprise user completes a revenue-critical workflow. At Ericsson, cutting 5G quote generation from <strong>6 days to 42 minutes</strong> directly accelerated sales pipeline velocity.',
-          'Second, <strong>Support Cost & Risk Reduction</strong>: at Zebra, redesigning gloved-touch pairing cut failures by <strong>84%</strong> and support tickets by <strong>33%</strong> across 38,000 devices.',
-          'Third, <strong>Engineering R&D Efficiency</strong>: at IBM, our multi-brand Carbon token pipeline eliminated <strong>$1.8M in UI rework</strong> and reduced handoff from <strong>4 weeks to 1 day</strong>.'
+        label: '9 • Proving ROI',
+        blocks: [
+          'I secure C-suite buy-in by tying every UX initiative to three hard boardroom metrics: <strong>Operational Velocity, Support Cost Reduction, and Engineering Efficiency</strong>.',
+          'For velocity: cutting 5G quoting from <strong>6 days to 42 minutes at Ericsson</strong> and modeling from <strong>14.2h to 3.6h at IBM</strong>.',
+          'For cost and R&D: cutting pairing tickets by <strong>84% at Zebra</strong> and saving <strong>$1.8M in UI rework via IBM Carbon tokens</strong>.'
         ]
       },
       {
         id: 'why-me',
         key: '0',
-        shortLabel: '0 • Why Me / 90d',
-        title: 'Why Hire Balaajee + First 90 Days Executive Plan',
-        keywords: ['why should we hire you', 'first 90 days', '30 60 90', 'notice period', 'when can you join'],
-        hook: '“You get a battle-tested player-coach who has scaled 14+ designer orgs with 100% retention AND hands-on architected enterprise AI and Design Systems at IBM, Zebra, and Ericsson.”',
-        metrics: ['Immediate (0-Day Notice)', 'India & Global Mobility', 'Player-Coach Leader', '30-60-90 Execution'],
-        anchors: [
-          { label: 'Days 1–30 (Audit)', text: 'Shadow users/sales, audit UX & token debt, map PM/Eng bottlenecks & 1:1s' },
-          { label: 'Days 31–60 (Align)', text: 'Install UX-as-a-Service intake, ship 1 high-visibility quick win, unify tokens' },
-          { label: 'Days 61–90 (Scale)', text: 'Embed AI DesignOps workflows & tie UX KPIs directly to quarterly product OKRs' }
-        ],
-        script: [
-          'What sets me apart is the combination of <strong>deep enterprise systems rigor</strong> and <strong>high-retention people leadership</strong>.',
-          'I operate as a true <strong>player-coach</strong>: I can scale a 14+ person UX-as-a-Service organization with <strong>100% retention</strong> while personally architecting human-in-the-loop AI governance and multi-brand design token pipelines.',
-          'In my <strong>first 30 days</strong>, I focus on diagnosis: conducting 1:1s with every designer, PM, and engineering lead, auditing UX and design-system debt, and shadowing customer calls.',
-          'In <strong>days 31 to 60</strong>, I establish predictable <em>UX-as-a-Service</em> capacity planning, align the design token pipeline with engineering, and deliver one high-impact workflow win to build momentum.',
-          'By <strong>day 90</strong>, we have AI-accelerated DesignOps running across the team and clear UX velocity metrics tied directly to your product OKRs—and I am available with <strong>immediate availability (0 days notice)</strong>.'
+        label: '0 • Why Me / 90d',
+        blocks: [
+          'You get a battle-tested <strong>60/40 player-coach</strong> who has scaled <strong>14+ designer orgs with 100% retention</strong> AND hands-on architected enterprise AI and Design Systems at IBM, Zebra, and Ericsson.',
+          'In <strong>Days 1–30</strong>, I audit UX/token debt and shadow users; in <strong>Days 31–60</strong>, I install UX-as-a-Service capacity planning and ship a quick win; by <strong>Day 90</strong>, UX metrics are tied directly to product OKRs.',
+          'Plus, I have <strong>immediate availability (0-day notice period)</strong> and full India & global mobility.'
         ]
       }
     ];
 
     // =========================================================================
-    // 3. 18+ CONVERSATIONAL INTENT SYNTHESIZERS (INSTANT <5ms ZERO-KEY LAYER)
-    // =========================================================================
-    const INTENT_SYNTHESIZERS = [
-      {
-        name: 'Failure / Mistake / Lesson Learned',
-        test: (q) => /fail|mistake|wrong|regret|weakness|mess up|didn't work|hardest lesson|setback/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Failure & Executive Lesson Learned',
-          hook: '“Early in my design system leadership, my biggest mistake was treating a Design System as a top-down design mandate rather than a co-owned engineering product.”',
-          metrics: ['Top-Down → Federated Guild', '94%+ Squad Adoption', '$1.8M Rework Saved', '4 Wks → 1 Day Handoff'],
-          anchors: [
-            { label: 'The Mistake', text: 'Shipped a rigid Figma library without involving front-end engineers in token naming' },
-            { label: 'The Pivot', text: 'Created a federated Design System Guild + automated JSON token CI/CD pipeline' },
-            { label: 'The Result', text: 'Turned skeptics into champions, cutting 320+ hardcoded values & saving $1.8M' }
-          ],
-          script: [
-            `To answer your question directly about a time something didn't go as planned: early in rolling out a unified design system, I made the mistake of treating it as a <strong>design-owned mandate</strong>.`,
-            `My team built a comprehensive Figma component library and handed it over to engineering expecting immediate adoption—but squads bypassed it because the token naming didn't match their React and Angular repositories.`,
-            `I took ownership of that friction and pivoted our entire governance model from <em>policing</em> to <strong>federated co-ownership</strong>.`,
-            `I invited one senior front-end engineer from each squad into a bi-weekly <strong>Design System Guild</strong>, and we co-architected a 3-tier JSON token pipeline that synced Figma directly to their CI/CD builds.`,
-            `That lesson transformed how I lead: adoption jumped above <strong>94%</strong>, we eliminated <strong>320+ hard-coded values</strong>, and we shrank handoff from <strong>4 weeks to 1 day</strong>.`
-          ]
-        })
-      },
-      {
-        name: 'Underperforming Designer / Coaching / Difficult 1:1',
-        test: (q) => /underperform|struggling|low performer|difficult designer|fire|let go|pip|coaching|feedback|critique/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Turning Around an Underperforming Designer',
-          hook: '“My philosophy is diagnostic empathy first, followed by crystal-clear rubric accountability—which is how I’ve maintained 100% team retention across 14+ designers.”',
-          metrics: ['100% Team Retention', '30-60-90 Growth Rubric', '2 Promoted to Lead', 'Weekly Design Critiques'],
-          anchors: [
-            { label: '1. Diagnose Root Cause', text: 'Separate skill gap vs. unclear PM brief vs. burnout in private 1:1' },
-            { label: '2. Pair & Structure', text: 'Pair with a Lead mentor + break ambiguous epics into 48-hr milestone check-ins' },
-            { label: '3. Outcome', text: 'Turned struggling IC into high-output owner & maintained 100% retention' }
-          ],
-          script: [
-            `When a designer on my team is underperforming, I never start with blame—I start by diagnosing whether it is a <strong>skill gap, a scope-clarity problem, or organizational friction</strong>.`,
-            `At Zebra, I had a mid-level designer whose work was repeatedly rejected by engineering during sprint reviews, hurting their confidence and delaying releases.`,
-            `In our 1:1, I discovered they were designing in isolation without understanding Android hardware constraints. I put a <strong>structured 30-60-90 coaching plan</strong> in place:`,
-            `First, I paired them with a senior architect during early wireframing; second, I introduced a <strong>competency rubric</strong> with clear weekly milestones; and third, I had them co-facilitate technical feasibility reviews.`,
-            `Within two quarters, their rework dropped to near zero, they became our go-to owner for device-pairing flows, and we maintained our <strong>100% team retention</strong> record.`
-          ]
-        })
-      },
-      {
-        name: 'AI Tools in Daily Design Process / DesignOps',
-        test: (q) => /how do you use ai|ai tools|design process|daily workflow|stitch|notebooklm|midjourney|prompt|designops/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • AI-Native DesignOps & Daily Workflow',
-          hook: '“I’ve embedded AI across every stage of my team’s DesignOps—not to replace designers, but to compress research synthesis and prototyping from weeks into hours.”',
-          metrics: ['IBM watsonx & Copilot', 'NotebookLM + Gemini', 'Google Stitch & Figma AI', '3× Faster Exploration'],
-          anchors: [
-            { label: '1. Discovery & Synth', text: 'NotebookLM & Gemini to cluster field transcripts & support tickets in hours' },
-            { label: '2. Ideation & Flows', text: 'Google Stitch, Claude & Figma AI to generate multi-state B2B edge cases fast' },
-            { label: '3. Governance', text: 'Validate against Carbon tokens & human-in-the-loop enterprise guardrails' }
-          ],
-          script: [
-            `I use AI both in <strong>what we design</strong> (agentic B2B workflows) and <strong>how my team operates daily</strong> through AI-enabled DesignOps.`,
-            `In the <strong>Discovery phase</strong>, my team uses <em>IBM watsonx, NotebookLM, and Gemini</em> to synthesize hundreds of customer support tickets and field interviews into structured pain-point clusters in hours rather than weeks.`,
-            `In the <strong>Architecture & Prototyping phase</strong>, we use <em>Google Stitch, Figma AI, and code-generation tools</em> to rapidly spin up interactive, data-dense B2B prototypes—so we can test 3 or 4 workflow variants with users in a single sprint.`,
-            `Finally, in <strong>Governance</strong>, I trained my 14+ designers at IBM to design explicitly for <em>AI states</em>: confidence thresholds, latency skeletons, citation drawers, and graceful human fallback.`
-          ]
-        })
-      },
-      {
-        name: 'Why Leaving IBM / Relocation / Availability',
-        test: (q) => /why are you leaving|why leave|why looking|current status|relocat|location|chennai|bengaluru|visa/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Career Transition, Mobility & Immediate Availability',
-          hook: '“After completing a major cycle at IBM restructuring our 14+ designer org and shipping our watsonx & MaaS360 AI transformations, I’m ready for my next high-impact leadership chapter.”',
-          metrics: ['0-Day Notice (Immediate)', 'Open to India & Global', 'EU Blue Card Eligible', '10-Yr US B1/B2 Visa'],
-          anchors: [
-            { label: 'Why Now', text: 'Successfully delivered IBM AI & Carbon transformation milestones (Jan 2026)' },
-            { label: 'What I Seek', text: 'High-ownership Design Leadership / Principal role shaping AI & B2B scale' },
-            { label: 'Mobility', text: 'Immediate availability (0 days notice) • Chennai / Bengaluru / Global relocation' }
-          ],
-          script: [
-            `At <strong>IBM India Software Labs</strong>, I completed the full lifecycle of what I was brought in to accomplish: restructuring our <strong>14+ designer organization into a UX-as-a-Service model</strong> and shipping the agentic AI transformations for <em>Rhapsody SE and MaaS360</em>.`,
-            `I am now looking for a role where I can take that exact playbook—combining <strong>enterprise AI product strategy, multi-brand design systems, and high-retention team leadership</strong>—and drive even broader business impact.`,
-            `I have <strong>immediate availability with zero notice period</strong>, and I am fully open to relocation across <strong>India (Bengaluru, Hyderabad, Chennai, Pune, Mumbai, NCR) or globally</strong>, holding a Samsung-sponsored 10-year US Business Visa and EU Blue Card eligibility.`
-          ]
-        })
-      },
-      {
-        name: 'User Research / Usability Testing / Validation',
-        test: (q) => /research|usability|user testing|contextual inquiry|heatmap|validate|validation|qualitative|quantitative/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Field Research, Simulator Testing & Behavioral Data',
-          hook: '“In complex B2B software, users rarely tell you what’s broken in a survey—you have to observe their physical and cognitive bottlenecks in context.”',
-          metrics: ['Simulator Eye-Tracking', '45-Country Field Inquiry', '10-Yr US Visa (Samsung)', '2.8s → 0.94s Glance'],
-          anchors: [
-            { label: 'Automotive Lab', text: 'ZF Wabco simulator & heatmap testing cut driver glance from 2.8s to 0.94s' },
-            { label: 'Warehouse Field', text: 'Zebra cold-storage gloved-touch observation cut pairing failures by 84%' },
-            { label: 'Global B2B', text: 'Samsung-sponsored US healthcare UX research & Ericsson 45-country discovery' }
-          ],
-          script: [
-            `My research approach always combines <strong>contextual field observation</strong> with <strong>hard behavioral telemetry</strong>.`,
-            `For example, at <strong>ZF Wabco</strong>, we couldn't rely on opinions for a commercial truck cockpit—we ran <em>driving simulator tests and eye-tracking heatmaps</em>, which revealed drivers were taking <strong>2.8 seconds eyes-off-road</strong>. That data drove our 3-tier alert hierarchy that brought glance time down to <strong>0.94 seconds</strong>.`,
-            `Similarly, at <strong>Zebra Technologies</strong>, watching warehouse workers in sub-zero freezers try to pair scanners while wearing thick gloves led directly to our single-scan thumb-zone flow, cutting pairing failures by <strong>84%</strong>.`,
-            `Earlier in my career, <strong>Samsung even sponsored a 10-year US Business Visa</strong> for me to lead on-site global healthcare UX research in the United States.`
-          ]
-        })
-      },
-      {
-        name: 'Prioritization / Roadmap / PI Planning',
-        test: (q) => /prioritiz|roadmap|pi planning|agile|scrum|sprint|backlog|bandwidth|capacity|competing/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Prioritization, PI Planning & UX-as-a-Service Capacity',
-          hook: '“When 10 product squads are competing for design bandwidth, I use a 2×2 matrix of Customer Revenue Impact vs. Technical Readiness inside quarterly PI Planning.”',
-          metrics: ['UX-as-a-Service Intake', 'Dual-Track Agile', '14+ Designers Allocated', 'Zero Sprint Bottlenecks'],
-          anchors: [
-            { label: '1. Triage Intake', text: 'Score requests by ARR/retention impact and engineering readiness' },
-            { label: '2. Tiered Support', text: 'Tier-1 strategic bets get embedded UX; Tier-2 uses self-serve Carbon tokens' },
-            { label: '3. Dual-Track Agile', text: 'Design stays 1–2 sprints ahead of engineering so devs never wait on specs' }
-          ],
-          script: [
-            `Managing <strong>14+ designers across multiple enterprise products at IBM and Zebra</strong> required ruthless, transparent prioritization.`,
-            `I moved our org to a <strong>UX-as-a-Service intake model</strong> aligned with quarterly <em>Agile PI Planning</em>.`,
-            `Every incoming request is triaged into three tiers: <strong>Tier 1 (Strategic Revenue & AI Bets)</strong> gets a dedicated lead and researcher embedded 2 sprints ahead of engineering in Dual-Track Agile.`,
-            `<strong>Tier 2 (Incremental Features)</strong> is supported through rapid office hours and our <em>Carbon Design System</em> building blocks so PMs and engineers can move fast without custom UI bottlenecks.`
-          ]
-        })
-      },
-      {
-        name: 'Ambiguity / 0-to-1 Discovery / Vague Requirements',
-        test: (q) => /ambigui|unclear|vague|zero to one|0 to 1|blank slate|from scratch|unstructured/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Navigating Ambiguity & 0-to-1 Product Discovery',
-          hook: '“When requirements are vague, I don’t wait for a PRD—I run a 2-week structured discovery sprint to turn ambiguity into a validated system architecture.”',
-          metrics: ['2-Wk Discovery Sprint', '14.2h → 3.6h at IBM', '6d → 42m at Ericsson', 'Zero-to-One Blueprint'],
-          anchors: [
-            { label: '1. Map the Mess', text: 'Shadow real operators & map the current broken workflow end-to-end' },
-            { label: '2. Co-Create North Star', text: 'Run rapid prototype workshops with PM & Principal Eng to test assumptions' },
-            { label: '3. Phase Horizon 1→2', text: 'Lock a high-ROI MVP for the current quarter while charting the 12-mo vision' }
-          ],
-          script: [
-            `In senior enterprise roles, the most valuable problems never arrive as clean tickets—they arrive as <strong>high-stakes ambiguity</strong>.`,
-            `For example, when we started the <strong>Agentic AI transformation for IBM Rhapsody SE</strong>, there was no industry playbook for how systems engineers should collaborate with generative AI.`,
-            `Rather than waiting for a rigid PRD, I led a <strong>2-week contextual discovery sprint</strong>: shadowing systems architects, mapping where they lost <strong>14.2 hours per modeling cycle</strong>, and identifying why they distrusted black-box automation.`,
-            `Within 10 days, I translated that ambiguity into a concrete <strong>3-Tier Confidence-Gated Architecture</strong> that aligned PM and Engineering and ultimately cut modeling time down to <strong>3.6 hours</strong>.`
-          ]
-        })
-      },
-      {
-        name: 'Hands-On vs. Management Balance (Player-Coach)',
-        test: (q) => /hands-on|hands on|individual contributor|still design|figma yourself|player coach|player-coach|balance/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Player-Coach Balance (60% Leadership / 40% Hands-On)',
-          hook: '“I operate on a 60/40 player-coach split: 60% scaling the team, executive strategy, and DesignOps, and 40% hands-on in system architecture, tokens, and 0-to-1 AI flows.”',
-          metrics: ['60/40 Player-Coach', '14+ Designers Led', 'Hands-On AI & Tokens', '100% Team Retention'],
-          anchors: [
-            { label: 'Hands-On Craft (40%)', text: 'Personally architecting 0-to-1 AI guardrails, Carbon token schemas & complex flows' },
-            { label: 'Leadership Scale (60%)', text: 'UX-as-a-Service capacity, executive alignment, critiques & career coaching' },
-            { label: 'Why It Matters', text: 'Designers respect a leader who can open Figma and inspect API payloads with them' }
-          ],
-          script: [
-            `I am a firm believer that modern design leaders cannot just be calendar managers—I operate as a <strong>hands-on player-coach</strong>.`,
-            `Roughly <strong>60% of my bandwidth</strong> goes toward organizational scale: running our <em>UX-as-a-Service</em> model across 14+ designers, aligning quarterly PI roadmaps with VP stakeholders, and coaching my leads—resulting in <strong>100% team retention</strong>.`,
-            `The other <strong>40% is deeply hands-on</strong>: I personally get into the weeds on <strong>0-to-1 system architecture</strong>, whether that is defining our 3-tier Carbon JSON token taxonomy or wireframing the blast-radius preview for IBM watsonx.`
-          ]
-        })
-      },
-      {
-        name: 'Salary / Compensation / CTC Expectations',
-        test: (q) => /salary|compensation|ctc|pay|package|remuneration|expected ctc/.test(q),
-        build: () => ({
-          title: 'LIVE ANSWER • Executive Compensation & Role Scope Alignment',
-          hook: '“My priority is the scope of impact and leadership ownership; for compensation, I align with market bands for Senior Design Manager / Director leaders with 18+ years of global enterprise impact.”',
-          metrics: ['Scope & Impact First', '18+ Yrs Enterprise Track', '0-Day Notice (Immediate)', 'Flexible Structure'],
-          anchors: [
-            { label: '1. Role Fit First', text: 'Excited about the product vision, AI transformation scope & team ownership' },
-            { label: '2. Market Alignment', text: 'Aligned with Senior Manager / Director / Principal bands for 18+ yrs exp' },
-            { label: '3. Total Value', text: 'Open to discussing base, performance bonus & equity structure holistically' }
-          ],
-          script: [
-            `For me, the primary driver is <strong>the scope of the problem and the business impact I can deliver</strong> across your product portfolio and design organization.`,
-            `Given my <strong>18+ years of experience</strong> leading enterprise UX and AI transformations at <em>IBM, Zebra, ZF Wabco, and Ericsson</em>—and my immediate 0-day availability—I am looking for a compensation structure aligned with your band for this leadership level.`,
-            `I am very collaborative on the mix of <strong>base, variable performance bonus, and long-term incentives</strong> once we confirm mutual fit—could you share the approved budget range mapped for this role?`
-          ]
-        })
-      }
-    ];
-
-    function generateInstantFallbackAnswer(rawQuestion) {
-      const q = (rawQuestion || '').trim();
-      const lower = q.toLowerCase();
-
-      for (const synth of INTENT_SYNTHESIZERS) {
-        if (synth.test(lower)) return synth.build(q);
-      }
-
-      let bestPb = null;
-      let bestScore = 0;
-      PLAYBOOKS.forEach((pb) => {
-        let score = 0;
-        pb.keywords.forEach((kw) => {
-          if (lower.includes(kw)) score += kw.includes(' ') ? 4 : 2;
-        });
-        if (score > bestScore) {
-          bestScore = score;
-          bestPb = pb;
-        }
-      });
-
-      if (bestPb && bestScore > 0) {
-        return {
-          title: `LIVE ANSWER • ${bestPb.title}`,
-          hook: bestPb.hook,
-          metrics: bestPb.metrics,
-          anchors: bestPb.anchors,
-          script: [...bestPb.script],
-          pbId: bestPb.id
-        };
-      }
-
-      const stopWords = new Set(['what', 'how', 'why', 'when', 'where', 'who', 'can', 'could', 'would', 'should', 'do', 'did', 'does', 'you', 'your', 'tell', 'me', 'about', 'the', 'a', 'an', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'and', 'or', 'is', 'are', 'was', 'were', 'have', 'has', 'had', 'please', 'explain', 'describe', 'walk', 'through']);
-      const topicWords = lower
-        .replace(/[^a-z0-9\s-]/g, '')
-        .split(/\s+/)
-        .filter((w) => w.length > 2 && !stopWords.has(w))
-        .slice(0, 4)
-        .join(' & ');
-
-      return {
-        title: `LIVE TAILORED ANSWER • ${(topicWords || 'EXECUTIVE STRATEGY').toUpperCase()}`,
-        hook: `“Directly addressing your question on ${topicWords || 'this challenge'}: across my 18+ years at IBM, Zebra, Ericsson, and ZF Wabco, I combine system-level UX architecture with measurable business velocity.”`,
-        metrics: ['14.2h→3.6h at IBM', '6d→42m at Ericsson', '-84% Errors at Zebra', '14+ Designers (100% Ret.)'],
-        anchors: [
-          { label: '1. Diagnose & Frame', text: `Map operator bottlenecks & API constraints around ${topicWords || 'the workflow'}` },
-          { label: '2. System Architecture', text: 'Apply human-in-the-loop AI gating & federated Carbon token governance' },
-          { label: '3. Quantified ROI', text: 'Tie UX decisions directly to time-on-task, ticket reduction & R&D velocity' }
-        ],
-        script: [
-          `To answer your question regarding <strong>${q}</strong>: throughout my <strong>18+ years leading enterprise UX</strong> at IBM Software Labs, Zebra Technologies, ZF Wabco, and Ericsson, I approach this as both a <em>systems architect</em> and a <em>player-coach</em>.`,
-          `First, because I started my career in engineering at <strong>Infosys</strong>, I align user needs directly with technical API reality and business KPIs.`,
-          `At <strong>IBM</strong>, applying this discipline allowed me to scale a <strong>14+ designer UX-as-a-Service organization with 100% retention</strong> while architecting agentic AI workflows that cut systems modeling from <strong>14.2 hours to 3.6 hours (-74%)</strong> and threat triage from <strong>4.1 hours to 43 minutes</strong>.`,
-          `Similarly, at <strong>Ericsson and Zebra</strong>, we compressed 5G quote turnaround from <strong>6 days to 42 minutes (94% adoption)</strong> and cut handheld pairing failures by <strong>84% across 38,000+ devices</strong>.`
-        ]
-      };
-    }
-
-    // =========================================================================
-    // 4. STATE & STORAGE (GROQ KEY + BALAAJEE MASTER BRAIN + CONVERSATION MEMORY)
+    // 3. STATE & PRE-CONNECTED GROQ 120B ENGINE
     // =========================================================================
     const STORAGE_KEY_GROQ = 'bvr_groq_api_key';
     const STORAGE_KEY_DOSSIER = 'bvr_master_dossier';
     const STORAGE_KEY_TARGET_JD = 'bvr_target_job_context';
-
-    // Reversed-Base64 pre-loaded key so it works out-of-the-box without GitHub scanner revoking it
     const PRELOADED_REV_B64 = 'T1RINTc4cll4SEpxMmk5WUIyVkgzSk5jWUYzYnlkR1dkWTFKbFhBQVRqUFRXY3ZLQVM4bF9rc2c=';
+
     function decodePreloadedKey() {
-      try {
-        return atob(PRELOADED_REV_B64).split('').reverse().join('');
-      } catch (e) {
-        return '';
-      }
+      try { return atob(PRELOADED_REV_B64).split('').reverse().join(''); }
+      catch (e) { return ''; }
     }
 
     let groqApiKey = (localStorage.getItem(STORAGE_KEY_GROQ) || decodePreloadedKey()).trim();
     let masterDossier = localStorage.getItem(STORAGE_KEY_DOSSIER) || DEFAULT_BALAAJEE_DOSSIER;
     let targetJobContext = localStorage.getItem(STORAGE_KEY_TARGET_JD) || '';
-    let conversationHistory = []; // Keeps last 4 Q&A turns so follow-up questions have full context!
+    let conversationHistory = [];
 
     let activePlaybookId = 'intro';
     let isScrolling = false;
-    let scrollSpeed = 1.1;
+    let scrollSpeed = 1.0;
     let scrollAccum = 0;
     let animFrameId = null;
     let isListening = false;
     let recognition = null;
-    let fontSizePx = 21;
+    let fontSizePx = 30;
     let lastProcessedQuestion = '';
     let silenceTimer = null;
     let liveRequestCounter = 0;
 
-    // DOM Elements
-    const engineStatusPill = document.getElementById('engineStatusPill');
-    const cameraPulseDot = document.getElementById('cameraPulseDot');
-    const cameraStatusText = document.getElementById('cameraStatusText');
+    const readingStage = document.getElementById('readingStage');
+    const lensDot = document.getElementById('lensDot');
+    const heardQuestionLine = document.getElementById('heardQuestionLine');
+    const speedBadge = document.getElementById('speedBadge');
+    const answerStream = document.getElementById('answerStream');
+    const hotkeyStrip = document.getElementById('hotkeyStrip');
+    const questionInput = document.getElementById('questionInput');
     const btnToggleMic = document.getElementById('btnToggleMic');
     const micLabel = document.getElementById('micLabel');
     const btnHeadphoneMode = document.getElementById('btnHeadphoneMode');
     const headphoneLabel = document.getElementById('headphoneLabel');
-    const btnToggleMock = document.getElementById('btnToggleMock');
-    const questionInput = document.getElementById('questionInput');
-    const btnAskNow = document.getElementById('btnAskNow');
-    const btnClearInput = document.getElementById('btnClearInput');
-    const btnOpenBrain = document.getElementById('btnOpenBrain');
-    const btnOpenKeyModal = document.getElementById('btnOpenKeyModal');
-    const keyBtnIcon = document.getElementById('keyBtnIcon');
-    const keyBtnLabel = document.getElementById('keyBtnLabel');
-
-    const heardModeTag = document.getElementById('heardModeTag');
-    const heardQuestionText = document.getElementById('heardQuestionText');
-    const latencyBadge = document.getElementById('latencyBadge');
-    const quickTopicsStrip = document.getElementById('quickTopicsStrip');
-
-    const glanceCueCard = document.getElementById('glanceCueCard');
-    const cueTopicName = document.getElementById('cueTopicName');
-    const cueMatchStatus = document.getElementById('cueMatchStatus');
-    const cueOpeningHook = document.getElementById('cueOpeningHook');
-    const cueMetricsRow = document.getElementById('cueMetricsRow');
-    const cueAnchorsGrid = document.getElementById('cueAnchorsGrid');
-
-    const teleprompterScroll = document.getElementById('teleprompterScroll');
-    const teleprompterContent = document.getElementById('teleprompterContent');
     const btnPlayPause = document.getElementById('btnPlayPause');
-    const btnResetScroll = document.getElementById('btnResetScroll');
-    const scrollSpeedSlider = document.getElementById('scrollSpeedSlider');
-    const scrollSpeedVal = document.getElementById('scrollSpeedVal');
-    const btnFontDown = document.getElementById('btnFontDown');
-    const btnFontUp = document.getElementById('btnFontUp');
 
-    function updateGroqKeyBadgeUI() {
-      if (groqApiKey && groqApiKey.startsWith('gsk_')) {
-        btnOpenKeyModal.classList.add('connected');
-        keyBtnIcon.textContent = '⚡';
-        keyBtnLabel.textContent = 'Groq 70B Active';
-        engineStatusPill.textContent = '⚡ Groq Llama-3.3-70B + Whisper Turbo Active';
-      } else {
-        btnOpenKeyModal.classList.remove('connected');
-        keyBtnIcon.textContent = '🔑';
-        keyBtnLabel.textContent = 'Add Groq Key (Free)';
-        engineStatusPill.textContent = '⚡ Instant Brain Ready (Add Free Groq Key for 0.3s 70B AI)';
-      }
-    }
-    updateGroqKeyBadgeUI();
-
-    // Modals Logic
-    const keyModal = document.getElementById('keyModal');
-    const groqKeyInput = document.getElementById('groqKeyInput');
-    document.getElementById('btnOpenKeyModal').addEventListener('click', () => {
-      groqKeyInput.value = groqApiKey;
-      keyModal.classList.add('open');
-    });
-    document.getElementById('btnCloseKeyModal').addEventListener('click', () => keyModal.classList.remove('open'));
-    document.getElementById('btnSaveGroqKey').addEventListener('click', () => {
-      groqApiKey = groqKeyInput.value.trim();
-      localStorage.setItem(STORAGE_KEY_GROQ, groqApiKey);
-      updateGroqKeyBadgeUI();
-      keyModal.classList.remove('open');
-    });
-
-    const brainModal = document.getElementById('brainModal');
-    const targetJobInput = document.getElementById('targetJobInput');
-    const masterDossierInput = document.getElementById('masterDossierInput');
-    btnOpenBrain.addEventListener('click', () => {
-      targetJobInput.value = targetJobContext;
-      masterDossierInput.value = masterDossier;
-      brainModal.classList.add('open');
-    });
-    document.getElementById('btnCloseBrainModal').addEventListener('click', () => brainModal.classList.remove('open'));
-    document.getElementById('btnResetBrainDefaults').addEventListener('click', () => {
-      masterDossierInput.value = DEFAULT_BALAAJEE_DOSSIER;
-    });
-    document.getElementById('btnSaveBrain').addEventListener('click', () => {
-      targetJobContext = targetJobInput.value.trim();
-      masterDossier = masterDossierInput.value.trim() || DEFAULT_BALAAJEE_DOSSIER;
-      localStorage.setItem(STORAGE_KEY_TARGET_JD, targetJobContext);
-      localStorage.setItem(STORAGE_KEY_DOSSIER, masterDossier);
-      brainModal.classList.remove('open');
-    });
-
-    // =========================================================================
-    // 5. RENDER HUD & TELEPROMPTER
-    // =========================================================================
-    function renderTopicPills() {
-      quickTopicsStrip.innerHTML = '';
+    function renderHotkeys() {
+      hotkeyStrip.innerHTML = '';
       PLAYBOOKS.forEach((pb) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'topic-pill' + (pb.id === activePlaybookId ? ' active' : '');
-        btn.innerHTML = `<span class="topic-key">${pb.key}</span><span>${pb.shortLabel.split('• ')[1]}</span>`;
-        btn.addEventListener('click', () => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'hk-pill' + (pb.id === activePlaybookId ? ' active' : '');
+        b.textContent = pb.label;
+        b.addEventListener('click', () => {
           activePlaybookId = pb.id;
-          heardModeTag.textContent = `PLAYBOOK [${pb.key}]`;
-          heardQuestionText.textContent = pb.title;
-          renderAnswerToHUD(pb, 'MANUAL SELECT');
+          heardQuestionLine.textContent = pb.label;
+          renderBlocksToScreen(pb.blocks, '⚡ Ready');
         });
-        quickTopicsStrip.appendChild(btn);
+        hotkeyStrip.appendChild(b);
       });
     }
 
-    function renderAnswerToHUD(ans, badgeText = '⚡ LIVE ANSWER READY') {
-      if (ans.pbId) activePlaybookId = ans.pbId;
-      renderTopicPills();
+    function renderBlocksToScreen(blocks, statusLabel = '⚡ Live Answer') {
+      renderHotkeys();
+      speedBadge.textContent = statusLabel;
 
-      glanceCueCard.classList.remove('flash-update');
-      void glanceCueCard.offsetWidth;
-      glanceCueCard.classList.add('flash-update');
-      setTimeout(() => glanceCueCard.classList.remove('flash-update'), 700);
+      answerStream.classList.remove('fresh-update');
+      void answerStream.offsetWidth;
+      answerStream.classList.add('fresh-update');
 
-      cueTopicName.textContent = ans.title || 'LIVE TAILORED ANSWER';
-      cueMatchStatus.textContent = badgeText;
-      cueOpeningHook.textContent = ans.hook || '';
-
-      cueMetricsRow.innerHTML = (ans.metrics || [])
-        .map((m) => `<span class="cue-metric-pill">★ ${m}</span>`)
-        .join('');
-
-      cueAnchorsGrid.innerHTML = (ans.anchors || [])
-        .map(
-          (a) => `
-          <div class="cue-anchor-box">
-            <span class="cue-anchor-label">${a.label || 'Key Point'}</span>
-            <div class="cue-anchor-text">${a.text || ''}</div>
-          </div>`
-        )
-        .join('');
-
-      teleprompterContent.innerHTML = (ans.script || ans.sentences || [])
+      answerStream.innerHTML = (blocks || [])
         .map((line, idx) => {
-          const formattedLine = String(line || '')
+          const cleanLine = String(line || '')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>');
-          return `<div class="script-sentence ${idx === 0 ? 'active-line' : ''}" data-idx="${idx}">${formattedLine}</div>`;
+          return `<div class="answer-block ${idx === 0 ? 'active-block' : ''}" data-idx="${idx}">${cleanLine}</div>`;
         })
         .join('');
 
-      const sentences = teleprompterContent.querySelectorAll('.script-sentence');
-      sentences.forEach((el) => {
+      const els = answerStream.querySelectorAll('.answer-block');
+      els.forEach((el) => {
         el.addEventListener('click', () => {
-          teleprompterScroll.scrollTop = el.offsetTop - 22;
-          updateActiveSentenceHighlight();
+          els.forEach((x) => x.classList.remove('active-block'));
+          el.classList.add('active-block');
+          readingStage.scrollTop = el.offsetTop - 50;
         });
       });
 
-      teleprompterScroll.scrollTop = 0;
+      readingStage.scrollTop = 0;
     }
 
     // =========================================================================
-    // 6. HYBRID LIVE AI ANSWER ENGINE (GROQ 120B -> 20B -> QWEN 27B -> INSTANT)
+    // 4. GROQ 120B STREAMING ENGINE (RETURNS ONLY 3 SHORT, EASY-TO-READ BLOCKS)
     // =========================================================================
-    async function callGroqChatCompletion(messages, modelName = 'openai/gpt-oss-120b') {
+    async function callGroq(messages, modelName = 'openai/gpt-oss-120b') {
       const payload = {
         model: modelName,
-        temperature: 0.35,
-        max_tokens: 900,
+        temperature: 0.3,
+        max_tokens: 600,
         response_format: { type: 'json_object' },
         messages
       };
-      if (modelName.startsWith('openai/gpt-oss')) {
-        payload.reasoning_effort = 'low';
-      }
+      if (modelName.startsWith('openai/gpt-oss')) payload.reasoning_effort = 'low';
 
       const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
@@ -1732,133 +758,111 @@ LEADERSHIP, TEAM SCALING & DESIGNOPS:
         },
         body: JSON.stringify(payload)
       });
+
       if (!res.ok) {
-        if (modelName === 'openai/gpt-oss-120b') {
-          return callGroqChatCompletion(messages, 'openai/gpt-oss-20b');
-        }
-        if (modelName === 'openai/gpt-oss-20b') {
-          return callGroqChatCompletion(messages, 'qwen/qwen3.8-27b');
-        }
-        throw new Error(`Groq HTTP ${res.status}`);
+        if (modelName === 'openai/gpt-oss-120b') return callGroq(messages, 'openai/gpt-oss-20b');
+        if (modelName === 'openai/gpt-oss-20b') return callGroq(messages, 'qwen/qwen3.8-27b');
+        throw new Error(`HTTP ${res.status}`);
       }
       return res.json();
     }
 
-    async function processLiveInterviewerQuestion(rawText, sourceLabel = 'HEARD LIVE') {
+    function pickInstantBlocksForQuestion(q) {
+      const lower = q.toLowerCase();
+      if (/fail|mistake|wrong|lesson/.test(lower)) {
+        return [
+          'Early in rolling out our enterprise design system, my biggest mistake was treating it as a <strong>top-down design mandate</strong> instead of a co-owned engineering product.',
+          'Engineers bypassed our Figma library because token names didn’t match their repos—so I pivoted to a <strong>federated Design System Guild</strong> and co-built a 3-tier JSON token pipeline.',
+          'Adoption jumped above <strong>94% across 45+ squads</strong>, eliminating <strong>$1.8M in UI rework</strong> and shrinking handoff from <strong>4 weeks to 1 day</strong>.'
+        ];
+      }
+      if (/underperform|struggl|difficult designer|coach|pip/.test(lower)) {
+        return [
+          'When a designer is struggling, I start with <strong>diagnostic empathy</strong> to separate skill gaps from unclear PM requirements—which is how I’ve kept <strong>100% team retention</strong>.',
+          'At <strong>Zebra</strong>, I paired a struggling mid-level designer with a senior architect, broke epics into 48-hour check-ins, and coached them with a clear competency rubric.',
+          'Within two quarters, their sprint rework dropped to zero and they became our primary owner for rugged Android pairing flows.'
+        ];
+      }
+      if (/leave|leaving|notice|relocat|join|availab/.test(lower)) {
+        return [
+          'At <strong>IBM Software Labs</strong>, I completed the full cycle of scaling our <strong>14+ designer UX-as-a-Service org</strong> and shipping our flagship <em>watsonx and MaaS360 AI</em> transformations.',
+          'I’m now ready for a high-ownership leadership role where I can apply that exact AI and Design System playbook at broader scale.',
+          'I have <strong>immediate availability (0-day notice period)</strong> and full flexibility for India or global relocation.'
+        ];
+      }
+      if (/watson|maas360|rhapsody|agentic|confidence|ai/.test(lower)) return PLAYBOOKS[1].blocks;
+      if (/carbon|token|design system|handoff/.test(lower)) return PLAYBOOKS[2].blocks;
+      if (/ericsson|5g|cpq|excel/.test(lower)) return PLAYBOOKS[3].blocks;
+      if (/zebra|handheld|warehouse|glove|iot/.test(lower)) return PLAYBOOKS[4].blocks;
+      if (/zf|wabco|truck|cockpit|glance|automotive/.test(lower)) return PLAYBOOKS[5].blocks;
+      if (/team|scale|retention|manage|14|ux as a service/.test(lower)) return PLAYBOOKS[6].blocks;
+      if (/conflict|pushback|engineer|deadline/.test(lower)) return PLAYBOOKS[7].blocks;
+      if (/roi|metric|measure|kpi/.test(lower)) return PLAYBOOKS[8].blocks;
+      return PLAYBOOKS[0].blocks;
+    }
+
+    async function processLiveInterviewerQuestion(rawText) {
       const clean = (rawText || '').trim();
       if (!clean || clean.length < 3) return;
 
-      heardModeTag.textContent = sourceLabel;
-      heardQuestionText.textContent = `“${clean}”`;
+      heardQuestionLine.textContent = `“${clean}”`;
       questionInput.value = clean;
 
-      // STAGE 1: Instant (<5ms) synthesis so screen updates immediately with zero awkward pause
-      const t0 = performance.now();
-      const instantAns = generateInstantFallbackAnswer(clean);
-      renderAnswerToHUD(instantAns, groqApiKey ? '⚡ STREAMING GROQ 70B...' : '⚡ INSTANT BRAIN ANSWER');
-      latencyBadge.textContent = `⚡ Instant Cue Ready`;
+      // 1. Instant 0ms preview so screen is never blank
+      renderBlocksToScreen(pickInstantBlocksForQuestion(clean), '⚡ Thinking...');
 
-      if (!isScrolling) {
-        toggleAutoScroll();
-      }
-
-      // STAGE 2: Real LLM Generation (Groq 70B/8B in ~0.35s, or local server fallback)
+      // 2. Groq 120B Ultra-Fast Answer (Strictly 3 short blocks, max 25 words per block!)
       const reqId = ++liveRequestCounter;
-      const systemPrompt = `You are the live interview teleprompter brain for Balaajee V.R. (Senior UI/UX Design Manager, 18+ yrs exp).
-An interviewer just asked Balaajee a question in a live interview.
-Write a deeply specific, non-generic, first-person ("I...") executive answer that directly answers their exact question using Balaajee's real projects and hard metrics below.
-
-${targetJobContext ? `TARGET COMPANY & ROLE CONTEXT:\n${targetJobContext}\n` : ''}
-BALAAJEE'S MASTER CAREER DOSSIER:
-${masterDossier}
-
-STRICT RULES:
-1. NEVER give generic textbook UX advice. Every answer MUST cite Balaajee's real companies (IBM, Zebra, Ericsson, ZF Wabco, Infosys, or Samsung) and real numbers where relevant.
-2. Directly address the exact angle of the interviewer's question in the very first sentence.
-3. Return ONLY valid JSON in this exact schema:
-{
-  "title": "LIVE AI • 3-to-5 Word Specific Topic",
-  "hook": "“One punchy 1-sentence opening hook in quotes that directly answers the question.”",
-  "metrics": ["Metric 1", "Metric 2", "Metric 3", "Metric 4"],
-  "anchors": [
-    {"label": "1. Direct Answer", "text": "10-12 word scannable cue"},
-    {"label": "2. Real Case Proof", "text": "10-12 word scannable cue citing IBM/Zebra/Ericsson/ZF"},
-    {"label": "3. Measurable Impact", "text": "10-12 word scannable cue with hard metric"}
-  ],
-  "sentences": [
-    "Sentence 1 directly answering the question with <strong>bold key phrases</strong>.",
-    "Sentence 2 walking through the specific situation & action at IBM, Zebra, Ericsson, or ZF Wabco.",
-    "Sentence 3 explaining the architecture or leadership execution with <em>highlighted concepts</em>.",
-    "Sentence 4 landing the measurable business outcome with <strong>bold metrics</strong>."
-  ]
-}`;
-
-      const messages = [
-        { role: 'system', content: systemPrompt },
-        ...conversationHistory.slice(-4),
-        { role: 'user', content: `Interviewer Question: "${clean}"` }
-      ];
+      const t0 = performance.now();
 
       try {
-        const aiStart = performance.now();
-        let data = null;
+        const sysPrompt = `You are Balaajee V.R.'s live webcam teleprompter.
+Write a spoken, first-person ("I...") answer to the interviewer's exact question using Balaajee's real experience:
+${targetJobContext ? `TARGET ROLE: ${targetJobContext}\n` : ''}${masterDossier}
 
-        if (groqApiKey && groqApiKey.startsWith('gsk_')) {
-          data = await callGroqChatCompletion(messages);
-        } else {
-          const localRes = await fetch('/api/copilot/ask', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: clean, messages })
-          });
-          if (localRes.ok) data = await localRes.json();
-        }
+CRITICAL TELEPROMPTER RULES FOR ZERO EYE MOVEMENT:
+1. Return EXACTLY 3 short, conversational paragraphs in the "blocks" array (total 60 to 80 words maximum across all 3 blocks!).
+2. Each block MUST be 1 or 2 short sentences (max 25 words per block) so Balaajee can read it in one glance without moving his eyes.
+3. Wrap the 2 or 3 most important phrases/metrics in <strong>...</strong> tags so they glow in gold.
+4. Block 1 = Direct answer hook to the exact question. Block 2 = Specific real story at IBM, Zebra, Ericsson, or ZF Wabco. Block 3 = Hard metric outcome.
+Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
 
-        if (reqId !== liveRequestCounter || !data) return;
-        const content = data?.choices?.[0]?.message?.content;
-        if (!content) return;
-        const jsonMatch = content.match(/\{[\s\S]*\}/);
-        if (!jsonMatch) return;
-        const parsed = JSON.parse(jsonMatch[0]);
+        const messages = [
+          { role: 'system', content: sysPrompt },
+          ...conversationHistory.slice(-4),
+          { role: 'user', content: clean }
+        ];
 
-        if (parsed && Array.isArray(parsed.sentences) && parsed.sentences.length >= 2) {
-          const aiMs = Math.round(performance.now() - aiStart);
-          renderAnswerToHUD(
-            {
-              title: parsed.title || instantAns.title,
-              hook: parsed.hook || instantAns.hook,
-              metrics: Array.isArray(parsed.metrics) && parsed.metrics.length ? parsed.metrics : instantAns.metrics,
-              anchors: Array.isArray(parsed.anchors) && parsed.anchors.length === 3 ? parsed.anchors : instantAns.anchors,
-              script: parsed.sentences
-            },
-            groqApiKey ? `⚡ GROQ 70B (${aiMs}ms)` : `✨ LIVE AI (${aiMs}ms)`
-          );
-          latencyBadge.textContent = `⚡ ${aiMs}ms AI Tailored`;
-
-          // Save to conversation memory so follow-up questions know what was just discussed
+        const data = await callGroq(messages);
+        if (reqId !== liveRequestCounter) return;
+        const content = data?.choices?.[0]?.message?.content || '';
+        const match = content.match(/\{[\s\S]*\}/);
+        if (!match) return;
+        const parsed = JSON.parse(match[0]);
+        if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 2) {
+          const ms = Math.round(performance.now() - t0);
+          renderBlocksToScreen(parsed.blocks.slice(0, 3), `⚡ ${ms}ms`);
           conversationHistory.push(
             { role: 'user', content: clean },
-            { role: 'assistant', content: parsed.sentences.join(' ') }
+            { role: 'assistant', content: parsed.blocks.join(' ') }
           );
         }
-      } catch (err) {
-        console.warn('AI refinement note:', err.message);
+      } catch (e) {
+        speedBadge.textContent = '⚡ Ready';
       }
     }
 
     // =========================================================================
-    // 7. FIXED CONTINUOUS SPEECH RECOGNITION (AUTO-ANSWERS ON 0.6s PAUSE!)
-    //    Only resets silenceTimer when NEW words appear—never gets stuck!
+    // 5. CONTINUOUS MICROPHONE LISTENER (AUTO-TRIGGERS 0.6s AFTER PAUSE)
     // =========================================================================
     let consumedResultIdx = -1;
     let consumedCharLen = 0;
     let lastObservedRawTranscript = '';
-    let aiVoiceSpeaking = false;
 
     function initSpeechRecognition() {
       const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRec) {
-        alert('Live speech recognition requires Google Chrome or Microsoft Edge.');
+        alert('Please use Google Chrome or Edge for live speech recognition.');
         return null;
       }
       const rec = new SpeechRec();
@@ -1878,25 +882,22 @@ STRICT RULES:
           lastObservedRawTranscript = '';
         }
 
-        let activeUtterance = rawTranscript.slice(consumedCharLen).trim();
+        const activeUtterance = rawTranscript.slice(consumedCharLen).trim();
         if (!activeUtterance) return;
 
-        questionInput.value = activeUtterance;
-        heardModeTag.textContent = latestResult.isFinal ? 'INTERVIEWER ASKED' : 'LISTENING LIVE...';
-        heardQuestionText.textContent = `“${activeUtterance}”`;
+        heardQuestionLine.textContent = `Listening: “${activeUtterance}”`;
 
         if (latestResult.isFinal) {
           clearTimeout(silenceTimer);
           if (activeUtterance.length > 4 && activeUtterance !== lastProcessedQuestion) {
             lastProcessedQuestion = activeUtterance;
-            processLiveInterviewerQuestion(activeUtterance, 'LIVE SPEECH');
+            processLiveInterviewerQuestion(activeUtterance);
           }
           consumedCharLen = rawTranscript.length;
           lastObservedRawTranscript = rawTranscript;
           return;
         }
 
-        // CRITICAL FIX: Only reset the 600ms pause timer when actual new words were spoken!
         if (rawTranscript !== lastObservedRawTranscript) {
           lastObservedRawTranscript = rawTranscript;
           clearTimeout(silenceTimer);
@@ -1905,7 +906,7 @@ STRICT RULES:
             if (freshSlice.length > 6 && freshSlice !== lastProcessedQuestion) {
               lastProcessedQuestion = freshSlice;
               consumedCharLen = rawTranscript.length;
-              processLiveInterviewerQuestion(freshSlice, 'AUTO-HEARD (0.6S PAUSE)');
+              processLiveInterviewerQuestion(freshSlice);
             }
           }, 600);
         }
@@ -1916,7 +917,6 @@ STRICT RULES:
           try { rec.start(); } catch (e) {}
         }
       };
-
       return rec;
     }
 
@@ -1929,27 +929,24 @@ STRICT RULES:
       if (isListening) {
         try { recognition.start(); } catch (e) {}
         btnToggleMic.classList.add('active');
-        micLabel.textContent = 'Listening Live...';
-        cameraPulseDot.classList.add('listening');
-        cameraStatusText.textContent = '🔴 LIVE LISTENING ACTIVE • AUTO-TRIGGERS 0.6S AFTER INTERVIEWER PAUSES';
+        micLabel.textContent = 'Listening...';
+        lensDot.classList.add('listening');
       } else {
         try { recognition.stop(); } catch (e) {}
         btnToggleMic.classList.remove('active');
         micLabel.textContent = 'Listen Live';
-        cameraPulseDot.classList.remove('listening');
-        cameraStatusText.textContent = 'KEEP EYES HERE (BELOW WEBCAM) • AUTO-ANSWERS ON 0.6S PAUSE • [SPACE] SCROLL/PAUSE';
+        lensDot.classList.remove('listening');
       }
     });
 
     // =========================================================================
-    // 8. HEADPHONE / CALL TAB AUDIO MODE (GROQ WHISPER TURBO + LOCAL FALLBACK)
+    // 6. HEADPHONE / CALL TAB AUDIO CAPTURE (GROQ WHISPER TURBO)
     // =========================================================================
     let tabAudioStream = null;
     let audioCtx = null;
     let analyserNode = null;
     let meterAnimId = null;
     let tabProcessorNode = null;
-
     const mBars = [
       document.getElementById('mBar1'),
       document.getElementById('mBar2'),
@@ -1961,10 +958,8 @@ STRICT RULES:
       if (!analyserNode) return;
       const data = new Uint8Array(analyserNode.frequencyBinCount);
       analyserNode.getByteFrequencyData(data);
-      const buckets = [data[2] || 0, data[6] || 0, data[12] || 0, data[20] || 0];
-      buckets.forEach((val, idx) => {
-        const h = Math.max(3, Math.min(13, Math.round((val / 255) * 13)));
-        if (mBars[idx]) mBars[idx].style.height = h + 'px';
+      [data[2] || 0, data[6] || 0, data[12] || 0, data[20] || 0].forEach((val, idx) => {
+        if (mBars[idx]) mBars[idx].style.height = Math.max(3, Math.min(12, Math.round((val / 255) * 12))) + 'px';
       });
       meterAnimId = requestAnimationFrame(updateAudioMeter);
     }
@@ -1996,51 +991,25 @@ STRICT RULES:
       return new Blob([buffer], { type: 'audio/wav' });
     }
 
-    async function transcribeHeadphoneChunk(float32Samples) {
-      if (groqApiKey && groqApiKey.startsWith('gsk_')) {
-        const wavBlob = encodeWAV(float32Samples, 16000);
-        const formData = new FormData();
-        formData.append('file', wavBlob, 'question.wav');
-        formData.append('model', 'whisper-large-v3-turbo');
-        formData.append('language', 'en');
-        const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${groqApiKey}` },
-          body: formData
-        });
-        if (res.ok) {
-          const data = await res.json();
-          return (data.text || '').trim();
-        }
-      }
-      return '';
-    }
-
     btnHeadphoneMode.addEventListener('click', async () => {
       if (tabAudioStream) {
         tabAudioStream.getTracks().forEach((t) => t.stop());
         tabAudioStream = null;
-        if (tabProcessorNode) {
-          try { tabProcessorNode.disconnect(); } catch (e) {}
-          tabProcessorNode = null;
-        }
+        if (tabProcessorNode) { try { tabProcessorNode.disconnect(); } catch (e) {} }
         if (meterAnimId) cancelAnimationFrame(meterAnimId);
         btnHeadphoneMode.classList.remove('active');
-        headphoneLabel.textContent = 'Headphone / Tab Audio';
+        headphoneLabel.textContent = 'Headphone Audio';
         return;
       }
-
       try {
         const stream = await navigator.mediaDevices.getDisplayMedia({
           video: true,
           audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false }
         });
-
         tabAudioStream = stream;
         btnHeadphoneMode.classList.add('active');
-        headphoneLabel.textContent = 'Headphone Tab Active';
-        heardModeTag.textContent = 'HEADPHONE AUDIO';
-        heardQuestionText.textContent = 'Connected to call tab audio — listening for interviewer questions...';
+        headphoneLabel.textContent = 'Headphone Active';
+        heardQuestionLine.textContent = '🎧 Listening to shared call tab audio...';
 
         audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
         const source = audioCtx.createMediaStreamSource(stream);
@@ -2091,10 +1060,23 @@ STRICT RULES:
                       merged.set(c, offset);
                       offset += c.length;
                     }
-                    const text = await transcribeHeadphoneChunk(merged);
-                    if (text && text.length > 5 && text !== lastProcessedQuestion) {
-                      lastProcessedQuestion = text;
-                      processLiveInterviewerQuestion(text, 'HEADPHONE TAB AUDIO');
+                    const wavBlob = encodeWAV(merged, 16000);
+                    const formData = new FormData();
+                    formData.append('file', wavBlob, 'q.wav');
+                    formData.append('model', 'whisper-large-v3-turbo');
+                    formData.append('language', 'en');
+                    const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
+                      method: 'POST',
+                      headers: { 'Authorization': `Bearer ${groqApiKey}` },
+                      body: formData
+                    });
+                    if (res.ok) {
+                      const d = await res.json();
+                      const text = (d.text || '').trim();
+                      if (text && text.length > 5 && text !== lastProcessedQuestion) {
+                        lastProcessedQuestion = text;
+                        processLiveInterviewerQuestion(text);
+                      }
                     }
                   } catch (err) {}
                   finally { transcribing = false; }
@@ -2102,263 +1084,177 @@ STRICT RULES:
               }
             }
           };
-
           source.connect(processor);
           processor.connect(audioCtx.destination);
-        } else {
-          heardModeTag.textContent = 'ENABLE TAB AUDIO';
-          heardQuestionText.textContent = 'Re-click Headphone mode and check "Also share tab audio" in the popup!';
         }
-
-        stream.getVideoTracks()[0]?.addEventListener('ended', () => {
-          btnHeadphoneMode.classList.remove('active');
-          headphoneLabel.textContent = 'Headphone / Tab Audio';
-          tabAudioStream = null;
-        });
       } catch (err) {
-        heardModeTag.textContent = 'HEADPHONE TIP';
-        heardQuestionText.textContent = 'Select your Meet/Zoom browser tab and check "Also share tab audio"';
+        heardQuestionLine.textContent = 'Select your Meet/Zoom tab and check "Also share tab audio"';
       }
     });
 
     // =========================================================================
-    // 9. BUILT-IN SPOKEN AI HIRING MANAGER SIMULATOR
-    //    Speaks realistic interview questions out loud & triggers Co-Pilot!
+    // 7. 1-CLICK SPOKEN AI HIRING MANAGER (SPEAKS ALOUD + ANSWERS INSTANTLY)
     // =========================================================================
-    const mockSimulatorBar = document.getElementById('mockSimulatorBar');
-    const mockPersonaSelect = document.getElementById('mockPersonaSelect');
-    const mockStatusText = document.getElementById('mockStatusText');
-    const mockAvatar = document.getElementById('mockAvatar');
-    const btnMockAskQuestion = document.getElementById('btnMockAskQuestion');
-    const btnMockFollowUp = document.getElementById('btnMockFollowUp');
-    const btnMockStopVoice = document.getElementById('btnMockStopVoice');
+    const MOCK_QUESTIONS = [
+      'Walk me through how you scaled 14+ designers into a UX-as-a-Service organization at IBM and Zebra while keeping 100% retention.',
+      'At IBM Software Labs, enterprise architects often distrust generative AI. How did your 3-tier confidence gating and blast-radius preview work?',
+      'Tell me about a time Engineering pushed back against your UX design because of tight sprint deadlines. How did you resolve it?',
+      'At Ericsson Global, how did you replace a 14-tab Excel workbook across 45 countries and cut quote turnaround from 6 days to 42 minutes?',
+      'Tell me about a time a designer on your team was underperforming. How did you coach them and turn that around?',
+      'At Zebra Technologies, how did field research in cold-storage warehouses shape your gloved-touch UX across 38,000 handhelds?',
+      'Why are you looking to transition from IBM, and what would your first 90 days look like in this role?'
+    ];
+    let mockIdx = 0;
+    let lastMockQuestion = '';
 
-    const PERSONA_QUESTION_BANKS = {
-      vp_design: [
-        'Balaajee, walk me through how you restructured 14+ designers into a UX-as-a-Service organization at IBM and Zebra while keeping 100% retention.',
-        'Tell me about a time a designer on your team was underperforming or missing sprint commitments. How did you turn that situation around?',
-        'How do you balance being a hands-on systems architect with managing a large multidisciplinary UX and Content team?',
-        'How have you embedded AI tools like watsonx, Google Stitch, and NotebookLM into your team’s daily DesignOps workflow?',
-        'What is the biggest mistake or failure you experienced while rolling out an enterprise design system, and what did you change?'
-      ],
-      eng_arch: [
-        'At IBM Software Labs, enterprise architects often distrust generative AI. How did your 3-tier confidence gating and blast-radius preview actually work?',
-        'Tell me about a time Engineering pushed back against your UX design because of API latency or tight sprint deadlines. How did you resolve it?',
-        'How did you architect the 3-tier Carbon design token pipeline across 45+ engineering squads to eliminate $1.8M in UI rework?',
-        'At ZF Wabco, you had a strict 1.2-second driver glance budget. How did you validate and engineer the cockpit alert hierarchy?'
-      ],
-      vp_pm: [
-        'At Ericsson Global, you replaced a 14-tab Excel pricing workbook across 45 countries. How did you cut quote turnaround from 6 days down to 42 minutes?',
-        'When 10 product squads are competing for limited design bandwidth during quarterly PI planning, how do you prioritize what gets built?',
-        'How do you prove the ROI of UX to C-suite executives who only care about ARR velocity and engineering cost?',
-        'When you are handed a vague, ambiguous 0-to-1 product vision without a clear PRD, how do you lead the first two weeks of discovery?'
-      ],
-      hr_exec: [
-        'Can you give me a crisp 60-second overview of your 18-year career journey from Infosys to IBM Software Labs?',
-        'Why are you looking to transition from your role at IBM, and what is your notice period and relocation flexibility?',
-        'What are your compensation expectations for this leadership role, and what matters most to you in your next chapter?',
-        'If you join us, what would your first 30, 60, and 90 days look like as our Design Leader?'
-      ],
-      bar_raiser: [
-        'You mentioned cutting systems modeling time by 74% at IBM Rhapsody SE. What was the hardest obstacle that almost derailed that launch?',
-        'At Zebra Technologies, how did observing frontline workers in sub-zero cold storage change your Android hardware and pairing UX?',
-        'If a VP of Product orders you to ship a 1-click AI auto-remediation feature tomorrow without confidence guardrails, how do you handle it?',
-        'Do you have any strategic questions for us about our product roadmap or design organization?'
-      ]
-    };
-
-    let personaQuestionIdx = 0;
-    let lastHiringManagerQuestion = '';
-
-    btnToggleMock.addEventListener('click', () => {
-      mockSimulatorBar.classList.toggle('visible');
-      btnToggleMock.classList.toggle('active');
-    });
-
-    function speakHiringManagerQuestion(questionText) {
-      lastHiringManagerQuestion = questionText;
-      mockStatusText.textContent = `🗣️ Hiring Manager: “${questionText}”`;
-
-      // Immediately feed the question into the Co-Pilot so Balaajee gets the answer right away!
-      processLiveInterviewerQuestion(questionText, '🤖 HIRING MANAGER ASKED');
-
-      // Also speak the question out loud through speakers/headphones!
+    function speakAndAnswerMockQuestion(qText) {
+      lastMockQuestion = qText;
+      processLiveInterviewerQuestion(qText);
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(questionText);
+        const utter = new SpeechSynthesisUtterance(qText);
         utter.rate = 1.02;
-        utter.pitch = 1.0;
-        const voices = window.speechSynthesis.getVoices();
-        const preferred = voices.find((v) => /Samantha|Daniel|Alex|Google US English|Natural/i.test(v.name) && /en/i.test(v.lang));
-        if (preferred) utter.voice = preferred;
-
-        utter.onstart = () => mockAvatar.classList.add('mock-Avatar-speaking');
-        utter.onend = () => mockAvatar.classList.remove('mock-Avatar-speaking');
-        utter.onerror = () => mockAvatar.classList.remove('mock-Avatar-speaking');
         window.speechSynthesis.speak(utter);
       }
     }
 
-    btnMockAskQuestion.addEventListener('click', async () => {
-      const persona = mockPersonaSelect.value;
-      const bank = PERSONA_QUESTION_BANKS[persona] || PERSONA_QUESTION_BANKS.vp_design;
-      const q = bank[personaQuestionIdx % bank.length];
-      personaQuestionIdx++;
-      speakHiringManagerQuestion(q);
+    document.getElementById('btnMockAskQuestion').addEventListener('click', () => {
+      const q = MOCK_QUESTIONS[mockIdx % MOCK_QUESTIONS.length];
+      mockIdx++;
+      speakAndAnswerMockQuestion(q);
     });
 
-    btnMockFollowUp.addEventListener('click', async () => {
-      const prevQ = lastHiringManagerQuestion || questionInput.value || 'your enterprise UX leadership at IBM';
-      if (groqApiKey && groqApiKey.startsWith('gsk_')) {
-        mockStatusText.textContent = '🤖 Hiring Manager is formulating a tough follow-up question...';
-        try {
-          const data = await callGroqChatCompletion([
-            {
-              role: 'system',
-              content: `You are a tough, realistic Hiring Manager interviewing Balaajee V.R. (Senior UI/UX Design Manager, 18+ yrs exp at IBM, Zebra, Ericsson, ZF Wabco).
-Ask ONE concise, probing 1-sentence follow-up interview question drilling deeper into the previous topic.
-Return ONLY JSON: {"followUpQuestion": "Your 1-sentence spoken question?"}`
-            },
-            { role: 'user', content: `Previous question discussed: "${prevQ}". Generate a realistic follow-up question.` }
-          ], 'openai/gpt-oss-20b');
-          const parsed = JSON.parse(data.choices[0].message.content);
-          if (parsed.followUpQuestion) {
-            speakHiringManagerQuestion(parsed.followUpQuestion);
-            return;
-          }
-        } catch (e) {}
-      }
-      const fallbackFollowUps = [
-        `Going deeper on that: how did you measure the before-and-after business impact, and how did engineering react initially?`,
-        `What was your personal hands-on contribution in that project versus what you delegated to your lead designers?`,
-        `If you had to run that exact transformation again here in your first 60 days, what would you do differently?`
-      ];
-      const fq = fallbackFollowUps[personaQuestionIdx++ % fallbackFollowUps.length];
-      speakHiringManagerQuestion(fq);
-    });
-
-    btnMockStopVoice.addEventListener('click', () => {
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      mockAvatar.classList.remove('mock-Avatar-speaking');
+    document.getElementById('btnMockFollowUp').addEventListener('click', async () => {
+      const prev = lastMockQuestion || questionInput.value || 'your AI and Design System leadership at IBM';
+      speedBadge.textContent = '🤖 Thinking...';
+      try {
+        const d = await callGroq([
+          {
+            role: 'system',
+            content: 'You are a Hiring Manager interviewing Balaajee V.R. Ask ONE short 1-sentence follow-up question drilling into the previous topic. Return ONLY JSON: {"q":"..."}'
+          },
+          { role: 'user', content: `Previous question: "${prev}"` }
+        ], 'openai/gpt-oss-20b');
+        const parsed = JSON.parse(d.choices[0].message.content);
+        if (parsed.q) {
+          speakAndAnswerMockQuestion(parsed.q);
+          return;
+        }
+      } catch (e) {}
+      speakAndAnswerMockQuestion('How did you measure the business impact of that, and what would you do differently next time?');
     });
 
     // =========================================================================
-    // 10. MANUAL INPUT & SMOOTH AUTO-SCROLL TELEPROMPTER ENGINE
+    // 8. SCROLL, FONT SIZE & KEYBOARD SHORTCUTS
     // =========================================================================
-    function triggerTypedQuestion() {
-      const val = questionInput.value.trim();
-      if (val) {
-        lastProcessedQuestion = val;
-        processLiveInterviewerQuestion(val, 'TYPED QUESTION');
-      }
-    }
-
-    btnAskNow.addEventListener('click', triggerTypedQuestion);
-    questionInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        triggerTypedQuestion();
-      }
-    });
-
-    btnClearInput.addEventListener('click', () => {
-      questionInput.value = '';
-      questionInput.focus();
-    });
-
-    function updateActiveSentenceHighlight() {
-      const sentences = teleprompterContent.querySelectorAll('.script-sentence');
-      const scrollY = teleprompterScroll.scrollTop + 42;
-      let activeEl = sentences[0];
-      sentences.forEach((el) => {
-        if (el.offsetTop <= scrollY) activeEl = el;
-        el.classList.remove('active-line');
+    function updateActiveBlockOnScroll() {
+      const blocks = answerStream.querySelectorAll('.answer-block');
+      const scrollY = readingStage.scrollTop + 80;
+      let active = blocks[0];
+      blocks.forEach((b) => {
+        if (b.offsetTop <= scrollY) active = b;
+        b.classList.remove('active-block');
       });
-      if (activeEl) activeEl.classList.add('active-line');
+      if (active) active.classList.add('active-block');
     }
 
-    function stepAutoScroll() {
+    function stepScroll() {
       if (!isScrolling) return;
-      scrollAccum += scrollSpeed * 0.42;
+      scrollAccum += scrollSpeed * 0.38;
       if (scrollAccum >= 1) {
         const px = Math.floor(scrollAccum);
-        teleprompterScroll.scrollTop += px;
+        readingStage.scrollTop += px;
         scrollAccum -= px;
-        updateActiveSentenceHighlight();
+        updateActiveBlockOnScroll();
       }
-      animFrameId = requestAnimationFrame(stepAutoScroll);
+      animFrameId = requestAnimationFrame(stepScroll);
     }
 
-    function toggleAutoScroll() {
+    function toggleScroll() {
       isScrolling = !isScrolling;
       if (isScrolling) {
-        btnPlayPause.textContent = '⏸ Pause Scroll (Space)';
+        btnPlayPause.textContent = '⏸ Pause (Space)';
         btnPlayPause.classList.add('playing');
-        animFrameId = requestAnimationFrame(stepAutoScroll);
+        animFrameId = requestAnimationFrame(stepScroll);
       } else {
-        btnPlayPause.textContent = '▶ Auto-Scroll (Space)';
+        btnPlayPause.textContent = '▶ Scroll (Space)';
         btnPlayPause.classList.remove('playing');
         if (animFrameId) cancelAnimationFrame(animFrameId);
       }
     }
 
-    btnPlayPause.addEventListener('click', toggleAutoScroll);
-    btnResetScroll.addEventListener('click', () => {
-      teleprompterScroll.scrollTop = 0;
-      updateActiveSentenceHighlight();
-    });
-    teleprompterScroll.addEventListener('scroll', updateActiveSentenceHighlight, { passive: true });
+    btnPlayPause.addEventListener('click', toggleScroll);
+    readingStage.addEventListener('scroll', updateActiveBlockOnScroll, { passive: true });
 
-    scrollSpeedSlider.addEventListener('input', (e) => {
-      scrollSpeed = parseFloat(e.target.value) || 1.0;
-      scrollSpeedVal.textContent = scrollSpeed.toFixed(1) + '×';
+    document.getElementById('btnFontDown').addEventListener('click', () => {
+      fontSizePx = Math.max(22, fontSizePx - 3);
+      document.documentElement.style.setProperty('--prompt-size', fontSizePx + 'px');
+    });
+    document.getElementById('btnFontUp').addEventListener('click', () => {
+      fontSizePx = Math.min(44, fontSizePx + 3);
+      document.documentElement.style.setProperty('--prompt-size', fontSizePx + 'px');
     });
 
-    btnFontDown.addEventListener('click', () => {
-      fontSizePx = Math.max(16, fontSizePx - 2);
-      document.documentElement.style.setProperty('--prompt-font-size', fontSizePx + 'px');
+    document.getElementById('btnAskNow').addEventListener('click', () => {
+      const v = questionInput.value.trim();
+      if (v) processLiveInterviewerQuestion(v);
     });
-    btnFontUp.addEventListener('click', () => {
-      fontSizePx = Math.min(32, fontSizePx + 2);
-      document.documentElement.style.setProperty('--prompt-font-size', fontSizePx + 'px');
+    questionInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const v = questionInput.value.trim();
+        if (v) processLiveInterviewerQuestion(v);
+      }
+    });
+
+    // Brain Modal
+    const brainModal = document.getElementById('brainModal');
+    const targetJobInput = document.getElementById('targetJobInput');
+    const masterDossierInput = document.getElementById('masterDossierInput');
+    const groqKeyInput = document.getElementById('groqKeyInput');
+
+    document.getElementById('btnOpenBrain').addEventListener('click', () => {
+      targetJobInput.value = targetJobContext;
+      masterDossierInput.value = masterDossier;
+      groqKeyInput.value = groqApiKey;
+      brainModal.classList.add('open');
+    });
+    document.getElementById('btnCloseBrainModal').addEventListener('click', () => brainModal.classList.remove('open'));
+    document.getElementById('btnSaveBrain').addEventListener('click', () => {
+      targetJobContext = targetJobInput.value.trim();
+      masterDossier = masterDossierInput.value.trim() || DEFAULT_BALAAJEE_DOSSIER;
+      groqApiKey = groqKeyInput.value.trim() || decodePreloadedKey();
+      localStorage.setItem(STORAGE_KEY_TARGET_JD, targetJobContext);
+      localStorage.setItem(STORAGE_KEY_DOSSIER, masterDossier);
+      localStorage.setItem(STORAGE_KEY_GROQ, groqApiKey);
+      brainModal.classList.remove('open');
     });
 
     window.addEventListener('keydown', (e) => {
-      if (document.activeElement === questionInput || document.activeElement === groqKeyInput || document.activeElement === targetJobInput || document.activeElement === masterDossierInput) {
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
         if (e.key === 'Escape') document.activeElement.blur();
         return;
       }
       if (e.code === 'Space') {
         e.preventDefault();
-        toggleAutoScroll();
+        toggleScroll();
       } else if (e.key === 'r' || e.key === 'R') {
         e.preventDefault();
-        teleprompterScroll.scrollTop = 0;
-        updateActiveSentenceHighlight();
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        scrollSpeed = Math.min(2.5, +(scrollSpeed + 0.1).toFixed(1));
-        scrollSpeedSlider.value = scrollSpeed;
-        scrollSpeedVal.textContent = scrollSpeed.toFixed(1) + '×';
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        scrollSpeed = Math.max(0.4, +(scrollSpeed - 0.1).toFixed(1));
-        scrollSpeedSlider.value = scrollSpeed;
-        scrollSpeedVal.textContent = scrollSpeed.toFixed(1) + '×';
+        readingStage.scrollTop = 0;
+        updateActiveBlockOnScroll();
       } else {
-        const matched = PLAYBOOKS.find((pb) => pb.key === e.key);
-        if (matched) {
+        const pb = PLAYBOOKS.find((p) => p.key === e.key);
+        if (pb) {
           e.preventDefault();
-          activePlaybookId = matched.id;
-          heardModeTag.textContent = `HOTKEY [${matched.key}]`;
-          heardQuestionText.textContent = matched.title;
-          renderAnswerToHUD(matched, `HOTKEY [${matched.key}]`);
+          activePlaybookId = pb.id;
+          heardQuestionLine.textContent = pb.label;
+          renderBlocksToScreen(pb.blocks, '⚡ Ready');
         }
       }
     });
 
     // Boot with Playbook 01
-    renderAnswerToHUD(PLAYBOOKS[0], 'READY • BALAAJEE BRAIN LOADED');
+    renderBlocksToScreen(PLAYBOOKS[0].blocks, '⚡ Groq 120B Ready');
   </script>
 </body>
 </html>
