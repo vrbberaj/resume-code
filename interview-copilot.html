@@ -14,14 +14,13 @@
       --bg-dock: #0C1322;
       --border-subtle: rgba(148, 163, 184, 0.16);
       --text-primary: #FFFFFF;
-      --text-dim: rgba(203, 213, 225, 0.45);
       --accent-gold: #FBBF24;
       --accent-cyan: #38BDF8;
       --accent-emerald: #10B981;
       --accent-rose: #F43F5E;
       --accent-purple: #A855F7;
       --prompt-size: 28px;
-      --column-width: 640px;
+      --column-width: 650px;
     }
 
     * {
@@ -50,7 +49,6 @@
 
     /* =========================================================================
        1. TOP WEBCAM READING ZONE (NARROW 650px COLUMN RIGHT UNDER CAMERA!)
-          Zero left-to-right eye movement. Huge 30px font readable from 3 feet.
        ========================================================================= */
     .webcam-reading-stage {
       flex: 1;
@@ -59,7 +57,7 @@
       flex-direction: column;
       align-items: center;
       overflow-y: auto;
-      padding: 10px 20px 160px;
+      padding: 8px 20px 140px;
       scroll-behavior: auto;
     }
 
@@ -72,63 +70,151 @@
       border-radius: 999px;
     }
 
-    /* Narrow column pinned dead-center under the laptop webcam */
     .narrow-eye-column {
       width: 100%;
       max-width: var(--column-width);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
-    /* Tiny 1-line status right under webcam lens */
-    .webcam-lens-bar {
+    /* LIVE TELEMETRY & STATUS BAR RIGHT UNDER WEBCAM */
+    .live-telemetry-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 12px;
+      padding: 8px 14px;
+      transition: all 0.2s ease;
+    }
+
+    .live-telemetry-bar.state-hearing {
+      border-color: var(--accent-rose);
+      background: rgba(244, 63, 94, 0.12);
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.2);
+    }
+
+    .live-telemetry-bar.state-thinking {
+      border-color: var(--accent-gold);
+      background: rgba(251, 191, 36, 0.12);
+    }
+
+    .telemetry-top-row {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
-      padding: 4px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #94A3B8;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-      padding-bottom: 8px;
     }
 
-    .lens-dot {
+    .state-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #E2E8F0;
+    }
+
+    .state-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: var(--accent-emerald);
-      box-shadow: 0 0 12px var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald);
       flex-shrink: 0;
     }
 
-    .lens-dot.listening {
+    .state-dot.hearing {
       background: var(--accent-rose);
-      box-shadow: 0 0 14px var(--accent-rose);
-      animation: pulse 0.8s infinite ease-in-out;
+      box-shadow: 0 0 12px var(--accent-rose);
+      animation: pulse 0.6s infinite ease-in-out;
+    }
+
+    .state-dot.thinking {
+      background: var(--accent-gold);
+      box-shadow: 0 0 12px var(--accent-gold);
+      animation: pulse 0.4s infinite ease-in-out;
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.6; }
+      50% { transform: scale(1.35); opacity: 0.55; }
+    }
+
+    /* Live Mic Volume Meter Bar */
+    .mic-level-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      max-width: 180px;
+    }
+
+    .mic-level-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #94A3B8;
+      white-space: nowrap;
+    }
+
+    .mic-level-track {
+      flex: 1;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .mic-level-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-emerald), var(--accent-gold), var(--accent-rose));
+      border-radius: 999px;
+      transition: width 0.06s linear;
+    }
+
+    .btn-force-answer {
+      background: var(--accent-gold);
+      color: #04070E;
+      border: none;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.1s ease;
+    }
+
+    .btn-force-answer:hover {
+      transform: scale(1.04);
     }
 
     .heard-question-line {
+      font-size: 14px;
       color: var(--accent-cyan);
       font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 520px;
+      line-height: 1.35;
+      word-break: break-word;
     }
 
-    .speed-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--accent-emerald);
-      flex-shrink: 0;
+    /* Pause Auto-Complete Progress Bar */
+    .pause-progress-track {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .pause-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-cyan);
+      transition: width 0.1s linear;
     }
 
     /* THE ANSWER STREAM — HUGE, HIGH-CONTRAST, ZERO CLUTTER */
@@ -144,7 +230,7 @@
       line-height: 1.38;
       font-weight: 700;
       color: #F8FAFC;
-      padding: 10px 16px;
+      padding: 11px 16px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.03);
       border-left: 4px solid rgba(56, 189, 248, 0.45);
@@ -152,15 +238,10 @@
       cursor: pointer;
     }
 
-    /* First block right under the webcam has a gold accent bar */
     .answer-block.active-block {
       color: #FFFFFF;
-      background: rgba(251, 191, 36, 0.06);
+      background: rgba(251, 191, 36, 0.07);
       border-left-color: var(--accent-gold);
-    }
-
-    .answer-block:hover {
-      color: #FFFFFF;
     }
 
     .answer-block strong {
@@ -174,7 +255,6 @@
       font-weight: 800;
     }
 
-    /* Flash animation when a new answer arrives */
     @keyframes flashNewAnswer {
       0% { transform: translateY(-4px); opacity: 0.4; }
       100% { transform: translateY(0); opacity: 1; }
@@ -185,21 +265,13 @@
     }
 
     /* =========================================================================
-       2. SUBTLE BOTTOM CONTROL DOCK (OUT OF YOUR EYE LINE!)
-          Dimmed until hovered so it never distracts you during the interview
+       2. SUBTLE BOTTOM CONTROL DOCK
        ========================================================================= */
     .bottom-dock-wrapper {
       flex-shrink: 0;
-      background: rgba(12, 19, 34, 0.92);
+      background: rgba(12, 19, 34, 0.95);
       border-top: 1px solid var(--border-subtle);
       padding: 8px 16px;
-      opacity: 0.72;
-      transition: opacity 0.2s ease;
-    }
-
-    .bottom-dock-wrapper:hover,
-    .bottom-dock-wrapper:focus-within {
-      opacity: 1;
     }
 
     .bottom-dock {
@@ -221,9 +293,9 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 5px 10px;
+      padding: 6px 11px;
       border-radius: 999px;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       border: 1px solid var(--border-subtle);
@@ -238,22 +310,23 @@
       color: #FFFFFF;
     }
 
+    .dock-btn.btn-mic {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: rgba(16, 185, 129, 0.15);
+      color: #6EE7B7;
+    }
+
     .dock-btn.btn-mic.active {
-      background: rgba(244, 63, 94, 0.22);
+      background: rgba(244, 63, 94, 0.25);
       border-color: var(--accent-rose);
-      color: #FDA4AF;
+      color: #FFFFFF;
+      box-shadow: 0 0 14px rgba(244, 63, 94, 0.35);
     }
 
     .dock-btn.btn-headphone.active {
-      background: rgba(56, 189, 248, 0.22);
+      background: rgba(56, 189, 248, 0.24);
       border-color: var(--accent-cyan);
       color: #FFFFFF;
-    }
-
-    .dock-btn.btn-scroll.playing {
-      background: var(--accent-emerald);
-      border-color: var(--accent-emerald);
-      color: #04070E;
     }
 
     .dock-btn.btn-mock {
@@ -264,7 +337,7 @@
 
     .dock-input-wrap {
       flex: 1;
-      min-width: 200px;
+      min-width: 180px;
       display: flex;
       align-items: center;
       position: relative;
@@ -275,7 +348,7 @@
       background: #060A14;
       border: 1px solid var(--border-subtle);
       border-radius: 999px;
-      padding: 6px 76px 6px 14px;
+      padding: 6px 74px 6px 14px;
       color: #FFFFFF;
       font-size: 12.5px;
       outline: none;
@@ -298,22 +371,6 @@
       cursor: pointer;
     }
 
-    /* Audio Spectrum Meter inside Headphone button */
-    .audio-meter {
-      display: inline-flex;
-      align-items: flex-end;
-      gap: 2px;
-      height: 12px;
-    }
-
-    .meter-bar {
-      width: 3px;
-      height: 3px;
-      background: var(--accent-cyan);
-      border-radius: 2px;
-    }
-
-    /* Quick Topic Hotkey Strip (Compact) */
     .hotkey-strip {
       display: flex;
       align-items: center;
@@ -343,7 +400,7 @@
       color: var(--accent-gold);
     }
 
-    /* MODALS */
+    /* MODAL */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -431,51 +488,66 @@
 <body>
   <div class="app-layout">
     <!-- =====================================================================
-         1. TOP WEBCAM READING ZONE (ONLY THE ANSWER — HUGE 30px, NARROW 650px)
+         1. TOP WEBCAM READING ZONE (NARROW 650px COLUMN RIGHT UNDER CAMERA)
          ===================================================================== -->
     <main class="webcam-reading-stage" id="readingStage">
       <div class="narrow-eye-column">
-        <!-- Single subtle line right under webcam lens -->
-        <div class="webcam-lens-bar">
-          <span class="lens-dot" id="lensDot"></span>
-          <span class="heard-question-line" id="heardQuestionLine">Ready — Click 🎙️ Listen Live or 🤖 Ask Me a Question below</span>
-          <span class="speed-badge" id="speedBadge">⚡ Groq 120B Ready</span>
+        <!-- LIVE TELEMETRY BAR (Shows exact Mic Volume, Recording State & Auto-Complete!) -->
+        <div class="live-telemetry-bar" id="telemetryBar">
+          <div class="telemetry-top-row">
+            <div class="state-pill">
+              <span class="state-dot" id="stateDot"></span>
+              <span id="stateText">READY • Click "🎙️ Listen Live" below</span>
+            </div>
+
+            <div class="mic-level-wrap" title="Live Microphone Volume (Makes sure phone speaker is heard)">
+              <span class="mic-level-label" id="micVolLabel">Mic Vol:</span>
+              <div class="mic-level-track">
+                <div class="mic-level-fill" id="micLevelFill"></div>
+              </div>
+            </div>
+
+            <button type="button" class="btn-force-answer" id="btnForceAnswerNow" title="Click or press Enter to answer immediately without waiting for silence">
+              ⚡ Answer Now (Enter)
+            </button>
+          </div>
+
+          <div class="heard-question-line" id="heardQuestionLine">
+            👂 Question heard will appear here live...
+          </div>
+
+          <div class="pause-progress-track" title="Auto-completes when this bar fills (1.2s of silence after speech)">
+            <div class="pause-progress-fill" id="pauseProgressFill"></div>
+          </div>
         </div>
 
-        <!-- THE ANSWER (Only 3 short, huge 30px blocks right under your camera!) -->
+        <!-- THE ANSWER (Only 3 short, huge 28px blocks right under your camera!) -->
         <div class="answer-stream" id="answerStream"></div>
       </div>
     </main>
 
     <!-- =====================================================================
-         2. COMPACT BOTTOM CONTROL DOCK (KEPT OUT OF WEBCAM EYE LINE)
+         2. COMPACT BOTTOM CONTROL DOCK
          ===================================================================== -->
     <footer class="bottom-dock-wrapper">
       <div class="bottom-dock">
         <div class="dock-row">
           <button type="button" class="dock-btn btn-mic" id="btnToggleMic">
             <span>🎙️</span>
-            <span id="micLabel">Listen Live</span>
+            <span id="micLabel">Listen Live (Phone / Room)</span>
           </button>
 
           <button type="button" class="dock-btn btn-headphone" id="btnHeadphoneMode" title="Capture Google Meet / Zoom / Teams Tab Audio with headphones">
             <span>🎧</span>
-            <span id="headphoneLabel">Headphone Audio</span>
-            <span class="audio-meter">
-              <span class="meter-bar" id="mBar1"></span>
-              <span class="meter-bar" id="mBar2"></span>
-              <span class="meter-bar" id="mBar3"></span>
-              <span class="meter-bar" id="mBar4"></span>
-            </span>
+            <span id="headphoneLabel">Tab Audio</span>
           </button>
 
-          <!-- 1-Click Spoken AI Hiring Manager Buttons -->
-          <button type="button" class="dock-btn btn-mock" id="btnMockAskQuestion" title="AI Hiring Manager speaks a question out loud & Co-Pilot answers">
+          <button type="button" class="dock-btn btn-mock" id="btnMockAskQuestion" title="Built-in AI Hiring Manager speaks a question out loud">
             <span>🤖🔊</span>
-            <span>Hiring Manager: Ask Question</span>
+            <span>Mock Question</span>
           </button>
 
-          <button type="button" class="dock-btn btn-mock" id="btnMockFollowUp" title="AI Hiring Manager asks a follow-up question">
+          <button type="button" class="dock-btn btn-mock" id="btnMockFollowUp" title="Built-in AI Hiring Manager asks a follow-up">
             <span>🔄</span>
             <span>Follow-Up</span>
           </button>
@@ -485,19 +557,17 @@
               type="text"
               id="questionInput"
               class="dock-input"
-              placeholder="Or type any question & press Enter..."
+              placeholder="Or type question & press Enter..."
               autocomplete="off"
             />
             <button type="button" class="btn-dock-ask" id="btnAskNow">Ask ↵</button>
           </div>
 
-          <button type="button" class="dock-btn btn-scroll" id="btnPlayPause">▶ Scroll (Space)</button>
           <button type="button" class="dock-btn" id="btnFontDown" title="Smaller text">A-</button>
           <button type="button" class="dock-btn" id="btnFontUp" title="Larger text">A+</button>
           <button type="button" class="dock-btn" id="btnOpenBrain" title="Edit Balaajee Brain & Target JD">🧠 Brain</button>
         </div>
 
-        <!-- Subtle 1-line hotkey bar (Keys 1-0) -->
         <div class="hotkey-strip" id="hotkeyStrip"></div>
       </div>
     </footer>
@@ -544,8 +614,7 @@
 - ZF Wabco: Commercial vehicle digital cockpit across 80,000+ heavy trucks. Simulator & eye-tracking heatmap testing cut driver glance time from 2.8s to 0.94s (<1.2s safety budget) and nav errors by 18%.`;
 
     // =========================================================================
-    // 2. ULTRA-CONCISE 3-BLOCK PLAYBOOKS (DESIGNED FOR ZERO EYE MOVEMENT!)
-    //    Each answer is ONLY 3 short, punchy blocks in 30px type right under the camera.
+    // 2. ULTRA-CONCISE 3-BLOCK PLAYBOOKS
     // =========================================================================
     const PLAYBOOKS = [
       {
@@ -651,7 +720,7 @@
     ];
 
     // =========================================================================
-    // 3. STATE & PRE-CONNECTED GROQ 120B ENGINE
+    // 3. STATE & PRE-CONNECTED GROQ 120B + WHISPER TURBO ENGINE
     // =========================================================================
     const STORAGE_KEY_GROQ = 'bvr_groq_api_key';
     const STORAGE_KEY_DOSSIER = 'bvr_master_dossier';
@@ -669,21 +738,17 @@
     let conversationHistory = [];
 
     let activePlaybookId = 'intro';
-    let isScrolling = false;
-    let scrollSpeed = 1.0;
-    let scrollAccum = 0;
-    let animFrameId = null;
-    let isListening = false;
-    let recognition = null;
-    let fontSizePx = 30;
+    let fontSizePx = 28;
     let lastProcessedQuestion = '';
-    let silenceTimer = null;
     let liveRequestCounter = 0;
 
     const readingStage = document.getElementById('readingStage');
-    const lensDot = document.getElementById('lensDot');
+    const telemetryBar = document.getElementById('telemetryBar');
+    const stateDot = document.getElementById('stateDot');
+    const stateText = document.getElementById('stateText');
+    const micLevelFill = document.getElementById('micLevelFill');
+    const pauseProgressFill = document.getElementById('pauseProgressFill');
     const heardQuestionLine = document.getElementById('heardQuestionLine');
-    const speedBadge = document.getElementById('speedBadge');
     const answerStream = document.getElementById('answerStream');
     const hotkeyStrip = document.getElementById('hotkeyStrip');
     const questionInput = document.getElementById('questionInput');
@@ -691,7 +756,20 @@
     const micLabel = document.getElementById('micLabel');
     const btnHeadphoneMode = document.getElementById('btnHeadphoneMode');
     const headphoneLabel = document.getElementById('headphoneLabel');
-    const btnPlayPause = document.getElementById('btnPlayPause');
+    const btnForceAnswerNow = document.getElementById('btnForceAnswerNow');
+
+    function setTelemetryState(mode, text) {
+      telemetryBar.classList.remove('state-hearing', 'state-thinking');
+      stateDot.classList.remove('hearing', 'thinking');
+      if (mode === 'hearing') {
+        telemetryBar.classList.add('state-hearing');
+        stateDot.classList.add('hearing');
+      } else if (mode === 'thinking') {
+        telemetryBar.classList.add('state-thinking');
+        stateDot.classList.add('thinking');
+      }
+      stateText.textContent = text;
+    }
 
     function renderHotkeys() {
       hotkeyStrip.innerHTML = '';
@@ -702,17 +780,15 @@
         b.textContent = pb.label;
         b.addEventListener('click', () => {
           activePlaybookId = pb.id;
-          heardQuestionLine.textContent = pb.label;
-          renderBlocksToScreen(pb.blocks, '⚡ Ready');
+          heardQuestionLine.textContent = `📌 Topic: ${pb.label}`;
+          renderBlocksToScreen(pb.blocks);
         });
         hotkeyStrip.appendChild(b);
       });
     }
 
-    function renderBlocksToScreen(blocks, statusLabel = '⚡ Live Answer') {
+    function renderBlocksToScreen(blocks) {
       renderHotkeys();
-      speedBadge.textContent = statusLabel;
-
       answerStream.classList.remove('fresh-update');
       void answerStream.offsetWidth;
       answerStream.classList.add('fresh-update');
@@ -726,20 +802,11 @@
         })
         .join('');
 
-      const els = answerStream.querySelectorAll('.answer-block');
-      els.forEach((el) => {
-        el.addEventListener('click', () => {
-          els.forEach((x) => x.classList.remove('active-block'));
-          el.classList.add('active-block');
-          readingStage.scrollTop = el.offsetTop - 50;
-        });
-      });
-
       readingStage.scrollTop = 0;
     }
 
     // =========================================================================
-    // 4. GROQ 120B STREAMING ENGINE (RETURNS ONLY 3 SHORT, EASY-TO-READ BLOCKS)
+    // 4. GROQ 120B ANSWER GENERATOR
     // =========================================================================
     async function callGroq(messages, modelName = 'openai/gpt-oss-120b') {
       const payload = {
@@ -806,13 +873,14 @@
       const clean = (rawText || '').trim();
       if (!clean || clean.length < 3) return;
 
-      heardQuestionLine.textContent = `“${clean}”`;
+      heardQuestionLine.textContent = `👂 Heard: “${clean}”`;
       questionInput.value = clean;
+      pauseProgressFill.style.width = '0%';
 
-      // 1. Instant 0ms preview so screen is never blank
-      renderBlocksToScreen(pickInstantBlocksForQuestion(clean), '⚡ Thinking...');
+      // 1. Instant preview while Groq 120B generates bespoke answer
+      renderBlocksToScreen(pickInstantBlocksForQuestion(clean));
+      setTelemetryState('thinking', '🧠 Generating Balaajee Answer via Groq 120B...');
 
-      // 2. Groq 120B Ultra-Fast Answer (Strictly 3 short blocks, max 25 words per block!)
       const reqId = ++liveRequestCounter;
       const t0 = performance.now();
 
@@ -822,10 +890,10 @@ Write a spoken, first-person ("I...") answer to the interviewer's exact question
 ${targetJobContext ? `TARGET ROLE: ${targetJobContext}\n` : ''}${masterDossier}
 
 CRITICAL TELEPROMPTER RULES FOR ZERO EYE MOVEMENT:
-1. Return EXACTLY 3 short, conversational paragraphs in the "blocks" array (total 60 to 80 words maximum across all 3 blocks!).
-2. Each block MUST be 1 or 2 short sentences (max 25 words per block) so Balaajee can read it in one glance without moving his eyes.
+1. Return EXACTLY 3 short, conversational paragraphs in the "blocks" array (total 55 to 75 words maximum across all 3 blocks!).
+2. Each block MUST be 1 or 2 short sentences (max 24 words per block) so Balaajee can read all 3 blocks in one glance without scrolling or moving his eyes.
 3. Wrap the 2 or 3 most important phrases/metrics in <strong>...</strong> tags so they glow in gold.
-4. Block 1 = Direct answer hook to the exact question. Block 2 = Specific real story at IBM, Zebra, Ericsson, or ZF Wabco. Block 3 = Hard metric outcome.
+4. Block 1 = Direct answer to the exact question. Block 2 = Specific real story at IBM, Zebra, Ericsson, or ZF Wabco. Block 3 = Hard metric outcome.
 Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
 
         const messages = [
@@ -842,128 +910,36 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         const parsed = JSON.parse(match[0]);
         if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 2) {
           const ms = Math.round(performance.now() - t0);
-          renderBlocksToScreen(parsed.blocks.slice(0, 3), `⚡ ${ms}ms`);
+          renderBlocksToScreen(parsed.blocks.slice(0, 3));
+          setTelemetryState('ready', isMicActive ? `🟢 Answer Ready (${ms}ms) • Listening for next question...` : `🟢 Answer Ready (${ms}ms)`);
           conversationHistory.push(
             { role: 'user', content: clean },
             { role: 'assistant', content: parsed.blocks.join(' ') }
           );
         }
       } catch (e) {
-        speedBadge.textContent = '⚡ Ready';
+        setTelemetryState('ready', '🟢 Answer Ready');
       }
     }
 
     // =========================================================================
-    // 5. CONTINUOUS MICROPHONE LISTENER (AUTO-TRIGGERS 0.6s AFTER PAUSE)
+    // 5. DUAL-ENGINE LIVE MICROPHONE (RAW AUDIO + GROQ WHISPER TURBO + WEB SPEECH)
+    //    Disables Mac Echo Cancellation so it hears Gemini on your phone speaker!
     // =========================================================================
-    let consumedResultIdx = -1;
-    let consumedCharLen = 0;
-    let lastObservedRawTranscript = '';
+    let isMicActive = false;
+    let micStream = null;
+    let micAudioCtx = null;
+    let micProcessor = null;
+    let webSpeechRec = null;
 
-    function initSpeechRecognition() {
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRec) {
-        alert('Please use Google Chrome or Edge for live speech recognition.');
-        return null;
-      }
-      const rec = new SpeechRec();
-      rec.continuous = true;
-      rec.interimResults = true;
-      rec.lang = 'en-US';
-
-      rec.onresult = (event) => {
-        const currentIdx = event.results.length - 1;
-        const latestResult = event.results[currentIdx];
-        const rawTranscript = (latestResult[0]?.transcript || '').trim();
-        if (!rawTranscript) return;
-
-        if (currentIdx !== consumedResultIdx) {
-          consumedResultIdx = currentIdx;
-          consumedCharLen = 0;
-          lastObservedRawTranscript = '';
-        }
-
-        const activeUtterance = rawTranscript.slice(consumedCharLen).trim();
-        if (!activeUtterance) return;
-
-        heardQuestionLine.textContent = `Listening: “${activeUtterance}”`;
-
-        if (latestResult.isFinal) {
-          clearTimeout(silenceTimer);
-          if (activeUtterance.length > 4 && activeUtterance !== lastProcessedQuestion) {
-            lastProcessedQuestion = activeUtterance;
-            processLiveInterviewerQuestion(activeUtterance);
-          }
-          consumedCharLen = rawTranscript.length;
-          lastObservedRawTranscript = rawTranscript;
-          return;
-        }
-
-        if (rawTranscript !== lastObservedRawTranscript) {
-          lastObservedRawTranscript = rawTranscript;
-          clearTimeout(silenceTimer);
-          silenceTimer = setTimeout(() => {
-            const freshSlice = rawTranscript.slice(consumedCharLen).trim();
-            if (freshSlice.length > 6 && freshSlice !== lastProcessedQuestion) {
-              lastProcessedQuestion = freshSlice;
-              consumedCharLen = rawTranscript.length;
-              processLiveInterviewerQuestion(freshSlice);
-            }
-          }, 600);
-        }
-      };
-
-      rec.onend = () => {
-        if (isListening) {
-          try { rec.start(); } catch (e) {}
-        }
-      };
-      return rec;
-    }
-
-    btnToggleMic.addEventListener('click', () => {
-      if (!recognition) {
-        recognition = initSpeechRecognition();
-        if (!recognition) return;
-      }
-      isListening = !isListening;
-      if (isListening) {
-        try { recognition.start(); } catch (e) {}
-        btnToggleMic.classList.add('active');
-        micLabel.textContent = 'Listening...';
-        lensDot.classList.add('listening');
-      } else {
-        try { recognition.stop(); } catch (e) {}
-        btnToggleMic.classList.remove('active');
-        micLabel.textContent = 'Listen Live';
-        lensDot.classList.remove('listening');
-      }
-    });
-
-    // =========================================================================
-    // 6. HEADPHONE / CALL TAB AUDIO CAPTURE (GROQ WHISPER TURBO)
-    // =========================================================================
-    let tabAudioStream = null;
-    let audioCtx = null;
-    let analyserNode = null;
-    let meterAnimId = null;
-    let tabProcessorNode = null;
-    const mBars = [
-      document.getElementById('mBar1'),
-      document.getElementById('mBar2'),
-      document.getElementById('mBar3'),
-      document.getElementById('mBar4')
-    ];
-
-    function updateAudioMeter() {
-      if (!analyserNode) return;
-      const data = new Uint8Array(analyserNode.frequencyBinCount);
-      analyserNode.getByteFrequencyData(data);
-      [data[2] || 0, data[6] || 0, data[12] || 0, data[20] || 0].forEach((val, idx) => {
-        if (mBars[idx]) mBars[idx].style.height = Math.max(3, Math.min(12, Math.round((val / 255) * 12))) + 'px';
-      });
-      meterAnimId = requestAnimationFrame(updateAudioMeter);
-    }
+    // Recording buffer for Groq Whisper Turbo
+    let recordedChunks = [];
+    let recordedSamples = 0;
+    let isCurrentlySpeaking = false;
+    let silenceStartMs = 0;
+    let speechStartMs = 0;
+    let liveWebSpeechText = '';
+    let isTranscribingWhisper = false;
 
     function encodeWAV(samples, sampleRate = 16000) {
       const buffer = new ArrayBuffer(44 + samples.length * 2);
@@ -992,14 +968,262 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
       return new Blob([buffer], { type: 'audio/wav' });
     }
 
+    async function flushAndTranscribeMicBuffer(reason = 'auto') {
+      if (isTranscribingWhisper) return;
+
+      const capturedSamples = recordedSamples;
+      const chunks = recordedChunks;
+      const webTextFallback = liveWebSpeechText.trim();
+
+      recordedChunks = [];
+      recordedSamples = 0;
+      isCurrentlySpeaking = false;
+      silenceStartMs = 0;
+      liveWebSpeechText = '';
+      pauseProgressFill.style.width = '0%';
+
+      // If user clicked "Answer Now" and typed or WebSpeech already caught text, use it if audio is short
+      if (capturedSamples < 16000 * 0.4) {
+        if (webTextFallback.length > 4) {
+          processLiveInterviewerQuestion(webTextFallback);
+        } else if (questionInput.value.trim().length > 3) {
+          processLiveInterviewerQuestion(questionInput.value.trim());
+        }
+        return;
+      }
+
+      isTranscribingWhisper = true;
+      setTelemetryState('thinking', '⚡ Silence detected! Transcribing voice via Groq Whisper Turbo...');
+
+      try {
+        const merged = new Float32Array(capturedSamples);
+        let offset = 0;
+        for (const c of chunks) {
+          merged.set(c, offset);
+          offset += c.length;
+        }
+        const wavBlob = encodeWAV(merged, 16000);
+        const formData = new FormData();
+        formData.append('file', wavBlob, 'phone_speech.wav');
+        formData.append('model', 'whisper-large-v3-turbo');
+        formData.append('language', 'en');
+
+        const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${groqApiKey}` },
+          body: formData
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const whisperText = (data.text || '').replace(/\[.*?\]|\(.*?\)/g, '').trim();
+          // Ignore Whisper hallucinations on pure silence like "Thank you." or "You"
+          const isHallucination = /^(thank you\.?|you\.?|bye\.?|okay\.?)$/i.test(whisperText);
+          if (whisperText && whisperText.length > 5 && !isHallucination) {
+            lastProcessedQuestion = whisperText;
+            await processLiveInterviewerQuestion(whisperText);
+            return;
+          }
+        }
+        // Fallback to WebSpeech text if Whisper returned empty
+        if (webTextFallback.length > 5) {
+          await processLiveInterviewerQuestion(webTextFallback);
+        } else {
+          setTelemetryState('ready', '🟢 Listening for Gemini / Interviewer voice...');
+        }
+      } catch (err) {
+        if (webTextFallback.length > 5) {
+          await processLiveInterviewerQuestion(webTextFallback);
+        } else {
+          setTelemetryState('ready', '🟢 Listening for Gemini / Interviewer voice...');
+        }
+      } finally {
+        isTranscribingWhisper = false;
+      }
+    }
+
+    async function startDualLiveMicrophone() {
+      try {
+        // CRITICAL: Disable echoCancellation & noiseSuppression so Mac mic hears Phone Speakers (Gemini Live)!
+        micStream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: false,
+            noiseSuppression: false,
+            autoGainControl: true
+          }
+        });
+
+        isMicActive = true;
+        btnToggleMic.classList.add('active');
+        micLabel.textContent = 'Stop Listening';
+        setTelemetryState('ready', '🟢 Mic Live — Speak or play Gemini on your phone speaker...');
+
+        micAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+        const source = micAudioCtx.createMediaStreamSource(micStream);
+        micProcessor = micAudioCtx.createScriptProcessor(2048, 1, 1);
+
+        // Adaptive noise floor so even quiet phone speakers are picked up!
+        let noiseFloor = 0.003;
+        let webSpeechPauseTimer = null;
+        let lastWebSpeechTranscript = '';
+
+        micProcessor.onaudioprocess = (e) => {
+          if (!isMicActive || isTranscribingWhisper) return;
+          const input = e.inputBuffer.getChannelData(0);
+          let sumSq = 0;
+          for (let i = 0; i < input.length; i++) sumSq += input[i] * input[i];
+          const rms = Math.sqrt(sumSq / input.length);
+
+          // Update visual volume meter (amplified so phone speakers clearly show movement)
+          const pct = Math.min(100, Math.round((rms / 0.06) * 100));
+          micLevelFill.style.width = pct + '%';
+
+          // Sensitive speech threshold so phone speakers 1-2ft away trigger reliably
+          const speechThreshold = Math.max(0.0055, noiseFloor * 1.75);
+          const now = performance.now();
+
+          if (rms > speechThreshold) {
+            if (!isCurrentlySpeaking) {
+              isCurrentlySpeaking = true;
+              speechStartMs = now;
+            }
+            silenceStartMs = 0;
+            pauseProgressFill.style.width = '0%';
+            recordedChunks.push(new Float32Array(input));
+            recordedSamples += input.length;
+
+            const durSec = (recordedSamples / 16000).toFixed(1);
+            setTelemetryState('hearing', `🔴 Hearing Voice (${durSec}s) — Auto-answers on 1s pause (or press Enter)`);
+
+            // Auto-flush if continuous speech exceeds 12 seconds
+            if (recordedSamples >= 16000 * 12) {
+              flushAndTranscribeMicBuffer('max-length');
+            }
+          } else {
+            noiseFloor = noiseFloor * 0.98 + rms * 0.02;
+
+            if (isCurrentlySpeaking) {
+              recordedChunks.push(new Float32Array(input));
+              recordedSamples += input.length;
+
+              if (!silenceStartMs) silenceStartMs = now;
+              const silenceElapsed = now - silenceStartMs;
+              const pausePct = Math.min(100, Math.round((silenceElapsed / 1050) * 100));
+              pauseProgressFill.style.width = pausePct + '%';
+
+              // 1.05 seconds of pause after speaking -> AUTO-COMPLETE & ANSWER!
+              if (silenceElapsed >= 1050) {
+                flushAndTranscribeMicBuffer('silence-auto');
+              }
+            }
+          }
+        };
+
+        source.connect(micProcessor);
+        micProcessor.connect(micAudioCtx.destination);
+
+        // Run WebSpeech in parallel: shows live words AND triggers 0.9s word-pause auto-answer!
+        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRec) {
+          webSpeechRec = new SpeechRec();
+          webSpeechRec.continuous = true;
+          webSpeechRec.interimResults = true;
+          webSpeechRec.lang = 'en-US';
+          webSpeechRec.onresult = (ev) => {
+            const latest = ev.results[ev.results.length - 1];
+            const txt = (latest[0]?.transcript || '').trim();
+            if (!txt) return;
+
+            liveWebSpeechText = txt;
+            heardQuestionLine.textContent = `🎙️ Hearing Live: “${txt}”`;
+            questionInput.value = txt;
+            setTelemetryState('hearing', `🔴 Hearing Words — Auto-answers 0.9s after pause`);
+
+            if (latest.isFinal && txt.length > 5 && txt !== lastProcessedQuestion) {
+              clearTimeout(webSpeechPauseTimer);
+              lastProcessedQuestion = txt;
+              recordedChunks = [];
+              recordedSamples = 0;
+              isCurrentlySpeaking = false;
+              liveWebSpeechText = '';
+              processLiveInterviewerQuestion(txt);
+              return;
+            }
+
+            if (txt !== lastWebSpeechTranscript) {
+              lastWebSpeechTranscript = txt;
+              clearTimeout(webSpeechPauseTimer);
+              webSpeechPauseTimer = setTimeout(() => {
+                if (txt.length > 6 && txt !== lastProcessedQuestion) {
+                  lastProcessedQuestion = txt;
+                  recordedChunks = [];
+                  recordedSamples = 0;
+                  isCurrentlySpeaking = false;
+                  liveWebSpeechText = '';
+                  processLiveInterviewerQuestion(txt);
+                }
+              }, 950);
+            }
+          };
+          webSpeechRec.onend = () => {
+            if (isMicActive) { try { webSpeechRec.start(); } catch (e) {} }
+          };
+          try { webSpeechRec.start(); } catch (e) {}
+        }
+      } catch (err) {
+        alert('Microphone permission is required: ' + err.message);
+      }
+    }
+
+    function stopDualLiveMicrophone() {
+      isMicActive = false;
+      btnToggleMic.classList.remove('active');
+      micLabel.textContent = 'Listen Live (Phone / Room)';
+      micLevelFill.style.width = '0%';
+      pauseProgressFill.style.width = '0%';
+      setTelemetryState('ready', 'READY • Click "🎙️ Listen Live" below');
+
+      if (micProcessor) { try { micProcessor.disconnect(); } catch (e) {} micProcessor = null; }
+      if (micAudioCtx) { try { micAudioCtx.close(); } catch (e) {} micAudioCtx = null; }
+      if (micStream) { micStream.getTracks().forEach((t) => t.stop()); micStream = null; }
+      if (webSpeechRec) { try { webSpeechRec.stop(); } catch (e) {} webSpeechRec = null; }
+    }
+
+    btnToggleMic.addEventListener('click', () => {
+      if (isMicActive) {
+        // If there is audio in buffer when stopping, transcribe it!
+        if (recordedSamples > 16000 * 0.5) {
+          flushAndTranscribeMicBuffer('manual-stop');
+        }
+        stopDualLiveMicrophone();
+      } else {
+        startDualLiveMicrophone();
+      }
+    });
+
+    // "⚡ Answer Now (Enter)" button forces immediate transcription/answer without waiting for silence!
+    btnForceAnswerNow.addEventListener('click', () => {
+      if (isMicActive && recordedSamples > 16000 * 0.4) {
+        flushAndTranscribeMicBuffer('force-button');
+      } else if (questionInput.value.trim().length > 2) {
+        processLiveInterviewerQuestion(questionInput.value.trim());
+      }
+    });
+
+    // =========================================================================
+    // 6. HEADPHONE / CALL TAB AUDIO CAPTURE (GROQ WHISPER TURBO)
+    // =========================================================================
+    let tabAudioStream = null;
+    let tabAudioCtx = null;
+    let tabProcessorNode = null;
+
     btnHeadphoneMode.addEventListener('click', async () => {
       if (tabAudioStream) {
         tabAudioStream.getTracks().forEach((t) => t.stop());
         tabAudioStream = null;
         if (tabProcessorNode) { try { tabProcessorNode.disconnect(); } catch (e) {} }
-        if (meterAnimId) cancelAnimationFrame(meterAnimId);
         btnHeadphoneMode.classList.remove('active');
-        headphoneLabel.textContent = 'Headphone Audio';
+        headphoneLabel.textContent = 'Tab Audio';
         return;
       }
       try {
@@ -1009,18 +1233,14 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         });
         tabAudioStream = stream;
         btnHeadphoneMode.classList.add('active');
-        headphoneLabel.textContent = 'Headphone Active';
-        heardQuestionLine.textContent = '🎧 Listening to shared call tab audio...';
+        headphoneLabel.textContent = 'Tab Active';
+        setTelemetryState('ready', '🎧 Listening to shared call tab audio...');
 
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
-        const source = audioCtx.createMediaStreamSource(stream);
-        analyserNode = audioCtx.createAnalyser();
-        analyserNode.fftSize = 64;
-        source.connect(analyserNode);
-        updateAudioMeter();
+        tabAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+        const source = tabAudioCtx.createMediaStreamSource(stream);
 
         if (stream.getAudioTracks().length > 0) {
-          const processor = audioCtx.createScriptProcessor(4096, 1, 1);
+          const processor = tabAudioCtx.createScriptProcessor(4096, 1, 1);
           tabProcessorNode = processor;
           let speechChunks = [];
           let totalSamples = 0;
@@ -1033,18 +1253,20 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
             let sumSq = 0;
             for (let i = 0; i < input.length; i++) sumSq += input[i] * input[i];
             const rms = Math.sqrt(sumSq / input.length);
+            micLevelFill.style.width = Math.min(100, Math.round((rms / 0.12) * 100)) + '%';
 
             if (rms > 0.012) {
               speaking = true;
               silenceFrames = 0;
               speechChunks.push(new Float32Array(input));
               totalSamples += input.length;
+              setTelemetryState('hearing', '🔴 Hearing Call Tab Audio...');
             } else if (speaking) {
               silenceFrames++;
               speechChunks.push(new Float32Array(input));
               totalSamples += input.length;
 
-              if (silenceFrames >= 3 || totalSamples >= 16000 * 6) {
+              if (silenceFrames >= 4 || totalSamples >= 16000 * 10) {
                 speaking = false;
                 silenceFrames = 0;
                 const capturedSamples = totalSamples;
@@ -1052,8 +1274,9 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
                 speechChunks = [];
                 totalSamples = 0;
 
-                if (capturedSamples > 16000 * 0.8 && !transcribing) {
+                if (capturedSamples > 16000 * 0.6 && !transcribing) {
                   transcribing = true;
+                  setTelemetryState('thinking', '⚡ Transcribing Tab Audio via Groq Whisper...');
                   try {
                     const merged = new Float32Array(capturedSamples);
                     let offset = 0;
@@ -1063,7 +1286,7 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
                     }
                     const wavBlob = encodeWAV(merged, 16000);
                     const formData = new FormData();
-                    formData.append('file', wavBlob, 'q.wav');
+                    formData.append('file', wavBlob, 'tab.wav');
                     formData.append('model', 'whisper-large-v3-turbo');
                     formData.append('language', 'en');
                     const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
@@ -1074,9 +1297,8 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
                     if (res.ok) {
                       const d = await res.json();
                       const text = (d.text || '').trim();
-                      if (text && text.length > 5 && text !== lastProcessedQuestion) {
-                        lastProcessedQuestion = text;
-                        processLiveInterviewerQuestion(text);
+                      if (text && text.length > 5) {
+                        await processLiveInterviewerQuestion(text);
                       }
                     }
                   } catch (err) {}
@@ -1086,15 +1308,15 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
             }
           };
           source.connect(processor);
-          processor.connect(audioCtx.destination);
+          processor.connect(tabAudioCtx.destination);
         }
       } catch (err) {
-        heardQuestionLine.textContent = 'Select your Meet/Zoom tab and check "Also share tab audio"';
+        heardQuestionLine.textContent = 'Select your Meet/Zoom browser tab and check "Also share tab audio"';
       }
     });
 
     // =========================================================================
-    // 7. 1-CLICK SPOKEN AI HIRING MANAGER (SPEAKS ALOUD + ANSWERS INSTANTLY)
+    // 7. 1-CLICK SPOKEN AI HIRING MANAGER
     // =========================================================================
     const MOCK_QUESTIONS = [
       'Walk me through how you scaled 14+ designers into a UX-as-a-Service organization at IBM and Zebra while keeping 100% retention.',
@@ -1127,7 +1349,7 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
 
     document.getElementById('btnMockFollowUp').addEventListener('click', async () => {
       const prev = lastMockQuestion || questionInput.value || 'your AI and Design System leadership at IBM';
-      speedBadge.textContent = '🤖 Thinking...';
+      setTelemetryState('thinking', '🤖 Hiring Manager formulating follow-up...');
       try {
         const d = await callGroq([
           {
@@ -1146,49 +1368,10 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
     });
 
     // =========================================================================
-    // 8. SCROLL, FONT SIZE & KEYBOARD SHORTCUTS
+    // 8. FONT SIZE, MANUAL INPUT & SHORTCUTS
     // =========================================================================
-    function updateActiveBlockOnScroll() {
-      const blocks = answerStream.querySelectorAll('.answer-block');
-      const scrollY = readingStage.scrollTop + 80;
-      let active = blocks[0];
-      blocks.forEach((b) => {
-        if (b.offsetTop <= scrollY) active = b;
-        b.classList.remove('active-block');
-      });
-      if (active) active.classList.add('active-block');
-    }
-
-    function stepScroll() {
-      if (!isScrolling) return;
-      scrollAccum += scrollSpeed * 0.38;
-      if (scrollAccum >= 1) {
-        const px = Math.floor(scrollAccum);
-        readingStage.scrollTop += px;
-        scrollAccum -= px;
-        updateActiveBlockOnScroll();
-      }
-      animFrameId = requestAnimationFrame(stepScroll);
-    }
-
-    function toggleScroll() {
-      isScrolling = !isScrolling;
-      if (isScrolling) {
-        btnPlayPause.textContent = '⏸ Pause (Space)';
-        btnPlayPause.classList.add('playing');
-        animFrameId = requestAnimationFrame(stepScroll);
-      } else {
-        btnPlayPause.textContent = '▶ Scroll (Space)';
-        btnPlayPause.classList.remove('playing');
-        if (animFrameId) cancelAnimationFrame(animFrameId);
-      }
-    }
-
-    btnPlayPause.addEventListener('click', toggleScroll);
-    readingStage.addEventListener('scroll', updateActiveBlockOnScroll, { passive: true });
-
     document.getElementById('btnFontDown').addEventListener('click', () => {
-      fontSizePx = Math.max(22, fontSizePx - 3);
+      fontSizePx = Math.max(20, fontSizePx - 3);
       document.documentElement.style.setProperty('--prompt-size', fontSizePx + 'px');
     });
     document.getElementById('btnFontUp').addEventListener('click', () => {
@@ -1208,7 +1391,6 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
       }
     });
 
-    // Brain Modal
     const brainModal = document.getElementById('brainModal');
     const targetJobInput = document.getElementById('targetJobInput');
     const masterDossierInput = document.getElementById('masterDossierInput');
@@ -1224,7 +1406,8 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
     document.getElementById('btnSaveBrain').addEventListener('click', () => {
       targetJobContext = targetJobInput.value.trim();
       masterDossier = masterDossierInput.value.trim() || DEFAULT_BALAAJEE_DOSSIER;
-      groqApiKey = groqKeyInput.value.trim() || decodePreloadedKey();
+      groqKey = groqKeyInput.value.trim() || decodePreloadedKey();
+      groqApiKey = groqKey;
       localStorage.setItem(STORAGE_KEY_TARGET_JD, targetJobContext);
       localStorage.setItem(STORAGE_KEY_DOSSIER, masterDossier);
       localStorage.setItem(STORAGE_KEY_GROQ, groqApiKey);
@@ -1236,26 +1419,22 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         if (e.key === 'Escape') document.activeElement.blur();
         return;
       }
-      if (e.code === 'Space') {
+      if (e.key === 'Enter') {
         e.preventDefault();
-        toggleScroll();
-      } else if (e.key === 'r' || e.key === 'R') {
-        e.preventDefault();
-        readingStage.scrollTop = 0;
-        updateActiveBlockOnScroll();
+        btnForceAnswerNow.click();
       } else {
         const pb = PLAYBOOKS.find((p) => p.key === e.key);
         if (pb) {
           e.preventDefault();
           activePlaybookId = pb.id;
-          heardQuestionLine.textContent = pb.label;
-          renderBlocksToScreen(pb.blocks, '⚡ Ready');
+          heardQuestionLine.textContent = `📌 Topic: ${pb.label}`;
+          renderBlocksToScreen(pb.blocks);
         }
       }
     });
 
     // Boot with Playbook 01
-    renderBlocksToScreen(PLAYBOOKS[0].blocks, '⚡ Groq 120B Ready');
+    renderBlocksToScreen(PLAYBOOKS[0].blocks);
   </script>
 </body>
 </html>
