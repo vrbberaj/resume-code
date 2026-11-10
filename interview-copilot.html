@@ -1690,10 +1690,12 @@ LEADERSHIP, TEAM SCALING & DESIGNOPS:
         .join('');
 
       teleprompterContent.innerHTML = (ans.script || ans.sentences || [])
-        .map(
-          (line, idx) =>
-            `<div class="script-sentence ${idx === 0 ? 'active-line' : ''}" data-idx="${idx}">${line}</div>`
-        )
+        .map((line, idx) => {
+          const formattedLine = String(line || '')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>');
+          return `<div class="script-sentence ${idx === 0 ? 'active-line' : ''}" data-idx="${idx}">${formattedLine}</div>`;
+        })
         .join('');
 
       const sentences = teleprompterContent.querySelectorAll('.script-sentence');
