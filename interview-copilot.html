@@ -584,7 +584,7 @@
           <button type="button" class="dock-btn" id="btnOpenBrain" title="Edit Balaajee Brain & Target JD">🧠 Brain</button>
         </div>
 
-        <div class="hotkey-strip" id="hotkeyStrip"></div>
+        <div class="hotkey-strip" id="hotkeyStrip" style="display:none;"></div>
       </div>
     </footer>
   </div>
@@ -823,13 +823,13 @@
     }
 
     // =========================================================================
-    // 4. GROQ 120B ANSWER GENERATOR
+    // 4. GROQ 120B ANSWER GENERATOR — STRICTLY RELEVANT TO THE EXACT QUESTION
     // =========================================================================
     async function callGroq(messages, modelName = 'openai/gpt-oss-120b') {
       const payload = {
         model: modelName,
-        temperature: 0.3,
-        max_tokens: 600,
+        temperature: 0.25,
+        max_tokens: 1024,
         response_format: { type: 'json_object' },
         messages
       };
@@ -852,40 +852,6 @@
       return res.json();
     }
 
-    function pickInstantBlocksForQuestion(q) {
-      const lower = q.toLowerCase();
-      if (/fail|mistake|wrong|lesson/.test(lower)) {
-        return [
-          'Early in rolling out our enterprise design system, my biggest mistake was treating it as a <strong>top-down design mandate</strong> instead of a co-owned engineering product.',
-          'Engineers bypassed our Figma library because token names didn’t match their repos—so I pivoted to a <strong>federated Design System Guild</strong> and co-built a 3-tier JSON token pipeline.',
-          'Adoption jumped above <strong>94% across 45+ squads</strong>, eliminating <strong>$1.8M in UI rework</strong> and shrinking handoff from <strong>4 weeks to 1 day</strong>.'
-        ];
-      }
-      if (/underperform|struggl|difficult designer|coach|pip/.test(lower)) {
-        return [
-          'When a designer is struggling, I start with <strong>diagnostic empathy</strong> to separate skill gaps from unclear PM requirements—which is how I’ve kept <strong>100% team retention</strong>.',
-          'At <strong>Zebra</strong>, I paired a struggling mid-level designer with a senior architect, broke epics into 48-hour check-ins, and coached them with a clear competency rubric.',
-          'Within two quarters, their sprint rework dropped to zero and they became our primary owner for rugged Android pairing flows.'
-        ];
-      }
-      if (/leave|leaving|notice|relocat|join|availab/.test(lower)) {
-        return [
-          'At <strong>IBM Software Labs</strong>, I completed the full cycle of scaling our <strong>14+ designer UX-as-a-Service org</strong> and shipping our flagship <em>watsonx and MaaS360 AI</em> transformations.',
-          'I’m now ready for a high-ownership leadership role where I can apply that exact AI and Design System playbook at broader scale.',
-          'I have <strong>immediate availability (0-day notice period)</strong> and full flexibility for India or global relocation.'
-        ];
-      }
-      if (/watson|maas360|rhapsody|agentic|confidence|ai/.test(lower)) return PLAYBOOKS[1].blocks;
-      if (/carbon|token|design system|handoff/.test(lower)) return PLAYBOOKS[2].blocks;
-      if (/ericsson|5g|cpq|excel/.test(lower)) return PLAYBOOKS[3].blocks;
-      if (/zebra|handheld|warehouse|glove|iot/.test(lower)) return PLAYBOOKS[4].blocks;
-      if (/zf|wabco|truck|cockpit|glance|automotive/.test(lower)) return PLAYBOOKS[5].blocks;
-      if (/team|scale|retention|manage|14|ux as a service/.test(lower)) return PLAYBOOKS[6].blocks;
-      if (/conflict|pushback|engineer|deadline/.test(lower)) return PLAYBOOKS[7].blocks;
-      if (/roi|metric|measure|kpi/.test(lower)) return PLAYBOOKS[8].blocks;
-      return PLAYBOOKS[0].blocks;
-    }
-
     async function processLiveInterviewerQuestion(rawText) {
       const clean = (rawText || '').trim();
       if (!clean || clean.length < 3) return;
@@ -893,29 +859,27 @@
       heardQuestionLine.textContent = `👂 Heard: “${clean}”`;
       questionInput.value = clean;
       pauseProgressFill.style.width = '0%';
-
-      renderBlocksToScreen(pickInstantBlocksForQuestion(clean));
-      setTelemetryState('thinking', '🧠 Generating Balaajee Answer via Groq 120B...');
+      setTelemetryState('thinking', '🧠 Generating answer for your exact question...');
 
       const reqId = ++liveRequestCounter;
       const t0 = performance.now();
 
       try {
-        const sysPrompt = `You are Balaajee V.R.'s live webcam teleprompter.
-Write a spoken, first-person ("I...") answer to the interviewer's exact question using Balaajee's real experience:
+        const sysPrompt = `You are Balaajee V.R.'s live interview teleprompter.
+Write ONE concise, natural first-person ("I...") spoken answer that directly answers ONLY the exact question asked below.
+
+BALAAJEE'S BACKGROUND (use ONLY if directly relevant to this specific question; do NOT force unrelated company stories or metrics):
 ${targetJobContext ? `TARGET ROLE: ${targetJobContext}\n` : ''}${masterDossier}
 
-CRITICAL TELEPROMPTER RULES FOR ZERO EYE MOVEMENT:
-1. Return EXACTLY 3 short, conversational paragraphs in the "blocks" array (total 55 to 75 words maximum across all 3 blocks!).
-2. Each block MUST be 1 or 2 short sentences (max 24 words per block) so Balaajee can read all 3 blocks in one glance without scrolling or moving his eyes.
-3. Wrap the 2 or 3 most important phrases/metrics in <strong>...</strong> tags so they glow in gold.
-4. Block 1 = Direct answer to the exact question. Block 2 = Specific real story at IBM, Zebra, Ericsson, or ZF Wabco. Block 3 = Hard metric outcome.
-Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
+STRICT RULES:
+1. Answer ONLY the exact question asked. NEVER append unrelated resume stories, extra paragraphs, or filler below the answer.
+2. Return a single-element "blocks" array containing ONE cohesive 2-to-3 sentence spoken answer (35 to 60 words maximum) so Balaajee sees ONLY one clean answer card on screen with zero clutter below it.
+3. Highlight 2 or 3 key phrases in <strong>...</strong> tags so they glow in gold.
+Return ONLY valid JSON: {"blocks": ["Your single cohesive 2-to-3 sentence answer directly addressing the question..."]}`;
 
         const messages = [
           { role: 'system', content: sysPrompt },
-          ...conversationHistory.slice(-4),
-          { role: 'user', content: clean }
+          { role: 'user', content: `Interviewer Question: "${clean}"` }
         ];
 
         const data = await callGroq(messages);
@@ -924,24 +888,23 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         const match = content.match(/\{[\s\S]*\}/);
         if (!match) return;
         const parsed = JSON.parse(match[0]);
-        if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 2) {
+        if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 1) {
           const ms = Math.round(performance.now() - t0);
-          renderBlocksToScreen(parsed.blocks.slice(0, 3));
+          // Join into ONE single clean answer card so nothing irrelevant ever appears below!
+          const unifiedAnswer = parsed.blocks.join(' ');
+          renderBlocksToScreen([unifiedAnswer]);
           setTelemetryState('ready', isMicActive ? `🟢 Answer Ready (${ms}ms) • Listening for next question...` : `🟢 Answer Ready (${ms}ms)`);
-          conversationHistory.push(
-            { role: 'user', content: clean },
-            { role: 'assistant', content: parsed.blocks.join(' ') }
-          );
         }
       } catch (e) {
-        setTelemetryState('ready', '🟢 Answer Ready');
+        setTelemetryState('ready', isMicActive ? '🟢 Listening for next question...' : '🟢 Ready');
       }
     }
 
     // =========================================================================
-    // 5. BULLETPROOF AUTO-VOICE CAPTURE (16kHz PEAK-NORMALIZED WAV + GROQ WHISPER TURBO)
-    //    Automatically selects Built-In MacBook Pro Mic over Bluetooth Airdopes
-    //    so it hears BOTH your voice and your phone speaker clearly!
+    // 5. NEVER-STUCK AUTO-VOICE CAPTURE (PEAK-RELATIVE VAD + QUEUED WHISPER)
+    //    - Automatically selects Built-In MacBook Pro Mic over Bluetooth Airdopes
+    //    - Uses Peak-Relative Drop Detection so room noise NEVER locks listening
+    //    - Queues new utterances so re-asking a question is NEVER dropped or stuck
     // =========================================================================
     let isMicActive = false;
     let micStream = null;
@@ -949,17 +912,19 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
     let micProcessor = null;
     let selectedMicDeviceId = '';
 
-    // Audio buffers (stored at 16,000 Hz mono Float32)
     const TARGET_SAMPLE_RATE = 16000;
-    let rollingPcm16k = new Float32Array(0); // Rolling last 7 seconds (112,000 samples)
-    let speechPcm16k = [];                   // Active speech chunks
+    let rollingPcm16k = new Float32Array(0);
+    let speechPcm16k = [];
     let isSpeakingNow = false;
     let speechStartedAt = 0;
     let silenceStartedAt = 0;
-    let lastAutoFlushAt = 0;
+    let utterancePeakRms = 0;
     let ambientRms = 0.002;
     let isTranscribingWhisper = false;
+    let pendingWhisperSamples = null;
     let webSpeechRec = null;
+    let webSpeechTimer = null;
+    let lastTranscriptTime = 0;
 
     async function populateMicDevices() {
       try {
@@ -1061,10 +1026,18 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
     }
 
     async function sendPcmSamplesToGroqWhisper(samples16k) {
-      if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.35 || isTranscribingWhisper) return;
+      if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.35) return;
+
+      // If Whisper is currently transcribing an earlier chunk, queue the newest audio instead of dropping it!
+      if (isTranscribingWhisper) {
+        pendingWhisperSamples = samples16k;
+        return;
+      }
+
       isTranscribingWhisper = true;
       setTelemetryState('thinking', '⚡ Transcribing voice via Groq Whisper Turbo...');
 
+      let transcribedQuestion = '';
       try {
         const wavBlob = encodePeakNormalizedWAV(samples16k);
         const formData = new FormData();
@@ -1084,27 +1057,41 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
           const isHallucination = /^(thank you\.?|thanks for watching\.?|you\.?|bye\.?|okay\.?|subtitles.*|\.+)$/i.test(whisperText);
 
           if (whisperText && whisperText.length > 4 && !isHallucination) {
-            lastProcessedQuestion = whisperText;
-            await processLiveInterviewerQuestion(whisperText);
-            return;
-          } else {
-            setTelemetryState('ready', '🟢 Listening — Speak or play phone near MacBook mic...');
+            transcribedQuestion = whisperText;
           }
-        } else {
-          setTelemetryState('ready', '🟢 Listening...');
         }
       } catch (err) {
-        setTelemetryState('ready', '🟢 Listening...');
+        // Ignore network glitch and keep listening
       } finally {
         isTranscribingWhisper = false;
+      }
+
+      // If the speaker re-asked a newer question while Whisper was in flight, process the newer audio immediately!
+      if (pendingWhisperSamples) {
+        const nextSamples = pendingWhisperSamples;
+        pendingWhisperSamples = null;
+        sendPcmSamplesToGroqWhisper(nextSamples);
+        return;
+      }
+
+      if (transcribedQuestion) {
+        const now = performance.now();
+        // Avoid duplicate trigger if WebSpeech just triggered the exact same text <2s ago
+        if (transcribedQuestion !== lastProcessedQuestion || now - lastTranscriptTime > 2000) {
+          lastProcessedQuestion = transcribedQuestion;
+          lastTranscriptTime = now;
+          processLiveInterviewerQuestion(transcribedQuestion);
+        }
+      } else {
+        setTelemetryState('ready', '🟢 Listening for next question...');
       }
     }
 
     function flushActiveSpeechToWhisper() {
       isSpeakingNow = false;
       silenceStartedAt = 0;
+      utterancePeakRms = 0;
       pauseProgressFill.style.width = '0%';
-      lastAutoFlushAt = performance.now();
 
       if (!speechPcm16k.length) return;
       const totalLen = speechPcm16k.reduce((acc, c) => acc + c.length, 0);
@@ -1115,10 +1102,14 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         off += c.length;
       }
       speechPcm16k = [];
+      // Keep only the last 0.4s of audio in rolling buffer for pre-roll of the next question
+      if (rollingPcm16k.length > TARGET_SAMPLE_RATE * 0.4) {
+        rollingPcm16k = rollingPcm16k.slice(rollingPcm16k.length - Math.round(TARGET_SAMPLE_RATE * 0.4));
+      }
       sendPcmSamplesToGroqWhisper(merged);
     }
 
-    // Also run Web Speech API in parallel for instant live word preview when available
+    // Parallel Web Speech API for live word preview + 1.0s word-pause backup trigger
     function startParallelWebSpeech() {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SR) return;
@@ -1128,13 +1119,26 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         webSpeechRec.interimResults = true;
         webSpeechRec.lang = 'en-US';
         webSpeechRec.onresult = (event) => {
-          let interim = '';
-          for (let i = event.resultIndex; i < event.results.length; i++) {
-            interim += event.results[i][0].transcript + ' ';
-          }
-          const clean = interim.trim();
+          const latest = event.results[event.results.length - 1];
+          const clean = (latest?.[0]?.transcript || '').trim();
           if (clean.length > 2) {
             heardQuestionLine.textContent = `🎙️ Hearing live: “${clean}”`;
+            clearTimeout(webSpeechTimer);
+            webSpeechTimer = setTimeout(() => {
+              const now = performance.now();
+              if (clean.length > 6 && (clean !== lastProcessedQuestion || now - lastTranscriptTime > 2500)) {
+                // If PCM recorder wasn't already flushing, trigger from WebSpeech
+                if (!isTranscribingWhisper) {
+                  lastProcessedQuestion = clean;
+                  lastTranscriptTime = now;
+                  isSpeakingNow = false;
+                  speechPcm16k = [];
+                  rollingPcm16k = new Float32Array(0);
+                  pauseProgressFill.style.width = '0%';
+                  processLiveInterviewerQuestion(clean);
+                }
+              }
+            }, 1050);
           }
         };
         webSpeechRec.onend = () => {
@@ -1162,8 +1166,8 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
       rollingPcm16k = new Float32Array(0);
       speechPcm16k = [];
       isSpeakingNow = false;
+      utterancePeakRms = 0;
       ambientRms = 0.002;
-      lastAutoFlushAt = performance.now();
 
       micProcessor.onaudioprocess = (e) => {
         if (!isMicActive) return;
@@ -1184,70 +1188,62 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         for (let i = 0; i < chunk16k.length; i++) sumSq += chunk16k[i] * chunk16k[i];
         const rms = Math.sqrt(sumSq / chunk16k.length);
 
-        // Visual volume meter (boosted sensitivity so phone speaker clearly moves the bar)
+        // Visual volume meter
         const meterPct = Math.min(100, Math.round(Math.pow(rms * 18, 0.65) * 100));
         micLevelFill.style.width = meterPct + '%';
 
         const now = performance.now();
-        const startThreshold = Math.max(0.0022, Math.min(0.025, ambientRms * 1.65));
-        const stopThreshold = Math.max(0.0018, Math.min(0.020, ambientRms * 1.30));
+        const startThreshold = Math.max(0.0028, Math.min(0.025, ambientRms * 1.75));
+        const stopThreshold = Math.min(0.012, Math.max(0.0022, ambientRms * 1.40, utterancePeakRms * 0.12));
 
-        if (rms > startThreshold) {
+        const isActiveVoiceFrame = isSpeakingNow ? rms >= stopThreshold : rms > startThreshold;
+
+        if (isActiveVoiceFrame) {
           if (!isSpeakingNow) {
             isSpeakingNow = true;
             speechStartedAt = now;
-            // Include 0.5s pre-roll from rollingPcm16k so first word is never cut off!
-            const preRollSamples = Math.min(rollingPcm16k.length, TARGET_SAMPLE_RATE * 0.5);
+            utterancePeakRms = rms;
+            const preRollSamples = Math.min(rollingPcm16k.length, Math.round(TARGET_SAMPLE_RATE * 0.65));
             speechPcm16k = [rollingPcm16k.slice(rollingPcm16k.length - preRollSamples)];
           } else {
             speechPcm16k.push(chunk16k);
+            if (rms > utterancePeakRms) utterancePeakRms = rms;
           }
           silenceStartedAt = 0;
           pauseProgressFill.style.width = '0%';
           const sec = ((now - speechStartedAt) / 1000).toFixed(1);
           setTelemetryState('hearing', `🔴 Hearing Voice (${sec}s) — Pause 0.8s to auto-answer`);
 
-          // Auto-flush if continuous speech/sound reaches 5.2 seconds so it NEVER gets stuck listening forever!
-          if (now - speechStartedAt >= 5200) {
-            ambientRms = rms * 0.8; // recalibrate in case room noise jumped
+          // Auto-flush if continuous speech reaches 6.0 seconds so it NEVER gets stuck listening!
+          if (now - speechStartedAt >= 6000) {
+            ambientRms = Math.min(0.010, rms * 0.70);
             flushActiveSpeechToWhisper();
           }
         } else {
-          // Adapt ambient baseline smoothly during quiet frames
-          ambientRms = ambientRms * 0.94 + rms * 0.06;
-
           if (isSpeakingNow) {
             speechPcm16k.push(chunk16k);
-            if (rms < stopThreshold) {
-              if (!silenceStartedAt) silenceStartedAt = now;
-              const silenceMs = now - silenceStartedAt;
-              const pct = Math.min(100, Math.round((silenceMs / 850) * 100));
-              pauseProgressFill.style.width = pct + '%';
+            if (!silenceStartedAt) silenceStartedAt = now;
+            const silenceMs = now - silenceStartedAt;
+            const pct = Math.min(100, Math.round((silenceMs / 800) * 100));
+            pauseProgressFill.style.width = pct + '%';
 
-              // 0.85s pause after >= 0.4s of voice -> AUTO-COMPLETE & ANSWER!
-              if (silenceMs >= 850) {
-                if (now - speechStartedAt >= 400) {
-                  flushActiveSpeechToWhisper();
-                } else {
-                  isSpeakingNow = false;
-                  speechPcm16k = [];
-                  silenceStartedAt = 0;
-                  pauseProgressFill.style.width = '0%';
-                }
+            // 0.80s pause after >= 0.35s of voice -> AUTO-COMPLETE & ANSWER!
+            if (silenceMs >= 800) {
+              ambientRms = ambientRms * 0.8 + rms * 0.2;
+              if (now - speechStartedAt >= 350) {
+                flushActiveSpeechToWhisper();
+              } else {
+                isSpeakingNow = false;
+                speechPcm16k = [];
+                utterancePeakRms = 0;
+                silenceStartedAt = 0;
+                pauseProgressFill.style.width = '0%';
+                setTelemetryState('ready', '🟢 Listening for next question...');
               }
             }
-          } else if (now - lastAutoFlushAt >= 4200 && rollingPcm16k.length >= TARGET_SAMPLE_RATE * 2.5) {
-            // Fallback heartbeat: if quiet phone audio was playing below VAD spike threshold, check peak energy
-            let maxAbs = 0;
-            for (let i = 0; i < rollingPcm16k.length; i += 4) {
-              const a = Math.abs(rollingPcm16k[i]);
-              if (a > maxAbs) maxAbs = a;
-            }
-            if (maxAbs > 0.0035 && !isTranscribingWhisper) {
-              lastAutoFlushAt = now;
-              const last4s = rollingPcm16k.slice(Math.max(0, rollingPcm16k.length - TARGET_SAMPLE_RATE * 4));
-              sendPcmSamplesToGroqWhisper(last4s);
-            }
+          } else {
+            // Only adapt ambient baseline during true non-speaking frames!
+            ambientRms = ambientRms * 0.93 + rms * 0.07;
           }
         }
       };
@@ -1481,8 +1477,10 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
       }
     });
 
-    // Boot with Playbook 01
-    renderBlocksToScreen(PLAYBOOKS[0].blocks);
+    // Boot with a single clean ready card (zero irrelevant pre-filled blocks)
+    renderBlocksToScreen([
+      'Click <strong>🎙️ Listen Live</strong> below and speak or play your phone interviewer — your direct answer will appear right here.'
+    ]);
   </script>
 </body>
 </html>
