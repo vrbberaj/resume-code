@@ -578,9 +578,9 @@
             <option value="">🎤 Auto (MacBook Mic)</option>
           </select>
 
-          <button type="button" class="dock-btn btn-headphone" id="btnHeadphoneMode" title="Capture Google Meet / Zoom / Teams Tab Audio with headphones">
-            <span>🎧</span>
-            <span id="headphoneLabel">Tab Audio</span>
+          <button type="button" class="dock-btn btn-headphone" id="btnHeadphoneMode" title="Listens ONLY to Interviewer Speaker Audio from a Chrome Tab (Google Meet / Zoom / Teams / Gemini Web) — completely ignores your microphone!">
+            <span>🔊</span>
+            <span id="headphoneLabel">Interviewer Speaker Only (Tab)</span>
           </button>
 
           <button type="button" class="dock-btn btn-mock" id="btnMockAskQuestion" title="Built-in AI Hiring Manager speaks a question out loud">
@@ -783,7 +783,10 @@
     let lastProcessedQuestion = '';
     let liveRequestCounter = 0;
     let currentDisplayedAnswerPlain = '';
+    let previousInterviewerQuestion = '';
+    let candidateSpokenNotes = '';
     let isReadingLockActive = false;
+    let isTabSpeakerOnlyMode = false;
 
     const readingStage = document.getElementById('readingStage');
     const telemetryBar = document.getElementById('telemetryBar');
@@ -965,13 +968,23 @@
       return res.json();
     }
 
+    function recordCandidateSpokenMemory(spokenChunk) {
+      const text = (spokenChunk || '').trim();
+      if (!text || text.length < 6) return;
+      if (!candidateSpokenNotes.includes(text)) {
+        candidateSpokenNotes = ((candidateSpokenNotes ? candidateSpokenNotes + ' ' : '') + text).slice(-450);
+      }
+    }
+
     async function processLiveInterviewerQuestion(rawText, isManualInput = false) {
       const clean = (rawText || '').trim();
       if (!clean || clean.length < 3) return;
 
-      // If this came from live voice (not manual typing/button) and matches Balaajee reading his own answer, ignore!
+      // If this came from live voice (not manual typing/button) and matches Balaajee reading/speaking his own answer:
+      // 1) NEVER overwrite the screen, 2) Silently remember what Balaajee said in case of interviewer follow-ups!
       if (!isManualInput && isCandidateReadingOwnAnswer(clean)) {
-        setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice reading the answer • Waiting for interviewer...');
+        recordCandidateSpokenMemory(clean);
+        setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice (saved to follow-up memory) • Waiting for interviewer...');
         return;
       }
 
@@ -992,8 +1005,10 @@ Write ONE concise, natural first-person ("I...") spoken answer that directly ans
 BALAAJEE'S BACKGROUND (use ONLY if directly relevant to this specific question; do NOT force unrelated company stories or metrics):
 ${targetJobContext ? `TARGET ROLE: ${targetJobContext}\n` : ''}${masterDossier}
 
-CURRENT ANSWER ALREADY DISPLAYED ON SCREEN:
-"${currentDisplayedAnswerPlain || 'None'}"
+PREVIOUS TURN FOLLOW-UP MEMORY (Use ONLY if the interviewer's new question is a follow-up referring to Balaajee's previous answer, e.g. "Can you elaborate on that?", "How did you measure that?", "What happened next?". If the interviewer is asking a brand-new topic, ignore this previous turn completely):
+- Previous Interviewer Question: "${previousInterviewerQuestion || 'None'}"
+- Teleprompter Answer Shown to Balaajee: "${currentDisplayedAnswerPlain || 'None'}"
+- Any Additional Spoken Words by Balaajee: "${candidateSpokenNotes || 'Same as teleprompter answer above'}"
 
 STRICT RULES:
 1. If the input text is actually the candidate (Balaajee) reading or paraphrasing his own answer rather than an interviewer asking a question, return {"is_candidate_reading": true, "blocks": []}.
@@ -1014,7 +1029,8 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
         if (!match) return;
         const parsed = JSON.parse(match[0]);
         if (!isManualInput && parsed.is_candidate_reading) {
-          setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice reading the answer • Waiting for interviewer...');
+          recordCandidateSpokenMemory(clean);
+          setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice (saved to follow-up memory) • Waiting for interviewer...');
           return;
         }
         if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 1) {
@@ -1022,8 +1038,17 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
           heardQuestionLine.textContent = `👂 Heard: “${clean}”`;
           questionInput.value = clean;
           const unifiedAnswer = parsed.blocks.join(' ');
+          previousInterviewerQuestion = clean;
+          candidateSpokenNotes = '';
           renderBlocksToScreen([unifiedAnswer], true);
-          setTelemetryState('ready', isMicActive ? `🟢 Answer Ready (${ms}ms) • Read out loud freely (Self-Voice Filter Active)` : `🟢 Answer Ready (${ms}ms)`);
+          setTelemetryState(
+            'ready',
+            isTabSpeakerOnlyMode
+              ? `🟢 Answer Ready (${ms}ms) • Speaker-Only Mode (Your Mic is 100% OFF)`
+              : isMicActive
+                ? `🟢 Answer Ready (${ms}ms) • Read out loud freely (Self-Voice Filter Active)`
+                : `🟢 Answer Ready (${ms}ms)`
+          );
         }
       } catch (e) {
         setTelemetryState('ready', isMicActive ? '🟢 Listening for next question...' : '🟢 Ready');
@@ -1254,7 +1279,8 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
           const clean = (latest?.[0]?.transcript || '').trim();
           if (clean.length > 2) {
             if (isCandidateReadingOwnAnswer(clean)) {
-              setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice reading the answer • Waiting for interviewer...');
+              recordCandidateSpokenMemory(clean);
+              setTelemetryState('ready', '🛡️ Reading Lock: Ignored your voice (saved to follow-up memory) • Waiting for interviewer...');
               return;
             }
             heardQuestionLine.textContent = `🎙️ Hearing live: “${clean}”`;
@@ -1284,13 +1310,21 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
       } catch (e) {}
     }
 
-    async function attachPcmPipelineToStream(stream, activeMicName) {
+    async function attachPcmPipelineToStream(stream, activeMicName, speakerOnlyMode = false) {
       micStream = stream;
       isMicActive = true;
-      btnToggleMic.classList.add('active');
-      micLabel.textContent = 'Stop Listening';
-      heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Speak or play phone voice now...`;
-      setTelemetryState('ready', `🟢 Listening on [${activeMicName}]`);
+      isTabSpeakerOnlyMode = Boolean(speakerOnlyMode);
+      if (isTabSpeakerOnlyMode) {
+        btnToggleMic.classList.remove('active');
+        micLabel.textContent = 'Listen Live (Mic Off)';
+        heardQuestionLine.textContent = `🔊 Speaker-Only Active: [${activeMicName}] — Your Mic is 100% OFF (Zero Self-Voice)`;
+        setTelemetryState('ready', `🟢 Speaker-Only Mode [${activeMicName}] • Your Mic is 100% OFF`);
+      } else {
+        btnToggleMic.classList.add('active');
+        micLabel.textContent = 'Stop Listening';
+        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Speak or play phone voice now...`;
+        setTelemetryState('ready', `🟢 Listening on [${activeMicName}]`);
+      }
 
       micAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
       const source = micAudioCtx.createMediaStreamSource(micStream);
@@ -1384,11 +1418,20 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
 
       source.connect(micProcessor);
       micProcessor.connect(micAudioCtx.destination);
-      startParallelWebSpeech();
+      // Only start WebSpeech when using physical mic (in Speaker-Only Tab mode, keep physical mic 100% OFF!)
+      if (!isTabSpeakerOnlyMode) {
+        startParallelWebSpeech();
+      }
     }
 
     async function startLiveMicrophone() {
       try {
+        if (tabAudioStream) {
+          tabAudioStream.getTracks().forEach((t) => t.stop());
+          tabAudioStream = null;
+          btnHeadphoneMode.classList.remove('active');
+          headphoneLabel.textContent = 'Interviewer Speaker Only (Tab)';
+        }
         // 1. Unlock permission & device labels
         const initialStream = await navigator.mediaDevices.getUserMedia({
           audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: true }
@@ -1411,7 +1454,7 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
         }
 
         const activeMicName = chosenStream.getAudioTracks()[0]?.label || 'Microphone';
-        await attachPcmPipelineToStream(chosenStream, activeMicName);
+        await attachPcmPipelineToStream(chosenStream, activeMicName, false);
       } catch (err) {
         alert('Microphone access error: ' + err.message);
       }
@@ -1419,12 +1462,13 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
 
     function stopLiveMicrophone() {
       isMicActive = false;
+      isTabSpeakerOnlyMode = false;
       isSpeakingNow = false;
       btnToggleMic.classList.remove('active');
       micLabel.textContent = 'Listen Live';
       micLevelFill.style.width = '0%';
       pauseProgressFill.style.width = '0%';
-      setTelemetryState('ready', 'READY • Click "🎙️ Listen Live" below');
+      setTelemetryState('ready', 'READY • Click "🎙️ Listen Live" or "🔊 Interviewer Speaker Only (Tab)" below');
 
       if (webSpeechRec) {
         const r = webSpeechRec;
@@ -1460,7 +1504,7 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
     populateMicDevices();
 
     // =========================================================================
-    // 6. HEADPHONE / CALL TAB AUDIO CAPTURE (GROQ WHISPER TURBO)
+    // 6. SPEAKER-ONLY / CALL TAB AUDIO CAPTURE (100% ZERO MICROPHONE INPUT)
     // =========================================================================
     let tabAudioStream = null;
 
@@ -1470,10 +1514,13 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
         tabAudioStream = null;
         stopLiveMicrophone();
         btnHeadphoneMode.classList.remove('active');
-        headphoneLabel.textContent = 'Tab Audio';
+        headphoneLabel.textContent = 'Interviewer Speaker Only (Tab)';
         return;
       }
       try {
+        // First shut off any active physical microphone so your voice is 100% ignored!
+        stopLiveMicrophone();
+
         const stream = await navigator.mediaDevices.getDisplayMedia({
           video: true,
           audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false }
@@ -1485,12 +1532,12 @@ Return ONLY valid JSON: {"is_candidate_reading": false, "blocks": ["Your single 
         }
         tabAudioStream = stream;
         btnHeadphoneMode.classList.add('active');
-        headphoneLabel.textContent = 'Tab Active';
+        headphoneLabel.textContent = 'Speaker-Only Active (Mic OFF)';
 
         const audioOnlyStream = new MediaStream(stream.getAudioTracks());
-        await attachPcmPipelineToStream(audioOnlyStream, 'Shared Call Tab Audio');
+        await attachPcmPipelineToStream(audioOnlyStream, 'Interviewer Call Tab Speaker', true);
       } catch (err) {
-        heardQuestionLine.textContent = 'Select your Meet/Zoom browser tab and check "Also share tab audio"';
+        heardQuestionLine.textContent = 'Select your Meet / Zoom / Gemini browser tab and check "Also share tab audio"';
       }
     });
 
