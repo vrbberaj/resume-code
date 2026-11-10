@@ -384,6 +384,42 @@
       font-weight: 800;
     }
 
+    .instant-bridge-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #D1FAE5;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px dashed rgba(52, 211, 153, 0.45);
+      border-radius: 10px;
+      padding: 5px 10px;
+      margin-bottom: 2px;
+    }
+
+    .instant-bridge-bar .bridge-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      white-space: nowrap;
+    }
+
+    @keyframes blinkStreamCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.15; }
+    }
+
+    .stream-cursor {
+      display: inline-block;
+      color: var(--accent-gold);
+      font-weight: 800;
+      margin-left: 3px;
+      animation: blinkStreamCursor 0.65s infinite;
+    }
+
     /* 2. BELOW THE ANSWER: LAST / CURRENT QUESTION BUBBLE (Fills in live as interviewer speaks!) */
     .latest-question-bubble {
       align-self: flex-start;
@@ -1140,8 +1176,8 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let lastAnswerRenderedAt = 0;
     let qaChatHistory = [];
 
-    // 1.10s pause for snappy response while still allowing natural speech cadence
-    const INTERVIEWER_PAUSE_MS = 1100;
+    // 0.85s pause for ultra-snappy response while still allowing natural speech cadence
+    const INTERVIEWER_PAUSE_MS = 850;
     // Track live Web Speech + Live Whisper captions across the entire current interviewer turn
     let currentWebSpeechFinalSegments = [];
     let currentWebSpeechInterim = '';
@@ -1149,6 +1185,15 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let lastLiveWhisperTickAt = 0;
     let isPollingLiveWhisper = false;
     let latestLiveWhisperText = '';
+    // Turn Lifecycle State Machine for Early-Intent Mid-Speech Answer Streaming + Zero-Stuck Watchdog:
+    // 'IDLE_OR_READING' | 'SPEAKING_CAPTIONS_ONLY' | 'SPEAKING_WITH_EARLY_ANSWER'
+    let turnLifecycleState = 'IDLE_OR_READING';
+    let earlyIntentQuestionSnapshot = '';
+    let earlyIntentSubstantiveWords = [];
+    let lastQuestionFinalizedAt = 0;
+    let liveCaptionSilenceWatchdog = null;
+    let latestLiveCaptionText = '';
+    let activeStreamAbortController = null;
 
     const readingStage = document.getElementById('readingStage');
     const liveTopQuestionSlot = document.getElementById('liveTopQuestionSlot');
@@ -1327,25 +1372,161 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     }
 
     // =========================================================================
-    // LIVE CAPTION QUESTION BUBBLE AT THE VERY TOP:
-    // As soon as the interviewer starts speaking:
-    // 1) Moves the Last Answer DOWN into the Chat Flow below!
-    // 2) Shows the new Question Bubble at the VERY TOP (above the last answer)
-    //    filling in live word-by-word as caption text!
+    // EARLY INTENT DETECTION + ZERO-WAIT SPOKEN BRIDGE + LIVE CAPTION WATCHDOG
+    // =========================================================================
+    const PREAMBLE_STOP_WORDS = new Set([
+      'can','could','would','will','you','your','yours','yourself','tell','walk','me','us','about',
+      'time','when','where','how','what','why','which','who','do','did','does','have','has','had',
+      'are','was','were','been','being','the','and','for','with','from','that','this','these','those',
+      'into','through','usually','typically','generally','honestly','actually','basically','really',
+      'very','just','like','some','more','most','other','another','give','share','describe','explain',
+      'talk','discuss','elaborate','example','little','bit','question','ask','asking','wanted','wondering',
+      'curious','looking','resume','profile','background','experience','balaajee','hello','hey','okay',
+      'great','thanks','thank','good','nice','well','right','now','then','also','maybe','perhaps'
+    ]);
+
+    function extractSubstantiveIntentWords(text) {
+      return (text || '')
+        .toLowerCase()
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length >= 3 && !PREAMBLE_STOP_WORDS.has(w));
+    }
+
+    function hasClearQuestionIntent(text) {
+      const clean = (text || '').trim();
+      if (!clean || clean === 'Listening & transcribing live question...') return false;
+      const allWords = clean.split(/\s+/).filter(Boolean);
+      const substantive = extractSubstantiveIntentWords(clean);
+      const hasStrongTopicKeyword =
+        /\b(design|engineer|engineering|developer|system|token|figma|carbon|ai|team|user|research|metric|product|zebra|ibm|ericsson|excel|cpq|conflict|pushback|deadline|mentor|hire|hiring|scale|scaling|struggl|underperform|accessibility|roadmap|stakeholder|handoff|legacy|workflow|complex|ambigu|priorit|tradeoff|mistake|fail|failure|proud|leadership|manager|management|culture|retention|process|strategy|vision|goal|challenge|problem)\b/i.test(clean);
+
+      if (allWords.length >= 8 && substantive.length >= 3) return true;
+      if (allWords.length >= 6 && hasStrongTopicKeyword && substantive.length >= 3) return true;
+      return false;
+    }
+
+    function getInstantSpokenBridge(questionText) {
+      const q = (questionText || '').toLowerCase();
+      if (/\b(time when|example|story|tell me about a|situation|instance|walk me through a)\b/i.test(q)) {
+        return '“Yeah, a really good example of that is from a project I led recently—”';
+      }
+      if (/\b(pushback|conflict|disagree|difficult|challenge|tough|resist|push back|deadline)\b/i.test(q)) {
+        return '“Honestly, whenever that happens, I like to sit down with the team early—”';
+      }
+      if (/\b(how do you|how would you|approach|process|handle|manage|workflow|day to day)\b/i.test(q)) {
+        return '“The way I usually handle that day-to-day is pretty straightforward—”';
+      }
+      if (/\b(why|what made you|decision|priorit|tradeoff|choose)\b/i.test(q)) {
+        return '“Yeah, that’s a great question—for me, it really comes down to—”';
+      }
+      return '“Yeah, that’s a great question—in my day-to-day work, what’s worked best is—”';
+    }
+
+    function scheduleLiveCaptionWatchdog(liveText) {
+      const clean = (liveText || '').trim();
+      if (!clean || clean.length < 3 || clean === 'Listening & transcribing live question...') return;
+      latestLiveCaptionText = clean;
+
+      if (liveCaptionSilenceWatchdog) {
+        clearTimeout(liveCaptionSilenceWatchdog);
+      }
+
+      // 920ms silence watchdog: Guarantees AI NEVER gets stuck if PCM VAD didn't flush or speaker was soft!
+      liveCaptionSilenceWatchdog = setTimeout(() => {
+        liveCaptionSilenceWatchdog = null;
+        const finalCandidate = (latestLiveCaptionText || '').trim();
+        if (!finalCandidate || finalCandidate.length < 3) return;
+
+        if (turnLifecycleState === 'SPEAKING_WITH_EARLY_ANSWER') {
+          finalizeOrRefineEarlyStreamedTurn(finalCandidate);
+        } else if (turnLifecycleState === 'SPEAKING_CAPTIONS_ONLY') {
+          lastProcessedQuestion = finalCandidate;
+          lastTranscriptTime = performance.now();
+          processLiveInterviewerQuestion(finalCandidate, false);
+        }
+      }, 920);
+    }
+
+    function finalizeOrRefineEarlyStreamedTurn(finalQuestionText) {
+      const cleanFinal = (finalQuestionText || '').trim();
+      if (!cleanFinal) return;
+
+      // Update the Question Bubble below the answer to show the complete final question!
+      activeQuestionText = cleanFinal;
+      previousInterviewerQuestion = cleanFinal;
+      questionInput.value = cleanFinal;
+      if (liveTopQuestionSlot) liveTopQuestionSlot.style.display = 'none';
+
+      const bubble = document.getElementById('liveQuestionBubble');
+      const tag = document.getElementById('liveQuestionTag');
+      const textSpan = document.getElementById('liveQuestionBubbleText');
+      if (bubble && textSpan) {
+        bubble.classList.remove('live-speaking');
+        if (tag) tag.textContent = '🎤 Current / Last Question:';
+        textSpan.textContent = cleanFinal;
+      }
+
+      turnLifecycleState = 'IDLE_OR_READING';
+      lastQuestionFinalizedAt = performance.now();
+      currentWebSpeechFinalSegments = [];
+      currentWebSpeechInterim = '';
+      latestLiveWhisperText = '';
+      latestLiveCaptionText = '';
+
+      // Lock the already-streamed answer in place so it NEVER switches while you are reading it!
+      setTelemetryState(
+        'ready',
+        '🟢 Answer Already Streamed (0ms wait — streamed while interviewer spoke!) • Read at top'
+      );
+    }
+
+    // =========================================================================
+    // LIVE CAPTION QUESTION BUBBLE AT THE VERY TOP + EARLY INTENT TRIGGER:
+    // 1) Words 1–5: Moves Last Answer DOWN into Chat Flow & shows Live Question at VERY TOP!
+    // 2) Word 6+ (as soon as intent is clear): Immediately opens Answer Box ABOVE the
+    //    Live Question Bubble and streams the answer word-by-word while interviewer finishes speaking!
     // =========================================================================
     function updateLiveInterviewerBubble(liveText, isFinal = false) {
       const clean = (liveText || '').trim();
       if (!clean) return;
+      const isPlaceholder = clean === 'Listening & transcribing live question...';
 
       if (!isFinal) {
-        // 1. Immediately push the previous Answer + Question DOWN into the Chat Flow below!
-        if (!currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
-          moveCurrentTurnDownToChat(false);
-        } else if (answerStream.innerHTML.trim() !== '') {
-          answerStream.innerHTML = '';
+        if (!isPlaceholder) {
+          scheduleLiveCaptionWatchdog(clean);
         }
 
-        // 2. Show the Live Caption Question Bubble at the VERY TOP of the screen!
+        // If Early-Intent Answer is ALREADY streaming/showing at the top for this question,
+        // keep the Answer Box at the top and update the Live Question Bubble right below it!
+        if (turnLifecycleState === 'SPEAKING_WITH_EARLY_ANSWER') {
+          if (liveTopQuestionSlot) liveTopQuestionSlot.style.display = 'none';
+          const bubble = document.getElementById('liveQuestionBubble');
+          const tag = document.getElementById('liveQuestionTag');
+          const textSpan = document.getElementById('liveQuestionBubbleText');
+          if (bubble && textSpan && !isPlaceholder) {
+            bubble.classList.add('live-speaking');
+            if (tag) tag.textContent = '🔴 INTERVIEWER SPEAKING LIVE (ANSWER STREAMING ABOVE):';
+            textSpan.textContent = clean;
+            activeQuestionText = clean;
+            questionInput.value = clean;
+          }
+          return;
+        }
+
+        // Otherwise, we are starting or continuing 'SPEAKING_CAPTIONS_ONLY'
+        if (turnLifecycleState === 'IDLE_OR_READING') {
+          turnLifecycleState = 'SPEAKING_CAPTIONS_ONLY';
+          // Push the previous completed Answer + Question DOWN into the Chat Flow below!
+          if (!currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
+            moveCurrentTurnDownToChat(false);
+          } else if (answerStream.innerHTML.trim() !== '') {
+            answerStream.innerHTML = '';
+          }
+        }
+
+        // Show the Live Caption Question Bubble at the VERY TOP of the screen!
         if (liveTopQuestionSlot) {
           liveTopQuestionSlot.style.display = 'flex';
         }
@@ -1353,6 +1534,19 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
           liveTopQuestionText.textContent = clean;
         }
         readingStage.scrollTop = 0;
+
+        // EARLY INTENT CHECK: As soon as the interviewer's partial question reveals its intent,
+        // start streaming the AI answer word-by-word immediately WHILE they are still speaking!
+        if (!isPlaceholder && hasClearQuestionIntent(clean)) {
+          turnLifecycleState = 'SPEAKING_WITH_EARLY_ANSWER';
+          earlyIntentQuestionSnapshot = clean;
+          earlyIntentSubstantiveWords = extractSubstantiveIntentWords(clean);
+          streamGroqAnswerWordByWord(clean, {
+            isStitchedContinuation: false,
+            isEarlyIntent: true,
+            isRefinement: false
+          });
+        }
       } else {
         if (liveTopQuestionText) {
           liveTopQuestionText.textContent = clean;
@@ -1370,29 +1564,38 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
 
     function isCandidateReadingOwnAnswer(spokenText) {
       if (isReadingLockActive) return true;
+      // Never block speech when previous answer is already in chat or interviewer is actively speaking a question!
+      if (
+        currentTurnAlreadyMovedToChat ||
+        turnLifecycleState === 'SPEAKING_CAPTIONS_ONLY' ||
+        turnLifecycleState === 'SPEAKING_WITH_EARLY_ANSWER'
+      ) {
+        return false;
+      }
+
       const clean = (spokenText || '').trim();
       if (!clean || clean.length < 3) return false;
 
-      // 1. Explicit INTERVIEWER question / second-person markers ("you", "your", "tell me", "how", "what", "?") -> 100% INTERVIEWER!
+      // 1. Any INTERVIEWER question / second-person / prompt marker -> 100% INTERVIEWER!
       const hasInterviewerQuestionMarker =
         clean.includes('?') ||
-        /\b(you|your|yours|yourself|tell me|walk me|can you|could you|would you|do you|did you|have you|how|what|why|when|where|who|which|describe|explain|elaborate|share|give|discuss|talk about|go deeper)\b/i.test(clean);
+        /\b(you|your|yours|yourself|tell|walk|can|could|would|do|did|have|how|what|why|when|where|who|which|describe|explain|elaborate|share|give|discuss|talk|example|challenge|approach|handle|deal|difference|thoughts|opinion|question|ask|wonder|curious)\b/i.test(clean);
 
       if (hasInterviewerQuestionMarker && !/^(i\b|i'm\b|i’m\b|my\b|we\b|honestly,? i\b|usually,? i\b)/i.test(clean)) {
         return false;
       }
 
-      // 2. Check high-confidence word overlap against the answer currently displayed on screen
+      // 2. High-confidence word overlap (>= 70% content word match) against the currently active answer on screen
       if (currentDisplayedAnswerPlain && currentDisplayedAnswerPlain.length > 20 && !currentTurnAlreadyMovedToChat) {
         const answerWordSet = new Set(extractContentWords(currentDisplayedAnswerPlain));
         const spokenWords = extractContentWords(clean);
-        if (spokenWords.length >= 2 && answerWordSet.size > 0) {
+        if (spokenWords.length >= 3 && answerWordSet.size > 0) {
           let answerOverlapMatches = 0;
           for (const w of spokenWords) {
             if (answerWordSet.has(w)) answerOverlapMatches++;
           }
           const answerOverlapRatio = answerOverlapMatches / spokenWords.length;
-          if ((answerOverlapMatches >= 2 && answerOverlapRatio >= 0.50) || answerOverlapMatches >= 4) {
+          if (answerOverlapMatches >= 3 && answerOverlapRatio >= 0.70) {
             return true;
           }
         }
@@ -1401,7 +1604,7 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       // 3. First-person candidate statement starter ("I usually...", "I start...", "My...", "We then...")
       if (
         !clean.includes('?') &&
-        /^(i\b|i'm\b|i’m\b|i've\b|i’ve\b|my\b|in my\b|we\b|our\b|honestly\b|usually\b|for me\b|at ibm\b|at zebra\b|at ericsson\b|because i\b|so what i\b|the way i\b)/i.test(clean)
+        /^(i\b|i'm\b|i’m\b|i've\b|i’ve\b|my\b|in my\b|we\b|our\b|at ibm\b|at zebra\b|at ericsson\b|because i\b|so what i\b)/i.test(clean)
       ) {
         return true;
       }
@@ -1431,6 +1634,7 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         b.textContent = pb.label;
         b.addEventListener('click', () => {
           activePlaybookId = pb.id;
+          turnLifecycleState = 'IDLE_OR_READING';
           renderBlocksToScreen(pb.blocks, true, `Topic Selected: ${pb.label}`);
         });
         hotkeyStrip.appendChild(b);
@@ -1475,6 +1679,45 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       return rawList.length ? rawList : [String((blocksArray || [])[0] || '')];
     }
 
+    function formatMarkdownAndCleanTags(str, showCursor = false) {
+      let cleaned = String(str || '')
+        .replace(/<\/?[a-zA-Z][^>]*$/g, '') // strip any half-streamed HTML tag at very end
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*\*/g, '')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .trim();
+      if (showCursor) {
+        cleaned += '<span class="stream-cursor">▍</span>';
+      }
+      return cleaned;
+    }
+
+    function parseStreamingTextIntoSentences(rawStreamText) {
+      const cleaned = String(rawStreamText || '')
+        .replace(/<think>[\s\S]*?<\/think>/gi, '')
+        .replace(/^\/no_think\s*/i, '')
+        .trim();
+      if (!cleaned) return [];
+
+      // Split first by newline, and if any line contains multiple sentences, split by sentence boundary
+      const rawLines = cleaned
+        .split(/\n+/)
+        .map((l) => l.replace(/^\s*(?:[-•*]|\d+[.)])\s*/, '').trim())
+        .filter(Boolean);
+
+      const sentences = [];
+      for (const line of rawLines) {
+        const parts = line
+          .split(/(?<=[.!?])\s+(?=[A-Z0-9"“'<])/)
+          .map((p) => p.trim())
+          .filter(Boolean);
+        for (const p of parts) {
+          sentences.push(p);
+        }
+      }
+      return sentences.slice(0, 4);
+    }
+
     function renderBlocksToScreen(blocks, trackAsCurrentAnswer = true, questionLabel = '', isStitchedContinuation = false) {
       renderHotkeys();
       if (autoMoveDownTimer) {
@@ -1482,12 +1725,10 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         autoMoveDownTimer = null;
       }
 
-      // Hide the Live Top Question Caption Slot now that the full Answer + Question card is rendering at the top!
       if (liveTopQuestionSlot) {
         liveTopQuestionSlot.style.display = 'none';
       }
 
-      // If previous turn wasn't moved down yet, move it down into the Chat Flow below!
       if (trackAsCurrentAnswer && !isStitchedContinuation && !currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
         const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         qaChatHistory.unshift({
@@ -1508,38 +1749,36 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
 
       const formattedSentencesHtml = sentenceList
         .map((line, idx) => {
-          const cleanLine = String(line || '')
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>');
-          return `<div class="voice-sentence ${idx === 0 ? 'active-reading-line' : ''}" data-sidx="${idx}" title="Click to highlight this line">${cleanLine}</div>`;
+          const cleanLine = formatMarkdownAndCleanTags(line, false);
+          return `<div class="voice-sentence ${idx === 0 ? 'active-reading-line' : ''}" id="streamSent${idx}" data-sidx="${idx}" title="Click to highlight this line">${cleanLine}</div>`;
         })
         .join('');
 
       const fullFormattedHtml = sentenceList
-        .map((line) =>
-          String(line || '')
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        )
+        .map((line) => formatMarkdownAndCleanTags(line, false))
         .join(' ');
 
       const displayQuestion = questionLabel || previousInterviewerQuestion || 'Waiting for interviewer to speak...';
+      const bridgeText = getInstantSpokenBridge(displayQuestion);
 
       answerStream.classList.remove('fresh-update');
       void answerStream.offsetWidth;
       answerStream.classList.add('fresh-update');
 
-      // EXACT LAYOUT REQUESTED:
-      // 1) TOP (Right under webcam): CURRENT ANSWER
-      // 2) BELOW CURRENT ANSWER: LAST / CURRENT QUESTION
       answerStream.innerHTML = `
         <div class="latest-turn-card">
           <div class="answer-block active-block" id="activeAnswerBox">
             <div class="answer-top-header">
-              <span>🗣️ CURRENT ANSWER (EVERYDAY SPOKEN ENGLISH)</span>
+              <span id="answerBoxModeTitle">🗣️ CURRENT ANSWER (EVERYDAY SPOKEN ENGLISH)</span>
               <span id="answerProgressHeader">Sentence 1 of ${sentenceList.length}</span>
             </div>
-            ${formattedSentencesHtml}
+            <div class="instant-bridge-bar" id="instantBridgeBar">
+              <span class="bridge-tag">💬 Zero-Wait Starter:</span>
+              <span id="instantBridgeText">${bridgeText}</span>
+            </div>
+            <div id="streamingSentencesContainer" style="display:flex; flex-direction:column; gap:10px;">
+              ${formattedSentencesHtml}
+            </div>
           </div>
 
           <div class="eye-zone-controls">
@@ -1575,6 +1814,125 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         lastAnswerRenderedAt = performance.now();
       }
       readingStage.scrollTop = 0;
+    }
+
+    function prepareStreamingTurnCard(questionText, isStitchedContinuation = false, isEarlyIntent = false, isRefinement = false) {
+      renderHotkeys();
+      if (autoMoveDownTimer) {
+        clearTimeout(autoMoveDownTimer);
+        autoMoveDownTimer = null;
+      }
+      if (liveTopQuestionSlot) {
+        liveTopQuestionSlot.style.display = 'none';
+      }
+
+      // If previous completed turn hasn't moved down to chat yet (and this isn't a refinement/stitch of the current turn), move it down!
+      if (!isStitchedContinuation && !isRefinement && !currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
+        const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        qaChatHistory.unshift({
+          turn: qaChatHistory.length + 1,
+          question: activeQuestionText,
+          answerHtml: currentDisplayedAnswerHtml,
+          answerPlain: currentDisplayedAnswerPlain,
+          time: nowStr
+        });
+        renderChatHistoryBubbles();
+      }
+
+      activeSentenceIdx = 0;
+      hasCandidateStartedReadingCurrent = false;
+      currentTurnAlreadyMovedToChat = false;
+      activeQuestionText = questionText;
+
+      const bridgeText = getInstantSpokenBridge(questionText);
+      const qBubbleClass = isEarlyIntent ? 'latest-question-bubble live-speaking' : 'latest-question-bubble';
+      const qTagText = isEarlyIntent
+        ? '🔴 INTERVIEWER SPEAKING LIVE (ANSWER STREAMING ABOVE):'
+        : '🎤 Current / Last Question:';
+      const headerTitle = isEarlyIntent
+        ? '⚡ STREAMING ANSWER LIVE AS INTERVIEWER SPEAKS'
+        : '⚡ STREAMING SPOKEN ANSWER WORD-BY-WORD';
+
+      answerStream.innerHTML = `
+        <div class="latest-turn-card">
+          <div class="answer-block active-block" id="activeAnswerBox">
+            <div class="answer-top-header">
+              <span id="answerBoxModeTitle">${headerTitle}</span>
+              <span id="answerProgressHeader">Streaming 1st word...</span>
+            </div>
+            <div class="instant-bridge-bar" id="instantBridgeBar">
+              <span class="bridge-tag">💬 Zero-Wait Starter:</span>
+              <span id="instantBridgeText">${bridgeText}</span>
+            </div>
+            <div id="streamingSentencesContainer" style="display:flex; flex-direction:column; gap:10px;">
+              <div class="voice-sentence active-reading-line" id="streamSent0" data-sidx="0"><span style="color:#A7F3D0;">${bridgeText.replace(/^“|”$/g, '')}</span><span class="stream-cursor">▍</span></div>
+              <div class="voice-sentence" id="streamSent1" data-sidx="1" style="display:none;"></div>
+              <div class="voice-sentence" id="streamSent2" data-sidx="2" style="display:none;"></div>
+            </div>
+          </div>
+
+          <div class="eye-zone-controls">
+            <span class="shield-badge" id="shieldBadgeText">🗣️ Start with Zero-Wait Starter or read Sentence 1 as words stream in</span>
+            <div class="teleprompter-nudge-btns">
+              <button type="button" class="btn-nudge btn-move-down-chat" id="btnMoveDownToChat" title="Finished reading? Move this Answer & Question down into the Chat Flow below (Arrow Down)">✓ Done Reading • Move Down ↓</button>
+            </div>
+          </div>
+
+          <div class="${qBubbleClass}" id="liveQuestionBubble">
+            <span class="latest-question-tag" id="liveQuestionTag">${qTagText}</span>
+            <span id="liveQuestionBubbleText">${questionText}</span>
+          </div>
+        </div>
+      `;
+
+      document.querySelectorAll('#activeAnswerBox .voice-sentence').forEach((el) => {
+        el.addEventListener('click', () => {
+          const idx = Number(el.getAttribute('data-sidx') || 0);
+          setSentenceProgress(idx);
+        });
+      });
+
+      const btnMoveDown = document.getElementById('btnMoveDownToChat');
+      if (btnMoveDown) {
+        btnMoveDown.addEventListener('click', () => moveCurrentTurnDownToChat(true));
+      }
+      readingStage.scrollTop = 0;
+    }
+
+    function updateStreamingSentenceSlotsInPlace(sentencesList, isDone = false) {
+      const sents = sentencesList && sentencesList.length ? sentencesList : [];
+      if (!sents.length) return;
+
+      for (let i = 0; i < 3; i++) {
+        const slot = document.getElementById(`streamSent${i}`);
+        if (!slot) continue;
+        if (i < sents.length) {
+          slot.style.display = 'block';
+          const isActivelyStreamingThisSlot = !isDone && i === sents.length - 1;
+          slot.innerHTML = formatMarkdownAndCleanTags(sents[i], isActivelyStreamingThisSlot);
+        } else {
+          slot.style.display = 'none';
+          slot.innerHTML = '';
+        }
+      }
+
+      const headerStatus = document.getElementById('answerProgressHeader');
+      const modeTitle = document.getElementById('answerBoxModeTitle');
+      if (isDone) {
+        if (modeTitle) modeTitle.textContent = '🗣️ CURRENT ANSWER (EVERYDAY SPOKEN ENGLISH)';
+        if (headerStatus) headerStatus.textContent = `Sentence 1 of ${Math.min(3, sents.length)}`;
+        currentAnswerSentencesPlain = sents
+          .slice(0, 3)
+          .map((s) => s.replace(/<[^>]+>/g, ' ').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim());
+        currentDisplayedAnswerPlain = currentAnswerSentencesPlain.join(' ');
+        currentDisplayedAnswerHtml = sents
+          .slice(0, 3)
+          .map((s) => formatMarkdownAndCleanTags(s, false))
+          .join(' ');
+        lastAnswerRenderedAt = performance.now();
+      } else {
+        if (headerStatus) headerStatus.textContent = `Streaming Sentence ${Math.min(3, sents.length)} of 3...`;
+      }
     }
 
     function pickFallbackAnswerForQuestion(qText) {
@@ -1622,35 +1980,181 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     }
 
     // =========================================================================
-    // 4. ULTRA-FAST GROQ ANSWER ENGINE (~280ms via qwen3.8-27b /no_think)
+    // 4. WORD-BY-WORD SSE STREAMING GROQ ENGINE (~195ms First Word via stream:true)
     // =========================================================================
-    async function callGroq(messages, modelName = 'qwen/qwen3.8-27b') {
-      const payload = {
-        model: modelName,
-        temperature: 0.38,
-        max_tokens: modelName.startsWith('openai/gpt-oss') ? 600 : 300,
-        messages
-      };
-      if (modelName.startsWith('openai/gpt-oss')) {
-        payload.reasoning_effort = 'low';
-        payload.response_format = { type: 'json_object' };
+    async function streamGroqAnswerWordByWord(cleanQuestion, options = {}) {
+      const {
+        isStitchedContinuation = false,
+        isEarlyIntent = false,
+        isRefinement = false
+      } = options;
+
+      const reqId = ++liveRequestCounter;
+      if (activeStreamAbortController) {
+        try { activeStreamAbortController.abort(); } catch (e) {}
+      }
+      const abortCtrl = new AbortController();
+      activeStreamAbortController = abortCtrl;
+      const safetyTimeout = setTimeout(() => {
+        try { abortCtrl.abort(); } catch (e) {}
+      }, 6500);
+
+      const t0 = performance.now();
+      questionInput.value = cleanQuestion;
+      previousInterviewerQuestion = cleanQuestion;
+      candidateSpokenNotes = '';
+
+      prepareStreamingTurnCard(cleanQuestion, isStitchedContinuation, isEarlyIntent, isRefinement);
+      setTelemetryState(
+        'thinking',
+        isEarlyIntent
+          ? '⚡ Intent Detected Mid-Speech! Streaming 1st word while interviewer speaks...'
+          : '⚡ Streaming spoken answer word-by-word...'
+      );
+
+      const recentTurnsText = qaChatHistory
+        .slice(0, 3)
+        .map((t, i) => `Turn -${i + 1}: Q: "${t.question}" -> A: "${t.answerPlain || ''}"`)
+        .join('\n');
+
+      const sysPrompt = `/no_think
+You are helping Balaajee V.R. (Senior UI/UX Design Manager, 18+ yrs exp across IBM, Zebra, Ericsson, ZF Wabco, Infosys) answer a live interview question out loud.
+Write in EVERYDAY REGULAR SPOKEN ENGLISH—simple, natural words and contractions ("I'm", "don't", "we've", "usually", "honestly") the exact way a friendly, experienced leader talks on a call.
+Rules:
+1. Write EXACTLY 3 short, easy-to-say sentences (14 to 20 words per sentence).
+2. Put EACH sentence on its own separate line (3 lines total, separated by a newline).
+3. Directly answer the EXACT question asked! Never sound like a written essay or recite resume bullets.
+4. NEVER repeat stories, company examples, or numbers already used in previous turns below.
+Previous turns in this interview:
+${recentTurnsText || 'None yet.'}
+Background context (use lightly only when relevant):
+${targetJobContext ? `Target Role: ${targetJobContext}\n` : ''}- Started as software engineer at Infosys; at IBM worked on watsonx & Carbon design tokens; at Ericsson replaced 14-tab Excel with web quoting tool; at Zebra led handheld UX for warehouse workers wearing gloves; scaled 14+ designers with 100% retention; uses NotebookLM, Dovetail AI, Google Stitch, Claude, Cursor, Figma daily.
+Highlight 1–2 key phrases per sentence in <strong>...</strong> tags.
+Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no JSON.`;
+
+      const messages = [
+        { role: 'system', content: sysPrompt },
+        {
+          role: 'user',
+          content: isEarlyIntent
+            ? `Interviewer Question (in progress, answer its core intent right away): "${cleanQuestion}"`
+            : `Interviewer Question: "${cleanQuestion}"`
+        }
+      ];
+
+      async function runStreamWithModel(modelName) {
+        const payload = {
+          model: modelName,
+          stream: true,
+          temperature: 0.35,
+          max_tokens: 210,
+          messages
+        };
+        if (modelName === 'qwen/qwen3.8-27b') {
+          payload.reasoning_effort = 'none';
+        } else if (modelName.startsWith('openai/gpt-oss')) {
+          payload.reasoning_effort = 'low';
+        }
+
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${groqApiKey}`
+          },
+          body: JSON.stringify(payload),
+          signal: abortCtrl.signal
+        });
+
+        if (!res.ok || !res.body) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let sseBuffer = '';
+        let accumulatedText = '';
+        let firstWordMs = null;
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          if (reqId !== liveRequestCounter) return null;
+
+          sseBuffer += decoder.decode(value, { stream: true });
+          const lines = sseBuffer.split('\n');
+          sseBuffer = lines.pop() || '';
+
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed.startsWith('data:')) continue;
+            const dataStr = trimmed.slice(5).trim();
+            if (dataStr === '[DONE]') continue;
+            try {
+              const parsed = JSON.parse(dataStr);
+              const delta = parsed.choices?.[0]?.delta?.content || '';
+              if (delta) {
+                accumulatedText += delta;
+                if (firstWordMs === null && accumulatedText.trim().length >= 2) {
+                  firstWordMs = Math.round(performance.now() - t0);
+                  setTelemetryState(
+                    'thinking',
+                    isEarlyIntent
+                      ? `⚡ 1st word in ${firstWordMs}ms (Mid-Speech Intent!) • Streaming live...`
+                      : `⚡ 1st word in ${firstWordMs}ms • Streaming words live...`
+                  );
+                }
+                const liveSentences = parseStreamingTextIntoSentences(accumulatedText);
+                if (liveSentences.length > 0) {
+                  updateStreamingSentenceSlotsInPlace(liveSentences, false);
+                }
+              }
+            } catch (e) {}
+          }
+        }
+
+        return { accumulatedText, firstWordMs: firstWordMs || Math.round(performance.now() - t0) };
       }
 
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${groqApiKey}`
-        },
-        body: JSON.stringify(payload)
-      });
+      try {
+        let result = null;
+        try {
+          result = await runStreamWithModel('qwen/qwen3.8-27b');
+        } catch (errPrimary) {
+          if (reqId !== liveRequestCounter) return;
+          result = await runStreamWithModel('openai/gpt-oss-20b');
+        }
+        clearTimeout(safetyTimeout);
+        if (reqId !== liveRequestCounter || !result) return;
 
-      if (!res.ok) {
-        if (modelName === 'qwen/qwen3.8-27b') return callGroq(messages, 'openai/gpt-oss-20b');
-        if (modelName === 'openai/gpt-oss-20b') return callGroq(messages, 'openai/gpt-oss-120b');
-        throw new Error(`HTTP ${res.status}`);
+        let finalSentences = parseStreamingTextIntoSentences(result.accumulatedText);
+        if (!finalSentences.length) {
+          finalSentences = pickFallbackAnswerForQuestion(cleanQuestion);
+        }
+        updateStreamingSentenceSlotsInPlace(finalSentences, true);
+
+        const totalMs = Math.round(performance.now() - t0);
+        if (!isEarlyIntent) {
+          turnLifecycleState = 'IDLE_OR_READING';
+          lastQuestionFinalizedAt = performance.now();
+        }
+        setTelemetryState(
+          'ready',
+          isEarlyIntent
+            ? `🟢 Answer Streamed Mid-Speech (1st word ${result.firstWordMs}ms, full ${totalMs}ms) • 0ms wait!`
+            : `🟢 Answer Ready (1st word ${result.firstWordMs}ms, full ${totalMs}ms) • Read at top`
+        );
+      } catch (e) {
+        clearTimeout(safetyTimeout);
+        if (reqId !== liveRequestCounter) return;
+        const fallback = pickFallbackAnswerForQuestion(cleanQuestion);
+        updateStreamingSentenceSlotsInPlace(fallback, true);
+        if (!isEarlyIntent) {
+          turnLifecycleState = 'IDLE_OR_READING';
+          lastQuestionFinalizedAt = performance.now();
+        }
+        setTelemetryState('ready', isMicActive ? '🟢 Answer Ready • Listening...' : '🟢 Answer Ready');
       }
-      return res.json();
     }
 
     function recordCandidateSpokenMemory(spokenChunk) {
@@ -1687,7 +2191,12 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
 
     async function processLiveInterviewerQuestion(rawText, isManualInput = false) {
       let clean = (rawText || '').trim();
-      if (!clean || clean.length < 3) return;
+      if (!clean || clean.length < 3 || clean === 'Listening & transcribing live question...') return;
+
+      if (liveCaptionSilenceWatchdog) {
+        clearTimeout(liveCaptionSilenceWatchdog);
+        liveCaptionSilenceWatchdog = null;
+      }
 
       // 1. If this came from live voice and matches YOU reading your own answer out loud:
       if (!isManualInput && isCandidateReadingOwnAnswer(clean)) {
@@ -1696,7 +2205,13 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         return;
       }
 
-      // 2. MULTI-PART QUESTION CONTINUATION STITCHING:
+      // 2. If Early Intent ALREADY streamed an answer for this exact question turn while the interviewer was speaking:
+      if (!isManualInput && turnLifecycleState === 'SPEAKING_WITH_EARLY_ANSWER') {
+        finalizeOrRefineEarlyStreamedTurn(clean);
+        return;
+      }
+
+      // 3. MULTI-PART QUESTION CONTINUATION STITCHING (if interviewer paused < 4.2s to take a breath before you started reading):
       const msSinceLastAnswer = performance.now() - lastAnswerRenderedAt;
       let isStitchedContinuation = false;
       if (
@@ -1706,8 +2221,9 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         !hasCandidateStartedReadingCurrent &&
         !currentTurnAlreadyMovedToChat &&
         msSinceLastAnswer > 0 &&
-        msSinceLastAnswer < 8500 &&
-        !activeQuestionText.toLowerCase().includes(clean.toLowerCase())
+        msSinceLastAnswer < 4200 &&
+        !activeQuestionText.toLowerCase().includes(clean.toLowerCase()) &&
+        !clean.toLowerCase().includes(activeQuestionText.toLowerCase())
       ) {
         clean = `${activeQuestionText.replace(/\.*$/, '')}. ${clean}`;
         isStitchedContinuation = true;
@@ -1717,82 +2233,14 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       currentWebSpeechFinalSegments = [];
       currentWebSpeechInterim = '';
       latestLiveWhisperText = '';
-
-      // Show the question in the Top Live Question Bubble while generating the answer (~280ms)
-      updateLiveInterviewerBubble(clean, false);
-      questionInput.value = clean;
+      latestLiveCaptionText = '';
       pauseProgressFill.style.width = '0%';
-      setTelemetryState('thinking', '⚡ Generating spoken English answer...');
 
-      const reqId = ++liveRequestCounter;
-      const t0 = performance.now();
-
-      try {
-        const recentTurnsText = qaChatHistory
-          .slice(0, 3)
-          .map((t, i) => `Turn -${i + 1}: Q: "${t.question}" -> A: "${t.answerPlain || ''}"`)
-          .join('\n');
-
-        const sysPrompt = `/no_think
-You are helping Balaajee V.R. (Senior UI/UX Design Manager, 18+ yrs exp across IBM, Zebra, Ericsson, ZF Wabco, Infosys) answer a live interview question out loud.
-Write in EVERYDAY REGULAR SPOKEN ENGLISH—simple, natural words and contractions ("I'm", "don't", "we've", "usually", "honestly") the exact way a friendly, experienced leader talks on a call.
-Rules:
-1. Write 3 short, easy-to-say sentences (14 to 20 words per sentence).
-2. Directly answer the EXACT question asked! Never sound like a written essay or recite resume bullets.
-3. NEVER repeat stories, company examples, or numbers already used in previous turns below.
-Previous turns in this interview:
-${recentTurnsText || 'None yet.'}
-${!isStitchedContinuation && previousInterviewerQuestion ? `Last Q: "${previousInterviewerQuestion}" -> Last A: "${currentDisplayedAnswerPlain}"` : ''}
-Background context (use lightly only when relevant):
-${targetJobContext ? `Target Role: ${targetJobContext}\n` : ''}- Started as software engineer at Infosys; at IBM worked on watsonx & Carbon design tokens; at Ericsson replaced 14-tab Excel with web quoting tool; at Zebra led handheld UX for warehouse workers wearing gloves; scaled 14+ designers with 100% retention; uses NotebookLM, Dovetail AI, Google Stitch, Claude, Cursor, Figma daily.
-Highlight 1–2 key phrases per sentence in <strong>...</strong> tags.
-Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...", "Sentence 2...", "Sentence 3..."]}`;
-
-        const messages = [
-          { role: 'system', content: sysPrompt },
-          { role: 'user', content: `Interviewer Question: "${clean}"` }
-        ];
-
-        const data = await callGroq(messages);
-        if (reqId !== liveRequestCounter) return;
-        const content = data?.choices?.[0]?.message?.content || '';
-        const match = content.match(/\{[\s\S]*\}/);
-        let sentencesOut = [];
-        if (match) {
-          const parsed = JSON.parse(match[0]);
-          if (Array.isArray(parsed.sentences) && parsed.sentences.length >= 1) {
-            sentencesOut = parsed.sentences;
-          } else if (Array.isArray(parsed.blocks) && parsed.blocks.length >= 1) {
-            sentencesOut = parsed.blocks;
-          } else if (typeof parsed.answer === 'string') {
-            sentencesOut = [parsed.answer];
-          }
-        }
-        if (!sentencesOut.length) {
-          sentencesOut = pickFallbackAnswerForQuestion(clean);
-        }
-
-        const ms = Math.round(performance.now() - t0);
-        questionInput.value = clean;
-        previousInterviewerQuestion = clean;
-        candidateSpokenNotes = '';
-        renderBlocksToScreen(sentencesOut, true, clean, isStitchedContinuation);
-        setTelemetryState(
-          'ready',
-          isTabSpeakerOnlyMode
-            ? `🟢 Answer Ready (${ms}ms) • Speaker-Only Mode (Mic OFF)`
-            : isMicActive
-              ? `🟢 Answer Ready (${ms}ms) • Next question will appear at top as interviewer speaks`
-              : `🟢 Answer Ready (${ms}ms)`
-        );
-      } catch (e) {
-        if (reqId !== liveRequestCounter) return;
-        const fallback = pickFallbackAnswerForQuestion(clean);
-        previousInterviewerQuestion = clean;
-        candidateSpokenNotes = '';
-        renderBlocksToScreen(fallback, true, clean, isStitchedContinuation);
-        setTelemetryState('ready', isMicActive ? '🟢 Answer Ready • Listening...' : '🟢 Answer Ready');
-      }
+      await streamGroqAnswerWordByWord(clean, {
+        isStitchedContinuation,
+        isEarlyIntent: false,
+        isRefinement: false
+      });
     }
 
     // =========================================================================
@@ -1913,14 +2361,19 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
     }
 
     // LIVE ROLLING WHISPER CAPTION STREAMER:
-    // Runs every 1.15s WHILE the interviewer is speaking so the question appears as live caption text
-    // at the very top of the screen (pushing the last answer down) even on phone speakers or Tab Audio!
+    // Runs every 950ms WHILE the interviewer is speaking so the question appears as live caption text
+    // at the very top of the screen AND triggers Early-Intent Answer Streaming as soon as intent is clear!
     async function pollLiveWhisperCaptions() {
-      if (isPollingLiveWhisper || isTranscribingWhisper || !isSpeakingNow || !speechPcm16k.length) return;
+      if (isPollingLiveWhisper || !isSpeakingNow || !speechPcm16k.length) return;
       const totalLen = speechPcm16k.reduce((acc, c) => acc + c.length, 0);
-      if (totalLen < TARGET_SAMPLE_RATE * 0.75) return;
+      if (totalLen < TARGET_SAMPLE_RATE * 0.65) return;
 
       isPollingLiveWhisper = true;
+      const abortCtrl = new AbortController();
+      const timeoutId = setTimeout(() => {
+        try { abortCtrl.abort(); } catch (e) {}
+      }, 3600);
+
       try {
         const snapshot = new Float32Array(totalLen);
         let off = 0;
@@ -1937,7 +2390,8 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
         const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${groqApiKey}` },
-          body: formData
+          body: formData,
+          signal: abortCtrl.signal
         });
         if (res.ok && isSpeakingNow) {
           const data = await res.json();
@@ -1956,12 +2410,38 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
         }
       } catch (e) {
       } finally {
+        clearTimeout(timeoutId);
         isPollingLiveWhisper = false;
       }
     }
 
     async function sendPcmSamplesToGroqWhisper(samples16k, isManualForce = false) {
-      if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.35) return;
+      const webSpeechSnapshot = [...currentWebSpeechFinalSegments, currentWebSpeechInterim].join(' ').replace(/\s+/g, ' ').trim();
+      const immediateLiveQuestion = mergeWhisperAndWebSpeech(latestLiveWhisperText, webSpeechSnapshot);
+
+      // 0ms PRE-WHISPER FAST PATH:
+      // If the interviewer just paused and we already have a live caption from Web Speech / Live Whisper
+      // (and Early Intent hasn't streamed yet), start streaming the LLM answer IMMEDIATELY (0ms wait for final Whisper)!
+      let alreadyTriggeredFromLiveCaption = false;
+      if (
+        !isManualForce &&
+        immediateLiveQuestion &&
+        immediateLiveQuestion.split(/\s+/).length >= 3 &&
+        turnLifecycleState === 'SPEAKING_CAPTIONS_ONLY' &&
+        !isCandidateReadingOwnAnswer(immediateLiveQuestion)
+      ) {
+        alreadyTriggeredFromLiveCaption = true;
+        lastProcessedQuestion = immediateLiveQuestion;
+        lastTranscriptTime = performance.now();
+        processLiveInterviewerQuestion(immediateLiveQuestion, false);
+      }
+
+      if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.30) {
+        if (!alreadyTriggeredFromLiveCaption && immediateLiveQuestion && immediateLiveQuestion.length > 3) {
+          processLiveInterviewerQuestion(immediateLiveQuestion, isManualForce);
+        }
+        return;
+      }
 
       if (isTranscribingWhisper) {
         if (pendingWhisperSamples) {
@@ -1976,10 +2456,16 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
       }
 
       isTranscribingWhisper = true;
-      const webSpeechSnapshot = [...currentWebSpeechFinalSegments, currentWebSpeechInterim].join(' ').replace(/\s+/g, ' ').trim();
-      setTelemetryState('thinking', '⚡ Finishing question transcript & generating answer...');
+      if (!alreadyTriggeredFromLiveCaption && turnLifecycleState !== 'SPEAKING_WITH_EARLY_ANSWER') {
+        setTelemetryState('thinking', '⚡ Transcribing & streaming spoken answer...');
+      }
 
       let transcribedQuestion = '';
+      const abortCtrl = new AbortController();
+      const timeoutId = setTimeout(() => {
+        try { abortCtrl.abort(); } catch (e) {}
+      }, 4000);
+
       try {
         const wavBlob = encodePeakNormalizedWAV(samples16k);
         const formData = new FormData();
@@ -1990,7 +2476,8 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
         const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${groqApiKey}` },
-          body: formData
+          body: formData,
+          signal: abortCtrl.signal
         });
 
         if (res.ok) {
@@ -1999,16 +2486,17 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
           const isHallucination = /^(thank you\.?|thanks for watching\.?|you\.?|bye\.?|okay\.?|subtitles.*|\.+)$/i.test(whisperText);
 
           if (whisperText && whisperText.length > 3 && !isHallucination) {
-            transcribedQuestion = mergeWhisperAndWebSpeech(whisperText, webSpeechSnapshot || latestLiveWhisperText);
-          } else if ((webSpeechSnapshot || latestLiveWhisperText).length > 5) {
-            transcribedQuestion = webSpeechSnapshot || latestLiveWhisperText;
+            transcribedQuestion = mergeWhisperAndWebSpeech(whisperText, immediateLiveQuestion);
+          } else if (immediateLiveQuestion.length > 3) {
+            transcribedQuestion = immediateLiveQuestion;
           }
         }
       } catch (err) {
-        if ((webSpeechSnapshot || latestLiveWhisperText).length > 5) {
-          transcribedQuestion = webSpeechSnapshot || latestLiveWhisperText;
+        if (immediateLiveQuestion.length > 3) {
+          transcribedQuestion = immediateLiveQuestion;
         }
       } finally {
+        clearTimeout(timeoutId);
         isTranscribingWhisper = false;
       }
 
@@ -2023,13 +2511,31 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
       }
 
       if (transcribedQuestion) {
+        if (alreadyTriggeredFromLiveCaption) {
+          // Only re-stream if final Whisper discovered >= 3 brand-new substantive words that Web Speech missed!
+          const liveSubstantive = new Set(extractSubstantiveIntentWords(immediateLiveQuestion));
+          const whisperSubstantive = extractSubstantiveIntentWords(transcribedQuestion);
+          let addedByWhisper = 0;
+          for (const w of whisperSubstantive) {
+            if (!liveSubstantive.has(w)) addedByWhisper++;
+          }
+          if (addedByWhisper >= 3 && !hasCandidateStartedReadingCurrent) {
+            lastProcessedQuestion = transcribedQuestion;
+            lastTranscriptTime = performance.now();
+            streamGroqAnswerWordByWord(transcribedQuestion, { isRefinement: true });
+          } else {
+            updateLiveInterviewerBubble(transcribedQuestion, true);
+          }
+          return;
+        }
+
         const now = performance.now();
-        if (isManualForce || transcribedQuestion !== lastProcessedQuestion || now - lastTranscriptTime > 2200) {
+        if (isManualForce || transcribedQuestion !== lastProcessedQuestion || now - lastTranscriptTime > 1500) {
           lastProcessedQuestion = transcribedQuestion;
           lastTranscriptTime = now;
           processLiveInterviewerQuestion(transcribedQuestion, isManualForce);
         }
-      } else {
+      } else if (!alreadyTriggeredFromLiveCaption && turnLifecycleState !== 'SPEAKING_WITH_EARLY_ANSWER') {
         setTelemetryState('ready', '🟢 Listening for next interviewer question...');
       }
     }
@@ -2040,7 +2546,12 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
       utterancePeakRms = 0;
       pauseProgressFill.style.width = '0%';
 
-      if (!speechPcm16k.length) return;
+      if (!speechPcm16k.length) {
+        if (latestLiveCaptionText && latestLiveCaptionText.length > 3) {
+          processLiveInterviewerQuestion(latestLiveCaptionText, false);
+        }
+        return;
+      }
       const totalLen = speechPcm16k.reduce((acc, c) => acc + c.length, 0);
       const merged = new Float32Array(totalLen);
       let off = 0;
@@ -2057,6 +2568,7 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
 
     // Parallel Web Speech API:
     // Streams live word-by-word captions into the Top Question Bubble (pushing the last answer down!)
+    // AND triggers Early-Intent Answer Streaming as soon as the question intent is clear!
     function startParallelWebSpeech() {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SR) return;
@@ -2068,13 +2580,14 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
         webSpeechRec.onresult = (event) => {
           if (isReadingLockActive) return;
           lastWebSpeechWordAt = performance.now();
-          if (isSpeakingNow && silenceStartedAt > 0) {
-            silenceStartedAt = performance.now();
-          }
 
           const latest = event.results[event.results.length - 1];
           const latestChunk = (latest?.[0]?.transcript || '').trim();
-          if (latestChunk.length > 2 && isCandidateReadingOwnAnswer(latestChunk)) {
+          if (
+            turnLifecycleState === 'IDLE_OR_READING' &&
+            latestChunk.length > 2 &&
+            isCandidateReadingOwnAnswer(latestChunk)
+          ) {
             recordCandidateSpokenMemory(latestChunk);
             return;
           }
@@ -2122,7 +2635,7 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
       } else {
         btnToggleMic.classList.add('active');
         micLabel.textContent = 'Stop Listening';
-        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Live question captions stream at top as interviewer speaks`;
+        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Live captions + Early-Intent word-by-word answer streaming active`;
         setTelemetryState('ready', `🟢 Listening on [${activeMicName}]`);
       }
 
@@ -2159,8 +2672,10 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
 
         const now = performance.now();
 
-        const startThreshold = Math.max(0.0025, Math.min(0.016, ambientRms * 1.65));
-        const stopThreshold = Math.max(0.0018, Math.min(0.0085, ambientRms * 1.25));
+        // Cap ambientRms at 0.0042 so loud candidate speech never deafens the mic to a softer phone speaker!
+        ambientRms = Math.min(0.0042, ambientRms);
+        const startThreshold = Math.max(0.0022, Math.min(0.0095, ambientRms * 1.55));
+        const stopThreshold = Math.max(0.0016, Math.min(0.0065, ambientRms * 1.20));
 
         const isActiveVoiceFrame = isSpeakingNow ? rms >= stopThreshold : rms > startThreshold;
 
@@ -2173,7 +2688,6 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
             const preRollSamples = Math.min(rollingPcm16k.length, Math.round(TARGET_SAMPLE_RATE * 1.2));
             speechPcm16k = [rollingPcm16k.slice(rollingPcm16k.length - preRollSamples)];
 
-            // In Speaker-Only mode (or if previous answer already moved down), immediately show the Top Live Question Bubble!
             if (isTabSpeakerOnlyMode || currentTurnAlreadyMovedToChat) {
               updateLiveInterviewerBubble('Listening & transcribing live question...', false);
             }
@@ -2184,16 +2698,18 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
           silenceStartedAt = 0;
           pauseProgressFill.style.width = '0%';
           const sec = ((now - speechStartedAt) / 1000).toFixed(1);
-          setTelemetryState('hearing', `🔴 Interviewer Speaking (${sec}s) — Live captions at top`);
+          if (turnLifecycleState !== 'SPEAKING_WITH_EARLY_ANSWER') {
+            setTelemetryState('hearing', `🔴 Interviewer Speaking (${sec}s) — Streaming question & detecting intent`);
+          }
 
-          // Every 1.15s while speaking, stream live Whisper captions into the Top Question Bubble!
-          if (now - lastLiveWhisperTickAt >= 1150) {
+          // Every 950ms while speaking, stream live Whisper captions & check for Early Intent!
+          if (now - lastLiveWhisperTickAt >= 950) {
             lastLiveWhisperTickAt = now;
             pollLiveWhisperCaptions();
           }
 
           if (now - speechStartedAt >= 24000) {
-            ambientRms = Math.min(0.008, rms * 0.65);
+            ambientRms = Math.min(0.0042, rms * 0.65);
             flushActiveSpeechToWhisper();
           }
         } else {
@@ -2204,15 +2720,14 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
             const pct = Math.min(100, Math.round((silenceMs / INTERVIEWER_PAUSE_MS) * 100));
             pauseProgressFill.style.width = pct + '%';
 
-            // Trigger a live caption update right at 250ms of pause so the full text is visible immediately!
-            if (silenceMs >= 250 && silenceMs < 420 && now - lastLiveWhisperTickAt >= 450) {
+            if (silenceMs >= 220 && silenceMs < 380 && now - lastLiveWhisperTickAt >= 420) {
               lastLiveWhisperTickAt = now;
               pollLiveWhisperCaptions();
             }
 
             if (silenceMs >= INTERVIEWER_PAUSE_MS) {
-              ambientRms = ambientRms * 0.85 + rms * 0.15;
-              if (now - speechStartedAt >= 400) {
+              ambientRms = Math.min(0.0042, ambientRms * 0.85 + rms * 0.15);
+              if (now - speechStartedAt >= 350) {
                 flushActiveSpeechToWhisper();
               } else {
                 isSpeakingNow = false;
@@ -2224,7 +2739,7 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
               }
             }
           } else {
-            ambientRms = ambientRms * 0.94 + rms * 0.06;
+            ambientRms = Math.min(0.0042, ambientRms * 0.94 + rms * 0.06);
           }
         }
       };
@@ -2378,6 +2893,27 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
       }
     }
 
+    // Live Word-by-Word Interviewer Speech Simulator:
+    // Simulates an interviewer speaking word-by-word so you can see:
+    // 1) Words 1–5 streaming into the Top Live Question Bubble (pushing the last answer down)
+    // 2) At Word 6+, Early-Intent Detection opening the Answer Box at the top and streaming the answer word-by-word WHILE the interviewer keeps speaking!
+    window.simulateLiveInterviewerSpeech = async function(fullQuestionText, wordIntervalMs = 160) {
+      const words = String(fullQuestionText || '').trim().split(/\s+/).filter(Boolean);
+      if (!words.length) return;
+      turnLifecycleState = 'IDLE_OR_READING';
+      for (let i = 1; i <= words.length; i++) {
+        const partial = words.slice(0, i).join(' ');
+        updateLiveInterviewerBubble(partial, false);
+        await new Promise((r) => setTimeout(r, wordIntervalMs));
+      }
+      // After the interviewer finishes speaking the last word, finalize the turn!
+      if (turnLifecycleState === 'SPEAKING_WITH_EARLY_ANSWER') {
+        finalizeOrRefineEarlyStreamedTurn(words.join(' '));
+      } else {
+        await processLiveInterviewerQuestion(words.join(' '), false);
+      }
+    };
+
     document.getElementById('btnMockAskQuestion').addEventListener('click', () => {
       const q = MOCK_QUESTIONS[mockIdx % MOCK_QUESTIONS.length];
       mockIdx++;
@@ -2388,17 +2924,33 @@ Output ONLY raw JSON (no markdown, no thinking): {"sentences": ["Sentence 1...",
       const prev = lastMockQuestion || questionInput.value || 'your design leadership approach';
       setTelemetryState('thinking', '🤖 Hiring Manager formulating follow-up...');
       try {
-        const d = await callGroq([
-          {
-            role: 'system',
-            content: 'You are a Hiring Manager interviewing Balaajee V.R. Ask ONE natural, conversational follow-up question drilling into his previous answer. Return ONLY JSON: {"q":"..."}'
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${groqApiKey}`
           },
-          { role: 'user', content: `Previous question: "${prev}"\nCandidate's previous answer: "${currentDisplayedAnswerPlain}"` }
-        ], 'openai/gpt-oss-20b');
-        const parsed = JSON.parse(d.choices[0].message.content);
-        if (parsed.q) {
-          speakAndAnswerMockQuestion(parsed.q);
-          return;
+          body: JSON.stringify({
+            model: 'qwen/qwen3.8-27b',
+            reasoning_effort: 'none',
+            temperature: 0.4,
+            max_tokens: 90,
+            messages: [
+              {
+                role: 'system',
+                content: '/no_think\nYou are a Hiring Manager interviewing Balaajee V.R. Ask ONE natural, conversational follow-up question drilling into his previous answer. Output ONLY the question text (no quotes, no JSON).'
+              },
+              { role: 'user', content: `Previous question: "${prev}"\nCandidate's previous answer: "${currentDisplayedAnswerPlain}"` }
+            ]
+          })
+        });
+        if (res.ok) {
+          const d = await res.json();
+          const qOut = (d?.choices?.[0]?.message?.content || '').replace(/^["']|["']$/g, '').trim();
+          if (qOut.length > 8) {
+            speakAndAnswerMockQuestion(qOut);
+            return;
+          }
         }
       } catch (e) {}
       speakAndAnswerMockQuestion('That makes sense. How did the team react to that change, and what would you do differently next time?');
