@@ -246,57 +246,27 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      width: 100%;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
     }
 
-    /* WhatsApp-style Live Incoming Interviewer Question Bubble (Fills in as they speak!) */
-    .latest-question-bubble {
-      align-self: flex-start;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 8px;
-      background: #1F2C34;
-      border: 1px solid rgba(56, 189, 248, 0.38);
-      color: #E2E8F0;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.35;
-      padding: 7px 14px;
-      border-radius: 4px 16px 16px 16px;
-      max-width: 92%;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-      transition: all 0.15s ease;
+    /* Smooth downward animation when you finish reading the answer and it moves down into the chat flow! */
+    .latest-turn-card.moving-down-to-chat {
+      transform: translateY(38px) scale(0.97);
+      opacity: 0.25;
     }
 
-    .latest-question-bubble.live-speaking {
-      border-color: var(--accent-rose);
-      background: rgba(244, 63, 94, 0.16);
-      color: #FFFFFF;
-      box-shadow: 0 0 18px rgba(244, 63, 94, 0.25);
-    }
-
-    .latest-question-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--accent-cyan);
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    /* HUGE CURRENT ANSWER BUBBLE — VOICE-SYNCED HANDS-FREE SENTENCES THAT MOVE UP AS YOU SPEAK! */
+    /* 1. TOP: HUGE CURRENT ANSWER BUBBLE (ABOVE THE QUESTION, RIGHT UNDER WEBCAM!) */
     .answer-block {
-      align-self: flex-end;
       width: 100%;
       font-size: var(--prompt-size);
-      line-height: 1.36;
+      line-height: 1.38;
       font-weight: 700;
       color: #FFFFFF;
-      padding: 13px 18px;
-      border-radius: 18px 4px 18px 18px;
-      background: linear-gradient(145deg, rgba(16, 48, 41, 0.92), rgba(11, 31, 28, 0.95));
-      border: 2px solid rgba(251, 191, 36, 0.55);
+      padding: 14px 18px;
+      border-radius: 18px 18px 6px 18px;
+      background: linear-gradient(145deg, rgba(16, 48, 41, 0.94), rgba(11, 31, 28, 0.97));
+      border: 2px solid rgba(251, 191, 36, 0.60);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
       display: flex;
       flex-direction: column;
@@ -304,11 +274,24 @@
       transition: all 0.22s ease;
     }
 
+    .answer-top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6EE7B7;
+      border-bottom: 1px solid rgba(110, 231, 183, 0.18);
+      padding-bottom: 5px;
+      margin-bottom: 2px;
+    }
+
     .voice-sentence {
-      transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-      max-height: 550px;
+      transition: all 0.25s ease;
       opacity: 1;
-      overflow: hidden;
       padding-left: 10px;
       border-left: 4px solid transparent;
       cursor: pointer;
@@ -319,15 +302,10 @@
       color: #FFFFFF;
     }
 
-    /* When you finish speaking a sentence out loud, it smoothly collapses UP so the next sentence moves UP to your camera! */
+    /* Already-read sentences stay visible in place (lightly dimmed with ✓) until the whole answer finishes and moves down to chat! */
     .voice-sentence.spoken-done {
-      max-height: 0px !important;
-      opacity: 0 !important;
-      margin: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      border-left-width: 0 !important;
-      pointer-events: none;
+      border-left-color: var(--accent-emerald);
+      color: rgba(226, 232, 240, 0.62);
     }
 
     .answer-block strong {
@@ -339,6 +317,43 @@
       color: #6EE7B7;
       font-style: normal;
       font-weight: 800;
+    }
+
+    /* 2. BELOW THE ANSWER: LAST / CURRENT QUESTION BUBBLE (Fills in live as interviewer speaks!) */
+    .latest-question-bubble {
+      align-self: flex-start;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      background: #1F2C34;
+      border: 1.5px solid rgba(56, 189, 248, 0.42);
+      color: #F1F5F9;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.38;
+      padding: 9px 15px;
+      border-radius: 6px 16px 16px 16px;
+      width: 100%;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: all 0.15s ease;
+    }
+
+    .latest-question-bubble.live-speaking {
+      border-color: var(--accent-rose);
+      background: rgba(244, 63, 94, 0.18);
+      color: #FFFFFF;
+      box-shadow: 0 0 18px rgba(244, 63, 94, 0.28);
+    }
+
+    .latest-question-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .eye-zone-controls {
@@ -363,16 +378,16 @@
     .teleprompter-nudge-btns {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .btn-nudge {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
       color: #E2E8F0;
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      border: 1px solid rgba(148, 163, 184, 0.30);
       border-radius: 999px;
-      padding: 2px 9px;
-      font-size: 10.5px;
+      padding: 3px 10px;
+      font-size: 11px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -382,14 +397,20 @@
       color: var(--accent-gold);
     }
 
-    /* WHATSAPP-STYLE PREVIOUS Q&A CHAT BUBBLES BELOW */
+    .btn-move-down-chat {
+      background: rgba(16, 185, 129, 0.18);
+      color: #A7F3D0;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+    }
+
+    /* 3. CHAT FLOW BELOW (Completed Answers & Questions move down here as you finish reading!) */
     .chat-history-section {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 6px;
       padding-top: 10px;
-      border-top: 1px dashed rgba(148, 163, 184, 0.22);
+      border-top: 1px dashed rgba(148, 163, 184, 0.25);
     }
 
     .chat-history-header {
@@ -407,52 +428,34 @@
     .chat-history-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+    }
+
+    @keyframes slideDownFromActive {
+      0% { transform: translateY(-18px); opacity: 0.3; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     .chat-turn-pair {
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      padding: 4px 0;
+      gap: 6px;
+      padding: 6px 0;
+      animation: slideDownFromActive 0.28s ease-out;
     }
 
-    /* WhatsApp Incoming Left Bubble (Interviewer) */
-    .bubble-interviewer {
-      align-self: flex-start;
-      background: #1F2C34;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      color: #E2E8F0;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.38;
-      padding: 8px 13px;
-      border-radius: 3px 14px 14px 14px;
-      max-width: 84%;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .bubble-interviewer .b-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--accent-cyan);
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    /* WhatsApp Outgoing Right Bubble (Balaajee's Answer) */
+    /* In the Chat Flow below, Answer is on top and its Question is right below it (matching the active zone!) */
     .bubble-candidate {
       align-self: flex-end;
       background: #005C4B;
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      border: 1px solid rgba(16, 185, 129, 0.38);
       color: #F8FAFC;
-      font-size: 15.5px;
+      font-size: 16.5px;
       font-weight: 600;
       line-height: 1.42;
-      padding: 9px 14px;
-      border-radius: 14px 3px 14px 14px;
-      max-width: 88%;
+      padding: 10px 15px;
+      border-radius: 14px 14px 3px 14px;
+      width: 96%;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }
 
@@ -469,6 +472,29 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .bubble-interviewer {
+      align-self: flex-start;
+      background: #1F2C34;
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #E2E8F0;
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.38;
+      padding: 8px 13px;
+      border-radius: 3px 14px 14px 14px;
+      width: 92%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .bubble-interviewer .b-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      display: block;
       margin-bottom: 3px;
     }
 
@@ -1001,7 +1027,7 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     // 3. STATE & PRE-CONNECTED GROQ 120B + WHISPER TURBO ENGINE
     // =========================================================================
     const STORAGE_KEY_GROQ = 'bvr_groq_api_key';
-    const STORAGE_KEY_DOSSIER = 'bvr_master_dossier_v3';
+    const STORAGE_KEY_DOSSIER = 'bvr_master_dossier_v4';
     const STORAGE_KEY_TARGET_JD = 'bvr_target_job_context';
     const PRELOADED_REV_B64 = 'T1RINTc4cll4SEpxMmk5WUIyVkgzSk5jWUYzYnlkR1dkWTFKbFhBQVRqUFRXY3ZLQVM4bF9rc2c=';
 
@@ -1013,7 +1039,6 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let groqApiKey = (localStorage.getItem(STORAGE_KEY_GROQ) || decodePreloadedKey()).trim();
     let masterDossier = localStorage.getItem(STORAGE_KEY_DOSSIER) || DEFAULT_BALAAJEE_DOSSIER;
     let targetJobContext = localStorage.getItem(STORAGE_KEY_TARGET_JD) || '';
-    let conversationHistory = [];
 
     let activePlaybookId = 'intro';
     let fontSizePx = 28;
@@ -1023,6 +1048,9 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let currentDisplayedAnswerHtml = '';
     let currentAnswerSentencesPlain = [];
     let activeSentenceIdx = 0;
+    let hasCandidateStartedReadingCurrent = false;
+    let currentTurnAlreadyMovedToChat = false;
+    let autoMoveDownTimer = null;
     let activeQuestionText = '';
     let previousInterviewerQuestion = '';
     let candidateSpokenNotes = '';
@@ -1031,8 +1059,12 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let lastAnswerRenderedAt = 0;
     let qaChatHistory = [];
 
-    const READING_SHIELD_MS = 5500; // 5.5s automatic stabilization shield after an answer appears so it NEVER switches 1-2s after you start reading!
-    const INTERVIEWER_PAUSE_MS = 1150; // 1.15s pause so a brief mid-sentence breath by the interviewer doesn't split one question into 2 answers!
+    // Wait 1.85s of genuine silence before ending a question so mid-sentence breaths NEVER cut off a question early!
+    const INTERVIEWER_PAUSE_MS = 1850;
+    // Track live Web Speech segments across the entire current interviewer turn
+    let currentWebSpeechFinalSegments = [];
+    let currentWebSpeechInterim = '';
+    let lastWebSpeechWordAt = 0;
 
     const readingStage = document.getElementById('readingStage');
     const telemetryBar = document.getElementById('telemetryBar');
@@ -1098,10 +1130,11 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     }
 
     // =========================================================================
-    // HANDS-FREE VOICE-SYNCED TELEPROMPTER:
-    // As YOU speak out loud, detects which sentence you are currently reading
-    // and collapses finished sentences UPWARD so the next sentence moves right
-    // up under the camera 100% hands-free!
+    // VOICE READING PROGRESS & DOWNWARD CHAT FLOW:
+    // - Current Answer is ABOVE, Current Question is BELOW.
+    // - As you read out loud, tracks your sentence progress (1/3 -> 2/3 -> 3/3).
+    // - When you finish reading the answer (or click "Move Down"), the completed
+    //   Answer + Question smoothly moves DOWN into the Chat Flow below!
     // =========================================================================
     function setSentenceProgress(newActiveIdx) {
       const nodes = document.querySelectorAll('#activeAnswerBox .voice-sentence');
@@ -1120,26 +1153,77 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         }
       });
       const badge = document.getElementById('shieldBadgeText');
+      const headerStatus = document.getElementById('answerProgressHeader');
+      if (headerStatus) {
+        headerStatus.textContent = `Sentence ${clamped + 1} of ${nodes.length}`;
+      }
       if (badge) {
         badge.textContent =
           clamped > 0
-            ? `🗣️ Voice-Synced: Line ${clamped + 1} of ${nodes.length} moved up to camera as you spoke`
-            : '🗣️ Hands-Free Voice Scroll: Lines move UP automatically as you speak them';
+            ? `🗣️ Reading Sentence ${clamped + 1} of ${nodes.length} • Moves down to chat flow when finished`
+            : '🗣️ Read Answer Above • Moves down into chat flow as you finish reading';
+      }
+    }
+
+    function moveCurrentTurnDownToChat(showReadyPlaceholder = true) {
+      if (autoMoveDownTimer) {
+        clearTimeout(autoMoveDownTimer);
+        autoMoveDownTimer = null;
+      }
+      if (currentTurnAlreadyMovedToChat || !activeQuestionText || !currentDisplayedAnswerHtml) return;
+
+      const card = document.querySelector('#answerStream .latest-turn-card');
+      const commitMove = () => {
+        if (currentTurnAlreadyMovedToChat || !activeQuestionText || !currentDisplayedAnswerHtml) return;
+        const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        qaChatHistory.unshift({
+          turn: qaChatHistory.length + 1,
+          question: activeQuestionText,
+          answerHtml: currentDisplayedAnswerHtml,
+          answerPlain: currentDisplayedAnswerPlain,
+          time: nowStr
+        });
+        currentTurnAlreadyMovedToChat = true;
+        renderChatHistoryBubbles();
+
+        if (showReadyPlaceholder) {
+          answerStream.innerHTML = `
+            <div class="latest-turn-card">
+              <div class="answer-block" id="activeAnswerBox" style="padding: 12px 18px; border-color: rgba(16, 185, 129, 0.45);">
+                <div class="answer-top-header">
+                  <span>✓ ANSWER FINISHED & MOVED DOWN TO CHAT FLOW BELOW</span>
+                  <span>LISTENING FOR NEXT QUESTION</span>
+                </div>
+                <div class="voice-sentence active-reading-line" style="font-size: 21px; color: #A7F3D0;">
+                  Great job! Your answer moved down into the chat flow below. Waiting for the interviewer's next question...
+                </div>
+              </div>
+              <div class="latest-question-bubble" id="liveQuestionBubble">
+                <span class="latest-question-tag" id="liveQuestionTag">🎤 Current / Last Question:</span>
+                <span id="liveQuestionBubbleText">${activeQuestionText}</span>
+              </div>
+            </div>
+          `;
+        }
+      };
+
+      if (card && showReadyPlaceholder) {
+        card.classList.add('moving-down-to-chat');
+        setTimeout(commitMove, 320);
+      } else {
+        commitMove();
       }
     }
 
     function advanceAnswerAsCandidateSpeaks(spokenTranscript) {
-      if (!currentAnswerSentencesPlain || currentAnswerSentencesPlain.length <= 1) return;
+      if (!currentAnswerSentencesPlain || !currentAnswerSentencesPlain.length || currentTurnAlreadyMovedToChat) return;
       const spokenWords = extractContentWords(spokenTranscript);
       if (spokenWords.length < 2) return;
       const spokenSet = new Set(spokenWords);
+      hasCandidateStartedReadingCurrent = true;
 
-      // Check if Balaajee is speaking words from the NEXT sentence (activeSentenceIdx + 1)
-      // OR the second half of the CURRENT sentence (activeSentenceIdx)
       const currIdx = activeSentenceIdx;
-      if (currIdx >= currentAnswerSentencesPlain.length - 1) return;
-
-      const currentSentWords = extractContentWords(currentAnswerSentencesPlain[currIdx]);
+      const currentSentWords = extractContentWords(currentAnswerSentencesPlain[currIdx] || '');
       const secondHalfStart = Math.floor(currentSentWords.length * 0.45);
       const secondHalfWords = currentSentWords.slice(secondHalfStart);
       let secondHalfMatches = 0;
@@ -1147,20 +1231,29 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         if (spokenSet.has(w)) secondHalfMatches++;
       }
 
-      const nextSentWords = extractContentWords(currentAnswerSentencesPlain[currIdx + 1]);
-      let nextSentMatches = 0;
-      for (const w of nextSentWords) {
-        if (spokenSet.has(w)) nextSentMatches++;
-      }
-
-      // If you've spoken at least 2 words from the next sentence OR >=3 words from the back half of the current sentence,
-      // smoothly slide the current sentence UP so the next sentence moves right under the camera!
-      if (nextSentMatches >= 2 || (secondHalfMatches >= 3 && spokenWords.length >= 5)) {
-        setSentenceProgress(currIdx + 1);
+      if (currIdx < currentAnswerSentencesPlain.length - 1) {
+        const nextSentWords = extractContentWords(currentAnswerSentencesPlain[currIdx + 1] || '');
+        let nextSentMatches = 0;
+        for (const w of nextSentWords) {
+          if (spokenSet.has(w)) nextSentMatches++;
+        }
+        if (nextSentMatches >= 2 || (secondHalfMatches >= 2 && spokenWords.length >= 4)) {
+          setSentenceProgress(currIdx + 1);
+        }
+      } else {
+        // Candidate is on the FINAL sentence of the answer!
+        // When they speak into the second half of the final sentence, schedule moving the finished answer DOWN into the chat flow!
+        if (secondHalfMatches >= 2 && !autoMoveDownTimer) {
+          const badge = document.getElementById('shieldBadgeText');
+          if (badge) badge.textContent = '✓ Finishing last sentence • Moving down to chat flow...';
+          autoMoveDownTimer = setTimeout(() => {
+            moveCurrentTurnDownToChat(true);
+          }, 1800);
+        }
       }
     }
 
-    // Updates the WhatsApp Incoming Interviewer Bubble LIVE word-by-word as the interviewer speaks!
+    // Updates the Question Bubble (located BELOW the Current Answer) LIVE word-by-word as the interviewer speaks!
     function updateLiveInterviewerBubble(liveText, isFinal = false) {
       const bubble = document.getElementById('liveQuestionBubble');
       const tag = document.getElementById('liveQuestionTag');
@@ -1173,7 +1266,7 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         textSpan.textContent = liveText;
       } else {
         bubble.classList.remove('live-speaking');
-        if (tag) tag.textContent = '🎤 Interviewer:';
+        if (tag) tag.textContent = '🎤 Current / Last Question:';
         textSpan.textContent = liveText;
       }
     }
@@ -1181,44 +1274,41 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     function isCandidateReadingOwnAnswer(spokenText) {
       if (isReadingLockActive) return true;
       const clean = (spokenText || '').trim();
-      if (!clean || clean.length < 5) return true;
+      if (!clean || clean.length < 4) return true;
 
-      // 0. 5.5-Second Stabilization Shield right after a new answer appears on screen:
-      //    Prevents the answer from suddenly changing 1-2 seconds after you start reading it!
-      if (lastAnswerRenderedAt > 0 && (performance.now() - lastAnswerRenderedAt) < READING_SHIELD_MS) {
-        return true;
-      }
-
-      // 1. If the utterance starts with first-person candidate pronouns ("I ...", "My ...", "We ...", "Honestly, I...")
-      //    it is ALWAYS Balaajee speaking his answer!
-      if (/^(i\b|i'm\b|i’m\b|i've\b|i’ve\b|my\b|in my\b|we\b|our\b|honestly,? i\b|at ibm,? i\b|at zebra,? i\b|at ericsson,? i\b|because i\b)/i.test(clean)) {
-        return true;
-      }
-
-      // 2. If the utterance contains explicit INTERVIEWER question / second-person markers ("you", "your", "tell me", "how", "?")
-      //    and does NOT start with "I / My", it is 100% the INTERVIEWER asking a question!
-      const hasInterviewerQuestionMarker =
-        clean.includes('?') ||
-        /\b(you|your|yours|yourself|tell me|walk me|can you|could you|would you|do you|did you|have you|how|what|why|when|where|who|which|describe|explain|elaborate|share|give|discuss|talk about|go deeper)\b/i.test(clean);
-
-      if (hasInterviewerQuestionMarker && !/\b(i built|i led|i designed|i architected|i scaled|i replaced|i organized|i sat|i coached)\b/i.test(clean)) {
-        return false;
-      }
-
-      // 3. Otherwise, check word overlap against the answer currently displayed on the teleprompter screen
+      // 1. Check word overlap against the answer currently displayed on screen FIRST
+      let answerOverlapMatches = 0;
+      let answerOverlapRatio = 0;
       if (currentDisplayedAnswerPlain && currentDisplayedAnswerPlain.length > 20) {
         const answerWordSet = new Set(extractContentWords(currentDisplayedAnswerPlain));
         const spokenWords = extractContentWords(clean);
         if (spokenWords.length >= 2 && answerWordSet.size > 0) {
-          let matchCount = 0;
           for (const w of spokenWords) {
-            if (answerWordSet.has(w)) matchCount++;
+            if (answerWordSet.has(w)) answerOverlapMatches++;
           }
-          const overlapRatio = matchCount / spokenWords.length;
-          if ((matchCount >= 2 && overlapRatio >= 0.40) || matchCount >= 5) {
+          answerOverlapRatio = answerOverlapMatches / spokenWords.length;
+          if ((answerOverlapMatches >= 2 && answerOverlapRatio >= 0.40) || answerOverlapMatches >= 4) {
             return true;
           }
         }
+      }
+
+      // 2. If the utterance starts with first-person candidate pronouns ("I ...", "My ...", "We ...", "Honestly, I...", "Usually I...")
+      //    and does NOT end with a question mark, it is Balaajee speaking his answer!
+      if (
+        !clean.includes('?') &&
+        /^(i\b|i'm\b|i’m\b|i've\b|i’ve\b|my\b|in my\b|we\b|our\b|honestly\b|usually\b|for me\b|at ibm\b|at zebra\b|at ericsson\b|because i\b|so what i\b|the way i\b)/i.test(clean)
+      ) {
+        return true;
+      }
+
+      // 3. Explicit INTERVIEWER question / second-person markers ("you", "your", "tell me", "how", "?") -> INTERVIEWER!
+      const hasInterviewerQuestionMarker =
+        clean.includes('?') ||
+        /\b(you|your|yours|yourself|tell me|walk me|can you|could you|would you|do you|did you|have you|how|what|why|when|where|who|which|describe|explain|elaborate|share|give|discuss|talk about|go deeper)\b/i.test(clean);
+
+      if (hasInterviewerQuestionMarker) {
+        return false;
       }
 
       return false;
@@ -1252,6 +1342,7 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       });
     }
 
+    // In the Chat Flow below, each completed turn displays the ANSWER on top and its QUESTION right below it!
     function renderChatHistoryBubbles() {
       if (!qaChatHistory.length) {
         chatHistorySection.style.display = 'none';
@@ -1259,25 +1350,24 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         return;
       }
       chatHistorySection.style.display = 'flex';
-      chatHistoryCountLabel.textContent = `💬 WhatsApp Q&A History (${qaChatHistory.length} — Scroll to view)`;
+      chatHistoryCountLabel.textContent = `💬 Completed Q&A Chat Flow (${qaChatHistory.length} — Newest moved down here)`;
       chatHistoryList.innerHTML = qaChatHistory
         .map(
           (item) => `
           <div class="chat-turn-pair">
-            <div class="bubble-interviewer">
-              <span class="b-label">🎤 INTERVIEWER • ${item.time}</span>
-              ${item.question}
-            </div>
             <div class="bubble-candidate">
-              <span class="b-label"><span>🗣️ YOU (BALAAJEE)</span><span>${item.time} ✓✓</span></span>
+              <span class="b-label"><span>🗣️ ANSWER #${item.turn} (SPOKEN)</span><span>${item.time} ✓✓</span></span>
               ${item.answerHtml}
+            </div>
+            <div class="bubble-interviewer">
+              <span class="b-label">🎤 QUESTION #${item.turn} • ${item.time}</span>
+              ${item.question}
             </div>
           </div>`
         )
         .join('');
     }
 
-    // Splits a block/paragraph into discrete sentences so each sentence can move up as you speak it!
     function splitIntoSpokenSentences(blocksArray) {
       const rawList = [];
       for (const b of (blocksArray || [])) {
@@ -1290,16 +1380,22 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       return rawList.length ? rawList : [String((blocksArray || [])[0] || '')];
     }
 
-    function renderBlocksToScreen(blocks, trackAsCurrentAnswer = true, questionLabel = '') {
+    function renderBlocksToScreen(blocks, trackAsCurrentAnswer = true, questionLabel = '', isStitchedContinuation = false) {
       renderHotkeys();
+      if (autoMoveDownTimer) {
+        clearTimeout(autoMoveDownTimer);
+        autoMoveDownTimer = null;
+      }
 
-      // Push the previous completed Q&A turn into the WhatsApp Chat Bubble thread below!
-      if (trackAsCurrentAnswer && activeQuestionText && currentDisplayedAnswerHtml) {
+      // If this is a brand-new question (not stitching a 2nd sentence onto the current question),
+      // move the previous Answer + Question DOWN into the Chat Flow below!
+      if (trackAsCurrentAnswer && !isStitchedContinuation && !currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
         const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         qaChatHistory.unshift({
           turn: qaChatHistory.length + 1,
           question: activeQuestionText,
           answerHtml: currentDisplayedAnswerHtml,
+          answerPlain: currentDisplayedAnswerPlain,
           time: nowStr
         });
         renderChatHistoryBubbles();
@@ -1308,13 +1404,15 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       const sentenceList = splitIntoSpokenSentences(blocks);
       currentAnswerSentencesPlain = sentenceList.map((s) => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
       activeSentenceIdx = 0;
+      hasCandidateStartedReadingCurrent = false;
+      currentTurnAlreadyMovedToChat = false;
 
       const formattedSentencesHtml = sentenceList
         .map((line, idx) => {
           const cleanLine = String(line || '')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/\*(.*?)\*/g, '<em>$1</em>');
-          return `<div class="voice-sentence ${idx === 0 ? 'active-reading-line' : ''}" data-sidx="${idx}" title="Click to jump to this line">${cleanLine}</div>`;
+          return `<div class="voice-sentence ${idx === 0 ? 'active-reading-line' : ''}" data-sidx="${idx}" title="Click to highlight this line">${cleanLine}</div>`;
         })
         .join('');
 
@@ -1332,20 +1430,29 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
       void answerStream.offsetWidth;
       answerStream.classList.add('fresh-update');
 
+      // EXACT LAYOUT REQUESTED:
+      // 1) TOP (Right under webcam): CURRENT ANSWER
+      // 2) BELOW CURRENT ANSWER: LAST / CURRENT QUESTION
       answerStream.innerHTML = `
         <div class="latest-turn-card">
-          <div class="latest-question-bubble" id="liveQuestionBubble">
-            <span class="latest-question-tag" id="liveQuestionTag">🎤 Interviewer:</span>
-            <span id="liveQuestionBubbleText">${displayQuestion}</span>
-          </div>
-          <div class="answer-block active-block" id="activeAnswerBox">${formattedSentencesHtml}</div>
-          <div class="eye-zone-controls">
-            <span class="shield-badge" id="shieldBadgeText">🗣️ Hands-Free Voice Scroll: Lines move UP automatically as you speak them</span>
-            <div class="teleprompter-nudge-btns">
-              <button type="button" class="btn-nudge" id="btnPrevSent" title="Bring back previous sentence (Arrow Up)">↑ Prev Line</button>
-              <button type="button" class="btn-nudge" id="btnNextSent" title="Move next sentence up to camera (Arrow Down)">↓ Next Line</button>
-              <button type="button" class="btn-nudge" id="btnResetSent" title="Show all lines of current answer">↺ Show All</button>
+          <div class="answer-block active-block" id="activeAnswerBox">
+            <div class="answer-top-header">
+              <span>🗣️ CURRENT ANSWER (EVERYDAY SPOKEN ENGLISH)</span>
+              <span id="answerProgressHeader">Sentence 1 of ${sentenceList.length}</span>
             </div>
+            ${formattedSentencesHtml}
+          </div>
+
+          <div class="eye-zone-controls">
+            <span class="shield-badge" id="shieldBadgeText">🗣️ Read Answer Above • Moves down into chat flow as you finish reading</span>
+            <div class="teleprompter-nudge-btns">
+              <button type="button" class="btn-nudge btn-move-down-chat" id="btnMoveDownToChat" title="Finished reading? Move this Answer & Question down into the Chat Flow below (Arrow Down)">✓ Done Reading • Move Down ↓</button>
+            </div>
+          </div>
+
+          <div class="latest-question-bubble" id="liveQuestionBubble">
+            <span class="latest-question-tag" id="liveQuestionTag">🎤 Current / Last Question:</span>
+            <span id="liveQuestionBubbleText">${displayQuestion}</span>
           </div>
         </div>
       `;
@@ -1357,12 +1464,10 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         });
       });
 
-      const btnPrev = document.getElementById('btnPrevSent');
-      const btnNext = document.getElementById('btnNextSent');
-      const btnReset = document.getElementById('btnResetSent');
-      if (btnPrev) btnPrev.addEventListener('click', () => setSentenceProgress(activeSentenceIdx - 1));
-      if (btnNext) btnNext.addEventListener('click', () => setSentenceProgress(activeSentenceIdx + 1));
-      if (btnReset) btnReset.addEventListener('click', () => setSentenceProgress(0));
+      const btnMoveDown = document.getElementById('btnMoveDownToChat');
+      if (btnMoveDown) {
+        btnMoveDown.addEventListener('click', () => moveCurrentTurnDownToChat(true));
+      }
 
       if (trackAsCurrentAnswer && blocks && blocks.length) {
         currentDisplayedAnswerPlain = currentAnswerSentencesPlain.join(' ');
@@ -1375,24 +1480,55 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
 
     function pickFallbackAnswerForQuestion(qText) {
       const q = (qText || '').toLowerCase();
-      if (/carbon|token|design system|figma/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'ibm-carbon').blocks;
-      if (/ericsson|cpq|excel|5g|quote/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'ericsson-cpq').blocks;
-      if (/zebra|handheld|iot|glove|warehouse/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'zebra-iot').blocks;
-      if (/wabco|truck|cockpit|driver|glance/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'zf-wabco').blocks;
-      if (/pushback|conflict|engineer|disagree|deadline/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'conflict-pushback').blocks;
-      if (/team|scale|hire|retention|mentor|manage|underperform|struggl/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'org-scaling').blocks;
-      if (/roi|metric|business|impact|measure/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'roi-metrics').blocks;
-      if (/ai|agent|watson|hallucinat|confidence|trust|workflow/i.test(q)) return PLAYBOOKS.find((p) => p.id === 'ibm-ai').blocks;
-      return PLAYBOOKS[0].blocks;
+      if (/carbon|token|design system|figma/i.test(q)) {
+        return [
+          'Honestly, the biggest headache with design systems across large teams is when developers hardcode colors and spacing because the handoff takes too long.',
+          'What worked really well for us at IBM was setting up shared <strong>design tokens</strong> that sync straight from Figma into the code repository.',
+          'That way, when we update a component in Figma, engineers get it automatically without weeks of manual rework.'
+        ];
+      }
+      if (/ericsson|cpq|excel|5g|quote/i.test(q)) {
+        return [
+          'When I was at Ericsson, the sales teams were using a massive <strong>14-tab Excel spreadsheet</strong> to price 5G deals, and a single quote took almost a week.',
+          'Instead of forcing them to learn a slow form wizard, I designed a fast <strong>web tool</strong> that kept the keyboard shortcuts they loved but checked for pricing errors automatically.',
+          'They were able to finish quotes in about <strong>40 minutes instead of 6 days</strong>, and mistakes dropped to zero.'
+        ];
+      }
+      if (/zebra|handheld|iot|glove|warehouse/i.test(q)) {
+        return [
+          'At Zebra, we noticed warehouse workers were struggling with our handheld screens because they were wearing thick <strong>freezer gloves</strong> all shift.',
+          'We went out to the warehouses, watched how they held the devices, and moved all the key actions into big buttons right where their thumb naturally rests.',
+          'We also replaced typing with a quick <strong>one-scan barcode pairing</strong>, which stopped almost all their connection complaints.'
+        ];
+      }
+      if (/pushback|conflict|engineer|disagree|deadline/i.test(q)) {
+        return [
+          'Whenever engineering pushes back because of tight deadlines, I don’t try to force a heavy design into the sprint.',
+          'Because I started out as a developer myself, I like to sit down with the lead engineer for half an hour and see what data we <strong>already have in the backend today</strong>.',
+          'Then we ship a simple <strong>version one</strong> on time using existing APIs, and save the heavier features for the next release.'
+        ];
+      }
+      if (/team|scale|hire|retention|mentor|manage|underperform|struggl/i.test(q)) {
+        return [
+          'When a designer on my team is struggling, it’s usually because they’re jumping straight into Figma screens before really understanding the problem.',
+          'I like to sit down with them one-on-one and have them write a simple <strong>half-page summary</strong> of the user goal and technical limits before drawing anything.',
+          'Giving them that structure—and pairing them closely with an engineer—always builds their confidence fast and keeps our team retention at <strong>100%</strong>.'
+        ];
+      }
+      return [
+        'In my day-to-day work leading product design across teams at <strong>IBM, Zebra, and Ericsson</strong>, I always focus on making complex tools feel simple and human.',
+        'I like to get designers, PMs, and engineers talking early on a whiteboard so we solve the real user problem before worrying about pixel polish.',
+        'That practical, collaborative approach is how we consistently ship faster and keep the whole team energized.'
+      ];
     }
 
     // =========================================================================
-    // 4. GROQ 120B ANSWER GENERATOR — REAL HUMAN VOICE, REAL STORIES, ZERO FLUFF
+    // 4. GROQ 120B ANSWER GENERATOR — EVERYDAY REGULAR SPOKEN ENGLISH + FULL CONTEXT
     // =========================================================================
     async function callGroq(messages, modelName = 'openai/gpt-oss-120b') {
       const payload = {
         model: modelName,
-        temperature: 0.3,
+        temperature: 0.45,
         max_tokens: 700,
         response_format: { type: 'json_object' },
         messages
@@ -1418,57 +1554,124 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
 
     function recordCandidateSpokenMemory(spokenChunk) {
       const text = (spokenChunk || '').trim();
-      if (!text || text.length < 6) return;
+      if (!text || text.length < 5) return;
       if (!candidateSpokenNotes.includes(text)) {
         candidateSpokenNotes = ((candidateSpokenNotes ? candidateSpokenNotes + ' ' : '') + text).slice(-450);
       }
-      // Also advance the on-screen sentences upward as Balaajee speaks!
       advanceAnswerAsCandidateSpeaks(text);
     }
 
+    // Combines Whisper's audio transcription with Chrome Web Speech's live transcript
+    // so if the interviewer spoke a long multi-sentence question, ZERO words from the beginning or end are lost!
+    function mergeWhisperAndWebSpeech(whisperText, webSpeechText) {
+      const w = (whisperText || '').trim();
+      const s = (webSpeechText || '').trim();
+      if (!w) return s;
+      if (!s) return w;
+
+      const wLower = w.toLowerCase();
+      const sLower = s.toLowerCase();
+
+      // If one already contains the other, return the longer complete one
+      if (wLower.includes(sLower)) return w;
+      if (sLower.includes(wLower)) return s;
+
+      // Check if Web Speech caught an opening sentence before Whisper's buffer started
+      const wWords = wLower.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
+      const sWords = sLower.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
+      if (sWords.length > wWords.length + 4) {
+        return s;
+      }
+      if (wWords.length >= sWords.length) {
+        return w;
+      }
+      return w.length >= s.length ? w : s;
+    }
+
     async function processLiveInterviewerQuestion(rawText, isManualInput = false) {
-      const clean = (rawText || '').trim();
+      let clean = (rawText || '').trim();
       if (!clean || clean.length < 3) return;
 
-      // If this came from live voice (not manual typing/button) and matches Balaajee reading/speaking his own answer:
-      // 1) Advance the current sentence upward hands-free, 2) Save to follow-up memory, 3) Never overwrite the answer!
+      // 1. If this came from live voice and matches YOU reading your own answer out loud:
+      //    Advance reading progress / move down to chat when done, and NEVER overwrite the answer!
       if (!isManualInput && isCandidateReadingOwnAnswer(clean)) {
         recordCandidateSpokenMemory(clean);
-        setTelemetryState('ready', '🗣️ Voice-Synced Reading Active • Sentences move up as you speak');
+        setTelemetryState('ready', '🗣️ Reading Active • Answer moves down to chat flow when you finish');
         return;
       }
 
-      // Immediately show the question inside the live WhatsApp bubble!
-      updateLiveInterviewerBubble(clean, false);
+      // 2. MULTI-PART QUESTION CONTINUATION STITCHING:
+      //    What if the interviewer spoke Part 1 of a question, paused for 2 seconds (triggering an answer),
+      //    and then immediately spoke Part 2 of the question before you even started reading?
+      //    We stitch Part 1 + Part 2 into ONE complete question so the AI understands 100% of the question!
+      const msSinceLastAnswer = performance.now() - lastAnswerRenderedAt;
+      let isStitchedContinuation = false;
+      if (
+        !isManualInput &&
+        activeQuestionText &&
+        activeQuestionText !== 'Waiting for interviewer to speak...' &&
+        !hasCandidateStartedReadingCurrent &&
+        !currentTurnAlreadyMovedToChat &&
+        msSinceLastAnswer > 0 &&
+        msSinceLastAnswer < 9500 &&
+        !activeQuestionText.toLowerCase().includes(clean.toLowerCase())
+      ) {
+        clean = `${activeQuestionText.replace(/\.*$/, '')}. ${clean}`;
+        isStitchedContinuation = true;
+      }
+
+      // Reset Web Speech accumulator for the next turn
+      currentWebSpeechFinalSegments = [];
+      currentWebSpeechInterim = '';
+
+      // Show the full question in the Question Bubble (below the answer)
+      updateLiveInterviewerBubble(clean, true);
       questionInput.value = clean;
       pauseProgressFill.style.width = '0%';
-      setTelemetryState('thinking', '🧠 Crafting real, story-grounded answer...');
+      setTelemetryState(
+        'thinking',
+        isStitchedContinuation
+          ? '🧠 Full multi-part question captured • Updating answer...'
+          : '🧠 Crafting everyday spoken English answer...'
+      );
 
       const reqId = ++liveRequestCounter;
       const t0 = performance.now();
 
       try {
-        const sysPrompt = `You are Balaajee V.R. (Senior UI/UX Design Manager, 18+ yrs at IBM Software Labs, Zebra Technologies, ZF Wabco, Ericsson Global, Infosys) speaking live in an interview.
-Write a natural, conversational, REAL human first-person ("I...") answer to the interviewer's exact question below.
+        // Build multi-turn conversation history so the AI understands the full interview context AND never repeats itself!
+        const recentTurnsText = qaChatHistory
+          .slice(0, 4)
+          .map((t, i) => `Turn -${i + 1}:\n  Interviewer asked: "${t.question}"\n  You already answered: "${t.answerPlain || ''}"`)
+          .join('\n\n');
 
-BALAAJEE'S REAL STORIES & WORKFLOWS:
-${targetJobContext ? `TARGET ROLE: ${targetJobContext}\n` : ''}${masterDossier}
+        const sysPrompt = `You are helping Balaajee V.R. (Senior UI/UX Design Manager, 18+ years experience across IBM, Zebra, Ericsson, ZF Wabco, Infosys) answer a live interview question out loud.
 
-PREVIOUS TURN FOLLOW-UP MEMORY (Use ONLY if the interviewer's new question is a follow-up referring to Balaajee's previous answer, e.g. "Can you elaborate on that?", "How did you measure that?". If it's a new topic, ignore this):
-- Previous Question: "${previousInterviewerQuestion || 'None'}"
-- Previous Answer: "${currentDisplayedAnswerPlain || 'None'}"
-- Extra Spoken Details: "${candidateSpokenNotes || 'Same as above'}"
+CRITICAL LANGUAGE RULE — WRITE IN EVERYDAY REGULAR SPOKEN ENGLISH:
+1. Write the exact way a real, warm, down-to-earth person talks out loud in a casual conversation—NOT written essay language, NOT stiff resume language, and NOT corporate buzzwords!
+2. Use simple, everyday words and natural spoken contractions ("I'm", "don't", "we've", "it's", "that's", "usually", "honestly", "the way I handle that is...").
+3. Keep sentences short and easy to say in one breath (3 sentences total, around 14 to 20 words per sentence).
+4. Directly answer the EXACT question the interviewer asked! Understand the full context of their question.
 
-STRICT REALISM & ANTI-VAGUENESS RULES:
-1. NEVER write vague, generic AI corporate fluff (e.g., NEVER say "I mapped engineering constraints to user-impact metrics" or "I prototyped a progressive-enhancement fallback").
-2. NEVER invent fake statistics (like "lifted delivery speed by 45%" or "kept error rate 30% lower"). Use ONLY Balaajee's real stories, real tools (NotebookLM, Google Stitch, Claude, Cursor, Figma, watsonx), real companies (IBM, Zebra, Ericsson, ZF Wabco, Infosys), and real metrics from the dossier above!
-3. Sound like a warm, senior human leader talking naturally across a table (e.g., "Because I started my career as a software engineer at Infosys, when Engineering pushed back at IBM...", "In my daily workflow, I use NotebookLM and Google Stitch...").
-4. Return a "sentences" array with 2 or 3 crisp spoken sentences (18–25 words per sentence) so each sentence moves up cleanly as Balaajee speaks it. Highlight 1–2 key phrases per sentence in <strong>...</strong> tags.
-Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real company/context)...", "Sentence 2 (what I specifically did)...", "Sentence 3 (concrete real result)..."]}`;
+CRITICAL ANTI-REPETITION RULE:
+- Look at "PREVIOUS ANSWERS ALREADY GIVEN IN THIS INTERVIEW" below.
+- NEVER repeat the same story, company example, or numbers that you already used in a previous turn!
+- If the interviewer asks a general question (about how you work, ambiguity, collaboration, design process, AI, research, prioritization, etc.), explain how you actually work day-to-day in plain spoken English WITHOUT forcing the same resume metrics into every answer.
+- Only bring up a specific company story if it genuinely fits the question AND hasn't been repeated in recent turns.
+
+FULL CONVERSATION CONTEXT (Use this to understand follow-up questions AND to avoid repeating anything you already said):
+${recentTurnsText || 'This is the first question of the interview.'}
+${!isStitchedContinuation && previousInterviewerQuestion ? `\nMost Recent Question: "${previousInterviewerQuestion}"\nMost Recent Answer: "${currentDisplayedAnswerPlain}"\nExtra Spoken Notes: "${candidateSpokenNotes || 'None'}"` : ''}
+
+BACKGROUND REFERENCE (Use lightly only when relevant—never recite like a written resume):
+${targetJobContext ? `Target Role: ${targetJobContext}\n` : ''}${masterDossier}
+
+Highlight 1–2 key phrases per sentence in <strong>...</strong> tags so it's easy to glance at.
+Return ONLY valid JSON: {"sentences": ["Sentence 1 in simple everyday spoken English...", "Sentence 2 in simple everyday spoken English...", "Sentence 3 in simple everyday spoken English..."]}`;
 
         const messages = [
           { role: 'system', content: sysPrompt },
-          { role: 'user', content: `Interviewer Question: "${clean}"` }
+          { role: 'user', content: `Complete Interviewer Question: "${clean}"` }
         ];
 
         const data = await callGroq(messages);
@@ -1494,13 +1697,13 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         questionInput.value = clean;
         previousInterviewerQuestion = clean;
         candidateSpokenNotes = '';
-        renderBlocksToScreen(sentencesOut, true, clean);
+        renderBlocksToScreen(sentencesOut, true, clean, isStitchedContinuation);
         setTelemetryState(
           'ready',
           isTabSpeakerOnlyMode
             ? `🟢 Answer Ready (${ms}ms) • Speaker-Only Mode (Mic OFF)`
             : isMicActive
-              ? `🟢 Answer Ready (${ms}ms) • Speak naturally — lines move up as you read!`
+              ? `🟢 Answer Ready (${ms}ms) • Read top answer — moves down to chat when finished`
               : `🟢 Answer Ready (${ms}ms)`
         );
       } catch (e) {
@@ -1508,13 +1711,13 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         const fallback = pickFallbackAnswerForQuestion(clean);
         previousInterviewerQuestion = clean;
         candidateSpokenNotes = '';
-        renderBlocksToScreen(fallback, true, clean);
+        renderBlocksToScreen(fallback, true, clean, isStitchedContinuation);
         setTelemetryState('ready', isMicActive ? '🟢 Answer Ready • Listening...' : '🟢 Answer Ready');
       }
     }
 
     // =========================================================================
-    // 5. NEVER-STUCK AUTO-VOICE CAPTURE + LIVE BUBBLE STREAMING + VOICE SCROLL
+    // 5. FULL-QUESTION VOICE CAPTURE (NEVER CUTS OFF OR PROCESSES PARTIAL QUESTIONS)
     // =========================================================================
     let isMicActive = false;
     let micStream = null;
@@ -1633,17 +1836,22 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
     async function sendPcmSamplesToGroqWhisper(samples16k, isManualForce = false) {
       if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.35) return;
 
-      if (!isManualForce && lastAnswerRenderedAt > 0 && (performance.now() - lastAnswerRenderedAt) < READING_SHIELD_MS) {
-        return;
-      }
-
       if (isTranscribingWhisper) {
-        pendingWhisperSamples = samples16k;
+        // Concatenate with any pending samples so we NEVER drop the first half of a question!
+        if (pendingWhisperSamples) {
+          const joined = new Float32Array(pendingWhisperSamples.length + samples16k.length);
+          joined.set(pendingWhisperSamples, 0);
+          joined.set(samples16k, pendingWhisperSamples.length);
+          pendingWhisperSamples = joined;
+        } else {
+          pendingWhisperSamples = samples16k;
+        }
         return;
       }
 
       isTranscribingWhisper = true;
-      setTelemetryState('thinking', '⚡ Transcribing interviewer question...');
+      const webSpeechSnapshot = [...currentWebSpeechFinalSegments, currentWebSpeechInterim].join(' ').replace(/\s+/g, ' ').trim();
+      setTelemetryState('thinking', '⚡ Transcribing full question...');
 
       let transcribedQuestion = '';
       try {
@@ -1664,11 +1872,16 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
           const whisperText = (data.text || '').replace(/\[.*?\]|\(.*?\)/g, '').trim();
           const isHallucination = /^(thank you\.?|thanks for watching\.?|you\.?|bye\.?|okay\.?|subtitles.*|\.+)$/i.test(whisperText);
 
-          if (whisperText && whisperText.length > 4 && !isHallucination) {
-            transcribedQuestion = whisperText;
+          if (whisperText && whisperText.length > 3 && !isHallucination) {
+            transcribedQuestion = mergeWhisperAndWebSpeech(whisperText, webSpeechSnapshot);
+          } else if (webSpeechSnapshot.length > 6) {
+            transcribedQuestion = webSpeechSnapshot;
           }
         }
       } catch (err) {
+        if (webSpeechSnapshot.length > 6) {
+          transcribedQuestion = webSpeechSnapshot;
+        }
       } finally {
         isTranscribingWhisper = false;
       }
@@ -1676,13 +1889,17 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
       if (pendingWhisperSamples) {
         const nextSamples = pendingWhisperSamples;
         pendingWhisperSamples = null;
-        sendPcmSamplesToGroqWhisper(nextSamples, isManualForce);
+        // Combine current transcribed text with the next audio chunk by prepending samples!
+        const combinedSamples = new Float32Array(samples16k.length + nextSamples.length);
+        combinedSamples.set(samples16k, 0);
+        combinedSamples.set(nextSamples, samples16k.length);
+        sendPcmSamplesToGroqWhisper(combinedSamples, isManualForce);
         return;
       }
 
       if (transcribedQuestion) {
         const now = performance.now();
-        if (isManualForce || transcribedQuestion !== lastProcessedQuestion || now - lastTranscriptTime > 3000) {
+        if (isManualForce || transcribedQuestion !== lastProcessedQuestion || now - lastTranscriptTime > 2500) {
           lastProcessedQuestion = transcribedQuestion;
           lastTranscriptTime = now;
           processLiveInterviewerQuestion(transcribedQuestion, isManualForce);
@@ -1707,15 +1924,15 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         off += c.length;
       }
       speechPcm16k = [];
-      if (rollingPcm16k.length > TARGET_SAMPLE_RATE * 0.4) {
-        rollingPcm16k = rollingPcm16k.slice(rollingPcm16k.length - Math.round(TARGET_SAMPLE_RATE * 0.4));
+      if (rollingPcm16k.length > TARGET_SAMPLE_RATE * 0.6) {
+        rollingPcm16k = rollingPcm16k.slice(rollingPcm16k.length - Math.round(TARGET_SAMPLE_RATE * 0.6));
       }
       sendPcmSamplesToGroqWhisper(merged, false);
     }
 
     // Parallel Web Speech API:
-    // 1) When the INTERVIEWER speaks -> fills in the WhatsApp Question Bubble LIVE word-by-word!
-    // 2) When YOU (Balaajee) speak -> advances the current Answer sentences UPWARD hands-free as you read!
+    // Accumulates ALL sentences of the current interviewer turn (never throws away earlier sentences!)
+    // and keeps the VAD timer alive while words are still being recognized!
     function startParallelWebSpeech() {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SR) return;
@@ -1726,15 +1943,41 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         webSpeechRec.lang = 'en-US';
         webSpeechRec.onresult = (event) => {
           if (isReadingLockActive) return;
+          lastWebSpeechWordAt = performance.now();
+          // Keep silence timer refreshed while live words are actively arriving!
+          if (isSpeakingNow && silenceStartedAt > 0) {
+            silenceStartedAt = performance.now();
+          }
+
           const latest = event.results[event.results.length - 1];
-          const clean = (latest?.[0]?.transcript || '').trim();
-          if (clean.length > 2) {
-            if (isCandidateReadingOwnAnswer(clean)) {
-              recordCandidateSpokenMemory(clean);
-              return;
+          const latestChunk = (latest?.[0]?.transcript || '').trim();
+          if (latestChunk.length > 2 && isCandidateReadingOwnAnswer(latestChunk)) {
+            recordCandidateSpokenMemory(latestChunk);
+            return;
+          }
+
+          // Build the full accumulated question across all non-candidate segments in this turn
+          let interim = '';
+          const finals = [];
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            const seg = (event.results[i]?.[0]?.transcript || '').trim();
+            if (!seg) continue;
+            if (event.results[i].isFinal) {
+              if (!isCandidateReadingOwnAnswer(seg)) {
+                currentWebSpeechFinalSegments.push(seg);
+              }
+            } else {
+              interim += (interim ? ' ' : '') + seg;
             }
-            // Live word-by-word streaming inside the WhatsApp Incoming Question Bubble as the interviewer speaks!
-            updateLiveInterviewerBubble(clean, false);
+          }
+          currentWebSpeechInterim = interim;
+          const fullLiveQuestion = [...currentWebSpeechFinalSegments, currentWebSpeechInterim]
+            .join(' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+          if (fullLiveQuestion.length > 2) {
+            updateLiveInterviewerBubble(fullLiveQuestion, false);
           }
         };
         webSpeechRec.onend = () => {
@@ -1758,7 +2001,7 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
       } else {
         btnToggleMic.classList.add('active');
         micLabel.textContent = 'Stop Listening';
-        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Speak or play phone voice now...`;
+        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Captures full multi-sentence questions automatically`;
         setTelemetryState('ready', `🟢 Listening on [${activeMicName}]`);
       }
 
@@ -1766,7 +2009,7 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
       const source = micAudioCtx.createMediaStreamSource(micStream);
       micProcessor = micAudioCtx.createScriptProcessor(2048, 1, 1);
 
-      const maxRollingSamples = TARGET_SAMPLE_RATE * 8; // 8 seconds
+      const maxRollingSamples = TARGET_SAMPLE_RATE * 15; // 15 seconds rolling buffer
       rollingPcm16k = new Float32Array(0);
       speechPcm16k = [];
       isSpeakingNow = false;
@@ -1778,7 +2021,7 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         const rawInput = e.inputBuffer.getChannelData(0);
         const chunk16k = downsampleTo16k(rawInput, micAudioCtx.sampleRate);
 
-        // Append to rolling 8s buffer
+        // Append to rolling 15s buffer
         const combined = new Float32Array(Math.min(maxRollingSamples, rollingPcm16k.length + chunk16k.length));
         const keepOld = combined.length - chunk16k.length;
         if (keepOld > 0) {
@@ -1798,16 +2041,10 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
 
         const now = performance.now();
 
-        // While inside the 5.5s Reading Stabilization Shield right after an answer renders, do not start new auto-VAD capture!
-        if (lastAnswerRenderedAt > 0 && (now - lastAnswerRenderedAt) < READING_SHIELD_MS) {
-          isSpeakingNow = false;
-          speechPcm16k = [];
-          pauseProgressFill.style.width = '0%';
-          return;
-        }
-
-        const startThreshold = Math.max(0.0028, Math.min(0.025, ambientRms * 1.75));
-        const stopThreshold = Math.min(0.012, Math.max(0.0022, ambientRms * 1.40, utterancePeakRms * 0.12));
+        // Phone-speaker friendly thresholds: NEVER use utterancePeakRms to raise stopThreshold,
+        // so softer words in the middle of a phone question are NEVER mistaken for silence!
+        const startThreshold = Math.max(0.0025, Math.min(0.016, ambientRms * 1.65));
+        const stopThreshold = Math.max(0.0018, Math.min(0.0085, ambientRms * 1.25));
 
         const isActiveVoiceFrame = isSpeakingNow ? rms >= stopThreshold : rms > startThreshold;
 
@@ -1816,7 +2053,8 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
             isSpeakingNow = true;
             speechStartedAt = now;
             utterancePeakRms = rms;
-            const preRollSamples = Math.min(rollingPcm16k.length, Math.round(TARGET_SAMPLE_RATE * 0.65));
+            // Include 1.4s of pre-roll audio so the very first words of the question are NEVER clipped!
+            const preRollSamples = Math.min(rollingPcm16k.length, Math.round(TARGET_SAMPLE_RATE * 1.4));
             speechPcm16k = [rollingPcm16k.slice(rollingPcm16k.length - preRollSamples)];
           } else {
             speechPcm16k.push(chunk16k);
@@ -1825,11 +2063,11 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
           silenceStartedAt = 0;
           pauseProgressFill.style.width = '0%';
           const sec = ((now - speechStartedAt) / 1000).toFixed(1);
-          setTelemetryState('hearing', `🔴 Hearing Question (${sec}s) — Answers when interviewer pauses`);
+          setTelemetryState('hearing', `🔴 Recording Full Question (${sec}s) — Answers when interviewer finishes speaking`);
 
-          // Auto-flush if continuous speech reaches 7.5 seconds so it NEVER gets stuck listening!
-          if (now - speechStartedAt >= 7500) {
-            ambientRms = Math.min(0.010, rms * 0.70);
+          // Allow long multi-sentence questions up to 24 seconds (never cut off at 7.5s!)
+          if (now - speechStartedAt >= 24000) {
+            ambientRms = Math.min(0.008, rms * 0.65);
             flushActiveSpeechToWhisper();
           }
         } else {
@@ -1840,10 +2078,10 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
             const pct = Math.min(100, Math.round((silenceMs / INTERVIEWER_PAUSE_MS) * 100));
             pauseProgressFill.style.width = pct + '%';
 
-            // 1.15s pause after >= 0.40s of voice -> AUTO-COMPLETE & ANSWER ONCE!
+            // Wait for a genuine 1.85s end-of-question pause so multi-sentence questions stay in ONE complete recording!
             if (silenceMs >= INTERVIEWER_PAUSE_MS) {
-              ambientRms = ambientRms * 0.8 + rms * 0.2;
-              if (now - speechStartedAt >= 400) {
+              ambientRms = ambientRms * 0.85 + rms * 0.15;
+              if (now - speechStartedAt >= 450) {
                 flushActiveSpeechToWhisper();
               } else {
                 isSpeakingNow = false;
@@ -1855,7 +2093,7 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
               }
             }
           } else {
-            ambientRms = ambientRms * 0.93 + rms * 0.07;
+            ambientRms = ambientRms * 0.94 + rms * 0.06;
           }
         }
       };
@@ -1875,13 +2113,11 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
           btnHeadphoneMode.classList.remove('active');
           headphoneLabel.textContent = 'Interviewer Speaker Only (Tab)';
         }
-        // 1. Unlock permission & device labels
         const initialStream = await navigator.mediaDevices.getUserMedia({
           audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: true }
         });
         await populateMicDevices();
 
-        // 2. If default device was Bluetooth earbuds (e.g. Airdopes), automatically switch to MacBook Pro Built-in Mic!
         let chosenStream = initialStream;
         const initialLabel = initialStream.getAudioTracks()[0]?.label || '';
         if (selectedMicDeviceId && !/macbook|built-in|internal|fake/i.test(initialLabel)) {
@@ -1931,14 +2167,16 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
       }
     });
 
-    // "⚡ Answer Last 6s Now (Enter)" — Unconditionally transcribes the last 6 seconds from the rolling buffer!
+    // "⚡ Answer Now (Enter)" — Transcribes the entire active speech or last 12 seconds of rolling audio!
     btnForceAnswerNow.addEventListener('click', () => {
-      if (isMicActive && rollingPcm16k.length > TARGET_SAMPLE_RATE * 0.5) {
+      if (isMicActive && speechPcm16k.length > 0) {
+        flushActiveSpeechToWhisper();
+      } else if (isMicActive && rollingPcm16k.length > TARGET_SAMPLE_RATE * 0.5) {
         isSpeakingNow = false;
         speechPcm16k = [];
         pauseProgressFill.style.width = '0%';
-        const last6s = rollingPcm16k.slice(Math.max(0, rollingPcm16k.length - TARGET_SAMPLE_RATE * 6));
-        sendPcmSamplesToGroqWhisper(last6s, true);
+        const last12s = rollingPcm16k.slice(Math.max(0, rollingPcm16k.length - TARGET_SAMPLE_RATE * 12));
+        sendPcmSamplesToGroqWhisper(last12s, true);
       } else if (questionInput.value.trim().length > 2) {
         processLiveInterviewerQuestion(questionInput.value.trim(), true);
       }
@@ -1961,7 +2199,6 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         return;
       }
       try {
-        // First shut off any active physical microphone so your voice is 100% ignored!
         stopLiveMicrophone();
 
         const stream = await navigator.mediaDevices.getDisplayMedia({
@@ -1988,13 +2225,13 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
     // 7. 1-CLICK SPOKEN AI HIRING MANAGER
     // =========================================================================
     const MOCK_QUESTIONS = [
-      'Walk me through how you scaled 14+ designers into a UX-as-a-Service organization at IBM and Zebra while keeping 100% retention.',
-      'At IBM Software Labs, enterprise architects often distrust generative AI. How did your 3-tier confidence gating and blast-radius preview work?',
-      'Tell me about a time Engineering pushed back against your UX design because of tight sprint deadlines. How did you resolve it?',
-      'At Ericsson Global, how did you replace a 14-tab Excel workbook across 45 countries and cut quote turnaround from 6 days to 42 minutes?',
-      'Tell me about a time a designer on your team was underperforming. How did you coach them and turn that around?',
-      'At Zebra Technologies, how did field research in cold-storage warehouses shape your gloved-touch UX across 38,000 handhelds?',
-      'Why are you looking to transition from IBM, and what would your first 90 days look like in this role?'
+      'How do you usually approach a project when the requirements are super vague and nobody agrees on what to build first?',
+      'Tell me about a time Engineering pushed back against your UX design because of tight sprint deadlines. How did you handle it?',
+      'How do you actually use AI tools in your day-to-day design work, and where do you feel AI still falls short?',
+      'What do you do when a designer on your team is struggling or missing deadlines? How do you coach them?',
+      'How do you get product managers and executives to care about UX improvements when they only care about shipping features fast?',
+      'Can you walk me through a really complicated workflow you simplified for everyday users?',
+      'Why are you looking for a new role right now, and how would you spend your first 90 days with our team?'
     ];
     let mockIdx = 0;
     let lastMockQuestion = '';
@@ -2017,15 +2254,15 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
     });
 
     document.getElementById('btnMockFollowUp').addEventListener('click', async () => {
-      const prev = lastMockQuestion || questionInput.value || 'your AI and Design System leadership at IBM';
+      const prev = lastMockQuestion || questionInput.value || 'your design leadership approach';
       setTelemetryState('thinking', '🤖 Hiring Manager formulating follow-up...');
       try {
         const d = await callGroq([
           {
             role: 'system',
-            content: 'You are a Hiring Manager interviewing Balaajee V.R. Ask ONE short 1-sentence follow-up question drilling into the previous topic. Return ONLY JSON: {"q":"..."}'
+            content: 'You are a Hiring Manager interviewing Balaajee V.R. Ask ONE natural, conversational follow-up question drilling into his previous answer. Return ONLY JSON: {"q":"..."}'
           },
-          { role: 'user', content: `Previous question: "${prev}"` }
+          { role: 'user', content: `Previous question: "${prev}"\nCandidate's previous answer: "${currentDisplayedAnswerPlain}"` }
         ], 'openai/gpt-oss-20b');
         const parsed = JSON.parse(d.choices[0].message.content);
         if (parsed.q) {
@@ -2033,7 +2270,7 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
           return;
         }
       } catch (e) {}
-      speakAndAnswerMockQuestion('How did you measure the business impact of that, and what would you do differently next time?');
+      speakAndAnswerMockQuestion('That makes sense. How did the team react to that change, and what would you do differently next time?');
     });
 
     // =========================================================================
@@ -2092,9 +2329,7 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
         toggleReadingLock();
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
-        if (currentAnswerSentencesPlain.length > 1 && activeSentenceIdx < currentAnswerSentencesPlain.length - 1) {
-          setSentenceProgress(activeSentenceIdx + 1);
-        }
+        moveCurrentTurnDownToChat(true);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         if (currentAnswerSentencesPlain.length > 1 && activeSentenceIdx > 0) {
@@ -2114,9 +2349,9 @@ Return ONLY valid JSON: {"sentences": ["Sentence 1 (conversational hook + real c
       }
     });
 
-    // Boot with a single clean ready card (zero irrelevant pre-filled blocks)
+    // Boot with a single clean ready card (Answer on top, Question below)
     renderBlocksToScreen([
-      'Click <strong>🎙️ Listen Live</strong> below and speak or play your phone interviewer — your direct answer will appear right here.'
+      'Click <strong>🎙️ Listen Live</strong> below and speak or play your phone interviewer — your answer in <strong>everyday spoken English</strong> will appear right here at the top, with the question right below it.'
     ], false);
   </script>
 </body>
