@@ -83,7 +83,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.88);
       border: 1px solid rgba(148, 163, 184, 0.22);
       border-radius: 12px;
       padding: 8px 14px;
@@ -92,13 +92,13 @@
 
     .live-telemetry-bar.state-hearing {
       border-color: var(--accent-rose);
-      background: rgba(244, 63, 94, 0.12);
-      box-shadow: 0 0 20px rgba(244, 63, 94, 0.2);
+      background: rgba(244, 63, 94, 0.14);
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.22);
     }
 
     .live-telemetry-bar.state-thinking {
       border-color: var(--accent-gold);
-      background: rgba(251, 191, 36, 0.12);
+      background: rgba(251, 191, 36, 0.14);
     }
 
     .telemetry-top-row {
@@ -106,6 +106,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .state-pill {
@@ -144,13 +145,11 @@
       50% { transform: scale(1.35); opacity: 0.55; }
     }
 
-    /* Live Mic Volume Meter Bar */
     .mic-level-wrap {
       display: flex;
       align-items: center;
       gap: 6px;
-      flex: 1;
-      max-width: 180px;
+      width: 150px;
     }
 
     .mic-level-label {
@@ -162,8 +161,8 @@
 
     .mic-level-track {
       flex: 1;
-      height: 7px;
-      background: rgba(255, 255, 255, 0.08);
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 999px;
       overflow: hidden;
     }
@@ -173,7 +172,7 @@
       width: 0%;
       background: linear-gradient(90deg, var(--accent-emerald), var(--accent-gold), var(--accent-rose));
       border-radius: 999px;
-      transition: width 0.06s linear;
+      transition: width 0.05s linear;
     }
 
     .btn-force-answer {
@@ -181,7 +180,7 @@
       color: #04070E;
       border: none;
       border-radius: 999px;
-      padding: 4px 12px;
+      padding: 5px 13px;
       font-size: 11.5px;
       font-weight: 800;
       cursor: pointer;
@@ -201,7 +200,6 @@
       word-break: break-word;
     }
 
-    /* Pause Auto-Complete Progress Bar */
     .pause-progress-track {
       width: 100%;
       height: 3px;
@@ -214,7 +212,7 @@
       height: 100%;
       width: 0%;
       background: var(--accent-cyan);
-      transition: width 0.1s linear;
+      transition: width 0.08s linear;
     }
 
     /* THE ANSWER STREAM — HUGE, HIGH-CONTRAST, ZERO CLUTTER */
@@ -269,13 +267,13 @@
        ========================================================================= */
     .bottom-dock-wrapper {
       flex-shrink: 0;
-      background: rgba(12, 19, 34, 0.95);
+      background: rgba(12, 19, 34, 0.96);
       border-top: 1px solid var(--border-subtle);
       padding: 8px 16px;
     }
 
     .bottom-dock {
-      max-width: 1060px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -286,7 +284,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
     }
 
     .dock-btn {
@@ -323,6 +321,19 @@
       box-shadow: 0 0 14px rgba(244, 63, 94, 0.35);
     }
 
+    .mic-device-select {
+      background: #080E1C;
+      color: #7DD3FC;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      max-width: 195px;
+      outline: none;
+      cursor: pointer;
+    }
+
     .dock-btn.btn-headphone.active {
       background: rgba(56, 189, 248, 0.24);
       border-color: var(--accent-cyan);
@@ -348,7 +359,7 @@
       background: #060A14;
       border: 1px solid var(--border-subtle);
       border-radius: 999px;
-      padding: 6px 74px 6px 14px;
+      padding: 6px 70px 6px 13px;
       color: #FFFFFF;
       font-size: 12.5px;
       outline: none;
@@ -365,7 +376,7 @@
       color: #04070E;
       border: none;
       border-radius: 999px;
-      padding: 4px 11px;
+      padding: 4px 10px;
       font-size: 11px;
       font-weight: 800;
       cursor: pointer;
@@ -492,7 +503,7 @@
          ===================================================================== -->
     <main class="webcam-reading-stage" id="readingStage">
       <div class="narrow-eye-column">
-        <!-- LIVE TELEMETRY BAR (Shows exact Mic Volume, Recording State & Auto-Complete!) -->
+        <!-- LIVE TELEMETRY BAR -->
         <div class="live-telemetry-bar" id="telemetryBar">
           <div class="telemetry-top-row">
             <div class="state-pill">
@@ -500,15 +511,15 @@
               <span id="stateText">READY • Click "🎙️ Listen Live" below</span>
             </div>
 
-            <div class="mic-level-wrap" title="Live Microphone Volume (Makes sure phone speaker is heard)">
-              <span class="mic-level-label" id="micVolLabel">Mic Vol:</span>
+            <div class="mic-level-wrap" title="Live Microphone Signal Level">
+              <span class="mic-level-label">Mic Vol:</span>
               <div class="mic-level-track">
                 <div class="mic-level-fill" id="micLevelFill"></div>
               </div>
             </div>
 
-            <button type="button" class="btn-force-answer" id="btnForceAnswerNow" title="Click or press Enter to answer immediately without waiting for silence">
-              ⚡ Answer Now (Enter)
+            <button type="button" class="btn-force-answer" id="btnForceAnswerNow" title="Transcribes the last 6 seconds of audio & answers immediately!">
+              ⚡ Answer Last 6s Now (Enter)
             </button>
           </div>
 
@@ -516,7 +527,7 @@
             👂 Question heard will appear here live...
           </div>
 
-          <div class="pause-progress-track" title="Auto-completes when this bar fills (1.2s of silence after speech)">
+          <div class="pause-progress-track">
             <div class="pause-progress-fill" id="pauseProgressFill"></div>
           </div>
         </div>
@@ -534,8 +545,13 @@
         <div class="dock-row">
           <button type="button" class="dock-btn btn-mic" id="btnToggleMic">
             <span>🎙️</span>
-            <span id="micLabel">Listen Live (Phone / Room)</span>
+            <span id="micLabel">Listen Live</span>
           </button>
+
+          <!-- MICROPHONE SELECTOR (Automatically picks MacBook Pro Mic instead of Bluetooth Earbuds!) -->
+          <select id="micDeviceSelect" class="mic-device-select" title="Select MacBook Pro Microphone so it hears your phone & room clearly even while wearing Airdopes!">
+            <option value="">🎤 Auto (MacBook Mic)</option>
+          </select>
 
           <button type="button" class="dock-btn btn-headphone" id="btnHeadphoneMode" title="Capture Google Meet / Zoom / Teams Tab Audio with headphones">
             <span>🎧</span>
@@ -544,7 +560,7 @@
 
           <button type="button" class="dock-btn btn-mock" id="btnMockAskQuestion" title="Built-in AI Hiring Manager speaks a question out loud">
             <span>🤖🔊</span>
-            <span>Mock Question</span>
+            <span>Mock Q</span>
           </button>
 
           <button type="button" class="dock-btn btn-mock" id="btnMockFollowUp" title="Built-in AI Hiring Manager asks a follow-up">
@@ -754,6 +770,7 @@
     const questionInput = document.getElementById('questionInput');
     const btnToggleMic = document.getElementById('btnToggleMic');
     const micLabel = document.getElementById('micLabel');
+    const micDeviceSelect = document.getElementById('micDeviceSelect');
     const btnHeadphoneMode = document.getElementById('btnHeadphoneMode');
     const headphoneLabel = document.getElementById('headphoneLabel');
     const btnForceAnswerNow = document.getElementById('btnForceAnswerNow');
@@ -877,7 +894,6 @@
       questionInput.value = clean;
       pauseProgressFill.style.width = '0%';
 
-      // 1. Instant preview while Groq 120B generates bespoke answer
       renderBlocksToScreen(pickInstantBlocksForQuestion(clean));
       setTelemetryState('thinking', '🧠 Generating Balaajee Answer via Groq 120B...');
 
@@ -923,88 +939,136 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
     }
 
     // =========================================================================
-    // 5. DUAL-ENGINE LIVE MICROPHONE (RAW AUDIO + GROQ WHISPER TURBO + WEB SPEECH)
-    //    Disables Mac Echo Cancellation so it hears Gemini on your phone speaker!
+    // 5. BULLETPROOF AUTO-VOICE CAPTURE (16kHz PEAK-NORMALIZED WAV + GROQ WHISPER TURBO)
+    //    Automatically selects Built-In MacBook Pro Mic over Bluetooth Airdopes
+    //    so it hears BOTH your voice and your phone speaker clearly!
     // =========================================================================
     let isMicActive = false;
     let micStream = null;
     let micAudioCtx = null;
     let micProcessor = null;
+    let selectedMicDeviceId = '';
+
+    // Audio buffers (stored at 16,000 Hz mono Float32)
+    const TARGET_SAMPLE_RATE = 16000;
+    let rollingPcm16k = new Float32Array(0); // Rolling last 7 seconds (112,000 samples)
+    let speechPcm16k = [];                   // Active speech chunks
+    let isSpeakingNow = false;
+    let speechStartedAt = 0;
+    let silenceStartedAt = 0;
+    let lastAutoFlushAt = 0;
+    let ambientRms = 0.002;
+    let isTranscribingWhisper = false;
     let webSpeechRec = null;
 
-    // Recording buffer for Groq Whisper Turbo
-    let recordedChunks = [];
-    let recordedSamples = 0;
-    let isCurrentlySpeaking = false;
-    let silenceStartMs = 0;
-    let speechStartMs = 0;
-    let liveWebSpeechText = '';
-    let isTranscribingWhisper = false;
+    async function populateMicDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const audioInputs = devices.filter((d) => d.kind === 'audioinput');
+        if (!audioInputs.length) return;
 
-    function encodeWAV(samples, sampleRate = 16000) {
-      const buffer = new ArrayBuffer(44 + samples.length * 2);
-      const view = new DataView(buffer);
-      const writeString = (offset, str) => {
-        for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
-      };
-      writeString(0, 'RIFF');
-      view.setUint32(4, 36 + samples.length * 2, true);
-      writeString(8, 'WAVE');
-      writeString(12, 'fmt ');
-      view.setUint32(16, 16, true);
-      view.setUint16(20, 1, true);
-      view.setUint16(22, 1, true);
-      view.setUint32(24, sampleRate, true);
-      view.setUint32(28, sampleRate * 2, true);
-      view.setUint16(32, 2, true);
-      view.setUint16(34, 16, true);
-      writeString(36, 'data');
-      view.setUint32(40, samples.length * 2, true);
-      let offset = 44;
-      for (let i = 0; i < samples.length; i++, offset += 2) {
-        const s = Math.max(-1, Math.min(1, samples[i]));
-        view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
-      }
-      return new Blob([buffer], { type: 'audio/wav' });
+        micDeviceSelect.innerHTML = '';
+        let preferredBuiltInId = '';
+
+        audioInputs.forEach((dev, idx) => {
+          const opt = document.createElement('option');
+          opt.value = dev.deviceId;
+          const label = dev.label || `Microphone ${idx + 1}`;
+          opt.textContent = `🎤 ${label}`;
+          micDeviceSelect.appendChild(opt);
+
+          // Automatically prefer MacBook Pro Built-in Mic over Bluetooth earbuds (Airdopes/AirPods)
+          if (/macbook|built-in|internal/i.test(label) && !preferredBuiltInId) {
+            preferredBuiltInId = dev.deviceId;
+          }
+        });
+
+        if (preferredBuiltInId && !selectedMicDeviceId) {
+          selectedMicDeviceId = preferredBuiltInId;
+          micDeviceSelect.value = preferredBuiltInId;
+        } else if (selectedMicDeviceId) {
+          micDeviceSelect.value = selectedMicDeviceId;
+        }
+      } catch (e) {}
     }
 
-    async function flushAndTranscribeMicBuffer(reason = 'auto') {
-      if (isTranscribingWhisper) return;
-
-      const capturedSamples = recordedSamples;
-      const chunks = recordedChunks;
-      const webTextFallback = liveWebSpeechText.trim();
-
-      recordedChunks = [];
-      recordedSamples = 0;
-      isCurrentlySpeaking = false;
-      silenceStartMs = 0;
-      liveWebSpeechText = '';
-      pauseProgressFill.style.width = '0%';
-
-      // If user clicked "Answer Now" and typed or WebSpeech already caught text, use it if audio is short
-      if (capturedSamples < 16000 * 0.4) {
-        if (webTextFallback.length > 4) {
-          processLiveInterviewerQuestion(webTextFallback);
-        } else if (questionInput.value.trim().length > 3) {
-          processLiveInterviewerQuestion(questionInput.value.trim());
-        }
-        return;
+    micDeviceSelect.addEventListener('change', () => {
+      selectedMicDeviceId = micDeviceSelect.value;
+      if (isMicActive) {
+        stopLiveMicrophone();
+        setTimeout(startLiveMicrophone, 150);
       }
+    });
 
+    // Downsample arbitrary AudioContext rate (e.g., 48000Hz) to 16000Hz Float32Array
+    function downsampleTo16k(buffer, inputSampleRate) {
+      if (inputSampleRate === TARGET_SAMPLE_RATE) return new Float32Array(buffer);
+      const ratio = inputSampleRate / TARGET_SAMPLE_RATE;
+      const newLen = Math.round(buffer.length / ratio);
+      const result = new Float32Array(newLen);
+      let offsetResult = 0;
+      let offsetBuffer = 0;
+      while (offsetResult < result.length) {
+        const nextOffsetBuffer = Math.round((offsetResult + 1) * ratio);
+        let accum = 0;
+        let count = 0;
+        for (let i = offsetBuffer; i < nextOffsetBuffer && i < buffer.length; i++) {
+          accum += buffer[i];
+          count++;
+        }
+        result[offsetResult] = count > 0 ? accum / count : 0;
+        offsetResult++;
+        offsetBuffer = nextOffsetBuffer;
+      }
+      return result;
+    }
+
+    // Peak-normalize & encode 16kHz Float32Array into a standard 16-bit mono WAV Blob
+    function encodePeakNormalizedWAV(samples16k) {
+      // Find peak amplitude so quiet phone speakers are boosted up to 20x
+      let peak = 0;
+      for (let i = 0; i < samples16k.length; i++) {
+        const abs = Math.abs(samples16k[i]);
+        if (abs > peak) peak = abs;
+      }
+      const gain = peak > 0.001 ? Math.min(20.0, 0.85 / peak) : 1.0;
+
+      const buffer = new ArrayBuffer(44 + samples16k.length * 2);
+      const view = new DataView(buffer);
+      const writeStr = (off, s) => {
+        for (let i = 0; i < s.length; i++) view.setUint8(off + i, s.charCodeAt(i));
+      };
+      writeStr(0, 'RIFF');
+      view.setUint32(4, 36 + samples16k.length * 2, true);
+      writeStr(8, 'WAVE');
+      writeStr(12, 'fmt ');
+      view.setUint32(16, 16, true);
+      view.setUint16(20, 1, true); // PCM
+      view.setUint16(22, 1, true); // Mono
+      view.setUint32(24, TARGET_SAMPLE_RATE, true);
+      view.setUint32(28, TARGET_SAMPLE_RATE * 2, true);
+      view.setUint16(32, 2, true);
+      view.setUint16(34, 16, true);
+      writeStr(36, 'data');
+      view.setUint32(40, samples16k.length * 2, true);
+
+      let offset = 44;
+      for (let i = 0; i < samples16k.length; i++, offset += 2) {
+        const s = Math.max(-1, Math.min(1, samples16k[i] * gain));
+        view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+      }
+      return new Blob([view], { type: 'audio/wav' });
+    }
+
+    async function sendPcmSamplesToGroqWhisper(samples16k) {
+      if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.35 || isTranscribingWhisper) return;
       isTranscribingWhisper = true;
-      setTelemetryState('thinking', '⚡ Silence detected! Transcribing voice via Groq Whisper Turbo...');
+      setTelemetryState('thinking', '⚡ Transcribing voice via Groq Whisper Turbo...');
 
       try {
-        const merged = new Float32Array(capturedSamples);
-        let offset = 0;
-        for (const c of chunks) {
-          merged.set(c, offset);
-          offset += c.length;
-        }
-        const wavBlob = encodeWAV(merged, 16000);
+        const wavBlob = encodePeakNormalizedWAV(samples16k);
         const formData = new FormData();
-        formData.append('file', wavBlob, 'phone_speech.wav');
+        formData.append('file', wavBlob, 'speech.wav');
         formData.append('model', 'whisper-large-v3-turbo');
         formData.append('language', 'en');
 
@@ -1017,211 +1081,264 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
         if (res.ok) {
           const data = await res.json();
           const whisperText = (data.text || '').replace(/\[.*?\]|\(.*?\)/g, '').trim();
-          // Ignore Whisper hallucinations on pure silence like "Thank you." or "You"
-          const isHallucination = /^(thank you\.?|you\.?|bye\.?|okay\.?)$/i.test(whisperText);
-          if (whisperText && whisperText.length > 5 && !isHallucination) {
+          const isHallucination = /^(thank you\.?|thanks for watching\.?|you\.?|bye\.?|okay\.?|subtitles.*|\.+)$/i.test(whisperText);
+
+          if (whisperText && whisperText.length > 4 && !isHallucination) {
             lastProcessedQuestion = whisperText;
             await processLiveInterviewerQuestion(whisperText);
             return;
+          } else {
+            setTelemetryState('ready', '🟢 Listening — Speak or play phone near MacBook mic...');
           }
-        }
-        // Fallback to WebSpeech text if Whisper returned empty
-        if (webTextFallback.length > 5) {
-          await processLiveInterviewerQuestion(webTextFallback);
         } else {
-          setTelemetryState('ready', '🟢 Listening for Gemini / Interviewer voice...');
+          setTelemetryState('ready', '🟢 Listening...');
         }
       } catch (err) {
-        if (webTextFallback.length > 5) {
-          await processLiveInterviewerQuestion(webTextFallback);
-        } else {
-          setTelemetryState('ready', '🟢 Listening for Gemini / Interviewer voice...');
-        }
+        setTelemetryState('ready', '🟢 Listening...');
       } finally {
         isTranscribingWhisper = false;
       }
     }
 
-    async function startDualLiveMicrophone() {
+    function flushActiveSpeechToWhisper() {
+      isSpeakingNow = false;
+      silenceStartedAt = 0;
+      pauseProgressFill.style.width = '0%';
+      lastAutoFlushAt = performance.now();
+
+      if (!speechPcm16k.length) return;
+      const totalLen = speechPcm16k.reduce((acc, c) => acc + c.length, 0);
+      const merged = new Float32Array(totalLen);
+      let off = 0;
+      for (const c of speechPcm16k) {
+        merged.set(c, off);
+        off += c.length;
+      }
+      speechPcm16k = [];
+      sendPcmSamplesToGroqWhisper(merged);
+    }
+
+    // Also run Web Speech API in parallel for instant live word preview when available
+    function startParallelWebSpeech() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) return;
       try {
-        // CRITICAL: Disable echoCancellation & noiseSuppression so Mac mic hears Phone Speakers (Gemini Live)!
-        micStream = await navigator.mediaDevices.getUserMedia({
-          audio: {
-            echoCancellation: false,
-            noiseSuppression: false,
-            autoGainControl: true
+        webSpeechRec = new SR();
+        webSpeechRec.continuous = true;
+        webSpeechRec.interimResults = true;
+        webSpeechRec.lang = 'en-US';
+        webSpeechRec.onresult = (event) => {
+          let interim = '';
+          for (let i = event.resultIndex; i < event.results.length; i++) {
+            interim += event.results[i][0].transcript + ' ';
           }
-        });
-
-        isMicActive = true;
-        btnToggleMic.classList.add('active');
-        micLabel.textContent = 'Stop Listening';
-        setTelemetryState('ready', '🟢 Mic Live — Speak or play Gemini on your phone speaker...');
-
-        micAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
-        const source = micAudioCtx.createMediaStreamSource(micStream);
-        micProcessor = micAudioCtx.createScriptProcessor(2048, 1, 1);
-
-        // Adaptive noise floor so even quiet phone speakers are picked up!
-        let noiseFloor = 0.003;
-        let webSpeechPauseTimer = null;
-        let lastWebSpeechTranscript = '';
-
-        micProcessor.onaudioprocess = (e) => {
-          if (!isMicActive || isTranscribingWhisper) return;
-          const input = e.inputBuffer.getChannelData(0);
-          let sumSq = 0;
-          for (let i = 0; i < input.length; i++) sumSq += input[i] * input[i];
-          const rms = Math.sqrt(sumSq / input.length);
-
-          // Update visual volume meter (amplified so phone speakers clearly show movement)
-          const pct = Math.min(100, Math.round((rms / 0.06) * 100));
-          micLevelFill.style.width = pct + '%';
-
-          // Sensitive speech threshold so phone speakers 1-2ft away trigger reliably
-          const speechThreshold = Math.max(0.0055, noiseFloor * 1.75);
-          const now = performance.now();
-
-          if (rms > speechThreshold) {
-            if (!isCurrentlySpeaking) {
-              isCurrentlySpeaking = true;
-              speechStartMs = now;
-            }
-            silenceStartMs = 0;
-            pauseProgressFill.style.width = '0%';
-            recordedChunks.push(new Float32Array(input));
-            recordedSamples += input.length;
-
-            const durSec = (recordedSamples / 16000).toFixed(1);
-            setTelemetryState('hearing', `🔴 Hearing Voice (${durSec}s) — Auto-answers on 1s pause (or press Enter)`);
-
-            // Auto-flush if continuous speech exceeds 12 seconds
-            if (recordedSamples >= 16000 * 12) {
-              flushAndTranscribeMicBuffer('max-length');
-            }
-          } else {
-            noiseFloor = noiseFloor * 0.98 + rms * 0.02;
-
-            if (isCurrentlySpeaking) {
-              recordedChunks.push(new Float32Array(input));
-              recordedSamples += input.length;
-
-              if (!silenceStartMs) silenceStartMs = now;
-              const silenceElapsed = now - silenceStartMs;
-              const pausePct = Math.min(100, Math.round((silenceElapsed / 1050) * 100));
-              pauseProgressFill.style.width = pausePct + '%';
-
-              // 1.05 seconds of pause after speaking -> AUTO-COMPLETE & ANSWER!
-              if (silenceElapsed >= 1050) {
-                flushAndTranscribeMicBuffer('silence-auto');
-              }
-            }
+          const clean = interim.trim();
+          if (clean.length > 2) {
+            heardQuestionLine.textContent = `🎙️ Hearing live: “${clean}”`;
           }
         };
+        webSpeechRec.onend = () => {
+          if (isMicActive && webSpeechRec) {
+            try { webSpeechRec.start(); } catch (e) {}
+          }
+        };
+        webSpeechRec.start();
+      } catch (e) {}
+    }
 
-        source.connect(micProcessor);
-        micProcessor.connect(micAudioCtx.destination);
+    async function attachPcmPipelineToStream(stream, activeMicName) {
+      micStream = stream;
+      isMicActive = true;
+      btnToggleMic.classList.add('active');
+      micLabel.textContent = 'Stop Listening';
+      heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Speak or play phone voice now...`;
+      setTelemetryState('ready', `🟢 Listening on [${activeMicName}]`);
 
-        // Run WebSpeech in parallel: shows live words AND triggers 0.9s word-pause auto-answer!
-        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRec) {
-          webSpeechRec = new SpeechRec();
-          webSpeechRec.continuous = true;
-          webSpeechRec.interimResults = true;
-          webSpeechRec.lang = 'en-US';
-          webSpeechRec.onresult = (ev) => {
-            const latest = ev.results[ev.results.length - 1];
-            const txt = (latest[0]?.transcript || '').trim();
-            if (!txt) return;
+      micAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+      const source = micAudioCtx.createMediaStreamSource(micStream);
+      micProcessor = micAudioCtx.createScriptProcessor(2048, 1, 1);
 
-            liveWebSpeechText = txt;
-            heardQuestionLine.textContent = `🎙️ Hearing Live: “${txt}”`;
-            questionInput.value = txt;
-            setTelemetryState('hearing', `🔴 Hearing Words — Auto-answers 0.9s after pause`);
+      const maxRollingSamples = TARGET_SAMPLE_RATE * 7; // 7 seconds
+      rollingPcm16k = new Float32Array(0);
+      speechPcm16k = [];
+      isSpeakingNow = false;
+      ambientRms = 0.002;
+      lastAutoFlushAt = performance.now();
 
-            if (latest.isFinal && txt.length > 5 && txt !== lastProcessedQuestion) {
-              clearTimeout(webSpeechPauseTimer);
-              lastProcessedQuestion = txt;
-              recordedChunks = [];
-              recordedSamples = 0;
-              isCurrentlySpeaking = false;
-              liveWebSpeechText = '';
-              processLiveInterviewerQuestion(txt);
-              return;
-            }
+      micProcessor.onaudioprocess = (e) => {
+        if (!isMicActive) return;
+        const rawInput = e.inputBuffer.getChannelData(0);
+        const chunk16k = downsampleTo16k(rawInput, micAudioCtx.sampleRate);
 
-            if (txt !== lastWebSpeechTranscript) {
-              lastWebSpeechTranscript = txt;
-              clearTimeout(webSpeechPauseTimer);
-              webSpeechPauseTimer = setTimeout(() => {
-                if (txt.length > 6 && txt !== lastProcessedQuestion) {
-                  lastProcessedQuestion = txt;
-                  recordedChunks = [];
-                  recordedSamples = 0;
-                  isCurrentlySpeaking = false;
-                  liveWebSpeechText = '';
-                  processLiveInterviewerQuestion(txt);
-                }
-              }, 950);
-            }
-          };
-          webSpeechRec.onend = () => {
-            if (isMicActive) { try { webSpeechRec.start(); } catch (e) {} }
-          };
-          try { webSpeechRec.start(); } catch (e) {}
+        // Append to rolling 7s buffer
+        const combined = new Float32Array(Math.min(maxRollingSamples, rollingPcm16k.length + chunk16k.length));
+        const keepOld = combined.length - chunk16k.length;
+        if (keepOld > 0) {
+          combined.set(rollingPcm16k.subarray(rollingPcm16k.length - keepOld), 0);
         }
+        combined.set(chunk16k, keepOld);
+        rollingPcm16k = combined;
+
+        // Compute RMS energy
+        let sumSq = 0;
+        for (let i = 0; i < chunk16k.length; i++) sumSq += chunk16k[i] * chunk16k[i];
+        const rms = Math.sqrt(sumSq / chunk16k.length);
+
+        // Visual volume meter (boosted sensitivity so phone speaker clearly moves the bar)
+        const meterPct = Math.min(100, Math.round(Math.pow(rms * 18, 0.65) * 100));
+        micLevelFill.style.width = meterPct + '%';
+
+        const now = performance.now();
+        const startThreshold = Math.max(0.0022, Math.min(0.025, ambientRms * 1.65));
+        const stopThreshold = Math.max(0.0018, Math.min(0.020, ambientRms * 1.30));
+
+        if (rms > startThreshold) {
+          if (!isSpeakingNow) {
+            isSpeakingNow = true;
+            speechStartedAt = now;
+            // Include 0.5s pre-roll from rollingPcm16k so first word is never cut off!
+            const preRollSamples = Math.min(rollingPcm16k.length, TARGET_SAMPLE_RATE * 0.5);
+            speechPcm16k = [rollingPcm16k.slice(rollingPcm16k.length - preRollSamples)];
+          } else {
+            speechPcm16k.push(chunk16k);
+          }
+          silenceStartedAt = 0;
+          pauseProgressFill.style.width = '0%';
+          const sec = ((now - speechStartedAt) / 1000).toFixed(1);
+          setTelemetryState('hearing', `🔴 Hearing Voice (${sec}s) — Pause 0.8s to auto-answer`);
+
+          // Auto-flush if continuous speech/sound reaches 5.2 seconds so it NEVER gets stuck listening forever!
+          if (now - speechStartedAt >= 5200) {
+            ambientRms = rms * 0.8; // recalibrate in case room noise jumped
+            flushActiveSpeechToWhisper();
+          }
+        } else {
+          // Adapt ambient baseline smoothly during quiet frames
+          ambientRms = ambientRms * 0.94 + rms * 0.06;
+
+          if (isSpeakingNow) {
+            speechPcm16k.push(chunk16k);
+            if (rms < stopThreshold) {
+              if (!silenceStartedAt) silenceStartedAt = now;
+              const silenceMs = now - silenceStartedAt;
+              const pct = Math.min(100, Math.round((silenceMs / 850) * 100));
+              pauseProgressFill.style.width = pct + '%';
+
+              // 0.85s pause after >= 0.4s of voice -> AUTO-COMPLETE & ANSWER!
+              if (silenceMs >= 850) {
+                if (now - speechStartedAt >= 400) {
+                  flushActiveSpeechToWhisper();
+                } else {
+                  isSpeakingNow = false;
+                  speechPcm16k = [];
+                  silenceStartedAt = 0;
+                  pauseProgressFill.style.width = '0%';
+                }
+              }
+            }
+          } else if (now - lastAutoFlushAt >= 4200 && rollingPcm16k.length >= TARGET_SAMPLE_RATE * 2.5) {
+            // Fallback heartbeat: if quiet phone audio was playing below VAD spike threshold, check peak energy
+            let maxAbs = 0;
+            for (let i = 0; i < rollingPcm16k.length; i += 4) {
+              const a = Math.abs(rollingPcm16k[i]);
+              if (a > maxAbs) maxAbs = a;
+            }
+            if (maxAbs > 0.0035 && !isTranscribingWhisper) {
+              lastAutoFlushAt = now;
+              const last4s = rollingPcm16k.slice(Math.max(0, rollingPcm16k.length - TARGET_SAMPLE_RATE * 4));
+              sendPcmSamplesToGroqWhisper(last4s);
+            }
+          }
+        }
+      };
+
+      source.connect(micProcessor);
+      micProcessor.connect(micAudioCtx.destination);
+      startParallelWebSpeech();
+    }
+
+    async function startLiveMicrophone() {
+      try {
+        // 1. Unlock permission & device labels
+        const initialStream = await navigator.mediaDevices.getUserMedia({
+          audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: true }
+        });
+        await populateMicDevices();
+
+        // 2. If default device was Bluetooth earbuds (e.g. Airdopes), automatically switch to MacBook Pro Built-in Mic!
+        let chosenStream = initialStream;
+        const initialLabel = initialStream.getAudioTracks()[0]?.label || '';
+        if (selectedMicDeviceId && !/macbook|built-in|internal|fake/i.test(initialLabel)) {
+          initialStream.getTracks().forEach((t) => t.stop());
+          chosenStream = await navigator.mediaDevices.getUserMedia({
+            audio: {
+              deviceId: { exact: selectedMicDeviceId },
+              echoCancellation: false,
+              noiseSuppression: false,
+              autoGainControl: true
+            }
+          });
+        }
+
+        const activeMicName = chosenStream.getAudioTracks()[0]?.label || 'Microphone';
+        await attachPcmPipelineToStream(chosenStream, activeMicName);
       } catch (err) {
-        alert('Microphone permission is required: ' + err.message);
+        alert('Microphone access error: ' + err.message);
       }
     }
 
-    function stopDualLiveMicrophone() {
+    function stopLiveMicrophone() {
       isMicActive = false;
+      isSpeakingNow = false;
       btnToggleMic.classList.remove('active');
-      micLabel.textContent = 'Listen Live (Phone / Room)';
+      micLabel.textContent = 'Listen Live';
       micLevelFill.style.width = '0%';
       pauseProgressFill.style.width = '0%';
       setTelemetryState('ready', 'READY • Click "🎙️ Listen Live" below');
 
+      if (webSpeechRec) {
+        const r = webSpeechRec;
+        webSpeechRec = null;
+        try { r.stop(); } catch (e) {}
+      }
       if (micProcessor) { try { micProcessor.disconnect(); } catch (e) {} micProcessor = null; }
       if (micAudioCtx) { try { micAudioCtx.close(); } catch (e) {} micAudioCtx = null; }
       if (micStream) { micStream.getTracks().forEach((t) => t.stop()); micStream = null; }
-      if (webSpeechRec) { try { webSpeechRec.stop(); } catch (e) {} webSpeechRec = null; }
     }
 
     btnToggleMic.addEventListener('click', () => {
       if (isMicActive) {
-        // If there is audio in buffer when stopping, transcribe it!
-        if (recordedSamples > 16000 * 0.5) {
-          flushAndTranscribeMicBuffer('manual-stop');
-        }
-        stopDualLiveMicrophone();
+        stopLiveMicrophone();
       } else {
-        startDualLiveMicrophone();
+        startLiveMicrophone();
       }
     });
 
-    // "⚡ Answer Now (Enter)" button forces immediate transcription/answer without waiting for silence!
+    // "⚡ Answer Last 6s Now (Enter)" — Unconditionally transcribes the last 6 seconds from the rolling buffer!
     btnForceAnswerNow.addEventListener('click', () => {
-      if (isMicActive && recordedSamples > 16000 * 0.4) {
-        flushAndTranscribeMicBuffer('force-button');
+      if (isMicActive && rollingPcm16k.length > TARGET_SAMPLE_RATE * 0.5) {
+        isSpeakingNow = false;
+        speechPcm16k = [];
+        pauseProgressFill.style.width = '0%';
+        const last6s = rollingPcm16k.slice(Math.max(0, rollingPcm16k.length - TARGET_SAMPLE_RATE * 6));
+        sendPcmSamplesToGroqWhisper(last6s);
       } else if (questionInput.value.trim().length > 2) {
         processLiveInterviewerQuestion(questionInput.value.trim());
       }
     });
 
+    populateMicDevices();
+
     // =========================================================================
     // 6. HEADPHONE / CALL TAB AUDIO CAPTURE (GROQ WHISPER TURBO)
     // =========================================================================
     let tabAudioStream = null;
-    let tabAudioCtx = null;
-    let tabProcessorNode = null;
 
     btnHeadphoneMode.addEventListener('click', async () => {
       if (tabAudioStream) {
         tabAudioStream.getTracks().forEach((t) => t.stop());
         tabAudioStream = null;
-        if (tabProcessorNode) { try { tabProcessorNode.disconnect(); } catch (e) {} }
+        stopLiveMicrophone();
         btnHeadphoneMode.classList.remove('active');
         headphoneLabel.textContent = 'Tab Audio';
         return;
@@ -1231,85 +1348,17 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
           video: true,
           audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false }
         });
+        if (!stream.getAudioTracks().length) {
+          stream.getTracks().forEach((t) => t.stop());
+          alert('Please check "Also share tab audio" when selecting the browser tab!');
+          return;
+        }
         tabAudioStream = stream;
         btnHeadphoneMode.classList.add('active');
         headphoneLabel.textContent = 'Tab Active';
-        setTelemetryState('ready', '🎧 Listening to shared call tab audio...');
 
-        tabAudioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
-        const source = tabAudioCtx.createMediaStreamSource(stream);
-
-        if (stream.getAudioTracks().length > 0) {
-          const processor = tabAudioCtx.createScriptProcessor(4096, 1, 1);
-          tabProcessorNode = processor;
-          let speechChunks = [];
-          let totalSamples = 0;
-          let speaking = false;
-          let silenceFrames = 0;
-          let transcribing = false;
-
-          processor.onaudioprocess = async (e) => {
-            const input = e.inputBuffer.getChannelData(0);
-            let sumSq = 0;
-            for (let i = 0; i < input.length; i++) sumSq += input[i] * input[i];
-            const rms = Math.sqrt(sumSq / input.length);
-            micLevelFill.style.width = Math.min(100, Math.round((rms / 0.12) * 100)) + '%';
-
-            if (rms > 0.012) {
-              speaking = true;
-              silenceFrames = 0;
-              speechChunks.push(new Float32Array(input));
-              totalSamples += input.length;
-              setTelemetryState('hearing', '🔴 Hearing Call Tab Audio...');
-            } else if (speaking) {
-              silenceFrames++;
-              speechChunks.push(new Float32Array(input));
-              totalSamples += input.length;
-
-              if (silenceFrames >= 4 || totalSamples >= 16000 * 10) {
-                speaking = false;
-                silenceFrames = 0;
-                const capturedSamples = totalSamples;
-                const chunksToProcess = speechChunks;
-                speechChunks = [];
-                totalSamples = 0;
-
-                if (capturedSamples > 16000 * 0.6 && !transcribing) {
-                  transcribing = true;
-                  setTelemetryState('thinking', '⚡ Transcribing Tab Audio via Groq Whisper...');
-                  try {
-                    const merged = new Float32Array(capturedSamples);
-                    let offset = 0;
-                    for (const c of chunksToProcess) {
-                      merged.set(c, offset);
-                      offset += c.length;
-                    }
-                    const wavBlob = encodeWAV(merged, 16000);
-                    const formData = new FormData();
-                    formData.append('file', wavBlob, 'tab.wav');
-                    formData.append('model', 'whisper-large-v3-turbo');
-                    formData.append('language', 'en');
-                    const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
-                      method: 'POST',
-                      headers: { 'Authorization': `Bearer ${groqApiKey}` },
-                      body: formData
-                    });
-                    if (res.ok) {
-                      const d = await res.json();
-                      const text = (d.text || '').trim();
-                      if (text && text.length > 5) {
-                        await processLiveInterviewerQuestion(text);
-                      }
-                    }
-                  } catch (err) {}
-                  finally { transcribing = false; }
-                }
-              }
-            }
-          };
-          source.connect(processor);
-          processor.connect(tabAudioCtx.destination);
-        }
+        const audioOnlyStream = new MediaStream(stream.getAudioTracks());
+        await attachPcmPipelineToStream(audioOnlyStream, 'Shared Call Tab Audio');
       } catch (err) {
         heardQuestionLine.textContent = 'Select your Meet/Zoom browser tab and check "Also share tab audio"';
       }
@@ -1406,8 +1455,7 @@ Return ONLY valid JSON: {"blocks": ["Block 1...", "Block 2...", "Block 3..."]}`;
     document.getElementById('btnSaveBrain').addEventListener('click', () => {
       targetJobContext = targetJobInput.value.trim();
       masterDossier = masterDossierInput.value.trim() || DEFAULT_BALAAJEE_DOSSIER;
-      groqKey = groqKeyInput.value.trim() || decodePreloadedKey();
-      groqApiKey = groqKey;
+      groqApiKey = groqKeyInput.value.trim() || decodePreloadedKey();
       localStorage.setItem(STORAGE_KEY_TARGET_JD, targetJobContext);
       localStorage.setItem(STORAGE_KEY_DOSSIER, masterDossier);
       localStorage.setItem(STORAGE_KEY_GROQ, groqApiKey);
