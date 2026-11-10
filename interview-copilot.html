@@ -20,8 +20,8 @@
       --accent-emerald: #10B981;
       --accent-rose: #F43F5E;
       --accent-purple: #A855F7;
-      --prompt-size: 30px;
-      --column-width: 650px;
+      --prompt-size: 28px;
+      --column-width: 640px;
     }
 
     * {
@@ -135,26 +135,27 @@
     .answer-stream {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding-top: 4px;
+      gap: 14px;
+      padding-top: 2px;
     }
 
     .answer-block {
       font-size: var(--prompt-size);
-      line-height: 1.42;
+      line-height: 1.38;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.42);
-      padding: 12px 16px;
+      color: #F8FAFC;
+      padding: 10px 16px;
       border-radius: 12px;
-      border-left: 4px solid transparent;
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid rgba(56, 189, 248, 0.45);
       transition: all 0.2s ease;
       cursor: pointer;
     }
 
-    /* Active block right under the webcam is 100% bright white & gold */
+    /* First block right under the webcam has a gold accent bar */
     .answer-block.active-block {
       color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(251, 191, 36, 0.06);
       border-left-color: var(--accent-gold);
     }
 
@@ -212,17 +213,17 @@
     .dock-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 6px;
+      flex-wrap: nowrap;
     }
 
     .dock-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
+      gap: 5px;
+      padding: 5px 10px;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       cursor: pointer;
       border: 1px solid var(--border-subtle);
