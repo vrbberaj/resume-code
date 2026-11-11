@@ -979,6 +979,7 @@
         <div>
           <label style="font-size:11px; font-weight:700; color:var(--accent-gold); display:block; margin-bottom:4px;">GROQ API KEY (PRE-CONNECTED)</label>
           <input type="password" id="groqKeyInput" class="modal-input" />
+          <div id="liveQuotaReadout" style="margin-top:6px; font-size:11.5px; color:#6EE7B7; font-family:'JetBrains Mono', monospace;">Live Daily Quota: ~95%+ remaining (1,000 Qwen + 1,000 GPT-120B + 2,000 Whisper/day)</div>
         </div>
       </div>
       <div class="modal-footer">
@@ -1031,7 +1032,11 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
 - Simulator eye-tracking with German HQ showed truck drivers taking 2.8 seconds eyes-off-road to read dashboard alerts (exceeding the 1.2-second safety limit).
 - I designed a 3-Tier Progressive Alert Hierarchy that suppresses low-priority alerts during highway maneuvers—dropping glance time from 2.8s to 0.94s and navigation errors by 18%.
 
-10. AVAILABILITY & FIRST 90 DAYS:
+10. CROSS-FUNCTIONAL COLLABORATION & CONFLICTING PRIORITIES ACROSS BUSINESS UNITS (IBM, Zebra & Ericsson PI Planning):
+- When two business units clash over roadmap priority (for example at IBM across MaaS360 Security vs Rhapsody Systems Engineering, or at Ericsson across regional 5G sales units), I never referee based on opinions or whoever has the loudest VP.
+- I bring Product, Engineering Leads, and BU stakeholders into a 45-minute alignment workshop and score competing requests on a shared 2x2 of Customer Revenue/Risk Impact vs Engineering API Effort—often discovering 70% shared platform components (like shared Carbon tokens or shared approval workflows) that solve both BUs' top pain point in one sprint instead of two separate builds.
+
+11. AVAILABILITY & FIRST 90 DAYS:
 - I am an immediate joiner (0-day notice period) with full India and global mobility (10-year US B1/B2 visa, EU Blue Card eligible). In Days 1–30 I shadow users and audit UX/token debt; Days 31–60 I establish UX-as-a-Service sprint rituals and ship a quick win; by Day 90 I tie UX metrics directly to product revenue and velocity OKRs.`;
 
     // =========================================================================
@@ -1176,9 +1181,8 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let lastAnswerRenderedAt = 0;
     let qaChatHistory = [];
 
-    // 1.35s pause ensures the interviewer has COMPLETELY finished their full multi-sentence question
-    // before the single Final Answer is shown on screen (while AI pre-thinks silently in the background during the pause!)
-    const INTERVIEWER_PAUSE_MS = 1350;
+    // 1.15s pause ensures the interviewer has finished their full question without ever feeling sluggish
+    const INTERVIEWER_PAUSE_MS = 1150;
     // Track live Web Speech + Live Whisper captions across the entire current interviewer turn
     let currentWebSpeechFinalSegments = [];
     let currentWebSpeechInterim = '';
@@ -1194,17 +1198,33 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let latestLiveCaptionText = '';
     let activeStreamAbortController = null;
 
-    // Hidden Background Pre-Think State (AI thinks silently in background as interviewer speaks, NEVER showing intermediate answers on screen!)
+    // Hidden Background Pre-Think State (Throttled to protect 8,000 TPM budget & run on secondary 120B bucket!)
     let bgPrethinkTimer = null;
     let bgPrethinkAbortController = null;
+    let lastBgPrethinkStartedAt = 0;
+    let lastBgPrethinkWordCount = 0;
     let hiddenBgPrethink = {
       questionNorm: '',
       questionRaw: '',
+      historyLenAtThink: 0,
       accumulatedText: '',
       sentences: [],
       isDone: false,
       firstWordMs: 0
     };
+
+    function updateLiveQuotaFromHeaders(res, modelLabel) {
+      try {
+        const remReq = res.headers.get('x-ratelimit-remaining-requests');
+        const limReq = res.headers.get('x-ratelimit-limit-requests');
+        const remTok = res.headers.get('x-ratelimit-remaining-tokens');
+        const quotaEl = document.getElementById('liveQuotaReadout');
+        if (quotaEl && remReq && limReq) {
+          const pct = Math.round((Number(remReq) / Number(limReq)) * 100);
+          quotaEl.textContent = `Live Quota (${modelLabel}): ${remReq} / ${limReq} requests left today (${pct}%) • ${remTok || '8000'} tokens/min free`;
+        }
+      } catch (e) {}
+    }
 
     const readingStage = document.getElementById('readingStage');
     const liveTopQuestionSlot = document.getElementById('liveTopQuestionSlot');
@@ -1385,19 +1405,56 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
         .filter((w) => w.length >= 3 && !PREAMBLE_STOP_WORDS.has(w));
     }
 
+    // Separates interviewer feedback/praise on the previous answer (e.g. "That's a very solid approach... Moving on, could you describe...")
+    // from the ACTUAL new question or latest follow-up so the AI never gets anchored on the previous topic!
+    function splitInterviewerFeedbackAndQuestion(rawTurn) {
+      const full = String(rawTurn || '').replace(/\s+/g, ' ').trim();
+      if (!full) return { coreQuestion: '', hadTopicSwitch: false, fullTurn: '' };
+
+      // 1. Explicit topic-pivot phrases ("Moving on, ...", "Switching gears, ...", "Next question, ...")
+      const pivotMatch = full.match(/\b(?:moving on|switching gears|shifting gears|next question|on another note|another question|changing topics?|shifting to)\b[,:\s-]*(.{10,})$/i);
+      if (pivotMatch && pivotMatch[1]) {
+        return {
+          coreQuestion: pivotMatch[1].trim(),
+          hadTopicSwitch: true,
+          fullTurn: full
+        };
+      }
+
+      // 2. Multi-sentence turn where initial sentence(s) are pure feedback/validation without '?' and later sentence(s) ask the actual question
+      const sentences = full.split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean);
+      if (sentences.length >= 2) {
+        const questionStartIdx = sentences.findIndex((s) =>
+          s.includes('?') ||
+          /\b(could you|can you|would you|how do you|how did you|how would you|what do you|what did you|what was|what were|why did|why do|walk me|tell me|describe|explain|share|elaborate|give me an example|what happens if|what if)\b/i.test(s)
+        );
+        if (questionStartIdx > 0) {
+          return {
+            coreQuestion: sentences.slice(questionStartIdx).join(' ').trim(),
+            hadTopicSwitch: false,
+            fullTurn: full
+          };
+        }
+      }
+
+      return { coreQuestion: full, hadTopicSwitch: false, fullTurn: full };
+    }
+
     function normalizeQuestionForCache(qText) {
-      return extractSubstantiveIntentWords(qText).join(' ');
+      const { coreQuestion } = splitInterviewerFeedbackAndQuestion(qText);
+      return extractSubstantiveIntentWords(coreQuestion || qText).join(' ');
     }
 
     function getInstantSpokenBridge(questionText) {
-      const q = (questionText || '').toLowerCase();
+      const { coreQuestion } = splitInterviewerFeedbackAndQuestion(questionText);
+      const q = (coreQuestion || questionText || '').toLowerCase();
       if (/\b(time when|example|story|tell me about a|situation|instance|walk me through a)\b/i.test(q)) {
         return '“Yeah, a really good example of that is from a project I led recently—”';
       }
-      if (/\b(pushback|conflict|disagree|difficult|challenge|tough|resist|push back|deadline)\b/i.test(q)) {
-        return '“Honestly, whenever that happens, I like to sit down with the team early—”';
+      if (/\b(pushback|conflict|conflicting|disagree|difficult|challenge|tough|resist|push back|deadline|business unit)\b/i.test(q)) {
+        return '“Honestly, whenever priorities clash like that, I bring everyone together early—”';
       }
-      if (/\b(how do you|how would you|approach|process|handle|manage|workflow|day to day)\b/i.test(q)) {
+      if (/\b(how do you|how would you|approach|process|handle|manage|workflow|collaborat|day to day)\b/i.test(q)) {
         return '“The way I usually handle that day-to-day is pretty straightforward—”';
       }
       if (/\b(why|what made you|decision|priorit|tradeoff|choose)\b/i.test(q)) {
@@ -1407,42 +1464,72 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     }
 
     function buildSpokenSystemPrompt() {
-      const recentTurnsText = qaChatHistory
-        .slice(0, 4)
-        .map((t, i) => `Turn -${i + 1}: Q: "${t.question}" -> A: "${t.answerPlain || ''}"`)
-        .join('\n');
-
       return `/no_think
 You are helping Balaajee V.R. (Senior UI/UX Design Manager, 18+ yrs exp across IBM, Zebra, Ericsson, ZF Wabco, Infosys) answer a live interview question out loud.
-Write in EVERYDAY REGULAR SPOKEN ENGLISH—simple, natural words and contractions ("I'm", "don't", "we've", "usually", "honestly") the exact way a friendly, experienced leader talks on a call.
-Rules:
+Write in EVERYDAY REGULAR SPOKEN ENGLISH—simple, natural words and contractions ("I'm", "don't", "we've", "usually", "honestly") the exact way a warm, experienced design leader talks on a live call.
+STRICT RULES:
 1. Write EXACTLY 3 short, easy-to-say sentences (14 to 20 words per sentence).
 2. Put EACH sentence on its own separate line (3 lines total, separated by a newline).
-3. Directly answer the EXACT question asked! Never sound like a written essay or recite resume bullets.
-4. NEVER repeat stories, company examples, or numbers already used in previous turns below.
-Previous turns in this interview (internal memory):
-${recentTurnsText || 'None yet.'}
-Background context (use lightly only when relevant):
-${targetJobContext ? `Target Role: ${targetJobContext}\n` : ''}- Started as software engineer at Infosys; at IBM worked on watsonx & Carbon design tokens; at Ericsson replaced 14-tab Excel with web quoting tool; at Zebra led handheld UX for warehouse workers wearing gloves; scaled 14+ designers with 100% retention; uses NotebookLM, Dovetail AI, Google Stitch, Claude, Cursor, Figma daily.
-Highlight 1–2 key phrases per sentence in <strong>...</strong> tags.
-Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no JSON.`;
+3. Answer ONLY the interviewer's LATEST question or follow-up directly! Ignore any opening praise/recap the interviewer made about your previous answer.
+4. CRITICAL FOLLOW-UP & ANTI-REPETITION RULE: Look at your earlier assistant messages in this chat. NEVER repeat the same answer, sentences, phrases, or high-level summary you already gave! When the interviewer asks 1st, 2nd, or 3rd follow-ups on the same topic, advance the conversation ONE LEVEL DEEPER (give the concrete step-by-step mechanic, a tough stakeholder edge case, how you measured success, or a fresh angle/project from the dossier below).
+5. Highlight 1–2 key phrases per sentence in <strong>...</strong> tags. Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no JSON.
+
+${targetJobContext ? `TARGET ROLE CONTEXT:\n${targetJobContext}\n\n` : ''}BALAAJEE V.R. CAREER DOSSIER (draw specific, varied details from here as relevant):
+${masterDossier}`;
     }
 
-    // Runs 100% silently in the background as the interviewer speaks (or pauses briefly between words).
-    // NEVER touches or changes the answer on screen—only caches the pre-thought answer in hiddenBgPrethink!
+    // Builds true multi-turn User/Assistant chat messages so follow-up questions NEVER repeat earlier answers!
+    function buildConversationMessages(rawQuestionText) {
+      const { coreQuestion, hadTopicSwitch, fullTurn } = splitInterviewerFeedbackAndQuestion(rawQuestionText);
+      const effectiveQuestion = coreQuestion || rawQuestionText;
+
+      const msgs = [{ role: 'system', content: buildSpokenSystemPrompt() }];
+
+      // Include up to 4 most recent completed Q&A turns in chronological order (oldest -> newest)
+      const chronologicalTurns = qaChatHistory.slice(0, 4).reverse();
+      const usedSnippets = [];
+      for (const t of chronologicalTurns) {
+        if (t.question && t.answerPlain) {
+          msgs.push({ role: 'user', content: t.question });
+          msgs.push({ role: 'assistant', content: t.answerPlain });
+          usedSnippets.push(t.answerPlain.slice(0, 110));
+        }
+      }
+
+      let userPrompt = `LATEST INTERVIEWER QUESTION TO ANSWER NOW: "${effectiveQuestion}"`;
+      if (!hadTopicSwitch && fullTurn !== effectiveQuestion) {
+        userPrompt += `\n(Full interviewer remark for context only—do NOT repeat their praise: "${fullTurn}")`;
+      }
+      if (chronologicalTurns.length > 0) {
+        userPrompt += `\n\nIMPORTANT: This is Turn #${chronologicalTurns.length + 1}. Answer ONLY the LATEST question above with NEW, specific details. Do NOT repeat or rephrase your previous answers (${usedSnippets.map((s, i) => `Turn ${i + 1}: "${s}..."`).join(' | ')}).`;
+      }
+
+      msgs.push({ role: 'user', content: userPrompt });
+      return msgs;
+    }
+
+    // Runs silently in the background ONLY during natural pauses (>=650ms) & with a 2.6s cooldown on the secondary 120B quota bucket!
+    // This keeps Qwen-27B's 8,000 tokens/min quota 100% fresh so Final Answers NEVER hit rate-limit stalls!
     function scheduleHiddenBackgroundPrethink(liveQuestionText) {
       const clean = (liveQuestionText || '').trim();
       if (!clean || clean === 'Listening & transcribing live question...') return;
       const words = clean.split(/\s+/).filter(Boolean);
-      if (words.length < 4) return;
+      if (words.length < 6) return;
 
       const norm = normalizeQuestionForCache(clean);
-      if (!norm || norm === hiddenBgPrethink.questionNorm) return;
+      if (!norm || (norm === hiddenBgPrethink.questionNorm && hiddenBgPrethink.historyLenAtThink === qaChatHistory.length)) return;
 
       if (bgPrethinkTimer) clearTimeout(bgPrethinkTimer);
+      const elapsedSinceLast = performance.now() - lastBgPrethinkStartedAt;
+      const waitMs = elapsedSinceLast < 2600 ? Math.max(650, 2600 - elapsedSinceLast) : 650;
+
       bgPrethinkTimer = setTimeout(() => {
+        const currentWords = clean.split(/\s+/).filter(Boolean).length;
+        if (Math.abs(currentWords - lastBgPrethinkWordCount) < 3 && hiddenBgPrethink.questionNorm) return;
+        lastBgPrethinkStartedAt = performance.now();
+        lastBgPrethinkWordCount = currentWords;
         runHiddenBackgroundPrethink(clean, norm);
-      }, 240);
+      }, waitMs);
     }
 
     async function runHiddenBackgroundPrethink(questionRaw, questionNorm) {
@@ -1458,9 +1545,11 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
       }
 
       const t0 = performance.now();
+      const snapHistoryLen = qaChatHistory.length;
       hiddenBgPrethink = {
         questionNorm,
         questionRaw,
+        historyLenAtThink: snapHistoryLen,
         accumulatedText: '',
         sentences: [],
         isDone: false,
@@ -1468,6 +1557,7 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
       };
 
       try {
+        // Use openai/gpt-oss-120b's independent 8,000 TPM pool for background pre-thinking so qwen3.8-27b stays 100% unthrottled!
         const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
           headers: {
@@ -1475,20 +1565,18 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
             'Authorization': `Bearer ${groqApiKey}`
           },
           body: JSON.stringify({
-            model: 'qwen/qwen3.8-27b',
+            model: 'openai/gpt-oss-120b',
             stream: true,
-            reasoning_effort: 'none',
-            temperature: 0.35,
-            max_tokens: 210,
-            messages: [
-              { role: 'system', content: buildSpokenSystemPrompt() },
-              { role: 'user', content: `Interviewer Question: "${questionRaw}"` }
-            ]
+            reasoning_effort: 'low',
+            temperature: 0.38,
+            max_tokens: 310,
+            messages: buildConversationMessages(questionRaw)
           }),
           signal: abortCtrl.signal
         });
 
         if (!res.ok || !res.body) return;
+        updateLiveQuotaFromHeaders(res, 'GPT-120B BG');
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let sseBuffer = '';
@@ -1521,7 +1609,7 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
           }
         }
 
-        if (hiddenBgPrethink.questionNorm === questionNorm && hiddenBgPrethink.sentences.length > 0) {
+        if (hiddenBgPrethink.questionNorm === questionNorm && hiddenBgPrethink.sentences.length >= 2) {
           hiddenBgPrethink.isDone = true;
           if (bgBadge) {
             bgBadge.textContent = '✓ AI READY IN BACKGROUND (WAITING FOR FULL QUESTION)';
@@ -1539,20 +1627,29 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
         clearTimeout(liveCaptionSilenceWatchdog);
       }
 
-      // 1450ms silence watchdog: Waits until the interviewer has COMPLETELY finished their question,
-      // and guarantees the AI never gets stuck even if PCM VAD didn't trigger!
+      // 1350ms silence watchdog: NEVER aborts silently if phone/room hum holds isSpeakingNow open!
       liveCaptionSilenceWatchdog = setTimeout(() => {
         liveCaptionSilenceWatchdog = null;
-        if (isSpeakingNow || isTranscribingWhisper) return;
+        if (isTranscribingWhisper) {
+          // Whisper is mid-flight; check again in 350ms so we never drop the question
+          scheduleLiveCaptionWatchdog(latestLiveCaptionText);
+          return;
+        }
         const finalCandidate = (latestLiveCaptionText || '').trim();
         if (!finalCandidate || finalCandidate.length < 3) return;
+
+        // If 1.35s passed with ZERO new caption words, the interviewer has finished speaking even if room hum held VAD open!
+        if (isSpeakingNow) {
+          flushActiveSpeechToWhisper();
+          return;
+        }
 
         if (turnLifecycleState === 'SPEAKING_CAPTIONS_ONLY') {
           lastProcessedQuestion = finalCandidate;
           lastTranscriptTime = performance.now();
           processLiveInterviewerQuestion(finalCandidate, false);
         }
-      }, 1450);
+      }, 1350);
     }
 
     // =========================================================================
@@ -1917,19 +2014,20 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
         }
       }
 
+      currentAnswerSentencesPlain = sents
+        .slice(0, 3)
+        .map((s) => s.replace(/<[^>]+>/g, ' ').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim());
+      currentDisplayedAnswerPlain = currentAnswerSentencesPlain.join(' ');
+      currentDisplayedAnswerHtml = sents
+        .slice(0, 3)
+        .map((s) => formatMarkdownAndCleanTags(s, false))
+        .join(' ');
+
       const headerStatus = document.getElementById('answerProgressHeader');
       const modeTitle = document.getElementById('answerBoxModeTitle');
       if (isDone) {
         if (modeTitle) modeTitle.textContent = '🗣️ FINAL SPOKEN ANSWER (EVERYDAY SPOKEN ENGLISH)';
         if (headerStatus) headerStatus.textContent = `Sentence 1 of ${Math.min(3, sents.length)}`;
-        currentAnswerSentencesPlain = sents
-          .slice(0, 3)
-          .map((s) => s.replace(/<[^>]+>/g, ' ').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim());
-        currentDisplayedAnswerPlain = currentAnswerSentencesPlain.join(' ');
-        currentDisplayedAnswerHtml = sents
-          .slice(0, 3)
-          .map((s) => formatMarkdownAndCleanTags(s, false))
-          .join(' ');
         lastAnswerRenderedAt = performance.now();
       } else {
         if (headerStatus) headerStatus.textContent = `Streaming Sentence ${Math.min(3, sents.length)} of 3...`;
@@ -1990,22 +2088,27 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
         bgPrethinkTimer = null;
       }
 
-      // 1. CHECK IF HIDDEN BACKGROUND PRE-THINK ALREADY GENERATED THIS ANSWER WHILE INTERVIEWER SPOKE/PAUSED!
+      // Isolate the actual latest question if the interviewer opened with feedback/praise ("That's a solid approach... Moving on, ...")
+      const { coreQuestion } = splitInterviewerFeedbackAndQuestion(cleanQuestion);
+      const displayQuestionText = coreQuestion || cleanQuestion;
+
+      // 1. CHECK IF HIDDEN BACKGROUND PRE-THINK ALREADY GENERATED THIS ANSWER FOR THIS EXACT TURN!
       const finalNorm = normalizeQuestionForCache(cleanQuestion);
       if (
         finalNorm &&
         hiddenBgPrethink.questionNorm === finalNorm &&
+        hiddenBgPrethink.historyLenAtThink === qaChatHistory.length &&
         hiddenBgPrethink.sentences &&
         hiddenBgPrethink.sentences.length >= 2 &&
         hiddenBgPrethink.isDone
       ) {
-        questionInput.value = cleanQuestion;
-        previousInterviewerQuestion = cleanQuestion;
+        questionInput.value = displayQuestionText;
+        previousInterviewerQuestion = displayQuestionText;
         candidateSpokenNotes = '';
         turnLifecycleState = 'IDLE_OR_READING';
         lastQuestionFinalizedAt = performance.now();
 
-        renderBlocksToScreen(hiddenBgPrethink.sentences, true, cleanQuestion);
+        renderBlocksToScreen(hiddenBgPrethink.sentences, true, displayQuestionText);
         setTelemetryState(
           'ready',
           '🟢 Final Answer Ready in 0ms (Pre-thought in background while interviewer spoke!)'
@@ -2013,7 +2116,7 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
         return;
       }
 
-      // 2. OTHERWISE, STREAM THE SINGLE FINAL ANSWER WORD-BY-WORD IMMEDIATELY (First word ~145ms)!
+      // 2. OTHERWISE, STREAM THE SINGLE FINAL ANSWER WORD-BY-WORD IMMEDIATELY across 3 independent 8,000-TPM pools!
       if (bgPrethinkAbortController) {
         try { bgPrethinkAbortController.abort(); } catch (e) {}
       }
@@ -2024,34 +2127,35 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
       activeStreamAbortController = abortCtrl;
       const safetyTimeout = setTimeout(() => {
         try { abortCtrl.abort(); } catch (e) {}
-      }, 6500);
+      }, 7500);
 
       const t0 = performance.now();
-      questionInput.value = cleanQuestion;
-      previousInterviewerQuestion = cleanQuestion;
+      // IMPORTANT: Build multi-turn messages BEFORE prepareStreamingTurnCard pushes the previous turn, OR after?
+      // Wait: prepareStreamingTurnCard pushes the previous completed turn into qaChatHistory!
+      // Calling prepareStreamingTurnCard FIRST ensures the previous completed answer IS in qaChatHistory when buildConversationMessages runs!
+      questionInput.value = displayQuestionText;
+      previousInterviewerQuestion = displayQuestionText;
       candidateSpokenNotes = '';
       turnLifecycleState = 'IDLE_OR_READING';
       lastQuestionFinalizedAt = performance.now();
 
-      prepareStreamingTurnCard(cleanQuestion);
+      prepareStreamingTurnCard(displayQuestionText);
       setTelemetryState('thinking', '⚡ Question complete! Streaming final answer word-by-word...');
 
-      const messages = [
-        { role: 'system', content: buildSpokenSystemPrompt() },
-        { role: 'user', content: `Interviewer Question: "${cleanQuestion}"` }
-      ];
+      const messages = buildConversationMessages(cleanQuestion);
 
       async function runStreamWithModel(modelName) {
+        const isOss = modelName.startsWith('openai/gpt-oss');
         const payload = {
           model: modelName,
           stream: true,
-          temperature: 0.35,
-          max_tokens: 210,
+          temperature: 0.38,
+          max_tokens: isOss ? 320 : 230,
           messages
         };
         if (modelName === 'qwen/qwen3.8-27b') {
           payload.reasoning_effort = 'none';
-        } else if (modelName.startsWith('openai/gpt-oss')) {
+        } else if (isOss) {
           payload.reasoning_effort = 'low';
         }
 
@@ -2068,6 +2172,7 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
         if (!res.ok || !res.body) {
           throw new Error(`HTTP ${res.status}`);
         }
+        updateLiveQuotaFromHeaders(res, modelName.split('/').pop());
 
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
@@ -2119,14 +2224,19 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
           result = await runStreamWithModel('qwen/qwen3.8-27b');
         } catch (errPrimary) {
           if (reqId !== liveRequestCounter) return;
-          result = await runStreamWithModel('openai/gpt-oss-20b');
+          try {
+            result = await runStreamWithModel('openai/gpt-oss-120b');
+          } catch (errSecondary) {
+            if (reqId !== liveRequestCounter) return;
+            result = await runStreamWithModel('openai/gpt-oss-20b');
+          }
         }
         clearTimeout(safetyTimeout);
         if (reqId !== liveRequestCounter || !result) return;
 
         let finalSentences = parseStreamingTextIntoSentences(result.accumulatedText);
         if (!finalSentences.length) {
-          finalSentences = pickFallbackAnswerForQuestion(cleanQuestion);
+          finalSentences = pickFallbackAnswerForQuestion(displayQuestionText);
         }
         updateStreamingSentenceSlotsInPlace(finalSentences, true);
 
@@ -2138,10 +2248,24 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
       } catch (e) {
         clearTimeout(safetyTimeout);
         if (reqId !== liveRequestCounter) return;
-        const fallback = pickFallbackAnswerForQuestion(cleanQuestion);
+        const fallback = pickFallbackAnswerForQuestion(displayQuestionText);
         updateStreamingSentenceSlotsInPlace(fallback, true);
         setTelemetryState('ready', isMicActive ? '🟢 Final Answer Ready • Listening...' : '🟢 Final Answer Ready');
       }
+    }
+
+    // Purges candidate's own spoken reading voice out of PCM & WebSpeech buffers so it NEVER contaminates follow-up questions!
+    function clearCandidateVoiceFromBuffers() {
+      isSpeakingNow = false;
+      speechPcm16k = [];
+      rollingPcm16k = new Float32Array(0);
+      utterancePeakRms = 0;
+      silenceStartedAt = 0;
+      currentWebSpeechFinalSegments = [];
+      currentWebSpeechInterim = '';
+      latestLiveWhisperText = '';
+      latestLiveCaptionText = '';
+      if (pauseProgressFill) pauseProgressFill.style.width = '0%';
     }
 
     function recordCandidateSpokenMemory(spokenChunk) {
@@ -2151,6 +2275,7 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
         candidateSpokenNotes = ((candidateSpokenNotes ? candidateSpokenNotes + ' ' : '') + text).slice(-450);
       }
       advanceAnswerAsCandidateSpeaks(text);
+      clearCandidateVoiceFromBuffers();
     }
 
     function mergeWhisperAndWebSpeech(whisperText, webSpeechText) {
@@ -2597,10 +2722,12 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
 
         const now = performance.now();
 
-        // Cap ambientRms at 0.0042 so loud candidate speech never deafens the mic to a softer phone speaker!
-        ambientRms = Math.min(0.0042, ambientRms);
-        const startThreshold = Math.max(0.0022, Math.min(0.0095, ambientRms * 1.55));
-        const stopThreshold = Math.max(0.0016, Math.min(0.0065, ambientRms * 1.20));
+        // Cap ambientRms at 0.0045 AND scale stopThreshold with utterancePeakRms (20% of speech peak)
+        // so phone speaker hiss / room AC NEVER holds isSpeakingNow open after the interviewer finishes speaking!
+        ambientRms = Math.min(0.0045, ambientRms);
+        const dynamicPeakStop = utterancePeakRms > 0.007 ? Math.min(0.014, utterancePeakRms * 0.20) : 0;
+        const startThreshold = Math.max(0.0026, Math.min(0.0110, ambientRms * 1.65));
+        const stopThreshold = Math.max(0.0020, Math.min(0.0080, ambientRms * 1.28), dynamicPeakStop);
 
         const isActiveVoiceFrame = isSpeakingNow ? rms >= stopThreshold : rms > startThreshold;
 
@@ -2628,14 +2755,14 @@ Output ONLY the 3 sentences on 3 lines—no intro, no numbering, no bullets, no 
             `🔴 Interviewer Speaking (${sec}s) — AI thinking silently in background (Final answer streams when question completes)`
           );
 
-          // Every 950ms while speaking, stream live Whisper captions & check for Early Intent!
+          // Every 950ms while speaking, stream live Whisper captions!
           if (now - lastLiveWhisperTickAt >= 950) {
             lastLiveWhisperTickAt = now;
             pollLiveWhisperCaptions();
           }
 
-          if (now - speechStartedAt >= 24000) {
-            ambientRms = Math.min(0.0042, rms * 0.65);
+          if (now - speechStartedAt >= 16000) {
+            ambientRms = Math.min(0.0045, rms * 0.65);
             flushActiveSpeechToWhisper();
           }
         } else {
