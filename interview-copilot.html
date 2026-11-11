@@ -1181,15 +1181,19 @@ HOW BALAAJEE SPEAKS: Warm, grounded, conversational first-person ("I..."). Never
     let lastAnswerRenderedAt = 0;
     let qaChatHistory = [];
 
-    // 1.15s pause ensures the interviewer has finished their full question without ever feeling sluggish
-    const INTERVIEWER_PAUSE_MS = 1150;
-    // Track live Web Speech + Live Whisper captions across the entire current interviewer turn
+    // Base pause for a completed question (1.55s); automatically extends to 2.60s if the question is still mid-clause or praise-only!
+    const INTERVIEWER_PAUSE_MS = 1550;
+    const INCOMPLETE_THOUGHT_PAUSE_MS = 2600;
+    // Track live Web Speech + Live Whisper captions across the entire current interviewer turn (including across browser SR restarts!)
+    let committedWebSpeechText = '';
+    let currentSessionWebSpeechText = '';
     let currentWebSpeechFinalSegments = [];
     let currentWebSpeechInterim = '';
     let lastWebSpeechWordAt = 0;
     let lastLiveWhisperTickAt = 0;
     let isPollingLiveWhisper = false;
     let latestLiveWhisperText = '';
+    let lastRawFinalizedQuestion = '';
     // Turn Lifecycle State Machine:
     // 'IDLE_OR_READING' | 'SPEAKING_CAPTIONS_ONLY'
     let turnLifecycleState = 'IDLE_OR_READING';
@@ -1618,6 +1622,48 @@ ${masterDossier}`;
       } catch (e) {}
     }
 
+    // Detects whether the spoken transcript so far is still mid-sentence / praise-only / unpunctuated short clause so we NEVER cut off partial questions!
+    function isPartialOrIncompleteQuestionText(text) {
+      const clean = (text || '').trim();
+      if (!clean) return false;
+      const wordCount = clean.split(/\s+/).filter(Boolean).length;
+
+      // 1. Ends with comma/colon/dash or a dangling connector/preposition/auxiliary word
+      if (/[,;:-]$/.test(clean)) return true;
+      if (
+        /\b(and|or|but|so|because|when|while|if|whether|to|for|with|without|in|into|on|at|of|from|by|between|across|through|about|the|a|an|your|our|their|my|how|what|why|where|which|who|could|would|can|should|moving on|switching gears|for example|such as|specifically|could you|can you|would you|how you|what you|do you|did you)\s*[.!?]*$/i.test(
+          clean
+        )
+      ) {
+        return true;
+      }
+      // 2. Unpunctuated short clause (< 18 words without '?') — interviewer may be taking a 1.5s breath before the second half!
+      if (!clean.includes('?') && wordCount < 18) {
+        return true;
+      }
+      // 3. Only opening praise/commentary so far with NO question mark and NO question prompt yet
+      const hasQuestionIntent =
+        clean.includes('?') ||
+        /\b(could you|can you|would you|how do|how did|how would|how have|what is|what was|what are|what do|what did|what would|why did|why do|walk me|walk us|tell me|tell us|describe|explain|share|elaborate|give me|talk about)\b/i.test(
+          clean
+        );
+      if (!hasQuestionIntent && wordCount < 28) {
+        return true;
+      }
+      return false;
+    }
+
+    function getRequiredInterviewerPauseMs(liveCaptionSoFar) {
+      return isPartialOrIncompleteQuestionText(liveCaptionSoFar)
+        ? INCOMPLETE_THOUGHT_PAUSE_MS
+        : INTERVIEWER_PAUSE_MS;
+    }
+
+    // Helper for automated verification & voice state inspection
+    window.setInterviewerSpeakingStateForTest = function(active) {
+      isSpeakingNow = Boolean(active);
+    };
+
     function scheduleLiveCaptionWatchdog(liveText) {
       const clean = (liveText || '').trim();
       if (!clean || clean.length < 3 || clean === 'Listening & transcribing live question...') return;
@@ -1627,62 +1673,92 @@ ${masterDossier}`;
         clearTimeout(liveCaptionSilenceWatchdog);
       }
 
-      // 1350ms silence watchdog: NEVER aborts silently if phone/room hum holds isSpeakingNow open!
+      const waitMs = getRequiredInterviewerPauseMs(clean) + 200;
+
+      // Backup silence watchdog ONLY when acoustic voice (isSpeakingNow) has stopped!
+      // NEVER cuts off or flushes while the interviewer is actively speaking into the mic!
       liveCaptionSilenceWatchdog = setTimeout(() => {
         liveCaptionSilenceWatchdog = null;
-        if (isTranscribingWhisper) {
-          // Whisper is mid-flight; check again in 350ms so we never drop the question
+        if (isSpeakingNow || isTranscribingWhisper) {
+          // Interviewer is still speaking (or Whisper is finishing); re-arm gently without cutting off!
           scheduleLiveCaptionWatchdog(latestLiveCaptionText);
           return;
         }
         const finalCandidate = (latestLiveCaptionText || '').trim();
         if (!finalCandidate || finalCandidate.length < 3) return;
 
-        // If 1.35s passed with ZERO new caption words, the interviewer has finished speaking even if room hum held VAD open!
-        if (isSpeakingNow) {
-          flushActiveSpeechToWhisper();
-          return;
-        }
-
         if (turnLifecycleState === 'SPEAKING_CAPTIONS_ONLY') {
           lastProcessedQuestion = finalCandidate;
           lastTranscriptTime = performance.now();
           processLiveInterviewerQuestion(finalCandidate, false);
         }
-      }, 1350);
+      }, waitMs);
     }
 
     // =========================================================================
     // LIVE CAPTION QUESTION BUBBLE WHILE INTERVIEWER SPEAKS:
     // - Shows ONLY the live question transcript filling in at the top while the interviewer speaks!
     // - NEVER displays or changes intermediate answers on screen while they are still speaking!
-    // - Quietly triggers scheduleHiddenBackgroundPrethink(clean) in the background!
+    // - Stitches seamlessly if the interviewer paused briefly and continued adding to the same question!
     // =========================================================================
     function updateLiveInterviewerBubble(liveText, isFinal = false) {
-      const clean = (liveText || '').trim();
+      let clean = (liveText || '').trim();
       if (!clean) return;
       const isPlaceholder = clean === 'Listening & transcribing live question...';
 
       if (!isFinal) {
-        // Don't clear the current answer on a 1-word noise; wait until at least 2 words are spoken (or Speaker-Only placeholder)
         const wordCount = clean.split(/\s+/).filter(Boolean).length;
         if (!isPlaceholder && wordCount < 2 && turnLifecycleState === 'IDLE_OR_READING') {
           return;
         }
 
+        if (turnLifecycleState === 'IDLE_OR_READING') {
+          const sinceLastFinalMs = performance.now() - lastQuestionFinalizedAt;
+          const prevLower = (lastRawFinalizedQuestion || '').toLowerCase();
+          const cleanLower = clean.toLowerCase();
+          const isExpandedSameQuestion =
+            prevLower.length > 8 &&
+            cleanLower.startsWith(prevLower.slice(0, Math.min(22, prevLower.length))) &&
+            clean.length > lastRawFinalizedQuestion.length + 5;
+
+          const looksLikeContinuation =
+            !isPlaceholder &&
+            lastRawFinalizedQuestion &&
+            lastQuestionFinalizedAt > 0 &&
+            sinceLastFinalMs < 5500 &&
+            !hasCandidateStartedReadingCurrent &&
+            (isExpandedSameQuestion ||
+              isPartialOrIncompleteQuestionText(lastRawFinalizedQuestion) ||
+              /^(and|or|also|plus|specifically|especially|for example|in particular|between|when|where|how|what|why|so)\b/i.test(clean));
+
+          turnLifecycleState = 'SPEAKING_CAPTIONS_ONLY';
+
+          if (looksLikeContinuation) {
+            // Interviewer paused mid-question and kept adding to the SAME question!
+            // Abort any premature partial answer and stitch Part 1 + Part 2 into one full question!
+            if (activeStreamAbortController) {
+              try { activeStreamAbortController.abort(); } catch (e) {}
+            }
+            if (!isExpandedSameQuestion) {
+              committedWebSpeechText = lastRawFinalizedQuestion;
+              clean = `${lastRawFinalizedQuestion} ${clean}`.replace(/\s+/g, ' ').trim();
+            }
+            currentDisplayedAnswerHtml = '';
+            currentDisplayedAnswerPlain = '';
+            answerStream.innerHTML = '';
+          } else {
+            // Normal brand-new question: save completed previous turn into internal AI memory and clear screen
+            if (!currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
+              moveCurrentTurnDownToChat(false);
+            } else if (answerStream.innerHTML.trim() !== '') {
+              answerStream.innerHTML = '';
+            }
+          }
+        }
+
         if (!isPlaceholder) {
           scheduleLiveCaptionWatchdog(clean);
           scheduleHiddenBackgroundPrethink(clean);
-        }
-
-        if (turnLifecycleState === 'IDLE_OR_READING') {
-          turnLifecycleState = 'SPEAKING_CAPTIONS_ONLY';
-          // Save previous completed turn into internal AI memory (not shown on screen) and clear old answer
-          if (!currentTurnAlreadyMovedToChat && activeQuestionText && currentDisplayedAnswerHtml) {
-            moveCurrentTurnDownToChat(false);
-          } else if (answerStream.innerHTML.trim() !== '') {
-            answerStream.innerHTML = '';
-          }
         }
 
         // Show the Live Caption Question Bubble at the VERY TOP of the screen while AI thinks silently in background!
@@ -2261,11 +2337,21 @@ ${masterDossier}`;
       rollingPcm16k = new Float32Array(0);
       utterancePeakRms = 0;
       silenceStartedAt = 0;
+      committedWebSpeechText = '';
+      currentSessionWebSpeechText = '';
       currentWebSpeechFinalSegments = [];
       currentWebSpeechInterim = '';
       latestLiveWhisperText = '';
       latestLiveCaptionText = '';
       if (pauseProgressFill) pauseProgressFill.style.width = '0%';
+    }
+
+    function getFullCurrentWebSpeechSnapshot() {
+      return [committedWebSpeechText, currentSessionWebSpeechText]
+        .filter(Boolean)
+        .join(' ')
+        .replace(/\s+/g, ' ')
+        .trim();
     }
 
     function recordCandidateSpokenMemory(spokenChunk) {
@@ -2290,12 +2376,30 @@ ${masterDossier}`;
       if (wLower.includes(sLower)) return w;
       if (sLower.includes(wLower)) return s;
 
-      const wWords = wLower.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
-      const sWords = sLower.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(Boolean);
-      if (sWords.length > wWords.length + 4) {
+      // Overlap prefix-suffix stitching: if Web Speech caught the start and Whisper caught the middle+end (or vice versa), stitch them!
+      const sOrigWords = s.split(/\s+/).filter(Boolean);
+      const wOrigWords = w.split(/\s+/).filter(Boolean);
+      const normW = (arr) => arr.map((x) => x.toLowerCase().replace(/[^a-z0-9]/g, ''));
+      const sNorm = normW(sOrigWords);
+      const wNorm = normW(wOrigWords);
+
+      for (let k = Math.min(8, sNorm.length, wNorm.length); k >= 2; k--) {
+        const sTail = sNorm.slice(sNorm.length - k).join(' ');
+        const wHead = wNorm.slice(0, k).join(' ');
+        if (sTail && sTail === wHead) {
+          return [...sOrigWords, ...wOrigWords.slice(k)].join(' ');
+        }
+        const wTail = wNorm.slice(wNorm.length - k).join(' ');
+        const sHead = sNorm.slice(0, k).join(' ');
+        if (wTail && wTail === sHead) {
+          return [...wOrigWords, ...sOrigWords.slice(k)].join(' ');
+        }
+      }
+
+      if (sNorm.length > wNorm.length + 3) {
         return s;
       }
-      if (wWords.length >= sWords.length) {
+      if (wNorm.length >= sNorm.length) {
         return w;
       }
       return w.length >= s.length ? w : s;
@@ -2317,7 +2421,11 @@ ${masterDossier}`;
         return;
       }
 
+      lastRawFinalizedQuestion = clean;
+
       // Reset live caption accumulators now that the full question has completed!
+      committedWebSpeechText = '';
+      currentSessionWebSpeechText = '';
       currentWebSpeechFinalSegments = [];
       currentWebSpeechInterim = '';
       latestLiveWhisperText = '';
@@ -2445,30 +2553,37 @@ ${masterDossier}`;
     }
 
     // LIVE ROLLING WHISPER CAPTION STREAMER:
-    // Runs every 950ms WHILE the interviewer is speaking so the question appears as live caption text
-    // at the very top of the screen while the AI pre-thinks silently in the background!
+    // Uses the secondary `whisper-large-v3` 20-RPM pool at a safe 2.8s cadence ONLY when needed,
+    // keeping `whisper-large-v3-turbo` 100% unthrottled (zero HTTP 429 stalls!) for the final full-question transcription!
     async function pollLiveWhisperCaptions() {
       if (isPollingLiveWhisper || !isSpeakingNow || !speechPcm16k.length) return;
       const totalLen = speechPcm16k.reduce((acc, c) => acc + c.length, 0);
-      if (totalLen < TARGET_SAMPLE_RATE * 0.65) return;
+      if (totalLen < TARGET_SAMPLE_RATE * 0.85) return;
 
       isPollingLiveWhisper = true;
       const abortCtrl = new AbortController();
       const timeoutId = setTimeout(() => {
         try { abortCtrl.abort(); } catch (e) {}
-      }, 3600);
+      }, 3200);
 
       try {
-        const snapshot = new Float32Array(totalLen);
+        // Send at most the most recent 14 seconds for fast mid-speech live captioning
+        const fullSnapshot = new Float32Array(totalLen);
         let off = 0;
         for (const c of speechPcm16k) {
-          snapshot.set(c, off);
+          fullSnapshot.set(c, off);
           off += c.length;
         }
+        const maxLiveWindow = TARGET_SAMPLE_RATE * 14;
+        const snapshot =
+          fullSnapshot.length > maxLiveWindow
+            ? fullSnapshot.subarray(fullSnapshot.length - maxLiveWindow)
+            : fullSnapshot;
+
         const wavBlob = encodePeakNormalizedWAV(snapshot);
         const formData = new FormData();
         formData.append('file', wavBlob, 'live_caption.wav');
-        formData.append('model', 'whisper-large-v3-turbo');
+        formData.append('model', 'whisper-large-v3');
         formData.append('language', 'en');
 
         const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
@@ -2484,7 +2599,7 @@ ${masterDossier}`;
           if (liveText && liveText.length > 3 && !isHallucination) {
             if (!isCandidateReadingOwnAnswer(liveText)) {
               latestLiveWhisperText = liveText;
-              const webSpeechSnapshot = [...currentWebSpeechFinalSegments, currentWebSpeechInterim].join(' ').replace(/\s+/g, ' ').trim();
+              const webSpeechSnapshot = getFullCurrentWebSpeechSnapshot();
               const mergedLive = mergeWhisperAndWebSpeech(liveText, webSpeechSnapshot);
               updateLiveInterviewerBubble(mergedLive, false);
             } else {
@@ -2500,10 +2615,11 @@ ${masterDossier}`;
     }
 
     // SINGLE FINAL TRANSCRIPTION & ANSWER TRIGGER:
-    // Waits until the interviewer has completely finished speaking, merges Whisper + Web Speech once,
-    // and triggers ONLY ONE Final Answer on screen (never overwriting it later!).
+    // Dedicates `whisper-large-v3-turbo` exclusively to final full-question transcription (with automatic `whisper-large-v3`
+    // + `immediateLiveQuestion` fallback so HTTP 429 NEVER drops or delays an answer!), AND checks if the interviewer
+    // resumed speaking mid-transcription so partial questions are NEVER answered prematurely!
     async function sendPcmSamplesToGroqWhisper(samples16k, isManualForce = false) {
-      const webSpeechSnapshot = [...currentWebSpeechFinalSegments, currentWebSpeechInterim].join(' ').replace(/\s+/g, ' ').trim();
+      const webSpeechSnapshot = getFullCurrentWebSpeechSnapshot();
       const immediateLiveQuestion = mergeWhisperAndWebSpeech(latestLiveWhisperText, webSpeechSnapshot);
 
       if (!samples16k || samples16k.length < TARGET_SAMPLE_RATE * 0.30) {
@@ -2526,46 +2642,67 @@ ${masterDossier}`;
       }
 
       isTranscribingWhisper = true;
-      setTelemetryState('thinking', '⚡ Question complete! Streaming final answer word-by-word...');
+      setTelemetryState('thinking', '⚡ Transcribing full question & streaming final answer...');
 
       let transcribedQuestion = '';
-      const abortCtrl = new AbortController();
-      const timeoutId = setTimeout(() => {
-        try { abortCtrl.abort(); } catch (e) {}
-      }, 4000);
+
+      async function transcribeWavWithModel(wavBlob, modelName, timeoutMs) {
+        const abortCtrl = new AbortController();
+        const tid = setTimeout(() => {
+          try { abortCtrl.abort(); } catch (e) {}
+        }, timeoutMs);
+        try {
+          const formData = new FormData();
+          formData.append('file', wavBlob, 'speech.wav');
+          formData.append('model', modelName);
+          formData.append('language', 'en');
+          const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${groqApiKey}` },
+            body: formData,
+            signal: abortCtrl.signal
+          });
+          if (!res.ok) return null;
+          const data = await res.json();
+          return (data.text || '').replace(/\[.*?\]|\(.*?\)/g, '').trim();
+        } catch (e) {
+          return null;
+        } finally {
+          clearTimeout(tid);
+        }
+      }
 
       try {
         const wavBlob = encodePeakNormalizedWAV(samples16k);
-        const formData = new FormData();
-        formData.append('file', wavBlob, 'speech.wav');
-        formData.append('model', 'whisper-large-v3-turbo');
-        formData.append('language', 'en');
-
-        const res = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
-          method: 'POST',
-          headers: { 'Authorization': `Bearer ${groqApiKey}` },
-          body: formData,
-          signal: abortCtrl.signal
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          const whisperText = (data.text || '').replace(/\[.*?\]|\(.*?\)/g, '').trim();
-          const isHallucination = /^(thank you\.?|thanks for watching\.?|you\.?|bye\.?|okay\.?|subtitles.*|\.+)$/i.test(whisperText);
-
-          if (whisperText && whisperText.length > 3 && !isHallucination) {
-            transcribedQuestion = mergeWhisperAndWebSpeech(whisperText, immediateLiveQuestion);
-          } else if (immediateLiveQuestion.length > 3) {
-            transcribedQuestion = immediateLiveQuestion;
-          }
+        let whisperText = await transcribeWavWithModel(wavBlob, 'whisper-large-v3-turbo', 2800);
+        if (whisperText === null) {
+          whisperText = await transcribeWavWithModel(wavBlob, 'whisper-large-v3', 2800);
         }
-      } catch (err) {
-        if (immediateLiveQuestion.length > 3) {
+
+        const isHallucination =
+          whisperText &&
+          /^(thank you\.?|thanks for watching\.?|you\.?|bye\.?|okay\.?|subtitles.*|\.+)$/i.test(whisperText);
+
+        if (whisperText && whisperText.length > 3 && !isHallucination) {
+          transcribedQuestion = mergeWhisperAndWebSpeech(whisperText, immediateLiveQuestion);
+        } else if (immediateLiveQuestion.length > 3) {
           transcribedQuestion = immediateLiveQuestion;
         }
       } finally {
-        clearTimeout(timeoutId);
         isTranscribingWhisper = false;
+      }
+
+      // CRITICAL RESUME-SPEECH GUARD:
+      // If the interviewer resumed speaking while Whisper was transcribing Part 1, DO NOT answer the partial question!
+      // Stitch Part 1 audio + caption back into the live turn and wait until they finish the entire question!
+      if (!isManualForce && isSpeakingNow) {
+        speechPcm16k.unshift(samples16k);
+        if (transcribedQuestion && transcribedQuestion.length > 3 && !isCandidateReadingOwnAnswer(transcribedQuestion)) {
+          latestLiveWhisperText = transcribedQuestion;
+          const updatedLive = mergeWhisperAndWebSpeech(transcribedQuestion, getFullCurrentWebSpeechSnapshot());
+          updateLiveInterviewerBubble(updatedLive, false);
+        }
+        return;
       }
 
       if (pendingWhisperSamples) {
@@ -2597,8 +2734,9 @@ ${masterDossier}`;
       pauseProgressFill.style.width = '0%';
 
       if (!speechPcm16k.length) {
-        if (latestLiveCaptionText && latestLiveCaptionText.length > 3) {
-          processLiveInterviewerQuestion(latestLiveCaptionText, false);
+        const liveSnap = mergeWhisperAndWebSpeech(latestLiveWhisperText, getFullCurrentWebSpeechSnapshot()) || latestLiveCaptionText;
+        if (liveSnap && liveSnap.length > 3) {
+          processLiveInterviewerQuestion(liveSnap, false);
         }
         return;
       }
@@ -2617,8 +2755,8 @@ ${masterDossier}`;
     }
 
     // Parallel Web Speech API:
-    // Streams live word-by-word captions into the Top Question Bubble (pushing the last answer down!)
-    // AND triggers Early-Intent Answer Streaming as soon as the question intent is clear!
+    // Rebuilds continuous live captions cleanly from index 0 and seamlessly preserves text across Chrome auto-restarts
+    // so live question text NEVER freezes or loses words mid-question!
     function startParallelWebSpeech() {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SR) return;
@@ -2642,31 +2780,41 @@ ${masterDossier}`;
             return;
           }
 
-          let interim = '';
-          for (let i = event.resultIndex; i < event.results.length; i++) {
+          const sessionParts = [];
+          for (let i = 0; i < event.results.length; i++) {
             const seg = (event.results[i]?.[0]?.transcript || '').trim();
             if (!seg) continue;
-            if (event.results[i].isFinal) {
-              if (!isCandidateReadingOwnAnswer(seg)) {
-                currentWebSpeechFinalSegments.push(seg);
-              }
-            } else {
-              interim += (interim ? ' ' : '') + seg;
+            if (event.results[i].isFinal && turnLifecycleState === 'IDLE_OR_READING' && isCandidateReadingOwnAnswer(seg)) {
+              continue;
             }
+            sessionParts.push(seg);
           }
-          currentWebSpeechInterim = interim;
-          const fullLiveQuestion = [...currentWebSpeechFinalSegments, currentWebSpeechInterim]
-            .join(' ')
-            .replace(/\s+/g, ' ')
-            .trim();
+
+          currentSessionWebSpeechText = sessionParts.join(' ').replace(/\s+/g, ' ').trim();
+          const fullLiveQuestion = getFullCurrentWebSpeechSnapshot();
 
           if (fullLiveQuestion.length > 2) {
-            updateLiveInterviewerBubble(fullLiveQuestion, false);
+            const mergedWithWhisper = mergeWhisperAndWebSpeech(latestLiveWhisperText, fullLiveQuestion);
+            updateLiveInterviewerBubble(mergedWithWhisper, false);
+          }
+        };
+        webSpeechRec.onerror = () => {
+          if (currentSessionWebSpeechText) {
+            committedWebSpeechText = [committedWebSpeechText, currentSessionWebSpeechText].filter(Boolean).join(' ').trim();
+            currentSessionWebSpeechText = '';
           }
         };
         webSpeechRec.onend = () => {
+          if (currentSessionWebSpeechText) {
+            committedWebSpeechText = [committedWebSpeechText, currentSessionWebSpeechText].filter(Boolean).join(' ').trim();
+            currentSessionWebSpeechText = '';
+          }
           if (isMicActive && !isTabSpeakerOnlyMode && webSpeechRec) {
-            try { webSpeechRec.start(); } catch (e) {}
+            setTimeout(() => {
+              if (isMicActive && !isTabSpeakerOnlyMode && webSpeechRec) {
+                try { webSpeechRec.start(); } catch (e) {}
+              }
+            }, 60);
           }
         };
         webSpeechRec.start();
@@ -2685,7 +2833,7 @@ ${masterDossier}`;
       } else {
         btnToggleMic.classList.add('active');
         micLabel.textContent = 'Stop Listening';
-        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Live captions + Early-Intent word-by-word answer streaming active`;
+        heardQuestionLine.textContent = `🎙️ Active Mic: ${activeMicName} — Full-question listening + word-by-word final answer active`;
         setTelemetryState('ready', `🟢 Listening on [${activeMicName}]`);
       }
 
@@ -2693,12 +2841,13 @@ ${masterDossier}`;
       const source = micAudioCtx.createMediaStreamSource(micStream);
       micProcessor = micAudioCtx.createScriptProcessor(2048, 1, 1);
 
-      const maxRollingSamples = TARGET_SAMPLE_RATE * 15;
+      const maxRollingSamples = TARGET_SAMPLE_RATE * 20;
       rollingPcm16k = new Float32Array(0);
       speechPcm16k = [];
       isSpeakingNow = false;
       utterancePeakRms = 0;
-      ambientRms = 0.002;
+      ambientRms = 0.0022;
+      const recentRmsWindow = [];
 
       micProcessor.onaudioprocess = (e) => {
         if (!isMicActive || isReadingLockActive) return;
@@ -2717,17 +2866,31 @@ ${masterDossier}`;
         for (let i = 0; i < chunk16k.length; i++) sumSq += chunk16k[i] * chunk16k[i];
         const rms = Math.sqrt(sumSq / chunk16k.length);
 
+        recentRmsWindow.push(rms);
+        if (recentRmsWindow.length > 14) recentRmsWindow.shift();
+
         const meterPct = Math.min(100, Math.round(Math.pow(rms * 18, 0.65) * 100));
         micLevelFill.style.width = meterPct + '%';
 
         const now = performance.now();
 
-        // Cap ambientRms at 0.0045 AND scale stopThreshold with utterancePeakRms (20% of speech peak)
-        // so phone speaker hiss / room AC NEVER holds isSpeakingNow open after the interviewer finishes speaking!
-        ambientRms = Math.min(0.0045, ambientRms);
-        const dynamicPeakStop = utterancePeakRms > 0.007 ? Math.min(0.014, utterancePeakRms * 0.20) : 0;
-        const startThreshold = Math.max(0.0026, Math.min(0.0110, ambientRms * 1.65));
-        const stopThreshold = Math.max(0.0020, Math.min(0.0080, ambientRms * 1.28), dynamicPeakStop);
+        // Detect flat steady fan/speaker hum (zero syllable modulation over 1.8s) so hum never locks VAD open,
+        // WITHOUT raising stopThreshold on soft human speech syllables!
+        if (isSpeakingNow && recentRmsWindow.length >= 14 && now - speechStartedAt > 2000) {
+          let minW = Infinity;
+          let maxW = 0;
+          for (const v of recentRmsWindow) {
+            if (v < minW) minW = v;
+            if (v > maxW) maxW = v;
+          }
+          if (maxW < 0.0068 && maxW - minW < 0.0014) {
+            ambientRms = Math.min(0.0052, maxW * 0.90);
+          }
+        }
+
+        ambientRms = Math.min(0.0052, ambientRms);
+        const startThreshold = Math.max(0.0030, Math.min(0.0105, ambientRms * 1.70));
+        const stopThreshold = Math.max(0.0022, Math.min(0.0058, ambientRms * 1.30));
 
         const isActiveVoiceFrame = isSpeakingNow ? rms >= stopThreshold : rms > startThreshold;
 
@@ -2752,17 +2915,21 @@ ${masterDossier}`;
           const sec = ((now - speechStartedAt) / 1000).toFixed(1);
           setTelemetryState(
             'hearing',
-            `🔴 Interviewer Speaking (${sec}s) — AI thinking silently in background (Final answer streams when question completes)`
+            `🔴 Listening to Full Question (${sec}s) — Waiting until interviewer completely finishes...`
           );
 
-          // Every 950ms while speaking, stream live Whisper captions!
-          if (now - lastLiveWhisperTickAt >= 950) {
+          // Safe Whisper live-caption cadence (protects Groq's 20 RPM Whisper limit so live text NEVER freezes!):
+          // - In Tab Speaker-Only mode: poll secondary `whisper-large-v3` every 2,600ms
+          // - In Mic mode: Web Speech streams words live for free; only poll `whisper-large-v3` if Web Speech hasn't updated in 1,800ms!
+          const whisperPollInterval = isTabSpeakerOnlyMode ? 2600 : 3000;
+          const webSpeechStale = isTabSpeakerOnlyMode || now - lastWebSpeechWordAt >= 1800;
+          if (webSpeechStale && now - lastLiveWhisperTickAt >= whisperPollInterval) {
             lastLiveWhisperTickAt = now;
             pollLiveWhisperCaptions();
           }
 
-          if (now - speechStartedAt >= 16000) {
-            ambientRms = Math.min(0.0045, rms * 0.65);
+          if (now - speechStartedAt >= 32000) {
+            ambientRms = Math.min(0.0052, rms * 0.65);
             flushActiveSpeechToWhisper();
           }
         } else {
@@ -2770,16 +2937,13 @@ ${masterDossier}`;
             speechPcm16k.push(chunk16k);
             if (!silenceStartedAt) silenceStartedAt = now;
             const silenceMs = now - silenceStartedAt;
-            const pct = Math.min(100, Math.round((silenceMs / INTERVIEWER_PAUSE_MS) * 100));
+            const liveSoFar = mergeWhisperAndWebSpeech(latestLiveWhisperText, getFullCurrentWebSpeechSnapshot()) || latestLiveCaptionText;
+            const requiredPauseMs = getRequiredInterviewerPauseMs(liveSoFar);
+            const pct = Math.min(100, Math.round((silenceMs / requiredPauseMs) * 100));
             pauseProgressFill.style.width = pct + '%';
 
-            if (silenceMs >= 220 && silenceMs < 380 && now - lastLiveWhisperTickAt >= 420) {
-              lastLiveWhisperTickAt = now;
-              pollLiveWhisperCaptions();
-            }
-
-            if (silenceMs >= INTERVIEWER_PAUSE_MS) {
-              ambientRms = Math.min(0.0042, ambientRms * 0.85 + rms * 0.15);
+            if (silenceMs >= requiredPauseMs) {
+              ambientRms = Math.min(0.0052, ambientRms * 0.85 + rms * 0.15);
               if (now - speechStartedAt >= 350) {
                 flushActiveSpeechToWhisper();
               } else {
@@ -2792,7 +2956,7 @@ ${masterDossier}`;
               }
             }
           } else {
-            ambientRms = Math.min(0.0042, ambientRms * 0.94 + rms * 0.06);
+            ambientRms = Math.min(0.0052, ambientRms * 0.94 + rms * 0.06);
           }
         }
       };
